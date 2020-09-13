@@ -1,0 +1,352 @@
+---
+title: "Industry Equity Cost of Capital"
+author: "Mike Aguilar, Bob Connolly, and Jiaxi Li"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+```{r}
+# Packages
+library(here)
+library(tidyverse)
+library(data.table)
+```
+
+
+## 1. Introduction
+
+In 1997, Fama and French attempted to calculate the equity cost of capital (ECC) for the industry portfolios. They employed the CAPM and Fama French three-factor model and applied various techniques to estimate the factor loadings. The conclusion was the ECC estimation is not reliable due to the imprecise factor risk premium and the uncertain risk loadings. It has been 23 years and we will try to find a possible improvement of the ECC estimation in this paper.
+
+For the model selection, we will apply the Fama French five-factor model (2013) and the PRS five-factor model (2018). Since the five-factor model is an update of the three-factor model, it should work better than the three-factor model. Pukthuanthong et al. (2018) showed that there are 5 factors are reasonable: the market factor, profitability factor, and traded version of credit spread, term spread, and unexpected inflation. We will also use their result to form the Industry Equity Cost of Capital.
+
+We will use the 5-year rolling window to estimate the factor loadings of the ECC. Many other methods such as Bayes shrinkage, and Levi-Welch (2017) method. Levi and Welch tried to estimate the ECC while focusing on the factor exposure estimation and let the reader choose their own methods of expected factor premium. However, we found that the factor risk premiums is the more important piece in ECC estimation. In this paper, we will focus on finding a way to estimate the expected factor premium better.
+
+Many papers mentioned that the expected factor premiums are evolving. We will therefore apply the Fama Macbeth (1973) method to estimate the expected factor premium. Since the 2nd step regression result is extremely volatile, we will apply the STL filtering to smooth the result.
+
+## 2. Data
+
+We get the monthly industry return, Fama French five-factor, and the risk-free rate for the Fama French five factors data from the [Ken French Data Library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html). The market factor and profitability factor of the PRS five factors are from the Fama French five factors. The other 3 traded macro factors and risk-free rates are extracted from the [Federal Reserve Bank of St. Louis Economic Data (FRED)](https://fred.stlouisfed.org/) and constructed based on Pukthuanthong et al. (2018).
+
+### 2.1 Industry Return and Fama French Five Factors
+
+The [Fama French Five Factors](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html) are simple returns from July 1963 to June 2020. They are as follows: Rm-Rf, SMB, HML, RMW, CMA. The 49 Industry Portfolios are value-weighted simple returns July 1926 to June 2020. The 49 Industry Portfolios without any missing values started in July 1969, so we will start the analysis in July 1969. The risk-free rate is one-month Treasury bill rate.
+
+```{r, eval = FALSE}
+# This will only ran once to grab the raw data and process the data
+    # Download the return and Fama French 5 Factors data from Ken French Data Library
+    # Create temp_file to store the file
+    temp_file1 <- tempfile()
+    
+    # Download the file
+    download.file('https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_5_Factors_2x3_CSV.zip', temp_file1)
+    
+    # Unzip the file, to extract the data
+    ff_factors_raw_data <- unzip(temp_file1, exdir = here("data"))
+    
+    
+    # Create temp_file to store the file
+    temp_file2 <- tempfile()
+    
+    # Download the file
+    download.file('https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/49_Industry_Portfolios_CSV.zip', temp_file2)
+    
+    # Unzip the file, to extract the data
+    IP49_raw_data <- unzip(temp_file2, exdir = here("data"))
+```
+
+```{r, cache = TRUE}
+    # Read the contents read_csv
+    FF5 <- read_csv(here("data/F-F_Research_Data_5_Factors_2x3.CSV"), skip = 3) %>%
+      mutate_all(as.numeric) %>%
+      rename(date = X1) %>%
+      filter(date >196300) %>%
+      # Change all the returns into decimals
+      mutate_at(vars(-date), function(x, na.rm = FALSE) (x/100)) %>%
+      mutate(date = as.character(date))
+
+    # Read the contents read_csv and extract the desired dates
+    Portfolios <- read_csv(here("data/49_Industry_Portfolios.CSV"), skip = 11) %>%
+      mutate_all(as.numeric) %>%
+      rename(date = X1) %>%
+      filter(date > 192600) %>%
+      # Change all the returns into decimals
+      mutate_at(vars(-date), function(x, na.rm = FALSE) (x/100)) %>%
+      mutate(date = as.character(date))
+    
+    # Keep Value Weighted
+    Portfolios <- Portfolios[1:(nrow(Portfolios)/4),]
+    Portfolios <- Portfolios %>%
+      # remove missing value
+      replace(. < -.999, NA) %>%
+      remove_missing() %>%
+      # Gather all the returns
+      gather(Industry, RET, - date)
+```
+
+### 2.2 Traded PRS Five Factors
+
+In order to construct the traded version of PRS Factor, we first obtain the risk-free rate and the raw CRR Five Factors: the Default Premium (dDP), the Industrial Production Growth Rate (dIP), the Term Premium (dTS), the Unexpected Inflation (UNEXPI), and the Change in Expected Inflation (dEI). We obtained following macro variables from the Federal Reserve Bank of St. Louis Economic Data: [Moody's Seasoned Aaa Corporate Bond Yield (Aaa)](https://fred.stlouisfed.org/series/AAA), [Moody's Seasoned Baa Corporate Bond Yield (Baa)](https://fred.stlouisfed.org/series/BAA), [Industrial Production Index (IP)](https://fred.stlouisfed.org/series/INDPRO), [10-Year Treasury Constant Maturity Rate (GS10)](https://fred.stlouisfed.org/series/GS10), [1-Year Treasury Constant Maturity Rate (GS1)](https://fred.stlouisfed.org/series/GS1), [Seasonally Adjusted CPI derived Inflation Rate (INF)](https://fred.stlouisfed.org/series/CPIAUCSL), [University of Michigan Inflation Expectation (MICH)](https://fred.stlouisfed.org/series/MICH), [3-Month Treasury Bill: Secondary Market Rate (TB3MS)](https://fred.stlouisfed.org/series/TB3MS).
+
+Here are the ways that the raw factors are calculated:
+
+$dDP_{raw,t} = Baa_t - Aaa_t$
+
+$dIP_{raw, t} = ln(IP_t) - ln(IP_{t-1})$
+
+$dTS_{raw, t} = GS10_t - GS1_t$
+
+$EXPINF_{raw, t} = E_{t-12}[MICH_t]$
+
+$UNEXPI_{raw, t} = INF_t - EXPINF_{raw, t}$
+
+$dEI_t = EXPINF_{raw, t} - EXPINF_{raw, t-1}$
+
+The Default Premium started in Janurary 1919; the Industrial Production Growth Rate stared in Feburary 1919; the Term Premium started in April 1953; the Unexpected Inflation started in Janurary 1979; and the Change in Expected Inflation started in Feburary 1979; 3-Month Treasury Bill: Secondary Market Rate (TB3MS) started in Janurary 1934. Therefore, the raw PRS factors would start in Feburary 1979. The Default Premium (dDP), the Term Premium (dTS), the Unexpected Inflation (UNEXPI), the Change in Expected Inflation (dEI), and 3-month Treasury Rate are annual rates so they need to be converted to monthly frequency.
+
+After obtaining the raw factors, we need to create the traded version of these 5 factors. Similar to the Pukthuanthong et al. (2018) procedure, we applied the 50 portfolios, $R$, (the ten equal-weighted size portfolios, ten equal-weighted book-to-market portfolios, ten equal-weighted investment portfolios and ten equal-weighted operating profitability portfolios, and ten value-weighted momentum portfolios) from the [Ken French Data Library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html) to construct the mimicking portfolios. These 50 portfolios all exist after July 1963. We first regress each of the 50 assets against the raw factors to get the coefficient matrix B (50x5) and the diagonal matrix of the covariance matrix of the error term V (50x50). The weight of the factor mimicking portfolio is $w=(B'V^{-1}B)^{-1}B'V^{-1}$. The traded factors are $PRS = wR$, and they would start in July 1963.
+
+```{r, eval = FALSE}
+# Create function to change "yyyy-mm-dd" to yyyymm
+antitransDate <- function(date) {
+  floor(
+    as.numeric(gsub("[^[:digit:]]", "", date))/100
+  )
+}
+
+# Create function to change "yyyy-mm-dd" to yyyymmdd
+antitransDate_daily <- function(date) {
+  round(
+    as.numeric(gsub("[^[:digit:]]", "", date, perl = TRUE))
+  )
+}
+
+
+# Set the Start Date
+start_date <- "1900-01-01"
+start_date_lead <- as.Date(as.character(antitransDate_daily(start_date)-20000), "%Y%m%d")
+end_date <- Sys.Date()
+
+## Load the data from FRED
+# Download the dDP (default spread) from FRED, Baa - Aaa, adjust to monthly frequency
+dDP_raw <- fread(paste("https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1168&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=BAA_AAA&scale=left&cosd=", start_date, "&coed=", Sys.Date(), "&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a-b&fq=Monthly&fam=avg&fgst=lin&fgsnd=", Sys.Date(), "&line_index=1&transformation=lin_lin&vintage_date=", Sys.Date(), "_", Sys.Date(), "&revision_date=", Sys.Date(), "_", Sys.Date(), "&nd=1919-01-01_1919-01-01", sep = "")) %>%
+  rename(dDP = BAA_AAA) %>%
+  mutate(dDP = (exp(log(1+dDP/100)/12)-1)*100)
+
+# Download the IP (Industrial Production Index) from FRED, times 100 to have the percent change
+dIP_raw <- fread(paste("https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1168&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=INDPRO&scale=left&cosd=", start_date_lead, "&coed=", Sys.Date(), "&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a&fq=Monthly&fam=avg&fgst=lin&fgsnd=", Sys.Date(), "&line_index=1&transformation=lin&vintage_date=", Sys.Date(), "&revision_date=", Sys.Date(), "&nd=1919-01-01", sep = "")) %>%
+  mutate(dIP = log(INDPRO) - log(lag(INDPRO))) %>%
+  subset(select = c(DATE, dIP)) %>%
+  mutate(dIP = 100*dIP)
+
+# Download the dTS (term spread) from FRED
+dTS_raw <- fread(paste("https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1168&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=GS10_GS1&scale=left&cosd=", start_date, "&coed=", Sys.Date(), "&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a-b&fq=Monthly&fam=avg&fgst=lin&fgsnd=", Sys.Date(), "&line_index=1&transformation=lin_lin&vintage_date=", Sys.Date(), "_", Sys.Date(), "&revision_date=", Sys.Date(), "_", Sys.Date(), "&nd=1953-04-01_1953-04-01", sep = "")) %>%
+  rename(dTS = GS10_GS1) %>%
+  mutate(dTS = (exp(log(1+dTS/100)/12)-1)*100)
+
+# Download the Inflation Rate and Expected Inflation Rate
+INF_raw <- fread(paste("https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1168&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=CPIAUCSL&scale=left&cosd=", start_date, "&coed=", Sys.Date(), "&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a&fq=Monthly&fam=avg&fgst=lin&fgsnd=", Sys.Date(), "&line_index=1&transformation=pc1&vintage_date=", Sys.Date(), "&revision_date=", Sys.Date(), "&nd=1913-01-01", sep = ""))
+EXPINF_raw <- fread(paste("https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1168&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=MICH&scale=left&cosd=", start_date_lead, "&coed=", Sys.Date(), "&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a&fq=Monthly&fam=avg&fgst=lin&fgsnd=", Sys.Date(), "&line_index=1&transformation=lin&vintage_date=", Sys.Date(), "&revision_date=", Sys.Date(), "&nd=1978-01-01", sep = ""))
+EXPINF_raw_lead <- EXPINF_raw %>%
+  mutate(MICH = lag(MICH,12))
+
+# Create unexpected inflation
+UNEXPI_raw <- INF_raw %>%
+  inner_join(EXPINF_raw_lead) %>%
+  mutate(UNEXPI = CPIAUCSL_PC1 - MICH) %>%
+  subset(select = c(DATE, UNEXPI)) %>%
+  mutate(UNEXPI = (exp(log(1+UNEXPI/100)/12)-1)*100)
+
+# Create the change in expected inflation
+dEI_raw <- EXPINF_raw_lead %>%
+  mutate(dEI = MICH - lag(MICH)) %>%
+  subset(select = c(DATE, dEI)) %>%
+  mutate(dEI = (exp(log(1+dEI/100)/12)-1)*100)
+
+# Download the 3-month yield as the risk free rate
+RF_monthly <- fread(paste("https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1168&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=TB3MS&scale=left&cosd=", start_date, "&coed=", Sys.Date(), "&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a&fq=Monthly&fam=avg&fgst=lin&fgsnd=", Sys.Date(),"&line_index=1&transformation=lin&vintage_date=", Sys.Date(), "&revision_date=", Sys.Date(), "&nd=1934-01-01", sep = "")) %>%
+  rename(RF = TB3MS) %>%
+  mutate(RF = (exp(log(1+RF/100)/12)-1)*100)
+
+
+# Create the 5 raw CRR factors
+CRR_raw <- dDP_raw %>%
+  inner_join(dIP_raw) %>%
+  inner_join(dTS_raw) %>%
+  inner_join(UNEXPI_raw) %>%
+  inner_join(dEI_raw) %>%
+  inner_join(RF_monthly) %>%
+  mutate(DATE = antitransDate(DATE)) %>%
+  remove_missing()
+
+
+##################################################
+##################################################
+# Monthly mimicking portfolios data
+# Create temp_file to store the file
+temp_file3 <- tempfile()
+temp_file4 <- tempfile()
+temp_file5 <- tempfile()
+temp_file6 <- tempfile()
+temp_file7 <- tempfile()
+
+# Download the file
+download.file('https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_ME_CSV.zip', temp_file3)
+download.file('https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_BE-ME_CSV.zip', temp_file4)
+download.file('https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_OP_CSV.zip', temp_file5)
+download.file('https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Portfolios_Formed_on_INV_CSV.zip', temp_file6)
+download.file('https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/10_Portfolios_Prior_12_2_CSV.zip', temp_file7)
+
+# Unzip the file, to extract the data
+Portfolios_Formed_on_ME_raw_data <- unzip(temp_file3, exdir = here("data"))
+Portfolios_Formed_on_BE_ME_raw_data <- unzip(temp_file4, exdir = here("data"))
+Portfolios_Formed_on_OP_raw_data <- unzip(temp_file5, exdir = here("data"))
+Portfolios_Formed_on_INV_raw_data <- unzip(temp_file6, exdir = here("data"))
+Portfolios_Formed_on_MOM_raw_data <- unzip(temp_file7, exdir = here("data"))
+
+# Read the contents read_csv and extract the desired dates
+Portfolios_Formed_on_ME <- read_csv(Portfolios_Formed_on_ME_raw_data, skip = 12) %>%
+  mutate_all(as.numeric) %>%
+  filter(X1 >= antitransDate(start_date),
+         X1 <= antitransDate(Sys.Date())) %>%
+  rename(DATE = X1)
+
+Portfolios_Formed_on_BE_ME <- read_csv(Portfolios_Formed_on_BE_ME_raw_data, skip = 23) %>%
+  mutate_all(as.numeric) %>%
+  filter(X1 >= antitransDate(start_date),
+         X1 <= antitransDate(Sys.Date())) %>%
+  rename(DATE = X1)
+
+Portfolios_Formed_on_OP <- read_csv(Portfolios_Formed_on_OP_raw_data, skip = 24) %>%
+  mutate_all(as.numeric) %>%
+  filter(X1 >= antitransDate(start_date),
+         X1 <= antitransDate(Sys.Date())) %>%
+  rename(DATE = X1)
+
+Portfolios_Formed_on_INV <- read_csv(Portfolios_Formed_on_INV_raw_data, skip = 17) %>%
+  mutate_all(as.numeric) %>%
+  filter(X1 >= antitransDate(start_date),
+         X1 <= antitransDate(Sys.Date())) %>%
+  rename(DATE = X1)
+
+Portfolios_Formed_on_MOM <- read_csv(Portfolios_Formed_on_MOM_raw_data, skip = 10) %>%
+  mutate_all(as.numeric) %>%
+  filter(X1 >= antitransDate(start_date),
+         X1 <= antitransDate(Sys.Date())) %>%
+  rename(DATE = X1)
+
+# Keep only the equal-weighted ones except equal-weighted MOM
+Portfolios_Formed_on_ME <- Portfolios_Formed_on_ME[(nrow(Portfolios_Formed_on_ME)/4+1):(nrow(Portfolios_Formed_on_ME)/2),c(1,11:20)]
+Portfolios_Formed_on_BE_ME <- Portfolios_Formed_on_BE_ME[(nrow(Portfolios_Formed_on_BE_ME)/4+1):(nrow(Portfolios_Formed_on_BE_ME)/2),c(1,11:20)]
+Portfolios_Formed_on_OP <- Portfolios_Formed_on_OP[(nrow(Portfolios_Formed_on_OP)/4+1):(nrow(Portfolios_Formed_on_OP)/2),c(1,10:19)]
+Portfolios_Formed_on_INV <- Portfolios_Formed_on_INV[(nrow(Portfolios_Formed_on_INV)/4+1):(nrow(Portfolios_Formed_on_INV)/2),c(1,10:19)]
+Portfolios_Formed_on_MOM <- Portfolios_Formed_on_MOM[(1:(nrow(Portfolios_Formed_on_MOM)/4)),]
+
+# Select and rename the portfolios
+names(Portfolios_Formed_on_ME)[2:11]<- paste(rep("ME",10),1:10,sep = "")
+names(Portfolios_Formed_on_BE_ME)[2:11]<- paste(rep("BE_ME",10),1:10,sep = "")
+names(Portfolios_Formed_on_OP)[2:11]<- paste(rep("OP",10),1:10,sep = "")
+names(Portfolios_Formed_on_INV)[2:11]<- paste(rep("INV",10),1:10,sep = "")
+names(Portfolios_Formed_on_MOM)[2:11]<- paste(rep("MOM",10),1:10,sep = "")
+
+# Join the 50 decile portfolios together
+D50 <- Portfolios_Formed_on_ME %>%
+  inner_join(Portfolios_Formed_on_BE_ME) %>%
+  inner_join(Portfolios_Formed_on_OP) %>%
+  inner_join(Portfolios_Formed_on_INV) %>%
+  inner_join(Portfolios_Formed_on_MOM) %>%
+  mutate(DATE = as.numeric(DATE))
+
+##################################################
+##################################################
+# Use the monthly raw data and 50 portfolios to create the weights
+reg_table <- D50
+names(reg_table)[2:51] <- 1:50
+reg_table <- reg_table %>%
+  pivot_longer(-DATE, names_to = "port", values_to = "RET") %>%
+  filter(DATE <= antitransDate(end_date)) %>%
+  inner_join(CRR_raw) %>%
+  subset(select = - RF) %>%
+  mutate(port = as.numeric(port)) %>%
+  ungroup()
+
+# Do the regression
+B_temp <- reg_table %>%
+  group_by(port) %>%
+  do(model = lm(RET ~ . - port - DATE, data = .) %>%
+       coefficients())
+
+V_temp <- reg_table %>%
+  group_by(port) %>%
+  do(model = lm(RET ~ . - port - DATE, data = .) %>%
+       resid())
+
+# Unwrap the results
+B <- do.call(rbind.data.frame, B_temp$model) %>%
+  as.matrix()
+B <- B[,2:ncol(B)]
+# rename B
+colnames(B) <- names(CRR_raw)[2:(length(CRR_raw)-1)]
+
+V <- do.call(rbind.data.frame, V_temp$model) %>%
+  as.matrix() %>%
+  t() %>%
+  cov() %>%
+  diag() %>%
+  diag()
+
+# Calculate the weights
+w <- solve(t(B) %*% solve(V) %*% B) %*% t(B) %*% solve(V)
+
+
+##################################################
+##################################################
+# Create the monthly traded version of CRR factors
+CRR_trade_monthly <- t(w %*% t(D50[,2:51])) %>%
+  as_tibble()
+CRR_trade_monthly <- cbind(D50[,1], CRR_trade_monthly)
+
+# Create the PRS monthly factor file
+PRS_monthly <- FF5 %>%
+  subset(select = c(date, `Mkt-RF`, RMW)) %>%
+  mutate_at(vars(-date), function(x, na.rm = FALSE) (x*100)) %>%
+  rename(DATE = date) %>%
+  mutate(DATE = as.numeric(DATE)) %>%
+  inner_join(CRR_trade_monthly) %>% 
+  inner_join(RF_monthly %>%
+               mutate(DATE = antitransDate(DATE))) %>%
+  subset(select = -c(dEI, dIP)) %>%
+  rename(date = DATE) %>%
+  mutate(date = as.character(date))
+  
+# save as csv
+write.csv(PRS_monthly, here("data/PRS_monthly.csv"), na = "",  row.names = FALSE)
+```
+
+```{r, cache = TRUE}
+    # Read the contents read_csv
+    PRS <- read_csv(here("data/PRS_monthly.csv")) %>%
+      mutate_all(as.numeric) %>%
+      filter(date >196300) %>%
+      # Change all the returns into decimals
+      mutate_at(vars(-date), function(x, na.rm = FALSE) (x/100)) %>%
+      mutate(date = as.character(date))
+```
+
+## 3. First-Pass Regression
+
+In this section, we will try to apply the simple first-pass regression to estimate the betas of the 49 industry portfolios. The period would be from July 1969 to June 2020.
+
+### 3.1 Fama French Five Factor Model
+
+We will first apply the Fama French Five Factor Model to estimate the betas. We will use the Five Factor Model as the base model.
+
+### 3.1.1 Full Sample Estimation
+
+
+
+### 3.1.2 Rolling Window Estimation

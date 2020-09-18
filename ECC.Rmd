@@ -109,21 +109,21 @@ In order to construct the traded version of PRS Factor, we first obtain the risk
 
 Here are the ways that the raw factors are calculated:
 
-$dDP_{raw,t} = Baa_t - Aaa_t$
+$$dDP_{raw,t} = Baa_t - Aaa_t$$
 
-$dIP_{raw, t} = ln(IP_t) - ln(IP_{t-1})$
+$$dIP_{raw, t} = ln(IP_t) - ln(IP_{t-1})$$
 
-$dTS_{raw, t} = GS10_t - GS1_t$
+$$dTS_{raw, t} = GS10_t - GS1_t$$
 
-$EXPINF_{raw, t} = E_{t-12}[MICH_t]$
+$$EXPINF_{raw, t} = E_{t-12}[MICH_t]$$
 
-$UNEXPI_{raw, t} = INF_t - EXPINF_{raw, t}$
+$$UNEXPI_{raw, t} = INF_t - EXPINF_{raw, t}$$
 
-$dEI_t = EXPINF_{raw, t} - EXPINF_{raw, t-1}$
+$$dEI_t = EXPINF_{raw, t} - EXPINF_{raw, t-1}$$
 
 The Default Premium started in Janurary 1919; the Industrial Production Growth Rate stared in Feburary 1919; the Term Premium started in April 1953; the Unexpected Inflation started in Janurary 1979; and the Change in Expected Inflation started in Feburary 1979; 3-Month Treasury Bill: Secondary Market Rate (TB3MS) started in Janurary 1934. Therefore, the raw PRS factors would start in Feburary 1979. The Default Premium (dDP), the Term Premium (dTS), the Unexpected Inflation (UNEXPI), the Change in Expected Inflation (dEI), and 3-month Treasury Rate are annual rates so they need to be converted to monthly frequency.
 
-After obtaining the raw factors, we need to create the traded version of these 5 factors. Similar to the Pukthuanthong et al. (2018) procedure, we applied the 50 portfolios, $R$, (the ten equal-weighted size portfolios, ten equal-weighted book-to-market portfolios, ten equal-weighted investment portfolios and ten equal-weighted operating profitability portfolios, and ten value-weighted momentum portfolios) from the [Ken French Data Library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html) to construct the mimicking portfolios. These 50 portfolios all exist after July 1963. We first regress each of the 50 assets against the raw factors to get the coefficient matrix B (50x5) and the diagonal matrix of the covariance matrix of the error term V (50x50). The weight of the factor mimicking portfolio is $w=(B'V^{-1}B)^{-1}B'V^{-1}$. The traded factors are $PRS = wR$, and they would start in July 1963.
+After obtaining the raw factors, we need to create the traded version of these 5 factors. Similar to the Pukthuanthong et al. (2018) procedure, we applied the 50 portfolios, $R$, (the ten equal-weighted size portfolios, ten equal-weighted book-to-market portfolios, ten equal-weighted investment portfolios and ten equal-weighted operating profitability portfolios, and ten value-weighted momentum portfolios) from the [Ken French Data Library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html) to construct the mimicking portfolios. These 50 portfolios all exist after July 1963. We first regress each of the 50 assets against the raw factors to get the coefficient matrix B (50x5) and the diagonal matrix of the covariance matrix of the error term V (50x50). The weight of the factor mimicking portfolio is $w=(B'V^{-1}B)^{-1}B'V^{-1}$. The traded factors are PRS = wR, and they would start in July 1963.
 
 ```{r, eval = FALSE}
 library(data.table)

@@ -9,6 +9,5 @@ purrr
 dplyr
 stringr
 forcats
-data.table
 rollRegres
 kableExtra

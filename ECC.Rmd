@@ -17,6 +17,7 @@ library(here)
 library(tidyverse)
 library(rollRegres)
 library(kableExtra)
+library(moments)
 
 # Set the function to transform yyyymm to Date
 transDate <- function(date) {
@@ -474,7 +475,7 @@ Port_FF5_Betas_Full %>%
   kable(align = "c", caption = "Fama French Five Factors") %>%
         kable_styling(font_size = 10, "striped", full_width = F) %>%
         column_spec(1, bold = T) %>%
-        # Add header above as % Equity
+        # Add header above
         add_header_above(c(" " = 1, "Coefficients" = 6, "Std. Error" = 6))
 
 # Plot the histogram for betas
@@ -1544,7 +1545,7 @@ Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
   as_tibble()
 
 # Rename the variables
-names(Rolling_Lambdas) = names(PRS)[-length(FF5)]
+names(Rolling_Lambdas) = names(FF5)[-length(FF5)]
 names(Rolling_Lambdas)[1] = "Lambda0"
 
 # Add in the dates
@@ -1621,6 +1622,94 @@ FM_STL_PRS %>%
 
 ```
 
+Here is a comparison of the lambda statitics of the Normal Fama Macbeth and Fama Macbeth Second Step Regression with STL Trend Data.
+
+```{r, cache = TRUE}
+FF5_table <- FM_FF5 %>%
+  summarise_all(mean) %>%
+  mutate(date = "mean") %>%
+  rbind(FM_FF5 %>%
+          summarise_all(var) %>%
+          mutate(date = "variance")) %>%
+  rbind(FM_FF5 %>%
+          summarise_all(skewness) %>%
+          mutate(date = "skewness")) %>%
+  rbind(FM_FF5 %>%
+          summarise_all(kurtosis) %>%
+          mutate(date = "kurtosis")) %>%
+  rename(stats = date) %>%
+  mutate(method = "FM_FF5") %>%
+  rbind(FM_STL_FF5 %>%
+    summarise_all(mean) %>%
+    mutate(date = "mean") %>%
+    rbind(FM_STL_FF5 %>%
+            summarise_all(var) %>%
+            mutate(date = "variance")) %>%
+    rbind(FM_STL_FF5 %>%
+            summarise_all(skewness) %>%
+            mutate(date = "skewness")) %>%
+    rbind(FM_STL_FF5 %>%
+            summarise_all(kurtosis) %>%
+            mutate(date = "kurtosis")) %>%
+    rename(stats = date) %>%
+    mutate(method = "FM_STL_FF5")) %>%
+  subset(select = c(7,1:6)) 
+
+FF5_table %>%
+  kable(align = "c", caption = "Fama French Five Factors Lambdas") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  collapse_rows(columns = 1)
+
+
+
+PRS_table <- FM_PRS %>%
+  summarise_all(mean) %>%
+  mutate(date = "mean") %>%
+  rbind(FM_PRS %>%
+          summarise_all(var) %>%
+          mutate(date = "variance")) %>%
+  rbind(FM_PRS %>%
+          summarise_all(skewness) %>%
+          mutate(date = "skewness")) %>%
+  rbind(FM_PRS %>%
+          summarise_all(kurtosis) %>%
+          mutate(date = "kurtosis")) %>%
+  rename(stats = date) %>%
+  mutate(method = "FM_PRS") %>%
+  rbind(FM_STL_PRS %>%
+    summarise_all(mean) %>%
+    mutate(date = "mean") %>%
+    rbind(FM_STL_PRS %>%
+            summarise_all(var) %>%
+            mutate(date = "variance")) %>%
+    rbind(FM_STL_PRS %>%
+            summarise_all(skewness) %>%
+            mutate(date = "skewness")) %>%
+    rbind(FM_STL_PRS %>%
+            summarise_all(kurtosis) %>%
+            mutate(date = "kurtosis")) %>%
+    rename(stats = date) %>%
+    mutate(method = "FM_STL_PRS")) %>%
+  subset(select = c(7,1:6))
+
+PRS_table %>%
+  kable(align = "c", caption = "PRS Five Factors Lambdas") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  collapse_rows(columns = 1)
+
+(FF5_table[2,3:7]/FF5_table[6,3:7]) %>%
+  as_tibble() %>%
+  cbind((PRS_table[2,3:7]/PRS_table[6,3:7]) %>%
+          as_tibble()) %>%
+  kable(align = "c", caption = "Fama Macbeth/STL Lambda Variance Ratio") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  # Add header above
+  add_header_above(c("FF5" = 5, "PRS" = 5))
+
+
+```
 
 ## 5. Equity Cost of Captial
 

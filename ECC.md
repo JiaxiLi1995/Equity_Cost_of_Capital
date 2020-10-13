@@ -8428,6 +8428,487 @@ Now, we will take the desired no robust weighting, s\_window = 7 trend results o
 
 ![](ECC_files/figure-markdown_github/unnamed-chunk-19-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-2.png)
 
+Here is a comparison of the lambda statitics of the Normal Fama Macbeth and Fama Macbeth Second Step Regression with STL Trend Data.
+
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Fama French Five Factors Lambdas
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+method
+</th>
+<th style="text-align:center;">
+stats
+</th>
+<th style="text-align:center;">
+Mkt-RF
+</th>
+<th style="text-align:center;">
+SMB
+</th>
+<th style="text-align:center;">
+HML
+</th>
+<th style="text-align:center;">
+RMW
+</th>
+<th style="text-align:center;">
+CMA
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
+FM\_FF5
+</td>
+<td style="text-align:center;">
+mean
+</td>
+<td style="text-align:center;">
+0.0009206
+</td>
+<td style="text-align:center;">
+0.0008839
+</td>
+<td style="text-align:center;">
+-0.0001184
+</td>
+<td style="text-align:center;">
+0.0000019
+</td>
+<td style="text-align:center;">
+0.0016968
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+variance
+</td>
+<td style="text-align:center;">
+0.0035331
+</td>
+<td style="text-align:center;">
+0.0011442
+</td>
+<td style="text-align:center;">
+0.0012661
+</td>
+<td style="text-align:center;">
+0.0007741
+</td>
+<td style="text-align:center;">
+0.0006425
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+skewness
+</td>
+<td style="text-align:center;">
+0.0613148
+</td>
+<td style="text-align:center;">
+0.0164253
+</td>
+<td style="text-align:center;">
+-0.3765078
+</td>
+<td style="text-align:center;">
+-0.1904382
+</td>
+<td style="text-align:center;">
+0.0781917
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+kurtosis
+</td>
+<td style="text-align:center;">
+4.7140032
+</td>
+<td style="text-align:center;">
+5.3531912
+</td>
+<td style="text-align:center;">
+5.3248040
+</td>
+<td style="text-align:center;">
+6.6515963
+</td>
+<td style="text-align:center;">
+4.8082920
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
+FM\_STL\_FF5
+</td>
+<td style="text-align:center;">
+mean
+</td>
+<td style="text-align:center;">
+0.0009169
+</td>
+<td style="text-align:center;">
+0.0008576
+</td>
+<td style="text-align:center;">
+0.0001610
+</td>
+<td style="text-align:center;">
+-0.0001068
+</td>
+<td style="text-align:center;">
+0.0014072
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+variance
+</td>
+<td style="text-align:center;">
+0.0001617
+</td>
+<td style="text-align:center;">
+0.0000824
+</td>
+<td style="text-align:center;">
+0.0001248
+</td>
+<td style="text-align:center;">
+0.0000396
+</td>
+<td style="text-align:center;">
+0.0000631
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+skewness
+</td>
+<td style="text-align:center;">
+-0.2901826
+</td>
+<td style="text-align:center;">
+-0.6573037
+</td>
+<td style="text-align:center;">
+-0.6300605
+</td>
+<td style="text-align:center;">
+0.2965183
+</td>
+<td style="text-align:center;">
+-0.2970504
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+kurtosis
+</td>
+<td style="text-align:center;">
+4.1940171
+</td>
+<td style="text-align:center;">
+4.0609313
+</td>
+<td style="text-align:center;">
+4.2132542
+</td>
+<td style="text-align:center;">
+3.9235887
+</td>
+<td style="text-align:center;">
+3.9154914
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+PRS Five Factors Lambdas
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+method
+</th>
+<th style="text-align:center;">
+stats
+</th>
+<th style="text-align:center;">
+Mkt-RF
+</th>
+<th style="text-align:center;">
+RMW
+</th>
+<th style="text-align:center;">
+dDP
+</th>
+<th style="text-align:center;">
+dTS
+</th>
+<th style="text-align:center;">
+UNEXPI
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
+FM\_PRS
+</td>
+<td style="text-align:center;">
+mean
+</td>
+<td style="text-align:center;">
+0.0030404
+</td>
+<td style="text-align:center;">
+-0.0003644
+</td>
+<td style="text-align:center;">
+-0.0000901
+</td>
+<td style="text-align:center;">
+-0.0002660
+</td>
+<td style="text-align:center;">
+0.0001747
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+variance
+</td>
+<td style="text-align:center;">
+0.0035777
+</td>
+<td style="text-align:center;">
+0.0007241
+</td>
+<td style="text-align:center;">
+0.0000028
+</td>
+<td style="text-align:center;">
+0.0000140
+</td>
+<td style="text-align:center;">
+0.0000281
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+skewness
+</td>
+<td style="text-align:center;">
+-0.0273199
+</td>
+<td style="text-align:center;">
+-0.3864678
+</td>
+<td style="text-align:center;">
+-0.0642360
+</td>
+<td style="text-align:center;">
+-0.2376992
+</td>
+<td style="text-align:center;">
+-0.1347035
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+kurtosis
+</td>
+<td style="text-align:center;">
+4.5708798
+</td>
+<td style="text-align:center;">
+8.2197855
+</td>
+<td style="text-align:center;">
+4.0558342
+</td>
+<td style="text-align:center;">
+5.1619650
+</td>
+<td style="text-align:center;">
+4.1129898
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
+FM\_STL\_PRS
+</td>
+<td style="text-align:center;">
+mean
+</td>
+<td style="text-align:center;">
+0.0028521
+</td>
+<td style="text-align:center;">
+-0.0000253
+</td>
+<td style="text-align:center;">
+-0.0000870
+</td>
+<td style="text-align:center;">
+-0.0001537
+</td>
+<td style="text-align:center;">
+0.0001343
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+variance
+</td>
+<td style="text-align:center;">
+0.0001819
+</td>
+<td style="text-align:center;">
+0.0000422
+</td>
+<td style="text-align:center;">
+0.0000002
+</td>
+<td style="text-align:center;">
+0.0000013
+</td>
+<td style="text-align:center;">
+0.0000022
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+skewness
+</td>
+<td style="text-align:center;">
+-0.3867400
+</td>
+<td style="text-align:center;">
+0.5529366
+</td>
+<td style="text-align:center;">
+-0.6394382
+</td>
+<td style="text-align:center;">
+-0.4680775
+</td>
+<td style="text-align:center;">
+-0.0985485
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+kurtosis
+</td>
+<td style="text-align:center;">
+2.6264145
+</td>
+<td style="text-align:center;">
+5.0606465
+</td>
+<td style="text-align:center;">
+3.8998268
+</td>
+<td style="text-align:center;">
+3.7024677
+</td>
+<td style="text-align:center;">
+3.4317730
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Fama Macbeth/STL Lambda Variance Ratio
+</caption>
+<thead>
+<tr>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
+FF5
+
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
+PRS
+
+</th>
+</tr>
+<tr>
+<th style="text-align:center;">
+Mkt-RF
+</th>
+<th style="text-align:center;">
+SMB
+</th>
+<th style="text-align:center;">
+HML
+</th>
+<th style="text-align:center;">
+RMW
+</th>
+<th style="text-align:center;">
+CMA
+</th>
+<th style="text-align:center;">
+Mkt-RF
+</th>
+<th style="text-align:center;">
+RMW
+</th>
+<th style="text-align:center;">
+dDP
+</th>
+<th style="text-align:center;">
+dTS
+</th>
+<th style="text-align:center;">
+UNEXPI
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+21.85474
+</td>
+<td style="text-align:center;">
+13.89371
+</td>
+<td style="text-align:center;">
+10.14723
+</td>
+<td style="text-align:center;">
+19.54221
+</td>
+<td style="text-align:center;">
+10.17491
+</td>
+<td style="text-align:center;">
+19.66428
+</td>
+<td style="text-align:center;">
+17.15166
+</td>
+<td style="text-align:center;">
+12.08044
+</td>
+<td style="text-align:center;">
+10.59321
+</td>
+<td style="text-align:center;">
+12.77273
+</td>
+</tr>
+</tbody>
+</table>
 5. Equity Cost of Captial
 -------------------------
 
@@ -8437,23 +8918,23 @@ As the equation indicates, *E**C**C* = ∑<sub>*i* ∈ *F*</sub>*β*<sub
 
 ### 5.1.1 Arithmetic Mean
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-20-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-20-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-21-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-21-2.png)
 
 ### 5.1.2 Geometric Mean
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-21-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-21-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-22-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-22-2.png)
 
 ### 5.1.3 Fama Macbeth Second Step Regression
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-22-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-22-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-23-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-23-2.png)
 
 ### 5.1.4 Fama Macbeth Second Step Regression with STL Trend Data
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-23-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-23-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-24-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-24-2.png)
 
 ### 5.2 Decomposition of the Equity Cost of Captial
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-24-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-24-2.png)![](ECC_files/figure-markdown_github/unnamed-chunk-24-3.png)![](ECC_files/figure-markdown_github/unnamed-chunk-24-4.png)![](ECC_files/figure-markdown_github/unnamed-chunk-24-5.png)![](ECC_files/figure-markdown_github/unnamed-chunk-24-6.png)![](ECC_files/figure-markdown_github/unnamed-chunk-24-7.png)![](ECC_files/figure-markdown_github/unnamed-chunk-24-8.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-25-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-2.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-3.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-4.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-5.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-6.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-7.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-8.png)
 
 ### 5.3 Forcasting???
 

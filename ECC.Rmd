@@ -1622,6 +1622,204 @@ FM_STL_PRS %>%
 
 ```
 
+For robustness check, we also computed the factor risk premium based on other filterings.
+
+```{r, cache = TRUE}
+# Estimate the Factor Risk Premium for FF5
+## Create the second-path portfolio for estimation lambda
+Second_Path <- Port_STL_s7_robust %>%
+  filter(component == "Trend") %>%
+  subset(select = c(date, Industry, y)) %>%
+  rename(RP = y) %>%
+  inner_join(FF5_Betas_STL_s7_robust %>%
+               filter(component == "Trend") %>%
+               subset(select = c(date, Industry, Factors, y)) %>%
+               rename(Betas = y) %>%
+               pivot_wider(names_from = Factors, values_from = Betas) %>%
+               # reorder
+               .[, c("date", "Industry", names(FF5)[2:6])]) %>%
+  ungroup()
+
+# Group the data and do the second pass regression
+Rolling_Second <- Second_Path %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Industry, data = .) %>%
+       coefficients())
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = names(FF5)[-length(FF5)]
+names(Rolling_Lambdas)[1] = "Lambda0"
+
+# Add in the dates
+FM_STL_7_R_FF5 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = -Lambda0)
+
+## Create the second-path portfolio for estimation lambda
+Second_Path <- Port_STL_s15_norobust %>%
+  filter(component == "Trend") %>%
+  subset(select = c(date, Industry, y)) %>%
+  rename(RP = y) %>%
+  inner_join(FF5_Betas_STL_s15_norobust %>%
+               filter(component == "Trend") %>%
+               subset(select = c(date, Industry, Factors, y)) %>%
+               rename(Betas = y) %>%
+               pivot_wider(names_from = Factors, values_from = Betas) %>%
+               # reorder
+               .[, c("date", "Industry", names(FF5)[2:6])]) %>%
+  ungroup()
+
+# Group the data and do the second pass regression
+Rolling_Second <- Second_Path %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Industry, data = .) %>%
+       coefficients())
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = names(FF5)[-length(FF5)]
+names(Rolling_Lambdas)[1] = "Lambda0"
+
+# Add in the dates
+FM_STL_15_N_FF5 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = -Lambda0)
+
+## Create the second-path portfolio for estimation lambda
+Second_Path <- Port_STL_s15_robust %>%
+  filter(component == "Trend") %>%
+  subset(select = c(date, Industry, y)) %>%
+  rename(RP = y) %>%
+  inner_join(FF5_Betas_STL_s15_robust %>%
+               filter(component == "Trend") %>%
+               subset(select = c(date, Industry, Factors, y)) %>%
+               rename(Betas = y) %>%
+               pivot_wider(names_from = Factors, values_from = Betas) %>%
+               # reorder
+               .[, c("date", "Industry", names(FF5)[2:6])]) %>%
+  ungroup()
+
+# Group the data and do the second pass regression
+Rolling_Second <- Second_Path %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Industry, data = .) %>%
+       coefficients())
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = names(FF5)[-length(FF5)]
+names(Rolling_Lambdas)[1] = "Lambda0"
+
+# Add in the dates
+FM_STL_15_R_FF5 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = -Lambda0)
+
+# Estimate the Factor Risk Premium for PRS
+## Create the second-path portfolio for estimation lambda
+Second_Path <- Port_STL_s7_robust %>%
+  filter(component == "Trend") %>%
+  subset(select = c(date, Industry, y)) %>%
+  rename(RP = y) %>%
+  inner_join(PRS_Betas_STL_s7_robust %>%
+               filter(component == "Trend") %>%
+               subset(select = c(date, Industry, Factors, y)) %>%
+               rename(Betas = y) %>%
+               pivot_wider(names_from = Factors, values_from = Betas) %>%
+               # reorder
+               .[, c("date", "Industry", names(PRS)[2:6])]) %>%
+  ungroup()
+
+# Group the data and do the second pass regression
+Rolling_Second <- Second_Path %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Industry, data = .) %>%
+       coefficients())
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = names(PRS)[-length(PRS)]
+names(Rolling_Lambdas)[1] = "Lambda0"
+
+# Add in the dates
+FM_STL_7_R_PRS <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = -Lambda0)
+
+## Create the second-path portfolio for estimation lambda
+Second_Path <- Port_STL_s15_norobust %>%
+  filter(component == "Trend") %>%
+  subset(select = c(date, Industry, y)) %>%
+  rename(RP = y) %>%
+  inner_join(PRS_Betas_STL_s15_norobust %>%
+               filter(component == "Trend") %>%
+               subset(select = c(date, Industry, Factors, y)) %>%
+               rename(Betas = y) %>%
+               pivot_wider(names_from = Factors, values_from = Betas) %>%
+               # reorder
+               .[, c("date", "Industry", names(PRS)[2:6])]) %>%
+  ungroup()
+
+# Group the data and do the second pass regression
+Rolling_Second <- Second_Path %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Industry, data = .) %>%
+       coefficients())
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = names(PRS)[-length(PRS)]
+names(Rolling_Lambdas)[1] = "Lambda0"
+
+# Add in the dates
+FM_STL_15_N_PRS <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = -Lambda0)
+
+## Create the second-path portfolio for estimation lambda
+Second_Path <- Port_STL_s15_robust %>%
+  filter(component == "Trend") %>%
+  subset(select = c(date, Industry, y)) %>%
+  rename(RP = y) %>%
+  inner_join(PRS_Betas_STL_s15_robust %>%
+               filter(component == "Trend") %>%
+               subset(select = c(date, Industry, Factors, y)) %>%
+               rename(Betas = y) %>%
+               pivot_wider(names_from = Factors, values_from = Betas) %>%
+               # reorder
+               .[, c("date", "Industry", names(PRS)[2:6])]) %>%
+  ungroup()
+
+# Group the data and do the second pass regression
+Rolling_Second <- Second_Path %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Industry, data = .) %>%
+       coefficients())
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = names(PRS)[-length(PRS)]
+names(Rolling_Lambdas)[1] = "Lambda0"
+
+# Add in the dates
+FM_STL_15_R_PRS <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = -Lambda0)
+```
+
 Here is a comparison of the lambda statitics of the Normal Fama Macbeth and Fama Macbeth Second Step Regression with STL Trend Data.
 
 ```{r, cache = TRUE}
@@ -1652,7 +1850,49 @@ FF5_table <- FM_FF5 %>%
             summarise_all(kurtosis) %>%
             mutate(date = "kurtosis")) %>%
     rename(stats = date) %>%
-    mutate(method = "FM_STL_FF5")) %>%
+    mutate(method = "FM_STL_7_N_FF5")) %>%
+  rbind(FM_STL_7_R_FF5 %>%
+    summarise_all(mean) %>%
+    mutate(date = "mean") %>%
+    rbind(FM_STL_7_R_FF5 %>%
+            summarise_all(var) %>%
+            mutate(date = "variance")) %>%
+    rbind(FM_STL_7_R_FF5 %>%
+            summarise_all(skewness) %>%
+            mutate(date = "skewness")) %>%
+    rbind(FM_STL_7_R_FF5 %>%
+            summarise_all(kurtosis) %>%
+            mutate(date = "kurtosis")) %>%
+    rename(stats = date) %>%
+    mutate(method = "FM_STL_7_R_FF5")) %>%
+  rbind(FM_STL_15_N_FF5 %>%
+    summarise_all(mean) %>%
+    mutate(date = "mean") %>%
+    rbind(FM_STL_15_N_FF5 %>%
+            summarise_all(var) %>%
+            mutate(date = "variance")) %>%
+    rbind(FM_STL_15_N_FF5 %>%
+            summarise_all(skewness) %>%
+            mutate(date = "skewness")) %>%
+    rbind(FM_STL_15_N_FF5 %>%
+            summarise_all(kurtosis) %>%
+            mutate(date = "kurtosis")) %>%
+    rename(stats = date) %>%
+    mutate(method = "FM_STL_15_N_FF5")) %>%
+  rbind(FM_STL_15_R_FF5 %>%
+    summarise_all(mean) %>%
+    mutate(date = "mean") %>%
+    rbind(FM_STL_15_R_FF5 %>%
+            summarise_all(var) %>%
+            mutate(date = "variance")) %>%
+    rbind(FM_STL_15_R_FF5 %>%
+            summarise_all(skewness) %>%
+            mutate(date = "skewness")) %>%
+    rbind(FM_STL_15_R_FF5 %>%
+            summarise_all(kurtosis) %>%
+            mutate(date = "kurtosis")) %>%
+    rename(stats = date) %>%
+    mutate(method = "FM_STL_15_R_FF5")) %>%
   subset(select = c(7,1:6)) 
 
 FF5_table %>%
@@ -1678,20 +1918,62 @@ PRS_table <- FM_PRS %>%
   rename(stats = date) %>%
   mutate(method = "FM_PRS") %>%
   rbind(FM_STL_PRS %>%
-    summarise_all(mean) %>%
-    mutate(date = "mean") %>%
-    rbind(FM_STL_PRS %>%
-            summarise_all(var) %>%
-            mutate(date = "variance")) %>%
-    rbind(FM_STL_PRS %>%
-            summarise_all(skewness) %>%
-            mutate(date = "skewness")) %>%
-    rbind(FM_STL_PRS %>%
-            summarise_all(kurtosis) %>%
-            mutate(date = "kurtosis")) %>%
-    rename(stats = date) %>%
-    mutate(method = "FM_STL_PRS")) %>%
-  subset(select = c(7,1:6))
+          summarise_all(mean) %>%
+          mutate(date = "mean") %>%
+          rbind(FM_STL_PRS %>%
+                  summarise_all(var) %>%
+                  mutate(date = "variance")) %>%
+          rbind(FM_STL_PRS %>%
+                  summarise_all(skewness) %>%
+                  mutate(date = "skewness")) %>%
+          rbind(FM_STL_PRS %>%
+                  summarise_all(kurtosis) %>%
+                  mutate(date = "kurtosis")) %>%
+          rename(stats = date) %>%
+          mutate(method = "FM_STL_7_N_PRS")) %>%
+  rbind(FM_STL_7_R_PRS %>%
+          summarise_all(mean) %>%
+          mutate(date = "mean") %>%
+          rbind(FM_STL_7_R_PRS %>%
+                  summarise_all(var) %>%
+                  mutate(date = "variance")) %>%
+          rbind(FM_STL_7_R_PRS %>%
+                  summarise_all(skewness) %>%
+                  mutate(date = "skewness")) %>%
+          rbind(FM_STL_7_R_PRS %>%
+                  summarise_all(kurtosis) %>%
+                  mutate(date = "kurtosis")) %>%
+          rename(stats = date) %>%
+          mutate(method = "FM_STL_7_R_PRS")) %>%
+  rbind(FM_STL_15_N_PRS %>%
+          summarise_all(mean) %>%
+          mutate(date = "mean") %>%
+          rbind(FM_STL_15_N_PRS %>%
+                  summarise_all(var) %>%
+                  mutate(date = "variance")) %>%
+          rbind(FM_STL_15_N_PRS %>%
+                  summarise_all(skewness) %>%
+                  mutate(date = "skewness")) %>%
+          rbind(FM_STL_15_N_PRS %>%
+                  summarise_all(kurtosis) %>%
+                  mutate(date = "kurtosis")) %>%
+          rename(stats = date) %>%
+          mutate(method = "FM_STL_15_N_PRS")) %>%
+  rbind(FM_STL_15_R_PRS %>%
+          summarise_all(mean) %>%
+          mutate(date = "mean") %>%
+          rbind(FM_STL_15_R_PRS %>%
+                  summarise_all(var) %>%
+                  mutate(date = "variance")) %>%
+          rbind(FM_STL_15_R_PRS %>%
+                  summarise_all(skewness) %>%
+                  mutate(date = "skewness")) %>%
+          rbind(FM_STL_15_R_PRS %>%
+                  summarise_all(kurtosis) %>%
+                  mutate(date = "kurtosis")) %>%
+          rename(stats = date) %>%
+          mutate(method = "FM_STL_15_R_PRS")) %>%
+  subset(select = c(7,1:6)) 
 
 PRS_table %>%
   kable(align = "c", caption = "PRS Five Factors Lambdas") %>%
@@ -1701,15 +1983,30 @@ PRS_table %>%
 
 (FF5_table[2,3:7]/FF5_table[6,3:7]) %>%
   as_tibble() %>%
+  mutate(choice = "s7 norobust") %>%
+  rbind((FF5_table[2,3:7]/FF5_table[10,3:7]) %>%
+          as_tibble() %>%
+          mutate(choice = "s7 robust")) %>%
+  rbind((FF5_table[2,3:7]/FF5_table[14,3:7]) %>%
+          as_tibble() %>%
+          mutate(choice = "s15 norobust")) %>%
+  rbind((FF5_table[2,3:7]/FF5_table[18,3:7]) %>%
+          as_tibble() %>%
+          mutate(choice = "s15 robust")) %>%
+  subset(select = c(6, 1:5)) %>%
   cbind((PRS_table[2,3:7]/PRS_table[6,3:7]) %>%
+          rbind((PRS_table[2,3:7]/PRS_table[10,3:7])) %>%
+          rbind((PRS_table[2,3:7]/PRS_table[14,3:7])) %>%
+          rbind((PRS_table[2,3:7]/PRS_table[18,3:7])) %>%
           as_tibble()) %>%
   kable(align = "c", caption = "Fama Macbeth/STL Lambda Variance Ratio") %>%
   kable_styling(font_size = 10, "striped", full_width = F) %>%
   # Add header above
-  add_header_above(c("FF5" = 5, "PRS" = 5))
+  add_header_above(c(" " = 1, "FF5" = 5, "PRS" = 5))
 
 
 ```
+
 
 ## 5. Equity Cost of Captial
 
@@ -2093,7 +2390,149 @@ ECC_FM_STL_PRS %>%
         axis.text.x = element_text(angle = 30, hjust = 1))
 ```
 
-### 5.2 Decomposition of the Equity Cost of Captial
+### 5.2 Comparative Statics
+
+
+```{r, cache = TRUE}
+# Create the ECC with other filtering choices and compare different methods
+temp <- FM_STL_7_R_FF5
+names(temp) <- tolower(names(temp))
+# join the data
+temp <- Port_FF5_Betas %>%
+  inner_join(temp) %>%
+  subset(select = -Alpha)
+
+# Calculate the ECC 
+ECC_FM_STL_7_R_FF5 <- temp[,1:2] %>%
+  cbind(temp[,3:7]*temp[,8:12]) %>%
+  mutate(ECC = rowSums(.[3:7]))
+
+
+temp <- FM_STL_15_N_FF5
+names(temp) <- tolower(names(temp))
+# join the data
+temp <- Port_FF5_Betas %>%
+  inner_join(temp) %>%
+  subset(select = -Alpha)
+
+# Calculate the ECC 
+ECC_FM_STL_15_N_FF5 <- temp[,1:2] %>%
+  cbind(temp[,3:7]*temp[,8:12]) %>%
+  mutate(ECC = rowSums(.[3:7]))
+
+
+temp <- FM_STL_15_R_FF5
+names(temp) <- tolower(names(temp))
+# join the data
+temp <- Port_FF5_Betas %>%
+  inner_join(temp) %>%
+  subset(select = -Alpha)
+
+# Calculate the ECC 
+ECC_FM_STL_15_R_FF5 <- temp[,1:2] %>%
+  cbind(temp[,3:7]*temp[,8:12]) %>%
+  mutate(ECC = rowSums(.[3:7]))
+
+
+
+temp <- FM_STL_7_R_PRS
+names(temp) <- tolower(names(temp))
+# join the data
+temp <- Port_PRS_Betas %>%
+  inner_join(temp) %>%
+  subset(select = -Alpha)
+
+# Calculate the ECC 
+ECC_FM_STL_7_R_PRS <- temp[,1:2] %>%
+  cbind(temp[,3:7]*temp[,8:12]) %>%
+  mutate(ECC = rowSums(.[3:7]))
+
+
+temp <- FM_STL_15_N_PRS
+names(temp) <- tolower(names(temp))
+# join the data
+temp <- Port_PRS_Betas %>%
+  inner_join(temp) %>%
+  subset(select = -Alpha)
+
+# Calculate the ECC 
+ECC_FM_STL_15_N_PRS <- temp[,1:2] %>%
+  cbind(temp[,3:7]*temp[,8:12]) %>%
+  mutate(ECC = rowSums(.[3:7]))
+
+
+temp <- FM_STL_15_R_PRS
+names(temp) <- tolower(names(temp))
+# join the data
+temp <- Port_PRS_Betas %>%
+  inner_join(temp) %>%
+  subset(select = -Alpha)
+
+# Calculate the ECC 
+ECC_FM_STL_15_R_PRS <- temp[,1:2] %>%
+  cbind(temp[,3:7]*temp[,8:12]) %>%
+  mutate(ECC = rowSums(.[3:7]))
+
+
+
+# combine all the ECC together
+All_FF5_ECC <- ECC_AM_FF5 %>%
+  subset(select = c(date, Industry, ECC)) %>%
+  rename(AM = ECC) %>%
+  cbind(ECC_GM_FF5$ECC) %>%
+  rename(GM = `ECC_GM_FF5$ECC`) %>%
+  cbind(ECC_FM_FF5$ECC) %>%
+  rename(FM = `ECC_FM_FF5$ECC`) %>%
+  cbind(ECC_FM_STL_FF5$ECC) %>%
+  rename(FM_STL_7_N = `ECC_FM_STL_FF5$ECC`) %>%
+  cbind(ECC_FM_STL_7_R_FF5$ECC) %>%
+  rename(FM_STL_7_R = `ECC_FM_STL_7_R_FF5$ECC`) %>%
+  cbind(ECC_FM_STL_15_N_FF5$ECC) %>%
+  rename(FM_STL_15_N = `ECC_FM_STL_15_N_FF5$ECC`) %>%
+  cbind(ECC_FM_STL_15_R_FF5$ECC) %>%
+  rename(FM_STL_15_R = `ECC_FM_STL_15_R_FF5$ECC`) %>%
+  inner_join(Port_FF5 %>%
+               subset(select = c(date, Industry, RP)))
+
+All_PRS_ECC <- ECC_AM_PRS %>%
+  subset(select = c(date, Industry, ECC)) %>%
+  rename(AM = ECC) %>%
+  cbind(ECC_GM_PRS$ECC) %>%
+  rename(GM = `ECC_GM_PRS$ECC`) %>%
+  cbind(ECC_FM_PRS$ECC) %>%
+  rename(FM = `ECC_FM_PRS$ECC`) %>%
+  cbind(ECC_FM_STL_PRS$ECC) %>%
+  rename(FM_STL_7_N = `ECC_FM_STL_PRS$ECC`) %>%
+  cbind(ECC_FM_STL_7_R_PRS$ECC) %>%
+  rename(FM_STL_7_R = `ECC_FM_STL_7_R_PRS$ECC`) %>%
+  cbind(ECC_FM_STL_15_N_PRS$ECC) %>%
+  rename(FM_STL_15_N = `ECC_FM_STL_15_N_PRS$ECC`) %>%
+  cbind(ECC_FM_STL_15_R_PRS$ECC) %>%
+  rename(FM_STL_15_R = `ECC_FM_STL_15_R_PRS$ECC`) %>%
+  inner_join(Port_FF5 %>%
+               subset(select = c(date, Industry, RP)))
+
+(All_FF5_ECC[,3:9] - All_FF5_ECC[,10])^2 %>%
+  colSums() %>%
+  as.matrix() %>%
+  t() %>%
+  as_tibble() %>%
+  mutate(Model = "FF5") %>%
+  rbind((All_PRS_ECC[,3:9] - All_PRS_ECC[,10])^2 %>%
+          colSums() %>%
+          as.matrix() %>%
+          t() %>%
+          as_tibble() %>%
+          mutate(Model = "PRS")) %>%
+  subset(select = c(8,1:7)) %>%
+  kable(align = "c", caption = "Different Lambda Method Estimated ECC SSE") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T)
+```
+
+Based on the Sum Squared Error, the Fama Macbeth Method has the lowest error explaining the Portfolio Risk Premium (This is because the FM second step regression applied the least square method). The STL decomposition with no robust weight works better than the one with robust weight; the FM_STL lambda works slightly better than the Arithmetic Mean and the Geometric Mean.
+
+### 5.3 Decomposition of the Equity Cost of Captial
 
 ```{r, cache = TRUE}
 # Plot the decomposition for ECC_AM_FF5_Norms
@@ -2201,6 +2640,6 @@ ECC_FM_STL_PRS_Norms %>%
         axis.text.x = element_text(angle = 30, hjust = 1))
 ```
 
-### 5.3 Forcasting???
+### 5.4 Forcasting???
 
 We can try to apply the previous methods to forecast the ECC and compare the accuracy. There is a STL method of forcasting so we might be able to use STL to forcast betas and industry risk premium and perform the second step regression to obtain the lambda. Then we can calculate the ECC.

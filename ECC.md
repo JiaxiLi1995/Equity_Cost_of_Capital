@@ -8428,6 +8428,8 @@ Now, we will take the desired no robust weighting, s\_window = 7 trend results o
 
 ![](ECC_files/figure-markdown_github/unnamed-chunk-19-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-2.png)
 
+For robustness check, we also computed the factor risk premium based on other filterings.
+
 Here is a comparison of the lambda statitics of the Normal Fama Macbeth and Fama Macbeth Second Step Regression with STL Trend Data.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -8545,7 +8547,7 @@ kurtosis
 </tr>
 <tr>
 <td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
-FM\_STL\_FF5
+FM\_STL\_7\_N\_FF5
 </td>
 <td style="text-align:center;">
 mean
@@ -8624,6 +8626,255 @@ kurtosis
 </td>
 <td style="text-align:center;">
 3.9154914
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
+FM\_STL\_7\_R\_FF5
+</td>
+<td style="text-align:center;">
+mean
+</td>
+<td style="text-align:center;">
+0.0023354
+</td>
+<td style="text-align:center;">
+0.0018155
+</td>
+<td style="text-align:center;">
+0.0014755
+</td>
+<td style="text-align:center;">
+0.0001053
+</td>
+<td style="text-align:center;">
+0.0012233
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+variance
+</td>
+<td style="text-align:center;">
+0.0002197
+</td>
+<td style="text-align:center;">
+0.0001267
+</td>
+<td style="text-align:center;">
+0.0001272
+</td>
+<td style="text-align:center;">
+0.0000639
+</td>
+<td style="text-align:center;">
+0.0000845
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+skewness
+</td>
+<td style="text-align:center;">
+0.4835045
+</td>
+<td style="text-align:center;">
+-0.0237384
+</td>
+<td style="text-align:center;">
+-0.0547911
+</td>
+<td style="text-align:center;">
+1.3471319
+</td>
+<td style="text-align:center;">
+-0.0392041
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+kurtosis
+</td>
+<td style="text-align:center;">
+4.1156765
+</td>
+<td style="text-align:center;">
+3.7808177
+</td>
+<td style="text-align:center;">
+3.7829491
+</td>
+<td style="text-align:center;">
+6.1440455
+</td>
+<td style="text-align:center;">
+3.5978300
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
+FM\_STL\_15\_N\_FF5
+</td>
+<td style="text-align:center;">
+mean
+</td>
+<td style="text-align:center;">
+0.0009053
+</td>
+<td style="text-align:center;">
+0.0009258
+</td>
+<td style="text-align:center;">
+0.0001742
+</td>
+<td style="text-align:center;">
+-0.0000982
+</td>
+<td style="text-align:center;">
+0.0014459
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+variance
+</td>
+<td style="text-align:center;">
+0.0001771
+</td>
+<td style="text-align:center;">
+0.0000859
+</td>
+<td style="text-align:center;">
+0.0001344
+</td>
+<td style="text-align:center;">
+0.0000432
+</td>
+<td style="text-align:center;">
+0.0000668
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+skewness
+</td>
+<td style="text-align:center;">
+-0.2568095
+</td>
+<td style="text-align:center;">
+-0.6492242
+</td>
+<td style="text-align:center;">
+-0.6460881
+</td>
+<td style="text-align:center;">
+0.2695698
+</td>
+<td style="text-align:center;">
+-0.2829756
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+kurtosis
+</td>
+<td style="text-align:center;">
+4.1972859
+</td>
+<td style="text-align:center;">
+4.1023631
+</td>
+<td style="text-align:center;">
+4.4382363
+</td>
+<td style="text-align:center;">
+3.9208283
+</td>
+<td style="text-align:center;">
+4.0443417
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
+FM\_STL\_15\_R\_FF5
+</td>
+<td style="text-align:center;">
+mean
+</td>
+<td style="text-align:center;">
+0.0014554
+</td>
+<td style="text-align:center;">
+0.0005479
+</td>
+<td style="text-align:center;">
+0.0028069
+</td>
+<td style="text-align:center;">
+-0.0000882
+</td>
+<td style="text-align:center;">
+0.0022204
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+variance
+</td>
+<td style="text-align:center;">
+0.0002490
+</td>
+<td style="text-align:center;">
+0.0001308
+</td>
+<td style="text-align:center;">
+0.0001517
+</td>
+<td style="text-align:center;">
+0.0000740
+</td>
+<td style="text-align:center;">
+0.0000964
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+skewness
+</td>
+<td style="text-align:center;">
+0.0672169
+</td>
+<td style="text-align:center;">
+-0.0999953
+</td>
+<td style="text-align:center;">
+0.1340959
+</td>
+<td style="text-align:center;">
+1.3941833
+</td>
+<td style="text-align:center;">
+-0.1189277
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+kurtosis
+</td>
+<td style="text-align:center;">
+4.4986219
+</td>
+<td style="text-align:center;">
+4.0981905
+</td>
+<td style="text-align:center;">
+3.8243706
+</td>
+<td style="text-align:center;">
+6.3089138
+</td>
+<td style="text-align:center;">
+3.4069165
 </td>
 </tr>
 </tbody>
@@ -8743,7 +8994,7 @@ kurtosis
 </tr>
 <tr>
 <td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
-FM\_STL\_PRS
+FM\_STL\_7\_N\_PRS
 </td>
 <td style="text-align:center;">
 mean
@@ -8824,6 +9075,255 @@ kurtosis
 3.4317730
 </td>
 </tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
+FM\_STL\_7\_R\_PRS
+</td>
+<td style="text-align:center;">
+mean
+</td>
+<td style="text-align:center;">
+0.0047276
+</td>
+<td style="text-align:center;">
+0.0002320
+</td>
+<td style="text-align:center;">
+-0.0000564
+</td>
+<td style="text-align:center;">
+-0.0000078
+</td>
+<td style="text-align:center;">
+0.0001303
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+variance
+</td>
+<td style="text-align:center;">
+0.0003696
+</td>
+<td style="text-align:center;">
+0.0000832
+</td>
+<td style="text-align:center;">
+0.0000003
+</td>
+<td style="text-align:center;">
+0.0000023
+</td>
+<td style="text-align:center;">
+0.0000028
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+skewness
+</td>
+<td style="text-align:center;">
+1.0991149
+</td>
+<td style="text-align:center;">
+1.1381111
+</td>
+<td style="text-align:center;">
+-0.1619412
+</td>
+<td style="text-align:center;">
+-0.4131997
+</td>
+<td style="text-align:center;">
+-0.1251405
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+kurtosis
+</td>
+<td style="text-align:center;">
+5.2593443
+</td>
+<td style="text-align:center;">
+5.6059638
+</td>
+<td style="text-align:center;">
+3.4212324
+</td>
+<td style="text-align:center;">
+3.8995571
+</td>
+<td style="text-align:center;">
+2.9733437
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
+FM\_STL\_15\_N\_PRS
+</td>
+<td style="text-align:center;">
+mean
+</td>
+<td style="text-align:center;">
+0.0028459
+</td>
+<td style="text-align:center;">
+-0.0000201
+</td>
+<td style="text-align:center;">
+-0.0000844
+</td>
+<td style="text-align:center;">
+-0.0001513
+</td>
+<td style="text-align:center;">
+0.0001354
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+variance
+</td>
+<td style="text-align:center;">
+0.0002006
+</td>
+<td style="text-align:center;">
+0.0000463
+</td>
+<td style="text-align:center;">
+0.0000002
+</td>
+<td style="text-align:center;">
+0.0000014
+</td>
+<td style="text-align:center;">
+0.0000024
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+skewness
+</td>
+<td style="text-align:center;">
+-0.3383328
+</td>
+<td style="text-align:center;">
+0.5629326
+</td>
+<td style="text-align:center;">
+-0.6280301
+</td>
+<td style="text-align:center;">
+-0.3996510
+</td>
+<td style="text-align:center;">
+-0.1374253
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+kurtosis
+</td>
+<td style="text-align:center;">
+2.6865896
+</td>
+<td style="text-align:center;">
+5.1264430
+</td>
+<td style="text-align:center;">
+3.9938723
+</td>
+<td style="text-align:center;">
+3.5736046
+</td>
+<td style="text-align:center;">
+3.7351725
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
+FM\_STL\_15\_R\_PRS
+</td>
+<td style="text-align:center;">
+mean
+</td>
+<td style="text-align:center;">
+0.0031008
+</td>
+<td style="text-align:center;">
+0.0001927
+</td>
+<td style="text-align:center;">
+-0.0000619
+</td>
+<td style="text-align:center;">
+-0.0000369
+</td>
+<td style="text-align:center;">
+0.0001905
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+variance
+</td>
+<td style="text-align:center;">
+0.0003848
+</td>
+<td style="text-align:center;">
+0.0000989
+</td>
+<td style="text-align:center;">
+0.0000004
+</td>
+<td style="text-align:center;">
+0.0000018
+</td>
+<td style="text-align:center;">
+0.0000033
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+skewness
+</td>
+<td style="text-align:center;">
+0.6749233
+</td>
+<td style="text-align:center;">
+1.5396874
+</td>
+<td style="text-align:center;">
+-0.2823343
+</td>
+<td style="text-align:center;">
+-0.7813539
+</td>
+<td style="text-align:center;">
+-0.2509756
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+kurtosis
+</td>
+<td style="text-align:center;">
+3.9941571
+</td>
+<td style="text-align:center;">
+6.9897619
+</td>
+<td style="text-align:center;">
+4.3688283
+</td>
+<td style="text-align:center;">
+4.8648714
+</td>
+<td style="text-align:center;">
+2.9859692
+</td>
+</tr>
 </tbody>
 </table>
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -8832,6 +9332,8 @@ Fama Macbeth/STL Lambda Variance Ratio
 </caption>
 <thead>
 <tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
 FF5
 
@@ -8842,6 +9344,9 @@ PRS
 </th>
 </tr>
 <tr>
+<th style="text-align:center;">
+choice
+</th>
 <th style="text-align:center;">
 Mkt-RF
 </th>
@@ -8877,34 +9382,142 @@ UNEXPI
 <tbody>
 <tr>
 <td style="text-align:center;">
+s7 norobust
+</td>
+<td style="text-align:center;">
 21.85474
 </td>
 <td style="text-align:center;">
-13.89371
+13.893706
 </td>
 <td style="text-align:center;">
-10.14723
+10.147232
 </td>
 <td style="text-align:center;">
 19.54221
 </td>
 <td style="text-align:center;">
-10.17491
+10.174911
 </td>
 <td style="text-align:center;">
-19.66428
+19.664275
 </td>
 <td style="text-align:center;">
-17.15166
+17.151662
 </td>
 <td style="text-align:center;">
-12.08044
+12.080440
 </td>
 <td style="text-align:center;">
-10.59321
+10.593209
 </td>
 <td style="text-align:center;">
-12.77273
+12.772731
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+s7 robust
+</td>
+<td style="text-align:center;">
+16.08214
+</td>
+<td style="text-align:center;">
+9.029846
+</td>
+<td style="text-align:center;">
+9.954308
+</td>
+<td style="text-align:center;">
+12.11546
+</td>
+<td style="text-align:center;">
+7.604545
+</td>
+<td style="text-align:center;">
+9.678927
+</td>
+<td style="text-align:center;">
+8.707944
+</td>
+<td style="text-align:center;">
+8.087086
+</td>
+<td style="text-align:center;">
+6.087556
+</td>
+<td style="text-align:center;">
+9.872823
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+s15 norobust
+</td>
+<td style="text-align:center;">
+19.94637
+</td>
+<td style="text-align:center;">
+13.321952
+</td>
+<td style="text-align:center;">
+9.422448
+</td>
+<td style="text-align:center;">
+17.90682
+</td>
+<td style="text-align:center;">
+9.615717
+</td>
+<td style="text-align:center;">
+17.839318
+</td>
+<td style="text-align:center;">
+15.648692
+</td>
+<td style="text-align:center;">
+11.298903
+</td>
+<td style="text-align:center;">
+10.146088
+</td>
+<td style="text-align:center;">
+11.549200
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+s15 robust
+</td>
+<td style="text-align:center;">
+14.19080
+</td>
+<td style="text-align:center;">
+8.746450
+</td>
+<td style="text-align:center;">
+8.345887
+</td>
+<td style="text-align:center;">
+10.45774
+</td>
+<td style="text-align:center;">
+6.667607
+</td>
+<td style="text-align:center;">
+9.298632
+</td>
+<td style="text-align:center;">
+7.318542
+</td>
+<td style="text-align:center;">
+6.750067
+</td>
+<td style="text-align:center;">
+7.606691
+</td>
+<td style="text-align:center;">
+8.453701
 </td>
 </tr>
 </tbody>
@@ -8918,24 +9531,115 @@ As the equation indicates, *E**C**C* = ∑<sub>*i* ∈ *F*</sub>*β*<sub
 
 ### 5.1.1 Arithmetic Mean
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-21-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-21-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-22-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-22-2.png)
 
 ### 5.1.2 Geometric Mean
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-22-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-22-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-23-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-23-2.png)
 
 ### 5.1.3 Fama Macbeth Second Step Regression
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-23-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-23-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-24-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-24-2.png)
 
 ### 5.1.4 Fama Macbeth Second Step Regression with STL Trend Data
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-24-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-24-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-25-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-2.png)
 
-### 5.2 Decomposition of the Equity Cost of Captial
+### 5.2 Comparative Statics
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-25-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-2.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-3.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-4.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-5.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-6.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-7.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-8.png)
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Different Lambda Method Estimated ECC SSE
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Model
+</th>
+<th style="text-align:center;">
+AM
+</th>
+<th style="text-align:center;">
+GM
+</th>
+<th style="text-align:center;">
+FM
+</th>
+<th style="text-align:center;">
+FM\_STL\_7\_N
+</th>
+<th style="text-align:center;">
+FM\_STL\_7\_R
+</th>
+<th style="text-align:center;">
+FM\_STL\_15\_N
+</th>
+<th style="text-align:center;">
+FM\_STL\_15\_R
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+FF5
+</td>
+<td style="text-align:center;">
+121.1423
+</td>
+<td style="text-align:center;">
+121.1661
+</td>
+<td style="text-align:center;">
+68.08107
+</td>
+<td style="text-align:center;">
+115.7277
+</td>
+<td style="text-align:center;">
+122.2132
+</td>
+<td style="text-align:center;">
+115.0399
+</td>
+<td style="text-align:center;">
+122.9775
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+PRS
+</td>
+<td style="text-align:center;">
+121.0312
+</td>
+<td style="text-align:center;">
+121.0906
+</td>
+<td style="text-align:center;">
+70.07278
+</td>
+<td style="text-align:center;">
+115.8363
+</td>
+<td style="text-align:center;">
+127.2934
+</td>
+<td style="text-align:center;">
+115.1345
+</td>
+<td style="text-align:center;">
+126.7563
+</td>
+</tr>
+</tbody>
+</table>
+Based on the Sum Squared Error, the Fama Macbeth Method has the lowest error explaining the Portfolio Risk Premium (This is because the FM second step regression applied the least square method). The STL decomposition with no robust weight works better than the one with robust weight; the FM\_STL lambda works slightly better than the Arithmetic Mean and the Geometric Mean.
 
-### 5.3 Forcasting???
+### 5.3 Decomposition of the Equity Cost of Captial
+
+![](ECC_files/figure-markdown_github/unnamed-chunk-27-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-27-2.png)![](ECC_files/figure-markdown_github/unnamed-chunk-27-3.png)![](ECC_files/figure-markdown_github/unnamed-chunk-27-4.png)![](ECC_files/figure-markdown_github/unnamed-chunk-27-5.png)![](ECC_files/figure-markdown_github/unnamed-chunk-27-6.png)![](ECC_files/figure-markdown_github/unnamed-chunk-27-7.png)![](ECC_files/figure-markdown_github/unnamed-chunk-27-8.png)
+
+### 5.4 Forcasting???
 
 We can try to apply the previous methods to forecast the ECC and compare the accuracy. There is a STL method of forcasting so we might be able to use STL to forcast betas and industry risk premium and perform the second step regression to obtain the lambda. Then we can calculate the ECC.

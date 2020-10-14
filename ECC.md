@@ -6371,40 +6371,40 @@ UNEXPI
 Aero
 </td>
 <td style="text-align:center;">
--0.0004947
+-0.0004699
 </td>
 <td style="text-align:center;">
-1.2560917
+1.2559452
 </td>
 <td style="text-align:center;">
-0.2503703
+0.2550885
 </td>
 <td style="text-align:center;">
--7.5614140
+-7.4904243
 </td>
 <td style="text-align:center;">
-3.7859645
+3.7497689
 </td>
 <td style="text-align:center;">
-1.0340336
+1.0467663
 </td>
 <td style="text-align:center;">
 0.0006237
 </td>
 <td style="text-align:center;">
-0.0452884
+0.0452933
 </td>
 <td style="text-align:center;">
-0.0758924
+0.0759007
 </td>
 <td style="text-align:center;">
-1.3703668
+1.3705160
 </td>
 <td style="text-align:center;">
-0.5758221
+0.5758848
 </td>
 <td style="text-align:center;">
-0.5059438
+0.5059989
 </td>
 </tr>
 <tr>
@@ -6412,40 +6412,40 @@ Aero
 Agric
 </td>
 <td style="text-align:center;">
-0.0004041
+0.0004289
 </td>
 <td style="text-align:center;">
-0.6604278
+0.6602813
 </td>
 <td style="text-align:center;">
-0.5472154
+0.5519335
 </td>
 <td style="text-align:center;">
--10.6347380
+-10.5637483
 </td>
 <td style="text-align:center;">
-2.3564039
+2.3202084
 </td>
 <td style="text-align:center;">
-1.1932191
+1.2059518
 </td>
 <td style="text-align:center;">
-0.0005814
+0.0005833
 </td>
 <td style="text-align:center;">
-0.0422168
+0.0423558
 </td>
 <td style="text-align:center;">
-0.0707453
+0.0709782
 </td>
 <td style="text-align:center;">
-1.2774261
+1.2816316
 </td>
 <td style="text-align:center;">
-0.5367688
+0.5385360
 </td>
 <td style="text-align:center;">
-0.4716298
+0.4731825
 </td>
 </tr>
 <tr>
@@ -6453,40 +6453,40 @@ Agric
 Autos
 </td>
 <td style="text-align:center;">
--0.0023231
+-0.0022983
 </td>
 <td style="text-align:center;">
-1.1867843
+1.1866378
 </td>
 <td style="text-align:center;">
-0.0659197
+0.0706379
 </td>
 <td style="text-align:center;">
-5.0434558
+5.1144455
 </td>
 <td style="text-align:center;">
-3.3055441
+3.2693485
 </td>
 <td style="text-align:center;">
--3.2018168
+-3.1890841
 </td>
 <td style="text-align:center;">
-0.0005952
+0.0005963
 </td>
 <td style="text-align:center;">
-0.0432240
+0.0433027
 </td>
 <td style="text-align:center;">
-0.0724331
+0.0725650
 </td>
 <td style="text-align:center;">
-1.3079024
+1.3102834
 </td>
 <td style="text-align:center;">
-0.5495748
+0.5505753
 </td>
 <td style="text-align:center;">
-0.4828818
+0.4837609
 </td>
 </tr>
 <tr>
@@ -6494,40 +6494,40 @@ Autos
 Banks
 </td>
 <td style="text-align:center;">
--0.0023314
+-0.0023066
 </td>
 <td style="text-align:center;">
-1.1342439
+1.1340974
 </td>
 <td style="text-align:center;">
-0.5430385
+0.5477567
 </td>
 <td style="text-align:center;">
--4.2568067
+-4.1858170
 </td>
 <td style="text-align:center;">
-2.3455476
+2.3093520
 </td>
 <td style="text-align:center;">
-0.9851928
+0.9979255
 </td>
 <td style="text-align:center;">
-0.0004529
+0.0004533
 </td>
 <td style="text-align:center;">
-0.0328912
+0.0329203
 </td>
 <td style="text-align:center;">
-0.0551177
+0.0551666
 </td>
 <td style="text-align:center;">
-0.9952430
+0.9961262
 </td>
 <td style="text-align:center;">
-0.4181967
+0.4185678
 </td>
 <td style="text-align:center;">
-0.3674469
+0.3677730
 </td>
 </tr>
 <tr>
@@ -6535,40 +6535,40 @@ Banks
 Beer
 </td>
 <td style="text-align:center;">
--0.0000766
+-0.0000519
 </td>
 <td style="text-align:center;">
-0.9328082
+0.9326617
 </td>
 <td style="text-align:center;">
-0.7484628
+0.7531810
 </td>
 <td style="text-align:center;">
-6.3318763
+6.4028660
 </td>
 <td style="text-align:center;">
--2.0897499
+-2.1259455
 </td>
 <td style="text-align:center;">
-1.2932605
+1.3059932
 </td>
 <td style="text-align:center;">
-0.0004310
+0.0004315
 </td>
 <td style="text-align:center;">
-0.0312993
+0.0313359
 </td>
 <td style="text-align:center;">
-0.0524501
+0.0525115
 </td>
 <td style="text-align:center;">
-0.9470751
+0.9481834
 </td>
 <td style="text-align:center;">
-0.3979568
+0.3984225
 </td>
 <td style="text-align:center;">
-0.3496632
+0.3500724
 </td>
 </tr>
 <tr>
@@ -6576,40 +6576,40 @@ Beer
 BldMt
 </td>
 <td style="text-align:center;">
--0.0019917
+-0.0019669
 </td>
 <td style="text-align:center;">
-1.0770702
+1.0769237
 </td>
 <td style="text-align:center;">
-0.5436757
+0.5483939
 </td>
 <td style="text-align:center;">
--5.0696156
+-4.9986259
 </td>
 <td style="text-align:center;">
-4.6475035
+4.6113079
 </td>
 <td style="text-align:center;">
-0.0131403
+0.0258730
 </td>
 <td style="text-align:center;">
-0.0003547
+0.0003546
 </td>
 <td style="text-align:center;">
-0.0257598
+0.0257533
 </td>
 <td style="text-align:center;">
-0.0431671
+0.0431563
 </td>
 <td style="text-align:center;">
-0.7794561
+0.7792595
 </td>
 <td style="text-align:center;">
-0.3275240
+0.3274414
 </td>
 <td style="text-align:center;">
-0.2877777
+0.2877051
 </td>
 </tr>
 <tr>
@@ -6617,40 +6617,40 @@ BldMt
 Books
 </td>
 <td style="text-align:center;">
--0.0041127
+-0.0040879
 </td>
 <td style="text-align:center;">
-1.2289384
+1.2287919
 </td>
 <td style="text-align:center;">
-0.3456952
+0.3504133
 </td>
 <td style="text-align:center;">
-2.9307195
+3.0017092
 </td>
 <td style="text-align:center;">
-2.7879968
+2.7518012
 </td>
 <td style="text-align:center;">
--1.1085318
+-1.0957991
 </td>
 <td style="text-align:center;">
-0.0005235
+0.0005248
 </td>
 <td style="text-align:center;">
-0.0380139
+0.0381116
 </td>
 <td style="text-align:center;">
-0.0637022
+0.0638659
 </td>
 <td style="text-align:center;">
-1.1502507
+1.1532078
 </td>
 <td style="text-align:center;">
-0.4833303
+0.4845729
 </td>
 <td style="text-align:center;">
-0.4246763
+0.4257681
 </td>
 </tr>
 <tr>
@@ -6658,40 +6658,40 @@ Books
 Boxes
 </td>
 <td style="text-align:center;">
--0.0015969
+-0.0015721
 </td>
 <td style="text-align:center;">
-0.8140700
+0.8139235
 </td>
 <td style="text-align:center;">
-0.8320628
+0.8367810
 </td>
 <td style="text-align:center;">
--1.0287026
+-0.9577129
 </td>
 <td style="text-align:center;">
-3.2870444
+3.2508488
 </td>
 <td style="text-align:center;">
-0.0871431
+0.0998758
 </td>
 <td style="text-align:center;">
-0.0004743
+0.0004751
 </td>
 <td style="text-align:center;">
-0.0344403
+0.0345003
 </td>
 <td style="text-align:center;">
-0.0577136
+0.0578141
 </td>
 <td style="text-align:center;">
-1.0421175
+1.0439323
 </td>
 <td style="text-align:center;">
-0.4378932
+0.4386558
 </td>
 <td style="text-align:center;">
-0.3847531
+0.3854232
 </td>
 </tr>
 <tr>
@@ -6699,40 +6699,40 @@ Boxes
 BusSv
 </td>
 <td style="text-align:center;">
--0.0007786
+-0.0007538
 </td>
 <td style="text-align:center;">
-1.1559726
+1.1558261
 </td>
 <td style="text-align:center;">
--0.0307175
+-0.0259993
 </td>
 <td style="text-align:center;">
-3.6433082
+3.7142979
 </td>
 <td style="text-align:center;">
-0.5349513
+0.4987557
 </td>
 <td style="text-align:center;">
-0.1665592
+0.1792919
 </td>
 <td style="text-align:center;">
-0.0003056
+0.0003057
 </td>
 <td style="text-align:center;">
-0.0221900
+0.0222009
 </td>
 <td style="text-align:center;">
-0.0371851
+0.0372033
 </td>
 <td style="text-align:center;">
-0.6714392
+0.6717694
 </td>
 <td style="text-align:center;">
-0.2821358
+0.2822746
 </td>
 <td style="text-align:center;">
-0.2478975
+0.2480194
 </td>
 </tr>
 <tr>
@@ -6740,40 +6740,40 @@ BusSv
 Chems
 </td>
 <td style="text-align:center;">
--0.0002109
+-0.0001862
 </td>
 <td style="text-align:center;">
-0.9112904
+0.9111439
 </td>
 <td style="text-align:center;">
-0.4079562
+0.4126744
 </td>
 <td style="text-align:center;">
--5.5065281
+-5.4355384
 </td>
 <td style="text-align:center;">
-2.5477659
+2.5115703
 </td>
 <td style="text-align:center;">
--0.4226955
+-0.4099628
 </td>
 <td style="text-align:center;">
 0.0004079
 </td>
 <td style="text-align:center;">
-0.0296221
+0.0296201
 </td>
 <td style="text-align:center;">
-0.0496396
+0.0496361
 </td>
 <td style="text-align:center;">
-0.8963268
+0.8962647
 </td>
 <td style="text-align:center;">
-0.3766326
+0.3766065
 </td>
 <td style="text-align:center;">
-0.3309268
+0.3309038
 </td>
 </tr>
 <tr>
@@ -6781,40 +6781,40 @@ Chems
 Chips
 </td>
 <td style="text-align:center;">
-0.0037644
+0.0037892
 </td>
 <td style="text-align:center;">
-1.2178595
+1.2177130
 </td>
 <td style="text-align:center;">
--1.0350075
+-1.0302893
 </td>
 <td style="text-align:center;">
-2.6773047
+2.7482944
 </td>
 <td style="text-align:center;">
--0.3193659
+-0.3555615
 </td>
 <td style="text-align:center;">
--1.1221192
+-1.1093865
 </td>
 <td style="text-align:center;">
-0.0005195
+0.0005194
 </td>
 <td style="text-align:center;">
-0.0377258
+0.0377145
 </td>
 <td style="text-align:center;">
-0.0632194
+0.0632005
 </td>
 <td style="text-align:center;">
-1.1415335
+1.1411924
 </td>
 <td style="text-align:center;">
-0.4796674
+0.4795240
 </td>
 <td style="text-align:center;">
-0.4214579
+0.4213319
 </td>
 </tr>
 <tr>
@@ -6822,40 +6822,40 @@ Chips
 Clths
 </td>
 <td style="text-align:center;">
--0.0039714
+-0.0039466
 </td>
 <td style="text-align:center;">
-1.3083119
+1.3081654
 </td>
 <td style="text-align:center;">
-0.7506847
+0.7554029
 </td>
 <td style="text-align:center;">
-6.4418477
+6.5128374
 </td>
 <td style="text-align:center;">
-2.7404608
+2.7042652
 </td>
 <td style="text-align:center;">
-1.3397355
+1.3524681
 </td>
 <td style="text-align:center;">
-0.0006090
+0.0006108
 </td>
 <td style="text-align:center;">
-0.0442269
+0.0443520
 </td>
 <td style="text-align:center;">
-0.0741137
+0.0743232
 </td>
 <td style="text-align:center;">
-1.3382480
+1.3420319
 </td>
 <td style="text-align:center;">
-0.5623259
+0.5639159
 </td>
 <td style="text-align:center;">
-0.4940855
+0.4954825
 </td>
 </tr>
 <tr>
@@ -6863,40 +6863,40 @@ Clths
 Cnstr
 </td>
 <td style="text-align:center;">
--0.0015663
+-0.0015415
 </td>
 <td style="text-align:center;">
-1.0557436
+1.0555971
 </td>
 <td style="text-align:center;">
-0.6515621
+0.6562803
 </td>
 <td style="text-align:center;">
--13.7037096
+-13.6327199
 </td>
 <td style="text-align:center;">
-1.3374917
+1.3012961
 </td>
 <td style="text-align:center;">
--2.1987527
+-2.1860200
 </td>
 <td style="text-align:center;">
-0.0006609
+0.0006611
 </td>
 <td style="text-align:center;">
-0.0479929
+0.0480090
 </td>
 <td style="text-align:center;">
-0.0804245
+0.0804515
 </td>
 <td style="text-align:center;">
-1.4522007
+1.4526890
 </td>
 <td style="text-align:center;">
-0.6102083
+0.6104135
 </td>
 <td style="text-align:center;">
-0.5361572
+0.5363375
 </td>
 </tr>
 <tr>
@@ -6904,40 +6904,40 @@ Cnstr
 Coal
 </td>
 <td style="text-align:center;">
-0.0057139
+0.0057387
 </td>
 <td style="text-align:center;">
-0.2556405
+0.2554940
 </td>
 <td style="text-align:center;">
--0.2436406
+-0.2389224
 </td>
 <td style="text-align:center;">
--22.0261073
+-21.9551176
 </td>
 <td style="text-align:center;">
--2.7970599
+-2.8332555
 </td>
 <td style="text-align:center;">
-2.6220188
+2.6347515
 </td>
 <td style="text-align:center;">
-0.0016159
+0.0016160
 </td>
 <td style="text-align:center;">
-0.1173436
+0.1173455
 </td>
 <td style="text-align:center;">
-0.1966396
+0.1966428
 </td>
 <td style="text-align:center;">
-3.5506625
+3.5507193
 </td>
 <td style="text-align:center;">
-1.4919728
+1.4919966
 </td>
 <td style="text-align:center;">
-1.3109161
+1.3109370
 </td>
 </tr>
 <tr>
@@ -6945,40 +6945,40 @@ Coal
 Drugs
 </td>
 <td style="text-align:center;">
-0.0019868
+0.0020116
 </td>
 <td style="text-align:center;">
-0.8734833
+0.8733368
 </td>
 <td style="text-align:center;">
-0.4700708
+0.4747889
 </td>
 <td style="text-align:center;">
-5.4236138
+5.4946034
 </td>
 <td style="text-align:center;">
--5.7861289
+-5.8223245
 </td>
 <td style="text-align:center;">
--1.0559528
+-1.0432201
 </td>
 <td style="text-align:center;">
-0.0003700
+0.0003703
 </td>
 <td style="text-align:center;">
-0.0268647
+0.0268932
 </td>
 <td style="text-align:center;">
-0.0450188
+0.0450666
 </td>
 <td style="text-align:center;">
-0.8128917
+0.8137531
 </td>
 <td style="text-align:center;">
-0.3415735
+0.3419355
 </td>
 <td style="text-align:center;">
-0.3001222
+0.3004403
 </td>
 </tr>
 <tr>
@@ -6986,40 +6986,40 @@ Drugs
 ElcEq
 </td>
 <td style="text-align:center;">
-0.0015951
+0.0016198
 </td>
 <td style="text-align:center;">
-1.1214561
+1.1213096
 </td>
 <td style="text-align:center;">
--0.1109232
+-0.1062051
 </td>
 <td style="text-align:center;">
-1.7081195
+1.7791092
 </td>
 <td style="text-align:center;">
--0.1266575
+-0.1628531
 </td>
 <td style="text-align:center;">
--0.2668275
+-0.2540949
 </td>
 <td style="text-align:center;">
-0.0003151
+0.0003164
 </td>
 <td style="text-align:center;">
-0.0228836
+0.0229739
 </td>
 <td style="text-align:center;">
-0.0383475
+0.0384987
 </td>
 <td style="text-align:center;">
-0.6924287
+0.6951593
 </td>
 <td style="text-align:center;">
-0.2909555
+0.2921029
 </td>
 <td style="text-align:center;">
-0.2556469
+0.2566551
 </td>
 </tr>
 <tr>
@@ -7027,40 +7027,40 @@ ElcEq
 FabPr
 </td>
 <td style="text-align:center;">
--0.0035359
+-0.0035111
 </td>
 <td style="text-align:center;">
-0.9281259
+0.9279794
 </td>
 <td style="text-align:center;">
-0.2467921
+0.2515102
 </td>
 <td style="text-align:center;">
--8.1860302
+-8.1150405
 </td>
 <td style="text-align:center;">
-5.6795488
+5.6433532
 </td>
 <td style="text-align:center;">
-1.2801120
+1.2928447
 </td>
 <td style="text-align:center;">
-0.0007056
+0.0007046
 </td>
 <td style="text-align:center;">
-0.0512381
+0.0511691
 </td>
 <td style="text-align:center;">
-0.0858627
+0.0857471
 </td>
 <td style="text-align:center;">
-1.5503973
+1.5483088
 </td>
 <td style="text-align:center;">
-0.6514701
+0.6505926
 </td>
 <td style="text-align:center;">
-0.5724117
+0.5716406
 </td>
 </tr>
 <tr>
@@ -7068,40 +7068,40 @@ FabPr
 Fin
 </td>
 <td style="text-align:center;">
-0.0001445
+0.0001692
 </td>
 <td style="text-align:center;">
-1.2146049
+1.2144583
 </td>
 <td style="text-align:center;">
-0.0352972
+0.0400154
 </td>
 <td style="text-align:center;">
--2.8037386
+-2.7327489
 </td>
 <td style="text-align:center;">
-1.4196657
+1.3834701
 </td>
 <td style="text-align:center;">
--0.3852308
+-0.3724981
 </td>
 <td style="text-align:center;">
-0.0004430
+0.0004437
 </td>
 <td style="text-align:center;">
-0.0321690
+0.0322228
 </td>
 <td style="text-align:center;">
-0.0539075
+0.0539976
 </td>
 <td style="text-align:center;">
-0.9733922
+0.9750189
 </td>
 <td style="text-align:center;">
-0.4090151
+0.4096986
 </td>
 <td style="text-align:center;">
-0.3593796
+0.3599801
 </td>
 </tr>
 <tr>
@@ -7109,40 +7109,40 @@ Fin
 Food
 </td>
 <td style="text-align:center;">
--0.0003094
+-0.0002847
 </td>
 <td style="text-align:center;">
-0.8100178
+0.8098713
 </td>
 <td style="text-align:center;">
-0.7124479
+0.7171661
 </td>
 <td style="text-align:center;">
-4.7316452
+4.8026349
 </td>
 <td style="text-align:center;">
--0.3715031
+-0.4076987
 </td>
 <td style="text-align:center;">
-1.9698362
+1.9825689
 </td>
 <td style="text-align:center;">
-0.0003951
+0.0003966
 </td>
 <td style="text-align:center;">
-0.0286879
+0.0287972
 </td>
 <td style="text-align:center;">
-0.0480741
+0.0482571
 </td>
 <td style="text-align:center;">
-0.8680590
+0.8713647
 </td>
 <td style="text-align:center;">
-0.3647546
+0.3661436
 </td>
 <td style="text-align:center;">
-0.3204902
+0.3217107
 </td>
 </tr>
 <tr>
@@ -7150,40 +7150,40 @@ Food
 Fun
 </td>
 <td style="text-align:center;">
-0.0007763
+0.0008011
 </td>
 <td style="text-align:center;">
-1.3194088
+1.3192623
 </td>
 <td style="text-align:center;">
-0.4101307
+0.4148489
 </td>
 <td style="text-align:center;">
--2.3024505
+-2.2314608
 </td>
 <td style="text-align:center;">
-2.9142514
+2.8780558
 </td>
 <td style="text-align:center;">
--0.9349896
+-0.9222569
 </td>
 <td style="text-align:center;">
-0.0006955
+0.0006951
 </td>
 <td style="text-align:center;">
-0.0505040
+0.0504778
 </td>
 <td style="text-align:center;">
-0.0846326
+0.0845887
 </td>
 <td style="text-align:center;">
-1.5281857
+1.5273919
 </td>
 <td style="text-align:center;">
-0.6421369
+0.6418034
 </td>
 <td style="text-align:center;">
-0.5642111
+0.5639180
 </td>
 </tr>
 <tr>
@@ -7191,40 +7191,40 @@ Fun
 Gold
 </td>
 <td style="text-align:center;">
-0.0058951
+0.0059198
 </td>
 <td style="text-align:center;">
--0.0182775
+-0.0184240
 </td>
 <td style="text-align:center;">
-0.3509642
+0.3556824
 </td>
 <td style="text-align:center;">
--10.3249815
+-10.2539918
 </td>
 <td style="text-align:center;">
-4.0783779
+4.0421823
 </td>
 <td style="text-align:center;">
--9.0350759
+-9.0223432
 </td>
 <td style="text-align:center;">
-0.0011987
+0.0011985
 </td>
 <td style="text-align:center;">
-0.0870441
+0.0870313
 </td>
 <td style="text-align:center;">
-0.1458650
+0.1458435
 </td>
 <td style="text-align:center;">
-2.6338394
+2.6334526
 </td>
 <td style="text-align:center;">
-1.1067277
+1.1065652
 </td>
 <td style="text-align:center;">
-0.9724220
+0.9722792
 </td>
 </tr>
 <tr>
@@ -7232,40 +7232,40 @@ Gold
 Guns
 </td>
 <td style="text-align:center;">
-0.0016839
+0.0017087
 </td>
 <td style="text-align:center;">
-0.7159373
+0.7157908
 </td>
 <td style="text-align:center;">
-1.0791044
+1.0838225
 </td>
 <td style="text-align:center;">
--12.5483038
+-12.4773141
 </td>
 <td style="text-align:center;">
-5.7456204
+5.7094248
 </td>
 <td style="text-align:center;">
-0.0103140
+0.0230467
 </td>
 <td style="text-align:center;">
-0.0006612
+0.0006620
 </td>
 <td style="text-align:center;">
-0.0480176
+0.0480717
 </td>
 <td style="text-align:center;">
-0.0804660
+0.0805566
 </td>
 <td style="text-align:center;">
-1.4529503
+1.4545860
 </td>
 <td style="text-align:center;">
-0.6105233
+0.6112106
 </td>
 <td style="text-align:center;">
-0.5364339
+0.5370378
 </td>
 </tr>
 <tr>
@@ -7273,40 +7273,40 @@ Guns
 Hardw
 </td>
 <td style="text-align:center;">
-0.0019143
+0.0019391
 </td>
 <td style="text-align:center;">
-1.0784421
+1.0782956
 </td>
 <td style="text-align:center;">
--0.7982647
+-0.7935466
 </td>
 <td style="text-align:center;">
-5.3749272
+5.4459169
 </td>
 <td style="text-align:center;">
--2.1937225
+-2.2299181
 </td>
 <td style="text-align:center;">
--2.2087401
+-2.1960074
 </td>
 <td style="text-align:center;">
-0.0006073
+0.0006066
 </td>
 <td style="text-align:center;">
-0.0440994
+0.0440517
 </td>
 <td style="text-align:center;">
-0.0739000
+0.0738200
 </td>
 <td style="text-align:center;">
-1.3343896
+1.3329457
 </td>
 <td style="text-align:center;">
-0.5607047
+0.5600979
 </td>
 <td style="text-align:center;">
-0.4926610
+0.4921279
 </td>
 </tr>
 <tr>
@@ -7314,40 +7314,40 @@ Hardw
 Hlth
 </td>
 <td style="text-align:center;">
--0.0025443
+-0.0025195
 </td>
 <td style="text-align:center;">
-1.0683957
+1.0682492
 </td>
 <td style="text-align:center;">
-0.7642364
+0.7689546
 </td>
 <td style="text-align:center;">
-4.6016489
+4.6726386
 </td>
 <td style="text-align:center;">
-0.8730508
+0.8368552
 </td>
 <td style="text-align:center;">
-0.8287903
+0.8415230
 </td>
 <td style="text-align:center;">
-0.0010470
+0.0010472
 </td>
 <td style="text-align:center;">
-0.0760266
+0.0760429
 </td>
 <td style="text-align:center;">
-0.1274022
+0.1274297
 </td>
 <td style="text-align:center;">
-2.3004630
+2.3009592
 </td>
 <td style="text-align:center;">
-0.9666444
+0.9668529
 </td>
 <td style="text-align:center;">
-0.8493384
+0.8495216
 </td>
 </tr>
 <tr>
@@ -7355,40 +7355,40 @@ Hlth
 Hshld
 </td>
 <td style="text-align:center;">
--0.0027748
+-0.0027500
 </td>
 <td style="text-align:center;">
-0.9360312
+0.9358847
 </td>
 <td style="text-align:center;">
-0.7122418
+0.7169600
 </td>
 <td style="text-align:center;">
-3.2401985
+3.3111882
 </td>
 <td style="text-align:center;">
-0.7749013
+0.7387057
 </td>
 <td style="text-align:center;">
-0.3320794
+0.3448121
 </td>
 <td style="text-align:center;">
-0.0003047
+0.0003055
 </td>
 <td style="text-align:center;">
-0.0221236
+0.0221867
 </td>
 <td style="text-align:center;">
-0.0370738
+0.0371795
 </td>
 <td style="text-align:center;">
-0.6694302
+0.6713395
 </td>
 <td style="text-align:center;">
-0.2812916
+0.2820939
 </td>
 <td style="text-align:center;">
-0.2471558
+0.2478607
 </td>
 </tr>
 <tr>
@@ -7396,40 +7396,40 @@ Hshld
 Insur
 </td>
 <td style="text-align:center;">
--0.0005121
+-0.0004874
 </td>
 <td style="text-align:center;">
-1.0371002
+1.0369537
 </td>
 <td style="text-align:center;">
-0.4109345
+0.4156527
 </td>
 <td style="text-align:center;">
--4.3107699
+-4.2397802
 </td>
 <td style="text-align:center;">
-2.4107025
+2.3745069
 </td>
 <td style="text-align:center;">
-0.5355892
+0.5483219
 </td>
 <td style="text-align:center;">
-0.0003982
+0.0003994
 </td>
 <td style="text-align:center;">
-0.0289127
+0.0290049
 </td>
 <td style="text-align:center;">
-0.0484507
+0.0486052
 </td>
 <td style="text-align:center;">
-0.8748602
+0.8776499
 </td>
 <td style="text-align:center;">
-0.3676124
+0.3687846
 </td>
 <td style="text-align:center;">
-0.3230012
+0.3240312
 </td>
 </tr>
 <tr>
@@ -7437,40 +7437,40 @@ Insur
 LabEq
 </td>
 <td style="text-align:center;">
-0.0026939
+0.0027187
 </td>
 <td style="text-align:center;">
-1.0612701
+1.0611236
 </td>
 <td style="text-align:center;">
--0.5493214
+-0.5446032
 </td>
 <td style="text-align:center;">
-0.0367505
+0.1077402
 </td>
 <td style="text-align:center;">
--0.5046850
+-0.5408806
 </td>
 <td style="text-align:center;">
--0.2350449
+-0.2223122
 </td>
 <td style="text-align:center;">
-0.0004516
+0.0004507
 </td>
 <td style="text-align:center;">
-0.0327903
+0.0327320
 </td>
 <td style="text-align:center;">
-0.0549487
+0.0548510
 </td>
 <td style="text-align:center;">
-0.9921918
+0.9904271
 </td>
 <td style="text-align:center;">
-0.4169146
+0.4161731
 </td>
 <td style="text-align:center;">
-0.3663204
+0.3656689
 </td>
 </tr>
 <tr>
@@ -7478,40 +7478,40 @@ LabEq
 Mach
 </td>
 <td style="text-align:center;">
-0.0011204
+0.0011451
 </td>
 <td style="text-align:center;">
-0.9104672
+0.9103207
 </td>
 <td style="text-align:center;">
-0.0413905
+0.0461087
 </td>
 <td style="text-align:center;">
--9.9218091
+-9.8508194
 </td>
 <td style="text-align:center;">
-3.1379016
+3.1017060
 </td>
 <td style="text-align:center;">
--1.2933072
+-1.2805745
 </td>
 <td style="text-align:center;">
-0.0004447
+0.0004428
 </td>
 <td style="text-align:center;">
-0.0322909
+0.0321551
 </td>
 <td style="text-align:center;">
-0.0541117
+0.0538843
 </td>
 <td style="text-align:center;">
-0.9770785
+0.9729722
 </td>
 <td style="text-align:center;">
-0.4105641
+0.4088386
 </td>
 <td style="text-align:center;">
-0.3607405
+0.3592245
 </td>
 </tr>
 <tr>
@@ -7519,40 +7519,40 @@ Mach
 Meals
 </td>
 <td style="text-align:center;">
--0.0027195
+-0.0026947
 </td>
 <td style="text-align:center;">
-1.1460138
+1.1458673
 </td>
 <td style="text-align:center;">
-0.5539551
+0.5586733
 </td>
 <td style="text-align:center;">
-3.2037889
+3.2747786
 </td>
 <td style="text-align:center;">
-3.5963197
+3.5601241
 </td>
 <td style="text-align:center;">
-1.8153848
+1.8281175
 </td>
 <td style="text-align:center;">
 0.0004796
 </td>
 <td style="text-align:center;">
-0.0348237
+0.0348248
 </td>
 <td style="text-align:center;">
-0.0583561
+0.0583579
 </td>
 <td style="text-align:center;">
-1.0537192
+1.0537511
 </td>
 <td style="text-align:center;">
-0.4427682
+0.4427816
 </td>
 <td style="text-align:center;">
-0.3890365
+0.3890483
 </td>
 </tr>
 <tr>
@@ -7560,40 +7560,40 @@ Meals
 MedEq
 </td>
 <td style="text-align:center;">
-0.0012090
+0.0012338
 </td>
 <td style="text-align:center;">
-0.8623835
+0.8622370
 </td>
 <td style="text-align:center;">
-0.4808603
+0.4855784
 </td>
 <td style="text-align:center;">
-2.4671006
+2.5380903
 </td>
 <td style="text-align:center;">
--2.8964096
+-2.9326052
 </td>
 <td style="text-align:center;">
--0.4287920
+-0.4160593
 </td>
 <td style="text-align:center;">
-0.0004977
+0.0004975
 </td>
 <td style="text-align:center;">
-0.0361410
+0.0361277
 </td>
 <td style="text-align:center;">
-0.0605636
+0.0605413
 </td>
 <td style="text-align:center;">
-1.0935792
+1.0931762
 </td>
 <td style="text-align:center;">
-0.4595172
+0.4593478
 </td>
 <td style="text-align:center;">
-0.4037530
+0.4036042
 </td>
 </tr>
 <tr>
@@ -7601,40 +7601,40 @@ MedEq
 Mines
 </td>
 <td style="text-align:center;">
-0.0042698
+0.0042946
 </td>
 <td style="text-align:center;">
-0.5795098
+0.5793633
 </td>
 <td style="text-align:center;">
-0.0271699
+0.0318880
 </td>
 <td style="text-align:center;">
--18.0778866
+-18.0068969
 </td>
 <td style="text-align:center;">
-2.4002661
+2.3640705
 </td>
 <td style="text-align:center;">
--4.2566141
+-4.2438814
 </td>
 <td style="text-align:center;">
-0.0007674
+0.0007668
 </td>
 <td style="text-align:center;">
-0.0557251
+0.0556814
 </td>
 <td style="text-align:center;">
-0.0933819
+0.0933086
 </td>
 <td style="text-align:center;">
-1.6861687
+1.6848449
 </td>
 <td style="text-align:center;">
-0.7085207
+0.7079644
 </td>
 <td style="text-align:center;">
-0.6225389
+0.6220502
 </td>
 </tr>
 <tr>
@@ -7642,40 +7642,40 @@ Mines
 Oil
 </td>
 <td style="text-align:center;">
-0.0008294
+0.0008542
 </td>
 <td style="text-align:center;">
-0.7437517
+0.7436052
 </td>
 <td style="text-align:center;">
-0.2059988
+0.2107170
 </td>
 <td style="text-align:center;">
--12.7420965
+-12.6711069
 </td>
 <td style="text-align:center;">
-1.9133904
+1.8771948
 </td>
 <td style="text-align:center;">
-1.0576400
+1.0703727
 </td>
 <td style="text-align:center;">
-0.0006052
+0.0006051
 </td>
 <td style="text-align:center;">
-0.0439510
+0.0439435
 </td>
 <td style="text-align:center;">
-0.0736513
+0.0736387
 </td>
 <td style="text-align:center;">
-1.3298993
+1.3296709
 </td>
 <td style="text-align:center;">
-0.5588178
+0.5587218
 </td>
 <td style="text-align:center;">
-0.4910031
+0.4909188
 </td>
 </tr>
 <tr>
@@ -7683,40 +7683,40 @@ Oil
 Other
 </td>
 <td style="text-align:center;">
--0.0084050
+-0.0083802
 </td>
 <td style="text-align:center;">
-1.3826486
+1.3825021
 </td>
 <td style="text-align:center;">
-0.4132924
+0.4180106
 </td>
 <td style="text-align:center;">
--2.7846554
+-2.7136657
 </td>
 <td style="text-align:center;">
-1.2259234
+1.1897278
 </td>
 <td style="text-align:center;">
-0.6639541
+0.6766868
 </td>
 <td style="text-align:center;">
-0.0006151
+0.0006164
 </td>
 <td style="text-align:center;">
-0.0446659
+0.0447613
 </td>
 <td style="text-align:center;">
-0.0748494
+0.0750091
 </td>
 <td style="text-align:center;">
-1.3515321
+1.3544174
 </td>
 <td style="text-align:center;">
-0.5679078
+0.5691202
 </td>
 <td style="text-align:center;">
-0.4989900
+0.5000553
 </td>
 </tr>
 <tr>
@@ -7724,40 +7724,40 @@ Other
 Paper
 </td>
 <td style="text-align:center;">
-0.0007258
+0.0007505
 </td>
 <td style="text-align:center;">
-0.7636522
+0.7635057
 </td>
 <td style="text-align:center;">
-0.2842800
+0.2889981
 </td>
 <td style="text-align:center;">
--4.4322821
+-4.3612924
 </td>
 <td style="text-align:center;">
-1.8321639
+1.7959683
 </td>
 <td style="text-align:center;">
--1.2720143
+-1.2592816
 </td>
 <td style="text-align:center;">
-0.0004239
+0.0004240
 </td>
 <td style="text-align:center;">
-0.0307793
+0.0307880
 </td>
 <td style="text-align:center;">
-0.0515787
+0.0515933
 </td>
 <td style="text-align:center;">
-0.9313405
+0.9316049
 </td>
 <td style="text-align:center;">
-0.3913452
+0.3914563
 </td>
 <td style="text-align:center;">
-0.3438539
+0.3439515
 </td>
 </tr>
 <tr>
@@ -7765,40 +7765,40 @@ Paper
 PerSv
 </td>
 <td style="text-align:center;">
--0.0085514
+-0.0085266
 </td>
 <td style="text-align:center;">
-1.1013149
+1.1011684
 </td>
 <td style="text-align:center;">
-0.8760311
+0.8807493
 </td>
 <td style="text-align:center;">
--2.1696489
+-2.0986592
 </td>
 <td style="text-align:center;">
-7.2024312
+7.1662356
 </td>
 <td style="text-align:center;">
-2.2375158
+2.2502485
 </td>
 <td style="text-align:center;">
-0.0006963
+0.0006989
 </td>
 <td style="text-align:center;">
-0.0505641
+0.0507508
 </td>
 <td style="text-align:center;">
-0.0847332
+0.0850461
 </td>
 <td style="text-align:center;">
-1.5300019
+1.5356511
 </td>
 <td style="text-align:center;">
-0.6429001
+0.6452738
 </td>
 <td style="text-align:center;">
-0.5648817
+0.5669674
 </td>
 </tr>
 <tr>
@@ -7806,40 +7806,40 @@ PerSv
 RlEst
 </td>
 <td style="text-align:center;">
--0.0097449
+-0.0097201
 </td>
 <td style="text-align:center;">
-1.3202196
+1.3200730
 </td>
 <td style="text-align:center;">
-0.6857737
+0.6904919
 </td>
 <td style="text-align:center;">
--0.3105089
+-0.2395192
 </td>
 <td style="text-align:center;">
-10.0714171
+10.0352215
 </td>
 <td style="text-align:center;">
--2.7167623
+-2.7040297
 </td>
 <td style="text-align:center;">
-0.0007527
+0.0007521
 </td>
 <td style="text-align:center;">
-0.0546610
+0.0546143
 </td>
 <td style="text-align:center;">
-0.0915987
+0.0915204
 </td>
 <td style="text-align:center;">
-1.6539703
+1.6525555
 </td>
 <td style="text-align:center;">
-0.6949910
+0.6943966
 </td>
 <td style="text-align:center;">
-0.6106512
+0.6101288
 </td>
 </tr>
 <tr>
@@ -7847,40 +7847,40 @@ RlEst
 Rtail
 </td>
 <td style="text-align:center;">
--0.0004884
+-0.0004636
 </td>
 <td style="text-align:center;">
-1.0934399
+1.0932934
 </td>
 <td style="text-align:center;">
-0.2778965
+0.2826147
 </td>
 <td style="text-align:center;">
-10.6116975
+10.6826872
 </td>
 <td style="text-align:center;">
--1.1205633
+-1.1567588
 </td>
 <td style="text-align:center;">
-1.5605082
+1.5732409
 </td>
 <td style="text-align:center;">
-0.0003773
+0.0003793
 </td>
 <td style="text-align:center;">
-0.0273994
+0.0275450
 </td>
 <td style="text-align:center;">
-0.0459147
+0.0461587
 </td>
 <td style="text-align:center;">
-0.8290682
+0.8334744
 </td>
 <td style="text-align:center;">
-0.3483708
+0.3502223
 </td>
 <td style="text-align:center;">
-0.3060946
+0.3077215
 </td>
 </tr>
 <tr>
@@ -7888,40 +7888,40 @@ Rtail
 Rubbr
 </td>
 <td style="text-align:center;">
--0.0016645
+-0.0016398
 </td>
 <td style="text-align:center;">
-1.0562652
+1.0561186
 </td>
 <td style="text-align:center;">
-0.6128160
+0.6175342
 </td>
 <td style="text-align:center;">
--1.5923933
+-1.5214037
 </td>
 <td style="text-align:center;">
-3.3482941
+3.3120986
 </td>
 <td style="text-align:center;">
--1.0311394
+-1.0184067
 </td>
 <td style="text-align:center;">
-0.0004069
+0.0004080
 </td>
 <td style="text-align:center;">
-0.0295475
+0.0296295
 </td>
 <td style="text-align:center;">
-0.0495145
+0.0496519
 </td>
 <td style="text-align:center;">
-0.8940681
+0.8965495
 </td>
 <td style="text-align:center;">
-0.3756835
+0.3767261
 </td>
 <td style="text-align:center;">
-0.3300928
+0.3310090
 </td>
 </tr>
 <tr>
@@ -7929,40 +7929,40 @@ Rubbr
 Ships
 </td>
 <td style="text-align:center;">
-0.0011356
+0.0011604
 </td>
 <td style="text-align:center;">
-0.7127801
+0.7126336
 </td>
 <td style="text-align:center;">
-0.5373519
+0.5420701
 </td>
 <td style="text-align:center;">
--12.3875081
+-12.3165184
 </td>
 <td style="text-align:center;">
-5.8129826
+5.7767870
 </td>
 <td style="text-align:center;">
--2.5051467
+-2.4924140
 </td>
 <td style="text-align:center;">
 0.0007008
 </td>
 <td style="text-align:center;">
-0.0508871
+0.0508907
 </td>
 <td style="text-align:center;">
-0.0852745
+0.0852805
 </td>
 <td style="text-align:center;">
-1.5397766
+1.5398844
 </td>
 <td style="text-align:center;">
-0.6470074
+0.6470526
 </td>
 <td style="text-align:center;">
-0.5684905
+0.5685303
 </td>
 </tr>
 <tr>
@@ -7970,40 +7970,40 @@ Ships
 Smoke
 </td>
 <td style="text-align:center;">
-0.0029646
+0.0029894
 </td>
 <td style="text-align:center;">
-0.6357120
+0.6355655
 </td>
 <td style="text-align:center;">
-1.1633081
+1.1680262
 </td>
 <td style="text-align:center;">
-1.3466948
+1.4176844
 </td>
 <td style="text-align:center;">
--1.3960836
+-1.4322792
 </td>
 <td style="text-align:center;">
-1.9762427
+1.9889754
 </td>
 <td style="text-align:center;">
-0.0006518
+0.0006519
 </td>
 <td style="text-align:center;">
-0.0473301
+0.0473369
 </td>
 <td style="text-align:center;">
-0.0793138
+0.0793252
 </td>
 <td style="text-align:center;">
-1.4321461
+1.4323514
 </td>
 <td style="text-align:center;">
-0.6017815
+0.6018677
 </td>
 <td style="text-align:center;">
-0.5287530
+0.5288288
 </td>
 </tr>
 <tr>
@@ -8011,40 +8011,40 @@ Smoke
 Soda
 </td>
 <td style="text-align:center;">
--0.0023040
+-0.0022793
 </td>
 <td style="text-align:center;">
-0.9913421
+0.9911956
 </td>
 <td style="text-align:center;">
-1.0647045
+1.0694227
 </td>
 <td style="text-align:center;">
-5.1903238
+5.2613134
 </td>
 <td style="text-align:center;">
-2.2134738
+2.1772782
 </td>
 <td style="text-align:center;">
-0.7459530
+0.7586857
 </td>
 <td style="text-align:center;">
-0.0005563
+0.0005562
 </td>
 <td style="text-align:center;">
-0.0403976
+0.0403896
 </td>
 <td style="text-align:center;">
-0.0676967
+0.0676833
 </td>
 <td style="text-align:center;">
-1.2223792
+1.2221367
 </td>
 <td style="text-align:center;">
-0.5136384
+0.5135365
 </td>
 <td style="text-align:center;">
-0.4513063
+0.4512168
 </td>
 </tr>
 <tr>
@@ -8052,40 +8052,40 @@ Soda
 Softw
 </td>
 <td style="text-align:center;">
--0.0017731
+-0.0017483
 </td>
 <td style="text-align:center;">
-1.6129823
+1.6128358
 </td>
 <td style="text-align:center;">
--0.0371382
+-0.0324200
 </td>
 <td style="text-align:center;">
-7.5024895
+7.5734792
 </td>
 <td style="text-align:center;">
--2.0696708
+-2.1058664
 </td>
 <td style="text-align:center;">
--1.5443087
+-1.5315760
 </td>
 <td style="text-align:center;">
-0.0009924
+0.0009934
 </td>
 <td style="text-align:center;">
-0.0720683
+0.0721372
 </td>
 <td style="text-align:center;">
-0.1207691
+0.1208846
 </td>
 <td style="text-align:center;">
-2.1806917
+2.1827758
 </td>
 <td style="text-align:center;">
-0.9163171
+0.9171928
 </td>
 <td style="text-align:center;">
-0.8051184
+0.8058879
 </td>
 </tr>
 <tr>
@@ -8093,40 +8093,40 @@ Softw
 Steel
 </td>
 <td style="text-align:center;">
-0.0015978
+0.0016226
 </td>
 <td style="text-align:center;">
-0.8087392
+0.8085927
 </td>
 <td style="text-align:center;">
--0.8784472
+-0.8737290
 </td>
 <td style="text-align:center;">
--13.5222051
+-13.4512154
 </td>
 <td style="text-align:center;">
-1.9531229
+1.9169273
 </td>
 <td style="text-align:center;">
-0.0733569
+0.0860896
 </td>
 <td style="text-align:center;">
-0.0006198
+0.0006183
 </td>
 <td style="text-align:center;">
-0.0450044
+0.0448969
 </td>
 <td style="text-align:center;">
-0.0754166
+0.0752364
 </td>
 <td style="text-align:center;">
-1.3617745
+1.3585217
 </td>
 <td style="text-align:center;">
-0.5722116
+0.5708448
 </td>
 <td style="text-align:center;">
-0.5027715
+0.5015706
 </td>
 </tr>
 <tr>
@@ -8134,40 +8134,40 @@ Steel
 Telcm
 </td>
 <td style="text-align:center;">
-0.0021300
+0.0021548
 </td>
 <td style="text-align:center;">
-0.8266128
+0.8264663
 </td>
 <td style="text-align:center;">
--0.6581603
+-0.6534422
 </td>
 <td style="text-align:center;">
-1.9448929
+2.0158826
 </td>
 <td style="text-align:center;">
-1.2088022
+1.1726066
 </td>
 <td style="text-align:center;">
-0.6809019
+0.6936346
 </td>
 <td style="text-align:center;">
-0.0004391
+0.0004396
 </td>
 <td style="text-align:center;">
-0.0318895
+0.0319220
 </td>
 <td style="text-align:center;">
-0.0534392
+0.0534936
 </td>
 <td style="text-align:center;">
-0.9649354
+0.9659184
 </td>
 <td style="text-align:center;">
-0.4054616
+0.4058747
 </td>
 <td style="text-align:center;">
-0.3562573
+0.3566202
 </td>
 </tr>
 <tr>
@@ -8175,40 +8175,40 @@ Telcm
 Toys
 </td>
 <td style="text-align:center;">
--0.0065755
+-0.0065508
 </td>
 <td style="text-align:center;">
-1.1545753
+1.1544288
 </td>
 <td style="text-align:center;">
-0.7655121
+0.7702303
 </td>
 <td style="text-align:center;">
-5.6033592
+5.6743488
 </td>
 <td style="text-align:center;">
-5.7066315
+5.6704359
 </td>
 <td style="text-align:center;">
-1.0748853
+1.0876180
 </td>
 <td style="text-align:center;">
-0.0005613
+0.0005625
 </td>
 <td style="text-align:center;">
-0.0407579
+0.0408470
 </td>
 <td style="text-align:center;">
-0.0683004
+0.0684498
 </td>
 <td style="text-align:center;">
-1.2332797
+1.2359770
 </td>
 <td style="text-align:center;">
-0.5182187
+0.5193521
 </td>
 <td style="text-align:center;">
-0.4553308
+0.4563267
 </td>
 </tr>
 <tr>
@@ -8216,40 +8216,40 @@ Toys
 Trans
 </td>
 <td style="text-align:center;">
--0.0028516
+-0.0028268
 </td>
 <td style="text-align:center;">
-1.0579517
+1.0578052
 </td>
 <td style="text-align:center;">
-0.4701804
+0.4748986
 </td>
 <td style="text-align:center;">
--1.9616226
+-1.8906329
 </td>
 <td style="text-align:center;">
-5.1341993
+5.0980038
 </td>
 <td style="text-align:center;">
-0.7597870
+0.7725197
 </td>
 <td style="text-align:center;">
-0.0004081
+0.0004092
 </td>
 <td style="text-align:center;">
-0.0296320
+0.0297138
 </td>
 <td style="text-align:center;">
-0.0496560
+0.0497932
 </td>
 <td style="text-align:center;">
-0.8966241
+0.8991006
 </td>
 <td style="text-align:center;">
-0.3767575
+0.3777981
 </td>
 <td style="text-align:center;">
-0.3310365
+0.3319509
 </td>
 </tr>
 <tr>
@@ -8257,40 +8257,40 @@ Trans
 Txtls
 </td>
 <td style="text-align:center;">
--0.0045706
+-0.0045459
 </td>
 <td style="text-align:center;">
-1.1024955
+1.1023490
 </td>
 <td style="text-align:center;">
-0.6261124
+0.6308306
 </td>
 <td style="text-align:center;">
-0.1722573
+0.2432470
 </td>
 <td style="text-align:center;">
-7.6208763
+7.5846808
 </td>
 <td style="text-align:center;">
-0.6233583
+0.6360910
 </td>
 <td style="text-align:center;">
-0.0007331
+0.0007338
 </td>
 <td style="text-align:center;">
-0.0532328
+0.0532891
 </td>
 <td style="text-align:center;">
-0.0892053
+0.0892998
 </td>
 <td style="text-align:center;">
-1.6107535
+1.6124589
 </td>
 <td style="text-align:center;">
-0.6768315
+0.6775481
 </td>
 <td style="text-align:center;">
-0.5946954
+0.5953250
 </td>
 </tr>
 <tr>
@@ -8298,40 +8298,40 @@ Txtls
 Util
 </td>
 <td style="text-align:center;">
--0.0005334
+-0.0005086
 </td>
 <td style="text-align:center;">
-0.7760551
+0.7759086
 </td>
 <td style="text-align:center;">
-0.2299536
+0.2346717
 </td>
 <td style="text-align:center;">
--3.0246521
+-2.9536624
 </td>
 <td style="text-align:center;">
-1.2578953
+1.2216997
 </td>
 <td style="text-align:center;">
-2.7207932
+2.7335259
 </td>
 <td style="text-align:center;">
-0.0003727
+0.0003740
 </td>
 <td style="text-align:center;">
-0.0270639
+0.0271553
 </td>
 <td style="text-align:center;">
-0.0453526
+0.0455057
 </td>
 <td style="text-align:center;">
-0.8189177
+0.8216826
 </td>
 <td style="text-align:center;">
-0.3441056
+0.3452674
 </td>
 <td style="text-align:center;">
-0.3023470
+0.3033679
 </td>
 </tr>
 <tr>
@@ -8339,40 +8339,40 @@ Util
 Whlsl
 </td>
 <td style="text-align:center;">
--0.0018552
+-0.0018305
 </td>
 <td style="text-align:center;">
-1.0651409
+1.0649944
 </td>
 <td style="text-align:center;">
-0.1323167
+0.1370349
 </td>
 <td style="text-align:center;">
-4.7330267
+4.8040164
 </td>
 <td style="text-align:center;">
-2.0569931
+2.0207975
 </td>
 <td style="text-align:center;">
-0.8732681
+0.8860007
 </td>
 <td style="text-align:center;">
-0.0003890
+0.0003900
 </td>
 <td style="text-align:center;">
-0.0282473
+0.0283217
 </td>
 <td style="text-align:center;">
-0.0473357
+0.0474603
 </td>
 <td style="text-align:center;">
-0.8547263
+0.8569768
 </td>
 <td style="text-align:center;">
-0.3591522
+0.3600979
 </td>
 <td style="text-align:center;">
-0.3155677
+0.3163986
 </td>
 </tr>
 </tbody>
@@ -9611,25 +9611,25 @@ FF5
 PRS
 </td>
 <td style="text-align:center;">
-121.0312
+120.9655
 </td>
 <td style="text-align:center;">
-121.0906
+121.0273
 </td>
 <td style="text-align:center;">
-70.07278
+70.06878
 </td>
 <td style="text-align:center;">
-115.8363
+115.8041
 </td>
 <td style="text-align:center;">
-127.2934
+127.0703
 </td>
 <td style="text-align:center;">
-115.1345
+115.1036
 </td>
 <td style="text-align:center;">
-126.7563
+126.6139
 </td>
 </tr>
 </tbody>

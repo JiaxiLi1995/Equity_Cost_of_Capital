@@ -18,6 +18,7 @@ library(tidyverse)
 library(rollRegres)
 library(kableExtra)
 library(moments)
+library(RcppRoll)
 
 # Set the function to transform yyyymm to Date
 transDate <- function(date) {
@@ -1051,6 +1052,19 @@ AM_FF5 <- FF5 %>%
 AM_PRS <- PRS %>%
   subset(select = -date) %>%
   summarise_all(mean)
+
+# Five year rolling average of FF5 return
+RAM_FF5 <- FF5 %>%
+  subset(select = date) %>%
+  cbind(FF5 %>%
+          subset(select = -date) %>%
+          mutate_all(roll_meanr, 60))
+
+RAM_PRS <- PRS %>%
+  subset(select = date) %>%
+  cbind(PRS %>%
+          subset(select = -date) %>%
+          mutate_all(roll_meanr, 60))
 ```
 
 
@@ -1066,6 +1080,20 @@ GM_FF5 <- FF5 %>%
 GM_PRS <- PRS %>%
   subset(select = -date) %>%
   summarise_all(function(x, na.rm = FALSE) (exp(mean(log(1+x)))-1))
+
+# Five year rolling average of FF5 return
+RGM_FF5 <- FF5 %>%
+  subset(select = date) %>%
+  cbind(FF5 %>%
+          subset(select = -date) %>%
+          mutate_all(function(x, na.rm = FALSE) (exp(roll_meanr(log(1+x), 60))-1)))
+
+RGM_PRS <- PRS %>%
+  subset(select = date) %>%
+  cbind(PRS %>%
+          subset(select = -date) %>%
+          mutate_all(function(x, na.rm = FALSE) (exp(roll_meanr(log(1+x), 60))-1)))
+
 ```
 
 ### 4.3 Fama Macbeth Second Step Regression
@@ -2195,6 +2223,46 @@ FF5_table <- FM_FF5 %>%
                   mutate(date = "kurtosis")) %>%
           rename(stats = date) %>%
           mutate(method = "FM_STL_40_R_FF5")) %>%
+  rbind(RAM_FF5 %>%
+          subset(select = -RF) %>%
+          summarise_all(mean, na.rm = TRUE) %>%
+          mutate(date = "mean") %>%
+          rbind(RAM_FF5 %>%
+                  subset(select = -RF) %>%
+                  summarise_all(var, na.rm = TRUE) %>%
+                  mutate(date = "variance")) %>%
+          rbind(RAM_FF5 %>%
+                  subset(select = -RF) %>%
+                  mutate(date = 0) %>%
+                  summarise_all(skewness, na.rm = TRUE) %>%
+                  mutate(date = "skewness")) %>%
+          rbind(RAM_FF5 %>%
+                  subset(select = -RF) %>%
+                  mutate(date = 0) %>%
+                  summarise_all(kurtosis, na.rm = TRUE) %>%
+                  mutate(date = "kurtosis")) %>%
+          rename(stats = date) %>%
+          mutate(method = "RAM_FF5")) %>%
+  rbind(RGM_FF5 %>%
+          subset(select = -RF) %>%
+          summarise_all(mean, na.rm = TRUE) %>%
+          mutate(date = "mean") %>%
+          rbind(RGM_FF5 %>%
+                  subset(select = -RF) %>%
+                  summarise_all(var, na.rm = TRUE) %>%
+                  mutate(date = "variance")) %>%
+          rbind(RGM_FF5 %>%
+                  subset(select = -RF) %>%
+                  mutate(date = 0) %>%
+                  summarise_all(skewness, na.rm = TRUE) %>%
+                  mutate(date = "skewness")) %>%
+          rbind(RGM_FF5 %>%
+                  subset(select = -RF) %>%
+                  mutate(date = 0) %>%
+                  summarise_all(kurtosis, na.rm = TRUE) %>%
+                  mutate(date = "kurtosis")) %>%
+          rename(stats = date) %>%
+          mutate(method = "RGM_FF5")) %>%
   subset(select = c(7,1:6)) 
 
 FF5_table %>%
@@ -2303,6 +2371,46 @@ PRS_table <- FM_PRS %>%
                   mutate(date = "kurtosis")) %>%
           rename(stats = date) %>%
           mutate(method = "FM_STL_40_R_PRS")) %>%
+  rbind(RAM_PRS %>%
+        subset(select = -RF) %>%
+        summarise_all(mean, na.rm = TRUE) %>%
+        mutate(date = "mean") %>%
+        rbind(RAM_PRS %>%
+                subset(select = -RF) %>%
+                summarise_all(var, na.rm = TRUE) %>%
+                mutate(date = "variance")) %>%
+        rbind(RAM_PRS %>%
+                subset(select = -RF) %>%
+                mutate(date = 0) %>%
+                summarise_all(skewness, na.rm = TRUE) %>%
+                mutate(date = "skewness")) %>%
+        rbind(RAM_PRS %>%
+                subset(select = -RF) %>%
+                mutate(date = 0) %>%
+                summarise_all(kurtosis, na.rm = TRUE) %>%
+                mutate(date = "kurtosis")) %>%
+        rename(stats = date) %>%
+        mutate(method = "RAM_PRS")) %>%
+  rbind(RGM_PRS %>%
+          subset(select = -RF) %>%
+          summarise_all(mean, na.rm = TRUE) %>%
+          mutate(date = "mean") %>%
+          rbind(RGM_PRS %>%
+                  subset(select = -RF) %>%
+                  summarise_all(var, na.rm = TRUE) %>%
+                  mutate(date = "variance")) %>%
+          rbind(RGM_PRS %>%
+                  subset(select = -RF) %>%
+                  mutate(date = 0) %>%
+                  summarise_all(skewness, na.rm = TRUE) %>%
+                  mutate(date = "skewness")) %>%
+          rbind(RGM_PRS %>%
+                  subset(select = -RF) %>%
+                  mutate(date = 0) %>%
+                  summarise_all(kurtosis, na.rm = TRUE) %>%
+                  mutate(date = "kurtosis")) %>%
+          rename(stats = date) %>%
+          mutate(method = "RGM_PRS")) %>%
   subset(select = c(7,1:6)) 
 
 PRS_table %>%
@@ -2864,65 +2972,129 @@ ECC_FM_STL_40_R_PRS <- temp[,1:2] %>%
   mutate(ECC = rowSums(.[3:7]))
 
 
+temp <- RAM_FF5 %>%
+  mutate(date = as.numeric(date))
+names(temp) <- tolower(names(temp))
+# join the data
+temp <- Port_FF5_Betas %>%
+  inner_join(temp) %>%
+  subset(select = -Alpha)
+
+# Calculate the ECC 
+ECC_RAM_FF5 <- temp[,1:2] %>%
+  cbind(temp[,3:7]*temp[,8:12]) %>%
+  mutate(ECC = rowSums(.[3:7]))
+
+
+temp <- RGM_FF5 %>%
+  mutate(date = as.numeric(date))
+names(temp) <- tolower(names(temp))
+# join the data
+temp <- Port_FF5_Betas %>%
+  inner_join(temp) %>%
+  subset(select = -Alpha)
+
+# Calculate the ECC 
+ECC_RGM_FF5 <- temp[,1:2] %>%
+  cbind(temp[,3:7]*temp[,8:12]) %>%
+  mutate(ECC = rowSums(.[3:7]))
+
+
+temp <- RAM_PRS %>%
+  mutate(date = as.numeric(date))
+names(temp) <- tolower(names(temp))
+# join the data
+temp <- Port_PRS_Betas %>%
+  inner_join(temp) %>%
+  subset(select = -Alpha)
+
+# Calculate the ECC 
+ECC_RAM_PRS <- temp[,1:2] %>%
+  cbind(temp[,3:7]*temp[,8:12]) %>%
+  mutate(ECC = rowSums(.[3:7]))
+
+
+temp <- RGM_PRS %>%
+  mutate(date = as.numeric(date))
+names(temp) <- tolower(names(temp))
+# join the data
+temp <- Port_PRS_Betas %>%
+  inner_join(temp) %>%
+  subset(select = -Alpha)
+
+# Calculate the ECC 
+ECC_RGM_PRS <- temp[,1:2] %>%
+  cbind(temp[,3:7]*temp[,8:12]) %>%
+  mutate(ECC = rowSums(.[3:7]))
+
+
 
 # combine all the ECC together
 All_FF5_ECC <- ECC_AM_FF5 %>%
   subset(select = c(date, Industry, ECC)) %>%
   rename(AM = ECC) %>%
-  cbind(ECC_GM_FF5$ECC) %>%
-  rename(GM = `ECC_GM_FF5$ECC`) %>%
-  cbind(ECC_FM_FF5$ECC) %>%
-  rename(FM = `ECC_FM_FF5$ECC`) %>%
-  cbind(ECC_FM_STL_FF5$ECC) %>%
-  rename(FM_STL_7_N = `ECC_FM_STL_FF5$ECC`) %>%
-  cbind(ECC_FM_STL_7_R_FF5$ECC) %>%
-  rename(FM_STL_7_R = `ECC_FM_STL_7_R_FF5$ECC`) %>%
-  cbind(ECC_FM_STL_15_N_FF5$ECC) %>%
-  rename(FM_STL_15_N = `ECC_FM_STL_15_N_FF5$ECC`) %>%
-  cbind(ECC_FM_STL_15_R_FF5$ECC) %>%
-  rename(FM_STL_15_R = `ECC_FM_STL_15_R_FF5$ECC`) %>%
-  cbind(ECC_FM_STL_40_N_FF5$ECC) %>%
-  rename(FM_STL_40_N = `ECC_FM_STL_40_N_FF5$ECC`) %>%
-  cbind(ECC_FM_STL_40_R_FF5$ECC) %>%
-  rename(FM_STL_40_R = `ECC_FM_STL_40_R_FF5$ECC`) %>%
+  mutate(GM = ECC_GM_FF5$ECC) %>%
+  mutate(RAM = ECC_RAM_FF5$ECC) %>%
+  mutate(RGM = ECC_RGM_FF5$ECC) %>%
+  mutate(FM = ECC_FM_FF5$ECC) %>%
+  mutate(FM_STL_7_N = ECC_FM_STL_FF5$ECC) %>%
+  mutate(FM_STL_7_R = ECC_FM_STL_7_R_FF5$ECC) %>%
+  mutate(FM_STL_15_N = ECC_FM_STL_15_N_FF5$ECC) %>%
+  mutate(FM_STL_15_R = ECC_FM_STL_15_R_FF5$ECC) %>%
+  mutate(FM_STL_40_N = ECC_FM_STL_40_N_FF5$ECC) %>%
+  mutate(FM_STL_40_R = ECC_FM_STL_40_R_FF5$ECC) %>%
   inner_join(Port_FF5 %>%
                subset(select = c(date, Industry, RP)))
 
 All_PRS_ECC <- ECC_AM_PRS %>%
   subset(select = c(date, Industry, ECC)) %>%
   rename(AM = ECC) %>%
-  cbind(ECC_GM_PRS$ECC) %>%
-  rename(GM = `ECC_GM_PRS$ECC`) %>%
-  cbind(ECC_FM_PRS$ECC) %>%
-  rename(FM = `ECC_FM_PRS$ECC`) %>%
-  cbind(ECC_FM_STL_PRS$ECC) %>%
-  rename(FM_STL_7_N = `ECC_FM_STL_PRS$ECC`) %>%
-  cbind(ECC_FM_STL_7_R_PRS$ECC) %>%
-  rename(FM_STL_7_R = `ECC_FM_STL_7_R_PRS$ECC`) %>%
-  cbind(ECC_FM_STL_15_N_PRS$ECC) %>%
-  rename(FM_STL_15_N = `ECC_FM_STL_15_N_PRS$ECC`) %>%
-  cbind(ECC_FM_STL_15_R_PRS$ECC) %>%
-  rename(FM_STL_15_R = `ECC_FM_STL_15_R_PRS$ECC`) %>%
-  cbind(ECC_FM_STL_40_N_PRS$ECC) %>%
-  rename(FM_STL_40_N = `ECC_FM_STL_40_N_PRS$ECC`) %>%
-  cbind(ECC_FM_STL_40_R_PRS$ECC) %>%
-  rename(FM_STL_40_R = `ECC_FM_STL_40_R_PRS$ECC`) %>%
+  mutate(GM = ECC_GM_PRS$ECC) %>%
+  mutate(RAM = ECC_RAM_PRS$ECC) %>%
+  mutate(RGM = ECC_RGM_PRS$ECC) %>%
+  mutate(FM = ECC_FM_PRS$ECC) %>%
+  mutate(FM_STL_7_N = ECC_FM_STL_PRS$ECC) %>%
+  mutate(FM_STL_7_R = ECC_FM_STL_7_R_PRS$ECC) %>%
+  mutate(FM_STL_15_N = ECC_FM_STL_15_N_PRS$ECC) %>%
+  mutate(FM_STL_15_R = ECC_FM_STL_15_R_PRS$ECC) %>%
+  mutate(FM_STL_40_N = ECC_FM_STL_40_N_PRS$ECC) %>%
+  mutate(FM_STL_40_R = ECC_FM_STL_40_R_PRS$ECC) %>%
   inner_join(Port_PRS %>%
                subset(select = c(date, Industry, RP)))
 
-(All_FF5_ECC[,3:11] - All_FF5_ECC[,12])^2 %>%
+(All_FF5_ECC[,3:13] - All_FF5_ECC[,14])^2 %>%
+  cbind(All_FF5_ECC[,14]^2) %>%
   colSums() %>%
   as.matrix() %>%
   t() %>%
   as_tibble() %>%
+  mutate(`Total Mean` = (var(All_FF5_ECC[,14])*(length(All_FF5_ECC[,14])-1)),
+         `Industry Mean` = All_PRS_ECC %>%
+           group_by(Industry) %>%
+           summarise_all(var) %>%
+           ungroup() %>%
+           subset(select = -Industry) %>%
+           summarise_all(mean) %>%
+           .$RP*(length(All_FF5_ECC[,14])-49)) %>%
+  rename(`0` = `All_FF5_ECC[, 14]^2`) %>%
   mutate(Model = "FF5") %>%
-  rbind((All_PRS_ECC[,3:11] - All_PRS_ECC[,12])^2 %>%
+  rbind((All_PRS_ECC[,3:13] - All_PRS_ECC[,14])^2 %>%
+          cbind(All_PRS_ECC[,14]^2) %>%
           colSums() %>%
           as.matrix() %>%
           t() %>%
           as_tibble() %>%
+          mutate(`Total Mean` = (var(All_PRS_ECC[,14])*(length(All_PRS_ECC[,14])-1)),
+                 `Industry Mean` = All_PRS_ECC %>%
+                   group_by(Industry) %>%
+                   summarise_all(var) %>%
+                   ungroup() %>%
+                   subset(select = -Industry) %>%
+                   summarise_all(mean) %>%
+                   .$RP*(length(All_PRS_ECC[,14])-49)) %>%
+          rename(`0` = `All_PRS_ECC[, 14]^2`) %>%
           mutate(Model = "PRS")) %>%
-  subset(select = c(10,1:9)) %>%
+  subset(select = c(15,1:14)) %>%
   kable(align = "c", caption = "Different Lambda Method Estimated ECC SSE") %>%
   kable_styling(font_size = 10, "striped", full_width = F) %>%
   column_spec(1, bold = T)

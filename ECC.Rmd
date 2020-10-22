@@ -1548,6 +1548,8 @@ Port_PRS_STL_s40_robust <- Port_PRS %>%
 
 The robustness weighting seems not be appropriate for the Industry Risk Premiums since the returns vairation are mostly caused by Gaussian behavior. One example is the end of the trend curve: there was a market crash at the beginning of 2020, so the trend should go down. However, with the robust weighting, the market crash was given little wight and disappeared. At the same time, we might just choose s_window = 7, since there could be changing seasonal patterns in the short-term.
 
+### Filtered Seasonality and Trend Strength
+
 Now we estimate the strength of trend and strength of seasonality. The Strenth of the trend is defined as:
 
 $$F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})$$
@@ -1583,6 +1585,8 @@ Port_FF5_STL_s7_norobust %>%
 ```
 
 It seems that the both the trend and seasonal components are weak. No robust is stronger than robust, and smaller s_window woudl yield stronger components.
+
+### Beta Decomposition
 
 ```{r, cache = TRUE}
 # FF5 betas STL decomposition
@@ -1861,6 +1865,8 @@ PRS_Betas_STL_s15_robust %>%
 Beta estimation's noise or seasonal pattern is much smaller than trend so the noise weight or the s_winow does not impact the result as much. We are safe by just using the no robust weighting and s_window = 7 and that would make the left- and right-hand-side of the second step regression treated the same.
 
 Now, we will take the desired no robust weighting, s_window = 7 trend results of the Industry Risk Premium and Betas to estimate the factor risk premium.
+
+### Filtered Second Pass Regression
 
 ```{r, cache = TRUE}
 # Estimate the Factor Risk Premium for FF5
@@ -2300,6 +2306,8 @@ names(Rolling_Lambdas)[1] = "Lambda0"
 FM_STL_40_R_PRS <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = -Lambda0)
 ```
+
+### Unfiltered vs. Filtered Lambdas
 
 Let's plot the unfiltered lambda together with filtered lamdba to see the effect of filtering on lambda.
 

@@ -8420,6 +8420,8 @@ We will extract the trend of risk premium of the industry portfolios and the tre
 
 The robustness weighting seems not be appropriate for the Industry Risk Premiums since the returns vairation are mostly caused by Gaussian behavior. One example is the end of the trend curve: there was a market crash at the beginning of 2020, so the trend should go down. However, with the robust weighting, the market crash was given little wight and disappeared. At the same time, we might just choose s\_window = 7, since there could be changing seasonal patterns in the short-term.
 
+### Filtered Seasonality and Trend Strength
+
 Now we estimate the strength of trend and strength of seasonality. The Strenth of the trend is defined as:
 
 $$F\_T = max(0,1-\\frac{Var(R\_t)}{Var(T\_t+R\_t)})$$
@@ -10422,15 +10424,21 @@ s40 robust
 </table>
 It seems that the both the trend and seasonal components are weak. No robust is stronger than robust, and smaller s\_window woudl yield stronger components.
 
+### Beta Decomposition
+
 ![](ECC_files/figure-markdown_github/unnamed-chunk-19-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-2.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-3.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-4.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-5.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-6.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-7.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-8.png)
 
 Beta estimation's noise or seasonal pattern is much smaller than trend so the noise weight or the s\_winow does not impact the result as much. We are safe by just using the no robust weighting and s\_window = 7 and that would make the left- and right-hand-side of the second step regression treated the same.
 
 Now, we will take the desired no robust weighting, s\_window = 7 trend results of the Industry Risk Premium and Betas to estimate the factor risk premium.
 
+### Filtered Second Pass Regression
+
 ![](ECC_files/figure-markdown_github/unnamed-chunk-20-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-20-2.png)
 
 For robustness check, we also computed the factor risk premium based on other filterings.
+
+### Unfiltered vs. Filtered Lambdas
 
 Let's plot the unfiltered lambda together with filtered lamdba to see the effect of filtering on lambda.
 

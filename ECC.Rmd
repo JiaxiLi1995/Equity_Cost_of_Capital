@@ -496,6 +496,39 @@ Port_FF5_Betas_Full %>%
   theme(plot.title = element_text(hjust=0.5),
         plot.subtitle = element_text(hjust = 0.5),
         axis.text.x = element_text(angle = 30, hjust = 1))
+
+Port_FF5_Betas_Full %>%
+  subset(select = c(Industry,`Mkt-RF`)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -Industry,
+               names_to = "Factors",
+               values_to = "betas") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(Industry, betas)) +
+  geom_bar(stat = "identity") +
+  labs(title="Full Sample Market Betas with Fama French Five Factors") + 
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+Port_FF5_Betas_Full %>%
+  subset(select = -c(Alpha,`Mkt-RF`)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -Industry,
+               names_to = "Factors",
+               values_to = "betas") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(Industry, betas)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  labs(title="Full Sample Rest Betas with Fama French Five Factors") + 
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
+
 ```
 
 
@@ -547,6 +580,38 @@ Port_FF5_Betas %>%
   scale_x_date(minor_breaks = "1 year") +
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 75, hjust = 1))
+
+
+# Plot the rolling betas box plot
+Port_FF5_Betas %>%
+  subset(select = c(date, Industry, `Mkt-RF`)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -c(date, Industry),
+               names_to = "Factors",
+               values_to = "betas") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(Industry, betas)) +
+  geom_boxplot() +
+  labs(title= "Estimated 5-year Rolling Market Betas with Fama French Five Factors") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+Port_FF5_Betas %>%
+  subset(select = -c(Alpha,`Mkt-RF`)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -c(date, Industry),
+               names_to = "Factors",
+               values_to = "betas") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(Industry, betas)) +
+  geom_boxplot() +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  labs(title= "Estimated 5-year Rolling Market Betas with Fama French Five Factors") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
 ```
 
 ### 3.1.3 Full Sample Estimation with STL Trend
@@ -813,6 +878,39 @@ Port_PRS_Betas_Full %>%
   theme(plot.title = element_text(hjust=0.5),
         plot.subtitle = element_text(hjust = 0.5),
         axis.text.x = element_text(angle = 30, hjust = 1))
+
+Port_PRS_Betas_Full %>%
+  subset(select = c(Industry,`Mkt-RF`)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -Industry,
+               names_to = "Factors",
+               values_to = "betas") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(Industry, betas)) +
+  geom_bar(stat = "identity") +
+  labs(title="Full Sample Market Betas with PRS Five Factors") + 
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1, size = 10))
+
+Port_PRS_Betas_Full %>%
+  subset(select = -c(Alpha,`Mkt-RF`)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -Industry,
+               names_to = "Factors",
+               values_to = "betas") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(Industry, betas)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  labs(title="Full Sample Rest Betas with PRS Five Factors") + 
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
+
 ```
 
 
@@ -864,6 +962,37 @@ Port_PRS_Betas %>%
   scale_x_date(minor_breaks = "1 year") +
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 75, hjust = 1))
+
+# Plot the rolling betas box plot
+Port_PRS_Betas %>%
+  subset(select = c(date, Industry, `Mkt-RF`)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -c(date, Industry),
+               names_to = "Factors",
+               values_to = "betas") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(Industry, betas)) +
+  geom_boxplot() +
+  labs(title= "Estimated 5-year Rolling Market Betas with PRS Five Factors") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+Port_PRS_Betas %>%
+  subset(select = -c(Alpha,`Mkt-RF`)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -c(date, Industry),
+               names_to = "Factors",
+               values_to = "betas") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(Industry, betas)) +
+  geom_boxplot() +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  labs(title= "Estimated 5-year Rolling Market Betas with PRS Five Factors") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
 ```
 
 ### 3.2.3 Full Sample Estimation with STL Trend
@@ -1032,6 +1161,7 @@ Port_PRS_STL_Betas %>%
   scale_x_date(minor_breaks = "1 year") +
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 75, hjust = 1))
+
 ```
 
 It seems that the STL decomposition does not help the first step regression.
@@ -1136,6 +1266,8 @@ FM_FF5 %>%
   mutate(date = transDate(date)) %>%
   ggplot(aes(date, RP, group = Factors)) +
   geom_line() +
+  # loess method: local regression fitting
+  geom_smooth(method = "loess") +
   scale_x_date() +
   facet_wrap(~ Factors,
              scales = "free") +
@@ -1180,6 +1312,8 @@ FM_PRS %>%
   mutate(date = transDate(date)) %>%
   ggplot(aes(date, RP, group = Factors)) +
   geom_line() +
+  # loess method: local regression fitting
+  geom_smooth(method = "loess") +
   scale_x_date() +
   facet_wrap(~ Factors,
              scales = "free") +
@@ -1413,6 +1547,42 @@ Port_PRS_STL_s40_robust <- Port_PRS %>%
 ```
 
 The robustness weighting seems not be appropriate for the Industry Risk Premiums since the returns vairation are mostly caused by Gaussian behavior. One example is the end of the trend curve: there was a market crash at the beginning of 2020, so the trend should go down. However, with the robust weighting, the market crash was given little wight and disappeared. At the same time, we might just choose s_window = 7, since there could be changing seasonal patterns in the short-term.
+
+Now we estimate the strength of trend and strength of seasonality. The Strenth of the trend is defined as:
+
+$$F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})$$
+
+$$F_S = max(0,1-\frac{Var(R_t)}{Var(S_t+R_t)})$$
+
+```{r, cache = TRUE}
+Port_FF5_STL_s7_norobust %>%
+  mutate(method = "s07 norobust") %>%
+  rbind(Port_FF5_STL_s7_robust %>%
+          mutate(method = "s07 robust")) %>%
+  rbind(Port_FF5_STL_s15_norobust %>%
+          mutate(method = "s15 norobust")) %>%
+  rbind(Port_FF5_STL_s15_robust %>%
+          mutate(method = "s15 robust")) %>%
+  rbind(Port_FF5_STL_s40_norobust %>%
+        mutate(method = "s40 norobust")) %>%
+  rbind(Port_FF5_STL_s40_robust %>%
+          mutate(method = "s40 robust")) %>%
+  subset(select = -c(x, RP)) %>%
+  pivot_wider(names_from = "component", values_from = "y") %>%
+  group_by(Industry, method) %>%
+  summarise(FT = max(0, 1-var(Noise)/var(Noise+Trend)),
+            FS = max(0, 1-var(Noise)/var(Noise+Seasonal))) %>%
+  pivot_longer(cols = c(FT,FS), names_to = "Strength", values_to = "Value") %>%
+  subset(select = c(Strength, method, Industry, Value)) %>%
+  pivot_wider(names_from = Industry, values_from = "Value") %>%
+  arrange(Strength, method) %>%
+  kable(align = "c", caption = "STL Decomposition Component Strength for Portfolio Risk Premium") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  collapse_rows(columns = 1)
+```
+
+It seems that the both the trend and seasonal components are weak. No robust is stronger than robust, and smaller s_window woudl yield stronger components.
 
 ```{r, cache = TRUE}
 # FF5 betas STL decomposition
@@ -1713,6 +1883,15 @@ Rolling_Second <- Second_Path %>%
   group_by(date) %>%
   do(model = lm(RP ~ . - date - Industry, data = .) %>%
        coefficients())
+
+# try the standard error
+Rolling_Error <- Second_Path %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Industry, data = .) %>%
+       summary() %>%
+       coef() %>%
+       .[, "Std. Error"])
+
 
 # Unwrap the results
 Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
@@ -2121,6 +2300,157 @@ names(Rolling_Lambdas)[1] = "Lambda0"
 FM_STL_40_R_PRS <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = -Lambda0)
 ```
+
+Let's plot the unfiltered lambda together with filtered lamdba to see the effect of filtering on lambda.
+
+```{r, cache = TRUE}
+# Plot the FM_FF5
+FM_FF5 %>%
+  mutate(method = "FM") %>%
+  rbind(FM_STL_FF5 %>%
+          mutate(method = "STL s7 norobust")) %>%
+  pivot_longer(cols = -c(date, method), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, RP, group = Factors, color = method)) +
+  geom_line() +
+  scale_x_date() +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  labs(title= "Estimated Expected Fama French Five Factors Premium with Fama Macbeth Method",
+       x = "date", y = "Lambda") +
+  scale_x_date(minor_breaks = "1 year") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+# Plot the FM_PRS
+FM_PRS %>%
+  mutate(method = "FM") %>%
+  rbind(FM_STL_PRS %>%
+          mutate(method = "STL s7 norobust")) %>%
+  pivot_longer(cols = -c(date, method), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, RP, group = Factors, color = method)) +
+  geom_line() +
+  scale_x_date() +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  labs(title= "Estimated Expected PRS Five Factors Premium with Fama Macbeth Method",
+       x = "date", y = "Lambda") +
+  scale_x_date(minor_breaks = "1 year") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+# Calculate the correlations between filtered and unfiltered lamdbas
+FM_FF5 %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "FM") %>%
+  inner_join(FM_STL_FF5 %>%
+               pivot_longer(cols = -date, names_to = "Factors", values_to = "Correlation")) %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  group_by(Factors) %>%
+  summarize(FF5 = cor(FM, Correlation)) %>%
+  cbind(FM_PRS %>%
+          pivot_longer(cols = -date, names_to = "Factors", values_to = "FM") %>%
+          inner_join(FM_STL_PRS %>%
+                       pivot_longer(cols = -date, names_to = "Factors", values_to = "Correlation")) %>%
+          # Fix the order of Factors
+          mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+          group_by(Factors) %>%
+          summarize(PRS = cor(FM, Correlation))) %>%
+  kable(align = "c", caption = "Correlation between FM lambda and STL filtered FM lambda") %>%
+      kable_styling(font_size = 10, "striped", full_width = F) %>%
+      # Add header above
+      add_header_above(c("FF5" = 2, "PRS" = 2))
+
+
+# Create the plots to compare the different filtering choice effect on lamdba
+FM_STL_FF5 %>%
+  mutate(method = "STL s7 norobust") %>%
+  rbind(FM_STL_7_R_FF5 %>%
+          mutate(method = "STL s7 robust")) %>%
+  pivot_longer(cols = -c(date, method), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, RP, group = Factors, color = method)) +
+  geom_line() +
+  scale_x_date() +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  labs(title= "Estimated Expected Fama French Five Factors Premium with Different Choices",
+       x = "date", y = "Lambda") +
+  scale_x_date(minor_breaks = "1 year") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+FM_STL_PRS %>%
+  mutate(method = "STL s7 norobust") %>%
+  rbind(FM_STL_7_R_PRS %>%
+          mutate(method = "STL s7 robust")) %>%
+  pivot_longer(cols = -c(date, method), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, RP, group = Factors, color = method)) +
+  geom_line() +
+  scale_x_date() +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  labs(title= "Estimated Expected PRS Factors Premium with Different Choices",
+       x = "date", y = "Lambda") +
+  scale_x_date(minor_breaks = "1 year") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+# Create the plots to compare the different filtering choice effect on lamdba
+FM_STL_FF5 %>%
+  mutate(method = "STL s7 norobust") %>%
+  rbind(FM_STL_15_N_FF5 %>%
+          mutate(method = "STL s15 norobust")) %>%
+  rbind(FM_STL_40_N_FF5 %>%
+          mutate(method = "STL s40 norobust")) %>%
+  pivot_longer(cols = -c(date, method), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, RP, group = Factors, color = method)) +
+  geom_line() +
+  scale_x_date() +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  labs(title= "Estimated Expected Fama French Five Factors Premium with Different Choices",
+       x = "date", y = "Lambda") +
+  scale_x_date(minor_breaks = "1 year") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+FM_STL_PRS %>%
+  mutate(method = "STL s7 norobust") %>%
+  rbind(FM_STL_15_N_PRS %>%
+          mutate(method = "STL s15 norobust")) %>%
+  rbind(FM_STL_40_N_PRS %>%
+          mutate(method = "STL s40 norobust")) %>%
+  pivot_longer(cols = -c(date, method), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, RP, group = Factors, color = method)) +
+  geom_line() +
+  scale_x_date() +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  labs(title= "Estimated Expected PRS Factors Premium with Different Choices",
+       x = "date", y = "Lambda") +
+  scale_x_date(minor_breaks = "1 year") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+```
+
 
 Here is a comparison of the lambda statitics of the Normal Fama Macbeth and Fama Macbeth Second Step Regression with STL Trend Data.
 
@@ -2836,8 +3166,8 @@ ECC_FM_STL_PRS %>%
         axis.text.x = element_text(angle = 30, hjust = 1))
 ```
 
-### 5.2 Comparative Statics
 
+### 5.2 Comparative Statics
 
 ```{r, cache = TRUE}
 # Create the ECC with other filtering choices and compare different methods
@@ -3101,6 +3431,43 @@ All_PRS_ECC <- ECC_AM_PRS %>%
 ```
 
 Based on the Sum Squared Error, the Fama Macbeth Method has the lowest error explaining the Portfolio Risk Premium (This is because the FM second step regression applied the least square method). The STL decomposition with no robust weight works better than the one with robust weight; the FM_STL lambda works slightly better than the Arithmetic Mean and the Geometric Mean.
+
+Here we would compare the Estimated ECC from FM method and Filtered FM method:
+
+```{r, cache = TRUE}
+# Create the ECC with FM and Filtered FM
+All_FF5_ECC %>%
+  subset(select = c(date, Industry, AM, FM, FM_STL_7_N)) %>%
+  filter(Industry %in% c("Chems", "Cnstr", "Food", "Telcm", "Rubbr", "Hardw")) %>%
+  pivot_longer(cols = c(AM, FM, FM_STL_7_N), names_to = "method", values_to = "ECC") %>%
+  mutate(date = transDate(date)) %>%
+  ggplot() +
+  geom_line(aes(date, ECC, color = method),alpha = 0.4) +
+  scale_x_date() +
+  facet_wrap(~ Industry,
+             scales = "free") +
+  labs(title= "Estimated Equity Cost of Capital with Fama French Five Factors") +
+  scale_x_date(minor_breaks = "1 year") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+All_PRS_ECC %>%
+  subset(select = c(date, Industry, AM, FM, FM_STL_7_N)) %>%
+  filter(Industry %in% c("Chems", "Cnstr", "Food", "Telcm", "Rubbr", "Hardw")) %>%
+  pivot_longer(cols = c(AM, FM, FM_STL_7_N), names_to = "method", values_to = "ECC") %>%
+  mutate(date = transDate(date)) %>%
+  ggplot() +
+  geom_line(aes(date, ECC, color = method),alpha = 0.4) +
+  scale_x_date() +
+  facet_wrap(~ Industry,
+             scales = "free") +
+  labs(title= "Estimated Equity Cost of Capital with PRS Five Factors") +
+  scale_x_date(minor_breaks = "1 year") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+```
+
 
 ### 5.3 Decomposition of the Equity Cost of Captial
 

@@ -1328,7 +1328,158 @@ FM_PRS %>%
 
 As we can see, Fama Macbeth method would generate an evolving time-series of factor risk premium, but the volatility in lambda is unreasonablly large. We will try to apply the STL trend in the second step regression to smooth the lambda.
 
+### Why filtering might improve Esimated Lamdba?
+
 There is no need for trend extraction for 1st step regression, no matter if we use the full sample or rolling window. The window should be large enough to mitgate the seasonality effect. The second step regression, however, is a cross sectional regression. A seasonal component in the time series would disrupt the cross-sectional regression significantly. So it is possible the the large volatility observed in the second step regression is due to the seasonality.
+
+Now, assume the return (or risk premium) is formed by the following equation:
+
+$$r_{it} = \beta_{it}*\lambda_t+\eta_{it}$$
+
+Where beta is the sector specific risk exposure, lambda is the factor premium, and eta is the idiosyncratic noise.
+
+$$E[\eta_{it}|i] = 0$$
+
+However, the eta might actually contain 3 components: eps_t, s_i, and eps_it. 
+
+$$\eta_{it} = \epsilon_t + s_i + \epsilon_{it}$$
+
+eps_t is the universal time-series error, s_i is the sector-specific seasonality, and eps_it is the idiosyncratic error. Therefore, the equation is actually:
+
+$$r_{it} = \beta_{it}*\lambda_t+\epsilon_t + s_i + \epsilon_{it}$$
+
+Again, we would have:
+
+$$E[\epsilon_t + s_i + \epsilon_{it}|i] = 0$$
+
+However, the cross-sectional regression error at each time t:
+
+$$E[\epsilon_t + s_i + \epsilon_{it}|t] = \epsilon_t+s_i$$
+
+The universal time-series error and the seasonality would actually bias the lambda estimation. Filtering out the universal time-series noise and seasonality would improve the lamdba estimated. Now, I will illustrate the effect of seasonality and universal time-series noise in the second step regression through a simulation.
+
+### Simulation
+
+Suppose the true 49 sector betas are given (since our focus is lambda) and each of them follows an ARIMA(1,1,0) process, with AR coefficient 0.9. For demenstration purpose, the Factor Premiums follows a sin function lambda = sin(t/60*pi)+0.5. The universal time-series noise is the same for all the sectors, following N(0, 1^2); a sector-specific seasonality is randomly generated for each sector following N(0,1^2), and repeats each year; and the idiosyncratic error is also generated following N(0, 0.3^2). The first value of 49 sector betas are generated from N(1, 0.3^2). There are 600 data generated to represent monthly data in 50 years.
+
+```{r, cache = TRUE}
+# Create 600x49 matrix of time-varying betas
+sim_beta <- (replicate(49, arima.sim(list(order = c(1,1,0), ar = 0.9), n=600))/300 + rep(rnorm(49,1,0.3),601) %>% matrix(nrow = 49) %>% t()) %>%
+  # remove the first line
+  .[-1,]
+
+# Create the 600x1 matrix of factor premium
+# sim_lambda <- arima.sim(list(order(1,1,0), ar=0.8, sd = 0.05),600)
+# sim_lambda <- smooth::sim.es("ANN", frequency=12, obs=600)
+sim_lambda <- sin(1:600/60*pi)/10+0.05
+
+# Create the seasonality
+sim_seasonality <- rnorm(49*11,0,1) %>%
+  matrix(ncol = 49) %>%
+  rbind(colSums(.[1:11,])) %>%
+  rep(50) %>%
+  matrix(ncol = 49)
+
+# Create the universal time-series error
+sim_univ_error <- rnorm(600,0,1)
+
+# Create the idiosycratic error
+sim_idio_error <- rnorm(600*49,0,0.3) %>%
+  matrix(ncol = 49)
+
+# The returns are beta*lambda+seasonality+univ_error+idio_error
+sim_return <- sim_beta*(sim_lambda %>%
+                          matrix(600, 49)) + sim_seasonality + (sim_univ_error %>%
+                                                                  matrix(600, 49)) + sim_idio_error
+
+# Now I try to join the return and beta without filtered to perform a cross-sectional regression and the filtered cross-sectional regression. We will see how they performs.
+Sim_return <- sim_return %>%
+  as_tibble() %>%
+  mutate(date = 1:600)
+
+Sim_beta <- sim_beta %>%
+  as_tibble() %>%
+  mutate(date = 1:600)
+
+Sim_lambda <- sim_lambda %>%
+  as_tibble() %>%
+  mutate(date = 1:600)
+
+
+# pivot the Sim_return and Sim_beta longer and join them together
+Unfiltered_regression <- Sim_return %>%
+  pivot_longer(cols = -date, names_to = "Sector", values_to = "RP") %>%
+  inner_join(Sim_beta %>%
+               pivot_longer(cols = -date, names_to = "Sector", values_to = "beta"))
+
+# Group the data and do the second pass regression
+Rolling_Second <- Unfiltered_regression %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Sector, data = .) %>%
+       coefficients())
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = c("Lambda0", "Unfiltered_Lambda1")
+
+# Add in the dates
+Unfiltered_lambda <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = -Lambda0)
+
+
+# Now apply the STL filtering before the regression
+# pivot the Sim_return and Sim_beta longer and join them together
+Filtered_regression <- Sim_return %>%
+  pivot_longer(cols = -date, names_to = "Sector", values_to = "RP") %>%
+  group_by(Sector) %>%
+  do(model = stl_tibble(., "date", "RP")) %>%
+  .$model %>%
+  do.call(what = rbind.data.frame) %>%
+  filter(component == "Trend") %>%
+  subset(select = c(date, Sector, y)) %>%
+  rename(RP = y) %>%
+  inner_join(Sim_beta %>%
+               pivot_longer(cols = -date, names_to = "Sector", values_to = "beta"))
+
+# Group the data and do the second pass regression
+Rolling_Second <- Filtered_regression %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Sector, data = .) %>%
+       coefficients())
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = c("Lambda0", "Filtered_Lambda1")
+
+# Add in the dates
+Filtered_lambda <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = -Lambda0)
+
+# Plot the results all together
+Filtered_lambda %>%
+  inner_join(Unfiltered_lambda) %>%
+  inner_join(Sim_lambda) %>%
+  rename(Actual = value,
+         Filtered = Filtered_Lambda1,
+         Unfiltered = Unfiltered_Lambda1) %>%
+  pivot_longer(cols = -date, names_to = "Lamdba Method", values_to = "Lambda") %>%
+  ggplot(aes(date, Lambda, color = `Lamdba Method`)) +
+  geom_line() +
+  labs(title= "Second Step Regression for Simulated Return with large seasonality and time-series error") +
+  theme(plot.title = element_text(hjust=0.5))
+
+
+
+```
+
+
+### STL Filtering
 
 STL method (Cleveland et al. 1990) would try decompose the time-series into 3 components: trend, seaonality, and noise. It applies an iterative smoothing method to extract the trend and seaonality components. At the same time, one can choose to use a robust weighting scheme to reduce the effect of large noise to the trend and seaonality extraction.
 
@@ -1391,7 +1542,6 @@ Port_FF5_STL_s7_norobust %>%
   filter(Industry == "RlEst") %>%
   ggplot(aes(date, y)) +
   geom_line() +
-  geom_line() +
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
@@ -1408,7 +1558,6 @@ Port_FF5_STL_s7_robust %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   ggplot(aes(date, y)) +
-  geom_line() +
   geom_line() +
   scale_x_date() +
   facet_wrap(~ component,
@@ -1427,7 +1576,6 @@ Port_FF5_STL_s15_norobust %>%
   filter(Industry == "RlEst") %>%
   ggplot(aes(date, y)) +
   geom_line() +
-  geom_line() +
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
@@ -1444,7 +1592,6 @@ Port_FF5_STL_s15_robust %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   ggplot(aes(date, y)) +
-  geom_line() +
   geom_line() +
   scale_x_date() +
   facet_wrap(~ component,
@@ -1463,7 +1610,6 @@ Port_FF5_STL_s40_norobust %>%
   filter(Industry == "RlEst") %>%
   ggplot(aes(date, y)) +
   geom_line() +
-  geom_line() +
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
@@ -1480,7 +1626,6 @@ Port_FF5_STL_s40_robust %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   ggplot(aes(date, y)) +
-  geom_line() +
   geom_line() +
   scale_x_date() +
   facet_wrap(~ component,
@@ -1652,7 +1797,6 @@ FF5_Betas_STL_s7_norobust %>%
   mutate(Factors = factor(Factors, level= names(FF5)[2:6])) %>%
   ggplot(aes(date, y, color = Factors)) +
   geom_line() +
-  geom_line() +
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
@@ -1671,7 +1815,6 @@ FF5_Betas_STL_s7_robust %>%
   # Fix the order of factors
   mutate(Factors = factor(Factors, level= names(FF5)[2:6])) %>%
   ggplot(aes(date, y, color = Factors)) +
-  geom_line() +
   geom_line() +
   scale_x_date() +
   facet_wrap(~ component,
@@ -1692,7 +1835,6 @@ FF5_Betas_STL_s15_norobust %>%
   mutate(Factors = factor(Factors, level= names(FF5)[2:6])) %>%
   ggplot(aes(date, y, color = Factors)) +
   geom_line() +
-  geom_line() +
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
@@ -1711,7 +1853,6 @@ FF5_Betas_STL_s15_robust %>%
   # Fix the order of factors
   mutate(Factors = factor(Factors, level= names(FF5)[2:6])) %>%
   ggplot(aes(date, y, color = Factors)) +
-  geom_line() +
   geom_line() +
   scale_x_date() +
   facet_wrap(~ component,
@@ -1788,7 +1929,6 @@ PRS_Betas_STL_s7_norobust %>%
   mutate(Factors = factor(Factors, level= names(PRS)[2:6])) %>%
   ggplot(aes(date, y, color = Factors)) +
   geom_line() +
-  geom_line() +
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
@@ -1807,7 +1947,6 @@ PRS_Betas_STL_s7_robust %>%
   # Fix the order of factors
   mutate(Factors = factor(Factors, level= names(PRS)[2:6])) %>%
   ggplot(aes(date, y, color = Factors)) +
-  geom_line() +
   geom_line() +
   scale_x_date() +
   facet_wrap(~ component,
@@ -1828,7 +1967,6 @@ PRS_Betas_STL_s15_norobust %>%
   mutate(Factors = factor(Factors, level= names(PRS)[2:6])) %>%
   ggplot(aes(date, y, color = Factors)) +
   geom_line() +
-  geom_line() +
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
@@ -1847,7 +1985,6 @@ PRS_Betas_STL_s15_robust %>%
   # Fix the order of factors
   mutate(Factors = factor(Factors, level= names(PRS)[2:6])) %>%
   ggplot(aes(date, y, color = Factors)) +
-  geom_line() +
   geom_line() +
   scale_x_date() +
   facet_wrap(~ component,

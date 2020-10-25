@@ -8410,13 +8410,49 @@ Fama-Macbeth second regression estimated lambda represents the expected factor r
 
 As we can see, Fama Macbeth method would generate an evolving time-series of factor risk premium, but the volatility in lambda is unreasonablly large. We will try to apply the STL trend in the second step regression to smooth the lambda.
 
+### Why filtering might improve Esimated Lamdba?
+
 There is no need for trend extraction for 1st step regression, no matter if we use the full sample or rolling window. The window should be large enough to mitgate the seasonality effect. The second step regression, however, is a cross sectional regression. A seasonal component in the time series would disrupt the cross-sectional regression significantly. So it is possible the the large volatility observed in the second step regression is due to the seasonality.
+
+Now, assume the return (or risk premium) is formed by the following equation:
+
+*r*<sub>*i**t*</sub> = *β*<sub>*i**t*</sub> \* *λ*<sub>*t*</sub> + *η*<sub>*i**t*</sub>
+
+Where beta is the sector specific risk exposure, lambda is the factor premium, and eta is the idiosyncratic noise.
+
+*E*\[*η*<sub>*i**t*</sub>|*i*\]=0
+
+However, the eta might actually contain 3 components: eps\_t, s\_i, and eps\_it.
+
+*η*<sub>*i**t*</sub> = *ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub> + *ϵ*<sub>*i**t*</sub>
+
+eps\_t is the universal time-series error, s\_i is the sector-specific seasonality, and eps\_it is the idiosyncratic error. Therefore, the equation is actually:
+
+*r*<sub>*i**t*</sub> = *β*<sub>*i**t*</sub> \* *λ*<sub>*t*</sub> + *ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub> + *ϵ*<sub>*i**t*</sub>
+
+Again, we would have:
+
+*E*\[*ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub> + *ϵ*<sub>*i**t*</sub>|*i*\]=0
+
+However, the cross-sectional regression error at each time t:
+
+*E*\[*ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub> + *ϵ*<sub>*i**t*</sub>|*t*\]=*ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub>
+
+The universal time-series error and the seasonality would actually bias the lambda estimation. Filtering out the universal time-series noise and seasonality would improve the lamdba estimated. Now, I will illustrate the effect of seasonality and universal time-series noise in the second step regression through a simulation.
+
+### Simulation
+
+Suppose the true 49 sector betas are given (since our focus is lambda) and each of them follows an ARIMA(1,1,0) process, with AR coefficient 0.9. For demenstration purpose, the Factor Premiums follows a sin function lambda = sin(t/60\*pi)+0.5. The universal time-series noise is the same for all the sectors, following N(0, 1^2); a sector-specific seasonality is randomly generated for each sector following N(0,1^2), and repeats each year; and the idiosyncratic error is also generated following N(0, 0.3^2). The first value of 49 sector betas are generated from N(1, 0.3^2). There are 600 data generated to represent monthly data in 50 years.
+
+![](ECC_files/figure-markdown_github/unnamed-chunk-17-1.png)
+
+### STL Filtering
 
 STL method (Cleveland et al. 1990) would try decompose the time-series into 3 components: trend, seaonality, and noise. It applies an iterative smoothing method to extract the trend and seaonality components. At the same time, one can choose to use a robust weighting scheme to reduce the effect of large noise to the trend and seaonality extraction.
 
 We will extract the trend of risk premium of the industry portfolios and the trend of the betas with the STL method, and then conduct the second step regression. There are two options with the STL method: the loess window for seasonal extraction (s\_window, large value means no rapidly evolving seasonal component, needs to be odd and at least 7) and robust weights for noise (downweight the noisy data in smoothing if non-Gaussian behavior in the time-series leads to extreme, transient variation). We will first show the STL decomposition of betas and returns.
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-17-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-17-2.png)![](ECC_files/figure-markdown_github/unnamed-chunk-17-3.png)![](ECC_files/figure-markdown_github/unnamed-chunk-17-4.png)![](ECC_files/figure-markdown_github/unnamed-chunk-17-5.png)![](ECC_files/figure-markdown_github/unnamed-chunk-17-6.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-18-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-18-2.png)![](ECC_files/figure-markdown_github/unnamed-chunk-18-3.png)![](ECC_files/figure-markdown_github/unnamed-chunk-18-4.png)![](ECC_files/figure-markdown_github/unnamed-chunk-18-5.png)![](ECC_files/figure-markdown_github/unnamed-chunk-18-6.png)
 
 The robustness weighting seems not be appropriate for the Industry Risk Premiums since the returns vairation are mostly caused by Gaussian behavior. One example is the end of the trend curve: there was a market crash at the beginning of 2020, so the trend should go down. However, with the robust weighting, the market crash was given little wight and disappeared. At the same time, we might just choose s\_window = 7, since there could be changing seasonal patterns in the short-term.
 
@@ -10426,7 +10462,7 @@ It seems that the both the trend and seasonal components are weak. No robust is 
 
 ### Beta Decomposition
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-19-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-2.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-3.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-4.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-5.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-6.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-7.png)![](ECC_files/figure-markdown_github/unnamed-chunk-19-8.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-20-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-20-2.png)![](ECC_files/figure-markdown_github/unnamed-chunk-20-3.png)![](ECC_files/figure-markdown_github/unnamed-chunk-20-4.png)![](ECC_files/figure-markdown_github/unnamed-chunk-20-5.png)![](ECC_files/figure-markdown_github/unnamed-chunk-20-6.png)![](ECC_files/figure-markdown_github/unnamed-chunk-20-7.png)![](ECC_files/figure-markdown_github/unnamed-chunk-20-8.png)
 
 Beta estimation's noise or seasonal pattern is much smaller than trend so the noise weight or the s\_winow does not impact the result as much. We are safe by just using the no robust weighting and s\_window = 7 and that would make the left- and right-hand-side of the second step regression treated the same.
 
@@ -10434,7 +10470,7 @@ Now, we will take the desired no robust weighting, s\_window = 7 trend results o
 
 ### Filtered Second Pass Regression
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-20-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-20-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-21-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-21-2.png)
 
 For robustness check, we also computed the factor risk premium based on other filterings.
 
@@ -10442,7 +10478,7 @@ For robustness check, we also computed the factor risk premium based on other fi
 
 Let's plot the unfiltered lambda together with filtered lamdba to see the effect of filtering on lambda.
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-22-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-22-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-23-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-23-2.png)
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 Correlation between FM lambda and STL filtered FM lambda
@@ -10546,7 +10582,7 @@ UNEXPI
 </tr>
 </tbody>
 </table>
-![](ECC_files/figure-markdown_github/unnamed-chunk-22-3.png)![](ECC_files/figure-markdown_github/unnamed-chunk-22-4.png)![](ECC_files/figure-markdown_github/unnamed-chunk-22-5.png)![](ECC_files/figure-markdown_github/unnamed-chunk-22-6.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-23-3.png)![](ECC_files/figure-markdown_github/unnamed-chunk-23-4.png)![](ECC_files/figure-markdown_github/unnamed-chunk-23-5.png)![](ECC_files/figure-markdown_github/unnamed-chunk-23-6.png)
 
 Here is a comparison of the lambda statitics of the Normal Fama Macbeth and Fama Macbeth Second Step Regression with STL Trend Data.
 
@@ -12383,19 +12419,19 @@ As the equation indicates, *E**C**C* = ∑<sub>*i* ∈ *F*</sub>*β*<sub
 
 ### 5.1.1 Arithmetic Mean
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-24-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-24-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-25-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-2.png)
 
 ### 5.1.2 Geometric Mean
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-25-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-25-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-26-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-26-2.png)
 
 ### 5.1.3 Fama Macbeth Second Step Regression
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-26-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-26-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-27-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-27-2.png)
 
 ### 5.1.4 Fama Macbeth Second Step Regression with STL Trend Data
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-27-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-27-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-28-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-28-2.png)
 
 ### 5.2 Comparative Statics
 
@@ -12553,11 +12589,11 @@ Based on the Sum Squared Error, the Fama Macbeth Method has the lowest error exp
 
 Here we would compare the Estimated ECC from FM method and Filtered FM method:
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-29-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-29-2.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-30-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-30-2.png)
 
 ### 5.3 Decomposition of the Equity Cost of Captial
 
-![](ECC_files/figure-markdown_github/unnamed-chunk-30-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-30-2.png)![](ECC_files/figure-markdown_github/unnamed-chunk-30-3.png)![](ECC_files/figure-markdown_github/unnamed-chunk-30-4.png)![](ECC_files/figure-markdown_github/unnamed-chunk-30-5.png)![](ECC_files/figure-markdown_github/unnamed-chunk-30-6.png)![](ECC_files/figure-markdown_github/unnamed-chunk-30-7.png)![](ECC_files/figure-markdown_github/unnamed-chunk-30-8.png)
+![](ECC_files/figure-markdown_github/unnamed-chunk-31-1.png)![](ECC_files/figure-markdown_github/unnamed-chunk-31-2.png)![](ECC_files/figure-markdown_github/unnamed-chunk-31-3.png)![](ECC_files/figure-markdown_github/unnamed-chunk-31-4.png)![](ECC_files/figure-markdown_github/unnamed-chunk-31-5.png)![](ECC_files/figure-markdown_github/unnamed-chunk-31-6.png)![](ECC_files/figure-markdown_github/unnamed-chunk-31-7.png)![](ECC_files/figure-markdown_github/unnamed-chunk-31-8.png)
 
 ### 5.4 Forcasting???
 

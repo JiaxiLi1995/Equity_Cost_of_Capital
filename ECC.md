@@ -2,6 +2,43 @@ Industry Equity Cost of Capital
 ================
 Mike Aguilar, Bob Connolly, and Jiaxi Li
 
+-   [1. Introduction](#introduction)
+-   [2. Data](#data)
+    -   [2.1 Industry Return and Fama French Five Factors](#industry-return-and-fama-french-five-factors)
+    -   [2.2 Traded PRS Five Factors](#traded-prs-five-factors)
+-   [3. First-Pass Regression](#first-pass-regression)
+    -   [3.1 Fama French Five Factor Model](#fama-french-five-factor-model)
+    -   [3.1.1 Full Sample Estimation](#full-sample-estimation)
+    -   [3.1.2 Rolling Window Estimation](#rolling-window-estimation)
+    -   [3.1.3 Full Sample Estimation with STL Trend](#full-sample-estimation-with-stl-trend)
+    -   [3.1.4 Rolling Window Estimation with STL Trend](#rolling-window-estimation-with-stl-trend)
+    -   [3.2 PRS Five Factor Model](#prs-five-factor-model)
+    -   [3.2.1 Full Sample Estimation](#full-sample-estimation-1)
+    -   [3.2.2 Rolling Window Estimation](#rolling-window-estimation-1)
+    -   [3.2.3 Full Sample Estimation with STL Trend](#full-sample-estimation-with-stl-trend-1)
+    -   [3.2.4 Rolling Window Estimation with STL Trend](#rolling-window-estimation-with-stl-trend-1)
+-   [4. Factor Premium Estimation](#factor-premium-estimation)
+    -   [4.1 Arithmetic Mean](#arithmetic-mean)
+    -   [4.2 Geometric Mean](#geometric-mean)
+    -   [4.3 Fama Macbeth Second Step Regression](#fama-macbeth-second-step-regression)
+    -   [4.4 Fama Macbeth Second Step Regression with STL Deseaoned Data](#fama-macbeth-second-step-regression-with-stl-deseaoned-data)
+    -   [Why filtering might improve Esimated Lamdba?](#why-filtering-might-improve-esimated-lamdba)
+    -   [Simulation](#simulation)
+    -   [STL Filtering](#stl-filtering)
+    -   [Filtered Seasonality and Trend Strength](#filtered-seasonality-and-trend-strength)
+    -   [Beta Decomposition](#beta-decomposition)
+    -   [Filtered Second Pass Regression](#filtered-second-pass-regression)
+    -   [Unfiltered vs. Filtered Lambdas](#unfiltered-vs.-filtered-lambdas)
+-   [5. Equity Cost of Captial](#equity-cost-of-captial)
+    -   [5.1 Estimated Equity Cost of Captial](#estimated-equity-cost-of-captial)
+    -   [5.1.1 Arithmetic Mean](#arithmetic-mean-1)
+    -   [5.1.2 Geometric Mean](#geometric-mean-1)
+    -   [5.1.3 Fama Macbeth Second Step Regression](#fama-macbeth-second-step-regression-1)
+    -   [5.1.4 Fama Macbeth Second Step Regression with STL Trend Data](#fama-macbeth-second-step-regression-with-stl-trend-data)
+    -   [5.2 Comparative Statics](#comparative-statics)
+    -   [5.3 Decomposition of the Equity Cost of Captial](#decomposition-of-the-equity-cost-of-captial)
+    -   [5.4 Forcasting???](#forcasting)
+
 1. Introduction
 ---------------
 

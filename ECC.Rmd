@@ -395,7 +395,7 @@ write.csv(PRS_monthly, here("data/PRS_monthly.csv"), na = "",  row.names = FALSE
 
 # S3 First-Pass Regression
 
-In this section, we will try to apply the simple first-pass regression to estimate the betas of the 49 industry portfolios. The period would be from July 1969 to June 2020. Since the focus of this paper is about the factor risk premium estimation, we will use the most basic first pass regressions (full sample and 5-year rolling window) to estimate the betas and compare which lamdba method would work better.
+In this section, we will try to apply the simple first-pass regression to estimate the betas of the 49 industry portfolios. The period would be from July 1969 to June 2020. Since the focus of this paper is about the factor risk premium estimation, we will use the most basic first pass regressions (full sample and 5-year rolling window) to estimate the betas and compare which lambda method would work better.
 
 ## S3-1 Fama French Five Factor Model
 
@@ -1364,7 +1364,7 @@ The universal time-series error and the seasonality would actually bias the lamb
 
 ### S4-4-2 Simulation
 
-Suppose the true 49 sector betas are given (since our focus is lambda) and each of them follows an ARIMA(1,1,0) process, with AR coefficient 0.9. For demenstration purpose, the Factor Premiums follows a sin function lambda = sin(t/60*pi)+0.5. The universal time-series noise is the same for all the sectors, following N(0, 1^2); a sector-specific seasonality is randomly generated for each sector following N(0,1^2), and repeats each year; and the idiosyncratic error is also generated following N(0, 0.3^2). The first value of 49 sector betas are generated from N(1, 0.3^2). There are 600 data generated to represent monthly data in 50 years.
+Suppose the true 49 sector betas are given (since our focus is lambda) and each of them follows an ARIMA(1,1,0) process, with AR coefficient 0.9. For demonstration purpose, the Factor Premiums follows a sin function lambda = sin(t/60*pi)+0.5. The universal time-series noise is the same for all the sectors, following N(0, 1^2); a sector-specific seasonality is randomly generated for each sector following N(0,1^2), and repeats each year; and the idiosyncratic error is also generated following N(0, 0.3^2). The first value of 49 sector betas are generated from N(1, 0.3^2). There are 600 data generated to represent monthly data in 50 years.
 
 ```{r, cache = TRUE}
 # Create 600x49 matrix of time-varying betas
@@ -1408,6 +1408,8 @@ Sim_beta <- sim_beta %>%
 Sim_lambda <- sim_lambda %>%
   as_tibble() %>%
   mutate(date = 1:600)
+
+names(Sim_lambda)[1] = "value"
 
 
 # pivot the Sim_return and Sim_beta longer and join them together
@@ -1482,6 +1484,30 @@ Filtered_lambda %>%
   theme(plot.title = element_text(hjust=0.5))
 
 
+
+```
+
+Now, we are going to replace the sin function with a random smooth function. The truly expected factor premium should not behave too crazily so it should be roughly a smooth curve, and for any smooth curve on earth, we can apply a Fourier Transformation to convert it to a linear combination of sin and cos equations. If you do not believe that the truly expected factor premium is smooth, at least it is an impulse response process (it shifts when information hits it) and therefore can be Fourier Transformed. So, we can apply a Fourier transformation equation to simulate a random curve as the true factor premium.
+
+```{r, eval = FALSE}
+# create random Fourier Transformed Functions as Lambda
+# It is based on http://www.di.fc.ul.pt/~jpn/r/fourier/fourier.html#dc-components
+acq.freq <- 100                    # data acquisition (sample) frequency (Hz)
+time     <- 6                      # measuring time interval (seconds)
+ts       <- seq(0,time-1/acq.freq,1/acq.freq) # vector of sampling time-points (s) 
+f.0 <- 1/time
+
+dc.component <- rnorm(1,0.5,0.1)
+component.freqs <- c(3,7,10)        # frequency of signal components (Hz)
+component.delay <- c(0,0,0)         # delay of signal components (radians)
+component.strength <- c(1.5,.5,.75) # strength of signal components
+
+f   <- function(t,w) { 
+  dc.component + 
+  sum( component.strength * sin(component.freqs*w*t + component.delay)) 
+}
+
+f(t(1:600),1)
 
 ```
 
@@ -1698,11 +1724,11 @@ Port_PRS_STL_s40_robust <- Port_PRS %>%
 
 ```
 
-The robustness weighting seems not be appropriate for the Industry Risk Premiums since the returns vairation are mostly caused by Gaussian behavior. One example is the end of the trend curve: there was a market crash at the beginning of 2020, so the trend should go down. However, with the robust weighting, the market crash was given little wight and disappeared. At the same time, we might just choose s_window = 7, since there could be changing seasonal patterns in the short-term.
+The robustness weighting seems not be appropriate for the Industry Risk Premiums since the returns variation are mostly caused by Gaussian behavior. One example is the end of the trend curve: there was a market crash at the beginning of 2020, so the trend should go down. However, with the robust weighting, the market crash was given little wight and disappeared. At the same time, we might just choose s_window = 7, since there could be changing seasonal patterns in the short-term.
 
 ### S4-4-4 Filtered Seasonality and Trend Strength
 
-Now we estimate the strength of trend and strength of seasonality. The Strenth of the trend is defined as:
+Now we estimate the strength of trend and strength of seasonality. The Strength of the trend is defined as:
 
 $$F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})$$
 
@@ -1736,7 +1762,7 @@ Port_FF5_STL_s7_norobust %>%
   collapse_rows(columns = 1)
 ```
 
-It seems that the both the trend and seasonal components are weak. No robust is stronger than robust, and smaller s_window woudl yield stronger components.
+It seems that the both the trend and seasonal components are weak. No robust is stronger than robust, and smaller s_window would yield stronger components.
 
 ### S4-4-5 Beta Decomposition
 
@@ -2115,7 +2141,7 @@ FM_STL_PRS %>%
 
 ```
 
-For robustness check, we also computed the factor risk premium based on other filterings.
+For robustness check, we also computed the factor risk premium based on other filtering.
 
 ```{r, cache = TRUE}
 # Estimate the Factor Risk Premium for FF5
@@ -2393,7 +2419,7 @@ FM_STL_40_R_PRS <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
 
 ### S4-4-7 Unfiltered vs. Filtered Lambdas
 
-Let's plot the unfiltered lambda together with filtered lamdba to see the effect of filtering on lambda.
+Let's plot the unfiltered lambda together with filtered lambda to see the effect of filtering on lambda.
 
 ```{r, cache = TRUE}
 # Plot the FM_FF5
@@ -2436,7 +2462,7 @@ FM_PRS %>%
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 75, hjust = 1))
 
-# Calculate the correlations between filtered and unfiltered lamdbas
+# Calculate the correlations between filtered and unfiltered lambdas
 FM_FF5 %>%
   pivot_longer(cols = -date, names_to = "Factors", values_to = "FM") %>%
   inner_join(FM_STL_FF5 %>%
@@ -2458,8 +2484,7 @@ FM_FF5 %>%
       # Add header above
       add_header_above(c("FF5" = 2, "PRS" = 2))
 
-
-# Create the plots to compare the different filtering choice effect on lamdba
+# Create the plots to compare the different filtering choice effect on lambda
 FM_STL_FF5 %>%
   mutate(method = "STL s7 norobust") %>%
   rbind(FM_STL_7_R_FF5 %>%
@@ -2544,7 +2569,47 @@ FM_STL_PRS %>%
 ```
 
 
-Here is a comparison of the lambda statitics of the Normal Fama Macbeth and Fama Macbeth Second Step Regression with STL Trend Data.
+We also performed a KS test to test the FM lambdas and STL FM lamdbas for different factors. It seems that their distributions are different.
+
+```{r, cache = TRUE}
+# Perform the ks.test for FF5 and PRS lambdas and create a table
+FM_FF5 %>%
+  mutate(method = "FM") %>%
+  rbind(FM_STL_FF5 %>%
+          mutate(method = "STL s7 norobust")) %>%
+  pivot_longer(cols = -c(date, method), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  pivot_wider(names_from = "method", values_from = "RP") %>%
+  group_by(Factors) %>%
+  do(KS = ks.test(.$FM, .$`STL s7 norobust`)) %>%
+  cbind(.[,1], do.call(rbind.data.frame, .$KS)) %>%
+  subset(select = c(1,4,5)) %>%
+  mutate(model = "FF5") %>%
+  subset(select = c(4,1:3)) %>%
+  rbind(FM_PRS %>%
+          mutate(method = "FM") %>%
+  rbind(FM_STL_PRS %>%
+          mutate(method = "STL s7 norobust")) %>%
+    pivot_longer(cols = -c(date, method), names_to = "Factors", values_to = "RP") %>%
+    # Fix the order of Factors
+    mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+    pivot_wider(names_from = "method", values_from = "RP") %>%
+    group_by(Factors) %>%
+    do(KS = ks.test(.$FM, .$`STL s7 norobust`)) %>%
+    cbind(.[,1], do.call(rbind.data.frame, .$KS)) %>%
+    subset(select = c(1,4,5)) %>%
+    mutate(model = "PRS") %>%
+    subset(select = c(4,1:3))) %>%
+  kable(align = "c", caption = "KS Test for Fama Mecbeth Lambdas and STL FM Lambdas") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  collapse_rows(columns = 1)
+
+```
+
+
+Here is a comparison of the lambda statistics of the Normal Fama Macbeth and Fama Macbeth Second Step Regression with STL Trend Data.
 
 ```{r, cache = TRUE}
 FF5_table <- FM_FF5 %>%
@@ -3566,6 +3631,29 @@ All_PRS_ECC %>%
 
 ```
 
+
+We also performed a KS test to test the FM ECC and STL FM ECC for different sectors. It seems that the distributions are different from FM ECC and STL FM ECC.
+
+```{r, cache = TRUE}
+# Perform the ks.test for FF5 and PRS lambdas and create a table
+All_FF5_ECC %>%
+  group_by(Industry) %>%
+  do(KS = ks.test(.$FM, .$FM_STL_7_N)) %>%
+  cbind(.[,1], do.call(rbind.data.frame, .$KS)) %>%
+  subset(select = c(1,4,5)) %>%
+  cbind(All_PRS_ECC %>%
+    group_by(Industry) %>%
+    do(KS = ks.test(.$FM, .$FM_STL_7_N)) %>%
+    cbind(.[,1], do.call(rbind.data.frame, .$KS)) %>%
+    subset(select = c(4,5))) %>%
+  remove_rownames() %>%
+  kable(align = "c", caption = "KS Test for Fama Mecbeth ECC and STL FM ECC") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  # Add header above
+  add_header_above(c(" " = 1, "FF5" = 2, "PRS" = 2))
+
+```
 
 ## S5-3 Decomposition of the Equity Cost of Captial
 

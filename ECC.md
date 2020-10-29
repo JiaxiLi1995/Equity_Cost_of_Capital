@@ -186,7 +186,7 @@ to estimate the betas of the 49 industry portfolios. The period would be
 from July 1969 to June 2020. Since the focus of this paper is about the
 factor risk premium estimation, we will use the most basic first pass
 regressions (full sample and 5-year rolling window) to estimate the
-betas and compare which lamdba method would work better.
+betas and compare which lambda method would work better.
 
 ## S3-1 Fama French Five Factor Model
 
@@ -8660,7 +8660,7 @@ step regression through a simulation.
 
 Suppose the true 49 sector betas are given (since our focus is lambda)
 and each of them follows an ARIMA(1,1,0) process, with AR coefficient
-0.9. For demenstration purpose, the Factor Premiums follows a sin
+0.9. For demonstration purpose, the Factor Premiums follows a sin
 function lambda = sin(t/60\*pi)+0.5. The universal time-series noise is
 the same for all the sectors, following N(0, 1^2); a sector-specific
 seasonality is randomly generated for each sector following N(0,1^2),
@@ -8670,6 +8670,16 @@ from N(1, 0.3^2). There are 600 data generated to represent monthly data
 in 50 years.
 
 ![](ECC_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+
+Now, we are going to replace the sin function with a random smooth
+function. The truly expected factor premium should not behave too
+crazily so it should be roughly a smooth curve, and for any smooth curve
+on earth, we can apply a Fourier Transformation to convert it to a
+linear combination of sin and cos equations. If you do not believe that
+the truly expected factor premium is smooth, at least it is an impulse
+response process (it shifts when information hits it) and therefore can
+be Fourier Transformed. So, we can apply a Fourier transformation
+equation to simulate a random curve as the true factor premium.
 
 ### S4-4-3 STL Filtering
 
@@ -8689,10 +8699,10 @@ non-Gaussian behavior in the time-series leads to extreme, transient
 variation). We will first show the STL decomposition of betas and
 returns.
 
-![](ECC_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-18-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-18-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-18-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-18-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-18-6.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-6.png)<!-- -->
 
 The robustness weighting seems not be appropriate for the Industry Risk
-Premiums since the returns vairation are mostly caused by Gaussian
+Premiums since the returns variation are mostly caused by Gaussian
 behavior. One example is the end of the trend curve: there was a market
 crash at the beginning of 2020, so the trend should go down. However,
 with the robust weighting, the market crash was given little wight and
@@ -8702,7 +8712,7 @@ there could be changing seasonal patterns in the short-term.
 ### S4-4-4 Filtered Seasonality and Trend Strength
 
 Now we estimate the strength of trend and strength of seasonality. The
-Strenth of the trend is defined as:
+Strength of the trend is defined as:
 
 ![F\_T = max(0,1-\\frac{Var(R\_t)}{Var(T\_t+R\_t)})](https://latex.codecogs.com/png.latex?F_T%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28T_t%2BR_t%29%7D%29 "F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})")
 
@@ -10704,12 +10714,12 @@ s40 robust
 </table>
 
 It seems that the both the trend and seasonal components are weak. No
-robust is stronger than robust, and smaller s\_window woudl yield
+robust is stronger than robust, and smaller s\_window would yield
 stronger components.
 
 ### S4-4-5 Beta Decomposition
 
-![](ECC_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-8.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-8.png)<!-- -->
 
 Beta estimation’s noise or seasonal pattern is much smaller than trend
 so the noise weight or the s\_winow does not impact the result as much.
@@ -10720,17 +10730,17 @@ premium.
 
 ### S4-4-6 Filtered Second Pass Regression
 
-![](ECC_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-2.png)<!-- -->
 
 For robustness check, we also computed the factor risk premium based on
-other filterings.
+other filtering.
 
 ### S4-4-7 Unfiltered vs. Filtered Lambdas
 
-Let’s plot the unfiltered lambda together with filtered lamdba to see
+Let’s plot the unfiltered lambda together with filtered lambda to see
 the effect of filtering on lambda.
 
-![](ECC_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-23-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-2.png)<!-- -->
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 Correlation between FM lambda and STL filtered FM lambda
@@ -10845,9 +10855,152 @@ UNEXPI
 </tbody>
 </table>
 
-![](ECC_files/figure-gfm/unnamed-chunk-23-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-23-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-23-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-23-6.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-24-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-6.png)<!-- -->
 
-Here is a comparison of the lambda statitics of the Normal Fama Macbeth
+We also performed a KS test to test the FM lambdas and STL FM lamdbas
+for different factors. It seems that their distributions are different.
+
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+KS Test for Fama Mecbeth Lambdas and STL FM Lambdas
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+model
+</th>
+<th style="text-align:center;">
+Factors
+</th>
+<th style="text-align:center;">
+statistic
+</th>
+<th style="text-align:center;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="5">
+FF5
+</td>
+<td style="text-align:center;">
+Mkt-RF
+</td>
+<td style="text-align:center;">
+0.2911392
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+SMB
+</td>
+<td style="text-align:center;">
+0.3092224
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+HML
+</td>
+<td style="text-align:center;">
+0.2712477
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+RMW
+</td>
+<td style="text-align:center;">
+0.2820976
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+CMA
+</td>
+<td style="text-align:center;">
+0.2658228
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="5">
+PRS
+</td>
+<td style="text-align:center;">
+Mkt-RF
+</td>
+<td style="text-align:center;">
+0.2820976
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+RMW
+</td>
+<td style="text-align:center;">
+0.2875226
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+dDP
+</td>
+<td style="text-align:center;">
+0.3001808
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+dTS
+</td>
+<td style="text-align:center;">
+0.2585895
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+UNEXPI
+</td>
+<td style="text-align:center;">
+0.2820976
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+
+Here is a comparison of the lambda statistics of the Normal Fama Macbeth
 and Fama Macbeth Second Step Regression with STL Trend Data.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -12696,19 +12849,19 @@ this section refers to the estimated risk premium.
 
 ### S5-1-1 Arithmetic Mean
 
-![](ECC_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-25-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-27-2.png)<!-- -->
 
 ### S5-1-2 Geometric Mean
 
-![](ECC_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-26-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-28-2.png)<!-- -->
 
 ### S5-1-3 Fama Macbeth Second Step Regression
 
-![](ECC_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-27-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-29-2.png)<!-- -->
 
 ### S5-1-4 Fama Macbeth Second Step Regression with STL Trend Data
 
-![](ECC_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-28-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-30-2.png)<!-- -->
 
 ## S5-2 Comparative Statics
 
@@ -12873,11 +13026,897 @@ Arithmetic Mean and the Geometric Mean.
 Here we would compare the Estimated ECC from FM method and Filtered FM
 method:
 
-![](ECC_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-30-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-32-2.png)<!-- -->
+
+We also performed a KS test to test the FM ECC and STL FM ECC for
+different sectors. It seems that the distributions are different from FM
+ECC and STL FM ECC.
+
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+KS Test for Fama Mecbeth ECC and STL FM ECC
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
+FF5
+
+</div>
+
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
+PRS
+
+</div>
+
+</th>
+</tr>
+<tr>
+<th style="text-align:center;">
+Industry
+</th>
+<th style="text-align:center;">
+statistic
+</th>
+<th style="text-align:center;">
+p.value
+</th>
+<th style="text-align:center;">
+statistic
+</th>
+<th style="text-align:center;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Aero
+</td>
+<td style="text-align:center;">
+0.2820976
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2911392
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Agric
+</td>
+<td style="text-align:center;">
+0.2947559
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2839060
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Autos
+</td>
+<td style="text-align:center;">
+0.3056058
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2748644
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Banks
+</td>
+<td style="text-align:center;">
+0.2839060
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2839060
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Beer
+</td>
+<td style="text-align:center;">
+0.3236890
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.3074141
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+BldMt
+</td>
+<td style="text-align:center;">
+0.2820976
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2694394
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Books
+</td>
+<td style="text-align:center;">
+0.3037975
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2730561
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Boxes
+</td>
+<td style="text-align:center;">
+0.3037975
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2929476
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+BusSv
+</td>
+<td style="text-align:center;">
+0.3092224
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2694394
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Chems
+</td>
+<td style="text-align:center;">
+0.3092224
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2911392
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Chips
+</td>
+<td style="text-align:center;">
+0.2983725
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2784810
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Clths
+</td>
+<td style="text-align:center;">
+0.3128391
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2947559
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Cnstr
+</td>
+<td style="text-align:center;">
+0.3164557
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.3001808
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Coal
+</td>
+<td style="text-align:center;">
+0.2676311
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2441230
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Drugs
+</td>
+<td style="text-align:center;">
+0.3164557
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.3164557
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+ElcEq
+</td>
+<td style="text-align:center;">
+0.2929476
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2875226
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+FabPr
+</td>
+<td style="text-align:center;">
+0.3056058
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.3146474
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Fin
+</td>
+<td style="text-align:center;">
+0.2947559
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2694394
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Food
+</td>
+<td style="text-align:center;">
+0.2929476
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2893309
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Fun
+</td>
+<td style="text-align:center;">
+0.2893309
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2893309
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Gold
+</td>
+<td style="text-align:center;">
+0.2694394
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2585895
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Guns
+</td>
+<td style="text-align:center;">
+0.2730561
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.3001808
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Hardw
+</td>
+<td style="text-align:center;">
+0.2983725
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2857143
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Hlth
+</td>
+<td style="text-align:center;">
+0.2839060
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.3074141
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Hshld
+</td>
+<td style="text-align:center;">
+0.3056058
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2839060
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Insur
+</td>
+<td style="text-align:center;">
+0.2875226
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2730561
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+LabEq
+</td>
+<td style="text-align:center;">
+0.3146474
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2784810
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Mach
+</td>
+<td style="text-align:center;">
+0.3092224
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.3092224
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Meals
+</td>
+<td style="text-align:center;">
+0.3327306
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.3019892
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+MedEq
+</td>
+<td style="text-align:center;">
+0.3128391
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2911392
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Mines
+</td>
+<td style="text-align:center;">
+0.2802893
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2983725
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Oil
+</td>
+<td style="text-align:center;">
+0.3056058
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.3056058
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Other
+</td>
+<td style="text-align:center;">
+0.2875226
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2965642
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Paper
+</td>
+<td style="text-align:center;">
+0.2911392
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2820976
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+PerSv
+</td>
+<td style="text-align:center;">
+0.3056058
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2730561
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+RlEst
+</td>
+<td style="text-align:center;">
+0.2820976
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2694394
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Rtail
+</td>
+<td style="text-align:center;">
+0.3254973
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.3056058
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Rubbr
+</td>
+<td style="text-align:center;">
+0.3182640
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2784810
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Ships
+</td>
+<td style="text-align:center;">
+0.2947559
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2802893
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Smoke
+</td>
+<td style="text-align:center;">
+0.2820976
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2875226
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Soda
+</td>
+<td style="text-align:center;">
+0.3092224
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2911392
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Softw
+</td>
+<td style="text-align:center;">
+0.2766727
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2513562
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Steel
+</td>
+<td style="text-align:center;">
+0.2965642
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2983725
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Telcm
+</td>
+<td style="text-align:center;">
+0.2893309
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2947559
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Toys
+</td>
+<td style="text-align:center;">
+0.3092224
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2820976
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Trans
+</td>
+<td style="text-align:center;">
+0.3001808
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2766727
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Txtls
+</td>
+<td style="text-align:center;">
+0.2839060
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2766727
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Util
+</td>
+<td style="text-align:center;">
+0.3019892
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2730561
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Whlsl
+</td>
+<td style="text-align:center;">
+0.3019892
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0.2857143
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+</tbody>
+</table>
 
 ## S5-3 Decomposition of the Equity Cost of Captial
 
-![](ECC_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-8.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-8.png)<!-- -->
 
 ## S5-4 Forcasting???
 

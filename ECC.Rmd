@@ -1473,8 +1473,11 @@ Filtered_lambda %>%
          Filtered = Filtered_Lambda1,
          Unfiltered = Unfiltered_Lambda1) %>%
   pivot_longer(cols = -date, names_to = "Lamdba Method", values_to = "Lambda") %>%
+  # fix order
+  mutate(`Lamdba Method` = factor(`Lamdba Method`, levels = c("Unfiltered","Filtered","Actual"))) %>%
   ggplot(aes(date, Lambda, color = `Lamdba Method`)) +
   geom_line() +
+  scale_color_manual(values=c("springgreen1", "blue", "coral")) +
   labs(title= "Second Step Regression for Simulated Return with large seasonality and time-series error") +
   theme(plot.title = element_text(hjust=0.5))
 
@@ -3590,9 +3593,12 @@ All_FF5_ECC %>%
   filter(Industry %in% c("Chems", "Cnstr", "Food", "Telcm", "Rubbr", "Hardw")) %>%
   pivot_longer(cols = c(AM, FM, FM_STL_7_N), names_to = "method", values_to = "ECC") %>%
   mutate(date = transDate(date)) %>%
+  # fix order
+  mutate(method = factor(method, levels = c("FM","FM_STL_7_N","AM"))) %>%
   ggplot() +
   geom_line(aes(date, ECC, color = method),alpha = 0.4) +
   scale_x_date() +
+  scale_color_manual(values=c("springgreen1", "blue", "red")) +
   facet_wrap(~ Industry,
              scales = "free") +
   labs(title= "Estimated Equity Cost of Capital with Fama French Five Factors") +
@@ -3605,9 +3611,12 @@ All_PRS_ECC %>%
   filter(Industry %in% c("Chems", "Cnstr", "Food", "Telcm", "Rubbr", "Hardw")) %>%
   pivot_longer(cols = c(AM, FM, FM_STL_7_N), names_to = "method", values_to = "ECC") %>%
   mutate(date = transDate(date)) %>%
+  # fix order
+  mutate(method = factor(method, levels = c("FM","FM_STL_7_N","AM"))) %>%
   ggplot() +
   geom_line(aes(date, ECC, color = method),alpha = 0.4) +
   scale_x_date() +
+  scale_color_manual(values=c("springgreen1", "blue", "red")) +
   facet_wrap(~ Industry,
              scales = "free") +
   labs(title= "Estimated Equity Cost of Capital with PRS Five Factors") +

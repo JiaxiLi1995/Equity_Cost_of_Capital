@@ -2,7 +2,7 @@
 title: "Industry Equity Cost of Capital"
 author: "Mike Aguilar, Bob Connolly, and Jiaxi Li"
 output: 
-  md_document:
+  github_document:
     toc: true
     toc_depth: 4
 always_allow_html: true

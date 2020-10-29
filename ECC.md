@@ -1,3 +1,7 @@
+Industry Equity Cost of Capital
+================
+Mike Aguilar, Bob Connolly, and Jiaxi Li
+
 -   [1. Introduction](#introduction)
 -   [2. Data](#data)
     -   [2.1 Industry Return and Fama French Five
@@ -35,7 +39,7 @@
     -   [Beta Decomposition](#beta-decomposition)
     -   [Filtered Second Pass
         Regression](#filtered-second-pass-regression)
-    -   [Unfiltered vs. Filtered
+    -   [Unfiltered vs. Filtered
         Lambdas](#unfiltered-vs.-filtered-lambdas)
 -   [5. Equity Cost of Captial](#equity-cost-of-captial)
     -   [5.1 Estimated Equity Cost of
@@ -51,8 +55,7 @@
         Captial](#decomposition-of-the-equity-cost-of-captial)
     -   [5.4 Forcasting???](#forcasting)
 
-1. Introduction
----------------
+## 1. Introduction
 
 In 1997, Fama and French attempted to calculate the equity cost of
 capital (ECC) for the industry portfolios. They employed the CAPM and
@@ -65,7 +68,7 @@ improvement of the ECC estimation in this paper.
 For the model selection, we will apply the Fama French five-factor model
 (2013) and the PRS five-factor model (2018). Since the five-factor model
 is an update of the three-factor model, it should work better than the
-three-factor model. Pukthuanthong et al. (2018) showed that there are 5
+three-factor model. Pukthuanthong et al. (2018) showed that there are 5
 factors are reasonable: the market factor, profitability factor, and
 traded version of credit spread, term spread, and unexpected inflation.
 We will also use their result to form the Industry Equity Cost of
@@ -86,8 +89,7 @@ expected factor premium. Since the 2nd step regression result is
 extremely volatile, we will apply the STL filtering to smooth the
 result.
 
-2. Data
--------
+## 2. Data
 
 We get the monthly industry return, Fama French five-factor, and the
 risk-free rate for the Fama French five factors data from the [Ken
@@ -95,9 +97,9 @@ French Data
 Library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html).
 The market factor and profitability factor of the PRS five factors are
 from the Fama French five factors. The other 3 traded macro factors and
-risk-free rates are extracted from the [Federal Reserve Bank of St.
-Louis Economic Data (FRED)](https://fred.stlouisfed.org/) and
-constructed based on Pukthuanthong et al. (2018).
+risk-free rates are extracted from the [Federal Reserve Bank of
+St. Louis Economic Data (FRED)](https://fred.stlouisfed.org/) and
+constructed based on Pukthuanthong et al. (2018).
 
 ### 2.1 Industry Return and Fama French Five Factors
 
@@ -117,8 +119,8 @@ the risk-free rate and the raw CRR Five Factors: the Default Premium
 (dDP), the Industrial Production Growth Rate (dIP), the Term Premium
 (dTS), the Unexpected Inflation (UNEXPI), and the Change in Expected
 Inflation (dEI). We obtained following macro variables from the Federal
-Reserve Bank of St. Louis Economic Data: [Moody's Seasoned Aaa Corporate
-Bond Yield (Aaa)](https://fred.stlouisfed.org/series/AAA), [Moody's
+Reserve Bank of St. Louis Economic Data: [Moody’s Seasoned Aaa Corporate
+Bond Yield (Aaa)](https://fred.stlouisfed.org/series/AAA), [Moody’s
 Seasoned Baa Corporate Bond Yield
 (Baa)](https://fred.stlouisfed.org/series/BAA), [Industrial Production
 Index (IP)](https://fred.stlouisfed.org/series/INDPRO), [10-Year
@@ -136,7 +138,7 @@ Here are the ways that the raw factors are calculated:
 
 *d**D**P*<sub>*r**a**w*, *t*</sub> = *B**a**a*<sub>*t*</sub> − *A**a**a*<sub>*t*</sub>
 
-*d**I**P*<sub>*r**a**w*, *t*</sub> = *l**n*(*I**P*<sub>*t*</sub>)−*l**n*(*I**P*<sub>*t* − 1</sub>)
+*d**I**P*<sub>*r**a**w*, *t*</sub> = *l**n*(*I**P*<sub>*t*</sub>) − *l**n*(*I**P*<sub>*t* − 1</sub>)
 
 *d**T**S*<sub>*r**a**w*, *t*</sub> = *G**S*10<sub>*t*</sub> − *G**S*1<sub>*t*</sub>
 
@@ -157,7 +159,7 @@ Expected Inflation (dEI), and 3-month Treasury Rate are annual rates so
 they need to be converted to monthly frequency.
 
 After obtaining the raw factors, we need to create the traded version of
-these 5 factors. Similar to the Pukthuanthong et al. (2018) procedure,
+these 5 factors. Similar to the Pukthuanthong et al. (2018) procedure,
 we applied the 50 portfolios, *R*, (the ten equal-weighted size
 portfolios, ten equal-weighted book-to-market portfolios, ten
 equal-weighted investment portfolios and ten equal-weighted operating
@@ -169,11 +171,10 @@ after July 1963. We first regress each of the 50 assets against the raw
 factors to get the coefficient matrix B (50x5) and the diagonal matrix
 of the covariance matrix of the error term V (50x50). The weight of the
 factor mimicking portfolio is
-*w* = (*B*′*V*<sup>−1</sup>*B*)<sup>−1</sup>*B*′*V*<sup>−1</sup>. The
-traded factors are PRS = wR, and they would start in July 1963.
+*w* = (*B*′*V*<sup> − 1</sup>*B*)<sup> − 1</sup>*B*′*V*<sup> − 1</sup>.
+The traded factors are PRS = wR, and they would start in July 1963.
 
-3. First-Pass Regression
-------------------------
+## 3. First-Pass Regression
 
 In this section, we will try to apply the simple first-pass regression
 to estimate the betas of the 49 industry portfolios. The period would be
@@ -195,14 +196,24 @@ Fama French Five Factors
 </caption>
 <thead>
 <tr>
-<th style="border-bottom:hidden" colspan="1">
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
 </th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
 Coefficients
 
+</div>
+
 </th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
 Std. Error
+
+</div>
 
 </th>
 </tr>
@@ -2260,7 +2271,8 @@ Whlsl
 </tr>
 </tbody>
 </table>
-![](ECC_files/figure-markdown_strict/unnamed-chunk-6-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-6-2.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-6-3.png)
+
+![](ECC_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-6-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-6-3.png)<!-- -->
 
 ### 3.1.2 Rolling Window Estimation
 
@@ -2268,7 +2280,7 @@ We will show an example of the Real Estate Portfolio (RlEst) Rolling
 Betas evolutions here. The smoothing line is based on the loess
 smoothing. It seems that the betas are evolving overtime.
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-7-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-7-2.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-7-3.png)
+![](ECC_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-7-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-7-3.png)<!-- -->
 
 ### 3.1.3 Full Sample Estimation with STL Trend
 
@@ -2281,14 +2293,24 @@ Fama French Five Factors
 </caption>
 <thead>
 <tr>
-<th style="border-bottom:hidden" colspan="1">
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
 </th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
 Coefficients
 
+</div>
+
 </th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
 Std. Error
+
+</div>
 
 </th>
 </tr>
@@ -4346,14 +4368,15 @@ Whlsl
 </tr>
 </tbody>
 </table>
-![](ECC_files/figure-markdown_strict/unnamed-chunk-8-1.png)
+
+![](ECC_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 ### 3.1.4 Rolling Window Estimation with STL Trend
 
 Here, we would try to conduct the STL decomposition before the first
 step regression with full sample.
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+![](ECC_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 ### 3.2 PRS Five Factor Model
 
@@ -4367,14 +4390,24 @@ PRS Five Factors
 </caption>
 <thead>
 <tr>
-<th style="border-bottom:hidden" colspan="1">
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
 </th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
 Coefficients
 
+</div>
+
 </th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
 Std. Error
+
+</div>
 
 </th>
 </tr>
@@ -6432,7 +6465,8 @@ Whlsl
 </tr>
 </tbody>
 </table>
-![](ECC_files/figure-markdown_strict/unnamed-chunk-10-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-10-2.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-10-3.png)
+
+![](ECC_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-10-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-10-3.png)<!-- -->
 
 ### 3.2.2 Rolling Window Estimation
 
@@ -6440,7 +6474,7 @@ We will show an example of the Real Estate Portfolio (RlEst) Rolling
 Betas evolutions here. The smoothing line is based on the loess
 smoothing. It seems that the betas are evolving overtime.
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-11-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-11-2.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-11-3.png)
+![](ECC_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-11-3.png)<!-- -->
 
 ### 3.2.3 Full Sample Estimation with STL Trend
 
@@ -6453,14 +6487,24 @@ PRS Five Factors
 </caption>
 <thead>
 <tr>
-<th style="border-bottom:hidden" colspan="1">
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
 </th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
 Coefficients
 
+</div>
+
 </th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
 Std. Error
+
+</div>
 
 </th>
 </tr>
@@ -8518,20 +8562,20 @@ Whlsl
 </tr>
 </tbody>
 </table>
-![](ECC_files/figure-markdown_strict/unnamed-chunk-12-1.png)
+
+![](ECC_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 ### 3.2.4 Rolling Window Estimation with STL Trend
 
 Here, we would try to conduct the STL decomposition before the first
 step regression with full sample.
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-13-1.png)
+![](ECC_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
 It seems that the STL decomposition does not help the first step
 regression.
 
-4. Factor Premium Estimation
-----------------------------
+## 4. Factor Premium Estimation
 
 In this section, we will describe different ways to estimate the Factor
 Premium.
@@ -8553,7 +8597,7 @@ Fama-Macbeth second regression estimated lambda represents the expected
 factor risk premium. In this section, we will apply the second step
 regression to estimate the factor risk premium.
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-16-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-16-2.png)
+![](ECC_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-16-2.png)<!-- -->
 
 ### 4.4 Fama Macbeth Second Step Regression with STL Deseaoned Data
 
@@ -8580,7 +8624,7 @@ equation:
 Where beta is the sector specific risk exposure, lambda is the factor
 premium, and eta is the idiosyncratic noise.
 
-*E*\[*η*<sub>*i**t*</sub>|*i*\]=0
+*E*\[*η*<sub>*i**t*</sub>\|*i*\] = 0
 
 However, the eta might actually contain 3 components: eps\_t, s\_i, and
 eps\_it.
@@ -8595,11 +8639,11 @@ equation is actually:
 
 Again, we would have:
 
-*E*\[*ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub> + *ϵ*<sub>*i**t*</sub>|*i*\]=0
+*E*\[*ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub> + *ϵ*<sub>*i**t*</sub>\|*i*\] = 0
 
 However, the cross-sectional regression error at each time t:
 
-*E*\[*ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub> + *ϵ*<sub>*i**t*</sub>|*t*\]=*ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub>
+*E*\[*ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub> + *ϵ*<sub>*i**t*</sub>\|*t*\] = *ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub>
 
 The universal time-series error and the seasonality would actually bias
 the lambda estimation. Filtering out the universal time-series noise and
@@ -8620,11 +8664,11 @@ following N(0, 0.3^2). The first value of 49 sector betas are generated
 from N(1, 0.3^2). There are 600 data generated to represent monthly data
 in 50 years.
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-17-1.png)
+![](ECC_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 ### STL Filtering
 
-STL method (Cleveland et al. 1990) would try decompose the time-series
+STL method (Cleveland et al. 1990) would try decompose the time-series
 into 3 components: trend, seaonality, and noise. It applies an iterative
 smoothing method to extract the trend and seaonality components. At the
 same time, one can choose to use a robust weighting scheme to reduce the
@@ -8640,7 +8684,7 @@ non-Gaussian behavior in the time-series leads to extreme, transient
 variation). We will first show the STL decomposition of betas and
 returns.
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-18-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-18-2.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-18-3.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-18-4.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-18-5.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-18-6.png)
+![](ECC_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-18-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-18-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-18-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-18-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-18-6.png)<!-- -->
 
 The robustness weighting seems not be appropriate for the Industry Risk
 Premiums since the returns vairation are mostly caused by Gaussian
@@ -10653,15 +10697,16 @@ s40 robust
 </tr>
 </tbody>
 </table>
+
 It seems that the both the trend and seasonal components are weak. No
 robust is stronger than robust, and smaller s\_window woudl yield
 stronger components.
 
 ### Beta Decomposition
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-20-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-20-2.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-20-3.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-20-4.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-20-5.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-20-6.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-20-7.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-20-8.png)
+![](ECC_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-8.png)<!-- -->
 
-Beta estimation's noise or seasonal pattern is much smaller than trend
+Beta estimation’s noise or seasonal pattern is much smaller than trend
 so the noise weight or the s\_winow does not impact the result as much.
 We are safe by just using the no robust weighting and s\_window = 7 and
 that would make the left- and right-hand-side of the second step
@@ -10673,29 +10718,39 @@ risk premium.
 
 ### Filtered Second Pass Regression
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-21-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-21-2.png)
+![](ECC_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-2.png)<!-- -->
 
 For robustness check, we also computed the factor risk premium based on
 other filterings.
 
-### Unfiltered vs. Filtered Lambdas
+### Unfiltered vs. Filtered Lambdas
 
-Let's plot the unfiltered lambda together with filtered lamdba to see
+Let’s plot the unfiltered lambda together with filtered lamdba to see
 the effect of filtering on lambda.
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-23-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-23-2.png)
+![](ECC_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-23-2.png)<!-- -->
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 Correlation between FM lambda and STL filtered FM lambda
 </caption>
 <thead>
 <tr>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
 FF5
 
+</div>
+
 </th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
 PRS
+
+</div>
 
 </th>
 </tr>
@@ -10787,7 +10842,8 @@ UNEXPI
 </tr>
 </tbody>
 </table>
-![](ECC_files/figure-markdown_strict/unnamed-chunk-23-3.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-23-4.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-23-5.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-23-6.png)
+
+![](ECC_files/figure-gfm/unnamed-chunk-23-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-23-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-23-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-23-6.png)<!-- -->
 
 Here is a comparison of the lambda statitics of the Normal Fama Macbeth
 and Fama Macbeth Second Step Regression with STL Trend Data.
@@ -12356,14 +12412,24 @@ Fama Macbeth/STL Lambda Variance Ratio
 </caption>
 <thead>
 <tr>
-<th style="border-bottom:hidden" colspan="1">
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
 </th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
 FF5
 
+</div>
+
 </th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
 PRS
+
+</div>
 
 </th>
 </tr>
@@ -12616,31 +12682,31 @@ s40 robust
 </tr>
 </tbody>
 </table>
-5. Equity Cost of Captial
--------------------------
+
+## 5. Equity Cost of Captial
 
 ### 5.1 Estimated Equity Cost of Captial
 
 As the equation indicates,
-*E**C**C* = ∑<sub>*i* ∈ *F*</sub>*β*<sub>*i*</sub> \* *E*\[*F*<sub>*i*</sub>\]+*R*<sub>*f*</sub>.
+*E**C**C* = ∑<sub>*i* ∈ *F*</sub>*β*<sub>*i*</sub> \* *E*\[*F*<sub>*i*</sub>\] + *R*<sub>*f*</sub>.
 We will ignore the risk free rate part and the Equity Cost of Capital in
 this section refers to the estimated risk premium.
 
 ### 5.1.1 Arithmetic Mean
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-25-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-25-2.png)
+![](ECC_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-25-2.png)<!-- -->
 
 ### 5.1.2 Geometric Mean
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-26-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-26-2.png)
+![](ECC_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-26-2.png)<!-- -->
 
 ### 5.1.3 Fama Macbeth Second Step Regression
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-27-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-27-2.png)
+![](ECC_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-27-2.png)<!-- -->
 
 ### 5.1.4 Fama Macbeth Second Step Regression with STL Trend Data
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-28-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-28-2.png)
+![](ECC_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-28-2.png)<!-- -->
 
 ### 5.2 Comparative Statics
 
@@ -12794,6 +12860,7 @@ PRS
 </tr>
 </tbody>
 </table>
+
 Based on the Sum Squared Error, the Fama Macbeth Method has the lowest
 error explaining the Portfolio Risk Premium (This is because the FM
 second step regression applied the least square method). The STL
@@ -12804,11 +12871,11 @@ Arithmetic Mean and the Geometric Mean.
 Here we would compare the Estimated ECC from FM method and Filtered FM
 method:
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-30-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-30-2.png)
+![](ECC_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-30-2.png)<!-- -->
 
 ### 5.3 Decomposition of the Equity Cost of Captial
 
-![](ECC_files/figure-markdown_strict/unnamed-chunk-31-1.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-31-2.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-31-3.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-31-4.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-31-5.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-31-6.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-31-7.png)![](ECC_files/figure-markdown_strict/unnamed-chunk-31-8.png)
+![](ECC_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-8.png)<!-- -->
 
 ### 5.4 Forcasting???
 

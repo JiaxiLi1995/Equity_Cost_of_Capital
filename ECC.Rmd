@@ -920,7 +920,7 @@ Port_PRS_Betas_Full %>%
 
 ### S3-2-2 Rolling Window Estimation
 
-We will show an example of the Real Estate Portfolio (RlEst) Rolling Betas evolutions here. The smoothing line is based on the loess smoothing. It seems that the betas are evolving overtime.
+We will show an example of the Real Estate Portfolio (RlEst) Rolling Betas evolution here. The smoothing line is based on the loess smoothing. It seems that the betas are evolving overtime.
 
 ```{r, cache = TRUE}
 # Create the estimated portfolio beta matrix
@@ -2006,9 +2006,9 @@ PRS_Betas_STL_s15_robust %>%
         axis.text.x = element_text(angle = 75, hjust = 1))
 ```
 
-Beta estimation's noise or seasonal pattern is much smaller than trend so the noise weight or the s_winow does not impact the result as much. We are safe by just using the no robust weighting and s_window = 7 and that would make the left- and right-hand-side of the second step regression treated the same.
+Beta estimation's noise or seasonal pattern is much smaller than trend so the noise weight or the s_winow does not impact the result as much.
 
-Now, we will take the desired no robust weighting, s_window = 7 trend results of the Industry Risk Premium and Betas to estimate the factor risk premium.
+Now, we will take the desired no robust weighting, s_window = 7 trend results of the Industry Risk Premium to estimate the factor risk premium.
 
 ### S4-4-6 Filtered Second Pass Regression
 
@@ -2019,13 +2019,8 @@ Second_Path <- Port_FF5_STL_s7_norobust %>%
   filter(component == "Trend") %>%
   subset(select = c(date, Industry, y)) %>%
   rename(RP = y) %>%
-  inner_join(FF5_Betas_STL_s7_norobust %>%
-               filter(component == "Trend") %>%
-               subset(select = c(date, Industry, Factors, y)) %>%
-               rename(Betas = y) %>%
-               pivot_wider(names_from = Factors, values_from = Betas) %>%
-               # reorder
-               .[, c("date", "Industry", names(FF5)[2:6])]) %>%
+  inner_join(Port_FF5_Betas) %>%
+  subset(select = -Alpha) %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2079,13 +2074,8 @@ Second_Path <- Port_PRS_STL_s7_norobust %>%
   filter(component == "Trend") %>%
   subset(select = c(date, Industry, y)) %>%
   rename(RP = y) %>%
-  inner_join(PRS_Betas_STL_s7_norobust %>%
-               filter(component == "Trend") %>%
-               subset(select = c(date, Industry, Factors, y)) %>%
-               rename(Betas = y) %>%
-               pivot_wider(names_from = Factors, values_from = Betas) %>%
-               # reorder
-               .[, c("date", "Industry", names(PRS)[2:6])]) %>%
+  inner_join(Port_PRS_Betas) %>%
+  subset(select = -Alpha) %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2134,13 +2124,8 @@ Second_Path <- Port_FF5_STL_s7_robust %>%
   filter(component == "Trend") %>%
   subset(select = c(date, Industry, y)) %>%
   rename(RP = y) %>%
-  inner_join(FF5_Betas_STL_s7_robust %>%
-               filter(component == "Trend") %>%
-               subset(select = c(date, Industry, Factors, y)) %>%
-               rename(Betas = y) %>%
-               pivot_wider(names_from = Factors, values_from = Betas) %>%
-               # reorder
-               .[, c("date", "Industry", names(FF5)[2:6])]) %>%
+  inner_join(Port_FF5_Betas) %>%
+  subset(select = -Alpha) %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2166,13 +2151,8 @@ Second_Path <- Port_FF5_STL_s15_norobust %>%
   filter(component == "Trend") %>%
   subset(select = c(date, Industry, y)) %>%
   rename(RP = y) %>%
-  inner_join(FF5_Betas_STL_s15_norobust %>%
-               filter(component == "Trend") %>%
-               subset(select = c(date, Industry, Factors, y)) %>%
-               rename(Betas = y) %>%
-               pivot_wider(names_from = Factors, values_from = Betas) %>%
-               # reorder
-               .[, c("date", "Industry", names(FF5)[2:6])]) %>%
+  inner_join(Port_FF5_Betas) %>%
+  subset(select = -Alpha) %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2198,13 +2178,8 @@ Second_Path <- Port_FF5_STL_s15_robust %>%
   filter(component == "Trend") %>%
   subset(select = c(date, Industry, y)) %>%
   rename(RP = y) %>%
-  inner_join(FF5_Betas_STL_s15_robust %>%
-               filter(component == "Trend") %>%
-               subset(select = c(date, Industry, Factors, y)) %>%
-               rename(Betas = y) %>%
-               pivot_wider(names_from = Factors, values_from = Betas) %>%
-               # reorder
-               .[, c("date", "Industry", names(FF5)[2:6])]) %>%
+  inner_join(Port_FF5_Betas) %>%
+  subset(select = -Alpha) %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2230,13 +2205,8 @@ Second_Path <- Port_FF5_STL_s40_norobust %>%
   filter(component == "Trend") %>%
   subset(select = c(date, Industry, y)) %>%
   rename(RP = y) %>%
-  inner_join(FF5_Betas_STL_s40_norobust %>%
-               filter(component == "Trend") %>%
-               subset(select = c(date, Industry, Factors, y)) %>%
-               rename(Betas = y) %>%
-               pivot_wider(names_from = Factors, values_from = Betas) %>%
-               # reorder
-               .[, c("date", "Industry", names(FF5)[2:6])]) %>%
+  inner_join(Port_FF5_Betas) %>%
+  subset(select = -Alpha) %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2262,13 +2232,8 @@ Second_Path <- Port_FF5_STL_s40_robust %>%
   filter(component == "Trend") %>%
   subset(select = c(date, Industry, y)) %>%
   rename(RP = y) %>%
-  inner_join(FF5_Betas_STL_s40_robust %>%
-               filter(component == "Trend") %>%
-               subset(select = c(date, Industry, Factors, y)) %>%
-               rename(Betas = y) %>%
-               pivot_wider(names_from = Factors, values_from = Betas) %>%
-               # reorder
-               .[, c("date", "Industry", names(FF5)[2:6])]) %>%
+  inner_join(Port_FF5_Betas) %>%
+  subset(select = -Alpha) %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2295,13 +2260,8 @@ Second_Path <- Port_PRS_STL_s7_robust %>%
   filter(component == "Trend") %>%
   subset(select = c(date, Industry, y)) %>%
   rename(RP = y) %>%
-  inner_join(PRS_Betas_STL_s7_robust %>%
-               filter(component == "Trend") %>%
-               subset(select = c(date, Industry, Factors, y)) %>%
-               rename(Betas = y) %>%
-               pivot_wider(names_from = Factors, values_from = Betas) %>%
-               # reorder
-               .[, c("date", "Industry", names(PRS)[2:6])]) %>%
+  inner_join(Port_PRS_Betas) %>%
+  subset(select = -Alpha) %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2327,13 +2287,8 @@ Second_Path <- Port_PRS_STL_s15_norobust %>%
   filter(component == "Trend") %>%
   subset(select = c(date, Industry, y)) %>%
   rename(RP = y) %>%
-  inner_join(PRS_Betas_STL_s15_norobust %>%
-               filter(component == "Trend") %>%
-               subset(select = c(date, Industry, Factors, y)) %>%
-               rename(Betas = y) %>%
-               pivot_wider(names_from = Factors, values_from = Betas) %>%
-               # reorder
-               .[, c("date", "Industry", names(PRS)[2:6])]) %>%
+  inner_join(Port_PRS_Betas) %>%
+  subset(select = -Alpha) %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2359,13 +2314,8 @@ Second_Path <- Port_PRS_STL_s15_robust %>%
   filter(component == "Trend") %>%
   subset(select = c(date, Industry, y)) %>%
   rename(RP = y) %>%
-  inner_join(PRS_Betas_STL_s15_robust %>%
-               filter(component == "Trend") %>%
-               subset(select = c(date, Industry, Factors, y)) %>%
-               rename(Betas = y) %>%
-               pivot_wider(names_from = Factors, values_from = Betas) %>%
-               # reorder
-               .[, c("date", "Industry", names(PRS)[2:6])]) %>%
+  inner_join(Port_PRS_Betas) %>%
+  subset(select = -Alpha) %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2391,13 +2341,8 @@ Second_Path <- Port_PRS_STL_s40_norobust %>%
   filter(component == "Trend") %>%
   subset(select = c(date, Industry, y)) %>%
   rename(RP = y) %>%
-  inner_join(PRS_Betas_STL_s40_norobust %>%
-               filter(component == "Trend") %>%
-               subset(select = c(date, Industry, Factors, y)) %>%
-               rename(Betas = y) %>%
-               pivot_wider(names_from = Factors, values_from = Betas) %>%
-               # reorder
-               .[, c("date", "Industry", names(PRS)[2:6])]) %>%
+  inner_join(Port_PRS_Betas) %>%
+  subset(select = -Alpha) %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2423,13 +2368,8 @@ Second_Path <- Port_PRS_STL_s40_robust %>%
   filter(component == "Trend") %>%
   subset(select = c(date, Industry, y)) %>%
   rename(RP = y) %>%
-  inner_join(PRS_Betas_STL_s40_robust %>%
-               filter(component == "Trend") %>%
-               subset(select = c(date, Industry, Factors, y)) %>%
-               rename(Betas = y) %>%
-               pivot_wider(names_from = Factors, values_from = Betas) %>%
-               # reorder
-               .[, c("date", "Industry", names(PRS)[2:6])]) %>%
+  inner_join(Port_PRS_Betas) %>%
+  subset(select = -Alpha) %>%
   ungroup()
 
 # Group the data and do the second pass regression

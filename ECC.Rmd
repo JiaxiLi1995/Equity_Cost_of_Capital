@@ -2417,7 +2417,7 @@ FM_STL_40_R_PRS <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = -Lambda0)
 ```
 
-### S4-4-7 Unfiltered vs. Filtered Lambdas
+### S4-4-7 Unfiltered and Filtered Lambdas
 
 Let's plot the unfiltered lambda together with filtered lambda to see the effect of filtering on lambda.
 
@@ -2568,8 +2568,9 @@ FM_STL_PRS %>%
 
 ```
 
+### S4-4-8 KS test and Stats
 
-We also performed a KS test to test the FM lambdas and STL FM lamdbas for different factors. It seems that their distributions are different.
+We also performed a KS test to test the FM lambdas and STL FM lambdas for different factors. It seems that their distributions are different.
 
 ```{r, cache = TRUE}
 # Perform the ks.test for FF5 and PRS lambdas and create a table

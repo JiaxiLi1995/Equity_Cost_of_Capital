@@ -43,8 +43,9 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
         -   [S4-4-5 Beta Decomposition](#s4-4-5-beta-decomposition)
         -   [S4-4-6 Filtered Second Pass
             Regression](#s4-4-6-filtered-second-pass-regression)
-        -   [S4-4-7 Unfiltered vs. Filtered
-            Lambdas](#s4-4-7-unfiltered-vs.-filtered-lambdas)
+        -   [S4-4-7 Unfiltered and Filtered
+            Lambdas](#s4-4-7-unfiltered-and-filtered-lambdas)
+        -   [S4-4-8 KS test and Stats](#s4-4-8-ks-test-and-stats)
 -   [S5 Equity Cost of Captial](#s5-equity-cost-of-captial)
     -   [S5-1 Estimated Equity Cost of
         Captial](#s5-1-estimated-equity-cost-of-captial)
@@ -10735,7 +10736,7 @@ premium.
 For robustness check, we also computed the factor risk premium based on
 other filtering.
 
-### S4-4-7 Unfiltered vs. Filtered Lambdas
+### S4-4-7 Unfiltered and Filtered Lambdas
 
 Let’s plot the unfiltered lambda together with filtered lambda to see
 the effect of filtering on lambda.
@@ -10857,7 +10858,9 @@ UNEXPI
 
 ![](ECC_files/figure-gfm/unnamed-chunk-24-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-6.png)<!-- -->
 
-We also performed a KS test to test the FM lambdas and STL FM lamdbas
+### S4-4-8 KS test and Stats
+
+We also performed a KS test to test the FM lambdas and STL FM lambdas
 for different factors. It seems that their distributions are different.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">

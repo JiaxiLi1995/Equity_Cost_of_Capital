@@ -10,19 +10,21 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
 -   [3. First-Pass Regression](#first-pass-regression)
     -   [3.1 Fama French Five Factor
         Model](#fama-french-five-factor-model)
-    -   [3.1.1 Full Sample Estimation](#full-sample-estimation)
-    -   [3.1.2 Rolling Window Estimation](#rolling-window-estimation)
-    -   [3.1.3 Full Sample Estimation with STL
-        Trend](#full-sample-estimation-with-stl-trend)
-    -   [3.1.4 Rolling Window Estimation with STL
-        Trend](#rolling-window-estimation-with-stl-trend)
+        -   [3.1.1 Full Sample Estimation](#full-sample-estimation)
+        -   [3.1.2 Rolling Window
+            Estimation](#rolling-window-estimation)
+        -   [3.1.3 Full Sample Estimation with STL
+            Trend](#full-sample-estimation-with-stl-trend)
+        -   [3.1.4 Rolling Window Estimation with STL
+            Trend](#rolling-window-estimation-with-stl-trend)
     -   [3.2 PRS Five Factor Model](#prs-five-factor-model)
-    -   [3.2.1 Full Sample Estimation](#full-sample-estimation-1)
-    -   [3.2.2 Rolling Window Estimation](#rolling-window-estimation-1)
-    -   [3.2.3 Full Sample Estimation with STL
-        Trend](#full-sample-estimation-with-stl-trend-1)
-    -   [3.2.4 Rolling Window Estimation with STL
-        Trend](#rolling-window-estimation-with-stl-trend-1)
+        -   [3.2.1 Full Sample Estimation](#full-sample-estimation-1)
+        -   [3.2.2 Rolling Window
+            Estimation](#rolling-window-estimation-1)
+        -   [3.2.3 Full Sample Estimation with STL
+            Trend](#full-sample-estimation-with-stl-trend-1)
+        -   [3.2.4 Rolling Window Estimation with STL
+            Trend](#rolling-window-estimation-with-stl-trend-1)
 -   [4. Factor Premium Estimation](#factor-premium-estimation)
     -   [4.1 Arithmetic Mean](#arithmetic-mean)
     -   [4.2 Geometric Mean](#geometric-mean)
@@ -30,32 +32,32 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
         Regression](#fama-macbeth-second-step-regression)
     -   [4.4 Fama Macbeth Second Step Regression with STL Deseaoned
         Data](#fama-macbeth-second-step-regression-with-stl-deseaoned-data)
-    -   [Why filtering might improve Esimated
-        Lamdba?](#why-filtering-might-improve-esimated-lamdba)
-    -   [Simulation](#simulation)
-    -   [STL Filtering](#stl-filtering)
-    -   [Filtered Seasonality and Trend
-        Strength](#filtered-seasonality-and-trend-strength)
-    -   [Beta Decomposition](#beta-decomposition)
-    -   [Filtered Second Pass
-        Regression](#filtered-second-pass-regression)
-    -   [Unfiltered vs. Filtered
-        Lambdas](#unfiltered-vs.-filtered-lambdas)
+        -   [Why filtering might improve Esimated
+            Lamdba?](#why-filtering-might-improve-esimated-lamdba)
+        -   [Simulation](#simulation)
+        -   [STL Filtering](#stl-filtering)
+        -   [Filtered Seasonality and Trend
+            Strength](#filtered-seasonality-and-trend-strength)
+        -   [Beta Decomposition](#beta-decomposition)
+        -   [Filtered Second Pass
+            Regression](#filtered-second-pass-regression)
+        -   [Unfiltered vs. Filtered
+            Lambdas](#unfiltered-vs.-filtered-lambdas)
 -   [5. Equity Cost of Captial](#equity-cost-of-captial)
     -   [5.1 Estimated Equity Cost of
         Captial](#estimated-equity-cost-of-captial)
-    -   [5.1.1 Arithmetic Mean](#arithmetic-mean-1)
-    -   [5.1.2 Geometric Mean](#geometric-mean-1)
-    -   [5.1.3 Fama Macbeth Second Step
-        Regression](#fama-macbeth-second-step-regression-1)
-    -   [5.1.4 Fama Macbeth Second Step Regression with STL Trend
-        Data](#fama-macbeth-second-step-regression-with-stl-trend-data)
+        -   [5.1.1 Arithmetic Mean](#arithmetic-mean-1)
+        -   [5.1.2 Geometric Mean](#geometric-mean-1)
+        -   [5.1.3 Fama Macbeth Second Step
+            Regression](#fama-macbeth-second-step-regression-1)
+        -   [5.1.4 Fama Macbeth Second Step Regression with STL Trend
+            Data](#fama-macbeth-second-step-regression-with-stl-trend-data)
     -   [5.2 Comparative Statics](#comparative-statics)
     -   [5.3 Decomposition of the Equity Cost of
         Captial](#decomposition-of-the-equity-cost-of-captial)
     -   [5.4 Forcasting???](#forcasting)
 
-## 1. Introduction
+# 1. Introduction
 
 In 1997, Fama and French attempted to calculate the equity cost of
 capital (ECC) for the industry portfolios. They employed the CAPM and
@@ -89,7 +91,7 @@ expected factor premium. Since the 2nd step regression result is
 extremely volatile, we will apply the STL filtering to smooth the
 result.
 
-## 2. Data
+# 2. Data
 
 We get the monthly industry return, Fama French five-factor, and the
 risk-free rate for the Fama French five factors data from the [Ken
@@ -101,7 +103,7 @@ risk-free rates are extracted from the [Federal Reserve Bank of
 St. Louis Economic Data (FRED)](https://fred.stlouisfed.org/) and
 constructed based on Pukthuanthong et al. (2018).
 
-### 2.1 Industry Return and Fama French Five Factors
+## 2.1 Industry Return and Fama French Five Factors
 
 The [Fama French Five
 Factors](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html)
@@ -112,7 +114,7 @@ without any missing values started in July 1969, so we will start the
 analysis in July 1969. The risk-free rate is one-month Treasury bill
 rate.
 
-### 2.2 Traded PRS Five Factors
+## 2.2 Traded PRS Five Factors
 
 In order to construct the traded version of PRS Factor, we first obtain
 the risk-free rate and the raw CRR Five Factors: the Default Premium
@@ -174,7 +176,7 @@ factor mimicking portfolio is
 *w* = (*B*′*V*<sup> − 1</sup>*B*)<sup> − 1</sup>*B*′*V*<sup> − 1</sup>.
 The traded factors are PRS = wR, and they would start in July 1963.
 
-## 3. First-Pass Regression
+# 3. First-Pass Regression
 
 In this section, we will try to apply the simple first-pass regression
 to estimate the betas of the 49 industry portfolios. The period would be
@@ -183,7 +185,7 @@ factor risk premium estimation, we will use the most basic first pass
 regressions (full sample and 5-year rolling window) to estimate the
 betas and compare which lamdba method would work better.
 
-### 3.1 Fama French Five Factor Model
+## 3.1 Fama French Five Factor Model
 
 We will first apply the Fama French Five Factor Model to estimate the
 betas. We will use the Five Factor Model as the base model.
@@ -4378,7 +4380,7 @@ step regression with full sample.
 
 ![](ECC_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
-### 3.2 PRS Five Factor Model
+## 3.2 PRS Five Factor Model
 
 We will then apply the PRS Five Factor Model to estimate the betas.
 
@@ -8575,23 +8577,23 @@ step regression with full sample.
 It seems that the STL decomposition does not help the first step
 regression.
 
-## 4. Factor Premium Estimation
+# 4. Factor Premium Estimation
 
 In this section, we will describe different ways to estimate the Factor
 Premium.
 
-### 4.1 Arithmetic Mean
+## 4.1 Arithmetic Mean
 
 First, one can take the arithmetic mean of the factors to generate the
 expected factor premium.
 
-### 4.2 Geometric Mean
+## 4.2 Geometric Mean
 
 Levi and Welch mentioned in their 2017 paper that geometric mean might
 perform better. So in this section, we will calculate the geometric mean
 as the factor premium.
 
-### 4.3 Fama Macbeth Second Step Regression
+## 4.3 Fama Macbeth Second Step Regression
 
 Fama-Macbeth second regression estimated lambda represents the expected
 factor risk premium. In this section, we will apply the second step
@@ -8599,7 +8601,7 @@ regression to estimate the factor risk premium.
 
 ![](ECC_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-16-2.png)<!-- -->
 
-### 4.4 Fama Macbeth Second Step Regression with STL Deseaoned Data
+## 4.4 Fama Macbeth Second Step Regression with STL Deseaoned Data
 
 As we can see, Fama Macbeth method would generate an evolving
 time-series of factor risk premium, but the volatility in lambda is
@@ -12683,9 +12685,9 @@ s40 robust
 </tbody>
 </table>
 
-## 5. Equity Cost of Captial
+# 5. Equity Cost of Captial
 
-### 5.1 Estimated Equity Cost of Captial
+## 5.1 Estimated Equity Cost of Captial
 
 As the equation indicates,
 *E**C**C* = ∑<sub>*i* ∈ *F*</sub>*β*<sub>*i*</sub> \* *E*\[*F*<sub>*i*</sub>\] + *R*<sub>*f*</sub>.
@@ -12708,7 +12710,7 @@ this section refers to the estimated risk premium.
 
 ![](ECC_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-28-2.png)<!-- -->
 
-### 5.2 Comparative Statics
+## 5.2 Comparative Statics
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -12873,11 +12875,11 @@ method:
 
 ![](ECC_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-30-2.png)<!-- -->
 
-### 5.3 Decomposition of the Equity Cost of Captial
+## 5.3 Decomposition of the Equity Cost of Captial
 
 ![](ECC_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-8.png)<!-- -->
 
-### 5.4 Forcasting???
+## 5.4 Forcasting???
 
 We can try to apply the previous methods to forecast the ECC and compare
 the accuracy. There is a STL method of forcasting so we might be able to

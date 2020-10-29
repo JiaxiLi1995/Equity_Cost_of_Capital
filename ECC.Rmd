@@ -3,9 +3,10 @@ title: "Industry Equity Cost of Capital"
 author: "Mike Aguilar, Bob Connolly, and Jiaxi Li"
 output: 
   github_document:
+    number_sections: true
     toc: true
-    number_sections: TRUE
     toc_depth: 4
+    pandoc_args: --webtex
 always_allow_html: true
 ---
 

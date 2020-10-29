@@ -138,17 +138,17 @@ Bill: Secondary Market Rate
 
 Here are the ways that the raw factors are calculated:
 
-*d**D**P*<sub>*r**a**w*, *t*</sub> = *B**a**a*<sub>*t*</sub> − *A**a**a*<sub>*t*</sub>
+![dDP\_{raw,t} = Baa\_t - Aaa\_t](https://latex.codecogs.com/png.latex?dDP_%7Braw%2Ct%7D%20%3D%20Baa_t%20-%20Aaa_t "dDP_{raw,t} = Baa_t - Aaa_t")
 
-*d**I**P*<sub>*r**a**w*, *t*</sub> = *l**n*(*I**P*<sub>*t*</sub>) − *l**n*(*I**P*<sub>*t* − 1</sub>)
+![dIP\_{raw, t} = ln(IP\_t) - ln(IP\_{t-1})](https://latex.codecogs.com/png.latex?dIP_%7Braw%2C%20t%7D%20%3D%20ln%28IP_t%29%20-%20ln%28IP_%7Bt-1%7D%29 "dIP_{raw, t} = ln(IP_t) - ln(IP_{t-1})")
 
-*d**T**S*<sub>*r**a**w*, *t*</sub> = *G**S*10<sub>*t*</sub> − *G**S*1<sub>*t*</sub>
+![dTS\_{raw, t} = GS10\_t - GS1\_t](https://latex.codecogs.com/png.latex?dTS_%7Braw%2C%20t%7D%20%3D%20GS10_t%20-%20GS1_t "dTS_{raw, t} = GS10_t - GS1_t")
 
-*E**X**P**I**N**F*<sub>*r**a**w*, *t*</sub> = *E*<sub>*t* − 12</sub>\[*M**I**C**H*<sub>*t*</sub>\]
+![EXPINF\_{raw, t} = E\_{t-12}\[MICH\_t\]](https://latex.codecogs.com/png.latex?EXPINF_%7Braw%2C%20t%7D%20%3D%20E_%7Bt-12%7D%5BMICH_t%5D "EXPINF_{raw, t} = E_{t-12}[MICH_t]")
 
-*U**N**E**X**P**I*<sub>*r**a**w*, *t*</sub> = *I**N**F*<sub>*t*</sub> − *E**X**P**I**N**F*<sub>*r**a**w*, *t*</sub>
+![UNEXPI\_{raw, t} = INF\_t - EXPINF\_{raw, t}](https://latex.codecogs.com/png.latex?UNEXPI_%7Braw%2C%20t%7D%20%3D%20INF_t%20-%20EXPINF_%7Braw%2C%20t%7D "UNEXPI_{raw, t} = INF_t - EXPINF_{raw, t}")
 
-*d**E**I*<sub>*t*</sub> = *E**X**P**I**N**F*<sub>*r**a**w*, *t*</sub> − *E**X**P**I**N**F*<sub>*r**a**w*, *t* − 1</sub>
+![dEI\_t = EXPINF\_{raw, t} - EXPINF\_{raw, t-1}](https://latex.codecogs.com/png.latex?dEI_t%20%3D%20EXPINF_%7Braw%2C%20t%7D%20-%20EXPINF_%7Braw%2C%20t-1%7D "dEI_t = EXPINF_{raw, t} - EXPINF_{raw, t-1}")
 
 The Default Premium started in Janurary 1919; the Industrial Production
 Growth Rate stared in Feburary 1919; the Term Premium started in April
@@ -162,18 +162,19 @@ they need to be converted to monthly frequency.
 
 After obtaining the raw factors, we need to create the traded version of
 these 5 factors. Similar to the Pukthuanthong et al. (2018) procedure,
-we applied the 50 portfolios, *R*, (the ten equal-weighted size
-portfolios, ten equal-weighted book-to-market portfolios, ten
-equal-weighted investment portfolios and ten equal-weighted operating
-profitability portfolios, and ten value-weighted momentum portfolios)
-from the [Ken French Data
+we applied the 50 portfolios,
+![R](https://latex.codecogs.com/png.latex?R "R"), (the ten
+equal-weighted size portfolios, ten equal-weighted book-to-market
+portfolios, ten equal-weighted investment portfolios and ten
+equal-weighted operating profitability portfolios, and ten
+value-weighted momentum portfolios) from the [Ken French Data
 Library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html)
 to construct the mimicking portfolios. These 50 portfolios all exist
 after July 1963. We first regress each of the 50 assets against the raw
 factors to get the coefficient matrix B (50x5) and the diagonal matrix
 of the covariance matrix of the error term V (50x50). The weight of the
 factor mimicking portfolio is
-*w* = (*B*′*V*<sup> − 1</sup>*B*)<sup> − 1</sup>*B*′*V*<sup> − 1</sup>.
+![w=(B'V^{-1}B)^{-1}B'V^{-1}](https://latex.codecogs.com/png.latex?w%3D%28B%27V%5E%7B-1%7DB%29%5E%7B-1%7DB%27V%5E%7B-1%7D "w=(B'V^{-1}B)^{-1}B'V^{-1}").
 The traded factors are PRS = wR, and they would start in July 1963.
 
 # 3 First-Pass Regression
@@ -8621,31 +8622,31 @@ regression is due to the seasonality.
 Now, assume the return (or risk premium) is formed by the following
 equation:
 
-*r*<sub>*i**t*</sub> = *β*<sub>*i**t*</sub> \* *λ*<sub>*t*</sub> + *η*<sub>*i**t*</sub>
+![r\_{it} = \\beta\_{it}\*\\lambda\_t+\\eta\_{it}](https://latex.codecogs.com/png.latex?r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Ceta_%7Bit%7D "r_{it} = \beta_{it}*\lambda_t+\eta_{it}")
 
 Where beta is the sector specific risk exposure, lambda is the factor
 premium, and eta is the idiosyncratic noise.
 
-*E*\[*η*<sub>*i**t*</sub>\|*i*\] = 0
+![E\[\\eta\_{it}\|i\] = 0](https://latex.codecogs.com/png.latex?E%5B%5Ceta_%7Bit%7D%7Ci%5D%20%3D%200 "E[\eta_{it}|i] = 0")
 
 However, the eta might actually contain 3 components: eps\_t, s\_i, and
 eps\_it.
 
-*η*<sub>*i**t*</sub> = *ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub> + *ϵ*<sub>*i**t*</sub>
+![\\eta\_{it} = \\epsilon\_t + s\_i + \\epsilon\_{it}](https://latex.codecogs.com/png.latex?%5Ceta_%7Bit%7D%20%3D%20%5Cepsilon_t%20%2B%20s_i%20%2B%20%5Cepsilon_%7Bit%7D "\eta_{it} = \epsilon_t + s_i + \epsilon_{it}")
 
 eps\_t is the universal time-series error, s\_i is the sector-specific
 seasonality, and eps\_it is the idiosyncratic error. Therefore, the
 equation is actually:
 
-*r*<sub>*i**t*</sub> = *β*<sub>*i**t*</sub> \* *λ*<sub>*t*</sub> + *ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub> + *ϵ*<sub>*i**t*</sub>
+![r\_{it} = \\beta\_{it}\*\\lambda\_t+\\epsilon\_t + s\_i + \\epsilon\_{it}](https://latex.codecogs.com/png.latex?r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Cepsilon_t%20%2B%20s_i%20%2B%20%5Cepsilon_%7Bit%7D "r_{it} = \beta_{it}*\lambda_t+\epsilon_t + s_i + \epsilon_{it}")
 
 Again, we would have:
 
-*E*\[*ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub> + *ϵ*<sub>*i**t*</sub>\|*i*\] = 0
+![E\[\\epsilon\_t + s\_i + \\epsilon\_{it}\|i\] = 0](https://latex.codecogs.com/png.latex?E%5B%5Cepsilon_t%20%2B%20s_i%20%2B%20%5Cepsilon_%7Bit%7D%7Ci%5D%20%3D%200 "E[\epsilon_t + s_i + \epsilon_{it}|i] = 0")
 
 However, the cross-sectional regression error at each time t:
 
-*E*\[*ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub> + *ϵ*<sub>*i**t*</sub>\|*t*\] = *ϵ*<sub>*t*</sub> + *s*<sub>*i*</sub>
+![E\[\\epsilon\_t + s\_i + \\epsilon\_{it}\|t\] = \\epsilon\_t+s\_i](https://latex.codecogs.com/png.latex?E%5B%5Cepsilon_t%20%2B%20s_i%20%2B%20%5Cepsilon_%7Bit%7D%7Ct%5D%20%3D%20%5Cepsilon_t%2Bs_i "E[\epsilon_t + s_i + \epsilon_{it}|t] = \epsilon_t+s_i")
 
 The universal time-series error and the seasonality would actually bias
 the lambda estimation. Filtering out the universal time-series noise and
@@ -8701,9 +8702,9 @@ there could be changing seasonal patterns in the short-term.
 Now we estimate the strength of trend and strength of seasonality. The
 Strenth of the trend is defined as:
 
-$$F\_T = max(0,1-\\frac{Var(R\_t)}{Var(T\_t+R\_t)})$$
+![F\_T = max(0,1-\\frac{Var(R\_t)}{Var(T\_t+R\_t)})](https://latex.codecogs.com/png.latex?F_T%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28T_t%2BR_t%29%7D%29 "F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})")
 
-$$F\_S = max(0,1-\\frac{Var(R\_t)}{Var(S\_t+R\_t)})$$
+![F\_S = max(0,1-\\frac{Var(R\_t)}{Var(S\_t+R\_t)})](https://latex.codecogs.com/png.latex?F_S%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28S_t%2BR_t%29%7D%29 "F_S = max(0,1-\frac{Var(R_t)}{Var(S_t+R_t)})")
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -12690,7 +12691,7 @@ s40 robust
 ## 5.1 Estimated Equity Cost of Captial
 
 As the equation indicates,
-*E**C**C* = ∑<sub>*i* ∈ *F*</sub>*β*<sub>*i*</sub> \* *E*\[*F*<sub>*i*</sub>\] + *R*<sub>*f*</sub>.
+![ECC = \\sum\_{i \\in F} \\beta\_i\*E\[F\_i\] + R\_f](https://latex.codecogs.com/png.latex?ECC%20%3D%20%5Csum_%7Bi%20%5Cin%20F%7D%20%5Cbeta_i%2AE%5BF_i%5D%20%2B%20R_f "ECC = \sum_{i \in F} \beta_i*E[F_i] + R_f").
 We will ignore the risk free rate part and the Equity Cost of Capital in
 this section refers to the estimated risk premium.
 

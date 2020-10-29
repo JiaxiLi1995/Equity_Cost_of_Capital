@@ -2,12 +2,12 @@ Industry Equity Cost of Capital
 ================
 Mike Aguilar, Bob Connolly, and Jiaxi Li
 
--   [1. Introduction](#introduction)
--   [2. Data](#data)
+-   [1 Introduction](#introduction)
+-   [2 Data](#data)
     -   [2.1 Industry Return and Fama French Five
         Factors](#industry-return-and-fama-french-five-factors)
     -   [2.2 Traded PRS Five Factors](#traded-prs-five-factors)
--   [3. First-Pass Regression](#first-pass-regression)
+-   [3 First-Pass Regression](#first-pass-regression)
     -   [3.1 Fama French Five Factor
         Model](#fama-french-five-factor-model)
         -   [3.1.1 Full Sample Estimation](#full-sample-estimation)
@@ -25,25 +25,25 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
             Trend](#full-sample-estimation-with-stl-trend-1)
         -   [3.2.4 Rolling Window Estimation with STL
             Trend](#rolling-window-estimation-with-stl-trend-1)
--   [4. Factor Premium Estimation](#factor-premium-estimation)
+-   [4 Factor Premium Estimation](#factor-premium-estimation)
     -   [4.1 Arithmetic Mean](#arithmetic-mean)
     -   [4.2 Geometric Mean](#geometric-mean)
     -   [4.3 Fama Macbeth Second Step
         Regression](#fama-macbeth-second-step-regression)
     -   [4.4 Fama Macbeth Second Step Regression with STL Deseaoned
         Data](#fama-macbeth-second-step-regression-with-stl-deseaoned-data)
-        -   [Why filtering might improve Esimated
+        -   [4.4.1 Why filtering might improve Esimated
             Lamdba?](#why-filtering-might-improve-esimated-lamdba)
-        -   [Simulation](#simulation)
-        -   [STL Filtering](#stl-filtering)
-        -   [Filtered Seasonality and Trend
+        -   [4.4.2 Simulation](#simulation)
+        -   [4.4.3 STL Filtering](#stl-filtering)
+        -   [4.4.4 Filtered Seasonality and Trend
             Strength](#filtered-seasonality-and-trend-strength)
-        -   [Beta Decomposition](#beta-decomposition)
-        -   [Filtered Second Pass
+        -   [4.4.5 Beta Decomposition](#beta-decomposition)
+        -   [4.4.6 Filtered Second Pass
             Regression](#filtered-second-pass-regression)
-        -   [Unfiltered vs. Filtered
+        -   [4.4.7 Unfiltered vs. Filtered
             Lambdas](#unfiltered-vs.-filtered-lambdas)
--   [5. Equity Cost of Captial](#equity-cost-of-captial)
+-   [5 Equity Cost of Captial](#equity-cost-of-captial)
     -   [5.1 Estimated Equity Cost of
         Captial](#estimated-equity-cost-of-captial)
         -   [5.1.1 Arithmetic Mean](#arithmetic-mean-1)
@@ -57,7 +57,7 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
         Captial](#decomposition-of-the-equity-cost-of-captial)
     -   [5.4 Forcasting???](#forcasting)
 
-# 1. Introduction
+# 1 Introduction
 
 In 1997, Fama and French attempted to calculate the equity cost of
 capital (ECC) for the industry portfolios. They employed the CAPM and
@@ -91,7 +91,7 @@ expected factor premium. Since the 2nd step regression result is
 extremely volatile, we will apply the STL filtering to smooth the
 result.
 
-# 2. Data
+# 2 Data
 
 We get the monthly industry return, Fama French five-factor, and the
 risk-free rate for the Fama French five factors data from the [Ken
@@ -176,7 +176,7 @@ factor mimicking portfolio is
 *w* = (*B*′*V*<sup> − 1</sup>*B*)<sup> − 1</sup>*B*′*V*<sup> − 1</sup>.
 The traded factors are PRS = wR, and they would start in July 1963.
 
-# 3. First-Pass Regression
+# 3 First-Pass Regression
 
 In this section, we will try to apply the simple first-pass regression
 to estimate the betas of the 49 industry portfolios. The period would be
@@ -8577,7 +8577,7 @@ step regression with full sample.
 It seems that the STL decomposition does not help the first step
 regression.
 
-# 4. Factor Premium Estimation
+# 4 Factor Premium Estimation
 
 In this section, we will describe different ways to estimate the Factor
 Premium.
@@ -8608,7 +8608,7 @@ time-series of factor risk premium, but the volatility in lambda is
 unreasonablly large. We will try to apply the STL trend in the second
 step regression to smooth the lambda.
 
-### Why filtering might improve Esimated Lamdba?
+### 4.4.1 Why filtering might improve Esimated Lamdba?
 
 There is no need for trend extraction for 1st step regression, no matter
 if we use the full sample or rolling window. The window should be large
@@ -8653,7 +8653,7 @@ seasonality would improve the lamdba estimated. Now, I will illustrate
 the effect of seasonality and universal time-series noise in the second
 step regression through a simulation.
 
-### Simulation
+### 4.4.2 Simulation
 
 Suppose the true 49 sector betas are given (since our focus is lambda)
 and each of them follows an ARIMA(1,1,0) process, with AR coefficient
@@ -8668,7 +8668,7 @@ in 50 years.
 
 ![](ECC_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
-### STL Filtering
+### 4.4.3 STL Filtering
 
 STL method (Cleveland et al. 1990) would try decompose the time-series
 into 3 components: trend, seaonality, and noise. It applies an iterative
@@ -8696,7 +8696,7 @@ with the robust weighting, the market crash was given little wight and
 disappeared. At the same time, we might just choose s\_window = 7, since
 there could be changing seasonal patterns in the short-term.
 
-### Filtered Seasonality and Trend Strength
+### 4.4.4 Filtered Seasonality and Trend Strength
 
 Now we estimate the strength of trend and strength of seasonality. The
 Strenth of the trend is defined as:
@@ -10704,7 +10704,7 @@ It seems that the both the trend and seasonal components are weak. No
 robust is stronger than robust, and smaller s\_window woudl yield
 stronger components.
 
-### Beta Decomposition
+### 4.4.5 Beta Decomposition
 
 ![](ECC_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-8.png)<!-- -->
 
@@ -10718,14 +10718,14 @@ Now, we will take the desired no robust weighting, s\_window = 7 trend
 results of the Industry Risk Premium and Betas to estimate the factor
 risk premium.
 
-### Filtered Second Pass Regression
+### 4.4.6 Filtered Second Pass Regression
 
 ![](ECC_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-2.png)<!-- -->
 
 For robustness check, we also computed the factor risk premium based on
 other filterings.
 
-### Unfiltered vs. Filtered Lambdas
+### 4.4.7 Unfiltered vs. Filtered Lambdas
 
 Let’s plot the unfiltered lambda together with filtered lamdba to see
 the effect of filtering on lambda.
@@ -12685,7 +12685,7 @@ s40 robust
 </tbody>
 </table>
 
-# 5. Equity Cost of Captial
+# 5 Equity Cost of Captial
 
 ## 5.1 Estimated Equity Cost of Captial
 

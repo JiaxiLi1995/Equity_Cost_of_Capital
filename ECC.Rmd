@@ -3,7 +3,6 @@ title: "Industry Equity Cost of Capital"
 author: "Mike Aguilar, Bob Connolly, and Jiaxi Li"
 output: 
   github_document:
-    number_sections: true
     toc: true
     toc_depth: 4
     pandoc_args: --webtex
@@ -73,7 +72,7 @@ stl_tibble <- function(data, xvar, yvar, frequency=12, s_window=7, robust = FALS
 ```
 
 
-# Introduction
+# S1 Introduction
 
 In 1997, Fama and French attempted to calculate the equity cost of capital (ECC) for the industry portfolios. They employed the CAPM and Fama French three-factor model and applied various techniques to estimate the factor loadings. The conclusion was the ECC estimation is not reliable due to the imprecise factor risk premium and the uncertain risk loadings. It has been 23 years and we will try to find a possible improvement of the ECC estimation in this paper.
 
@@ -83,11 +82,11 @@ We will use the 5-year rolling window to estimate the factor loadings of the ECC
 
 Many papers mentioned that the expected factor premiums are evolving. We will therefore apply the Fama Macbeth (1973) method to estimate the expected factor premium. Since the 2nd step regression result is extremely volatile, we will apply the STL filtering to smooth the result.
 
-# Data
+# S2 Data
 
 We get the monthly industry return, Fama French five-factor, and the risk-free rate for the Fama French five factors data from the [Ken French Data Library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html). The market factor and profitability factor of the PRS five factors are from the Fama French five factors. The other 3 traded macro factors and risk-free rates are extracted from the [Federal Reserve Bank of St. Louis Economic Data (FRED)](https://fred.stlouisfed.org/) and constructed based on Pukthuanthong et al. (2018).
 
-## Industry Return and Fama French Five Factors
+## S2-1 Industry Return and Fama French Five Factors
 
 The [Fama French Five Factors](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html) are simple returns from July 1963 to June 2020. They are as follows: Rm-Rf, SMB, HML, RMW, CMA. The 49 Industry Portfolios are value-weighted simple returns July 1926 to June 2020. The 49 Industry Portfolios without any missing values started in July 1969, so we will start the analysis in July 1969. The risk-free rate is one-month Treasury bill rate.
 
@@ -143,7 +142,7 @@ The [Fama French Five Factors](https://mba.tuck.dartmouth.edu/pages/faculty/ken.
       gather(Industry, RET, - date)
 ```
 
-## Traded PRS Five Factors
+## S2-2 Traded PRS Five Factors
 
 In order to construct the traded version of PRS Factor, we first obtain the risk-free rate and the raw CRR Five Factors: the Default Premium (dDP), the Industrial Production Growth Rate (dIP), the Term Premium (dTS), the Unexpected Inflation (UNEXPI), and the Change in Expected Inflation (dEI). We obtained following macro variables from the Federal Reserve Bank of St. Louis Economic Data: [Moody's Seasoned Aaa Corporate Bond Yield (Aaa)](https://fred.stlouisfed.org/series/AAA), [Moody's Seasoned Baa Corporate Bond Yield (Baa)](https://fred.stlouisfed.org/series/BAA), [Industrial Production Index (IP)](https://fred.stlouisfed.org/series/INDPRO), [10-Year Treasury Constant Maturity Rate (GS10)](https://fred.stlouisfed.org/series/GS10), [1-Year Treasury Constant Maturity Rate (GS1)](https://fred.stlouisfed.org/series/GS1), [Seasonally Adjusted CPI derived Inflation Rate (INF)](https://fred.stlouisfed.org/series/CPIAUCSL), [University of Michigan Inflation Expectation (MICH)](https://fred.stlouisfed.org/series/MICH), [3-Month Treasury Bill: Secondary Market Rate (TB3MS)](https://fred.stlouisfed.org/series/TB3MS).
 
@@ -394,15 +393,15 @@ write.csv(PRS_monthly, here("data/PRS_monthly.csv"), na = "",  row.names = FALSE
       mutate(date = as.character(date))
 ```
 
-# First-Pass Regression
+# S3 First-Pass Regression
 
 In this section, we will try to apply the simple first-pass regression to estimate the betas of the 49 industry portfolios. The period would be from July 1969 to June 2020. Since the focus of this paper is about the factor risk premium estimation, we will use the most basic first pass regressions (full sample and 5-year rolling window) to estimate the betas and compare which lamdba method would work better.
 
-## Fama French Five Factor Model
+## S3-1 Fama French Five Factor Model
 
 We will first apply the Fama French Five Factor Model to estimate the betas. We will use the Five Factor Model as the base model.
 
-### Full Sample Estimation
+### S3-1-1 Full Sample Estimation
 ```{r, cache = TRUE}
 # We will perform the simple first step regression here
 # Join the portfolios and FF5
@@ -537,7 +536,7 @@ Port_FF5_Betas_Full %>%
 ```
 
 
-### Rolling Window Estimation
+### S3-1-2 Rolling Window Estimation
 
 We will show an example of the Real Estate Portfolio (RlEst) Rolling Betas evolutions here. The smoothing line is based on the loess smoothing. It seems that the betas are evolving overtime.
 
@@ -619,7 +618,7 @@ Port_FF5_Betas %>%
         axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
 ```
 
-### Full Sample Estimation with STL Trend
+### S3-1-3 Full Sample Estimation with STL Trend
 
 Here, we would try to conduct the STL decomposition before the first step regression with full sample.
 
@@ -728,7 +727,7 @@ Port_FF5_STL_Betas_Full %>%
         axis.text.x = element_text(angle = 30, hjust = 1))
 ```
 
-### Rolling Window Estimation with STL Trend
+### S3-1-4 Rolling Window Estimation with STL Trend
 
 Here, we would try to conduct the STL decomposition before the first step regression with full sample.
 
@@ -788,11 +787,11 @@ Port_FF5_STL_Betas %>%
 ```
 
 
-## PRS Five Factor Model
+## S3-2 PRS Five Factor Model
 
 We will then apply the PRS Five Factor Model to estimate the betas.
 
-### Full Sample Estimation
+### S3-2-1 Full Sample Estimation
 ```{r, cache = TRUE}
 # We will perform the simple first step regression here
 # Join the portfolios and PRS
@@ -919,7 +918,7 @@ Port_PRS_Betas_Full %>%
 ```
 
 
-### Rolling Window Estimation
+### S3-2-2 Rolling Window Estimation
 
 We will show an example of the Real Estate Portfolio (RlEst) Rolling Betas evolutions here. The smoothing line is based on the loess smoothing. It seems that the betas are evolving overtime.
 
@@ -1000,7 +999,7 @@ Port_PRS_Betas %>%
         axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
 ```
 
-### Full Sample Estimation with STL Trend
+### S3-2-3 Full Sample Estimation with STL Trend
 
 Here, we would try to conduct the STL decomposition before the first step regression with full sample.
 
@@ -1109,7 +1108,7 @@ Port_PRS_STL_Betas_Full %>%
         axis.text.x = element_text(angle = 30, hjust = 1))
 ```
 
-### Rolling Window Estimation with STL Trend
+### S3-2-4 Rolling Window Estimation with STL Trend
 
 Here, we would try to conduct the STL decomposition before the first step regression with full sample.
 
@@ -1171,11 +1170,11 @@ Port_PRS_STL_Betas %>%
 
 It seems that the STL decomposition does not help the first step regression.
 
-# Factor Premium Estimation
+# S4 Factor Premium Estimation
 
 In this section, we will describe different ways to estimate the Factor Premium.
 
-## Arithmetic Mean
+## S4-1 Arithmetic Mean
 
 First, one can take the arithmetic mean of the factors to generate the expected factor premium.
 
@@ -1203,7 +1202,7 @@ RAM_PRS <- PRS %>%
 ```
 
 
-## Geometric Mean
+## S4-2 Geometric Mean
 
 Levi and Welch mentioned in their 2017 paper that geometric mean might perform better. So in this section, we will calculate the geometric mean as the factor premium. 
 
@@ -1231,7 +1230,7 @@ RGM_PRS <- PRS %>%
 
 ```
 
-## Fama Macbeth Second Step Regression
+## S4-3 Fama Macbeth Second Step Regression
 
 Fama-Macbeth second regression estimated lambda represents the expected factor risk premium. In this section, we will apply the second step regression to estimate the factor risk premium.
 
@@ -1329,11 +1328,11 @@ FM_PRS %>%
         axis.text.x = element_text(angle = 75, hjust = 1))
 ```
 
-## Fama Macbeth Second Step Regression with STL Deseaoned Data
+## S4-4 Fama Macbeth Second Step Regression with STL Deseaoned Data
 
 As we can see, Fama Macbeth method would generate an evolving time-series of factor risk premium, but the volatility in lambda is unreasonablly large. We will try to apply the STL trend in the second step regression to smooth the lambda.
 
-### Why filtering might improve Esimated Lamdba?
+### S4-4-1 Why filtering might improve Esimated Lamdba?
 
 There is no need for trend extraction for 1st step regression, no matter if we use the full sample or rolling window. The window should be large enough to mitgate the seasonality effect. The second step regression, however, is a cross sectional regression. A seasonal component in the time series would disrupt the cross-sectional regression significantly. So it is possible the the large volatility observed in the second step regression is due to the seasonality.
 
@@ -1363,7 +1362,7 @@ $$E[\epsilon_t + s_i + \epsilon_{it}|t] = \epsilon_t+s_i$$
 
 The universal time-series error and the seasonality would actually bias the lambda estimation. Filtering out the universal time-series noise and seasonality would improve the lamdba estimated. Now, I will illustrate the effect of seasonality and universal time-series noise in the second step regression through a simulation.
 
-### Simulation
+### S4-4-2 Simulation
 
 Suppose the true 49 sector betas are given (since our focus is lambda) and each of them follows an ARIMA(1,1,0) process, with AR coefficient 0.9. For demenstration purpose, the Factor Premiums follows a sin function lambda = sin(t/60*pi)+0.5. The universal time-series noise is the same for all the sectors, following N(0, 1^2); a sector-specific seasonality is randomly generated for each sector following N(0,1^2), and repeats each year; and the idiosyncratic error is also generated following N(0, 0.3^2). The first value of 49 sector betas are generated from N(1, 0.3^2). There are 600 data generated to represent monthly data in 50 years.
 
@@ -1484,7 +1483,7 @@ Filtered_lambda %>%
 ```
 
 
-### STL Filtering
+### S4-4-3 STL Filtering
 
 STL method (Cleveland et al. 1990) would try decompose the time-series into 3 components: trend, seaonality, and noise. It applies an iterative smoothing method to extract the trend and seaonality components. At the same time, one can choose to use a robust weighting scheme to reduce the effect of large noise to the trend and seaonality extraction.
 
@@ -1698,7 +1697,7 @@ Port_PRS_STL_s40_robust <- Port_PRS %>%
 
 The robustness weighting seems not be appropriate for the Industry Risk Premiums since the returns vairation are mostly caused by Gaussian behavior. One example is the end of the trend curve: there was a market crash at the beginning of 2020, so the trend should go down. However, with the robust weighting, the market crash was given little wight and disappeared. At the same time, we might just choose s_window = 7, since there could be changing seasonal patterns in the short-term.
 
-### Filtered Seasonality and Trend Strength
+### S4-4-4 Filtered Seasonality and Trend Strength
 
 Now we estimate the strength of trend and strength of seasonality. The Strenth of the trend is defined as:
 
@@ -1736,7 +1735,7 @@ Port_FF5_STL_s7_norobust %>%
 
 It seems that the both the trend and seasonal components are weak. No robust is stronger than robust, and smaller s_window woudl yield stronger components.
 
-### Beta Decomposition
+### S4-4-5 Beta Decomposition
 
 ```{r, cache = TRUE}
 # FF5 betas STL decomposition
@@ -2008,7 +2007,7 @@ Beta estimation's noise or seasonal pattern is much smaller than trend so the no
 
 Now, we will take the desired no robust weighting, s_window = 7 trend results of the Industry Risk Premium and Betas to estimate the factor risk premium.
 
-### Filtered Second Pass Regression
+### S4-4-6 Filtered Second Pass Regression
 
 ```{r, cache = TRUE}
 # Estimate the Factor Risk Premium for FF5
@@ -2449,7 +2448,7 @@ FM_STL_40_R_PRS <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = -Lambda0)
 ```
 
-### Unfiltered vs. Filtered Lambdas
+### S4-4-7 Unfiltered vs. Filtered Lambdas
 
 Let's plot the unfiltered lambda together with filtered lamdba to see the effect of filtering on lambda.
 
@@ -2934,13 +2933,13 @@ PRS_table %>%
 ```
 
 
-# Equity Cost of Captial
+# S5 Equity Cost of Captial
 
-## Estimated Equity Cost of Captial
+## S5-1 Estimated Equity Cost of Captial
 
 As the equation indicates, $ECC = \sum_{i \in F} \beta_i*E[F_i] + R_f$. We will ignore the risk free rate part and the Equity Cost of Capital in this section refers to the estimated risk premium. 
 
-### Arithmetic Mean
+### S5-1-1 Arithmetic Mean
 
 ```{r, cache = TRUE}
 # Create an id to join data
@@ -3037,7 +3036,7 @@ ECC_AM_PRS %>%
         axis.text.x = element_text(angle = 30, hjust = 1))
 ```
 
-### Geometric Mean
+### S5-1-2 Geometric Mean
 
 ```{r, cache = TRUE}
 # Create an id to join data
@@ -3134,7 +3133,7 @@ ECC_GM_PRS %>%
         axis.text.x = element_text(angle = 30, hjust = 1))
 ```
 
-### Fama Macbeth Second Step Regression
+### S5-1-3 Fama Macbeth Second Step Regression
 
 ```{r, cache = TRUE}
 temp <- FM_FF5
@@ -3225,7 +3224,7 @@ ECC_FM_PRS %>%
         axis.text.x = element_text(angle = 30, hjust = 1))
 ```
 
-### Fama Macbeth Second Step Regression with STL Trend Data
+### S5-1-4 Fama Macbeth Second Step Regression with STL Trend Data
 
 ```{r, cache = TRUE}
 temp <- FM_STL_FF5
@@ -3317,7 +3316,7 @@ ECC_FM_STL_PRS %>%
 ```
 
 
-## Comparative Statics
+## S5-2 Comparative Statics
 
 ```{r, cache = TRUE}
 # Create the ECC with other filtering choices and compare different methods
@@ -3619,7 +3618,7 @@ All_PRS_ECC %>%
 ```
 
 
-## Decomposition of the Equity Cost of Captial
+## S5-3 Decomposition of the Equity Cost of Captial
 
 ```{r, cache = TRUE}
 # Plot the decomposition for ECC_AM_FF5_Norms
@@ -3727,6 +3726,6 @@ ECC_FM_STL_PRS_Norms %>%
         axis.text.x = element_text(angle = 30, hjust = 1))
 ```
 
-## Forcasting???
+## S5-4 Forcasting???
 
 We can try to apply the previous methods to forecast the ECC and compare the accuracy. There is a STL method of forcasting so we might be able to use STL to forcast betas and industry risk premium and perform the second step regression to obtain the lambda. Then we can calculate the ECC.

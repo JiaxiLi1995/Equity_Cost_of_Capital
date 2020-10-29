@@ -71,7 +71,7 @@ stl_tibble <- function(data, xvar, yvar, frequency=12, s_window=7, robust = FALS
 ```
 
 
-# 1-Introduction
+# S1. Introduction
 
 In 1997, Fama and French attempted to calculate the equity cost of capital (ECC) for the industry portfolios. They employed the CAPM and Fama French three-factor model and applied various techniques to estimate the factor loadings. The conclusion was the ECC estimation is not reliable due to the imprecise factor risk premium and the uncertain risk loadings. It has been 23 years and we will try to find a possible improvement of the ECC estimation in this paper.
 

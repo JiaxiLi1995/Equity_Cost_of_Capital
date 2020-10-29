@@ -2,7 +2,7 @@ Industry Equity Cost of Capital
 ================
 Mike Aguilar, Bob Connolly, and Jiaxi Li
 
--   [1-Introduction](#introduction)
+-   [S1. Introduction](#s1.-introduction)
 -   [Data](#data)
     -   [Industry Return and Fama French Five
         Factors](#industry-return-and-fama-french-five-factors)
@@ -54,7 +54,7 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
         Captial](#decomposition-of-the-equity-cost-of-captial)
     -   [Forcasting???](#forcasting)
 
-# 1-Introduction
+# S1. Introduction
 
 In 1997, Fama and French attempted to calculate the equity cost of
 capital (ECC) for the industry portfolios. They employed the CAPM and

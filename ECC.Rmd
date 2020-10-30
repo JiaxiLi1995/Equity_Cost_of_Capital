@@ -495,7 +495,7 @@ Port_FF5_Betas_Full %>%
   ggplot(aes(Industry, betas)) +
   geom_bar(stat = "identity") +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title="Full Sample Betas with Fama French Five Factors") + 
   theme(plot.title = element_text(hjust=0.5),
         plot.subtitle = element_text(hjust = 0.5),
@@ -527,7 +527,7 @@ Port_FF5_Betas_Full %>%
   ggplot(aes(Industry, betas)) +
   geom_bar(stat = "identity") +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title="Full Sample Rest Betas with Fama French Five Factors") + 
   theme(plot.title = element_text(hjust=0.5),
         plot.subtitle = element_text(hjust = 0.5),
@@ -578,7 +578,7 @@ Port_FF5_Betas %>%
   geom_smooth(method = "loess") +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated 5-year Rolling Betas with Fama French Five Factors for RlEst",
        x = "date", y = "betas") +
   scale_x_date(minor_breaks = "1 year") +
@@ -603,7 +603,7 @@ Port_FF5_Betas %>%
   geom_smooth(method = "loess") +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated 5-year Rolling Betas with Fama French Five Factors for Cnstr",
        x = "date", y = "betas") +
   scale_x_date(minor_breaks = "1 year") +
@@ -628,7 +628,7 @@ Port_FF5_Betas %>%
   geom_smooth(method = "loess") +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated 5-year Rolling Betas with Fama French Five Factors for Food",
        x = "date", y = "betas") +
   scale_x_date(minor_breaks = "1 year") +
@@ -662,7 +662,7 @@ Port_FF5_Betas %>%
   ggplot(aes(Industry, betas)) +
   geom_boxplot() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated 5-year Rolling Market Betas with Fama French Five Factors") +
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
@@ -770,7 +770,7 @@ Port_FF5_STL_Betas_Full %>%
   ggplot(aes(Industry, betas)) +
   geom_bar(stat = "identity") +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title="Full Sample STL Betas with Fama French Five Factors") + 
   theme(plot.title = element_text(hjust=0.5),
         plot.subtitle = element_text(hjust = 0.5),
@@ -828,7 +828,7 @@ Port_FF5_STL_Betas %>%
   geom_smooth(method = "loess") +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated 5-year Rolling STL Betas with Fama French Five Factors for RlEst",
        x = "date", y = "betas") +
   scale_x_date(minor_breaks = "1 year") +
@@ -927,7 +927,7 @@ Port_PRS_Betas_Full %>%
   ggplot(aes(Industry, betas)) +
   geom_bar(stat = "identity") +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title="Full Sample Betas with PRS Five Factors") + 
   theme(plot.title = element_text(hjust=0.5),
         plot.subtitle = element_text(hjust = 0.5),
@@ -959,7 +959,7 @@ Port_PRS_Betas_Full %>%
   ggplot(aes(Industry, betas)) +
   geom_bar(stat = "identity") +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title="Full Sample Rest Betas with PRS Five Factors") + 
   theme(plot.title = element_text(hjust=0.5),
         plot.subtitle = element_text(hjust = 0.5),
@@ -1010,7 +1010,7 @@ Port_PRS_Betas %>%
   geom_smooth(method = "loess") +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated 5-year Rolling Betas with PRS Five Factors for RlEst",
        x = "date", y = "betas") +
   scale_x_date(minor_breaks = "1 year") +
@@ -1035,7 +1035,7 @@ Port_PRS_Betas %>%
   geom_smooth(method = "loess") +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated 5-year Rolling Betas with PRS Five Factors for Cnstr",
        x = "date", y = "betas") +
   scale_x_date(minor_breaks = "1 year") +
@@ -1060,7 +1060,7 @@ Port_PRS_Betas %>%
   geom_smooth(method = "loess") +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated 5-year Rolling Betas with PRS Five Factors for Food",
        x = "date", y = "betas") +
   scale_x_date(minor_breaks = "1 year") +
@@ -1094,7 +1094,7 @@ Port_PRS_Betas %>%
   ggplot(aes(Industry, betas)) +
   geom_boxplot() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated 5-year Rolling Market Betas with PRS Five Factors") +
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
@@ -1202,7 +1202,7 @@ Port_PRS_STL_Betas_Full %>%
   ggplot(aes(Industry, betas)) +
   geom_bar(stat = "identity") +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title="Full Sample STL Betas with PRS Five Factors") + 
   theme(plot.title = element_text(hjust=0.5),
         plot.subtitle = element_text(hjust = 0.5),
@@ -1260,7 +1260,7 @@ Port_PRS_STL_Betas %>%
   geom_smooth(method = "loess") +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated 5-year Rolling STL Betas with PRS Five Factors for RlEst",
        x = "date", y = "betas") +
   scale_x_date(minor_breaks = "1 year") +
@@ -1375,7 +1375,7 @@ FM_FF5 %>%
   geom_smooth(method = "loess") +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated Expected Fama French Five Factors Premium with Fama Macbeth Method",
        x = "date", y = "Lambda") +
   scale_x_date(minor_breaks = "1 year") +
@@ -1421,7 +1421,7 @@ FM_PRS %>%
   geom_smooth(method = "loess") +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated Expected PRS Five Factors Premium with Fama Macbeth Method",
        x = "date", y = "Lambda") +
   scale_x_date(minor_breaks = "1 year") +
@@ -1776,7 +1776,7 @@ Port_FF5_STL_s7_norobust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of RlEst Risk Premium",
        subtitle = "s_window = 7 and no robust weigting with FF5 RF",
        x = "date", y = "RP") +
@@ -1795,7 +1795,7 @@ Port_FF5_STL_s7_robust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of RlEst Risk Premium",
        subtitle = "s_window = 7 and robust weigting with FF5 RF",
        x = "date", y = "RP") +
@@ -1814,7 +1814,7 @@ Port_FF5_STL_s15_norobust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of RlEst Risk Premium",
        subtitle = "s_window = 15 and no robust weigting with FF5 RF",
        x = "date", y = "RP") +
@@ -1833,7 +1833,7 @@ Port_FF5_STL_s15_robust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of RlEst Risk Premium",
        subtitle = "s_window = 15 and robust weigting with FF5 RF",
        x = "date", y = "RP") +
@@ -1852,7 +1852,7 @@ Port_FF5_STL_s40_norobust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of RlEst Risk Premium",
        subtitle = "s_window = 40 and no robust weigting with FF5 RF",
        x = "date", y = "RP") +
@@ -1871,7 +1871,7 @@ Port_FF5_STL_s40_robust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of RlEst Risk Premium",
        subtitle = "s_window = 40 and robust weigting with FF5 RF",
        x = "date", y = "RP") +
@@ -1941,7 +1941,7 @@ Port_FF5_STL_s7_norobust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of Cnstr Risk Premium",
        subtitle = "s_window = 7 and no robust weigting with FF5 RF",
        x = "date", y = "RP") +
@@ -1961,7 +1961,7 @@ Port_FF5_STL_s7_norobust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of Food Risk Premium",
        subtitle = "s_window = 7 and no robust weigting with FF5 RF",
        x = "date", y = "RP") +
@@ -2082,7 +2082,7 @@ FF5_Betas_STL_s7_norobust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of RlEst Fama French Five Factor Betas",
        subtitle = "s_window = 7 and no robust weigting",
        x = "date", y = "Betas") +
@@ -2103,7 +2103,7 @@ FF5_Betas_STL_s7_robust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of RlEst Fama French Five Factor Betas",
        subtitle = "s_window = 7 and robust weigting",
        x = "date", y = "Betas") +
@@ -2124,7 +2124,7 @@ FF5_Betas_STL_s15_norobust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of RlEst Fama French Five Factor Betas",
        subtitle = "s_window = 15 and no robust weigting",
        x = "date", y = "Betas") +
@@ -2145,7 +2145,7 @@ FF5_Betas_STL_s15_robust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of RlEst Fama French Five Factor Betas",
        subtitle = "s_window = 15 and robust weigting",
        x = "date", y = "Betas") +
@@ -2222,7 +2222,7 @@ PRS_Betas_STL_s7_norobust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of RlEst PRS Five Factor Betas",
        subtitle = "s_window = 7 and no robust weigting",
        x = "date", y = "Betas") +
@@ -2243,7 +2243,7 @@ PRS_Betas_STL_s7_robust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of RlEst PRS Five Factor Betas",
        subtitle = "s_window = 7 and robust weigting",
        x = "date", y = "Betas") +
@@ -2264,7 +2264,7 @@ PRS_Betas_STL_s15_norobust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of RlEst PRS Five Factor Betas",
        subtitle = "s_window = 15 and no robust weigting",
        x = "date", y = "Betas") +
@@ -2285,7 +2285,7 @@ PRS_Betas_STL_s15_robust %>%
   scale_x_date() +
   facet_wrap(~ component,
              ncol = 1,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "STL Decomposition of RlEst PRS Five Factor Betas",
        subtitle = "s_window = 15 and robust weigting",
        x = "date", y = "Betas") +
@@ -2349,7 +2349,7 @@ FM_STL_FF5 %>%
   geom_line() +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated Expected Fama French Five Factors Premium with Fama Macbeth Method with STL Trend",
        x = "date", y = "Lambda") +
   scale_x_date(minor_breaks = "1 year") +
@@ -2395,7 +2395,7 @@ FM_STL_PRS %>%
   geom_line() +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated Expected PRS Five Factors Premium with Fama Macbeth Method with STL Trend",
        x = "date", y = "Lambda") +
   scale_x_date(minor_breaks = "1 year") +
@@ -2698,7 +2698,7 @@ FM_FF5 %>%
   geom_line() +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated Expected Fama French Five Factors Premium with Fama Macbeth Method",
        x = "date", y = "Lambda") +
   scale_x_date(minor_breaks = "1 year") +
@@ -2718,7 +2718,7 @@ FM_PRS %>%
   geom_line() +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated Expected PRS Five Factors Premium with Fama Macbeth Method",
        x = "date", y = "Lambda") +
   scale_x_date(minor_breaks = "1 year") +
@@ -2760,7 +2760,7 @@ FM_STL_FF5 %>%
   geom_line() +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated Expected Fama French Five Factors Premium with Different Choices",
        x = "date", y = "Lambda") +
   scale_x_date(minor_breaks = "1 year") +
@@ -2779,7 +2779,7 @@ FM_STL_PRS %>%
   geom_line() +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated Expected PRS Factors Premium with Different Choices",
        x = "date", y = "Lambda") +
   scale_x_date(minor_breaks = "1 year") +
@@ -2801,7 +2801,7 @@ FM_STL_FF5 %>%
   geom_line() +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated Expected Fama French Five Factors Premium with Different Choices",
        x = "date", y = "Lambda") +
   scale_x_date(minor_breaks = "1 year") +
@@ -2822,7 +2822,7 @@ FM_STL_PRS %>%
   geom_line() +
   scale_x_date() +
   facet_wrap(~ Factors,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated Expected PRS Factors Premium with Different Choices",
        x = "date", y = "Lambda") +
   scale_x_date(minor_breaks = "1 year") +
@@ -3869,7 +3869,7 @@ All_FF5_ECC %>%
   scale_x_date() +
   scale_color_manual(values=c("springgreen1", "blue", "red")) +
   facet_wrap(~ Industry,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated Equity Cost of Capital with Fama French Five Factors") +
   scale_x_date(minor_breaks = "1 year") +
   theme(plot.title = element_text(hjust=0.5),
@@ -3887,7 +3887,7 @@ All_PRS_ECC %>%
   scale_x_date() +
   scale_color_manual(values=c("springgreen1", "blue", "red")) +
   facet_wrap(~ Industry,
-             scales = "free") +
+             scales = "free_y") +
   labs(title= "Estimated Equity Cost of Capital with PRS Five Factors") +
   scale_x_date(minor_breaks = "1 year") +
   theme(plot.title = element_text(hjust=0.5),

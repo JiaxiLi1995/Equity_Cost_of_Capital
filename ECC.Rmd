@@ -538,7 +538,7 @@ Port_FF5_Betas_Full %>%
 
 ### S3-1-2 Rolling Window Estimation
 
-We will show an example of the Real Estate Portfolio (RlEst) Rolling Betas evolutions here. The smoothing line is based on the loess smoothing. It seems that the betas are evolving overtime.
+We will show examples of the Real Estate Portfolio (RlEst), Construction Portfolio (Cnstr), and Food Portfolio (Food) Rolling Betas evolution here. The smoothing line is based on the loess smoothing. It seems that the betas are evolving overtime.
 
 ```{r, cache = TRUE}
 # Create the estimated portfolio beta matrix
@@ -560,7 +560,7 @@ Port_FF5_Betas <- Port_FF5_Betas %>%
   filter(Selection == TRUE) %>%
   subset(select = -Selection)
 
-# Plot the rolling betas
+# Plot the rolling betas for RlEst
 Port_FF5_Betas %>%
   subset(select = -Alpha) %>%
   # Translate the date
@@ -580,6 +580,56 @@ Port_FF5_Betas %>%
   facet_wrap(~ Factors,
              scales = "free") +
   labs(title= "Estimated 5-year Rolling Betas with Fama French Five Factors for RlEst",
+       x = "date", y = "betas") +
+  scale_x_date(minor_breaks = "1 year") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+# Plot the rolling betas for Cnstr
+Port_FF5_Betas %>%
+  subset(select = -Alpha) %>%
+  # Translate the date
+  mutate(date = transDate(date)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -c(date, Industry),
+               names_to = "Factors",
+               values_to = "betas") %>%
+  filter(Industry == "Cnstr") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(date, betas)) +
+  geom_line() +
+  # loess method: local regression fitting
+  geom_smooth(method = "loess") +
+  scale_x_date() +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  labs(title= "Estimated 5-year Rolling Betas with Fama French Five Factors for Cnstr",
+       x = "date", y = "betas") +
+  scale_x_date(minor_breaks = "1 year") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+# Plot the rolling betas for Food
+Port_FF5_Betas %>%
+  subset(select = -Alpha) %>%
+  # Translate the date
+  mutate(date = transDate(date)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -c(date, Industry),
+               names_to = "Factors",
+               values_to = "betas") %>%
+  filter(Industry == "Food") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(date, betas)) +
+  geom_line() +
+  # loess method: local regression fitting
+  geom_smooth(method = "loess") +
+  scale_x_date() +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  labs(title= "Estimated 5-year Rolling Betas with Fama French Five Factors for Food",
        x = "date", y = "betas") +
   scale_x_date(minor_breaks = "1 year") +
   theme(plot.title = element_text(hjust=0.5),
@@ -920,7 +970,7 @@ Port_PRS_Betas_Full %>%
 
 ### S3-2-2 Rolling Window Estimation
 
-We will show an example of the Real Estate Portfolio (RlEst) Rolling Betas evolution here. The smoothing line is based on the loess smoothing. It seems that the betas are evolving overtime.
+We will show an example of the Real Estate Portfolio (RlEst), Construction Portfolio (Cnstr), and Food Portfolio (Food) Rolling Betas evolution here. The smoothing line is based on the loess smoothing. It seems that the betas are evolving overtime.
 
 ```{r, cache = TRUE}
 # Create the estimated portfolio beta matrix
@@ -942,7 +992,7 @@ Port_PRS_Betas <- Port_PRS_Betas %>%
   filter(Selection == TRUE) %>%
   subset(select = -Selection)
 
-# Plot the rolling betas
+# Plot the rolling betas for RlEst
 Port_PRS_Betas %>%
   subset(select = -Alpha) %>%
   # Translate the date
@@ -966,6 +1016,57 @@ Port_PRS_Betas %>%
   scale_x_date(minor_breaks = "1 year") +
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 75, hjust = 1))
+
+# Plot the rolling betas for Cnstr
+Port_PRS_Betas %>%
+  subset(select = -Alpha) %>%
+  # Translate the date
+  mutate(date = transDate(date)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -c(date, Industry),
+               names_to = "Factors",
+               values_to = "betas") %>%
+  filter(Industry == "Cnstr") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(date, betas)) +
+  geom_line() +
+  # loess method: local regression fitting
+  geom_smooth(method = "loess") +
+  scale_x_date() +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  labs(title= "Estimated 5-year Rolling Betas with PRS Five Factors for Cnstr",
+       x = "date", y = "betas") +
+  scale_x_date(minor_breaks = "1 year") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+# Plot the rolling betas for Food
+Port_PRS_Betas %>%
+  subset(select = -Alpha) %>%
+  # Translate the date
+  mutate(date = transDate(date)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -c(date, Industry),
+               names_to = "Factors",
+               values_to = "betas") %>%
+  filter(Industry == "Food") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(date, betas)) +
+  geom_line() +
+  # loess method: local regression fitting
+  geom_smooth(method = "loess") +
+  scale_x_date() +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  labs(title= "Estimated 5-year Rolling Betas with PRS Five Factors for Food",
+       x = "date", y = "betas") +
+  scale_x_date(minor_breaks = "1 year") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
 
 # Plot the rolling betas box plot
 Port_PRS_Betas %>%
@@ -1364,7 +1465,7 @@ The universal time-series error and the seasonality would actually bias the lamb
 
 ### S4-4-2 Simulation
 
-Suppose the true 49 sector betas are given (since our focus is lambda) and each of them follows an ARIMA(1,1,0) process, with AR coefficient 0.9. For demonstration purpose, the Factor Premiums follows a sin function lambda = sin(t/60*pi)+0.5. The universal time-series noise is the same for all the sectors, following N(0, 1^2); a sector-specific seasonality is randomly generated for each sector following N(0,1^2), and repeats each year; and the idiosyncratic error is also generated following N(0, 0.3^2). The first value of 49 sector betas are generated from N(1, 0.3^2). There are 600 data generated to represent monthly data in 50 years.
+Suppose the true 49 sector betas are given (since our focus is lambda) and each of them follows an ARIMA(1,1,0) process, with AR coefficient 0.9. For demonstration purpose, the Factor Premiums follows a sin function lambda = sin(t/60*pi)/10+0.5. The universal time-series noise is the same for all the sectors, following N(0, 1^2); a sector-specific seasonality is randomly generated for each sector following N(0,1^2), and repeats each year; and the idiosyncratic error is also generated following N(0, 0.3^2). The first value of 49 sector betas are generated from N(1, 0.3^2). There are 600 data generated to represent monthly data in 50 years.
 
 ```{r, cache = TRUE}
 # Create 600x49 matrix of time-varying betas
@@ -1387,7 +1488,7 @@ sim_seasonality <- rnorm(49*11,0,1) %>%
 # Create the universal time-series error
 sim_univ_error <- rnorm(600,0,1)
 
-# Create the idiosycratic error
+# Create the idiosyncratic error
 sim_idio_error <- rnorm(600*49,0,0.3) %>%
   matrix(ncol = 49)
 
@@ -1493,19 +1594,19 @@ The ramdom Fourier Lambdas are generated by the following Fourier Equations:
 
 $$f(t) = a_0+\sum_{i=1}^n(a_i cos(it)+b_isin(it))$$
 
-The $a_0$ is from a normal distribution N(0.01,0.002^2), both $a_i$ and $b_i$ are following a normal distribution N(0,0.05^2), and the n is a random integer between 20 and 100. This is a random smooth function and $f(t)$ is the random Fourier Lambda.
+The $a_0$ is from a normal distribution N(0.01,0.002^2), both $a_i$ and $b_i$ are following a normal distribution N(0,0.025^2), and the n is a random integer between 20 and 100. This is a random smooth function and $f(t)$ is the random Fourier Lambda.
 
 ```{r, cache = TRUE}
 # create random Fourier Transformed Functions as Lambda
 # It is based on http://www.di.fc.ul.pt/~jpn/r/fourier/fourier.html#dc-components
 # Create the shift
-dc.component <- rnorm(1,0.01,0.002) 
+dc.component <- rnorm(1,0.005,0.002) 
 # Maximum Frequency (more functions included with higher freq_max)
 freq_max <- sample(20:100,1)
 # frequency of signal components (Hz)
 component.freqs <- 1:freq_max
 # strength of signal components
-component.strength <- rnorm(freq_max*2,0,0.05)
+component.strength <- rnorm(freq_max*2,0,0.025)
 
 sim_Fourier   <- function(t) { 
   dc.component + 
@@ -1601,6 +1702,7 @@ Filtered_lambda2 %>%
   labs(title= "Second Step Regression for Simulated Return with Random Fourier Lambda") +
   theme(plot.title = element_text(hjust=0.5))
 
+cor(Filtered_lambda2[,2],Unfiltered_lambda2[,2])
 ```
 
 

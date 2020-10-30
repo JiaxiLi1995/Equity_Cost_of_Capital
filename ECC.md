@@ -2282,11 +2282,12 @@ Whlsl
 
 ### S3-1-2 Rolling Window Estimation
 
-We will show an example of the Real Estate Portfolio (RlEst) Rolling
-Betas evolutions here. The smoothing line is based on the loess
-smoothing. It seems that the betas are evolving overtime.
+We will show examples of the Real Estate Portfolio (RlEst), Construction
+Portfolio (Cnstr), and Food Portfolio (Food) Rolling Betas evolution
+here. The smoothing line is based on the loess smoothing. It seems that
+the betas are evolving overtime.
 
-![](ECC_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-7-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-7-3.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-7-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-7-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-7-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-7-5.png)<!-- -->
 
 ### S3-1-3 Full Sample Estimation with STL Trend
 
@@ -6476,11 +6477,12 @@ Whlsl
 
 ### S3-2-2 Rolling Window Estimation
 
-We will show an example of the Real Estate Portfolio (RlEst) Rolling
-Betas evolution here. The smoothing line is based on the loess
-smoothing. It seems that the betas are evolving overtime.
+We will show an example of the Real Estate Portfolio (RlEst),
+Construction Portfolio (Cnstr), and Food Portfolio (Food) Rolling Betas
+evolution here. The smoothing line is based on the loess smoothing. It
+seems that the betas are evolving overtime.
 
-![](ECC_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-11-3.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-11-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-11-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-11-5.png)<!-- -->
 
 ### S3-2-3 Full Sample Estimation with STL Trend
 
@@ -8662,8 +8664,8 @@ step regression through a simulation.
 Suppose the true 49 sector betas are given (since our focus is lambda)
 and each of them follows an ARIMA(1,1,0) process, with AR coefficient
 0.9. For demonstration purpose, the Factor Premiums follows a sin
-function lambda = sin(t/60\*pi)+0.5. The universal time-series noise is
-the same for all the sectors, following N(0, 1^2); a sector-specific
+function lambda = sin(t/60\*pi)/10+0.5. The universal time-series noise
+is the same for all the sectors, following N(0, 1^2); a sector-specific
 seasonality is randomly generated for each sector following N(0,1^2),
 and repeats each year; and the idiosyncratic error is also generated
 following N(0, 0.3^2). The first value of 49 sector betas are generated
@@ -8691,12 +8693,14 @@ The ![a\_0](https://latex.codecogs.com/png.latex?a_0 "a_0") is from a
 normal distribution N(0.01,0.002^2), both
 ![a\_i](https://latex.codecogs.com/png.latex?a_i "a_i") and
 ![b\_i](https://latex.codecogs.com/png.latex?b_i "b_i") are following a
-normal distribution N(0,0.05^2), and the n is a random integer between
+normal distribution N(0,0.025^2), and the n is a random integer between
 20 and 100. This is a random smooth function and
 ![f(t)](https://latex.codecogs.com/png.latex?f%28t%29 "f(t)") is the
 random Fourier Lambda.
 
 ![](ECC_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+
+    ## [1] 0.5429094
 
 ### S4-4-3 STL Filtering
 

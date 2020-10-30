@@ -23,6 +23,7 @@ library(rollRegres)
 library(kableExtra)
 library(moments)
 library(RcppRoll)
+library(png)
 
 # Set the function to transform yyyymm to Date
 transDate <- function(date) {
@@ -3918,6 +3919,15 @@ All_FF5_ECC %>%
   add_header_above(c(" " = 1, "FF5" = 2, "PRS" = 2))
 
 ```
+
+Next, we plot the plots for FM vs. STL Filtered FM statistics.
+
+![](External_plots/RP_mean.png)
+![](External_plots/RP_median.png)
+![](External_plots/RP_std.png)
+![](External_plots/RP_skew.png)
+![](External_plots/RP_kurt.png)
+
 
 ## S5-3 Decomposition of the Equity Cost of Captial
 

@@ -13952,6 +13952,12 @@ Whlsl
 </tbody>
 </table>
 
+Next, we plot the plots for FM vs. STL Filtered FM statistics.
+
+![](External_plots/RP_mean.png) ![](External_plots/RP_median.png)
+![](External_plots/RP_std.png) ![](External_plots/RP_skew.png)
+![](External_plots/RP_kurt.png)
+
 ## S5-3 Decomposition of the Equity Cost of Captial
 
 ![](ECC_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-8.png)<!-- -->

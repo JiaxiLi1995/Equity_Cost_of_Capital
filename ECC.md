@@ -8714,7 +8714,7 @@ random Fourier Lambda.
 
 ![](ECC_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
-    ## [1] 0.5429094
+    ## [1] 0.5627965
 
 ### S4-4-3 STL Filtering
 

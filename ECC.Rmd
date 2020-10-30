@@ -1431,11 +1431,11 @@ FM_PRS %>%
 
 ## S4-4 Fama Macbeth Second Step Regression with STL Deseaoned Data
 
-As we can see, Fama Macbeth method would generate an evolving time-series of factor risk premium, but the volatility in lambda is unreasonablly large. We will try to apply the STL trend in the second step regression to smooth the lambda.
+As we can see, Fama Macbeth method would generate an evolving time-series of factor risk premium, but the volatility in lambda is unreasonably large. We will try to apply the STL trend in the second step regression to smooth the lambda.
 
 ### S4-4-1 Why filtering might improve Esimated Lamdba?
 
-There is no need for trend extraction for 1st step regression, no matter if we use the full sample or rolling window. The window should be large enough to mitgate the seasonality effect. The second step regression, however, is a cross sectional regression. A seasonal component in the time series would disrupt the cross-sectional regression significantly. So it is possible the the large volatility observed in the second step regression is due to the seasonality.
+There is no need for trend extraction for 1st step regression, no matter if we use the full sample or rolling window. The window should be large enough to mitigate the seasonality effect. The second step regression, however, is a cross sectional regression. A seasonal component in the time series would disrupt the cross-sectional regression significantly. So it is possible the the large volatility observed in the second step regression is due to the seasonality.
 
 Now, assume the return (or risk premium) is formed by the following equation:
 
@@ -1445,23 +1445,25 @@ Where beta is the sector specific risk exposure, lambda is the factor premium, a
 
 $$E[\eta_{it}|i] = 0$$
 
-However, the eta might actually contain 3 components: eps_t, s_i, and eps_it. 
+However, the eta might actually contain 3 components: $\epsilon_t$, $s_{im}$, and $epsilon_{it}$. 
 
-$$\eta_{it} = \epsilon_t + s_i + \epsilon_{it}$$
+$$\eta_{it} = \epsilon_t + s_{im} + \epsilon_{it}$$
 
 eps_t is the universal time-series error, s_i is the sector-specific seasonality, and eps_it is the idiosyncratic error. Therefore, the equation is actually:
 
-$$r_{it} = \beta_{it}*\lambda_t+\epsilon_t + s_i + \epsilon_{it}$$
+$$r_{it} = \beta_{it}*\lambda_t+\epsilon_t + s_{im} + \epsilon_{it}$$
 
 Again, we would have:
 
-$$E[\epsilon_t + s_i + \epsilon_{it}|i] = 0$$
+$$E[\epsilon_t + s_{im} + \epsilon_{it}|i] = 0$$
 
 However, the cross-sectional regression error at each time t:
 
-$$E[\epsilon_t + s_i + \epsilon_{it}|t] = \epsilon_t+s_i$$
+$$E[\epsilon_t + s_{im} + \epsilon_{it}|t] = \epsilon_t+s_{im}$$
 
-The universal time-series error and the seasonality would actually bias the lambda estimation. Filtering out the universal time-series noise and seasonality would improve the lamdba estimated. Now, I will illustrate the effect of seasonality and universal time-series noise in the second step regression through a simulation.
+The unbiased least square estimation requires the error term expected to be 0. The existence of $( \epsilon_t + s_{im} | t)$ in each cross-sectional regression, therefore, would randomly bias the estimated lambda. This might be why we see the FM method lambdas behave so "abruptly". If we randomly bias the lambda, the regression error of lambda is similar to the one without bias at each t. However, this bias is changing over time, which would add to the regression error of the lambdas. And therefore, bias might manifest itself in a higher standard error in the resulting ECC estimates.
+
+The universal time-series error and the seasonality would actually bias the lambda estimation. Filtering out the universal time-series noise and seasonality would improve the lambda estimated. Now, I will illustrate the effect of seasonality and universal time-series noise in the second step regression through a simulation.
 
 ### S4-4-2 Simulation
 
@@ -1708,7 +1710,7 @@ cor(Filtered_lambda2[,2],Unfiltered_lambda2[,2])
 
 ### S4-4-3 STL Filtering
 
-STL method (Cleveland et al. 1990) would try decompose the time-series into 3 components: trend, seaonality, and noise. It applies an iterative smoothing method to extract the trend and seaonality components. At the same time, one can choose to use a robust weighting scheme to reduce the effect of large noise to the trend and seaonality extraction.
+STL method (Cleveland et al. 1990) would try decompose the time-series into 3 components: trend, seasonality, and noise. It applies an iterative smoothing method to extract the trend and seasonality components. At the same time, one can choose to use a robust weighting scheme to reduce the effect of large noise to the trend and seasonality extraction.
 
 We will extract the trend of risk premium of the industry portfolios and the trend of the betas with the STL method, and then conduct the second step regression. There are two options with the STL method: the loess window for seasonal extraction (s_window, large value means no rapidly evolving seasonal component, needs to be odd and at least 7) and robust weights for noise (downweight the noisy data in smoothing if non-Gaussian behavior in the time-series leads to extreme, transient variation). We will first show the STL decomposition of betas and returns.
 
@@ -1765,6 +1767,8 @@ Port_FF5_STL_s40_robust <- Port_FF5 %>%
 
 # Plot these results for RlEst
 Port_FF5_STL_s7_norobust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   ggplot(aes(date, y)) +
@@ -1782,6 +1786,8 @@ Port_FF5_STL_s7_norobust %>%
         axis.text.x = element_text(angle = 75, hjust = 1))
 
 Port_FF5_STL_s7_robust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   ggplot(aes(date, y)) +
@@ -1799,6 +1805,8 @@ Port_FF5_STL_s7_robust %>%
         axis.text.x = element_text(angle = 75, hjust = 1))
 
 Port_FF5_STL_s15_norobust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   ggplot(aes(date, y)) +
@@ -1816,6 +1824,8 @@ Port_FF5_STL_s15_norobust %>%
         axis.text.x = element_text(angle = 75, hjust = 1))
 
 Port_FF5_STL_s15_robust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   ggplot(aes(date, y)) +
@@ -1833,6 +1843,8 @@ Port_FF5_STL_s15_robust %>%
         axis.text.x = element_text(angle = 75, hjust = 1))
 
 Port_FF5_STL_s40_norobust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   ggplot(aes(date, y)) +
@@ -1850,6 +1862,8 @@ Port_FF5_STL_s40_norobust %>%
         axis.text.x = element_text(angle = 75, hjust = 1))
 
 Port_FF5_STL_s40_robust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   ggplot(aes(date, y)) +
@@ -1916,6 +1930,45 @@ Port_PRS_STL_s40_robust <- Port_PRS %>%
   .$model %>%
   do.call(what = rbind.data.frame)
 
+# Plot these results for Cnstr
+Port_FF5_STL_s7_norobust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
+  mutate(date = transDate(date)) %>%
+  filter(Industry == "Cnstr") %>%
+  ggplot(aes(date, y)) +
+  geom_line() +
+  scale_x_date() +
+  facet_wrap(~ component,
+             ncol = 1,
+             scales = "free") +
+  labs(title= "STL Decomposition of Cnstr Risk Premium",
+       subtitle = "s_window = 7 and no robust weigting with FF5 RF",
+       x = "date", y = "RP") +
+  scale_x_date(minor_breaks = "1 year") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+# Plot these results for Food
+Port_FF5_STL_s7_norobust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
+  mutate(date = transDate(date)) %>%
+  filter(Industry == "Food") %>%
+  ggplot(aes(date, y)) +
+  geom_line() +
+  scale_x_date() +
+  facet_wrap(~ component,
+             ncol = 1,
+             scales = "free") +
+  labs(title= "STL Decomposition of Food Risk Premium",
+       subtitle = "s_window = 7 and no robust weigting with FF5 RF",
+       x = "date", y = "RP") +
+  scale_x_date(minor_breaks = "1 year") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
 ```
 
 The robustness weighting seems not be appropriate for the Industry Risk Premiums since the returns variation are mostly caused by Gaussian behavior. One example is the end of the trend curve: there was a market crash at the beginning of 2020, so the trend should go down. However, with the robust weighting, the market crash was given little wight and disappeared. At the same time, we might just choose s_window = 7, since there could be changing seasonal patterns in the short-term.
@@ -2018,6 +2071,8 @@ FF5_Betas_STL_s40_robust <- Port_FF5_Betas %>%
 
 # Plot these results for RlEst
 FF5_Betas_STL_s7_norobust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   # Fix the order of factors
@@ -2037,6 +2092,8 @@ FF5_Betas_STL_s7_norobust %>%
         axis.text.x = element_text(angle = 75, hjust = 1))
 
 FF5_Betas_STL_s7_robust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   # Fix the order of factors
@@ -2056,6 +2113,8 @@ FF5_Betas_STL_s7_robust %>%
         axis.text.x = element_text(angle = 75, hjust = 1))
 
 FF5_Betas_STL_s15_norobust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   # Fix the order of factors
@@ -2075,6 +2134,8 @@ FF5_Betas_STL_s15_norobust %>%
         axis.text.x = element_text(angle = 75, hjust = 1))
 
 FF5_Betas_STL_s15_robust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   # Fix the order of factors
@@ -2150,6 +2211,8 @@ PRS_Betas_STL_s40_robust <- Port_PRS_Betas %>%
 
 # Plot these results for RlEst
 PRS_Betas_STL_s7_norobust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonality", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   # Fix the order of factors
@@ -2169,6 +2232,8 @@ PRS_Betas_STL_s7_norobust %>%
         axis.text.x = element_text(angle = 75, hjust = 1))
 
 PRS_Betas_STL_s7_robust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonality", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   # Fix the order of factors
@@ -2188,6 +2253,8 @@ PRS_Betas_STL_s7_robust %>%
         axis.text.x = element_text(angle = 75, hjust = 1))
 
 PRS_Betas_STL_s15_norobust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonality", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   # Fix the order of factors
@@ -2207,6 +2274,8 @@ PRS_Betas_STL_s15_norobust %>%
         axis.text.x = element_text(angle = 75, hjust = 1))
 
 PRS_Betas_STL_s15_robust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonality", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "RlEst") %>%
   # Fix the order of factors

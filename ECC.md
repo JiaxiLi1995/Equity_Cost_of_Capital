@@ -8611,14 +8611,14 @@ regression to estimate the factor risk premium.
 
 As we can see, Fama Macbeth method would generate an evolving
 time-series of factor risk premium, but the volatility in lambda is
-unreasonablly large. We will try to apply the STL trend in the second
+unreasonably large. We will try to apply the STL trend in the second
 step regression to smooth the lambda.
 
 ### S4-4-1 Why filtering might improve Esimated Lamdba?
 
 There is no need for trend extraction for 1st step regression, no matter
 if we use the full sample or rolling window. The window should be large
-enough to mitgate the seasonality effect. The second step regression,
+enough to mitigate the seasonality effect. The second step regression,
 however, is a cross sectional regression. A seasonal component in the
 time series would disrupt the cross-sectional regression significantly.
 So it is possible the the large volatility observed in the second step
@@ -8634,28 +8634,42 @@ premium, and eta is the idiosyncratic noise.
 
 ![E\[\\eta\_{it}\|i\] = 0](https://latex.codecogs.com/png.latex?E%5B%5Ceta_%7Bit%7D%7Ci%5D%20%3D%200 "E[\eta_{it}|i] = 0")
 
-However, the eta might actually contain 3 components: eps\_t, s\_i, and
-eps\_it.
+However, the eta might actually contain 3 components:
+![\\epsilon\_t](https://latex.codecogs.com/png.latex?%5Cepsilon_t "\epsilon_t"),
+![s\_{im}](https://latex.codecogs.com/png.latex?s_%7Bim%7D "s_{im}"),
+and
+![epsilon\_{it}](https://latex.codecogs.com/png.latex?epsilon_%7Bit%7D "epsilon_{it}").
 
-![\\eta\_{it} = \\epsilon\_t + s\_i + \\epsilon\_{it}](https://latex.codecogs.com/png.latex?%5Ceta_%7Bit%7D%20%3D%20%5Cepsilon_t%20%2B%20s_i%20%2B%20%5Cepsilon_%7Bit%7D "\eta_{it} = \epsilon_t + s_i + \epsilon_{it}")
+![\\eta\_{it} = \\epsilon\_t + s\_{im} + \\epsilon\_{it}](https://latex.codecogs.com/png.latex?%5Ceta_%7Bit%7D%20%3D%20%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D "\eta_{it} = \epsilon_t + s_{im} + \epsilon_{it}")
 
 eps\_t is the universal time-series error, s\_i is the sector-specific
 seasonality, and eps\_it is the idiosyncratic error. Therefore, the
 equation is actually:
 
-![r\_{it} = \\beta\_{it}\*\\lambda\_t+\\epsilon\_t + s\_i + \\epsilon\_{it}](https://latex.codecogs.com/png.latex?r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Cepsilon_t%20%2B%20s_i%20%2B%20%5Cepsilon_%7Bit%7D "r_{it} = \beta_{it}*\lambda_t+\epsilon_t + s_i + \epsilon_{it}")
+![r\_{it} = \\beta\_{it}\*\\lambda\_t+\\epsilon\_t + s\_{im} + \\epsilon\_{it}](https://latex.codecogs.com/png.latex?r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D "r_{it} = \beta_{it}*\lambda_t+\epsilon_t + s_{im} + \epsilon_{it}")
 
 Again, we would have:
 
-![E\[\\epsilon\_t + s\_i + \\epsilon\_{it}\|i\] = 0](https://latex.codecogs.com/png.latex?E%5B%5Cepsilon_t%20%2B%20s_i%20%2B%20%5Cepsilon_%7Bit%7D%7Ci%5D%20%3D%200 "E[\epsilon_t + s_i + \epsilon_{it}|i] = 0")
+![E\[\\epsilon\_t + s\_{im} + \\epsilon\_{it}\|i\] = 0](https://latex.codecogs.com/png.latex?E%5B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D%7Ci%5D%20%3D%200 "E[\epsilon_t + s_{im} + \epsilon_{it}|i] = 0")
 
 However, the cross-sectional regression error at each time t:
 
-![E\[\\epsilon\_t + s\_i + \\epsilon\_{it}\|t\] = \\epsilon\_t+s\_i](https://latex.codecogs.com/png.latex?E%5B%5Cepsilon_t%20%2B%20s_i%20%2B%20%5Cepsilon_%7Bit%7D%7Ct%5D%20%3D%20%5Cepsilon_t%2Bs_i "E[\epsilon_t + s_i + \epsilon_{it}|t] = \epsilon_t+s_i")
+![E\[\\epsilon\_t + s\_{im} + \\epsilon\_{it}\|t\] = \\epsilon\_t+s\_{im}](https://latex.codecogs.com/png.latex?E%5B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D%7Ct%5D%20%3D%20%5Cepsilon_t%2Bs_%7Bim%7D "E[\epsilon_t + s_{im} + \epsilon_{it}|t] = \epsilon_t+s_{im}")
+
+The unbiased least square estimation requires the error term expected to
+be 0. The existence of
+![( \\epsilon\_t + s\_{im} \| t)](https://latex.codecogs.com/png.latex?%28%20%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%7C%20t%29 "( \epsilon_t + s_{im} | t)")
+in each cross-sectional regression, therefore, would randomly bias the
+estimated lambda. This might be why we see the FM method lambdas behave
+so “abruptly”. If we randomly bias the lambda, the regression error of
+lambda is similar to the one without bias at each t. However, this bias
+is changing over time, which would add to the regression error of the
+lambdas. And therefore, bias might manifest itself in a higher standard
+error in the resulting ECC estimates.
 
 The universal time-series error and the seasonality would actually bias
 the lambda estimation. Filtering out the universal time-series noise and
-seasonality would improve the lamdba estimated. Now, I will illustrate
+seasonality would improve the lambda estimated. Now, I will illustrate
 the effect of seasonality and universal time-series noise in the second
 step regression through a simulation.
 
@@ -8705,10 +8719,11 @@ random Fourier Lambda.
 ### S4-4-3 STL Filtering
 
 STL method (Cleveland et al. 1990) would try decompose the time-series
-into 3 components: trend, seaonality, and noise. It applies an iterative
-smoothing method to extract the trend and seaonality components. At the
-same time, one can choose to use a robust weighting scheme to reduce the
-effect of large noise to the trend and seaonality extraction.
+into 3 components: trend, seasonality, and noise. It applies an
+iterative smoothing method to extract the trend and seasonality
+components. At the same time, one can choose to use a robust weighting
+scheme to reduce the effect of large noise to the trend and seasonality
+extraction.
 
 We will extract the trend of risk premium of the industry portfolios and
 the trend of the betas with the STL method, and then conduct the second
@@ -8720,7 +8735,7 @@ non-Gaussian behavior in the time-series leads to extreme, transient
 variation). We will first show the STL decomposition of betas and
 returns.
 
-![](ECC_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-6.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-8.png)<!-- -->
 
 The robustness weighting seems not be appropriate for the Industry Risk
 Premiums since the returns variation are mostly caused by Gaussian

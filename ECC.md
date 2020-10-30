@@ -59,6 +59,8 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
     -   [S5-3 Decomposition of the Equity Cost of
         Captial](#s5-3-decomposition-of-the-equity-cost-of-captial)
     -   [S5-4 Forcasting???](#s5-4-forcasting)
+    -   [S5-5 ECC with Consumption
+        Growth???](#s5-5-ecc-with-consumption-growth)
 
 # S1 Introduction
 
@@ -13969,3 +13971,21 @@ the accuracy. There is a STL method of forcasting so we might be able to
 use STL to forcast betas and industry risk premium and perform the
 second step regression to obtain the lambda. Then we can calculate the
 ECC.
+
+## S5-5 ECC with Consumption Growth???
+
+We might look at whether the filter affects the correlation of ECC with
+consumption growth or the volatility of consumption growth. In some
+asset pricing models, premia should vary across time in response to
+consumption growth, and in some models, the volatility of consumption
+growth. Maybe we should preemptively look at whether the filter
+increases the correlation with these measures in the aggregate.
+
+The focus of the original Fama-French (JFE, 1997) paper was whether
+factor models and existing modeling technology could generate relatively
+precise estimates of ECC at the industry level. The answer was a
+resounding no. I think we are showing that a different model can change
+this answer to yes.
+
+To me, a logical next question is whether the resulting premia move over
+the cycle as theory suggests.

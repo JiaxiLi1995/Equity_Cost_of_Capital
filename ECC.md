@@ -43,9 +43,11 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
         -   [S4-4-5 Beta Decomposition](#s4-4-5-beta-decomposition)
         -   [S4-4-6 Filtered Second Pass
             Regression](#s4-4-6-filtered-second-pass-regression)
-        -   [S4-4-7 Unfiltered and Filtered
-            Lambdas](#s4-4-7-unfiltered-and-filtered-lambdas)
-        -   [S4-4-8 KS test and Stats](#s4-4-8-ks-test-and-stats)
+        -   [S4-4-7 Regression Standard
+            Error](#s4-4-7-regression-standard-error)
+        -   [S4-4-8 Unfiltered and Filtered
+            Lambdas](#s4-4-8-unfiltered-and-filtered-lambdas)
+        -   [S4-4-9 KS test and Stats](#s4-4-9-ks-test-and-stats)
 -   [S5 Equity Cost of Captial](#s5-equity-cost-of-captial)
     -   [S5-1 Estimated Equity Cost of
         Captial](#s5-1-estimated-equity-cost-of-captial)
@@ -8747,6 +8749,11 @@ with the robust weighting, the market crash was given little wight and
 disappeared. At the same time, we might just choose s\_window = 7, since
 there could be changing seasonal patterns in the short-term.
 
+Now, we would compare the cross-sectional distribution before and after
+filtering.
+
+![](ECC_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+
 ### S4-4-4 Filtered Seasonality and Trend Strength
 
 Now we estimate the strength of trend and strength of seasonality. The
@@ -10757,10 +10764,10 @@ stronger components.
 
 ### S4-4-5 Beta Decomposition
 
-![](ECC_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-8.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-8.png)<!-- -->
 
 Beta estimation’s noise or seasonal pattern is much smaller than trend
-so the noise weight or the s\_winow does not impact the result as much.
+so the noise weight or the s\_window does not impact the result as much.
 
 Now, we will take the desired no robust weighting, s\_window = 7 trend
 results of the Industry Risk Premium to estimate the factor risk
@@ -10768,17 +10775,21 @@ premium.
 
 ### S4-4-6 Filtered Second Pass Regression
 
-![](ECC_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-23-2.png)<!-- -->
 
 For robustness check, we also computed the factor risk premium based on
 other filtering.
 
-### S4-4-7 Unfiltered and Filtered Lambdas
+### S4-4-7 Regression Standard Error
+
+![](ECC_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-25-2.png)<!-- -->
+
+### S4-4-8 Unfiltered and Filtered Lambdas
 
 Let’s plot the unfiltered lambda together with filtered lambda to see
 the effect of filtering on lambda.
 
-![](ECC_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-26-2.png)<!-- -->
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 Correlation between FM lambda and STL filtered FM lambda
@@ -10893,9 +10904,9 @@ UNEXPI
 </tbody>
 </table>
 
-![](ECC_files/figure-gfm/unnamed-chunk-24-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-6.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-26-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-26-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-26-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-26-6.png)<!-- -->
 
-### S4-4-8 KS test and Stats
+### S4-4-9 KS test and Stats
 
 We also performed a KS test to test the FM lambdas and STL FM lambdas
 for different factors. It seems that their distributions are different.
@@ -12889,19 +12900,19 @@ this section refers to the estimated risk premium.
 
 ### S5-1-1 Arithmetic Mean
 
-![](ECC_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-27-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-29-2.png)<!-- -->
 
 ### S5-1-2 Geometric Mean
 
-![](ECC_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-28-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-30-2.png)<!-- -->
 
 ### S5-1-3 Fama Macbeth Second Step Regression
 
-![](ECC_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-29-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->
 
 ### S5-1-4 Fama Macbeth Second Step Regression with STL Trend Data
 
-![](ECC_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-30-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-32-2.png)<!-- -->
 
 ## S5-2 Comparative Statics
 
@@ -13066,7 +13077,7 @@ Arithmetic Mean and the Geometric Mean.
 Here we would compare the Estimated ECC from FM method and Filtered FM
 method:
 
-![](ECC_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-32-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-2.png)<!-- -->
 
 We also performed a KS test to test the FM ECC and STL FM ECC for
 different sectors. It seems that the distributions are different from FM
@@ -13962,13 +13973,76 @@ Next, we plot the plots for FM vs. STL Filtered FM statistics.
 
 ## S5-3 Decomposition of the Equity Cost of Captial
 
-![](ECC_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-8.png)<!-- -->
+In this section, we would try to decompose the ECC.
+
+Based on the Model, at each period t, the estimated Risk Premium is
+calculated as follows:
+
+![E\[RP\] = \\vec\\beta\*\\vec\\lambda'](https://latex.codecogs.com/png.latex?E%5BRP%5D%20%3D%20%5Cvec%5Cbeta%2A%5Cvec%5Clambda%27 "E[RP] = \vec\beta*\vec\lambda'")
+
+![\\vec\\beta](https://latex.codecogs.com/png.latex?%5Cvec%5Cbeta "\vec\beta")
+is the 1xk vecotr which represents k factor exposures;
+![\\vec\\lambda](https://latex.codecogs.com/png.latex?%5Cvec%5Clambda "\vec\lambda")
+is the 1xk Matrix which represents k factor premium across T periods. In
+order to decompose the
+![E\[RP\]](https://latex.codecogs.com/png.latex?E%5BRP%5D "E[RP]") into
+one ![\\beta](https://latex.codecogs.com/png.latex?%5Cbeta "\beta") and
+one
+![\\lambda](https://latex.codecogs.com/png.latex?%5Clambda "\lambda")
+components, we apply the property of vector product:
+
+![E\[RP\] = \|\\vec\\beta\|\*\|\\vec\\lambda\|\*cos(\\vec\\beta,\\vec\\lambda)](https://latex.codecogs.com/png.latex?E%5BRP%5D%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2Acos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29 "E[RP] = |\vec\beta|*|\vec\lambda|*cos(\vec\beta,\vec\lambda)")
+
+We would call the
+![cos(\\vec\\beta,\\vec\\lambda)](https://latex.codecogs.com/png.latex?cos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29 "cos(\vec\beta,\vec\lambda)")
+part projection parameter
+(![-1 \\leq PP \\leq 1](https://latex.codecogs.com/png.latex?-1%20%5Cleq%20PP%20%5Cleq%201 "-1 \leq PP \leq 1")),
+since it is how effective the L2 norms,
+![\|\\vec\\beta\|](https://latex.codecogs.com/png.latex?%7C%5Cvec%5Cbeta%7C "|\vec\beta|")
+and
+![\|\\vec\\lambda\|](https://latex.codecogs.com/png.latex?%7C%5Cvec%5Clambda%7C "|\vec\lambda|"),
+work together to form the expected risk premium. If
+![cos(\\vec\\beta,\\vec\\lambda)=0](https://latex.codecogs.com/png.latex?cos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29%3D0 "cos(\vec\beta,\vec\lambda)=0"),
+no matter how large
+![\|\\vec\\beta\|](https://latex.codecogs.com/png.latex?%7C%5Cvec%5Cbeta%7C "|\vec\beta|")
+and
+![\|\\vec\\lambda\|](https://latex.codecogs.com/png.latex?%7C%5Cvec%5Clambda%7C "|\vec\lambda|")
+are, the expected risk premium would be 0.
+
+![E\[RP\] = \|\\vec\\beta\|\*\|\\vec\\lambda\|\*PP](https://latex.codecogs.com/png.latex?E%5BRP%5D%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2APP "E[RP] = |\vec\beta|*|\vec\lambda|*PP")
+
+and,
+![\|E\[RP\]\| = \|\\vec\\beta\|\*\|\\vec\\lambda\|\*\|PP\|](https://latex.codecogs.com/png.latex?%7CE%5BRP%5D%7C%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2A%7CPP%7C "|E[RP]| = |\vec\beta|*|\vec\lambda|*|PP|")
+
+The decomposition would be more intuitive with an additive form. We take
+the log of both sides:
+
+![ln(\|E\[RP\]\|) = ln(\|\\vec\\beta\|\*\|\\vec\\lambda\|\*\|PP\|) = ln(\|\\vec\\beta\|) + ln(\|\\vec\\lambda\|) + ln(\|PP\|)](https://latex.codecogs.com/png.latex?ln%28%7CE%5BRP%5D%7C%29%20%3D%20ln%28%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2A%7CPP%7C%29%20%3D%20ln%28%7C%5Cvec%5Cbeta%7C%29%20%2B%20ln%28%7C%5Cvec%5Clambda%7C%29%20%2B%20ln%28%7CPP%7C%29 "ln(|E[RP]|) = ln(|\vec\beta|*|\vec\lambda|*|PP|) = ln(|\vec\beta|) + ln(|\vec\lambda|) + ln(|PP|)")
+
+Therefore,
+
+![1 = \\frac{ln(\|\\vec\\beta\|)}{ln(\|E\[RP\]\|)} + \\frac{ln(\|\\vec\\lambda\|))}{ln(\|E\[RP\]\|)} + \\frac{ln(\|PP\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.latex?1%20%3D%20%5Cfrac%7Bln%28%7C%5Cvec%5Cbeta%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D%20%2B%20%5Cfrac%7Bln%28%7C%5Cvec%5Clambda%7C%29%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D%20%2B%20%5Cfrac%7Bln%28%7CPP%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "1 = \frac{ln(|\vec\beta|)}{ln(|E[RP]|)} + \frac{ln(|\vec\lambda|))}{ln(|E[RP]|)} + \frac{ln(|PP|)}{ln(|E[RP]|)}")
+
+The
+![\\frac{ln(\|\\vec\\beta\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.latex?%5Cfrac%7Bln%28%7C%5Cvec%5Cbeta%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "\frac{ln(|\vec\beta|)}{ln(|E[RP]|)}")
+can be interpreted as importance of
+![\\beta](https://latex.codecogs.com/png.latex?%5Cbeta "\beta") in
+forming the expected risk premium; the
+![\\frac{ln(\|\\vec\\lambda\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.latex?%5Cfrac%7Bln%28%7C%5Cvec%5Clambda%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "\frac{ln(|\vec\lambda|)}{ln(|E[RP]|)}")
+can be interpreted as importance of
+![\\lambda](https://latex.codecogs.com/png.latex?%5Clambda "\lambda") in
+forming the expected risk premium; the
+![\\frac{ln(\|PP\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.latex?%5Cfrac%7Bln%28%7CPP%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "\frac{ln(|PP|)}{ln(|E[RP]|)}")
+can be interpreted as importance of projection parameter (PP) in forming
+the expected risk premium.
+
+![](ECC_files/figure-gfm/unnamed-chunk-36-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-36-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-36-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-36-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-36-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-36-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-36-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-36-8.png)<!-- -->
 
 ## S5-4 Forcasting???
 
 We can try to apply the previous methods to forecast the ECC and compare
-the accuracy. There is a STL method of forcasting so we might be able to
-use STL to forcast betas and industry risk premium and perform the
+the accuracy. There is a STL method of forecasting so we might be able
+to use STL to forcast betas and industry risk premium and perform the
 second step regression to obtain the lambda. Then we can calculate the
 ECC.
 

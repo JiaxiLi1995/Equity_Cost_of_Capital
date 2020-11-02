@@ -3555,6 +3555,35 @@ ECC_FM_PRS %>%
        x = "date") + 
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 30, hjust = 1))
+
+# Create the detailed plots for ECC_FM_FF5
+ECC_FM_FF5 %>%
+  filter(Industry != "Other") %>%
+  filter(Industry %in% unique(Industry)[1:24]) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, ECC)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Industry,
+             nrow = 4) +
+  labs(title= "Estimated Equity Cost of Capital with FM_FF5 (1)",
+       x = "date") + 
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 30, hjust = 1))
+
+ECC_FM_FF5 %>%
+  filter(Industry != "Other") %>%
+  filter(Industry %in% unique(Industry)[25:48]) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, ECC)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Industry,
+             nrow = 4) +
+  labs(title= "Estimated Equity Cost of Capital with FM_FF5 (2)",
+       x = "date") + 
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 30, hjust = 1))
 ```
 
 ### S5-1-4 Fama Macbeth Second Step Regression with STL Trend Data
@@ -3643,6 +3672,35 @@ ECC_FM_STL_PRS %>%
   scale_x_date(minor_breaks = "1 year") +
   facet_wrap(~ Industry) +
   labs(title= "Estimated Equity Cost of Capital with FM_STL_PRS",
+       x = "date") + 
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 30, hjust = 1))
+
+# Create the detailed plots for ECC_FM_STL_FF5
+ECC_FM_STL_FF5 %>%
+  filter(Industry != "Other") %>%
+  filter(Industry %in% unique(Industry)[1:24]) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, ECC)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Industry,
+             nrow = 4) +
+  labs(title= "Estimated Equity Cost of Capital with FM_STL_FF5 (1)",
+       x = "date") + 
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 30, hjust = 1))
+
+ECC_FM_STL_FF5 %>%
+  filter(Industry != "Other") %>%
+  filter(Industry %in% unique(Industry)[25:48]) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, ECC)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Industry,
+             nrow = 4) +
+  labs(title= "Estimated Equity Cost of Capital with FM_STL_FF5 (2)",
        x = "date") + 
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 30, hjust = 1))

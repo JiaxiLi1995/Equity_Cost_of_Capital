@@ -12908,11 +12908,11 @@ this section refers to the estimated risk premium.
 
 ### S5-1-3 Fama Macbeth Second Step Regression
 
-![](ECC_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-4.png)<!-- -->
 
 ### S5-1-4 Fama Macbeth Second Step Regression with STL Trend Data
 
-![](ECC_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-32-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-32-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-32-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-32-4.png)<!-- -->
 
 ## S5-2 Comparative Statics
 

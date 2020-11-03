@@ -4044,8 +4044,54 @@ Next, we plot the plots for FM vs. STL Filtered FM statistics.
 ![](External_plots/RP_skew.png)
 ![](External_plots/RP_kurt.png)
 
+## S5-3 Bootstrap Standard Error
 
-## S5-3 Decomposition of the Equity Cost of Captial
+In this section, we would apply the bootstrap method to estimated the standard error of estimated ECC's with different methods.
+
+First, we estimate the average ECC across 48 Sectors (without Other) statistics from simulation; simulate 1000 samples of 250 average ECCs with replacement; and calculate the mean from each sample; then the standard error is the standard deviation of sample mean.
+
+Second, we simulated 1000 samples of 250 average ECCs with replacement for each Industry; calculate the mean from each sample; then the standard error for each Industry ECC is the standard deviation of sample mean.
+
+```{r, cache = TRUE}
+# Create 250,000 samples with replacement for mean sector returns
+All_FF5_ECC %>%
+  filter(Industry != "Other") %>%
+  group_by(date) %>%
+  # Estimate the Mean
+  summarise_at(vars(-Industry), mean) %>%
+  # Sample with Replacement
+  sample_n(250000, replace = TRUE) %>%
+  subset(select = -date) %>%
+  # Create the sample identifier N
+  mutate(N = floor((1:250000-1)/250)) %>%
+  group_by(N) %>%
+  summarise_all(mean) %>%
+  ungroup() %>%
+  subset(select = -N) %>%
+  summarise_all(sd) %>%
+  kable(align = "c", caption = "Bootstrap Estimated ECC Standard Error") %>%
+  kable_styling(font_size = 10, "striped", full_width = F)
+
+All_FF5_ECC %>%
+  filter(Industry != "Other") %>%
+  subset(select = -date) %>%
+  group_by(Industry) %>%
+  sample_n(250000, replace = TRUE) %>%
+  # Create the sample identifier N
+  ungroup() %>%
+  mutate(N = floor((1:12000000-1)/250)) %>%
+  group_by(Industry,N) %>%
+  summarise_all(mean) %>%
+  ungroup() %>%
+  subset(select = -N) %>%
+  group_by(Industry) %>%
+  summarise_all(sd) %>%
+  kable(align = "c", caption = "Bootstrap Estimated Industry ECC Standard Error") %>%
+  kable_styling(font_size = 10, "striped", full_width = F)
+```
+
+
+## S5-4 Decomposition of the Equity Cost of Captial
 
 In this section, we would try to decompose the ECC.
 
@@ -4180,11 +4226,11 @@ ECC_FM_STL_PRS_Norms %>%
         axis.text.x = element_text(angle = 30, hjust = 1))
 ```
 
-## S5-4 Forcasting???
+## S5-5 Forcasting???
 
 We can try to apply the previous methods to forecast the ECC and compare the accuracy. There is a STL method of forecasting so we might be able to use STL to forcast betas and industry risk premium and perform the second step regression to obtain the lambda. Then we can calculate the ECC.
 
-## S5-5 ECC with Consumption Growth???
+## S5-6 ECC with Consumption Growth???
 
 We might look at whether the filter affects the correlation of ECC with consumption growth or the volatility of consumption growth. In some asset pricing models, premia should vary across time in response to consumption growth, and in some models, the volatility of consumption growth.  Maybe we should preemptively look at whether the filter increases the correlation with these measures in the aggregate.
 

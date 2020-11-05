@@ -8606,7 +8606,8 @@ Premium.
 ## S4-1 Arithmetic Mean
 
 First, one can take the arithmetic mean of the factors to generate the
-expected factor premium.
+expected factor premium. To allow the factor premium to evolve, we also
+estimated RAM which is a 5-year Rolling Arithmetic Mean.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -8700,8 +8701,9 @@ UNEXPI
 ## S4-2 Geometric Mean
 
 Levi and Welch mentioned in their 2017 paper that geometric mean might
-perform better. So in this section, we will calculate the geometric mean
-as the factor premium.
+perform better. So in this section, we will calculate the Geometric Mean
+as the factor premium. To allow the factor premium to evolve, we also
+estimated RAM which is a 5-year Rolling Geometric Mean.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">

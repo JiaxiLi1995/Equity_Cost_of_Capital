@@ -1262,7 +1262,7 @@ In this section, we will describe different ways to estimate the Factor Premium.
 
 ## S4-1 Arithmetic Mean
 
-First, one can take the arithmetic mean of the factors to generate the expected factor premium.
+First, one can take the arithmetic mean of the factors to generate the expected factor premium. To allow the factor premium to evolve, we also estimated RAM which is a 5-year Rolling Arithmetic Mean.
 
 ```{r, cache = TRUE}
 AM_FF5 <- FF5 %>%
@@ -1333,7 +1333,7 @@ RAM_PRS %>%
 
 ## S4-2 Geometric Mean
 
-Levi and Welch mentioned in their 2017 paper that geometric mean might perform better. So in this section, we will calculate the geometric mean as the factor premium. 
+Levi and Welch mentioned in their 2017 paper that geometric mean might perform better. So in this section, we will calculate the Geometric Mean as the factor premium. To allow the factor premium to evolve, we also estimated RAM which is a 5-year Rolling Geometric Mean.
 
 ```{r, cache = TRUE}
 GM_FF5 <- FF5 %>%

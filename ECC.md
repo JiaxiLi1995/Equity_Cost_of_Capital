@@ -34,20 +34,28 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
         Regression](#s4-3-fama-macbeth-second-step-regression)
     -   [S4-4 Fama Macbeth Second Step Regression with STL Deseaoned
         Data](#s4-4-fama-macbeth-second-step-regression-with-stl-deseaoned-data)
-        -   [S4-4-1 Why filtering might improve Esimated
-            Lamdba?](#s4-4-1-why-filtering-might-improve-esimated-lamdba)
-        -   [S4-4-2 Simulation](#s4-4-2-simulation)
-        -   [S4-4-3 STL Filtering](#s4-4-3-stl-filtering)
-        -   [S4-4-4 Filtered Seasonality and Trend
-            Strength](#s4-4-4-filtered-seasonality-and-trend-strength)
-        -   [S4-4-5 Beta Decomposition](#s4-4-5-beta-decomposition)
-        -   [S4-4-6 Filtered Second Pass
-            Regression](#s4-4-6-filtered-second-pass-regression)
-        -   [S4-4-7 Regression Standard
-            Error](#s4-4-7-regression-standard-error)
-        -   [S4-4-8 Unfiltered and Filtered
-            Lambdas](#s4-4-8-unfiltered-and-filtered-lambdas)
-        -   [S4-4-9 KS test and Stats](#s4-4-9-ks-test-and-stats)
+        -   [S4-4-1 STL Filtering](#s4-4-1-stl-filtering)
+        -   [S4-4-2 Filtered Seasonality and Trend
+            Strength](#s4-4-2-filtered-seasonality-and-trend-strength)
+        -   [S4-4-3 Beta Decomposition](#s4-4-3-beta-decomposition)
+        -   [S4-4-4 Filtered Second Pass
+            Regression](#s4-4-4-filtered-second-pass-regression)
+        -   [S4-4-5 Regression Standard
+            Error](#s4-4-5-regression-standard-error)
+        -   [S4-4-6 Unfiltered and Filtered
+            Lambdas](#s4-4-6-unfiltered-and-filtered-lambdas)
+        -   [S4-4-7 KS test and Stats](#s4-4-7-ks-test-and-stats)
+    -   [S4-5 Why filtering might improve Esimated
+        Lamdba?](#s4-5-why-filtering-might-improve-esimated-lamdba)
+        -   [S4-5-1 Biased Regression](#s4-5-1-biased-regression)
+        -   [S4-5-2 Simulation](#s4-5-2-simulation)
+            -   [S4-5-2-1 Simulation with Random Parameters and Sin
+                Lamdba](#s4-5-2-1-simulation-with-random-parameters-and-sin-lamdba)
+            -   [S4-5-2-2 Simulation with Random Parameter and Random
+                Smooth
+                Lambda](#s4-5-2-2-simulation-with-random-parameter-and-random-smooth-lambda)
+            -   [S4-5-2-3 Simulation with Actual Parameters and Smooth
+                Lambdas](#s4-5-2-3-simulation-with-actual-parameters-and-smooth-lambdas)
 -   [S5 Equity Cost of Captial](#s5-equity-cost-of-captial)
     -   [S5-1 Estimated Equity Cost of
         Captial](#s5-1-estimated-equity-cost-of-captial)
@@ -8619,109 +8627,7 @@ time-series of factor risk premium, but the volatility in lambda is
 unreasonably large. We will try to apply the STL trend in the second
 step regression to smooth the lambda.
 
-### S4-4-1 Why filtering might improve Esimated Lamdba?
-
-There is no need for trend extraction for 1st step regression, no matter
-if we use the full sample or rolling window. The window should be large
-enough to mitigate the seasonality effect. The second step regression,
-however, is a cross sectional regression. A seasonal component in the
-time series would disrupt the cross-sectional regression significantly.
-So it is possible the the large volatility observed in the second step
-regression is due to the seasonality.
-
-Now, assume the return (or risk premium) is formed by the following
-equation:
-
-![r\_{it} = \\beta\_{it}\*\\lambda\_t+\\eta\_{it}](https://latex.codecogs.com/png.latex?r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Ceta_%7Bit%7D "r_{it} = \beta_{it}*\lambda_t+\eta_{it}")
-
-Where beta is the sector specific risk exposure, lambda is the factor
-premium, and eta is the idiosyncratic noise.
-
-![E\[\\eta\_{it}\|i\] = 0](https://latex.codecogs.com/png.latex?E%5B%5Ceta_%7Bit%7D%7Ci%5D%20%3D%200 "E[\eta_{it}|i] = 0")
-
-However, the eta might actually contain 3 components:
-![\\epsilon\_t](https://latex.codecogs.com/png.latex?%5Cepsilon_t "\epsilon_t"),
-![s\_{im}](https://latex.codecogs.com/png.latex?s_%7Bim%7D "s_{im}"),
-and
-![epsilon\_{it}](https://latex.codecogs.com/png.latex?epsilon_%7Bit%7D "epsilon_{it}").
-
-![\\eta\_{it} = \\epsilon\_t + s\_{im} + \\epsilon\_{it}](https://latex.codecogs.com/png.latex?%5Ceta_%7Bit%7D%20%3D%20%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D "\eta_{it} = \epsilon_t + s_{im} + \epsilon_{it}")
-
-eps\_t is the universal time-series error, s\_i is the sector-specific
-seasonality, and eps\_it is the idiosyncratic error. Therefore, the
-equation is actually:
-
-![r\_{it} = \\beta\_{it}\*\\lambda\_t+\\epsilon\_t + s\_{im} + \\epsilon\_{it}](https://latex.codecogs.com/png.latex?r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D "r_{it} = \beta_{it}*\lambda_t+\epsilon_t + s_{im} + \epsilon_{it}")
-
-Again, we would have:
-
-![E\[\\epsilon\_t + s\_{im} + \\epsilon\_{it}\|i\] = 0](https://latex.codecogs.com/png.latex?E%5B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D%7Ci%5D%20%3D%200 "E[\epsilon_t + s_{im} + \epsilon_{it}|i] = 0")
-
-However, the cross-sectional regression error at each time t:
-
-![E\[\\epsilon\_t + s\_{im} + \\epsilon\_{it}\|t\] = \\epsilon\_t+s\_{im}](https://latex.codecogs.com/png.latex?E%5B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D%7Ct%5D%20%3D%20%5Cepsilon_t%2Bs_%7Bim%7D "E[\epsilon_t + s_{im} + \epsilon_{it}|t] = \epsilon_t+s_{im}")
-
-The unbiased least square estimation requires the error term expected to
-be 0. The existence of
-![( \\epsilon\_t + s\_{im} \| t)](https://latex.codecogs.com/png.latex?%28%20%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%7C%20t%29 "( \epsilon_t + s_{im} | t)")
-in each cross-sectional regression, therefore, would randomly bias the
-estimated lambda. This might be why we see the FM method lambdas behave
-so “abruptly”. If we randomly bias the lambda, the regression error of
-lambda is similar to the one without bias at each t. However, this bias
-is changing over time, which would add to the regression error of the
-lambdas. And therefore, bias might manifest itself in a higher standard
-error in the resulting ECC estimates.
-
-The universal time-series error and the seasonality would actually bias
-the lambda estimation. Filtering out the universal time-series noise and
-seasonality would improve the lambda estimated. Now, I will illustrate
-the effect of seasonality and universal time-series noise in the second
-step regression through a simulation.
-
-### S4-4-2 Simulation
-
-Suppose the true 49 sector betas are given (since our focus is lambda)
-and each of them follows an ARIMA(1,1,0) process, with AR coefficient
-0.9. For demonstration purpose, the Factor Premiums follows a sin
-function lambda = sin(t/60\*pi)/10+0.5. The universal time-series noise
-is the same for all the sectors, following N(0, 1^2); a sector-specific
-seasonality is randomly generated for each sector following N(0,1^2),
-and repeats each year; and the idiosyncratic error is also generated
-following N(0, 0.3^2). The first value of 49 sector betas are generated
-from N(1, 0.3^2). There are 600 data generated to represent monthly data
-in 50 years.
-
-![](ECC_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
-
-Now, we are going to replace the sin function with a random smooth
-function. The truly expected factor premium should not behave too
-crazily so it should be roughly a smooth curve, and for any smooth curve
-on earth, we can apply a Fourier Transformation to convert it to a
-linear combination of sin and cos equations. If you do not believe that
-the truly expected factor premium is smooth, at least it is an impulse
-response process (it shifts when information hits it) and therefore can
-be Fourier Transformed. So, we can apply a Fourier transformation
-equation to simulate a random curve as the true factor premium.
-
-The ramdom Fourier Lambdas are generated by the following Fourier
-Equations:
-
-![f(t) = a\_0+\\sum\_{i=1}^n(a\_i cos(it)+b\_isin(it))](https://latex.codecogs.com/png.latex?f%28t%29%20%3D%20a_0%2B%5Csum_%7Bi%3D1%7D%5En%28a_i%20cos%28it%29%2Bb_isin%28it%29%29 "f(t) = a_0+\sum_{i=1}^n(a_i cos(it)+b_isin(it))")
-
-The ![a\_0](https://latex.codecogs.com/png.latex?a_0 "a_0") is from a
-normal distribution N(0.01,0.002^2), both
-![a\_i](https://latex.codecogs.com/png.latex?a_i "a_i") and
-![b\_i](https://latex.codecogs.com/png.latex?b_i "b_i") are following a
-normal distribution N(0,0.025^2), and the n is a random integer between
-20 and 100. This is a random smooth function and
-![f(t)](https://latex.codecogs.com/png.latex?f%28t%29 "f(t)") is the
-random Fourier Lambda.
-
-![](ECC_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
-
-    ## [1] 0.5627965
-
-### S4-4-3 STL Filtering
+### S4-4-1 STL Filtering
 
 STL method (Cleveland et al. 1990) would try decompose the time-series
 into 3 components: trend, seasonality, and noise. It applies an
@@ -8740,7 +8646,7 @@ non-Gaussian behavior in the time-series leads to extreme, transient
 variation). We will first show the STL decomposition of betas and
 returns.
 
-![](ECC_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-19-8.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-17-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-17-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-17-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-17-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-17-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-17-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-17-8.png)<!-- -->
 
 The robustness weighting seems not be appropriate for the Industry Risk
 Premiums since the returns variation are mostly caused by Gaussian
@@ -8753,9 +8659,9 @@ there could be changing seasonal patterns in the short-term.
 Now, we would compare the cross-sectional distribution before and after
 filtering.
 
-![](ECC_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
-### S4-4-4 Filtered Seasonality and Trend Strength
+### S4-4-2 Filtered Seasonality and Trend Strength
 
 Now we estimate the strength of trend and strength of seasonality. The
 Strength of the trend is defined as:
@@ -10763,9 +10669,9 @@ It seems that the both the trend and seasonal components are weak. No
 robust is stronger than robust, and smaller s\_window would yield
 stronger components.
 
-### S4-4-5 Beta Decomposition
+### S4-4-3 Beta Decomposition
 
-![](ECC_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-22-8.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-8.png)<!-- -->
 
 Beta estimation’s noise or seasonal pattern is much smaller than trend
 so the noise weight or the s\_window does not impact the result as much.
@@ -10774,23 +10680,23 @@ Now, we will take the desired no robust weighting, s\_window = 7 trend
 results of the Industry Risk Premium to estimate the factor risk
 premium.
 
-### S4-4-6 Filtered Second Pass Regression
+### S4-4-4 Filtered Second Pass Regression
 
-![](ECC_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-23-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-2.png)<!-- -->
 
 For robustness check, we also computed the factor risk premium based on
 other filtering.
 
-### S4-4-7 Regression Standard Error
+### S4-4-5 Regression Standard Error
 
-![](ECC_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-25-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-23-2.png)<!-- -->
 
-### S4-4-8 Unfiltered and Filtered Lambdas
+### S4-4-6 Unfiltered and Filtered Lambdas
 
 Let’s plot the unfiltered lambda together with filtered lambda to see
 the effect of filtering on lambda.
 
-![](ECC_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-26-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-2.png)<!-- -->
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 Correlation between FM lambda and STL filtered FM lambda
@@ -10905,9 +10811,9 @@ UNEXPI
 </tbody>
 </table>
 
-![](ECC_files/figure-gfm/unnamed-chunk-26-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-26-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-26-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-26-6.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-24-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-6.png)<!-- -->
 
-### S4-4-9 KS test and Stats
+### S4-4-7 KS test and Stats
 
 We also performed a KS test to test the FM lambdas and STL FM lambdas
 for different factors. It seems that their distributions are different.
@@ -12890,6 +12796,146 @@ s40 robust
 </tbody>
 </table>
 
+## S4-5 Why filtering might improve Esimated Lamdba?
+
+### S4-5-1 Biased Regression
+
+There is no need for trend extraction for 1st step regression, no matter
+if we use the full sample or rolling window. The window should be large
+enough to mitigate the seasonality effect. The second step regression,
+however, is a cross sectional regression. A seasonal component in the
+time series would disrupt the cross-sectional regression significantly.
+So it is possible the the large volatility observed in the second step
+regression is due to the seasonality.
+
+Now, assume the return (or risk premium) is formed by the following
+equation:
+
+![r\_{it} = \\beta\_{it}\*\\lambda\_t+\\eta\_{it}](https://latex.codecogs.com/png.latex?r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Ceta_%7Bit%7D "r_{it} = \beta_{it}*\lambda_t+\eta_{it}")
+
+Where beta is the sector specific risk exposure, lambda is the factor
+premium, and eta is the idiosyncratic noise.
+
+![E\[\\eta\_{it}\|i\] = 0](https://latex.codecogs.com/png.latex?E%5B%5Ceta_%7Bit%7D%7Ci%5D%20%3D%200 "E[\eta_{it}|i] = 0")
+
+However, the eta might actually contain 3 components:
+![\\epsilon\_t](https://latex.codecogs.com/png.latex?%5Cepsilon_t "\epsilon_t"),
+![s\_{im}](https://latex.codecogs.com/png.latex?s_%7Bim%7D "s_{im}"),
+and
+![epsilon\_{it}](https://latex.codecogs.com/png.latex?epsilon_%7Bit%7D "epsilon_{it}").
+
+![\\eta\_{it} = \\epsilon\_t + s\_{im} + \\epsilon\_{it}](https://latex.codecogs.com/png.latex?%5Ceta_%7Bit%7D%20%3D%20%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D "\eta_{it} = \epsilon_t + s_{im} + \epsilon_{it}")
+
+eps\_t is the universal time-series error, s\_i is the sector-specific
+seasonality, and eps\_it is the idiosyncratic error. Therefore, the
+equation is actually:
+
+![r\_{it} = \\beta\_{it}\*\\lambda\_t+\\epsilon\_t + s\_{im} + \\epsilon\_{it}](https://latex.codecogs.com/png.latex?r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D "r_{it} = \beta_{it}*\lambda_t+\epsilon_t + s_{im} + \epsilon_{it}")
+
+Again, we would have:
+
+![E\[\\epsilon\_t + s\_{im} + \\epsilon\_{it}\|i\] = 0](https://latex.codecogs.com/png.latex?E%5B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D%7Ci%5D%20%3D%200 "E[\epsilon_t + s_{im} + \epsilon_{it}|i] = 0")
+
+However, the cross-sectional regression error at each time t:
+
+![E\[\\epsilon\_t + s\_{im} + \\epsilon\_{it}\|t\] = \\epsilon\_t+s\_{im}](https://latex.codecogs.com/png.latex?E%5B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D%7Ct%5D%20%3D%20%5Cepsilon_t%2Bs_%7Bim%7D "E[\epsilon_t + s_{im} + \epsilon_{it}|t] = \epsilon_t+s_{im}")
+
+The unbiased least square estimation requires the error term expected to
+be 0. The existence of
+![( \\epsilon\_t + s\_{im} \| t)](https://latex.codecogs.com/png.latex?%28%20%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%7C%20t%29 "( \epsilon_t + s_{im} | t)")
+in each cross-sectional regression, therefore, would randomly bias the
+estimated lambda. (Biasness is the last thing we want from a
+regression.) This might be why we see the FM method lambdas behave so
+“abruptly”. If we randomly bias the lambda, the regression error of
+lambda is similar to the one without bias at each t. However, this bias
+is changing over time, which would add to the regression error of the
+lambdas. And therefore, bias might manifest itself in a higher standard
+error in the resulting ECC estimates.
+
+The universal time-series error and the seasonality would actually bias
+the lambda estimation. Filtering out the universal time-series noise and
+seasonality would improve the lambda estimated. Now, I will illustrate
+the effect of seasonality and universal time-series noise in the second
+step regression through a simulation.
+
+### S4-5-2 Simulation
+
+We will perform 3 different simulations to possible illustrate how the
+filtered method would help with the second step regression.
+
+#### S4-5-2-1 Simulation with Random Parameters and Sin Lamdba
+
+Suppose the true 49 sector betas are given (since our focus is lambda)
+and each of them follows an ARIMA(1,1,0) process, with AR coefficient
+0.9. For demonstration purpose, the Factor Premiums follows a sin
+function lambda = sin(t/60\*pi)/10+0.5. The universal time-series noise
+is the same for all the sectors, following N(0, 1^2); a sector-specific
+seasonality is randomly generated for each sector following N(0,1^2),
+and repeats each year; and the idiosyncratic error is also generated
+following N(0, 0.3^2). The first value of 49 sector betas are generated
+from N(1, 0.3^2). There are 600 data generated to represent monthly data
+in 50 years.
+
+![](ECC_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
+
+#### S4-5-2-2 Simulation with Random Parameter and Random Smooth Lambda
+
+Now, we are going to replace the sin function with a random smooth
+function. The truly expected factor premium should not behave too
+crazily so it should be roughly a smooth curve, and for any smooth curve
+on earth, we can apply a Fourier Transformation to convert it to a
+linear combination of sin and cos equations. If you do not believe that
+the truly expected factor premium is smooth, at least it is an impulse
+response process (it shifts when information hits it) and therefore can
+be Fourier Transformed. So, we can apply a Fourier transformation
+equation to simulate a random curve as the true factor premium.
+
+The ramdom Fourier Lambdas are generated by the following Fourier
+Equations:
+
+![f(t) = a\_0+\\sum\_{i=1}^n(a\_i cos(it)+b\_isin(it))](https://latex.codecogs.com/png.latex?f%28t%29%20%3D%20a_0%2B%5Csum_%7Bi%3D1%7D%5En%28a_i%20cos%28it%29%2Bb_isin%28it%29%29 "f(t) = a_0+\sum_{i=1}^n(a_i cos(it)+b_isin(it))")
+
+The ![a\_0](https://latex.codecogs.com/png.latex?a_0 "a_0") is from a
+normal distribution N(0.01,0.002^2), both
+![a\_i](https://latex.codecogs.com/png.latex?a_i "a_i") and
+![b\_i](https://latex.codecogs.com/png.latex?b_i "b_i") are following a
+normal distribution N(0,0.025^2), and the n is a random integer between
+20 and 100. This is a random smooth function and
+![f(t)](https://latex.codecogs.com/png.latex?f%28t%29 "f(t)") is the
+random Fourier Lambda.
+
+![](ECC_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
+
+    ## [1] 0.5627965
+
+#### S4-5-2-3 Simulation with Actual Parameters and Smooth Lambdas
+
+Finally, we would like to apply the actual Betas, Seasonality,
+Time-series Error, and Idiosyncratic Error with a Fourier Smoothed
+Lambda assumed to be the true lambda. This will illustrate how the
+lambda estimation in the real data can be possibly improved.
+
+We will extract the Seasonality and Noise from STL method, and then the
+idiosyncratic noise from cross-sectional regression. The betas we use
+are the 5-year rolling window beta.
+
+![](ECC_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-29-2.png)<!-- -->
+
+The Noise component is the time-series noise; the Seasonal component is
+the Seasonality; the Resid component is the idiosyncratic noise. From
+the standard deviation part, we can see in real data, the time-series
+noise and seasonality is a large part of noise. Our assumptions about
+large seasonality and time-series noise in the previous simulations are
+valid.
+
+In this simulation, I performed 100 simulations of random Fourier Fama
+French 5 Factor Lambdas. In order to make the lambdas similar to the
+estimated lambda, I adjusted the standard deviation of simulated lambdas
+to be the same as standard deviation of the Estimated filtered Fama
+Macbeth Lambdas.
+
+![](ECC_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->
+
 # S5 Equity Cost of Captial
 
 ## S5-1 Estimated Equity Cost of Captial
@@ -12901,19 +12947,19 @@ this section refers to the estimated risk premium.
 
 ### S5-1-1 Arithmetic Mean
 
-![](ECC_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-29-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-32-2.png)<!-- -->
 
 ### S5-1-2 Geometric Mean
 
-![](ECC_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-30-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-33-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-33-2.png)<!-- -->
 
 ### S5-1-3 Fama Macbeth Second Step Regression
 
-![](ECC_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-4.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-4.png)<!-- -->
 
 ### S5-1-4 Fama Macbeth Second Step Regression with STL Trend Data
 
-![](ECC_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-32-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-32-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-32-4.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-35-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-35-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-35-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-35-4.png)<!-- -->
 
 ## S5-2 Comparative Statics
 
@@ -13078,7 +13124,7 @@ Arithmetic Mean and the Geometric Mean.
 Here we would compare the Estimated ECC from FM method and Filtered FM
 method:
 
-![](ECC_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-37-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-2.png)<!-- -->
 
 We also performed a KS test to test the FM ECC and STL FM ECC for
 different sectors. It seems that the distributions are different from FM
@@ -14034,40 +14080,40 @@ RP
 <tbody>
 <tr>
 <td style="text-align:center;">
-5.4e-05
+5.25e-05
 </td>
 <td style="text-align:center;">
-4.69e-05
+4.57e-05
 </td>
 <td style="text-align:center;">
-0.0003295
+0.0003272
 </td>
 <td style="text-align:center;">
-0.0003426
+0.0003409
 </td>
 <td style="text-align:center;">
-0.0038801
+0.0038211
 </td>
 <td style="text-align:center;">
-0.0007962
+0.0008115
 </td>
 <td style="text-align:center;">
-0.0009541
+0.0009876
 </td>
 <td style="text-align:center;">
-0.00084
+0.0008553
 </td>
 <td style="text-align:center;">
-0.0009964
+0.0010556
 </td>
 <td style="text-align:center;">
-0.0009069
+0.0009168
 </td>
 <td style="text-align:center;">
-0.0010789
+0.0011204
 </td>
 <td style="text-align:center;">
-0.0031383
+0.0030506
 </td>
 </tr>
 </tbody>
@@ -14125,40 +14171,40 @@ RP
 Aero
 </td>
 <td style="text-align:center;">
-0.0001642
+0.0001584
 </td>
 <td style="text-align:center;">
-0.0001417
+0.0001368
 </td>
 <td style="text-align:center;">
-0.0004054
+0.0004144
 </td>
 <td style="text-align:center;">
-0.0004036
+0.0004147
 </td>
 <td style="text-align:center;">
-0.0044521
+0.0045832
 </td>
 <td style="text-align:center;">
-0.0009084
+0.0009917
 </td>
 <td style="text-align:center;">
-0.0011484
+0.0011807
 </td>
 <td style="text-align:center;">
-0.0009514
+0.0010409
 </td>
 <td style="text-align:center;">
-0.0012322
+0.0012696
 </td>
 <td style="text-align:center;">
-0.0010245
+0.0011083
 </td>
 <td style="text-align:center;">
-0.0012383
+0.0012489
 </td>
 <td style="text-align:center;">
-0.0042156
+0.0042458
 </td>
 </tr>
 <tr>
@@ -14166,40 +14212,40 @@ Aero
 Agric
 </td>
 <td style="text-align:center;">
-0.0002138
+0.0002068
 </td>
 <td style="text-align:center;">
-0.0001845
+0.0001780
 </td>
 <td style="text-align:center;">
-0.0005075
+0.0004868
 </td>
 <td style="text-align:center;">
-0.0005004
+0.0004809
 </td>
 <td style="text-align:center;">
-0.0036967
+0.0036828
 </td>
 <td style="text-align:center;">
-0.0007965
+0.0007931
 </td>
 <td style="text-align:center;">
-0.0009484
+0.0009749
 </td>
 <td style="text-align:center;">
-0.0008398
+0.0008349
 </td>
 <td style="text-align:center;">
-0.0010486
+0.0010621
 </td>
 <td style="text-align:center;">
-0.0009061
+0.0008989
 </td>
 <td style="text-align:center;">
-0.0010611
+0.0010892
 </td>
 <td style="text-align:center;">
-0.0040365
+0.0041157
 </td>
 </tr>
 <tr>
@@ -14207,40 +14253,40 @@ Agric
 Autos
 </td>
 <td style="text-align:center;">
-0.0002266
+0.0002127
 </td>
 <td style="text-align:center;">
-0.0001978
+0.0001856
 </td>
 <td style="text-align:center;">
-0.0003515
+0.0003623
 </td>
 <td style="text-align:center;">
-0.0003661
+0.0003740
 </td>
 <td style="text-align:center;">
-0.0050001
+0.0047951
 </td>
 <td style="text-align:center;">
-0.0011175
+0.0011508
 </td>
 <td style="text-align:center;">
-0.0010689
+0.0011103
 </td>
 <td style="text-align:center;">
-0.0011702
+0.0012026
 </td>
 <td style="text-align:center;">
-0.0011790
+0.0012312
 </td>
 <td style="text-align:center;">
-0.0012442
+0.0012813
 </td>
 <td style="text-align:center;">
-0.0012965
+0.0013669
 </td>
 <td style="text-align:center;">
-0.0047278
+0.0044525
 </td>
 </tr>
 <tr>
@@ -14248,40 +14294,40 @@ Autos
 Banks
 </td>
 <td style="text-align:center;">
-0.0001589
+0.0001536
 </td>
 <td style="text-align:center;">
-0.0001363
+0.0001318
 </td>
 <td style="text-align:center;">
-0.0005878
+0.0005544
 </td>
 <td style="text-align:center;">
-0.0005922
+0.0005603
 </td>
 <td style="text-align:center;">
-0.0047296
+0.0046824
 </td>
 <td style="text-align:center;">
-0.0009493
+0.0009245
 </td>
 <td style="text-align:center;">
-0.0012364
+0.0011730
 </td>
 <td style="text-align:center;">
-0.0009887
+0.0009671
 </td>
 <td style="text-align:center;">
-0.0012760
+0.0012490
 </td>
 <td style="text-align:center;">
-0.0010535
+0.0010350
 </td>
 <td style="text-align:center;">
-0.0012420
+0.0012260
 </td>
 <td style="text-align:center;">
-0.0038548
+0.0039556
 </td>
 </tr>
 <tr>
@@ -14289,40 +14335,40 @@ Banks
 Beer
 </td>
 <td style="text-align:center;">
-0.0001694
+0.0001674
 </td>
 <td style="text-align:center;">
-0.0001465
+0.0001450
 </td>
 <td style="text-align:center;">
-0.0004121
+0.0004221
 </td>
 <td style="text-align:center;">
-0.0004032
+0.0004131
 </td>
 <td style="text-align:center;">
-0.0034453
+0.0033473
 </td>
 <td style="text-align:center;">
-0.0006871
+0.0006515
 </td>
 <td style="text-align:center;">
-0.0009736
+0.0009848
 </td>
 <td style="text-align:center;">
-0.0007147
+0.0006794
 </td>
 <td style="text-align:center;">
-0.0009281
+0.0009211
 </td>
 <td style="text-align:center;">
-0.0007554
+0.0007266
 </td>
 <td style="text-align:center;">
-0.0009072
+0.0008985
 </td>
 <td style="text-align:center;">
-0.0034997
+0.0033264
 </td>
 </tr>
 <tr>
@@ -14330,40 +14376,40 @@ Beer
 BldMt
 </td>
 <td style="text-align:center;">
-0.0001608
+0.0001603
 </td>
 <td style="text-align:center;">
-0.0001393
+0.0001388
 </td>
 <td style="text-align:center;">
-0.0003541
+0.0003486
 </td>
 <td style="text-align:center;">
-0.0003652
+0.0003564
 </td>
 <td style="text-align:center;">
-0.0047784
+0.0046382
 </td>
 <td style="text-align:center;">
-0.0009697
+0.0009015
 </td>
 <td style="text-align:center;">
-0.0011447
+0.0011660
 </td>
 <td style="text-align:center;">
-0.0010208
+0.0009490
 </td>
 <td style="text-align:center;">
-0.0012014
+0.0011911
 </td>
 <td style="text-align:center;">
-0.0010928
+0.0010142
 </td>
 <td style="text-align:center;">
-0.0013081
+0.0012895
 </td>
 <td style="text-align:center;">
-0.0041035
+0.0040398
 </td>
 </tr>
 <tr>
@@ -14371,40 +14417,40 @@ BldMt
 Books
 </td>
 <td style="text-align:center;">
-0.0001194
+0.0001190
 </td>
 <td style="text-align:center;">
-0.0001028
+0.0001026
 </td>
 <td style="text-align:center;">
-0.0003671
+0.0003623
 </td>
 <td style="text-align:center;">
-0.0003840
+0.0003777
 </td>
 <td style="text-align:center;">
-0.0039219
+0.0039078
 </td>
 <td style="text-align:center;">
-0.0008061
+0.0008434
 </td>
 <td style="text-align:center;">
-0.0009752
+0.0009908
 </td>
 <td style="text-align:center;">
-0.0008471
+0.0008915
 </td>
 <td style="text-align:center;">
-0.0009948
+0.0010359
 </td>
 <td style="text-align:center;">
-0.0009063
+0.0009580
 </td>
 <td style="text-align:center;">
-0.0010741
+0.0011198
 </td>
 <td style="text-align:center;">
-0.0034991
+0.0035939
 </td>
 </tr>
 <tr>
@@ -14412,40 +14458,40 @@ Books
 Boxes
 </td>
 <td style="text-align:center;">
-0.0002053
+0.0002107
 </td>
 <td style="text-align:center;">
-0.0001773
+0.0001814
 </td>
 <td style="text-align:center;">
-0.0003649
+0.0003978
 </td>
 <td style="text-align:center;">
-0.0003667
+0.0003948
 </td>
 <td style="text-align:center;">
-0.0039240
+0.0037521
 </td>
 <td style="text-align:center;">
-0.0007978
+0.0007750
 </td>
 <td style="text-align:center;">
-0.0008813
+0.0008334
 </td>
 <td style="text-align:center;">
-0.0008420
+0.0008204
 </td>
 <td style="text-align:center;">
-0.0009355
+0.0008558
 </td>
 <td style="text-align:center;">
-0.0009036
+0.0008837
 </td>
 <td style="text-align:center;">
-0.0009564
+0.0008990
 </td>
 <td style="text-align:center;">
-0.0037853
+0.0035907
 </td>
 </tr>
 <tr>
@@ -14459,34 +14505,34 @@ BusSv
 0.0000533
 </td>
 <td style="text-align:center;">
-0.0003806
+0.0003936
 </td>
 <td style="text-align:center;">
-0.0003919
+0.0004065
 </td>
 <td style="text-align:center;">
-0.0042658
+0.0042525
 </td>
 <td style="text-align:center;">
-0.0008893
+0.0009120
 </td>
 <td style="text-align:center;">
-0.0010382
+0.0010655
 </td>
 <td style="text-align:center;">
-0.0009370
+0.0009622
 </td>
 <td style="text-align:center;">
-0.0011102
+0.0011336
 </td>
 <td style="text-align:center;">
-0.0010005
+0.0010311
 </td>
 <td style="text-align:center;">
-0.0012360
+0.0012582
 </td>
 <td style="text-align:center;">
-0.0034900
+0.0034894
 </td>
 </tr>
 <tr>
@@ -14494,40 +14540,40 @@ BusSv
 Chems
 </td>
 <td style="text-align:center;">
-0.0001326
+0.0001273
 </td>
 <td style="text-align:center;">
-0.0001177
+0.0001132
 </td>
 <td style="text-align:center;">
-0.0003186
+0.0003055
 </td>
 <td style="text-align:center;">
-0.0003303
+0.0003178
 </td>
 <td style="text-align:center;">
-0.0040213
+0.0043523
 </td>
 <td style="text-align:center;">
-0.0008744
+0.0009068
 </td>
 <td style="text-align:center;">
-0.0010753
+0.0011556
 </td>
 <td style="text-align:center;">
-0.0009217
+0.0009581
 </td>
 <td style="text-align:center;">
-0.0011428
+0.0012193
 </td>
 <td style="text-align:center;">
-0.0009908
+0.0010296
 </td>
 <td style="text-align:center;">
-0.0011953
+0.0012681
 </td>
 <td style="text-align:center;">
-0.0037153
+0.0038913
 </td>
 </tr>
 <tr>
@@ -14535,40 +14581,40 @@ Chems
 Chips
 </td>
 <td style="text-align:center;">
-0.0001478
+0.0001530
 </td>
 <td style="text-align:center;">
-0.0001272
+0.0001315
 </td>
 <td style="text-align:center;">
-0.0005340
+0.0005662
 </td>
 <td style="text-align:center;">
-0.0005396
+0.0005699
 </td>
 <td style="text-align:center;">
-0.0051754
+0.0051429
 </td>
 <td style="text-align:center;">
-0.0011774
+0.0012138
 </td>
 <td style="text-align:center;">
-0.0014179
+0.0014390
 </td>
 <td style="text-align:center;">
-0.0012333
+0.0012710
 </td>
 <td style="text-align:center;">
-0.0015288
+0.0015425
 </td>
 <td style="text-align:center;">
-0.0013093
+0.0013465
 </td>
 <td style="text-align:center;">
-0.0018088
+0.0018505
 </td>
 <td style="text-align:center;">
-0.0048406
+0.0046930
 </td>
 </tr>
 <tr>
@@ -14576,40 +14622,40 @@ Chips
 Clths
 </td>
 <td style="text-align:center;">
-0.0001678
+0.0001660
 </td>
 <td style="text-align:center;">
-0.0001422
+0.0001407
 </td>
 <td style="text-align:center;">
-0.0002900
+0.0003047
 </td>
 <td style="text-align:center;">
-0.0003080
+0.0003261
 </td>
 <td style="text-align:center;">
-0.0043968
+0.0042421
 </td>
 <td style="text-align:center;">
-0.0008686
+0.0008270
 </td>
 <td style="text-align:center;">
-0.0009798
+0.0009541
 </td>
 <td style="text-align:center;">
-0.0009099
+0.0008769
 </td>
 <td style="text-align:center;">
-0.0010131
+0.0009750
 </td>
 <td style="text-align:center;">
-0.0009749
+0.0009477
 </td>
 <td style="text-align:center;">
-0.0011113
+0.0010649
 </td>
 <td style="text-align:center;">
-0.0042522
+0.0039804
 </td>
 </tr>
 <tr>
@@ -14617,40 +14663,40 @@ Clths
 Cnstr
 </td>
 <td style="text-align:center;">
-0.0002000
+0.0002019
 </td>
 <td style="text-align:center;">
-0.0001715
+0.0001731
 </td>
 <td style="text-align:center;">
-0.0004866
+0.0004860
 </td>
 <td style="text-align:center;">
-0.0004873
+0.0004877
 </td>
 <td style="text-align:center;">
-0.0050722
+0.0048911
 </td>
 <td style="text-align:center;">
-0.0010768
+0.0010602
 </td>
 <td style="text-align:center;">
-0.0013197
+0.0012830
 </td>
 <td style="text-align:center;">
-0.0011344
+0.0011171
 </td>
 <td style="text-align:center;">
-0.0014499
+0.0013958
 </td>
 <td style="text-align:center;">
-0.0012220
+0.0012070
 </td>
 <td style="text-align:center;">
-0.0015171
+0.0014702
 </td>
 <td style="text-align:center;">
-0.0047263
+0.0045027
 </td>
 </tr>
 <tr>
@@ -14658,40 +14704,40 @@ Cnstr
 Coal
 </td>
 <td style="text-align:center;">
-0.0002931
+0.0003020
 </td>
 <td style="text-align:center;">
-0.0002610
+0.0002687
 </td>
 <td style="text-align:center;">
-0.0005384
+0.0005115
 </td>
 <td style="text-align:center;">
-0.0005389
+0.0005102
 </td>
 <td style="text-align:center;">
-0.0057582
+0.0059714
 </td>
 <td style="text-align:center;">
-0.0014365
+0.0013972
 </td>
 <td style="text-align:center;">
-0.0014775
+0.0014475
 </td>
 <td style="text-align:center;">
-0.0015047
+0.0014509
 </td>
 <td style="text-align:center;">
-0.0016446
+0.0015857
 </td>
 <td style="text-align:center;">
-0.0016184
+0.0015401
 </td>
 <td style="text-align:center;">
-0.0017642
+0.0016936
 </td>
 <td style="text-align:center;">
-0.0068457
+0.0069547
 </td>
 </tr>
 <tr>
@@ -14699,40 +14745,40 @@ Coal
 Drugs
 </td>
 <td style="text-align:center;">
-0.0001002
+0.0000982
 </td>
 <td style="text-align:center;">
-0.0000892
+0.0000874
 </td>
 <td style="text-align:center;">
-0.0004241
+0.0004109
 </td>
 <td style="text-align:center;">
-0.0004252
+0.0004107
 </td>
 <td style="text-align:center;">
-0.0034365
+0.0035921
 </td>
 <td style="text-align:center;">
-0.0007037
+0.0007333
 </td>
 <td style="text-align:center;">
-0.0008431
+0.0008624
 </td>
 <td style="text-align:center;">
-0.0007367
+0.0007683
 </td>
 <td style="text-align:center;">
-0.0008384
+0.0008768
 </td>
 <td style="text-align:center;">
-0.0007792
+0.0008199
 </td>
 <td style="text-align:center;">
-0.0008571
+0.0009169
 </td>
 <td style="text-align:center;">
-0.0031815
+0.0032738
 </td>
 </tr>
 <tr>
@@ -14740,40 +14786,40 @@ Drugs
 ElcEq
 </td>
 <td style="text-align:center;">
-0.0001714
+0.0001818
 </td>
 <td style="text-align:center;">
-0.0001488
+0.0001583
 </td>
 <td style="text-align:center;">
-0.0004818
+0.0004926
 </td>
 <td style="text-align:center;">
-0.0004893
+0.0004990
 </td>
 <td style="text-align:center;">
-0.0046132
+0.0047915
 </td>
 <td style="text-align:center;">
-0.0009659
+0.0010129
 </td>
 <td style="text-align:center;">
-0.0011680
+0.0012305
 </td>
 <td style="text-align:center;">
-0.0010164
+0.0010644
 </td>
 <td style="text-align:center;">
-0.0012170
+0.0012958
 </td>
 <td style="text-align:center;">
-0.0010800
+0.0011379
 </td>
 <td style="text-align:center;">
-0.0013647
+0.0014622
 </td>
 <td style="text-align:center;">
-0.0040284
+0.0040325
 </td>
 </tr>
 <tr>
@@ -14781,40 +14827,40 @@ ElcEq
 FabPr
 </td>
 <td style="text-align:center;">
-0.0002315
+0.0002428
 </td>
 <td style="text-align:center;">
-0.0001995
+0.0002100
 </td>
 <td style="text-align:center;">
-0.0004079
+0.0003993
 </td>
 <td style="text-align:center;">
-0.0004003
+0.0003925
 </td>
 <td style="text-align:center;">
-0.0047494
+0.0045842
 </td>
 <td style="text-align:center;">
-0.0009478
+0.0009752
 </td>
 <td style="text-align:center;">
-0.0011108
+0.0011600
 </td>
 <td style="text-align:center;">
-0.0009964
+0.0010271
 </td>
 <td style="text-align:center;">
-0.0011890
+0.0012428
 </td>
 <td style="text-align:center;">
-0.0010745
+0.0011085
 </td>
 <td style="text-align:center;">
-0.0013017
+0.0013489
 </td>
 <td style="text-align:center;">
-0.0046751
+0.0044812
 </td>
 </tr>
 <tr>
@@ -14822,40 +14868,40 @@ FabPr
 Fin
 </td>
 <td style="text-align:center;">
-0.0001254
+0.0001187
 </td>
 <td style="text-align:center;">
-0.0001083
+0.0001025
 </td>
 <td style="text-align:center;">
-0.0005214
+0.0004950
 </td>
 <td style="text-align:center;">
-0.0005321
+0.0005062
 </td>
 <td style="text-align:center;">
-0.0048886
+0.0046654
 </td>
 <td style="text-align:center;">
-0.0010447
+0.0010105
 </td>
 <td style="text-align:center;">
-0.0011151
+0.0010955
 </td>
 <td style="text-align:center;">
-0.0010963
+0.0010538
 </td>
 <td style="text-align:center;">
-0.0012360
+0.0011828
 </td>
 <td style="text-align:center;">
-0.0011714
+0.0011276
 </td>
 <td style="text-align:center;">
-0.0014238
+0.0013406
 </td>
 <td style="text-align:center;">
-0.0040098
+0.0039428
 </td>
 </tr>
 <tr>
@@ -14863,40 +14909,40 @@ Fin
 Food
 </td>
 <td style="text-align:center;">
-0.0001617
+0.0001632
 </td>
 <td style="text-align:center;">
-0.0001452
+0.0001463
 </td>
 <td style="text-align:center;">
-0.0003801
+0.0003837
 </td>
 <td style="text-align:center;">
-0.0003726
+0.0003779
 </td>
 <td style="text-align:center;">
-0.0029466
+0.0030312
 </td>
 <td style="text-align:center;">
-0.0006569
+0.0006786
 </td>
 <td style="text-align:center;">
-0.0007784
+0.0007859
 </td>
 <td style="text-align:center;">
-0.0006832
+0.0007049
 </td>
 <td style="text-align:center;">
-0.0007808
+0.0007880
 </td>
 <td style="text-align:center;">
-0.0007274
+0.0007474
 </td>
 <td style="text-align:center;">
-0.0008069
+0.0008119
 </td>
 <td style="text-align:center;">
-0.0029079
+0.0028799
 </td>
 </tr>
 <tr>
@@ -14904,40 +14950,40 @@ Food
 Fun
 </td>
 <td style="text-align:center;">
-0.0001882
+0.0001841
 </td>
 <td style="text-align:center;">
-0.0001623
+0.0001588
 </td>
 <td style="text-align:center;">
-0.0004570
+0.0004539
 </td>
 <td style="text-align:center;">
-0.0004847
+0.0004817
 </td>
 <td style="text-align:center;">
-0.0052867
+0.0051544
 </td>
 <td style="text-align:center;">
-0.0011286
+0.0011173
 </td>
 <td style="text-align:center;">
-0.0011164
+0.0011696
 </td>
 <td style="text-align:center;">
-0.0011987
+0.0011770
 </td>
 <td style="text-align:center;">
-0.0012627
+0.0012967
 </td>
 <td style="text-align:center;">
-0.0012978
+0.0012584
 </td>
 <td style="text-align:center;">
-0.0014059
+0.0014052
 </td>
 <td style="text-align:center;">
-0.0048115
+0.0047852
 </td>
 </tr>
 <tr>
@@ -14945,40 +14991,40 @@ Fun
 Gold
 </td>
 <td style="text-align:center;">
-0.0003408
+0.0003343
 </td>
 <td style="text-align:center;">
-0.0003083
+0.0003025
 </td>
 <td style="text-align:center;">
-0.0004929
+0.0004871
 </td>
 <td style="text-align:center;">
-0.0004772
+0.0004718
 </td>
 <td style="text-align:center;">
-0.0049381
+0.0050488
 </td>
 <td style="text-align:center;">
-0.0011880
+0.0011574
 </td>
 <td style="text-align:center;">
-0.0012253
+0.0012295
 </td>
 <td style="text-align:center;">
-0.0012439
+0.0012119
 </td>
 <td style="text-align:center;">
-0.0013446
+0.0013364
 </td>
 <td style="text-align:center;">
-0.0013184
+0.0012845
 </td>
 <td style="text-align:center;">
-0.0015090
+0.0014837
 </td>
 <td style="text-align:center;">
-0.0069350
+0.0071254
 </td>
 </tr>
 <tr>
@@ -14986,40 +15032,40 @@ Gold
 Guns
 </td>
 <td style="text-align:center;">
-0.0001878
+0.0001903
 </td>
 <td style="text-align:center;">
-0.0001636
+0.0001655
 </td>
 <td style="text-align:center;">
-0.0003492
+0.0003364
 </td>
 <td style="text-align:center;">
-0.0003419
+0.0003283
 </td>
 <td style="text-align:center;">
-0.0037565
+0.0037697
 </td>
 <td style="text-align:center;">
-0.0008433
+0.0008304
 </td>
 <td style="text-align:center;">
-0.0010324
+0.0010566
 </td>
 <td style="text-align:center;">
-0.0008802
+0.0008662
 </td>
 <td style="text-align:center;">
-0.0011043
+0.0011286
 </td>
 <td style="text-align:center;">
-0.0009349
+0.0009177
 </td>
 <td style="text-align:center;">
-0.0011085
+0.0011544
 </td>
 <td style="text-align:center;">
-0.0040553
+0.0041205
 </td>
 </tr>
 <tr>
@@ -15027,40 +15073,40 @@ Guns
 Hardw
 </td>
 <td style="text-align:center;">
-0.0001981
+0.0002035
 </td>
 <td style="text-align:center;">
-0.0001748
+0.0001798
 </td>
 <td style="text-align:center;">
-0.0005069
+0.0004727
 </td>
 <td style="text-align:center;">
-0.0005047
+0.0004700
 </td>
 <td style="text-align:center;">
-0.0047643
+0.0047868
 </td>
 <td style="text-align:center;">
-0.0011743
+0.0011814
 </td>
 <td style="text-align:center;">
-0.0014351
+0.0014452
 </td>
 <td style="text-align:center;">
-0.0012226
+0.0012244
 </td>
 <td style="text-align:center;">
-0.0015340
+0.0015359
 </td>
 <td style="text-align:center;">
-0.0012935
+0.0012862
 </td>
 <td style="text-align:center;">
-0.0018120
+0.0018024
 </td>
 <td style="text-align:center;">
-0.0045016
+0.0047711
 </td>
 </tr>
 <tr>
@@ -15068,40 +15114,40 @@ Hardw
 Hlth
 </td>
 <td style="text-align:center;">
-0.0002829
+0.0002788
 </td>
 <td style="text-align:center;">
-0.0002474
+0.0002448
 </td>
 <td style="text-align:center;">
-0.0006066
+0.0006298
 </td>
 <td style="text-align:center;">
-0.0005761
+0.0006036
 </td>
 <td style="text-align:center;">
-0.0045791
+0.0047348
 </td>
 <td style="text-align:center;">
-0.0010577
+0.0010285
 </td>
 <td style="text-align:center;">
-0.0012929
+0.0012674
 </td>
 <td style="text-align:center;">
-0.0011188
+0.0010811
 </td>
 <td style="text-align:center;">
-0.0014107
+0.0013559
 </td>
 <td style="text-align:center;">
-0.0012095
+0.0011591
 </td>
 <td style="text-align:center;">
-0.0013597
+0.0012934
 </td>
 <td style="text-align:center;">
-0.0047578
+0.0046224
 </td>
 </tr>
 <tr>
@@ -15109,40 +15155,40 @@ Hlth
 Hshld
 </td>
 <td style="text-align:center;">
-0.0001210
+0.0001279
 </td>
 <td style="text-align:center;">
-0.0001038
+0.0001098
 </td>
 <td style="text-align:center;">
-0.0003618
+0.0003738
 </td>
 <td style="text-align:center;">
-0.0003669
+0.0003785
 </td>
 <td style="text-align:center;">
-0.0033397
+0.0034634
 </td>
 <td style="text-align:center;">
-0.0006595
+0.0006736
 </td>
 <td style="text-align:center;">
-0.0008785
+0.0008772
 </td>
 <td style="text-align:center;">
-0.0006890
+0.0007027
 </td>
 <td style="text-align:center;">
-0.0008582
+0.0008786
 </td>
 <td style="text-align:center;">
-0.0007355
+0.0007495
 </td>
 <td style="text-align:center;">
-0.0008543
+0.0009078
 </td>
 <td style="text-align:center;">
-0.0028564
+0.0029608
 </td>
 </tr>
 <tr>
@@ -15150,40 +15196,40 @@ Hshld
 Insur
 </td>
 <td style="text-align:center;">
-0.0001771
+0.0001801
 </td>
 <td style="text-align:center;">
-0.0001581
+0.0001607
 </td>
 <td style="text-align:center;">
-0.0004154
+0.0004260
 </td>
 <td style="text-align:center;">
-0.0004168
+0.0004274
 </td>
 <td style="text-align:center;">
-0.0040670
+0.0040661
 </td>
 <td style="text-align:center;">
-0.0008445
+0.0007903
 </td>
 <td style="text-align:center;">
-0.0010074
+0.0010065
 </td>
 <td style="text-align:center;">
-0.0008920
+0.0008342
 </td>
 <td style="text-align:center;">
-0.0011097
+0.0011036
 </td>
 <td style="text-align:center;">
-0.0009708
+0.0009055
 </td>
 <td style="text-align:center;">
-0.0010832
+0.0010727
 </td>
 <td style="text-align:center;">
-0.0033502
+0.0034270
 </td>
 </tr>
 <tr>
@@ -15191,40 +15237,40 @@ Insur
 LabEq
 </td>
 <td style="text-align:center;">
-0.0001983
+0.0001803
 </td>
 <td style="text-align:center;">
-0.0001718
+0.0001562
 </td>
 <td style="text-align:center;">
-0.0004932
+0.0005065
 </td>
 <td style="text-align:center;">
-0.0004986
+0.0005116
 </td>
 <td style="text-align:center;">
-0.0048978
+0.0048147
 </td>
 <td style="text-align:center;">
-0.0009939
+0.0010174
 </td>
 <td style="text-align:center;">
-0.0011670
+0.0011800
 </td>
 <td style="text-align:center;">
-0.0010426
+0.0010703
 </td>
 <td style="text-align:center;">
-0.0012621
+0.0012817
 </td>
 <td style="text-align:center;">
-0.0011052
+0.0011393
 </td>
 <td style="text-align:center;">
-0.0014116
+0.0014424
 </td>
 <td style="text-align:center;">
-0.0045777
+0.0044467
 </td>
 </tr>
 <tr>
@@ -15232,40 +15278,40 @@ LabEq
 Mach
 </td>
 <td style="text-align:center;">
-0.0001668
+0.0001688
 </td>
 <td style="text-align:center;">
-0.0001425
+0.0001441
 </td>
 <td style="text-align:center;">
-0.0004221
+0.0004165
 </td>
 <td style="text-align:center;">
-0.0004241
+0.0004227
 </td>
 <td style="text-align:center;">
-0.0048470
+0.0049308
 </td>
 <td style="text-align:center;">
-0.0009310
+0.0009243
 </td>
 <td style="text-align:center;">
-0.0011534
+0.0011315
 </td>
 <td style="text-align:center;">
-0.0009892
+0.0009867
 </td>
 <td style="text-align:center;">
-0.0012510
+0.0012390
 </td>
 <td style="text-align:center;">
-0.0010723
+0.0010790
 </td>
 <td style="text-align:center;">
-0.0013741
+0.0013487
 </td>
 <td style="text-align:center;">
-0.0042986
+0.0042228
 </td>
 </tr>
 <tr>
@@ -15273,40 +15319,40 @@ Mach
 Meals
 </td>
 <td style="text-align:center;">
-0.0001576
+0.0001552
 </td>
 <td style="text-align:center;">
-0.0001334
+0.0001314
 </td>
 <td style="text-align:center;">
-0.0004097
+0.0003983
 </td>
 <td style="text-align:center;">
-0.0004236
+0.0004101
 </td>
 <td style="text-align:center;">
-0.0040370
+0.0039387
 </td>
 <td style="text-align:center;">
-0.0007993
+0.0007819
 </td>
 <td style="text-align:center;">
-0.0010308
+0.0010218
 </td>
 <td style="text-align:center;">
-0.0008388
+0.0008234
 </td>
 <td style="text-align:center;">
-0.0010608
+0.0010677
 </td>
 <td style="text-align:center;">
-0.0009095
+0.0008942
 </td>
 <td style="text-align:center;">
-0.0010530
+0.0010635
 </td>
 <td style="text-align:center;">
-0.0037074
+0.0035498
 </td>
 </tr>
 <tr>
@@ -15314,40 +15360,40 @@ Meals
 MedEq
 </td>
 <td style="text-align:center;">
-0.0001272
+0.0001309
 </td>
 <td style="text-align:center;">
-0.0001142
+0.0001179
 </td>
 <td style="text-align:center;">
-0.0003885
+0.0003897
 </td>
 <td style="text-align:center;">
-0.0003886
+0.0003904
 </td>
 <td style="text-align:center;">
-0.0036930
+0.0036980
 </td>
 <td style="text-align:center;">
-0.0007266
+0.0007583
 </td>
 <td style="text-align:center;">
-0.0008756
+0.0009166
 </td>
 <td style="text-align:center;">
-0.0007664
+0.0007990
 </td>
 <td style="text-align:center;">
-0.0009105
+0.0009582
 </td>
 <td style="text-align:center;">
-0.0008222
+0.0008526
 </td>
 <td style="text-align:center;">
-0.0009496
+0.0009907
 </td>
 <td style="text-align:center;">
-0.0033467
+0.0033273
 </td>
 </tr>
 <tr>
@@ -15355,40 +15401,40 @@ MedEq
 Mines
 </td>
 <td style="text-align:center;">
-0.0002249
+0.0002300
 </td>
 <td style="text-align:center;">
-0.0001985
+0.0002032
 </td>
 <td style="text-align:center;">
-0.0004767
+0.0004895
 </td>
 <td style="text-align:center;">
-0.0004755
+0.0004879
 </td>
 <td style="text-align:center;">
-0.0049178
+0.0049870
 </td>
 <td style="text-align:center;">
-0.0011445
+0.0011971
 </td>
 <td style="text-align:center;">
-0.0013368
+0.0013691
 </td>
 <td style="text-align:center;">
-0.0011996
+0.0012637
 </td>
 <td style="text-align:center;">
-0.0014653
+0.0014830
 </td>
 <td style="text-align:center;">
-0.0012862
+0.0013573
 </td>
 <td style="text-align:center;">
-0.0015508
+0.0015869
 </td>
 <td style="text-align:center;">
-0.0047999
+0.0049717
 </td>
 </tr>
 <tr>
@@ -15396,40 +15442,40 @@ Mines
 Oil
 </td>
 <td style="text-align:center;">
-0.0001852
+0.0001838
 </td>
 <td style="text-align:center;">
-0.0001619
+0.0001608
 </td>
 <td style="text-align:center;">
-0.0004044
+0.0004077
 </td>
 <td style="text-align:center;">
-0.0003977
+0.0004012
 </td>
 <td style="text-align:center;">
-0.0037961
+0.0036670
 </td>
 <td style="text-align:center;">
-0.0008921
+0.0008488
 </td>
 <td style="text-align:center;">
-0.0011724
+0.0011824
 </td>
 <td style="text-align:center;">
-0.0009358
+0.0008885
 </td>
 <td style="text-align:center;">
-0.0012342
+0.0012309
 </td>
 <td style="text-align:center;">
-0.0009987
+0.0009476
 </td>
 <td style="text-align:center;">
-0.0012793
+0.0012554
 </td>
 <td style="text-align:center;">
-0.0039253
+0.0037882
 </td>
 </tr>
 <tr>
@@ -15437,40 +15483,40 @@ Oil
 Paper
 </td>
 <td style="text-align:center;">
-0.0001503
+0.0001519
 </td>
 <td style="text-align:center;">
-0.0001324
+0.0001338
 </td>
 <td style="text-align:center;">
-0.0003292
+0.0003441
 </td>
 <td style="text-align:center;">
-0.0003250
+0.0003407
 </td>
 <td style="text-align:center;">
-0.0039219
+0.0039022
 </td>
 <td style="text-align:center;">
-0.0008345
+0.0008508
 </td>
 <td style="text-align:center;">
-0.0010039
+0.0010359
 </td>
 <td style="text-align:center;">
-0.0008715
+0.0008942
 </td>
 <td style="text-align:center;">
-0.0010219
+0.0010656
 </td>
 <td style="text-align:center;">
-0.0009270
+0.0009567
 </td>
 <td style="text-align:center;">
-0.0010557
+0.0010963
 </td>
 <td style="text-align:center;">
-0.0034520
+0.0034934
 </td>
 </tr>
 <tr>
@@ -15478,40 +15524,40 @@ Paper
 PerSv
 </td>
 <td style="text-align:center;">
-0.0001794
+0.0001797
 </td>
 <td style="text-align:center;">
-0.0001538
+0.0001542
 </td>
 <td style="text-align:center;">
-0.0004754
+0.0004724
 </td>
 <td style="text-align:center;">
-0.0004697
+0.0004680
 </td>
 <td style="text-align:center;">
-0.0041575
+0.0040981
 </td>
 <td style="text-align:center;">
-0.0008723
+0.0008692
 </td>
 <td style="text-align:center;">
-0.0010643
+0.0010403
 </td>
 <td style="text-align:center;">
-0.0009159
+0.0009155
 </td>
 <td style="text-align:center;">
-0.0011124
+0.0010957
 </td>
 <td style="text-align:center;">
-0.0009856
+0.0009841
 </td>
 <td style="text-align:center;">
-0.0011148
+0.0011288
 </td>
 <td style="text-align:center;">
-0.0039985
+0.0039313
 </td>
 </tr>
 <tr>
@@ -15519,40 +15565,40 @@ PerSv
 RlEst
 </td>
 <td style="text-align:center;">
-0.0001847
+0.0001884
 </td>
 <td style="text-align:center;">
-0.0001571
+0.0001599
 </td>
 <td style="text-align:center;">
-0.0004241
+0.0004342
 </td>
 <td style="text-align:center;">
-0.0004392
+0.0004507
 </td>
 <td style="text-align:center;">
-0.0053253
+0.0052713
 </td>
 <td style="text-align:center;">
-0.0011782
+0.0012062
 </td>
 <td style="text-align:center;">
-0.0014625
+0.0014243
 </td>
 <td style="text-align:center;">
-0.0012371
+0.0012653
 </td>
 <td style="text-align:center;">
-0.0015119
+0.0014701
 </td>
 <td style="text-align:center;">
-0.0013264
+0.0013516
 </td>
 <td style="text-align:center;">
-0.0016350
+0.0015905
 </td>
 <td style="text-align:center;">
-0.0050506
+0.0048584
 </td>
 </tr>
 <tr>
@@ -15560,40 +15606,40 @@ RlEst
 Rtail
 </td>
 <td style="text-align:center;">
-0.0001071
+0.0001058
 </td>
 <td style="text-align:center;">
-0.0000934
+0.0000923
 </td>
 <td style="text-align:center;">
-0.0003091
+0.0003246
 </td>
 <td style="text-align:center;">
-0.0003287
+0.0003463
 </td>
 <td style="text-align:center;">
-0.0039127
+0.0037912
 </td>
 <td style="text-align:center;">
-0.0008088
+0.0007759
 </td>
 <td style="text-align:center;">
-0.0008692
+0.0008304
 </td>
 <td style="text-align:center;">
-0.0008477
+0.0008125
 </td>
 <td style="text-align:center;">
-0.0008752
+0.0008516
 </td>
 <td style="text-align:center;">
-0.0008951
+0.0008624
 </td>
 <td style="text-align:center;">
-0.0009948
+0.0009733
 </td>
 <td style="text-align:center;">
-0.0035838
+0.0035357
 </td>
 </tr>
 <tr>
@@ -15601,40 +15647,40 @@ Rtail
 Rubbr
 </td>
 <td style="text-align:center;">
-0.0001279
+0.0001245
 </td>
 <td style="text-align:center;">
-0.0001130
+0.0001100
 </td>
 <td style="text-align:center;">
-0.0003561
+0.0003672
 </td>
 <td style="text-align:center;">
-0.0003695
+0.0003799
 </td>
 <td style="text-align:center;">
-0.0042911
+0.0041319
 </td>
 <td style="text-align:center;">
-0.0008676
+0.0008241
 </td>
 <td style="text-align:center;">
-0.0010058
+0.0009804
 </td>
 <td style="text-align:center;">
-0.0009129
+0.0008685
 </td>
 <td style="text-align:center;">
-0.0010372
+0.0010193
 </td>
 <td style="text-align:center;">
-0.0009748
+0.0009259
 </td>
 <td style="text-align:center;">
-0.0011412
+0.0010961
 </td>
 <td style="text-align:center;">
-0.0038063
+0.0037432
 </td>
 </tr>
 <tr>
@@ -15642,40 +15688,40 @@ Rubbr
 Ships
 </td>
 <td style="text-align:center;">
-0.0002783
+0.0002733
 </td>
 <td style="text-align:center;">
-0.0002441
+0.0002400
 </td>
 <td style="text-align:center;">
-0.0004908
+0.0004757
 </td>
 <td style="text-align:center;">
-0.0004807
+0.0004662
 </td>
 <td style="text-align:center;">
-0.0046752
+0.0045939
 </td>
 <td style="text-align:center;">
-0.0009366
+0.0009038
 </td>
 <td style="text-align:center;">
-0.0012149
+0.0012084
 </td>
 <td style="text-align:center;">
-0.0009830
+0.0009511
 </td>
 <td style="text-align:center;">
-0.0013051
+0.0012953
 </td>
 <td style="text-align:center;">
-0.0010500
+0.0010204
 </td>
 <td style="text-align:center;">
-0.0013344
+0.0013087
 </td>
 <td style="text-align:center;">
-0.0048967
+0.0048598
 </td>
 </tr>
 <tr>
@@ -15683,40 +15729,40 @@ Ships
 Smoke
 </td>
 <td style="text-align:center;">
-0.0002391
+0.0002471
 </td>
 <td style="text-align:center;">
-0.0002119
+0.0002188
 </td>
 <td style="text-align:center;">
-0.0004788
+0.0004687
 </td>
 <td style="text-align:center;">
-0.0004545
+0.0004457
 </td>
 <td style="text-align:center;">
-0.0033609
+0.0033104
 </td>
 <td style="text-align:center;">
-0.0008299
+0.0008517
 </td>
 <td style="text-align:center;">
-0.0010791
+0.0010409
 </td>
 <td style="text-align:center;">
-0.0008562
+0.0008769
 </td>
 <td style="text-align:center;">
-0.0010354
+0.0010195
 </td>
 <td style="text-align:center;">
-0.0008981
+0.0009186
 </td>
 <td style="text-align:center;">
-0.0010707
+0.0010544
 </td>
 <td style="text-align:center;">
-0.0039320
+0.0038224
 </td>
 </tr>
 <tr>
@@ -15724,40 +15770,40 @@ Smoke
 Soda
 </td>
 <td style="text-align:center;">
-0.0002237
+0.0002252
 </td>
 <td style="text-align:center;">
-0.0001932
+0.0001936
 </td>
 <td style="text-align:center;">
-0.0005256
+0.0005185
 </td>
 <td style="text-align:center;">
-0.0005106
+0.0005043
 </td>
 <td style="text-align:center;">
-0.0039934
+0.0040478
 </td>
 <td style="text-align:center;">
-0.0007630
+0.0007807
 </td>
 <td style="text-align:center;">
-0.0010533
+0.0010911
 </td>
 <td style="text-align:center;">
-0.0008050
+0.0008269
 </td>
 <td style="text-align:center;">
-0.0010546
+0.0010734
 </td>
 <td style="text-align:center;">
-0.0008736
+0.0008971
 </td>
 <td style="text-align:center;">
-0.0009200
+0.0009381
 </td>
 <td style="text-align:center;">
-0.0042180
+0.0041634
 </td>
 </tr>
 <tr>
@@ -15765,40 +15811,40 @@ Soda
 Softw
 </td>
 <td style="text-align:center;">
-0.0003814
+0.0003608
 </td>
 <td style="text-align:center;">
-0.0003314
+0.0003143
 </td>
 <td style="text-align:center;">
-0.0009169
+0.0008863
 </td>
 <td style="text-align:center;">
-0.0008967
+0.0008670
 </td>
 <td style="text-align:center;">
-0.0059519
+0.0061314
 </td>
 <td style="text-align:center;">
-0.0013750
+0.0014685
 </td>
 <td style="text-align:center;">
-0.0017868
+0.0019262
 </td>
 <td style="text-align:center;">
-0.0014303
+0.0015227
 </td>
 <td style="text-align:center;">
-0.0019652
+0.0020502
 </td>
 <td style="text-align:center;">
-0.0015082
+0.0016041
 </td>
 <td style="text-align:center;">
-0.0021715
+0.0022655
 </td>
 <td style="text-align:center;">
-0.0055304
+0.0057091
 </td>
 </tr>
 <tr>
@@ -15806,40 +15852,40 @@ Softw
 Steel
 </td>
 <td style="text-align:center;">
-0.0002198
+0.0002063
 </td>
 <td style="text-align:center;">
-0.0001911
+0.0001788
 </td>
 <td style="text-align:center;">
-0.0004356
+0.0004330
 </td>
 <td style="text-align:center;">
-0.0004446
+0.0004438
 </td>
 <td style="text-align:center;">
-0.0051963
+0.0054230
 </td>
 <td style="text-align:center;">
-0.0011918
+0.0011833
 </td>
 <td style="text-align:center;">
-0.0012754
+0.0012761
 </td>
 <td style="text-align:center;">
-0.0012561
+0.0012451
 </td>
 <td style="text-align:center;">
-0.0013812
+0.0013467
 </td>
 <td style="text-align:center;">
-0.0013512
+0.0013284
 </td>
 <td style="text-align:center;">
-0.0015840
+0.0015372
 </td>
 <td style="text-align:center;">
-0.0048981
+0.0048519
 </td>
 </tr>
 <tr>
@@ -15847,40 +15893,40 @@ Steel
 Telcm
 </td>
 <td style="text-align:center;">
-0.0001336
+0.0001357
 </td>
 <td style="text-align:center;">
-0.0001177
+0.0001198
 </td>
 <td style="text-align:center;">
-0.0004054
+0.0004089
 </td>
 <td style="text-align:center;">
-0.0003996
+0.0004019
 </td>
 <td style="text-align:center;">
-0.0033129
+0.0033856
 </td>
 <td style="text-align:center;">
-0.0007402
+0.0007413
 </td>
 <td style="text-align:center;">
-0.0008319
+0.0008422
 </td>
 <td style="text-align:center;">
-0.0007693
+0.0007712
 </td>
 <td style="text-align:center;">
-0.0008227
+0.0008403
 </td>
 <td style="text-align:center;">
-0.0008145
+0.0008158
 </td>
 <td style="text-align:center;">
-0.0009330
+0.0009701
 </td>
 <td style="text-align:center;">
-0.0029960
+0.0030401
 </td>
 </tr>
 <tr>
@@ -15888,40 +15934,40 @@ Telcm
 Toys
 </td>
 <td style="text-align:center;">
-0.0002087
+0.0002237
 </td>
 <td style="text-align:center;">
-0.0001821
+0.0001951
 </td>
 <td style="text-align:center;">
-0.0003961
+0.0004063
 </td>
 <td style="text-align:center;">
-0.0004019
+0.0004103
 </td>
 <td style="text-align:center;">
-0.0044389
+0.0046504
 </td>
 <td style="text-align:center;">
-0.0009885
+0.0009849
 </td>
 <td style="text-align:center;">
-0.0011748
+0.0011553
 </td>
 <td style="text-align:center;">
-0.0010377
+0.0010348
 </td>
 <td style="text-align:center;">
-0.0012230
+0.0011953
 </td>
 <td style="text-align:center;">
-0.0010996
+0.0011003
 </td>
 <td style="text-align:center;">
-0.0012734
+0.0012604
 </td>
 <td style="text-align:center;">
-0.0043680
+0.0043925
 </td>
 </tr>
 <tr>
@@ -15929,40 +15975,40 @@ Toys
 Trans
 </td>
 <td style="text-align:center;">
-0.0001227
+0.0001295
 </td>
 <td style="text-align:center;">
-0.0001100
+0.0001158
 </td>
 <td style="text-align:center;">
-0.0003378
+0.0003229
 </td>
 <td style="text-align:center;">
-0.0003493
+0.0003320
 </td>
 <td style="text-align:center;">
-0.0041437
+0.0040644
 </td>
 <td style="text-align:center;">
-0.0008273
+0.0008029
 </td>
 <td style="text-align:center;">
-0.0010689
+0.0010300
 </td>
 <td style="text-align:center;">
-0.0008770
+0.0008418
 </td>
 <td style="text-align:center;">
-0.0011167
+0.0010653
 </td>
 <td style="text-align:center;">
-0.0009404
+0.0008929
 </td>
 <td style="text-align:center;">
-0.0011437
+0.0010894
 </td>
 <td style="text-align:center;">
-0.0035704
+0.0034197
 </td>
 </tr>
 <tr>
@@ -15970,40 +16016,40 @@ Trans
 Txtls
 </td>
 <td style="text-align:center;">
-0.0002181
+0.0002215
 </td>
 <td style="text-align:center;">
-0.0001827
+0.0001855
 </td>
 <td style="text-align:center;">
-0.0003359
+0.0003394
 </td>
 <td style="text-align:center;">
-0.0003488
+0.0003536
 </td>
 <td style="text-align:center;">
-0.0048128
+0.0047407
 </td>
 <td style="text-align:center;">
-0.0010272
+0.0010239
 </td>
 <td style="text-align:center;">
-0.0012163
+0.0012050
 </td>
 <td style="text-align:center;">
-0.0010824
+0.0010771
 </td>
 <td style="text-align:center;">
-0.0012466
+0.0012229
 </td>
 <td style="text-align:center;">
-0.0011585
+0.0011515
 </td>
 <td style="text-align:center;">
-0.0013914
+0.0013547
 </td>
 <td style="text-align:center;">
-0.0047738
+0.0047777
 </td>
 </tr>
 <tr>
@@ -16011,40 +16057,40 @@ Txtls
 Util
 </td>
 <td style="text-align:center;">
-0.0001458
+0.0001408
 </td>
 <td style="text-align:center;">
-0.0001328
+0.0001281
 </td>
 <td style="text-align:center;">
-0.0002428
+0.0002368
 </td>
 <td style="text-align:center;">
-0.0002412
+0.0002337
 </td>
 <td style="text-align:center;">
-0.0026133
+0.0025746
 </td>
 <td style="text-align:center;">
-0.0006379
+0.0006354
 </td>
 <td style="text-align:center;">
-0.0007456
+0.0007636
 </td>
 <td style="text-align:center;">
-0.0006668
+0.0006633
 </td>
 <td style="text-align:center;">
-0.0007889
+0.0008100
 </td>
 <td style="text-align:center;">
-0.0007111
+0.0007109
 </td>
 <td style="text-align:center;">
-0.0007979
+0.0008185
 </td>
 <td style="text-align:center;">
-0.0024852
+0.0026138
 </td>
 </tr>
 <tr>
@@ -16052,40 +16098,40 @@ Util
 Whlsl
 </td>
 <td style="text-align:center;">
-0.0000895
+0.0000836
 </td>
 <td style="text-align:center;">
-0.0000796
+0.0000741
 </td>
 <td style="text-align:center;">
-0.0003577
+0.0003453
 </td>
 <td style="text-align:center;">
-0.0003660
+0.0003549
 </td>
 <td style="text-align:center;">
-0.0039102
+0.0038369
 </td>
 <td style="text-align:center;">
-0.0008143
+0.0008330
 </td>
 <td style="text-align:center;">
-0.0009643
+0.0010031
 </td>
 <td style="text-align:center;">
-0.0008646
+0.0008726
 </td>
 <td style="text-align:center;">
-0.0010328
+0.0010812
 </td>
 <td style="text-align:center;">
-0.0009302
+0.0009280
 </td>
 <td style="text-align:center;">
-0.0010585
+0.0011221
 </td>
 <td style="text-align:center;">
-0.0033591
+0.0031538
 </td>
 </tr>
 </tbody>
@@ -16156,7 +16202,7 @@ forming the expected risk premium; the
 can be interpreted as importance of projection parameter (PP) in forming
 the expected risk premium.
 
-![](ECC_files/figure-gfm/unnamed-chunk-37-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-8.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-40-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-8.png)<!-- -->
 
 ## S5-5 Forcasting???
 

@@ -1443,282 +1443,7 @@ FM_PRS %>%
 
 As we can see, Fama Macbeth method would generate an evolving time-series of factor risk premium, but the volatility in lambda is unreasonably large. We will try to apply the STL trend in the second step regression to smooth the lambda.
 
-### S4-4-1 Why filtering might improve Esimated Lamdba?
-
-There is no need for trend extraction for 1st step regression, no matter if we use the full sample or rolling window. The window should be large enough to mitigate the seasonality effect. The second step regression, however, is a cross sectional regression. A seasonal component in the time series would disrupt the cross-sectional regression significantly. So it is possible the the large volatility observed in the second step regression is due to the seasonality.
-
-Now, assume the return (or risk premium) is formed by the following equation:
-
-$$r_{it} = \beta_{it}*\lambda_t+\eta_{it}$$
-
-Where beta is the sector specific risk exposure, lambda is the factor premium, and eta is the idiosyncratic noise.
-
-$$E[\eta_{it}|i] = 0$$
-
-However, the eta might actually contain 3 components: $\epsilon_t$, $s_{im}$, and $epsilon_{it}$. 
-
-$$\eta_{it} = \epsilon_t + s_{im} + \epsilon_{it}$$
-
-eps_t is the universal time-series error, s_i is the sector-specific seasonality, and eps_it is the idiosyncratic error. Therefore, the equation is actually:
-
-$$r_{it} = \beta_{it}*\lambda_t+\epsilon_t + s_{im} + \epsilon_{it}$$
-
-Again, we would have:
-
-$$E[\epsilon_t + s_{im} + \epsilon_{it}|i] = 0$$
-
-However, the cross-sectional regression error at each time t:
-
-$$E[\epsilon_t + s_{im} + \epsilon_{it}|t] = \epsilon_t+s_{im}$$
-
-The unbiased least square estimation requires the error term expected to be 0. The existence of $( \epsilon_t + s_{im} | t)$ in each cross-sectional regression, therefore, would randomly bias the estimated lambda. This might be why we see the FM method lambdas behave so "abruptly". If we randomly bias the lambda, the regression error of lambda is similar to the one without bias at each t. However, this bias is changing over time, which would add to the regression error of the lambdas. And therefore, bias might manifest itself in a higher standard error in the resulting ECC estimates.
-
-The universal time-series error and the seasonality would actually bias the lambda estimation. Filtering out the universal time-series noise and seasonality would improve the lambda estimated. Now, I will illustrate the effect of seasonality and universal time-series noise in the second step regression through a simulation.
-
-### S4-4-2 Simulation
-
-Suppose the true 49 sector betas are given (since our focus is lambda) and each of them follows an ARIMA(1,1,0) process, with AR coefficient 0.9. For demonstration purpose, the Factor Premiums follows a sin function lambda = sin(t/60*pi)/10+0.5. The universal time-series noise is the same for all the sectors, following N(0, 1^2); a sector-specific seasonality is randomly generated for each sector following N(0,1^2), and repeats each year; and the idiosyncratic error is also generated following N(0, 0.3^2). The first value of 49 sector betas are generated from N(1, 0.3^2). There are 600 data generated to represent monthly data in 50 years.
-
-```{r, cache = TRUE}
-# Create 600x49 matrix of time-varying betas
-sim_beta <- (replicate(49, arima.sim(list(order = c(1,1,0), ar = 0.9), n=600))/300 + rep(rnorm(49,1,0.3),601) %>% matrix(nrow = 49) %>% t()) %>%
-  # remove the first line
-  .[-1,]
-
-# Create the 600x1 matrix of factor premium
-# sim_lambda <- arima.sim(list(order(1,1,0), ar=0.8, sd = 0.05),600)
-# sim_lambda <- smooth::sim.es("ANN", frequency=12, obs=600)
-sim_lambda <- sin(1:600/60*pi)/10+0.05
-
-# Create the seasonality
-sim_seasonality <- rnorm(49*11,0,1) %>%
-  matrix(ncol = 49) %>%
-  rbind(colSums(.[1:11,])) %>%
-  rep(50) %>%
-  matrix(ncol = 49)
-
-# Create the universal time-series error
-sim_univ_error <- rnorm(600,0,1)
-
-# Create the idiosyncratic error
-sim_idio_error <- rnorm(600*49,0,0.3) %>%
-  matrix(ncol = 49)
-
-# The returns are beta*lambda+seasonality+univ_error+idio_error
-sim_return <- sim_beta*(sim_lambda %>%
-                          matrix(600, 49)) + sim_seasonality + (sim_univ_error %>%
-                                                                  matrix(600, 49)) + sim_idio_error
-
-# Now I try to join the return and beta without filtered to perform a cross-sectional regression and the filtered cross-sectional regression. We will see how they performs.
-Sim_return <- sim_return %>%
-  as_tibble() %>%
-  mutate(date = 1:600)
-
-Sim_beta <- sim_beta %>%
-  as_tibble() %>%
-  mutate(date = 1:600)
-
-Sim_lambda <- sim_lambda %>%
-  as_tibble() %>%
-  mutate(date = 1:600)
-
-names(Sim_lambda)[1] = "value"
-
-
-# pivot the Sim_return and Sim_beta longer and join them together
-Unfiltered_regression <- Sim_return %>%
-  pivot_longer(cols = -date, names_to = "Sector", values_to = "RP") %>%
-  inner_join(Sim_beta %>%
-               pivot_longer(cols = -date, names_to = "Sector", values_to = "beta"))
-
-# Group the data and do the second pass regression
-Rolling_Second <- Unfiltered_regression %>%
-  group_by(date) %>%
-  do(model = lm(RP ~ . - date - Sector, data = .) %>%
-       coefficients())
-
-# Unwrap the results
-Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
-  as_tibble()
-
-# Rename the variables
-names(Rolling_Lambdas) = c("Lambda0", "Unfiltered_Lambda1")
-
-# Add in the dates
-Unfiltered_lambda <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
-  subset(select = -Lambda0)
-
-
-# Now apply the STL filtering before the regression
-# pivot the Sim_return and Sim_beta longer and join them together
-Filtered_regression <- Sim_return %>%
-  pivot_longer(cols = -date, names_to = "Sector", values_to = "RP") %>%
-  group_by(Sector) %>%
-  do(model = stl_tibble(., "date", "RP")) %>%
-  .$model %>%
-  do.call(what = rbind.data.frame) %>%
-  filter(component == "Trend") %>%
-  subset(select = c(date, Sector, y)) %>%
-  rename(RP = y) %>%
-  inner_join(Sim_beta %>%
-               pivot_longer(cols = -date, names_to = "Sector", values_to = "beta"))
-
-# Group the data and do the second pass regression
-Rolling_Second <- Filtered_regression %>%
-  group_by(date) %>%
-  do(model = lm(RP ~ . - date - Sector, data = .) %>%
-       coefficients())
-
-# Unwrap the results
-Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
-  as_tibble()
-
-# Rename the variables
-names(Rolling_Lambdas) = c("Lambda0", "Filtered_Lambda1")
-
-# Add in the dates
-Filtered_lambda <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
-  subset(select = -Lambda0)
-
-# Plot the results all together
-Filtered_lambda %>%
-  inner_join(Unfiltered_lambda) %>%
-  inner_join(Sim_lambda) %>%
-  rename(Actual = value,
-         Filtered = Filtered_Lambda1,
-         Unfiltered = Unfiltered_Lambda1) %>%
-  pivot_longer(cols = -date, names_to = "Lamdba Method", values_to = "Lambda") %>%
-  # fix order
-  mutate(`Lamdba Method` = factor(`Lamdba Method`, levels = c("Unfiltered","Filtered","Actual"))) %>%
-  ggplot(aes(date, Lambda, color = `Lamdba Method`)) +
-  geom_line() +
-  scale_color_manual(values=c("springgreen1", "blue", "coral")) +
-  labs(title= "Second Step Regression for Simulated Return with large seasonality and time-series error") +
-  theme(plot.title = element_text(hjust=0.5))
-
-
-
-```
-
-Now, we are going to replace the sin function with a random smooth function. The truly expected factor premium should not behave too crazily so it should be roughly a smooth curve, and for any smooth curve on earth, we can apply a Fourier Transformation to convert it to a linear combination of sin and cos equations. If you do not believe that the truly expected factor premium is smooth, at least it is an impulse response process (it shifts when information hits it) and therefore can be Fourier Transformed. So, we can apply a Fourier transformation equation to simulate a random curve as the true factor premium.
-
-The ramdom Fourier Lambdas are generated by the following Fourier Equations:
-
-$$f(t) = a_0+\sum_{i=1}^n(a_i cos(it)+b_isin(it))$$
-
-The $a_0$ is from a normal distribution N(0.01,0.002^2), both $a_i$ and $b_i$ are following a normal distribution N(0,0.025^2), and the n is a random integer between 20 and 100. This is a random smooth function and $f(t)$ is the random Fourier Lambda.
-
-```{r, cache = TRUE}
-# create random Fourier Transformed Functions as Lambda
-# It is based on http://www.di.fc.ul.pt/~jpn/r/fourier/fourier.html#dc-components
-# Create the shift
-dc.component <- rnorm(1,0.005,0.002) 
-# Maximum Frequency (more functions included with higher freq_max)
-freq_max <- sample(20:100,1)
-# frequency of signal components (Hz)
-component.freqs <- 1:freq_max
-# strength of signal components
-component.strength <- rnorm(freq_max*2,0,0.025)
-
-sim_Fourier   <- function(t) { 
-  dc.component + 
-  sum( component.strength[1:freq_max] * sin(component.freqs*t)) +
-  sum( component.strength[(1+freq_max):(2*freq_max)] * sin(pi/2 - component.freqs*t))
-}
-
-sim_lambda2 <- apply(((1:600)/600) %>% matrix(ncol = 1), 1, sim_Fourier)
-
-# The returns are beta*lambda+seasonality+univ_error+idio_error
-Sim_return2 <- (sim_beta*(sim_lambda2 %>%
-                          matrix(600, 49)) + sim_seasonality + (sim_univ_error %>%
-                                                                  matrix(600, 49)) + sim_idio_error) %>%
-  as_tibble() %>%
-  mutate(date = 1:600)
-
-# Create the second simulation lambda
-Sim_lambda2 <- sim_lambda2 %>%
-  as_tibble() %>%
-  mutate(date = 1:600)
-
-names(Sim_lambda2)[1] = "value"
-
-
-# pivot the Sim_return and Sim_beta longer and join them together
-Unfiltered_regression2 <- Sim_return2 %>%
-  pivot_longer(cols = -date, names_to = "Sector", values_to = "RP") %>%
-  inner_join(Sim_beta %>%
-               pivot_longer(cols = -date, names_to = "Sector", values_to = "beta"))
-
-# Group the data and do the second pass regression
-Rolling_Second <- Unfiltered_regression2 %>%
-  group_by(date) %>%
-  do(model = lm(RP ~ . - date - Sector, data = .) %>%
-       coefficients())
-
-# Unwrap the results
-Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
-  as_tibble()
-
-# Rename the variables
-names(Rolling_Lambdas) = c("Lambda0", "Unfiltered_Lambda1")
-
-# Add in the dates
-Unfiltered_lambda2 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
-  subset(select = -Lambda0)
-
-
-# Now apply the STL filtering before the regression
-# pivot the Sim_return and Sim_beta longer and join them together
-Filtered_regression2 <- Sim_return2 %>%
-  pivot_longer(cols = -date, names_to = "Sector", values_to = "RP") %>%
-  group_by(Sector) %>%
-  do(model = stl_tibble(., "date", "RP")) %>%
-  .$model %>%
-  do.call(what = rbind.data.frame) %>%
-  filter(component == "Trend") %>%
-  subset(select = c(date, Sector, y)) %>%
-  rename(RP = y) %>%
-  inner_join(Sim_beta %>%
-               pivot_longer(cols = -date, names_to = "Sector", values_to = "beta"))
-
-# Group the data and do the second pass regression
-Rolling_Second <- Filtered_regression2 %>%
-  group_by(date) %>%
-  do(model = lm(RP ~ . - date - Sector, data = .) %>%
-       coefficients())
-
-# Unwrap the results
-Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
-  as_tibble()
-
-# Rename the variables
-names(Rolling_Lambdas) = c("Lambda0", "Filtered_Lambda1")
-
-# Add in the dates
-Filtered_lambda2 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
-  subset(select = -Lambda0)
-
-# Plot the results all together
-Filtered_lambda2 %>%
-  inner_join(Unfiltered_lambda2) %>%
-  inner_join(Sim_lambda2) %>%
-  rename(Actual = value,
-         Filtered = Filtered_Lambda1,
-         Unfiltered = Unfiltered_Lambda1) %>%
-  pivot_longer(cols = -date, names_to = "Lamdba Method", values_to = "Lambda") %>%
-  # fix order
-  mutate(`Lamdba Method` = factor(`Lamdba Method`, levels = c("Unfiltered","Filtered","Actual"))) %>%
-  ggplot(aes(date, Lambda, color = `Lamdba Method`)) +
-  geom_line() +
-  scale_color_manual(values=c("springgreen1", "blue", "coral")) +
-  labs(title= "Second Step Regression for Simulated Return with Random Fourier Lambda") +
-  theme(plot.title = element_text(hjust=0.5))
-
-cor(Filtered_lambda2[,2],Unfiltered_lambda2[,2])
-```
-
-
-### S4-4-3 STL Filtering
+### S4-4-1 STL Filtering
 
 STL method (Cleveland et al. 1990) would try decompose the time-series into 3 components: trend, seasonality, and noise. It applies an iterative smoothing method to extract the trend and seasonality components. At the same time, one can choose to use a robust weighting scheme to reduce the effect of large noise to the trend and seasonality extraction.
 
@@ -1999,7 +1724,7 @@ Port_FF5 %>%
 ```
 
 
-### S4-4-4 Filtered Seasonality and Trend Strength
+### S4-4-2 Filtered Seasonality and Trend Strength
 
 Now we estimate the strength of trend and strength of seasonality. The Strength of the trend is defined as:
 
@@ -2037,7 +1762,7 @@ Port_FF5_STL_s7_norobust %>%
 
 It seems that the both the trend and seasonal components are weak. No robust is stronger than robust, and smaller s_window would yield stronger components.
 
-### S4-4-5 Beta Decomposition
+### S4-4-3 Beta Decomposition
 
 ```{r, cache = TRUE}
 # FF5 betas STL decomposition
@@ -2309,7 +2034,7 @@ Beta estimation's noise or seasonal pattern is much smaller than trend so the no
 
 Now, we will take the desired no robust weighting, s_window = 7 trend results of the Industry Risk Premium to estimate the factor risk premium.
 
-### S4-4-6 Filtered Second Pass Regression
+### S4-4-4 Filtered Second Pass Regression
 
 ```{r, cache = TRUE}
 # Estimate the Factor Risk Premium for FF5
@@ -2335,6 +2060,16 @@ Rolling_Error_Second <- Second_Path %>%
        summary() %>%
        coef() %>%
        .[, "Std. Error"])
+
+# Group the data and do the second pass regression
+Rolling_Second_Resid <- Second_Path %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Industry, data = .) %>%
+       broom::augment() %>%
+       subset(select = c(date, Industry, .resid)))
+  
+Rolling_FF5_Resid <- do.call(rbind.data.frame, Rolling_Second_Resid$model) %>%
+  as_tibble()
 
 # Unwrap the results
 Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
@@ -2705,7 +2440,7 @@ FM_STL_40_R_PRS <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = -Lambda0)
 ```
 
-### S4-4-7 Regression Standard Error
+### S4-4-5 Regression Standard Error
 
 ```{r}
 # Plot the standard error in second-step regression
@@ -2747,7 +2482,7 @@ FM_PRS_Error %>%
         axis.text.x = element_text(angle = 30, hjust = 1))
 ```
 
-### S4-4-8 Unfiltered and Filtered Lambdas
+### S4-4-6 Unfiltered and Filtered Lambdas
 
 Let's plot the unfiltered lambda together with filtered lambda to see the effect of filtering on lambda.
 
@@ -2892,7 +2627,7 @@ FM_STL_PRS %>%
 
 ```
 
-### S4-4-9 KS test and Stats
+### S4-4-7 KS test and Stats
 
 We also performed a KS test to test the FM lambdas and STL FM lambdas for different factors. It seems that their distributions are different.
 
@@ -3263,6 +2998,470 @@ PRS_table %>%
   add_header_above(c(" " = 1, "FF5" = 5, "PRS" = 5))
 
 
+```
+
+## S4-5 Why filtering might improve Esimated Lamdba?
+
+### S4-5-1 Biased Regression
+
+There is no need for trend extraction for 1st step regression, no matter if we use the full sample or rolling window. The window should be large enough to mitigate the seasonality effect. The second step regression, however, is a cross sectional regression. A seasonal component in the time series would disrupt the cross-sectional regression significantly. So it is possible the the large volatility observed in the second step regression is due to the seasonality.
+
+Now, assume the return (or risk premium) is formed by the following equation:
+
+$$r_{it} = \beta_{it}*\lambda_t+\eta_{it}$$
+
+Where beta is the sector specific risk exposure, lambda is the factor premium, and eta is the idiosyncratic noise.
+
+$$E[\eta_{it}|i] = 0$$
+
+However, the eta might actually contain 3 components: $\epsilon_t$, $s_{im}$, and $epsilon_{it}$. 
+
+$$\eta_{it} = \epsilon_t + s_{im} + \epsilon_{it}$$
+
+eps_t is the universal time-series error, s_i is the sector-specific seasonality, and eps_it is the idiosyncratic error. Therefore, the equation is actually:
+
+$$r_{it} = \beta_{it}*\lambda_t+\epsilon_t + s_{im} + \epsilon_{it}$$
+
+Again, we would have:
+
+$$E[\epsilon_t + s_{im} + \epsilon_{it}|i] = 0$$
+
+However, the cross-sectional regression error at each time t:
+
+$$E[\epsilon_t + s_{im} + \epsilon_{it}|t] = \epsilon_t+s_{im}$$
+
+The unbiased least square estimation requires the error term expected to be 0. The existence of $( \epsilon_t + s_{im} | t)$ in each cross-sectional regression, therefore, would randomly bias the estimated lambda. (Biasness is the last thing we want from a regression.) This might be why we see the FM method lambdas behave so "abruptly". If we randomly bias the lambda, the regression error of lambda is similar to the one without bias at each t. However, this bias is changing over time, which would add to the regression error of the lambdas. And therefore, bias might manifest itself in a higher standard error in the resulting ECC estimates.
+
+The universal time-series error and the seasonality would actually bias the lambda estimation. Filtering out the universal time-series noise and seasonality would improve the lambda estimated. Now, I will illustrate the effect of seasonality and universal time-series noise in the second step regression through a simulation.
+
+### S4-5-2 Simulation
+
+We will perform 3 different simulations to possible illustrate how the filtered method would help with the second step regression.
+
+#### S4-5-2-1 Simulation with Random Parameters and Sin Lamdba
+
+Suppose the true 49 sector betas are given (since our focus is lambda) and each of them follows an ARIMA(1,1,0) process, with AR coefficient 0.9. For demonstration purpose, the Factor Premiums follows a sin function lambda = sin(t/60*pi)/10+0.5. The universal time-series noise is the same for all the sectors, following N(0, 1^2); a sector-specific seasonality is randomly generated for each sector following N(0,1^2), and repeats each year; and the idiosyncratic error is also generated following N(0, 0.3^2). The first value of 49 sector betas are generated from N(1, 0.3^2). There are 600 data generated to represent monthly data in 50 years.
+
+```{r, cache = TRUE}
+# Create 600x49 matrix of time-varying betas
+sim_beta <- (replicate(49, arima.sim(list(order = c(1,1,0), ar = 0.9), n=600))/300 + rep(rnorm(49,1,0.3),601) %>% matrix(nrow = 49) %>% t()) %>%
+  # remove the first line
+  .[-1,]
+
+# Create the 600x1 matrix of factor premium
+# sim_lambda <- arima.sim(list(order(1,1,0), ar=0.8, sd = 0.05),600)
+# sim_lambda <- smooth::sim.es("ANN", frequency=12, obs=600)
+sim_lambda <- sin(1:600/60*pi)/10+0.05
+
+# Create the seasonality
+sim_seasonality <- rnorm(49*11,0,1) %>%
+  matrix(ncol = 49) %>%
+  rbind(colSums(.[1:11,])) %>%
+  rep(50) %>%
+  matrix(ncol = 49)
+
+# Create the universal time-series error
+sim_univ_error <- rnorm(600,0,1)
+
+# Create the idiosyncratic error
+sim_idio_error <- rnorm(600*49,0,0.3) %>%
+  matrix(ncol = 49)
+
+# The returns are beta*lambda+seasonality+univ_error+idio_error
+sim_return <- sim_beta*(sim_lambda %>%
+                          matrix(600, 49)) + sim_seasonality + (sim_univ_error %>%
+                                                                  matrix(600, 49)) + sim_idio_error
+
+# Now I try to join the return and beta without filtered to perform a cross-sectional regression and the filtered cross-sectional regression. We will see how they performs.
+Sim_return <- sim_return %>%
+  as_tibble() %>%
+  mutate(date = 1:600)
+
+Sim_beta <- sim_beta %>%
+  as_tibble() %>%
+  mutate(date = 1:600)
+
+Sim_lambda <- sim_lambda %>%
+  as_tibble() %>%
+  mutate(date = 1:600)
+
+names(Sim_lambda)[1] = "value"
+
+
+# pivot the Sim_return and Sim_beta longer and join them together
+Unfiltered_regression <- Sim_return %>%
+  pivot_longer(cols = -date, names_to = "Sector", values_to = "RP") %>%
+  inner_join(Sim_beta %>%
+               pivot_longer(cols = -date, names_to = "Sector", values_to = "beta"))
+
+# Group the data and do the second pass regression
+Rolling_Second <- Unfiltered_regression %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Sector, data = .) %>%
+       coefficients())
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = c("Lambda0", "Unfiltered_Lambda1")
+
+# Add in the dates
+Unfiltered_lambda <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = -Lambda0)
+
+
+# Now apply the STL filtering before the regression
+# pivot the Sim_return and Sim_beta longer and join them together
+Filtered_regression <- Sim_return %>%
+  pivot_longer(cols = -date, names_to = "Sector", values_to = "RP") %>%
+  group_by(Sector) %>%
+  do(model = stl_tibble(., "date", "RP")) %>%
+  .$model %>%
+  do.call(what = rbind.data.frame) %>%
+  filter(component == "Trend") %>%
+  subset(select = c(date, Sector, y)) %>%
+  rename(RP = y) %>%
+  inner_join(Sim_beta %>%
+               pivot_longer(cols = -date, names_to = "Sector", values_to = "beta"))
+
+# Group the data and do the second pass regression
+Rolling_Second <- Filtered_regression %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Sector, data = .) %>%
+       coefficients())
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = c("Lambda0", "Filtered_Lambda1")
+
+# Add in the dates
+Filtered_lambda <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = -Lambda0)
+
+# Plot the results all together
+Filtered_lambda %>%
+  inner_join(Unfiltered_lambda) %>%
+  inner_join(Sim_lambda) %>%
+  rename(Actual = value,
+         Filtered = Filtered_Lambda1,
+         Unfiltered = Unfiltered_Lambda1) %>%
+  pivot_longer(cols = -date, names_to = "Lamdba Method", values_to = "Lambda") %>%
+  # fix order
+  mutate(`Lamdba Method` = factor(`Lamdba Method`, levels = c("Unfiltered","Filtered","Actual"))) %>%
+  ggplot(aes(date, Lambda, color = `Lamdba Method`)) +
+  geom_line() +
+  scale_color_manual(values=c("springgreen1", "blue", "coral")) +
+  labs(title= "Second Step Regression for Simulated Return with large seasonality and time-series error") +
+  theme(plot.title = element_text(hjust=0.5))
+
+```
+
+#### S4-5-2-2 Simulation with Random Parameter and Random Smooth Lambda
+
+Now, we are going to replace the sin function with a random smooth function. The truly expected factor premium should not behave too crazily so it should be roughly a smooth curve, and for any smooth curve on earth, we can apply a Fourier Transformation to convert it to a linear combination of sin and cos equations. If you do not believe that the truly expected factor premium is smooth, at least it is an impulse response process (it shifts when information hits it) and therefore can be Fourier Transformed. So, we can apply a Fourier transformation equation to simulate a random curve as the true factor premium.
+
+The ramdom Fourier Lambdas are generated by the following Fourier Equations:
+
+$$f(t) = a_0+\sum_{i=1}^n(a_i cos(it)+b_isin(it))$$
+
+The $a_0$ is from a normal distribution N(0.01,0.002^2), both $a_i$ and $b_i$ are following a normal distribution N(0,0.025^2), and the n is a random integer between 20 and 100. This is a random smooth function and $f(t)$ is the random Fourier Lambda.
+
+```{r, cache = TRUE}
+# create random Fourier Transformed Functions as Lambda
+# It is based on http://www.di.fc.ul.pt/~jpn/r/fourier/fourier.html#dc-components
+sim_Fourier <- function(t) {
+  # Create the shift
+  dc.component <- rnorm(1,0.005,0.002) 
+  # Maximum Frequency (more functions included with higher freq_max)
+  freq_max <- sample(20:100,1)
+  # frequency of signal components (Hz)
+  component.freqs <- 1:freq_max
+  # strength of signal components
+  component.strength <- rnorm(freq_max*2,0,0.025)
+
+  dc.component + 
+  colSums(component.strength[1:freq_max] * sin((component.freqs %>% matrix(ncol = 1)) %*% (t %>% matrix(nrow = 1)))) +
+  colSums(component.strength[(1+freq_max):(2*freq_max)] * sin(pi/2 - (component.freqs %>% matrix(ncol = 1)) %*% (t %>% matrix(nrow = 1))))
+}
+
+sim_lambda2 <- sim_Fourier((1:600)/600)
+
+# The returns are beta*lambda+seasonality+univ_error+idio_error
+Sim_return2 <- (sim_beta*(sim_lambda2 %>%
+                          matrix(600, 49)) + sim_seasonality + (sim_univ_error %>%
+                                                                  matrix(600, 49)) + sim_idio_error) %>%
+  as_tibble() %>%
+  mutate(date = 1:600)
+
+# Create the second simulation lambda
+Sim_lambda2 <- sim_lambda2 %>%
+  as_tibble() %>%
+  mutate(date = 1:600)
+
+names(Sim_lambda2)[1] = "value"
+
+
+# pivot the Sim_return and Sim_beta longer and join them together
+Unfiltered_regression2 <- Sim_return2 %>%
+  pivot_longer(cols = -date, names_to = "Sector", values_to = "RP") %>%
+  inner_join(Sim_beta %>%
+               pivot_longer(cols = -date, names_to = "Sector", values_to = "beta"))
+
+# Group the data and do the second pass regression
+Rolling_Second <- Unfiltered_regression2 %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Sector, data = .) %>%
+       coefficients())
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = c("Lambda0", "Unfiltered_Lambda1")
+
+# Add in the dates
+Unfiltered_lambda2 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = -Lambda0)
+
+
+# Now apply the STL filtering before the regression
+# pivot the Sim_return and Sim_beta longer and join them together
+Filtered_regression2 <- Sim_return2 %>%
+  pivot_longer(cols = -date, names_to = "Sector", values_to = "RP") %>%
+  group_by(Sector) %>%
+  do(model = stl_tibble(., "date", "RP")) %>%
+  .$model %>%
+  do.call(what = rbind.data.frame) %>%
+  filter(component == "Trend") %>%
+  subset(select = c(date, Sector, y)) %>%
+  rename(RP = y) %>%
+  inner_join(Sim_beta %>%
+               pivot_longer(cols = -date, names_to = "Sector", values_to = "beta"))
+
+# Group the data and do the second pass regression
+Rolling_Second <- Filtered_regression2 %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Sector, data = .) %>%
+       coefficients())
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = c("Lambda0", "Filtered_Lambda1")
+
+# Add in the dates
+Filtered_lambda2 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = -Lambda0)
+
+# Plot the results all together
+Filtered_lambda2 %>%
+  inner_join(Unfiltered_lambda2) %>%
+  inner_join(Sim_lambda2) %>%
+  rename(Actual = value,
+         Filtered = Filtered_Lambda1,
+         Unfiltered = Unfiltered_Lambda1) %>%
+  pivot_longer(cols = -date, names_to = "Lamdba Method", values_to = "Lambda") %>%
+  # fix order
+  mutate(`Lamdba Method` = factor(`Lamdba Method`, levels = c("Unfiltered","Filtered","Actual"))) %>%
+  ggplot(aes(date, Lambda, color = `Lamdba Method`)) +
+  geom_line() +
+  scale_color_manual(values=c("springgreen1", "blue", "coral")) +
+  labs(title= "Second Step Regression for Simulated Return with Random Fourier Lambda") +
+  theme(plot.title = element_text(hjust=0.5))
+
+cor(Filtered_lambda2[,2],Unfiltered_lambda2[,2])
+```
+
+#### S4-5-2-3 Simulation with Actual Parameters and Smooth Lambdas
+
+Finally, we would like to apply the actual Betas, Seasonality, Time-series Error, and Idiosyncratic Error with a Fourier Smoothed Lambda assumed to be the true lambda. This will illustrate how the lambda estimation in the real data can be possibly improved.
+
+We will extract the Seasonality and Noise from STL method, and then the idiosyncratic noise from cross-sectional regression. The betas we use are the 5-year rolling window beta.
+
+```{r, cache = TRUE}
+# Extract the Seasonality and Errors from the actual data
+FF5_Errors <- Port_FF5_STL_s7_norobust %>%
+  subset(select = -c(x, RP)) %>%
+  filter(component %in% c("Seasonal", "Noise")) %>%
+  pivot_wider(names_from = "component", values_from = "y") %>%
+  inner_join(Rolling_FF5_Resid) %>%
+  rename(Resid = .resid)
+
+# Plot all the errors
+FF5_Errors %>%
+  pivot_longer(cols = -c(date, Industry), names_to = "Component", values_to = "Error") %>%
+  ggplot(aes(Component, Error)) +
+  geom_boxplot(aes(color = Component)) +
+  facet_wrap(~ Industry) +
+  labs(title = "Error Components Distribution") +
+  theme(plot.title = element_text(hjust=0.5))
+
+FF5_Errors %>%
+  pivot_longer(cols = -c(date, Industry), names_to = "Component", values_to = "Error") %>%
+  group_by(Component, Industry) %>%
+  summarise(Error = sd(Error)) %>%
+  ggplot(aes(Component, Error)) +
+  geom_bar(aes(fill = Component), stat = "identity") +
+  facet_wrap(~ Industry) +
+  labs(title = "Error Components Standard Deviation") +
+  theme(plot.title = element_text(hjust=0.5))
+```
+
+The Noise component is the time-series noise; the Seasonal component is the Seasonality; the Resid component is the idiosyncratic noise. From the standard deviation part, we can see in real data, the time-series noise and seasonality is a large part of noise. Our assumptions about large seasonality and time-series noise in the previous simulations are valid.
+
+In this simulation, I performed 100 simulations of random Fourier Fama French 5 Factor Lambdas. In order to make the lambdas similar to the estimated lambda, I adjusted the standard deviation of simulated lambdas to be the same as standard deviation of the Estimated filtered Fama Macbeth Lambdas.
+
+```{r, cache = TRUE}
+set.seed(1919)
+# The number of Simulations
+N <- 100
+# Now I will simulate Nx5 columns of nrow(FM_STL_FF5) random Fourier Lambdas
+sim_lambda3 <- ((1:nrow(FM_STL_FF5))/nrow(FM_STL_FF5)) %>%
+  # Create Nx5 columns
+  matrix(nrow = nrow(FM_STL_FF5), ncol = (5*N)) %>%
+  apply(2, sim_Fourier) %>%
+  matrix(ncol = 5) %>%
+  as_tibble() %>%
+  mutate(date = (FM_STL_FF5[,1] %>%
+    # Create N blocks
+    matrix(nrow = N*nrow(FM_STL_FF5)))) %>%
+  mutate(Group = floor((1:(N*nrow(FM_STL_FF5))-1)/nrow(FM_STL_FF5)))
+
+# Estimate the standard deviation of Filtered estimated Lambdas and simulated Lambdas and find the ratio
+Correction <- FM_STL_FF5 %>%
+  summarise_at(vars(-date), sd) %>%
+  .[1,]/(sim_lambda3%>%
+  summarise_at(vars(-c(date,Group)), sd))
+
+# Correct the Simulated Lambda Standard Deviation to the Estimated Lambda Standard Deviation
+sim_lambda3_adjusted <- (sim_lambda3[,1:5] %>% as.matrix()) %*% diag(Correction) %>%
+  as_tibble() %>%
+  cbind(sim_lambda3[,6:7])
+
+# Generate the simulated Expected ECC
+# First join the betas with the simulated lambdas
+sim_return3 <- Port_FF5_Betas %>%
+  inner_join(sim_lambda3_adjusted) %>%
+  # then join the errors
+  inner_join(FF5_Errors) %>%
+  # sum(beta*lambda)
+  mutate(E_ECC = rowSums(.[,4:8]*.[,9:13])) %>%
+  # add errors to generate risk premiums
+  mutate(RP = E_ECC + Noise + Seasonal + Resid)
+
+
+# Group the data and do the second pass regression for RP
+Rolling_Second <- sim_return3 %>%
+  # Select the regression variables
+  subset(select = c(date, Group, RP, Alpha, `Mkt-RF`, SMB, HML, RMW, CMA)) %>%
+  mutate(Alpha = 1) %>%
+  group_by(date, Group) %>%
+  do(model = .lm.fit(((.[,4:9]) %>% as.matrix()), .$RP) %>%
+       coefficients())
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = c("Lambda0", names(FF5)[2:6])
+
+# Add in the dates and Group
+Unfiltered_lambda3 <- cbind(Rolling_Second[, 1:2], Rolling_Lambdas) %>%
+  subset(select = -Lambda0)
+
+# Now apply the STL filtering before the regression
+# pivot the Sim_return and Sim_beta longer and join them together
+Filtered_regression3 <- sim_return3 %>%
+  group_by(Industry, Group) %>%
+  do(model = stl_tibble(., "date", "RP")) %>%
+  .$model %>%
+  do.call(what = rbind.data.frame) %>%
+  filter(component == "Trend") %>%
+  inner_join(sim_return3) %>%
+  subset(select = c(date, Group, y, Alpha, `Mkt-RF`, SMB, HML, RMW, CMA)) %>%
+  rename(RP = y)
+
+# Group the data and do the second pass regression
+Rolling_Second <- Filtered_regression3 %>%
+  mutate(Alpha = 1) %>%
+  group_by(date, Group) %>%
+  do(model = .lm.fit(((.[,4:9]) %>% as.matrix()), .$RP) %>%
+       coefficients())
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = c("Lambda0", names(FF5)[2:6])
+
+# Add in the dates and Group
+Filtered_lambda3 <- cbind(Rolling_Second[, 1:2], Rolling_Lambdas) %>%
+  subset(select = -Lambda0)
+
+# Change the names of sim_lambda3
+names(sim_lambda3)[1:5] = names(Filtered_lambda3)[3:7]
+```
+
+```{r, cache = TRUE}
+# Calculate the estimated error of lambdas
+Simulation_Lambda_Errors <- sim_lambda3 %>%
+  pivot_longer(cols = -c(date, Group), names_to = "Factors", values_to = "True Lambda") %>%
+  inner_join(Unfiltered_lambda3 %>%
+               pivot_longer(cols = -c(date, Group), names_to = "Factors", values_to = "Unfiltered Lambda")) %>%
+  inner_join(Filtered_lambda3 %>%
+               pivot_longer(cols = -c(date, Group), names_to = "Factors", values_to = "Filtered Lambda")) %>%
+  mutate(Unfiltered = `Unfiltered Lambda` - `True Lambda`,
+         Filtered = `Filtered Lambda` - `True Lambda`)
+  
+Simulation_Lambda_SSEs <- Simulation_Lambda_Errors %>%
+  subset(select = c(Group, Factors, Unfiltered, Filtered)) %>%
+  pivot_longer(cols = c(Unfiltered, Filtered), names_to = "Method", values_to = "Error") %>%
+  mutate(Error = Error^2) %>%
+  group_by(Group, Factors,Method) %>%
+  summarise(SSE = sum(Error))
+
+# Create the boxplots for factors
+Simulation_Lambda_SSEs %>%
+  pivot_wider(names_from = "Method", values_from = "SSE") %>%
+  mutate(Improvement = Unfiltered - Filtered) %>%
+  mutate(Factors = factor(Factors, levels = (names(FF5)[2:6]))) %>%
+  ggplot(aes(Factors, Improvement)) +
+  geom_boxplot() +
+  labs(title = "Filtered Method Sum of Squared Error Improvement of Lambda Estimation",
+       subtitle = "SSE(Unfiltered) - SSE(Filtered)") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust=0.5))
+
+# Calculate the SSEs for ECC
+Simulation_Lambda_Errors %>%
+  subset(select = -c(`Unfiltered Lambda`, `Filtered Lambda`, `True Lambda`)) %>%
+  pivot_longer(cols = c(Unfiltered, Filtered), names_to = "Method", values_to = "Error") %>%
+  mutate(Factors = tolower(Factors)) %>%
+  pivot_wider(names_from = "Factors", values_from = "Error") %>%
+  inner_join(Port_FF5_Betas) %>%
+  mutate(ECC_Error = rowSums(.[,4:8] * .[,11:15]),
+         ECC_Error_sq = ECC_Error^2) %>%
+  group_by(Group, Method, Industry) %>%
+  summarise(ECC_SSE = sum(ECC_Error_sq)) %>%
+  pivot_wider(names_from = "Method", values_from = "ECC_SSE") %>%
+  mutate(Improvement = Unfiltered - Filtered) %>%
+  ggplot(aes(Industry, Improvement)) +
+  geom_boxplot() +
+  labs(title = "Filtered Method Sum of Squared Error Improvement of ECC Estimation",
+       subtitle = "SSE(Unfiltered) - SSE(Filtered)") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust=0.5)) +
+  coord_flip()
 ```
 
 

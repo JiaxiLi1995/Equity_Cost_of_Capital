@@ -398,6 +398,10 @@ write.csv(PRS_monthly, here("data/PRS_monthly.csv"), na = "",  row.names = FALSE
 
 In this section, we will try to apply the simple first-pass regression to estimate the betas of the 49 industry portfolios. The period would be from July 1969 to June 2020. Since the focus of this paper is about the factor risk premium estimation, we will use the most basic first pass regressions (full sample and 5-year rolling window) to estimate the betas and compare which lambda method would work better.
 
+Here, we perform a one-step-ahead regression:
+
+$$rp_{i,t+1} = \beta_{i,t}*F_t + \epsilon_t$$
+
 ## S3-1 Fama French Five Factor Model
 
 We will first apply the Fama French Five Factor Model to estimate the betas. We will use the Five Factor Model as the base model.
@@ -419,6 +423,8 @@ Port_FF5 <- Portfolios %>%
                subset(select = - RF)) %>%
   # Change date back to numeric
   mutate(date = as.integer(date)) %>%
+  mutate(date = lag(date)) %>%
+  replace_na(list(date = 196906)) %>%
   # Locate the time and asset when 5-year rolling beta is possible to estimate (59 entries before, the PERMNO is the same, the date is 4 year 11 month less)
   mutate(Selection = (Industry == lag(Industry,59)) & ((date == (lag(date,59)+411))|(date == lag(date,59)+499)),
          Selection = replace_na(Selection,FALSE))
@@ -855,6 +861,8 @@ Port_PRS <- Portfolios %>%
                subset(select = - RF)) %>%
   # Change date back to numeric
   mutate(date = as.integer(date)) %>%
+  mutate(date = lag(date)) %>%
+  replace_na(list(date = 196906)) %>%
   # Locate the time and asset when 5-year rolling beta is possible to estimate (59 entries before, the PERMNO is the same, the date is 4 year 11 month less)
   mutate(Selection = (Industry == lag(Industry,59)) & ((date == (lag(date,59)+411))|(date == lag(date,59)+499)),
          Selection = replace_na(Selection,FALSE))
@@ -1267,6 +1275,10 @@ It seems that the STL decomposition does not help the first step regression.
 # S4 Factor Premium Estimation
 
 In this section, we will describe different ways to estimate the Factor Premium.
+
+This is also the one-step ahead measure:
+
+$$rp_{i,t+1} = \beta_{it}*\lambda_t+\eta_{it}$$
 
 ## S4-1 Arithmetic Mean
 
@@ -3310,7 +3322,8 @@ FF5_Errors %>%
   geom_boxplot(aes(color = Component)) +
   facet_wrap(~ Industry) +
   labs(title = "Error Components Distribution") +
-  theme(plot.title = element_text(hjust=0.5))
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_blank())
 
 FF5_Errors %>%
   pivot_longer(cols = -c(date, Industry), names_to = "Component", values_to = "Error") %>%
@@ -3320,7 +3333,8 @@ FF5_Errors %>%
   geom_bar(aes(fill = Component), stat = "identity") +
   facet_wrap(~ Industry) +
   labs(title = "Error Components Standard Deviation") +
-  theme(plot.title = element_text(hjust=0.5))
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_blank())
 ```
 
 The Noise component is the time-series noise; the Seasonal component is the Seasonality; the Resid component is the idiosyncratic noise. From the standard deviation part, we can see in real data, the time-series noise and seasonality is a large part of noise. Our assumptions about large seasonality and time-series noise in the previous simulations are valid.
@@ -3468,8 +3482,8 @@ Simulation_Lambda_Errors %>%
   labs(title = "Filtered Method Sum of Squared Error Improvement of ECC Estimation",
        subtitle = "SSE(Unfiltered) - SSE(Filtered)") +
   theme(plot.title = element_text(hjust=0.5),
-        plot.subtitle = element_text(hjust=0.5)) +
-  coord_flip()
+        plot.subtitle = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
 ```
 
 

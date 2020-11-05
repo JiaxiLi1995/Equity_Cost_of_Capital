@@ -204,6 +204,10 @@ factor risk premium estimation, we will use the most basic first pass
 regressions (full sample and 5-year rolling window) to estimate the
 betas and compare which lambda method would work better.
 
+Here, we perform a one-step-ahead regression:
+
+![rp\_{i,t+1} = \\beta\_{i,t}\*F\_t + \\epsilon\_t](https://latex.codecogs.com/png.latex?rp_%7Bi%2Ct%2B1%7D%20%3D%20%5Cbeta_%7Bi%2Ct%7D%2AF_t%20%2B%20%5Cepsilon_t "rp_{i,t+1} = \beta_{i,t}*F_t + \epsilon_t")
+
 ## S3-1 Fama French Five Factor Model
 
 We will first apply the Fama French Five Factor Model to estimate the
@@ -8602,6 +8606,10 @@ regression.
 
 In this section, we will describe different ways to estimate the Factor
 Premium.
+
+This is also the one-step ahead measure:
+
+![rp\_{i,t+1} = \\beta\_{it}\*\\lambda\_t+\\eta\_{it}](https://latex.codecogs.com/png.latex?rp_%7Bi%2Ct%2B1%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Ceta_%7Bit%7D "rp_{i,t+1} = \beta_{it}*\lambda_t+\eta_{it}")
 
 ## S4-1 Arithmetic Mean
 

@@ -1305,6 +1305,49 @@ RAM_PRS <- PRS %>%
   cbind(PRS %>%
           subset(select = -date) %>%
           mutate_all(roll_meanr, 60))
+
+# Create the AM_FF5 and AM_PRS
+AM_FF5 %>%
+  subset(select = -RF) %>%
+  kable(align = "c", caption = "Athrithmetic  Mean of Fama French Five Factors Premium") %>%
+  kable_styling(font_size = 10, "striped", full_width = F)
+AM_PRS %>%
+  subset(select = -RF) %>%
+  kable(align = "c", caption = "Athrithmetic  Mean of PRS Five Factors Premium") %>%
+  kable_styling(font_size = 10, "striped", full_width = F)
+
+# Plot the AM methods
+RAM_FF5 %>%
+  subset(select = -RF) %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "RAM_FF5") %>%
+  left_join(AM_FF5 %>%
+                 pivot_longer(cols = everything(), names_to = "Factors", values_to = "AM_FF5")) %>%
+  pivot_longer(cols = c(RAM_FF5,AM_FF5), names_to = "Method", values_to = "Lambda") %>%
+  mutate(date = transDate(date),
+         Factors = factor(Factors, levels = names(AM_FF5)[1:5])) %>%
+  ggplot(aes(date, Lambda, color = Method)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~Factors) +
+  labs(title= "Expected Fama French Five Factors Premium with Arithmetic Mean Method",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5))
+
+RAM_PRS %>%
+  subset(select = -RF) %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "RAM_PRS") %>%
+  left_join(AM_PRS %>%
+                 pivot_longer(cols = everything(), names_to = "Factors", values_to = "AM_PRS")) %>%
+  pivot_longer(cols = c(RAM_PRS,AM_PRS), names_to = "Method", values_to = "Lambda") %>%
+  mutate(date = transDate(date),
+         Factors = factor(Factors, levels = names(AM_PRS)[1:5])) %>%
+  ggplot(aes(date, Lambda, color = Method)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~Factors) +
+  labs(title= "Expected PRS Five Factors Premium with Arithmetic Mean Method",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5))
 ```
 
 
@@ -1334,6 +1377,50 @@ RGM_PRS <- PRS %>%
           subset(select = -date) %>%
           mutate_all(function(x, na.rm = FALSE) (exp(roll_meanr(log(1+x), 60))-1)))
 
+# Create the GM_FF5 and GM_PRS
+GM_FF5 %>%
+  subset(select = -RF) %>%
+  kable(align = "c", caption = "Geometric  Mean of Fama French Five Factors Premium") %>%
+  kable_styling(font_size = 10, "striped", full_width = F)
+
+GM_PRS %>%
+  subset(select = -RF) %>%
+  kable(align = "c", caption = "Geometric  Mean of PRS Five Factors Premium") %>%
+  kable_styling(font_size = 10, "striped", full_width = F)
+
+
+# Plot the GM methods
+RGM_FF5 %>%
+  subset(select = -RF) %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "RGM_FF5") %>%
+  left_join(GM_FF5 %>%
+              pivot_longer(cols = everything(), names_to = "Factors", values_to = "GM_FF5")) %>%
+  pivot_longer(cols = c(RGM_FF5,GM_FF5), names_to = "Method", values_to = "Lambda") %>%
+  mutate(date = transDate(date),
+         Factors = factor(Factors, levels = names(GM_FF5)[1:5])) %>%
+  ggplot(aes(date, Lambda, color = Method)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~Factors) +
+  labs(title= "Expected FGMa French Five Factors Premium with Geometric Mean Method",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5))
+
+RGM_PRS %>%
+  subset(select = -RF) %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "RGM_PRS") %>%
+  left_join(GM_PRS %>%
+              pivot_longer(cols = everything(), names_to = "Factors", values_to = "GM_PRS")) %>%
+  pivot_longer(cols = c(RGM_PRS,GM_PRS), names_to = "Method", values_to = "Lambda") %>%
+  mutate(date = transDate(date),
+         Factors = factor(Factors, levels = names(GM_PRS)[1:5])) %>%
+  ggplot(aes(date, Lambda, color = Method)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~Factors) +
+  labs(title= "Expected PRS Five Factors Premium with Geometric Mean Method",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5))
 ```
 
 ## S4-3 Fama Macbeth Second Step Regression

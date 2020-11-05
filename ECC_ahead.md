@@ -8616,11 +8616,189 @@ This is also the one-step ahead measure:
 First, one can take the arithmetic mean of the factors to generate the
 expected factor premium.
 
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Athrithmetic Mean of Fama French Five Factors Premium
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Mkt-RF
+</th>
+<th style="text-align:center;">
+SMB
+</th>
+<th style="text-align:center;">
+HML
+</th>
+<th style="text-align:center;">
+RMW
+</th>
+<th style="text-align:center;">
+CMA
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+0.0053662
+</td>
+<td style="text-align:center;">
+0.0021664
+</td>
+<td style="text-align:center;">
+0.0025373
+</td>
+<td style="text-align:center;">
+0.0025544
+</td>
+<td style="text-align:center;">
+0.0026045
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Athrithmetic Mean of PRS Five Factors Premium
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Mkt-RF
+</th>
+<th style="text-align:center;">
+RMW
+</th>
+<th style="text-align:center;">
+dDP
+</th>
+<th style="text-align:center;">
+dTS
+</th>
+<th style="text-align:center;">
+UNEXPI
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+0.0053662
+</td>
+<td style="text-align:center;">
+0.0025544
+</td>
+<td style="text-align:center;">
+8.5e-06
+</td>
+<td style="text-align:center;">
+0.0003148
+</td>
+<td style="text-align:center;">
+0.000189
+</td>
+</tr>
+</tbody>
+</table>
+
+![](ECC_ahead_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->![](ECC_ahead_files/figure-gfm/unnamed-chunk-14-2.png)<!-- -->
+
 ## S4-2 Geometric Mean
 
 Levi and Welch mentioned in their 2017 paper that geometric mean might
 perform better. So in this section, we will calculate the geometric mean
 as the factor premium.
+
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Geometric Mean of Fama French Five Factors Premium
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Mkt-RF
+</th>
+<th style="text-align:center;">
+SMB
+</th>
+<th style="text-align:center;">
+HML
+</th>
+<th style="text-align:center;">
+RMW
+</th>
+<th style="text-align:center;">
+CMA
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+0.0043649
+</td>
+<td style="text-align:center;">
+0.0017141
+</td>
+<td style="text-align:center;">
+0.0021243
+</td>
+<td style="text-align:center;">
+0.002322
+</td>
+<td style="text-align:center;">
+0.0024072
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Geometric Mean of PRS Five Factors Premium
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Mkt-RF
+</th>
+<th style="text-align:center;">
+RMW
+</th>
+<th style="text-align:center;">
+dDP
+</th>
+<th style="text-align:center;">
+dTS
+</th>
+<th style="text-align:center;">
+UNEXPI
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+0.0043649
+</td>
+<td style="text-align:center;">
+0.002322
+</td>
+<td style="text-align:center;">
+7.9e-06
+</td>
+<td style="text-align:center;">
+0.0003117
+</td>
+<td style="text-align:center;">
+0.000184
+</td>
+</tr>
+</tbody>
+</table>
+
+![](ECC_ahead_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->![](ECC_ahead_files/figure-gfm/unnamed-chunk-15-2.png)<!-- -->
 
 ## S4-3 Fama Macbeth Second Step Regression
 

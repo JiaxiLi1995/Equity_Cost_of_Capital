@@ -72,6 +72,8 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
     -   [S5-5 Forcasting???](#s5-5-forcasting)
     -   [S5-6 ECC with Consumption
         Growth???](#s5-6-ecc-with-consumption-growth)
+    -   [S5-7 Improve AM GM with Markov-switching
+        model?](#s5-7-improve-am-gm-with-markov-switching-model)
 
 # S1 Introduction
 
@@ -16229,3 +16231,12 @@ this answer to yes.
 
 To me, a logical next question is whether the resulting premia move over
 the cycle as theory suggests.
+
+## S5-7 Improve AM GM with Markov-switching model?
+
+We might ‘improve’ on the simple AM/GM approach by filtering the data,
+and then using a two-state Markov-switching model on these filtered
+series to capture changes in factor premia over time in a compact way.
+In effect, we are saying that we think the factor premiums are either
+high or low, and we are going to estimate the values in these states and
+estimate which periods have high vs. low premia.

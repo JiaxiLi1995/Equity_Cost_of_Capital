@@ -3214,7 +3214,7 @@ Sim_return %>%
   subset(select = c(Strength, Industry, Value)) %>%
   pivot_wider(names_from = Industry, values_from = "Value") %>%
   arrange(Strength) %>%
-  kable(align = "c", caption = "STL Decomposition Component Strength for Sin Lambda Simulated Portfolio Risk Premium") %>%
+  kable(align = "c", caption = "STL Decomposition Component Strength for Simulated Portfolio Risk Premium: Random Beta and Noise + Sin Lambda") %>%
   kable_styling(font_size = 10, "striped", full_width = F) %>%
   column_spec(1, bold = T) %>%
   collapse_rows(columns = 1)
@@ -3329,7 +3329,7 @@ Sim_return2 %>%
   subset(select = c(Strength, Industry, Value)) %>%
   pivot_wider(names_from = Industry, values_from = "Value") %>%
   arrange(Strength) %>%
-  kable(align = "c", caption = "STL Decomposition Component Strength for Sin Lambda Simulated Portfolio Risk Premium") %>%
+  kable(align = "c", caption = "STL Decomposition Component Strength for Simulated Portfolio Risk Premium: Random Beta and Noise + Random Fourier Lambda") %>%
   kable_styling(font_size = 10, "striped", full_width = F) %>%
   column_spec(1, bold = T) %>%
   collapse_rows(columns = 1)
@@ -3544,6 +3544,31 @@ names(sim_lambda3)[1:5] = names(Filtered_lambda3)[3:7]
 ```
 
 ```{r, cache = TRUE}
+# The strength of Filtered
+sim_return3 %>%
+  select(date, Industry, Group, RP) %>%
+  group_by(Industry, Group) %>%
+  do(model = stl_tibble(., "date", "RP")) %>%
+  .$model %>%
+  do.call(what = rbind.data.frame) %>%
+  subset(select = -c(x, RP)) %>%
+  pivot_wider(names_from = "component", values_from = "y") %>%
+  group_by(Industry, Group) %>%
+  summarise(FT = max(0, 1-var(Noise)/var(Noise+Trend)),
+            FS = max(0, 1-var(Noise)/var(Noise+Seasonal))) %>%
+  ungroup() %>%
+  group_by(Industry) %>%
+  summarise(FT = mean(FT),
+            FS = mean(FS)) %>%
+  pivot_longer(cols = c(FT,FS), names_to = "Strength", values_to = "Value") %>%
+  subset(select = c(Strength, Industry, Value)) %>%
+  pivot_wider(names_from = Industry, values_from = "Value") %>%
+  arrange(Strength) %>%
+  kable(align = "c", caption = "STL Decomposition Component Strength for Simulated Portfolio Risk Premium: Acutal Beta and Noise + Random Fourier Lambda") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  collapse_rows(columns = 1)
+
 # Calculate the estimated error of lambdas
 Simulation_Lambda_Errors <- sim_lambda3 %>%
   pivot_longer(cols = -c(date, Group), names_to = "Factors", values_to = "True Lambda") %>%

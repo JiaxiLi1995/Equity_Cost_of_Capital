@@ -13060,8 +13060,8 @@ in 50 years.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-STL Decomposition Component Strength for Sin Lambda Simulated Portfolio
-Risk Premium
+STL Decomposition Component Strength for Simulated Portfolio Risk
+Premium: Random Beta and Noise + Sin Lambda
 </caption>
 <thead>
 <tr>
@@ -13555,8 +13555,8 @@ random Fourier Lambda.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-STL Decomposition Component Strength for Sin Lambda Simulated Portfolio
-Risk Premium
+STL Decomposition Component Strength for Simulated Portfolio Risk
+Premium: Random Beta and Noise + Random Fourier Lambda
 </caption>
 <thead>
 <tr>
@@ -14049,6 +14049,473 @@ French 5 Factor Lambdas. In order to make the lambdas similar to the
 estimated lambda, I adjusted the standard deviation of simulated lambdas
 to be the same as standard deviation of the Estimated filtered Fama
 Macbeth Lambdas.
+
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+STL Decomposition Component Strength for Simulated Portfolio Risk
+Premium: Acutal Beta and Noise + Random Fourier Lambda
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Strength
+</th>
+<th style="text-align:center;">
+Aero
+</th>
+<th style="text-align:center;">
+Agric
+</th>
+<th style="text-align:center;">
+Autos
+</th>
+<th style="text-align:center;">
+Banks
+</th>
+<th style="text-align:center;">
+Beer
+</th>
+<th style="text-align:center;">
+BldMt
+</th>
+<th style="text-align:center;">
+Books
+</th>
+<th style="text-align:center;">
+Boxes
+</th>
+<th style="text-align:center;">
+BusSv
+</th>
+<th style="text-align:center;">
+Chems
+</th>
+<th style="text-align:center;">
+Chips
+</th>
+<th style="text-align:center;">
+Clths
+</th>
+<th style="text-align:center;">
+Cnstr
+</th>
+<th style="text-align:center;">
+Coal
+</th>
+<th style="text-align:center;">
+Drugs
+</th>
+<th style="text-align:center;">
+ElcEq
+</th>
+<th style="text-align:center;">
+FabPr
+</th>
+<th style="text-align:center;">
+Fin
+</th>
+<th style="text-align:center;">
+Food
+</th>
+<th style="text-align:center;">
+Fun
+</th>
+<th style="text-align:center;">
+Gold
+</th>
+<th style="text-align:center;">
+Guns
+</th>
+<th style="text-align:center;">
+Hardw
+</th>
+<th style="text-align:center;">
+Hlth
+</th>
+<th style="text-align:center;">
+Hshld
+</th>
+<th style="text-align:center;">
+Insur
+</th>
+<th style="text-align:center;">
+LabEq
+</th>
+<th style="text-align:center;">
+Mach
+</th>
+<th style="text-align:center;">
+Meals
+</th>
+<th style="text-align:center;">
+MedEq
+</th>
+<th style="text-align:center;">
+Mines
+</th>
+<th style="text-align:center;">
+Oil
+</th>
+<th style="text-align:center;">
+Other
+</th>
+<th style="text-align:center;">
+Paper
+</th>
+<th style="text-align:center;">
+PerSv
+</th>
+<th style="text-align:center;">
+RlEst
+</th>
+<th style="text-align:center;">
+Rtail
+</th>
+<th style="text-align:center;">
+Rubbr
+</th>
+<th style="text-align:center;">
+Ships
+</th>
+<th style="text-align:center;">
+Smoke
+</th>
+<th style="text-align:center;">
+Soda
+</th>
+<th style="text-align:center;">
+Softw
+</th>
+<th style="text-align:center;">
+Steel
+</th>
+<th style="text-align:center;">
+Telcm
+</th>
+<th style="text-align:center;">
+Toys
+</th>
+<th style="text-align:center;">
+Trans
+</th>
+<th style="text-align:center;">
+Txtls
+</th>
+<th style="text-align:center;">
+Util
+</th>
+<th style="text-align:center;">
+Whlsl
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+FS
+</td>
+<td style="text-align:center;">
+0.4020201
+</td>
+<td style="text-align:center;">
+0.3828984
+</td>
+<td style="text-align:center;">
+0.4054573
+</td>
+<td style="text-align:center;">
+0.4082312
+</td>
+<td style="text-align:center;">
+0.3976898
+</td>
+<td style="text-align:center;">
+0.4160108
+</td>
+<td style="text-align:center;">
+0.3983799
+</td>
+<td style="text-align:center;">
+0.3625758
+</td>
+<td style="text-align:center;">
+0.3891262
+</td>
+<td style="text-align:center;">
+0.3718857
+</td>
+<td style="text-align:center;">
+0.3738292
+</td>
+<td style="text-align:center;">
+0.4179890
+</td>
+<td style="text-align:center;">
+0.3900986
+</td>
+<td style="text-align:center;">
+0.3947077
+</td>
+<td style="text-align:center;">
+0.3570130
+</td>
+<td style="text-align:center;">
+0.3831629
+</td>
+<td style="text-align:center;">
+0.3626465
+</td>
+<td style="text-align:center;">
+0.3764355
+</td>
+<td style="text-align:center;">
+0.3693705
+</td>
+<td style="text-align:center;">
+0.4163183
+</td>
+<td style="text-align:center;">
+0.3486968
+</td>
+<td style="text-align:center;">
+0.3500392
+</td>
+<td style="text-align:center;">
+0.3449402
+</td>
+<td style="text-align:center;">
+0.3847559
+</td>
+<td style="text-align:center;">
+0.3868054
+</td>
+<td style="text-align:center;">
+0.4196529
+</td>
+<td style="text-align:center;">
+0.3256755
+</td>
+<td style="text-align:center;">
+0.3729274
+</td>
+<td style="text-align:center;">
+0.3825072
+</td>
+<td style="text-align:center;">
+0.3686946
+</td>
+<td style="text-align:center;">
+0.3389983
+</td>
+<td style="text-align:center;">
+0.3614319
+</td>
+<td style="text-align:center;">
+0.3751450
+</td>
+<td style="text-align:center;">
+0.3546682
+</td>
+<td style="text-align:center;">
+0.3464305
+</td>
+<td style="text-align:center;">
+0.4124311
+</td>
+<td style="text-align:center;">
+0.3923469
+</td>
+<td style="text-align:center;">
+0.4065176
+</td>
+<td style="text-align:center;">
+0.3823389
+</td>
+<td style="text-align:center;">
+0.3195475
+</td>
+<td style="text-align:center;">
+0.3722978
+</td>
+<td style="text-align:center;">
+0.3586688
+</td>
+<td style="text-align:center;">
+0.3508761
+</td>
+<td style="text-align:center;">
+0.3695746
+</td>
+<td style="text-align:center;">
+0.3755067
+</td>
+<td style="text-align:center;">
+0.4065055
+</td>
+<td style="text-align:center;">
+0.4090120
+</td>
+<td style="text-align:center;">
+0.3791374
+</td>
+<td style="text-align:center;">
+0.3775596
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+FT
+</td>
+<td style="text-align:center;">
+0.1428494
+</td>
+<td style="text-align:center;">
+0.1472960
+</td>
+<td style="text-align:center;">
+0.1712486
+</td>
+<td style="text-align:center;">
+0.1741679
+</td>
+<td style="text-align:center;">
+0.1544587
+</td>
+<td style="text-align:center;">
+0.1277345
+</td>
+<td style="text-align:center;">
+0.1572968
+</td>
+<td style="text-align:center;">
+0.1439276
+</td>
+<td style="text-align:center;">
+0.1179586
+</td>
+<td style="text-align:center;">
+0.1382169
+</td>
+<td style="text-align:center;">
+0.1293600
+</td>
+<td style="text-align:center;">
+0.1427692
+</td>
+<td style="text-align:center;">
+0.1438046
+</td>
+<td style="text-align:center;">
+0.1562804
+</td>
+<td style="text-align:center;">
+0.1372406
+</td>
+<td style="text-align:center;">
+0.1124601
+</td>
+<td style="text-align:center;">
+0.1299934
+</td>
+<td style="text-align:center;">
+0.1529140
+</td>
+<td style="text-align:center;">
+0.1460946
+</td>
+<td style="text-align:center;">
+0.1320239
+</td>
+<td style="text-align:center;">
+0.1050698
+</td>
+<td style="text-align:center;">
+0.1236652
+</td>
+<td style="text-align:center;">
+0.1173722
+</td>
+<td style="text-align:center;">
+0.1538252
+</td>
+<td style="text-align:center;">
+0.1534018
+</td>
+<td style="text-align:center;">
+0.1574408
+</td>
+<td style="text-align:center;">
+0.1114699
+</td>
+<td style="text-align:center;">
+0.1289561
+</td>
+<td style="text-align:center;">
+0.1312438
+</td>
+<td style="text-align:center;">
+0.1457866
+</td>
+<td style="text-align:center;">
+0.1422623
+</td>
+<td style="text-align:center;">
+0.1379026
+</td>
+<td style="text-align:center;">
+0.1290666
+</td>
+<td style="text-align:center;">
+0.1306973
+</td>
+<td style="text-align:center;">
+0.1252609
+</td>
+<td style="text-align:center;">
+0.1396282
+</td>
+<td style="text-align:center;">
+0.1412953
+</td>
+<td style="text-align:center;">
+0.1451990
+</td>
+<td style="text-align:center;">
+0.1203995
+</td>
+<td style="text-align:center;">
+0.1570057
+</td>
+<td style="text-align:center;">
+0.1381827
+</td>
+<td style="text-align:center;">
+0.1054866
+</td>
+<td style="text-align:center;">
+0.1289831
+</td>
+<td style="text-align:center;">
+0.1872276
+</td>
+<td style="text-align:center;">
+0.1224745
+</td>
+<td style="text-align:center;">
+0.1361467
+</td>
+<td style="text-align:center;">
+0.1460563
+</td>
+<td style="text-align:center;">
+0.2004986
+</td>
+<td style="text-align:center;">
+0.1275598
+</td>
+</tr>
+</tbody>
+</table>
 
 ![](ECC_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->
 

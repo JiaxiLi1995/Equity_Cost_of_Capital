@@ -13058,6 +13058,473 @@ following N(0, 0.3^2). The first value of 49 sector betas are generated
 from N(1, 0.3^2). There are 600 data generated to represent monthly data
 in 50 years.
 
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+STL Decomposition Component Strength for Sin Lambda Simulated Portfolio
+Risk Premium
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Strength
+</th>
+<th style="text-align:center;">
+V1
+</th>
+<th style="text-align:center;">
+V10
+</th>
+<th style="text-align:center;">
+V11
+</th>
+<th style="text-align:center;">
+V12
+</th>
+<th style="text-align:center;">
+V13
+</th>
+<th style="text-align:center;">
+V14
+</th>
+<th style="text-align:center;">
+V15
+</th>
+<th style="text-align:center;">
+V16
+</th>
+<th style="text-align:center;">
+V17
+</th>
+<th style="text-align:center;">
+V18
+</th>
+<th style="text-align:center;">
+V19
+</th>
+<th style="text-align:center;">
+V2
+</th>
+<th style="text-align:center;">
+V20
+</th>
+<th style="text-align:center;">
+V21
+</th>
+<th style="text-align:center;">
+V22
+</th>
+<th style="text-align:center;">
+V23
+</th>
+<th style="text-align:center;">
+V24
+</th>
+<th style="text-align:center;">
+V25
+</th>
+<th style="text-align:center;">
+V26
+</th>
+<th style="text-align:center;">
+V27
+</th>
+<th style="text-align:center;">
+V28
+</th>
+<th style="text-align:center;">
+V29
+</th>
+<th style="text-align:center;">
+V3
+</th>
+<th style="text-align:center;">
+V30
+</th>
+<th style="text-align:center;">
+V31
+</th>
+<th style="text-align:center;">
+V32
+</th>
+<th style="text-align:center;">
+V33
+</th>
+<th style="text-align:center;">
+V34
+</th>
+<th style="text-align:center;">
+V35
+</th>
+<th style="text-align:center;">
+V36
+</th>
+<th style="text-align:center;">
+V37
+</th>
+<th style="text-align:center;">
+V38
+</th>
+<th style="text-align:center;">
+V39
+</th>
+<th style="text-align:center;">
+V4
+</th>
+<th style="text-align:center;">
+V40
+</th>
+<th style="text-align:center;">
+V41
+</th>
+<th style="text-align:center;">
+V42
+</th>
+<th style="text-align:center;">
+V43
+</th>
+<th style="text-align:center;">
+V44
+</th>
+<th style="text-align:center;">
+V45
+</th>
+<th style="text-align:center;">
+V46
+</th>
+<th style="text-align:center;">
+V47
+</th>
+<th style="text-align:center;">
+V48
+</th>
+<th style="text-align:center;">
+V49
+</th>
+<th style="text-align:center;">
+V5
+</th>
+<th style="text-align:center;">
+V6
+</th>
+<th style="text-align:center;">
+V7
+</th>
+<th style="text-align:center;">
+V8
+</th>
+<th style="text-align:center;">
+V9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+FS
+</td>
+<td style="text-align:center;">
+0.3693064
+</td>
+<td style="text-align:center;">
+0.3264444
+</td>
+<td style="text-align:center;">
+0.3507301
+</td>
+<td style="text-align:center;">
+0.3516755
+</td>
+<td style="text-align:center;">
+0.3233023
+</td>
+<td style="text-align:center;">
+0.3792595
+</td>
+<td style="text-align:center;">
+0.3522450
+</td>
+<td style="text-align:center;">
+0.3365581
+</td>
+<td style="text-align:center;">
+0.3601238
+</td>
+<td style="text-align:center;">
+0.3672606
+</td>
+<td style="text-align:center;">
+0.3555669
+</td>
+<td style="text-align:center;">
+0.3816918
+</td>
+<td style="text-align:center;">
+0.3488855
+</td>
+<td style="text-align:center;">
+0.3391324
+</td>
+<td style="text-align:center;">
+0.3428632
+</td>
+<td style="text-align:center;">
+0.3491262
+</td>
+<td style="text-align:center;">
+0.3631908
+</td>
+<td style="text-align:center;">
+0.3360308
+</td>
+<td style="text-align:center;">
+0.3477240
+</td>
+<td style="text-align:center;">
+0.3426819
+</td>
+<td style="text-align:center;">
+0.3486864
+</td>
+<td style="text-align:center;">
+0.3699284
+</td>
+<td style="text-align:center;">
+0.3408352
+</td>
+<td style="text-align:center;">
+0.3876524
+</td>
+<td style="text-align:center;">
+0.3313007
+</td>
+<td style="text-align:center;">
+0.3874559
+</td>
+<td style="text-align:center;">
+0.3493740
+</td>
+<td style="text-align:center;">
+0.3929959
+</td>
+<td style="text-align:center;">
+0.3568018
+</td>
+<td style="text-align:center;">
+0.3731475
+</td>
+<td style="text-align:center;">
+0.3635685
+</td>
+<td style="text-align:center;">
+0.3491237
+</td>
+<td style="text-align:center;">
+0.3445120
+</td>
+<td style="text-align:center;">
+0.3613501
+</td>
+<td style="text-align:center;">
+0.3375319
+</td>
+<td style="text-align:center;">
+0.3347256
+</td>
+<td style="text-align:center;">
+0.3422207
+</td>
+<td style="text-align:center;">
+0.3509355
+</td>
+<td style="text-align:center;">
+0.3685774
+</td>
+<td style="text-align:center;">
+0.3778733
+</td>
+<td style="text-align:center;">
+0.3676229
+</td>
+<td style="text-align:center;">
+0.3606106
+</td>
+<td style="text-align:center;">
+0.3676364
+</td>
+<td style="text-align:center;">
+0.3618866
+</td>
+<td style="text-align:center;">
+0.3500108
+</td>
+<td style="text-align:center;">
+0.3560640
+</td>
+<td style="text-align:center;">
+0.3412414
+</td>
+<td style="text-align:center;">
+0.3603312
+</td>
+<td style="text-align:center;">
+0.3756950
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+FT
+</td>
+<td style="text-align:center;">
+0.2226639
+</td>
+<td style="text-align:center;">
+0.1665297
+</td>
+<td style="text-align:center;">
+0.2300625
+</td>
+<td style="text-align:center;">
+0.1880679
+</td>
+<td style="text-align:center;">
+0.2214208
+</td>
+<td style="text-align:center;">
+0.2237122
+</td>
+<td style="text-align:center;">
+0.1581124
+</td>
+<td style="text-align:center;">
+0.1631426
+</td>
+<td style="text-align:center;">
+0.1745185
+</td>
+<td style="text-align:center;">
+0.1730944
+</td>
+<td style="text-align:center;">
+0.1888020
+</td>
+<td style="text-align:center;">
+0.1885852
+</td>
+<td style="text-align:center;">
+0.1878650
+</td>
+<td style="text-align:center;">
+0.2461163
+</td>
+<td style="text-align:center;">
+0.1954297
+</td>
+<td style="text-align:center;">
+0.2021556
+</td>
+<td style="text-align:center;">
+0.1997312
+</td>
+<td style="text-align:center;">
+0.2010945
+</td>
+<td style="text-align:center;">
+0.2129884
+</td>
+<td style="text-align:center;">
+0.1815535
+</td>
+<td style="text-align:center;">
+0.2159639
+</td>
+<td style="text-align:center;">
+0.1961364
+</td>
+<td style="text-align:center;">
+0.2019594
+</td>
+<td style="text-align:center;">
+0.1982866
+</td>
+<td style="text-align:center;">
+0.1800214
+</td>
+<td style="text-align:center;">
+0.2247710
+</td>
+<td style="text-align:center;">
+0.1763926
+</td>
+<td style="text-align:center;">
+0.2266907
+</td>
+<td style="text-align:center;">
+0.1929455
+</td>
+<td style="text-align:center;">
+0.1871609
+</td>
+<td style="text-align:center;">
+0.1608264
+</td>
+<td style="text-align:center;">
+0.1821134
+</td>
+<td style="text-align:center;">
+0.1919385
+</td>
+<td style="text-align:center;">
+0.2234294
+</td>
+<td style="text-align:center;">
+0.1959538
+</td>
+<td style="text-align:center;">
+0.2135052
+</td>
+<td style="text-align:center;">
+0.2425237
+</td>
+<td style="text-align:center;">
+0.1732998
+</td>
+<td style="text-align:center;">
+0.1601571
+</td>
+<td style="text-align:center;">
+0.1512501
+</td>
+<td style="text-align:center;">
+0.1719697
+</td>
+<td style="text-align:center;">
+0.1992412
+</td>
+<td style="text-align:center;">
+0.2315773
+</td>
+<td style="text-align:center;">
+0.1867892
+</td>
+<td style="text-align:center;">
+0.1938278
+</td>
+<td style="text-align:center;">
+0.1679769
+</td>
+<td style="text-align:center;">
+0.1739270
+</td>
+<td style="text-align:center;">
+0.2085228
+</td>
+<td style="text-align:center;">
+0.2216941
+</td>
+</tr>
+</tbody>
+</table>
+
 ![](ECC_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
 
 #### S4-5-2-2 Simulation with Random Parameter and Random Smooth Lambda
@@ -13085,6 +13552,473 @@ normal distribution N(0,0.025^2), and the n is a random integer between
 20 and 100. This is a random smooth function and
 ![f(t)](https://latex.codecogs.com/png.latex?f%28t%29 "f(t)") is the
 random Fourier Lambda.
+
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+STL Decomposition Component Strength for Sin Lambda Simulated Portfolio
+Risk Premium
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Strength
+</th>
+<th style="text-align:center;">
+V1
+</th>
+<th style="text-align:center;">
+V10
+</th>
+<th style="text-align:center;">
+V11
+</th>
+<th style="text-align:center;">
+V12
+</th>
+<th style="text-align:center;">
+V13
+</th>
+<th style="text-align:center;">
+V14
+</th>
+<th style="text-align:center;">
+V15
+</th>
+<th style="text-align:center;">
+V16
+</th>
+<th style="text-align:center;">
+V17
+</th>
+<th style="text-align:center;">
+V18
+</th>
+<th style="text-align:center;">
+V19
+</th>
+<th style="text-align:center;">
+V2
+</th>
+<th style="text-align:center;">
+V20
+</th>
+<th style="text-align:center;">
+V21
+</th>
+<th style="text-align:center;">
+V22
+</th>
+<th style="text-align:center;">
+V23
+</th>
+<th style="text-align:center;">
+V24
+</th>
+<th style="text-align:center;">
+V25
+</th>
+<th style="text-align:center;">
+V26
+</th>
+<th style="text-align:center;">
+V27
+</th>
+<th style="text-align:center;">
+V28
+</th>
+<th style="text-align:center;">
+V29
+</th>
+<th style="text-align:center;">
+V3
+</th>
+<th style="text-align:center;">
+V30
+</th>
+<th style="text-align:center;">
+V31
+</th>
+<th style="text-align:center;">
+V32
+</th>
+<th style="text-align:center;">
+V33
+</th>
+<th style="text-align:center;">
+V34
+</th>
+<th style="text-align:center;">
+V35
+</th>
+<th style="text-align:center;">
+V36
+</th>
+<th style="text-align:center;">
+V37
+</th>
+<th style="text-align:center;">
+V38
+</th>
+<th style="text-align:center;">
+V39
+</th>
+<th style="text-align:center;">
+V4
+</th>
+<th style="text-align:center;">
+V40
+</th>
+<th style="text-align:center;">
+V41
+</th>
+<th style="text-align:center;">
+V42
+</th>
+<th style="text-align:center;">
+V43
+</th>
+<th style="text-align:center;">
+V44
+</th>
+<th style="text-align:center;">
+V45
+</th>
+<th style="text-align:center;">
+V46
+</th>
+<th style="text-align:center;">
+V47
+</th>
+<th style="text-align:center;">
+V48
+</th>
+<th style="text-align:center;">
+V49
+</th>
+<th style="text-align:center;">
+V5
+</th>
+<th style="text-align:center;">
+V6
+</th>
+<th style="text-align:center;">
+V7
+</th>
+<th style="text-align:center;">
+V8
+</th>
+<th style="text-align:center;">
+V9
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+FS
+</td>
+<td style="text-align:center;">
+0.3693116
+</td>
+<td style="text-align:center;">
+0.3264409
+</td>
+<td style="text-align:center;">
+0.3507286
+</td>
+<td style="text-align:center;">
+0.3516496
+</td>
+<td style="text-align:center;">
+0.3232958
+</td>
+<td style="text-align:center;">
+0.3792687
+</td>
+<td style="text-align:center;">
+0.3522473
+</td>
+<td style="text-align:center;">
+0.3365578
+</td>
+<td style="text-align:center;">
+0.3601075
+</td>
+<td style="text-align:center;">
+0.3672582
+</td>
+<td style="text-align:center;">
+0.3556053
+</td>
+<td style="text-align:center;">
+0.3816945
+</td>
+<td style="text-align:center;">
+0.3489122
+</td>
+<td style="text-align:center;">
+0.3391039
+</td>
+<td style="text-align:center;">
+0.3428338
+</td>
+<td style="text-align:center;">
+0.3491270
+</td>
+<td style="text-align:center;">
+0.3632483
+</td>
+<td style="text-align:center;">
+0.3360394
+</td>
+<td style="text-align:center;">
+0.3476577
+</td>
+<td style="text-align:center;">
+0.3426307
+</td>
+<td style="text-align:center;">
+0.3486784
+</td>
+<td style="text-align:center;">
+0.3699287
+</td>
+<td style="text-align:center;">
+0.3408635
+</td>
+<td style="text-align:center;">
+0.3876265
+</td>
+<td style="text-align:center;">
+0.3313255
+</td>
+<td style="text-align:center;">
+0.3874959
+</td>
+<td style="text-align:center;">
+0.3493889
+</td>
+<td style="text-align:center;">
+0.393031
+</td>
+<td style="text-align:center;">
+0.3567860
+</td>
+<td style="text-align:center;">
+0.3731235
+</td>
+<td style="text-align:center;">
+0.3635134
+</td>
+<td style="text-align:center;">
+0.3491561
+</td>
+<td style="text-align:center;">
+0.3445098
+</td>
+<td style="text-align:center;">
+0.3613866
+</td>
+<td style="text-align:center;">
+0.3375473
+</td>
+<td style="text-align:center;">
+0.3347473
+</td>
+<td style="text-align:center;">
+0.3421555
+</td>
+<td style="text-align:center;">
+0.3509279
+</td>
+<td style="text-align:center;">
+0.3685669
+</td>
+<td style="text-align:center;">
+0.3777912
+</td>
+<td style="text-align:center;">
+0.3676216
+</td>
+<td style="text-align:center;">
+0.3605412
+</td>
+<td style="text-align:center;">
+0.3675715
+</td>
+<td style="text-align:center;">
+0.3618530
+</td>
+<td style="text-align:center;">
+0.3499903
+</td>
+<td style="text-align:center;">
+0.3560788
+</td>
+<td style="text-align:center;">
+0.3412483
+</td>
+<td style="text-align:center;">
+0.3603144
+</td>
+<td style="text-align:center;">
+0.3756912
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+FT
+</td>
+<td style="text-align:center;">
+0.2594697
+</td>
+<td style="text-align:center;">
+0.2026516
+</td>
+<td style="text-align:center;">
+0.2876576
+</td>
+<td style="text-align:center;">
+0.1875423
+</td>
+<td style="text-align:center;">
+0.2637444
+</td>
+<td style="text-align:center;">
+0.2208685
+</td>
+<td style="text-align:center;">
+0.1629512
+</td>
+<td style="text-align:center;">
+0.1627593
+</td>
+<td style="text-align:center;">
+0.2000902
+</td>
+<td style="text-align:center;">
+0.2138951
+</td>
+<td style="text-align:center;">
+0.2781620
+</td>
+<td style="text-align:center;">
+0.2294360
+</td>
+<td style="text-align:center;">
+0.2289641
+</td>
+<td style="text-align:center;">
+0.2793108
+</td>
+<td style="text-align:center;">
+0.2199665
+</td>
+<td style="text-align:center;">
+0.2178236
+</td>
+<td style="text-align:center;">
+0.2134570
+</td>
+<td style="text-align:center;">
+0.2046944
+</td>
+<td style="text-align:center;">
+0.2314236
+</td>
+<td style="text-align:center;">
+0.2190140
+</td>
+<td style="text-align:center;">
+0.2648322
+</td>
+<td style="text-align:center;">
+0.2327793
+</td>
+<td style="text-align:center;">
+0.2216829
+</td>
+<td style="text-align:center;">
+0.2213594
+</td>
+<td style="text-align:center;">
+0.2117867
+</td>
+<td style="text-align:center;">
+0.2293983
+</td>
+<td style="text-align:center;">
+0.1743127
+</td>
+<td style="text-align:center;">
+0.223732
+</td>
+<td style="text-align:center;">
+0.2374605
+</td>
+<td style="text-align:center;">
+0.2424840
+</td>
+<td style="text-align:center;">
+0.1875545
+</td>
+<td style="text-align:center;">
+0.2204501
+</td>
+<td style="text-align:center;">
+0.2363888
+</td>
+<td style="text-align:center;">
+0.2581639
+</td>
+<td style="text-align:center;">
+0.2109998
+</td>
+<td style="text-align:center;">
+0.2338852
+</td>
+<td style="text-align:center;">
+0.2699695
+</td>
+<td style="text-align:center;">
+0.1722033
+</td>
+<td style="text-align:center;">
+0.1554997
+</td>
+<td style="text-align:center;">
+0.1469514
+</td>
+<td style="text-align:center;">
+0.1740737
+</td>
+<td style="text-align:center;">
+0.2431643
+</td>
+<td style="text-align:center;">
+0.2694354
+</td>
+<td style="text-align:center;">
+0.2057003
+</td>
+<td style="text-align:center;">
+0.2034086
+</td>
+<td style="text-align:center;">
+0.1769117
+</td>
+<td style="text-align:center;">
+0.1891399
+</td>
+<td style="text-align:center;">
+0.2132750
+</td>
+<td style="text-align:center;">
+0.2667761
+</td>
+</tr>
+</tbody>
+</table>
 
 ![](ECC_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
 

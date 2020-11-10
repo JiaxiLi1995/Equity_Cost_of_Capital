@@ -3198,6 +3198,27 @@ names(Rolling_Lambdas) = c("Lambda0", "Unfiltered_Lambda1")
 Unfiltered_lambda <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = -Lambda0)
 
+# The strength of Filtered
+Sim_return %>%
+  pivot_longer(cols = -date, names_to = "Industry", values_to = "RP") %>%
+  group_by(Industry) %>%
+  do(model = stl_tibble(., "date", "RP")) %>%
+  .$model %>%
+  do.call(what = rbind.data.frame) %>%
+  subset(select = -c(x, RP)) %>%
+  pivot_wider(names_from = "component", values_from = "y") %>%
+  group_by(Industry) %>%
+  summarise(FT = max(0, 1-var(Noise)/var(Noise+Trend)),
+            FS = max(0, 1-var(Noise)/var(Noise+Seasonal))) %>%
+  pivot_longer(cols = c(FT,FS), names_to = "Strength", values_to = "Value") %>%
+  subset(select = c(Strength, Industry, Value)) %>%
+  pivot_wider(names_from = Industry, values_from = "Value") %>%
+  arrange(Strength) %>%
+  kable(align = "c", caption = "STL Decomposition Component Strength for Sin Lambda Simulated Portfolio Risk Premium") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  collapse_rows(columns = 1)
+
 
 # Now apply the STL filtering before the regression
 # pivot the Sim_return and Sim_beta longer and join them together
@@ -3291,6 +3312,27 @@ Sim_lambda2 <- sim_lambda2 %>%
   mutate(date = 1:600)
 
 names(Sim_lambda2)[1] = "value"
+
+# The strength of Filtered
+Sim_return2 %>%
+  pivot_longer(cols = -date, names_to = "Industry", values_to = "RP") %>%
+  group_by(Industry) %>%
+  do(model = stl_tibble(., "date", "RP")) %>%
+  .$model %>%
+  do.call(what = rbind.data.frame) %>%
+  subset(select = -c(x, RP)) %>%
+  pivot_wider(names_from = "component", values_from = "y") %>%
+  group_by(Industry) %>%
+  summarise(FT = max(0, 1-var(Noise)/var(Noise+Trend)),
+            FS = max(0, 1-var(Noise)/var(Noise+Seasonal))) %>%
+  pivot_longer(cols = c(FT,FS), names_to = "Strength", values_to = "Value") %>%
+  subset(select = c(Strength, Industry, Value)) %>%
+  pivot_wider(names_from = Industry, values_from = "Value") %>%
+  arrange(Strength) %>%
+  kable(align = "c", caption = "STL Decomposition Component Strength for Sin Lambda Simulated Portfolio Risk Premium") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  collapse_rows(columns = 1)
 
 
 # pivot the Sim_return and Sim_beta longer and join them together

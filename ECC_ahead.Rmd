@@ -3477,7 +3477,10 @@ FF5_Errors %>%
   kable(align = "c", caption = "49 Industry Portfolio Error Component Summary Statistics") %>%
   kable_styling(font_size = 10, "striped", full_width = F) %>%
   column_spec(1, bold = T) %>%
-  collapse_rows(columns = 1)
+  collapse_rows(columns = 1) %>%
+  # Add header above
+  add_header_above(c(" " = 2, "Error Component" = 3))
+
 ```
 
 The Noise component is the time-series noise; the Seasonal component is the Seasonality; the Resid component is the idiosyncratic noise. From the standard deviation part, we can see in real data, the time-series noise and seasonality is a large part of noise. Our assumptions about large seasonality and time-series noise in the previous simulations are valid.

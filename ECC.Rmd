@@ -3444,6 +3444,21 @@ FF5_Errors %>%
   labs(title = "Error Components Standard Deviation") +
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_blank())
+
+FF5_Errors %>%
+  pivot_longer(cols = -c(date, Industry), names_to = "Component", values_to = "Error") %>%
+  select(!date) %>%
+  group_by(Industry, Component) %>%
+  summarize(mean = mean(Error),
+            variance = var(Error),
+            skewness = skewness(Error),
+            kurtosis = kurtosis(Error)) %>%
+  pivot_longer(cols = -c(Industry, Component), names_to = "stats", values_to = "value") %>%
+  pivot_wider(names_from = "Component", values_from = "value") %>%
+  kable(align = "c", caption = "49 Industry Portfolio Error Component Summary Statistics") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  collapse_rows(columns = 1)
 ```
 
 The Noise component is the time-series noise; the Seasonal component is the Seasonality; the Resid component is the idiosyncratic noise. From the standard deviation part, we can see in real data, the time-series noise and seasonality is a large part of noise. Our assumptions about large seasonality and time-series noise in the previous simulations are valid.

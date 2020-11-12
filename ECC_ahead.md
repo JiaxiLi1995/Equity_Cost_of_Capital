@@ -17457,6 +17457,61 @@ FT
 
 ![](ECC_ahead_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->![](ECC_ahead_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->
 
+    ## 
+    ## Call:
+    ## lm(formula = Improvement ~ Seasonal + Noise + Resid, data = SSE_Error)
+    ## 
+    ## Residuals:
+    ##     Min      1Q  Median      3Q     Max 
+    ## -3.7196 -0.1989  0.0559  0.2462  2.5094 
+    ## 
+    ## Coefficients:
+    ##              Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept)  -0.23042    0.01515 -15.207  < 2e-16 ***
+    ## Seasonal    446.56371   58.68867   7.609 3.29e-14 ***
+    ## Noise       -15.07678   24.43089  -0.617  0.53718    
+    ## Resid       493.12765  169.99918   2.901  0.00374 ** 
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 0.4465 on 4896 degrees of freedom
+    ## Multiple R-squared:  0.1916, Adjusted R-squared:  0.1911 
+    ## F-statistic: 386.9 on 3 and 4896 DF,  p-value: < 2.2e-16
+
+    ## 
+    ## Call:
+    ## lm(formula = sqrt(Improvement) ~ sqrt(Seasonal) + sqrt(Noise) + 
+    ##     sqrt(Resid), data = SSE_Error)
+    ## 
+    ## Residuals:
+    ##      Min       1Q   Median       3Q      Max 
+    ## -0.97747 -0.13041  0.01788  0.13910  0.79222 
+    ## 
+    ## Coefficients:
+    ##                Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept)     -0.1498     0.0160  -9.360  < 2e-16 ***
+    ## sqrt(Seasonal)  18.1544     2.2109   8.211 3.01e-16 ***
+    ## sqrt(Noise)      1.7189     1.5089   1.139    0.255    
+    ## sqrt(Resid)      9.1829     2.0176   4.551 5.51e-06 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 0.2074 on 3625 degrees of freedom
+    ##   (1271 observations deleted due to missingness)
+    ## Multiple R-squared:  0.3859, Adjusted R-squared:  0.3854 
+    ## F-statistic: 759.2 on 3 and 3625 DF,  p-value: < 2.2e-16
+
+There are two sets of regressions here:
+
+1.  SSE Improvement of Estimated ECC vs. variance of Seasonal, Noise,
+    and Resid
+
+2.  ![\\sqrt{SSE}](https://latex.codecogs.com/png.latex?%5Csqrt%7BSSE%7D "\sqrt{SSE}")
+    vs. standard deviation of Seasonal, Noise, and Resid
+
+From both regression results, we can see that both the seasonality and
+the idiosyncratic error would encourage the filtering method.
+
 # S5 Equity Cost of Captial
 
 ## S5-1 Estimated Equity Cost of Captial

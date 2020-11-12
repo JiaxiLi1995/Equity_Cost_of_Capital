@@ -3636,7 +3636,7 @@ Simulation_Lambda_SSEs %>%
         plot.subtitle = element_text(hjust=0.5))
 
 # Calculate the SSEs for ECC
-Simulation_Lambda_Errors %>%
+Simulation_ECC_Errors <- Simulation_Lambda_Errors %>%
   subset(select = -c(`Unfiltered Lambda`, `Filtered Lambda`, `True Lambda`)) %>%
   pivot_longer(cols = c(Unfiltered, Filtered), names_to = "Method", values_to = "Error") %>%
   mutate(Factors = tolower(Factors)) %>%
@@ -3647,7 +3647,9 @@ Simulation_Lambda_Errors %>%
   group_by(Group, Method, Industry) %>%
   summarise(ECC_SSE = sum(ECC_Error_sq)) %>%
   pivot_wider(names_from = "Method", values_from = "ECC_SSE") %>%
-  mutate(Improvement = Unfiltered - Filtered) %>%
+  mutate(Improvement = Unfiltered - Filtered)
+
+Simulation_ECC_Errors %>%
   ggplot(aes(Industry, Improvement)) +
   geom_boxplot() +
   labs(title = "Filtered Method Sum of Squared Error Improvement of ECC Estimation",
@@ -3655,8 +3657,32 @@ Simulation_Lambda_Errors %>%
   theme(plot.title = element_text(hjust=0.5),
         plot.subtitle = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 75, hjust = 1))
+
+# Combined SSE and Error
+SSE_Error <- FF5_Errors %>%
+  pivot_longer(cols = -c(date, Industry), names_to = "Component", values_to = "Error") %>%
+  select(!date) %>%
+  group_by(Industry, Component) %>%
+  summarize(variance = var(Error)) %>%
+  pivot_wider(names_from = "Component", values_from = "variance") %>%
+  inner_join(Simulation_ECC_Errors)
+
+# Conduct regression of variance of errors on SSE Improvement
+lm(Improvement ~ Seasonal + Noise + Resid, data = SSE_Error) %>%
+  summary()
+
+lm(sqrt(Improvement) ~ sqrt(Seasonal) + sqrt(Noise) + sqrt(Resid), data = SSE_Error) %>%
+  summary()
+
 ```
 
+There are two sets of regressions here:
+
+1. SSE Improvement of Estimated ECC vs. variance of Seasonal, Noise, and Resid
+
+2. $\sqrt{SSE}$ vs. standard deviation of Seasonal, Noise, and Resid
+
+From both regression results, we can see that both the seasonality and the idiosyncratic error would encourage the filtering method.
 
 # S5 Equity Cost of Captial
 

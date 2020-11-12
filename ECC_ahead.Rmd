@@ -3671,18 +3671,80 @@ SSE_Error <- FF5_Errors %>%
 lm(Improvement ~ Seasonal + Noise + Resid, data = SSE_Error) %>%
   summary()
 
-lm(sqrt(Improvement) ~ sqrt(Seasonal) + sqrt(Noise) + sqrt(Resid), data = SSE_Error) %>%
+cor(SSE_Error %>%
+      subset(select=c(Seasonal, Noise, Resid)) %>%
+      rename(var_Seasonal = Seasonal,
+             var_Noise = Noise,
+             var_Resid = Resid) %>%
+      unique())
+
+cor(SSE_Error %>%
+      mutate(sd_Seasonal = sqrt(Seasonal),
+             sd_Noise = sqrt(Noise),
+             sd_Resid = sqrt(Resid)) %>%
+      subset(select=c(sd_Seasonal, sd_Noise, sd_Resid)) %>%
+      unique())
+
+lm(Improvement ~ Seasonal, data = SSE_Error) %>%
+  summary()
+
+lm(Improvement ~ Resid, data = SSE_Error) %>%
+  summary()
+
+lm(Improvement ~ Noise, data = SSE_Error) %>%
+  summary()
+
+# Combined SSE and Error
+SSE_Error2 <- FF5_Errors %>%
+  mutate(Bias = Seasonal + Noise) %>%
+  select(-c(Seasonal, Noise)) %>%
+  pivot_longer(cols = -c(date, Industry), names_to = "Component", values_to = "Error") %>%
+  select(!date) %>%
+  group_by(Industry, Component) %>%
+  summarize(variance = var(Error)) %>%
+  pivot_wider(names_from = "Component", values_from = "variance") %>%
+  inner_join(Simulation_ECC_Errors)
+
+cor(SSE_Error2 %>%
+      subset(select=c(Bias, Resid)) %>%
+      rename(var_Bias = Bias,
+             var_Resid = Resid) %>%
+      unique())
+
+cor(SSE_Error2 %>%
+      subset(select=c(Bias, Resid)) %>%
+      mutate(Bias = sqrt(Bias),
+             Resid = sqrt(Resid)) %>%
+      rename(sd_Bias = Bias,
+             sd_Resid = Resid) %>%
+      unique())
+
+# Conduct regression of variance of errors on SSE Improvement
+lm(Improvement ~ Bias + Resid, data = SSE_Error2) %>%
+  summary()
+
+lm(sqrt(Improvement) ~ sqrt(Bias) + sqrt(Resid), data = SSE_Error2) %>%
   summary()
 
 ```
 
-There are two sets of regressions here:
+We want two sets of regressions here:
 
 1. SSE Improvement of Estimated ECC vs. variance of Seasonal, Noise, and Resid
 
 2. $\sqrt{SSE}$ vs. standard deviation of Seasonal, Noise, and Resid
 
-From both regression results, we can see that both the seasonality and the idiosyncratic error would encourage the filtering method.
+However, Seasonal, Noise, and Resid variances are really highly correlated, the linear regression encounter a multicollinearity problem. Since we have both Seasonal and Noise causing bias in cross-sectional regression in our theoretical explanation,  we combine the Seasonal and Noise as Bias.
+
+The correlation of Bias and Resid variances are not as much a problem.
+
+The new two sets of regressions here:
+
+1. SSE Improvement of Estimated ECC vs. variance of Bias and Resid
+
+2. $\sqrt{SSE}$ vs. standard deviation of Bias and Resid
+
+From both regression results, we can see that the combined Bias term encourage the filtering method.
 
 # S5 Equity Cost of Captial
 

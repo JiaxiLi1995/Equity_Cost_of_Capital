@@ -17478,30 +17478,123 @@ FT
     ## Multiple R-squared:  0.1916, Adjusted R-squared:  0.1911 
     ## F-statistic: 386.9 on 3 and 4896 DF,  p-value: < 2.2e-16
 
+    ##              var_Seasonal var_Noise var_Resid
+    ## var_Seasonal    1.0000000 0.9733714 0.7489995
+    ## var_Noise       0.9733714 1.0000000 0.7588314
+    ## var_Resid       0.7489995 0.7588314 1.0000000
+
+    ##             sd_Seasonal  sd_Noise  sd_Resid
+    ## sd_Seasonal   1.0000000 0.9718994 0.7134930
+    ## sd_Noise      0.9718994 1.0000000 0.7544021
+    ## sd_Resid      0.7134930 0.7544021 1.0000000
+
     ## 
     ## Call:
-    ## lm(formula = sqrt(Improvement) ~ sqrt(Seasonal) + sqrt(Noise) + 
-    ##     sqrt(Resid), data = SSE_Error)
+    ## lm(formula = Improvement ~ Seasonal, data = SSE_Error)
     ## 
     ## Residuals:
-    ##      Min       1Q   Median       3Q      Max 
-    ## -0.97747 -0.13041  0.01788  0.13910  0.79222 
+    ##     Min      1Q  Median      3Q     Max 
+    ## -3.7256 -0.2022  0.0565  0.2494  2.4593 
     ## 
     ## Coefficients:
-    ##                Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept)     -0.1498     0.0160  -9.360  < 2e-16 ***
-    ## sqrt(Seasonal)  18.1544     2.2109   8.211 3.01e-16 ***
-    ## sqrt(Noise)      1.7189     1.5089   1.139    0.255    
-    ## sqrt(Resid)      9.1829     2.0176   4.551 5.51e-06 ***
+    ##             Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept)  -0.2306     0.0151  -15.27   <2e-16 ***
+    ## Seasonal    455.5796    13.4297   33.92   <2e-16 ***
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ## 
-    ## Residual standard error: 0.2074 on 3625 degrees of freedom
-    ##   (1271 observations deleted due to missingness)
-    ## Multiple R-squared:  0.3859, Adjusted R-squared:  0.3854 
-    ## F-statistic: 759.2 on 3 and 3625 DF,  p-value: < 2.2e-16
+    ## Residual standard error: 0.4468 on 4898 degrees of freedom
+    ## Multiple R-squared:  0.1903, Adjusted R-squared:  0.1901 
+    ## F-statistic:  1151 on 1 and 4898 DF,  p-value: < 2.2e-16
 
-There are two sets of regressions here:
+    ## 
+    ## Call:
+    ## lm(formula = Improvement ~ Resid, data = SSE_Error)
+    ## 
+    ## Residuals:
+    ##     Min      1Q  Median      3Q     Max 
+    ## -3.6306 -0.2036  0.0260  0.2362  3.0266 
+    ## 
+    ## Coefficients:
+    ##               Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept)   -0.05055    0.01271  -3.977 7.08e-05 ***
+    ## Resid       3015.68295  115.01559  26.220  < 2e-16 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 0.465 on 4898 degrees of freedom
+    ## Multiple R-squared:  0.1231, Adjusted R-squared:  0.1229 
+    ## F-statistic: 687.5 on 1 and 4898 DF,  p-value: < 2.2e-16
+
+    ## 
+    ## Call:
+    ## lm(formula = Improvement ~ Noise, data = SSE_Error)
+    ## 
+    ## Residuals:
+    ##     Min      1Q  Median      3Q     Max 
+    ## -3.7184 -0.2040  0.0541  0.2466  2.3824 
+    ## 
+    ## Coefficients:
+    ##              Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept)  -0.21657    0.01515  -14.29   <2e-16 ***
+    ## Noise       181.39253    5.52953   32.80   <2e-16 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 0.4496 on 4898 degrees of freedom
+    ## Multiple R-squared:  0.1801, Adjusted R-squared:   0.18 
+    ## F-statistic:  1076 on 1 and 4898 DF,  p-value: < 2.2e-16
+
+    ##            var_Bias var_Resid
+    ## var_Bias  1.0000000 0.7601514
+    ## var_Resid 0.7601514 1.0000000
+
+    ##            sd_Bias  sd_Resid
+    ## sd_Bias  1.0000000 0.7408788
+    ## sd_Resid 0.7408788 1.0000000
+
+    ## 
+    ## Call:
+    ## lm(formula = Improvement ~ Bias + Resid, data = SSE_Error2)
+    ## 
+    ## Residuals:
+    ##     Min      1Q  Median      3Q     Max 
+    ## -3.7171 -0.2013  0.0554  0.2475  2.4552 
+    ## 
+    ## Coefficients:
+    ##              Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept)  -0.23977    0.01552 -15.453  < 2e-16 ***
+    ## Bias        106.58646    5.37795  19.819  < 2e-16 ***
+    ## Resid       449.49595  170.33459   2.639  0.00834 ** 
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 0.4474 on 4897 degrees of freedom
+    ## Multiple R-squared:  0.1882, Adjusted R-squared:  0.1879 
+    ## F-statistic: 567.6 on 2 and 4897 DF,  p-value: < 2.2e-16
+
+    ## 
+    ## Call:
+    ## lm(formula = sqrt(Improvement) ~ sqrt(Bias) + sqrt(Resid), data = SSE_Error2)
+    ## 
+    ## Residuals:
+    ##      Min       1Q   Median       3Q      Max 
+    ## -0.95567 -0.12966  0.02025  0.13988  0.77174 
+    ## 
+    ## Coefficients:
+    ##             Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept) -0.16356    0.01634 -10.008  < 2e-16 ***
+    ## sqrt(Bias)  10.95012    0.38654  28.329  < 2e-16 ***
+    ## sqrt(Resid)  7.34448    1.96596   3.736  0.00019 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 0.2078 on 3626 degrees of freedom
+    ##   (1271 observations deleted due to missingness)
+    ## Multiple R-squared:  0.3837, Adjusted R-squared:  0.3833 
+    ## F-statistic:  1129 on 2 and 3626 DF,  p-value: < 2.2e-16
+
+We want two sets of regressions here:
 
 1.  SSE Improvement of Estimated ECC vs. variance of Seasonal, Noise,
     and Resid
@@ -17509,8 +17602,23 @@ There are two sets of regressions here:
 2.  ![\\sqrt{SSE}](https://latex.codecogs.com/png.latex?%5Csqrt%7BSSE%7D "\sqrt{SSE}")
     vs. standard deviation of Seasonal, Noise, and Resid
 
-From both regression results, we can see that both the seasonality and
-the idiosyncratic error would encourage the filtering method.
+However, Seasonal, Noise, and Resid variances are really highly
+correlated, the linear regression encounter a multicollinearity problem.
+Since we have both Seasonal and Noise causing bias in cross-sectional
+regression in our theoretical explanation, we combine the Seasonal and
+Noise as Bias.
+
+The correlation of Bias and Resid variances are not as much a problem.
+
+The new two sets of regressions here:
+
+1.  SSE Improvement of Estimated ECC vs. variance of Bias and Resid
+
+2.  ![\\sqrt{SSE}](https://latex.codecogs.com/png.latex?%5Csqrt%7BSSE%7D "\sqrt{SSE}")
+    vs. standard deviation of Bias and Resid
+
+From both regression results, we can see that the combined Bias term
+encourage the filtering method.
 
 # S5 Equity Cost of Captial
 

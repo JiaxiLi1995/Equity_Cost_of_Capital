@@ -56,6 +56,8 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
                 Lambda](#s4-5-2-2-simulation-with-random-parameter-and-random-smooth-lambda)
             -   [S4-5-2-3 Simulation with Actual Parameters and Smooth
                 Lambdas](#s4-5-2-3-simulation-with-actual-parameters-and-smooth-lambdas)
+            -   [S4-5-2-4 Regression Analysis of Simulation
+                Results](#s4-5-2-4-regression-analysis-of-simulation-results)
 -   [S5 Equity Cost of Captial](#s5-equity-cost-of-captial)
     -   [S5-1 Estimated Equity Cost of
         Captial](#s5-1-estimated-equity-cost-of-captial)
@@ -17449,6 +17451,18 @@ FT
 
 ![](ECC_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->
 
+#### S4-5-2-4 Regression Analysis of Simulation Results
+
+We want two sets of regressions here:
+
+1.  SSE Improvement of Estimated ECC vs. variance of Seasonal, Noise,
+    and Resid
+
+2.  ![\\sqrt{SSE}](https://latex.codecogs.com/png.latex?%5Csqrt%7BSSE%7D "\sqrt{SSE}")
+    vs. standard deviation of Seasonal, Noise, and Resid
+
+<!-- -->
+
     ## 
     ## Call:
     ## lm(formula = Improvement ~ Seasonal + Noise + Resid, data = SSE_Error)
@@ -17537,6 +17551,12 @@ FT
     ## Multiple R-squared:  0.2053, Adjusted R-squared:  0.2051 
     ## F-statistic:  1265 on 1 and 4898 DF,  p-value: < 2.2e-16
 
+However, Seasonal, Noise, and Resid variances are really highly
+correlated, the linear regression encounter a multicollinearity problem.
+Since we have both Seasonal and Noise causing bias in cross-sectional
+regression in our theoretical explanation, we combine the Seasonal and
+Noise as Bias.
+
     ##           var_Bias var_Resid
     ## var_Bias  1.000000  0.802556
     ## var_Resid 0.802556  1.000000
@@ -17567,42 +17587,27 @@ FT
 
     ## 
     ## Call:
-    ## lm(formula = sqrt(Improvement) ~ sqrt(Bias) + sqrt(Resid), data = SSE_Error2)
+    ## lm(formula = sign(Improvement) * sqrt(abs(Improvement)) ~ sqrt(Bias) + 
+    ##     sqrt(Resid), data = SSE_Error2)
     ## 
     ## Residuals:
-    ##      Min       1Q   Median       3Q      Max 
-    ## -1.62712 -0.09614  0.02979  0.12995  0.71661 
+    ##     Min      1Q  Median      3Q     Max 
+    ## -3.4536 -0.0980  0.0358  0.1405  0.7944 
     ## 
     ## Coefficients:
     ##              Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept)   0.55555    0.01544   35.98   <2e-16 ***
-    ## sqrt(Bias)   20.33424    0.38511   52.80   <2e-16 ***
-    ## sqrt(Resid) -52.04341    2.02555  -25.69   <2e-16 ***
+    ## (Intercept)   0.65705    0.01867   35.19   <2e-16 ***
+    ## sqrt(Bias)   18.41704    0.46706   39.43   <2e-16 ***
+    ## sqrt(Resid) -51.07808    2.47531  -20.64   <2e-16 ***
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ## 
-    ## Residual standard error: 0.2148 on 4877 degrees of freedom
-    ##   (20 observations deleted due to missingness)
-    ## Multiple R-squared:  0.4091, Adjusted R-squared:  0.4089 
-    ## F-statistic:  1689 on 2 and 4877 DF,  p-value: < 2.2e-16
+    ## Residual standard error: 0.2632 on 4897 degrees of freedom
+    ## Multiple R-squared:  0.2701, Adjusted R-squared:  0.2698 
+    ## F-statistic: 906.3 on 2 and 4897 DF,  p-value: < 2.2e-16
 
-We want two sets of regressions here:
-
-1.  SSE Improvement of Estimated ECC vs. variance of Seasonal, Noise,
-    and Resid
-
-2.  ![\\sqrt{SSE}](https://latex.codecogs.com/png.latex?%5Csqrt%7BSSE%7D "\sqrt{SSE}")
-    vs. standard deviation of Seasonal, Noise, and Resid
-
-However, Seasonal, Noise, and Resid variances are really highly
-correlated, the linear regression encounter a multicollinearity problem.
-Since we have both Seasonal and Noise causing bias in cross-sectional
-regression in our theoretical explanation, we combine the Seasonal and
-Noise as Bias.
-
-The correlation of Bias and Resid variances are not as much a problem.
-
-The new two sets of regressions here:
+The correlation of Bias and Resid variances (0.8) is not as much a
+problem and we have two new sets of regressions:
 
 1.  SSE Improvement of Estimated ECC vs. variance of Bias and Resid
 
@@ -17611,6 +17616,59 @@ The new two sets of regressions here:
 
 From both regression results, we can see that the combined Bias term
 encourage the filtering method.
+
+Finally, to further address the Multicollinearity issue, we conducted a
+principle component regression.
+
+    ## Importance of components:
+    ##                           PC1    PC2
+    ## Standard deviation     1.3337 0.4704
+    ## Proportion of Variance 0.8894 0.1106
+    ## Cumulative Proportion  0.8894 1.0000
+
+    ##              PC1        PC2
+    ## Bias  -0.7071068 -0.7071068
+    ## Resid -0.7071068  0.7071068
+
+    ## 
+    ## Call:
+    ## lm(formula = Improvement ~ ., data = data.frame(Improvement = sign(SSE_Error2$Improvement) * 
+    ##     sqrt(abs(SSE_Error2$Improvement)), (-SSE_Error2.pca$x)))
+    ## 
+    ## Residuals:
+    ##     Min      1Q  Median      3Q     Max 
+    ## -3.4536 -0.0980  0.0358  0.1405  0.7944 
+    ## 
+    ## Coefficients:
+    ##             Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept) 1.361612   0.003760  362.13   <2e-16 ***
+    ## PC1         0.079666   0.002820   28.25   <2e-16 ***
+    ## PC2         0.254581   0.007994   31.85   <2e-16 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 0.2632 on 4897 degrees of freedom
+    ## Multiple R-squared:  0.2701, Adjusted R-squared:  0.2698 
+    ## F-statistic: 906.3 on 2 and 4897 DF,  p-value: < 2.2e-16
+
+![PC1 = -0.707\*(Bias+Resid)](https://latex.codecogs.com/png.latex?PC1%20%3D%20-0.707%2A%28Bias%2BResid%29 "PC1 = -0.707*(Bias+Resid)")
+
+![PC2 = -0.707\*(Bias-Resid)](https://latex.codecogs.com/png.latex?PC2%20%3D%20-0.707%2A%28Bias-Resid%29 "PC2 = -0.707*(Bias-Resid)")
+
+where Bias and Resid are standard deviations of Bias and Resid, To make
+it easier to interpret, we flipped the sign such that
+![PC1 = 0.707(Bias+Resid)](https://latex.codecogs.com/png.latex?PC1%20%3D%200.707%28Bias%2BResid%29 "PC1 = 0.707(Bias+Resid)"),
+which is approximately 0.707 times the total Error of the return, and
+![PC2 = 0.707(Bias-Resid)](https://latex.codecogs.com/png.latex?PC2%20%3D%200.707%28Bias-Resid%29 "PC2 = 0.707(Bias-Resid)"),
+which represents excess error from bias.
+
+From the regression, we can see the PC1 (total Error) would cost the
+accuracy of the ECC estimation and the PC2 (excess error from bias)
+would also cost the accuracy of the ECC estimation. The Principal
+Component Regression result further confirms our theoretical analysis
+that the large bias from Seasonality and Time-series Noise relative to
+the idiosyncratic noise (Resid) would cost the accuracy of the
+cross-sectional regression.
 
 # S5 Equity Cost of Captial
 
@@ -17623,19 +17681,19 @@ this section refers to the estimated risk premium.
 
 ### S5-1-1 Arithmetic Mean
 
-![](ECC_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-32-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-35-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-35-2.png)<!-- -->
 
 ### S5-1-2 Geometric Mean
 
-![](ECC_files/figure-gfm/unnamed-chunk-33-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-33-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-36-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-36-2.png)<!-- -->
 
 ### S5-1-3 Fama Macbeth Second Step Regression
 
-![](ECC_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-34-4.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-37-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-4.png)<!-- -->
 
 ### S5-1-4 Fama Macbeth Second Step Regression with STL Trend Data
 
-![](ECC_files/figure-gfm/unnamed-chunk-35-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-35-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-35-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-35-4.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-38-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-38-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-38-4.png)<!-- -->
 
 ## S5-2 Comparative Statics
 
@@ -17800,7 +17858,7 @@ Arithmetic Mean and the Geometric Mean.
 Here we would compare the Estimated ECC from FM method and Filtered FM
 method:
 
-![](ECC_files/figure-gfm/unnamed-chunk-37-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-40-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-2.png)<!-- -->
 
 We also performed a KS test to test the FM ECC and STL FM ECC for
 different sectors. It seems that the distributions are different from FM
@@ -20878,7 +20936,7 @@ forming the expected risk premium; the
 can be interpreted as importance of projection parameter (PP) in forming
 the expected risk premium.
 
-![](ECC_files/figure-gfm/unnamed-chunk-40-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-8.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-43-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-43-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-43-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-43-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-43-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-43-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-43-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-43-8.png)<!-- -->
 
 ## S5-5 Forcasting???
 

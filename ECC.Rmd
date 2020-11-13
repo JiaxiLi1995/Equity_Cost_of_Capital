@@ -3639,6 +3639,17 @@ Simulation_ECC_Errors %>%
         plot.subtitle = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 75, hjust = 1))
 
+```
+
+#### S4-5-2-4 Regression Analysis of Simulation Results
+
+We want two sets of regressions here:
+
+1. SSE Improvement of Estimated ECC vs. variance of Seasonal, Noise, and Resid
+
+2. $\sqrt{SSE}$ vs. standard deviation of Seasonal, Noise, and Resid
+
+```{r, cache = TRUE}
 # Combined SSE and Error
 SSE_Error <- FF5_Errors %>%
   pivot_longer(cols = -c(date, Industry), names_to = "Component", values_to = "Error") %>%
@@ -3674,7 +3685,11 @@ lm(Improvement ~ Resid, data = SSE_Error) %>%
 
 lm(Improvement ~ Noise, data = SSE_Error) %>%
   summary()
+```
 
+However, Seasonal, Noise, and Resid variances are really highly correlated, the linear regression encounter a multicollinearity problem. Since we have both Seasonal and Noise causing bias in cross-sectional regression in our theoretical explanation,  we combine the Seasonal and Noise as Bias.
+
+```{r, cache = TRUE}
 # Combined SSE and Error
 SSE_Error2 <- FF5_Errors %>%
   mutate(Bias = Seasonal + Noise) %>%
@@ -3704,28 +3719,37 @@ cor(SSE_Error2 %>%
 lm(Improvement ~ Bias + Resid, data = SSE_Error2) %>%
   summary()
 
-lm(sqrt(Improvement) ~ sqrt(Bias) + sqrt(Resid), data = SSE_Error2) %>%
+lm(sign(Improvement)*sqrt(abs(Improvement)) ~ sqrt(Bias) + sqrt(Resid), data = SSE_Error2) %>%
   summary()
-
 ```
 
-We want two sets of regressions here:
-
-1. SSE Improvement of Estimated ECC vs. variance of Seasonal, Noise, and Resid
-
-2. $\sqrt{SSE}$ vs. standard deviation of Seasonal, Noise, and Resid
-
-However, Seasonal, Noise, and Resid variances are really highly correlated, the linear regression encounter a multicollinearity problem. Since we have both Seasonal and Noise causing bias in cross-sectional regression in our theoretical explanation,  we combine the Seasonal and Noise as Bias.
-
-The correlation of Bias and Resid variances are not as much a problem.
-
-The new two sets of regressions here:
+The correlation of Bias and Resid variances (0.8) is not as much a problem and we have two new sets of regressions:
 
 1. SSE Improvement of Estimated ECC vs. variance of Bias and Resid
 
 2. $\sqrt{SSE}$ vs. standard deviation of Bias and Resid
 
 From both regression results, we can see that the combined Bias term encourage the filtering method.
+
+Finally, to further address the Multicollinearity issue, we conducted a principle component regression. 
+
+```{r, cache = TRUE}
+# Apply the PCA regression
+SSE_Error2.pca <- prcomp(sqrt(SSE_Error2[,2:3]), center = TRUE,scale. = TRUE)
+
+summary(SSE_Error2.pca)
+SSE_Error2.pca$rotation
+
+lm(Improvement ~ ., data = data.frame(Improvement = sign(SSE_Error2$Improvement)*sqrt(abs(SSE_Error2$Improvement)), (-SSE_Error2.pca$x))) %>%
+  summary()
+```
+
+$$PC1 = -0.707*(Bias+Resid)$$
+$$PC2 = -0.707*(Bias-Resid)$$
+
+where Bias and Resid are standard deviations of Bias and Resid, To make it easier to interpret, we flipped the sign such that $PC1 = 0.707(Bias+Resid)$, which is approximately 0.707 times the total Error of the return, and $PC2 = 0.707(Bias-Resid)$, which represents excess error from bias.
+
+From the regression, we can see the PC1 (total Error) would cost the accuracy of the ECC estimation and the PC2 (excess error from bias) would also cost the accuracy of the ECC estimation. The Principal Component Regression result further confirms our theoretical analysis that the large bias from Seasonality and Time-series Noise relative to the idiosyncratic noise (Resid) would cost the accuracy of the cross-sectional regression.
 
 
 # S5 Equity Cost of Captial

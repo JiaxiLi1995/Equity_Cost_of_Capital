@@ -76,6 +76,7 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
         Growth???](#s5-6-ecc-with-consumption-growth)
     -   [S5-7 Improve AM GM with Markov-switching
         model?](#s5-7-improve-am-gm-with-markov-switching-model)
+    -   [S5-8 Levi-Welch Beta](#s5-8-levi-welch-beta)
 
 # S1 Introduction
 
@@ -20972,3 +20973,9 @@ series to capture changes in factor premia over time in a compact way.
 In effect, we are saying that we think the factor premiums are either
 high or low, and we are going to estimate the values in these states and
 estimate which periods have high vs. low premia.
+
+## S5-8 Levi-Welch Beta
+
+In this section, we will combine the Levi-Welch Betas with our Filtered
+Estimated Lambdas to construct the ECC and compare it with other method
+estimated ECC.

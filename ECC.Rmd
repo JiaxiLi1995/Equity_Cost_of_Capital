@@ -4341,6 +4341,25 @@ ECC_RAM_FF5 <- temp[,1:2] %>%
   cbind(temp[,3:7]*temp[,8:12]) %>%
   mutate(ECC = rowSums(.[3:7]))
 
+# Decompose the ECC: Beta, Lambda, and Projection Parameter
+ECC_RAM_FF5_Norms <- cbind(sqrt(rowSums(temp[,3:7]^2)),sqrt(rowSums(temp[,8:12]^2))) %>%
+  as_tibble() %>%
+  rename(Betas = V1,
+         Lambdas = V2) %>%
+  cbind(ECC_RAM_FF5) %>%
+  subset(select = c(Industry, date, ECC, Betas, Lambdas)) %>%
+  mutate(PP = ECC/Betas/Lambdas,
+         ECC = abs(ECC),
+         PP = abs(PP)) %>%
+  # transform to ln
+  mutate(ECC = log(ECC),
+         Betas = log(Betas)/ECC,
+         Lambdas = log(Lambdas)/ECC,
+         PP = log(PP)/ECC) %>%
+  subset(select = - ECC) %>%
+  # pivot longer
+  pivot_longer(cols = c(Betas, Lambdas, PP), names_to = "Component", values_to = "Percent")
+
 
 temp <- RGM_FF5 %>%
   mutate(date = as.numeric(date))
@@ -4475,6 +4494,21 @@ All_FF5_ECC %>%
   scale_color_manual(values=c("springgreen1", "blue", "red")) +
   facet_wrap(~ Industry,
              scales = "free_y") +
+  labs(title= "Estimated Equity Cost of Capital with Fama French Five Factors") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 30, hjust = 1))
+
+All_FF5_ECC %>%
+  subset(select = c(date, Industry, RAM, FM, FM_STL_7_N)) %>%
+  filter(Industry == "Cnstr") %>%
+  pivot_longer(cols = c(RAM, FM, FM_STL_7_N), names_to = "method", values_to = "ECC") %>%
+  mutate(date = transDate(date)) %>%
+  # fix order
+  mutate(method = factor(method, levels = c("FM","FM_STL_7_N","RAM"))) %>%
+  ggplot() +
+  geom_line(aes(date, ECC, color = method),alpha = 0.4) +
+  scale_x_date(minor_breaks = "1 year") +
+  scale_color_manual(values=c("springgreen1", "blue", "red")) +
   labs(title= "Estimated Equity Cost of Capital with Fama French Five Factors") +
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 30, hjust = 1))
@@ -4710,6 +4744,19 @@ ECC_FM_STL_PRS_Norms %>%
        x = "date") + 
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 30, hjust = 1))
+
+```
+
+```{r, eval = FALSE}
+ECC_AM_FF5_Norms %>%
+  rename(AM = Percent) %>%
+  inner_join(ECC_RAM_FF5_Norms %>%
+               rename(RAM = Percent)) %>%
+  inner_join(ECC_FM_FF5_Norms %>%
+               rename(FM = Percent)) %>%
+  inner_join(ECC_FM_STL_FF5_Norms %>%
+               rename(FM_STL = Percent)) %>%
+  write_csv("Norms_Percent.csv")
 ```
 
 ## S5-5 Forcasting???

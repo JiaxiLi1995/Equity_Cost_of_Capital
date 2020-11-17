@@ -17859,7 +17859,7 @@ Arithmetic Mean and the Geometric Mean.
 Here we would compare the Estimated ECC from FM method and Filtered FM
 method:
 
-![](ECC_files/figure-gfm/unnamed-chunk-40-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-2.png)<!-- -->
+![](ECC_files/figure-gfm/unnamed-chunk-40-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-3.png)<!-- -->
 
 We also performed a KS test to test the FM ECC and STL FM ECC for
 different sectors. It seems that the distributions are different from FM

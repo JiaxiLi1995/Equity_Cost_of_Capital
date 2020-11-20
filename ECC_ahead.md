@@ -76,7 +76,9 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
         Growth???](#s5-6-ecc-with-consumption-growth)
     -   [S5-7 Improve AM GM with Markov-switching
         model?](#s5-7-improve-am-gm-with-markov-switching-model)
-    -   [S5-8 Levi-Welch Beta](#s5-8-levi-welch-beta)
+    -   [S5-8 Levi-Welch Beta???](#s5-8-levi-welch-beta)
+    -   [S5-9 Filtering Method in Other Second-pass
+        Regression???](#s5-9-filtering-method-in-other-second-pass-regression)
 
 # S1 Introduction
 
@@ -20982,8 +20984,21 @@ In effect, we are saying that we think the factor premiums are either
 high or low, and we are going to estimate the values in these states and
 estimate which periods have high vs. low premia.
 
-## S5-8 Levi-Welch Beta
+## S5-8 Levi-Welch Beta???
 
 In this section, we will combine the Levi-Welch Betas with our Filtered
 Estimated Lambdas to construct the ECC and compare it with other method
-estimated ECC.
+estimated ECC. Welch has published estimated betas for the entire CRSP
+universe in his website: <https://www.ivo-welch.info/research/>. The
+code is available here: <https://www.ivo-welch.info/research/betas/>.
+
+## S5-9 Filtering Method in Other Second-pass Regression???
+
+What we show is that using asset-pricing models to estimate the equity
+cost of capital is compromised by these seasonal factors in the
+second-pass regressions. The impact of this finding might actually be
+far more widespread. The first stage is about estimating betas, but the
+second stage is where we are trying to find whether something is being
+priced: this involves the cross-sectional regressions of returns on
+betas. This is the spot where what we are showing in the paper may be
+particularly important.

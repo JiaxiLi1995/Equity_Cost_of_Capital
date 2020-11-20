@@ -4771,10 +4771,15 @@ The focus of the original Fama-French (JFE, 1997) paper was whether factor model
 
 To me, a logical next question is whether the resulting premia move over the cycle as theory suggests.
 
-## S5-7 Improve AM GM with Markov-switching model?
+## S5-7 Improve AM GM with Markov-switching model???
 
 We might 'improve' on the simple AM/GM approach by filtering the data, and then using a two-state Markov-switching model on these filtered series to capture changes in factor premia over time in a compact way.  In effect, we are saying that we think the factor premiums are either high or low, and we are going to estimate the values in these states and estimate which periods have high vs. low premia.
 
-## S5-8 Levi-Welch Beta
+## S5-8 Levi-Welch Beta???
 
-In this section, we will combine the Levi-Welch Betas with our Filtered Estimated Lambdas to construct the ECC and compare it with other method estimated ECC.
+In this section, we will combine the Levi-Welch Betas with our Filtered Estimated Lambdas to construct the ECC and compare it with other method estimated ECC. Welch has published estimated betas for the entire CRSP universe in his website: https://www.ivo-welch.info/research/. The code is available here: https://www.ivo-welch.info/research/betas/.
+
+## S5-9 Filtering Method in Other Second-pass Regression???
+
+What we show is that using asset-pricing models to estimate the equity cost of capital is compromised by these seasonal factors in the second-pass regressions. The impact of this finding might actually be far more widespread. The first stage is about estimating betas, but the second stage is where we are trying to find whether something is being priced: this involves the cross-sectional regressions of returns on betas.  This is the spot where what we are showing in the paper may be particularly important.
+

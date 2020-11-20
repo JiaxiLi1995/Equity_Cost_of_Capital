@@ -1446,6 +1446,8 @@ names(Rolling_Error)[1] = "Lambda0"
 # Add in the dates
 FM_FF5 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = -Lambda0)
+FM_FF5_Lambda0 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = c(date,Lambda0))
 FM_FF5_Error <- cbind(Rolling_Error_Second[, 1], Rolling_Error) %>%
   subset(select = -Lambda0)
 
@@ -1505,6 +1507,8 @@ names(Rolling_Error)[1] = "Lambda0"
 # Add in the dates
 FM_PRS <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = -Lambda0)
+FM_PRS_Lambda0 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = c(date,Lambda0))
 FM_PRS_Error <- cbind(Rolling_Error_Second[, 1], Rolling_Error) %>%
   subset(select = -Lambda0)
 
@@ -2173,6 +2177,8 @@ names(Rolling_Error)[1] = "Lambda0"
 # Add in the dates
 FM_STL_FF5 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = -Lambda0)
+FM_STL_FF5_Lambda0 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = c(date,Lambda0))
 FM_STL_FF5_Error <- cbind(Rolling_Error_Second[, 1], Rolling_Error) %>%
   subset(select = -Lambda0)
 
@@ -2232,6 +2238,8 @@ names(Rolling_Error)[1] = "Lambda0"
 # Add in the dates
 FM_STL_PRS <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = -Lambda0)
+FM_STL_PRS_Lambda0 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
+  subset(select = c(date,Lambda0))
 FM_STL_PRS_Error <- cbind(Rolling_Error_Second[, 1], Rolling_Error) %>%
   subset(select = -Lambda0)
 
@@ -2759,6 +2767,30 @@ FM_FF5 %>%
 Here is a comparison of the lambda statistics of the Normal Fama Macbeth and Fama Macbeth Second Step Regression with STL Trend Data.
 
 ```{r, cache = TRUE}
+# Create a table for Lambda0
+FM_FF5_Lambda0 %>%
+  mutate(method = "FM",
+         model = "FF5") %>%
+  rbind(FM_STL_FF5_Lambda0 %>%
+          mutate(method = "FM_STL",
+                 model = "FF5")) %>%
+  rbind(FM_PRS_Lambda0 %>%
+          mutate(method = "FM",
+                 model = "PRS")) %>%
+  rbind(FM_STL_PRS_Lambda0 %>%
+          mutate(method = "FM_STL",
+                 model = "PRS")) %>%
+  select(!date) %>%
+  group_by(model, method) %>%
+  summarise_all(funs(mean, variance = var(.), skewness, kurtosis, z_score = mean(.)/sd(.)*sqrt(length(.)))) %>%
+  kable(align = "c", caption = "Fama Macbeth/STL Fama Macbeth Lambda0 Stats") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  # Add header above
+  add_header_above(c(" " = 2, "stats" = 5)) %>%
+  collapse_rows(columns = 1)
+
+
 FF5_table <- FM_FF5 %>%
   summarise_all(mean) %>%
   mutate(date = "mean") %>%
@@ -3052,6 +3084,8 @@ PRS_table %>%
   kable_styling(font_size = 10, "striped", full_width = F) %>%
   column_spec(1, bold = T) %>%
   collapse_rows(columns = 1)
+
+
 
 (FF5_table[2,3:7]/FF5_table[6,3:7]) %>%
   as_tibble() %>%

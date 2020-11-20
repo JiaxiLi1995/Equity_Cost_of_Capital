@@ -11150,6 +11150,137 @@ and Fama Macbeth Second Step Regression with STL Trend Data.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
+Fama Macbeth/STL Fama Macbeth Lambda0 Stats
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="2">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
+stats
+
+</div>
+
+</th>
+</tr>
+<tr>
+<th style="text-align:center;">
+model
+</th>
+<th style="text-align:center;">
+method
+</th>
+<th style="text-align:center;">
+mean
+</th>
+<th style="text-align:center;">
+variance
+</th>
+<th style="text-align:center;">
+skewness
+</th>
+<th style="text-align:center;">
+kurtosis
+</th>
+<th style="text-align:center;">
+z\_score
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
+FF5
+</td>
+<td style="text-align:center;">
+FM
+</td>
+<td style="text-align:center;">
+0.0055707
+</td>
+<td style="text-align:center;">
+0.0013966
+</td>
+<td style="text-align:center;">
+-0.2170809
+</td>
+<td style="text-align:center;">
+3.768015
+</td>
+<td style="text-align:center;">
+3.505384
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+FM\_STL
+</td>
+<td style="text-align:center;">
+0.0055743
+</td>
+<td style="text-align:center;">
+0.0001028
+</td>
+<td style="text-align:center;">
+-0.2492236
+</td>
+<td style="text-align:center;">
+5.278078
+</td>
+<td style="text-align:center;">
+12.926188
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
+PRS
+</td>
+<td style="text-align:center;">
+FM
+</td>
+<td style="text-align:center;">
+0.0036899
+</td>
+<td style="text-align:center;">
+0.0014401
+</td>
+<td style="text-align:center;">
+-0.1204099
+</td>
+<td style="text-align:center;">
+3.625933
+</td>
+<td style="text-align:center;">
+2.286575
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+FM\_STL
+</td>
+<td style="text-align:center;">
+0.0040573
+</td>
+<td style="text-align:center;">
+0.0001250
+</td>
+<td style="text-align:center;">
+0.1192528
+</td>
+<td style="text-align:center;">
+2.876564
+</td>
+<td style="text-align:center;">
+8.534376
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
 Fama French Five Factors Lambdas
 </caption>
 <thead>
@@ -13228,151 +13359,151 @@ V9
 FS
 </td>
 <td style="text-align:center;">
-0.3693064
+0.3147708
 </td>
 <td style="text-align:center;">
-0.3264444
+0.3160138
 </td>
 <td style="text-align:center;">
-0.3507301
+0.3229152
 </td>
 <td style="text-align:center;">
-0.3516755
+0.3382992
 </td>
 <td style="text-align:center;">
-0.3233023
+0.3204457
 </td>
 <td style="text-align:center;">
-0.3792595
+0.3224987
 </td>
 <td style="text-align:center;">
-0.3522450
+0.348429
 </td>
 <td style="text-align:center;">
-0.3365581
+0.3559615
 </td>
 <td style="text-align:center;">
-0.3601238
+0.3406835
 </td>
 <td style="text-align:center;">
-0.3672606
+0.3565023
 </td>
 <td style="text-align:center;">
-0.3555669
+0.3606489
 </td>
 <td style="text-align:center;">
-0.3816918
+0.3771111
 </td>
 <td style="text-align:center;">
-0.3488855
+0.3443430
 </td>
 <td style="text-align:center;">
-0.3391324
+0.3548006
 </td>
 <td style="text-align:center;">
-0.3428632
+0.3356879
 </td>
 <td style="text-align:center;">
-0.3491262
+0.3500154
 </td>
 <td style="text-align:center;">
-0.3631908
+0.3579637
 </td>
 <td style="text-align:center;">
-0.3360308
+0.3435821
 </td>
 <td style="text-align:center;">
-0.3477240
+0.3531270
 </td>
 <td style="text-align:center;">
-0.3426819
+0.3285363
 </td>
 <td style="text-align:center;">
-0.3486864
+0.3580134
 </td>
 <td style="text-align:center;">
-0.3699284
+0.3550508
 </td>
 <td style="text-align:center;">
-0.3408352
+0.3314386
 </td>
 <td style="text-align:center;">
-0.3876524
+0.3433767
 </td>
 <td style="text-align:center;">
-0.3313007
+0.3381345
 </td>
 <td style="text-align:center;">
-0.3874559
+0.3313798
 </td>
 <td style="text-align:center;">
-0.3493740
+0.3447807
 </td>
 <td style="text-align:center;">
-0.3929959
+0.3222380
 </td>
 <td style="text-align:center;">
-0.3568018
+0.3246989
 </td>
 <td style="text-align:center;">
-0.3731475
+0.3546882
 </td>
 <td style="text-align:center;">
-0.3635685
+0.3599717
 </td>
 <td style="text-align:center;">
-0.3491237
+0.3420806
 </td>
 <td style="text-align:center;">
-0.3445120
+0.3679967
 </td>
 <td style="text-align:center;">
-0.3613501
+0.3599777
 </td>
 <td style="text-align:center;">
-0.3375319
+0.319837
 </td>
 <td style="text-align:center;">
-0.3347256
+0.3195121
 </td>
 <td style="text-align:center;">
-0.3422207
+0.3455079
 </td>
 <td style="text-align:center;">
-0.3509355
+0.3165094
 </td>
 <td style="text-align:center;">
-0.3685774
+0.3307911
 </td>
 <td style="text-align:center;">
-0.3778733
+0.3435170
 </td>
 <td style="text-align:center;">
-0.3676229
+0.3290171
 </td>
 <td style="text-align:center;">
-0.3606106
+0.3404033
 </td>
 <td style="text-align:center;">
-0.3676364
+0.3547390
 </td>
 <td style="text-align:center;">
-0.3618866
+0.3695675
 </td>
 <td style="text-align:center;">
-0.3500108
+0.3514807
 </td>
 <td style="text-align:center;">
-0.3560640
+0.3225653
 </td>
 <td style="text-align:center;">
-0.3412414
+0.3530368
 </td>
 <td style="text-align:center;">
-0.3603312
+0.3210274
 </td>
 <td style="text-align:center;">
-0.3756950
+0.3164515
 </td>
 </tr>
 <tr>
@@ -13380,151 +13511,151 @@ FS
 FT
 </td>
 <td style="text-align:center;">
-0.2226639
+0.1553798
 </td>
 <td style="text-align:center;">
-0.1665297
+0.1563978
 </td>
 <td style="text-align:center;">
-0.2300625
+0.1748719
 </td>
 <td style="text-align:center;">
-0.1880679
+0.1760814
 </td>
 <td style="text-align:center;">
-0.2214208
+0.1627732
 </td>
 <td style="text-align:center;">
-0.2237122
+0.1426414
 </td>
 <td style="text-align:center;">
-0.1581124
+0.160861
 </td>
 <td style="text-align:center;">
-0.1631426
+0.1900994
 </td>
 <td style="text-align:center;">
-0.1745185
+0.1956734
 </td>
 <td style="text-align:center;">
-0.1730944
+0.2098374
 </td>
 <td style="text-align:center;">
-0.1888020
+0.1698746
 </td>
 <td style="text-align:center;">
-0.1885852
+0.1525635
 </td>
 <td style="text-align:center;">
-0.1878650
+0.1880534
 </td>
 <td style="text-align:center;">
-0.2461163
+0.1719677
 </td>
 <td style="text-align:center;">
-0.1954297
+0.2006251
 </td>
 <td style="text-align:center;">
-0.2021556
+0.1753292
 </td>
 <td style="text-align:center;">
-0.1997312
+0.1723736
 </td>
 <td style="text-align:center;">
-0.2010945
+0.1567783
 </td>
 <td style="text-align:center;">
-0.2129884
+0.1952318
 </td>
 <td style="text-align:center;">
-0.1815535
+0.1619940
 </td>
 <td style="text-align:center;">
-0.2159639
+0.1750390
 </td>
 <td style="text-align:center;">
-0.1961364
+0.1893682
 </td>
 <td style="text-align:center;">
-0.2019594
+0.1592204
 </td>
 <td style="text-align:center;">
-0.1982866
+0.1696197
 </td>
 <td style="text-align:center;">
-0.1800214
+0.1949422
 </td>
 <td style="text-align:center;">
-0.2247710
+0.1744160
 </td>
 <td style="text-align:center;">
-0.1763926
+0.1983046
 </td>
 <td style="text-align:center;">
-0.2266907
+0.2225096
 </td>
 <td style="text-align:center;">
-0.1929455
+0.1602732
 </td>
 <td style="text-align:center;">
-0.1871609
+0.1758802
 </td>
 <td style="text-align:center;">
-0.1608264
+0.1787174
 </td>
 <td style="text-align:center;">
-0.1821134
+0.1962561
 </td>
 <td style="text-align:center;">
-0.1919385
+0.1845053
 </td>
 <td style="text-align:center;">
-0.2234294
+0.1764025
 </td>
 <td style="text-align:center;">
-0.1959538
+0.149021
 </td>
 <td style="text-align:center;">
-0.2135052
+0.1439300
 </td>
 <td style="text-align:center;">
-0.2425237
+0.1863259
 </td>
 <td style="text-align:center;">
-0.1732998
+0.1912971
 </td>
 <td style="text-align:center;">
-0.1601571
+0.1805625
 </td>
 <td style="text-align:center;">
-0.1512501
+0.1850881
 </td>
 <td style="text-align:center;">
-0.1719697
+0.1752089
 </td>
 <td style="text-align:center;">
-0.1992412
+0.1828732
 </td>
 <td style="text-align:center;">
-0.2315773
+0.1946617
 </td>
 <td style="text-align:center;">
-0.1867892
+0.2038005
 </td>
 <td style="text-align:center;">
-0.1938278
+0.1972313
 </td>
 <td style="text-align:center;">
-0.1679769
+0.1640699
 </td>
 <td style="text-align:center;">
-0.1739270
+0.2070033
 </td>
 <td style="text-align:center;">
-0.2085228
+0.1868280
 </td>
 <td style="text-align:center;">
-0.2216941
+0.1838204
 </td>
 </tr>
 </tbody>
@@ -13723,151 +13854,151 @@ V9
 FS
 </td>
 <td style="text-align:center;">
-0.3693116
+0.3147307
 </td>
 <td style="text-align:center;">
-0.3264409
+0.3158814
 </td>
 <td style="text-align:center;">
-0.3507286
+0.3228850
 </td>
 <td style="text-align:center;">
-0.3516496
+0.3383838
 </td>
 <td style="text-align:center;">
-0.3232958
+0.3204045
 </td>
 <td style="text-align:center;">
-0.3792687
+0.3224820
 </td>
 <td style="text-align:center;">
-0.3522473
+0.3484076
 </td>
 <td style="text-align:center;">
-0.3365578
+0.3561004
 </td>
 <td style="text-align:center;">
-0.3601075
+0.3406058
 </td>
 <td style="text-align:center;">
-0.3672582
+0.3566557
 </td>
 <td style="text-align:center;">
-0.3556053
+0.3598998
 </td>
 <td style="text-align:center;">
-0.3816945
+0.3772101
 </td>
 <td style="text-align:center;">
-0.3489122
+0.3443625
 </td>
 <td style="text-align:center;">
-0.3391039
+0.3550008
 </td>
 <td style="text-align:center;">
-0.3428338
+0.3356999
 </td>
 <td style="text-align:center;">
-0.3491270
+0.3501299
 </td>
 <td style="text-align:center;">
-0.3632483
+0.3580105
 </td>
 <td style="text-align:center;">
-0.3360394
+0.3437860
 </td>
 <td style="text-align:center;">
-0.3476577
+0.3530056
 </td>
 <td style="text-align:center;">
-0.3426307
+0.3283822
 </td>
 <td style="text-align:center;">
-0.3486784
+0.3580289
 </td>
 <td style="text-align:center;">
-0.3699287
+0.3550108
 </td>
 <td style="text-align:center;">
-0.3408635
+0.3313579
 </td>
 <td style="text-align:center;">
-0.3876265
+0.3433600
 </td>
 <td style="text-align:center;">
-0.3313255
+0.3380269
 </td>
 <td style="text-align:center;">
-0.3874959
+0.3314614
 </td>
 <td style="text-align:center;">
-0.3493889
+0.3449127
 </td>
 <td style="text-align:center;">
-0.393031
+0.3222928
 </td>
 <td style="text-align:center;">
-0.3567860
+0.3246517
 </td>
 <td style="text-align:center;">
-0.3731235
+0.3547598
 </td>
 <td style="text-align:center;">
-0.3635134
+0.3600753
 </td>
 <td style="text-align:center;">
-0.3491561
+0.3420104
 </td>
 <td style="text-align:center;">
-0.3445098
+0.3678717
 </td>
 <td style="text-align:center;">
-0.3613866
+0.3601261
 </td>
 <td style="text-align:center;">
-0.3375473
+0.3198562
 </td>
 <td style="text-align:center;">
-0.3347473
+0.3194703
 </td>
 <td style="text-align:center;">
-0.3421555
+0.3456023
 </td>
 <td style="text-align:center;">
-0.3509279
+0.3167543
 </td>
 <td style="text-align:center;">
-0.3685669
+0.3309542
 </td>
 <td style="text-align:center;">
-0.3777912
+0.3437164
 </td>
 <td style="text-align:center;">
-0.3676216
+0.3292669
 </td>
 <td style="text-align:center;">
-0.3605412
+0.3405761
 </td>
 <td style="text-align:center;">
-0.3675715
+0.3549822
 </td>
 <td style="text-align:center;">
-0.3618530
+0.3696618
 </td>
 <td style="text-align:center;">
-0.3499903
+0.3514803
 </td>
 <td style="text-align:center;">
-0.3560788
+0.3226859
 </td>
 <td style="text-align:center;">
-0.3412483
+0.3530699
 </td>
 <td style="text-align:center;">
-0.3603144
+0.3212318
 </td>
 <td style="text-align:center;">
-0.3756912
+0.3165091
 </td>
 </tr>
 <tr>
@@ -13875,151 +14006,151 @@ FS
 FT
 </td>
 <td style="text-align:center;">
-0.2594697
+0.1827388
 </td>
 <td style="text-align:center;">
-0.2026516
+0.2119268
 </td>
 <td style="text-align:center;">
-0.2876576
+0.1792739
 </td>
 <td style="text-align:center;">
-0.1875423
+0.3318426
 </td>
 <td style="text-align:center;">
-0.2637444
+0.2588834
 </td>
 <td style="text-align:center;">
-0.2208685
+0.1874553
 </td>
 <td style="text-align:center;">
-0.1629512
+0.2157922
 </td>
 <td style="text-align:center;">
-0.1627593
+0.2088728
 </td>
 <td style="text-align:center;">
-0.2000902
+0.2492320
 </td>
 <td style="text-align:center;">
-0.2138951
+0.2197707
 </td>
 <td style="text-align:center;">
-0.2781620
+0.3124881
 </td>
 <td style="text-align:center;">
-0.2294360
+0.1717347
 </td>
 <td style="text-align:center;">
-0.2289641
+0.2055555
 </td>
 <td style="text-align:center;">
-0.2793108
+0.2101177
 </td>
 <td style="text-align:center;">
-0.2199665
+0.2784476
 </td>
 <td style="text-align:center;">
-0.2178236
+0.2198253
 </td>
 <td style="text-align:center;">
-0.2134570
+0.1886685
 </td>
 <td style="text-align:center;">
-0.2046944
+0.1598235
 </td>
 <td style="text-align:center;">
-0.2314236
+0.2907182
 </td>
 <td style="text-align:center;">
-0.2190140
+0.1778539
 </td>
 <td style="text-align:center;">
-0.2648322
+0.1539902
 </td>
 <td style="text-align:center;">
-0.2327793
+0.1866287
 </td>
 <td style="text-align:center;">
-0.2216829
+0.2110722
 </td>
 <td style="text-align:center;">
-0.2213594
+0.2002487
 </td>
 <td style="text-align:center;">
-0.2117867
+0.2142282
 </td>
 <td style="text-align:center;">
-0.2293983
+0.1960794
 </td>
 <td style="text-align:center;">
-0.1743127
+0.2271458
 </td>
 <td style="text-align:center;">
-0.223732
+0.3296308
 </td>
 <td style="text-align:center;">
-0.2374605
+0.2010063
 </td>
 <td style="text-align:center;">
-0.2424840
+0.2160663
 </td>
 <td style="text-align:center;">
-0.1875545
+0.1761577
 </td>
 <td style="text-align:center;">
-0.2204501
+0.2502059
 </td>
 <td style="text-align:center;">
-0.2363888
+0.2414900
 </td>
 <td style="text-align:center;">
-0.2581639
+0.2507969
 </td>
 <td style="text-align:center;">
-0.2109998
+0.1785535
 </td>
 <td style="text-align:center;">
-0.2338852
+0.2348655
 </td>
 <td style="text-align:center;">
-0.2699695
+0.2068968
 </td>
 <td style="text-align:center;">
-0.1722033
+0.2005040
 </td>
 <td style="text-align:center;">
-0.1554997
+0.1975432
 </td>
 <td style="text-align:center;">
-0.1469514
+0.1788947
 </td>
 <td style="text-align:center;">
-0.1740737
+0.1620635
 </td>
 <td style="text-align:center;">
-0.2431643
+0.2220345
 </td>
 <td style="text-align:center;">
-0.2694354
+0.2093815
 </td>
 <td style="text-align:center;">
-0.2057003
+0.2890669
 </td>
 <td style="text-align:center;">
-0.2034086
+0.2658439
 </td>
 <td style="text-align:center;">
-0.1769117
+0.2590903
 </td>
 <td style="text-align:center;">
-0.1891399
+0.2161451
 </td>
 <td style="text-align:center;">
-0.2132750
+0.1769645
 </td>
 <td style="text-align:center;">
-0.2667761
+0.1797588
 </td>
 </tr>
 </tbody>
@@ -14027,7 +14158,7 @@ FT
 
 ![](ECC_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
 
-    ## [1] 0.5627965
+    ## [1] 0.6654034
 
 #### S4-5-2-3 Simulation with Actual Parameters and Smooth Lambdas
 

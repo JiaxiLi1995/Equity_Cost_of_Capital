@@ -4543,7 +4543,7 @@ All_FF5_ECC %>%
   geom_line(aes(date, ECC, color = method),alpha = 0.4) +
   scale_x_date(minor_breaks = "1 year") +
   scale_color_manual(values=c("springgreen1", "blue", "red")) +
-  labs(title= "Estimated Equity Cost of Capital with Fama French Five Factors") +
+  labs(title= "Estimated Equity Cost of Capital for Construction with Fama French Five Factors") +
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 30, hjust = 1))
 

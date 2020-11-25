@@ -15,7 +15,7 @@ knitr::opts_chunk$set(message = FALSE)
 knitr::opts_chunk$set(warning = FALSE)
 ```
 
-```{r}
+```{r package}
 # Packages
 library(here)
 library(tidyverse)
@@ -91,7 +91,7 @@ We get the monthly industry return, Fama French five-factor, and the risk-free r
 
 The [Fama French Five Factors](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html) are simple returns from July 1963 to June 2020. They are as follows: Rm-Rf, SMB, HML, RMW, CMA. The 49 Industry Portfolios are value-weighted simple returns July 1926 to June 2020. The 49 Industry Portfolios without any missing values started in July 1969, so we will start the analysis in July 1969. The risk-free rate is one-month Treasury bill rate.
 
-```{r, eval = FALSE}
+```{r Generate_FF5_Data, eval = FALSE}
 # This will only ran once to grab the raw data and process the data
     # Download the return and Fama French 5 Factors data from Ken French Data Library
     # Create temp_file to store the file
@@ -114,7 +114,7 @@ The [Fama French Five Factors](https://mba.tuck.dartmouth.edu/pages/faculty/ken.
     IP49_raw_data <- unzip(temp_file2, exdir = here("data"))
 ```
 
-```{r, cache = TRUE}
+```{r FF5_Data, cache = TRUE}
     # Read the contents read_csv
     FF5 <- read_csv(here("data/F-F_Research_Data_5_Factors_2x3.CSV"), skip = 3) %>%
       mutate_all(as.numeric) %>%
@@ -165,7 +165,7 @@ The Default Premium started in Janurary 1919; the Industrial Production Growth R
 
 After obtaining the raw factors, we need to create the traded version of these 5 factors. Similar to the Pukthuanthong et al. (2018) procedure, we applied the 50 portfolios, $R$, (the ten equal-weighted size portfolios, ten equal-weighted book-to-market portfolios, ten equal-weighted investment portfolios and ten equal-weighted operating profitability portfolios, and ten value-weighted momentum portfolios) from the [Ken French Data Library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html) to construct the mimicking portfolios. These 50 portfolios all exist after July 1963. We first regress each of the 50 assets against the raw factors to get the coefficient matrix B (50x5) and the diagonal matrix of the covariance matrix of the error term V (50x50). The weight of the factor mimicking portfolio is $w=(B'V^{-1}B)^{-1}B'V^{-1}$. The traded factors are PRS = wR, and they would start in July 1963.
 
-```{r, eval = FALSE}
+```{r Generate_PRS_Data, eval = FALSE}
 library(data.table)
 
 # Create function to change "yyyy-mm-dd" to yyyymm
@@ -384,7 +384,7 @@ PRS_monthly <- FF5 %>%
 write.csv(PRS_monthly, here("data/PRS_monthly.csv"), na = "",  row.names = FALSE)
 ```
 
-```{r, cache = TRUE}
+```{r PRS_Data, cache = TRUE}
     # Read the contents read_csv
     PRS <- read_csv(here("data/PRS_monthly.csv")) %>%
       mutate_all(as.numeric) %>%
@@ -403,7 +403,7 @@ In this section, we will try to apply the simple first-pass regression to estima
 We will first apply the Fama French Five Factor Model to estimate the betas. We will use the Five Factor Model as the base model.
 
 ### S3-1-1 Full Sample Estimation
-```{r, cache = TRUE}
+```{r Full_FF5, cache = TRUE}
 # We will perform the simple first step regression here
 # Join the portfolios and FF5
 Port_FF5 <- Portfolios %>%      
@@ -541,7 +541,7 @@ Port_FF5_Betas_Full %>%
 
 We will show examples of the Real Estate Portfolio (RlEst), Construction Portfolio (Cnstr), and Food Portfolio (Food) Rolling Betas evolution here. The smoothing line is based on the loess smoothing. It seems that the betas are evolving overtime.
 
-```{r, cache = TRUE}
+```{r Rolling_FF5, cache = TRUE}
 # Create the estimated portfolio beta matrix
 Port_FF5_Betas <- Port_FF5 %>%
   rename(Alpha = RP)
@@ -667,7 +667,7 @@ Port_FF5_Betas %>%
 
 Here, we would try to conduct the STL decomposition before the first step regression with full sample.
 
-```{r, cache = TRUE}
+```{r Full_STL_FF5, cache = TRUE}
 # STL method with s_window = 7, no robust weight
 Port_FF5_STL_s7_norobust <- Port_FF5 %>%
   subset(select = c(date, Industry, RP)) %>%
@@ -776,7 +776,7 @@ Port_FF5_STL_Betas_Full %>%
 
 Here, we would try to conduct the STL decomposition before the first step regression with full sample.
 
-```{r, cache = TRUE}
+```{r Rolling_STL_FF5, cache = TRUE}
   # Locate the time and asset when 5-year rolling beta is possible to estimate (59 entries before, the PERMNO is the same, the date is 4 year 11 month less)
 temp <- Port_FF5_STL_s7_norobust %>%
   filter(component == "Trend") %>%
@@ -835,7 +835,7 @@ Port_FF5_STL_Betas %>%
 We will then apply the PRS Five Factor Model to estimate the betas.
 
 ### S3-2-1 Full Sample Estimation
-```{r, cache = TRUE}
+```{r Full_PRS, cache = TRUE}
 # We will perform the simple first step regression here
 # Join the portfolios and PRS
 Port_PRS <- Portfolios %>%      
@@ -965,7 +965,7 @@ Port_PRS_Betas_Full %>%
 
 We will show an example of the Real Estate Portfolio (RlEst), Construction Portfolio (Cnstr), and Food Portfolio (Food) Rolling Betas evolution here. The smoothing line is based on the loess smoothing. It seems that the betas are evolving overtime.
 
-```{r, cache = TRUE}
+```{r Rolling_PRS, cache = TRUE}
 # Create the estimated portfolio beta matrix
 Port_PRS_Betas <- Port_PRS %>%
   rename(Alpha = RP)
@@ -1091,7 +1091,7 @@ Port_PRS_Betas %>%
 
 Here, we would try to conduct the STL decomposition before the first step regression with full sample.
 
-```{r, cache = TRUE}
+```{r Full_STL_PRS, cache = TRUE}
 # STL method with s_window = 7, no robust weight
 Port_PRS_STL_s7_norobust <- Port_PRS %>%
   subset(select = c(date, Industry, RP)) %>%
@@ -1200,7 +1200,7 @@ Port_PRS_STL_Betas_Full %>%
 
 Here, we would try to conduct the STL decomposition before the first step regression with full sample.
 
-```{r, cache = TRUE}
+```{r Rolling_STL_PRS, cache = TRUE}
 # Locate the time and asset when 5-year rolling beta is possible to estimate (59 entries before, the PERMNO is the same, the date is 4 year 11 month less)
 temp <- Port_PRS_STL_s7_norobust %>%
   filter(component == "Trend") %>%
@@ -1264,7 +1264,7 @@ In this section, we will describe different ways to estimate the Factor Premium.
 
 First, one can take the arithmetic mean of the factors to generate the expected factor premium. To allow the factor premium to evolve, we also estimated RAM which is a 5-year Rolling Arithmetic Mean.
 
-```{r, cache = TRUE}
+```{r AM, cache = TRUE}
 AM_FF5 <- FF5 %>%
   subset(select = -date) %>%
   summarise_all(mean)
@@ -1335,7 +1335,7 @@ RAM_PRS %>%
 
 Levi and Welch mentioned in their 2017 paper that geometric mean might perform better. So in this section, we will calculate the Geometric Mean as the factor premium. To allow the factor premium to evolve, we also estimated RAM which is a 5-year Rolling Geometric Mean.
 
-```{r, cache = TRUE}
+```{r GM, cache = TRUE}
 GM_FF5 <- FF5 %>%
   subset(select = -date) %>%
   summarise_all(function(x, na.rm = FALSE) (exp(mean(log(1+x)))-1))
@@ -1407,7 +1407,7 @@ RGM_PRS %>%
 
 Fama-Macbeth second regression estimated lambda represents the expected factor risk premium. In this section, we will apply the second step regression to estimate the factor risk premium.
 
-```{r, cache = TRUE}
+```{r FM, cache = TRUE}
 # Fama Macbeth method
 # With Fama French Five Factors
 # Create the second-path portfolio for estimation lambda
@@ -1431,10 +1431,19 @@ Rolling_Error_Second <- Second_Path %>%
        coef() %>%
        .[, "Std. Error"])
 
+# Extract Resid
+Rolling_Second_Resid <- Second_Path %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Industry, data = .) %>%
+       broom::augment() %>%
+       subset(select = c(date, Industry, .resid)))
+
 # Unwrap the results
 Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
   as_tibble()
 Rolling_Error <- do.call(rbind.data.frame, Rolling_Error_Second$model) %>%
+  as_tibble()
+Rolling_FF5_Resid <- do.call(rbind.data.frame, Rolling_Second_Resid$model) %>%
   as_tibble()
 
 # Rename the variables
@@ -1450,6 +1459,7 @@ FM_FF5_Lambda0 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = c(date,Lambda0))
 FM_FF5_Error <- cbind(Rolling_Error_Second[, 1], Rolling_Error) %>%
   subset(select = -Lambda0)
+FM_FF5_Resid <- Rolling_FF5_Resid
 
 
 # Plot the FM_FF5
@@ -1530,6 +1540,118 @@ FM_PRS %>%
   theme(plot.title = element_text(hjust=0.5))
 ```
 
+Now, we decompose the standard error of the second-step regression lambdas. At each time t,
+
+$$r_i = \lambda_0 + \lambda_1*\hat\beta_i + \lambda_2*\hat\theta_i+e_i$$
+
+$$se(\hat{\lambda}) = \hat{\sigma}_e*\frac{1}{\sqrt{SST_{\hat\beta}}}*\frac{1}{\sqrt{1-R^2_{\hat\beta}}}$$
+
+where $\hat{\sigma}_e$ represents the variation of errors, $\sqrt{SST_{\hat\beta}}$ represents intra-group beta variation, and $\sqrt{1-R^2_{\hat\beta}}$ represents inter-group beta variation. We can clearly see that with the seasonality and time-series noise in the error term, we would get a larger standard error for estimated $\lambda$.
+
+$$SST_{\hat\beta} = \sum_{i=1}^N (\hat\beta_i - \bar\beta)^2$$
+
+$$R^2_{\hat\beta} = 1 - \frac{\hat\theta^2_u}{SST_{\hat\beta}}$$
+
+where $\hat\theta^2_u$ comes from auxiliary regression (aka Factor Spanning Regression)
+
+$$\beta_i = \gamma_0 + \gamma_1*\hat\theta_i+u_i$$
+
+We will rewrite the terms as:
+
+$$se(\hat{\lambda}) = \hat{\sigma}_e*\frac{1}{\hat{\sigma}_{\beta,intra}}*\frac{1}{\hat{\sigma}_{\beta,inter}}$$
+
+The decomposition would be:
+
+$$1 = \frac{ln(\hat{\sigma}_e)}{ln(se(\hat\lambda))}-\frac{ln(\hat{\sigma}_{\beta,intra})}{ln(se(\hat\lambda))}-\frac{ln(\hat{\sigma}_{\beta,inter})}{ln(se(\hat\lambda))}$$
+
+And each term is the effect of variation to the $se(\hat\lambda)$ and this effect is associated with the sensitivity of $se(\hat\lambda)$ to the specific variation:
+
+$$\frac{d se(\hat\lambda)}{d\hat{\sigma}_e} = \frac{1}{\hat{\sigma}_{\beta,intra}}*\frac{1}{\hat{\sigma}_{\beta,inter}} = \frac{se(\hat\lambda)}{\hat{\sigma}_e} = se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_e)}{ln(se(\hat\lambda))}}$$
+
+$$\frac{d se(\hat\lambda)}{d\hat{\sigma}_{\beta,intra}} = \frac{-1}{\hat{\sigma}^2_{\beta,intra}}*\frac{\hat{\sigma}_e}{\hat{\sigma}_{\beta,inter}} = -\frac{se(\hat\lambda)}{\hat{\sigma}_{\beta,intra}} = -se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_{\beta,intra})}{se(\hat\lambda)}}$$
+
+Similarly,
+
+$$\frac{d se(\hat\lambda)}{d\hat{\sigma}_{\beta,inter}} = \frac{-1}{\hat{\sigma}^2_{\beta,inter}}*\frac{\hat{\sigma}_e}{\hat{\sigma}_{\beta,intra}} = -\frac{se(\hat\lambda)}{\hat{\sigma}_{\beta,inter}} = -se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_{\beta,inter})}{se(\hat\lambda)}}$$
+
+We only care about the magnitude of this sensitivity, since $se(\hat\lambda)<1$, the magnitude of the sensitivity is an increasing function of the decomposition component.
+
+```{r FM_Lambda_Decomp, cache = TRUE}
+# Estimate the components
+sig_e <- FM_FF5_Resid %>%
+  group_by(date) %>%
+  summarise(Resid = sd(.resid))
+
+# SST inverse
+INV_sig_Intra <- Port_FF5_Betas %>%
+  select(!c(Alpha,Industry)) %>%
+  group_by(date) %>%
+  summarise_all(list(~1/sqrt(sd(.))))
+
+sig_Intra <- Port_FF5_Betas %>%
+  select(!c(Alpha,Industry)) %>%
+  group_by(date) %>%
+  summarise_all(list(~sqrt(sd(.))))
+  
+# R_sq inverse
+INV_sig_Inter <- FM_FF5_Error/INV_sig_Intra/cbind(1/sig_e[,1],rep(sig_e[,2],5))
+
+sig_Inter <- cbind(sig_e[,1], (INV_sig_Intra[,2:6]*rep(sig_e[,2],5)/FM_FF5_Error[,2:6])) %>%
+  tibble() %>%
+  mutate(date = sig_e$date)
+
+# Decomposition
+SE_Decomposition <- sig_e %>%
+  rename(sig_e = Resid) %>%
+  inner_join(sig_Inter %>%
+               pivot_longer(-date, names_to = "Factor", values_to = "sig_Inter")) %>%
+  inner_join(sig_Intra %>%
+               pivot_longer(-date, names_to = "Factor", values_to = "sig_Intra")) %>%
+  inner_join(FM_FF5_Error %>%
+               pivot_longer(-date, names_to = "Factor", values_to = "Lambda_Error")) %>%
+  mutate(sig_e = log(sig_e)/log(Lambda_Error),
+         sig_Inter = log(sig_Inter)/log(Lambda_Error),
+         sig_Intra = log(sig_Intra)/log(Lambda_Error)) %>%
+  select(c(date,Factor,sig_e,sig_Intra,sig_Inter))
+
+# Summary Stats
+SE_Decomposition %>%
+  pivot_longer(-c(date, Factor), names_to = "Type", values_to = "Percent") %>%
+  select(!date) %>%
+  group_by(Factor, Type) %>%
+  summarise_all(funs(mean, median, variance = var(.), skewness, kurtosis)) %>%
+  kable(align = "c", caption = "Fama Macbeth lambda SE Decomposition Percent") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  # Add header above
+  add_header_above(c(" " = 2, "stats" = 5)) %>%
+  collapse_rows(columns = 1)
+
+SE_Decomposition %>%
+  mutate(date = transDate(date),
+         Factor = factor(Factor, levels = unique(Factor))) %>%
+  pivot_longer(-c(date, Factor), names_to = "Type", values_to = "Percent") %>%
+  mutate(Type = factor(Type, levels = unique(Type))) %>%
+  ggplot(aes(date, Percent, color = Type)) +
+  geom_line() +
+  facet_wrap(~ Factor) +
+  scale_x_date(minor_breaks = "1 year") +
+  scale_color_brewer(palette = "Paired") +
+  labs(title= "Fama Macbeth lambda SE Component Decomposition",
+       x = "date") + 
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 30, hjust = 1))
+
+
+```
+
+```{r FM_Lambda_Decomp_save, eval = FALSE}
+SE_Decomposition %>%
+  write_csv("Lambda_SE_Percent.csv")
+```
+
+
+
 ## S4-4 Fama Macbeth Second Step Regression with STL Deseaoned Data
 
 As we can see, Fama Macbeth method would generate an evolving time-series of factor risk premium, but the volatility in lambda is unreasonably large. We will try to apply the STL trend in the second step regression to smooth the lambda.
@@ -1540,7 +1662,7 @@ STL method (Cleveland et al. 1990) would try decompose the time-series into 3 co
 
 We will extract the trend of risk premium of the industry portfolios and the trend of the betas with the STL method, and then conduct the second step regression. There are two options with the STL method: the loess window for seasonal extraction (s_window, large value means no rapidly evolving seasonal component, needs to be odd and at least 7) and robust weights for noise (downweight the noisy data in smoothing if non-Gaussian behavior in the time-series leads to extreme, transient variation). We will first show the STL decomposition of betas and returns.
 
-```{r, cache = TRUE}
+```{r Filtering, cache = TRUE}
 # First extract the STL decomposition for industrial returns
 # STL method with s_window = 7, no robust weight
 Port_FF5_STL_s7_norobust <- Port_FF5 %>%
@@ -1785,7 +1907,7 @@ The robustness weighting seems not be appropriate for the Industry Risk Premiums
 
 Now, we would compare the cross-sectional distribution before and after filtering.
 
-```{r, cache = TRUE}
+```{r cross_sectional_distribution, cache = TRUE}
 # Create the stats for cross-sectional RP
 Port_FF5 %>%
   subset(select = c(date, RP)) %>%
@@ -1823,7 +1945,7 @@ $$F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})$$
 
 $$F_S = max(0,1-\frac{Var(R_t)}{Var(S_t+R_t)})$$
 
-```{r, cache = TRUE}
+```{r Strength, cache = TRUE}
 Port_FF5_STL_s7_norobust %>%
   mutate(method = "s07 norobust") %>%
   rbind(Port_FF5_STL_s7_robust %>%
@@ -1855,7 +1977,7 @@ It seems that the both the trend and seasonal components are weak. No robust is 
 
 ### S4-4-3 Beta Decomposition
 
-```{r, cache = TRUE}
+```{r Beta_Decomposition, cache = TRUE}
 # FF5 betas STL decomposition
 # STL method with s_window = 7, no robust weight
 FF5_Betas_STL_s7_norobust <- Port_FF5_Betas %>%
@@ -2127,7 +2249,7 @@ Now, we will take the desired no robust weighting, s_window = 7 trend results of
 
 ### S4-4-4 Filtered Second Pass Regression
 
-```{r, cache = TRUE}
+```{r Filtered_FM, cache = TRUE}
 # Estimate the Factor Risk Premium for FF5
 ## Create the second-path portfolio for estimation lambda
 Second_Path <- Port_FF5_STL_s7_norobust %>%
@@ -2181,6 +2303,7 @@ FM_STL_FF5_Lambda0 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = c(date,Lambda0))
 FM_STL_FF5_Error <- cbind(Rolling_Error_Second[, 1], Rolling_Error) %>%
   subset(select = -Lambda0)
+FM_STL_FF5_Resid <- Rolling_FF5_Resid
 
 # Plot the FM_STL_FF5
 FM_STL_FF5 %>%
@@ -2261,7 +2384,7 @@ FM_STL_PRS %>%
 
 For robustness check, we also computed the factor risk premium based on other filtering.
 
-```{r, cache = TRUE}
+```{r Other_Filtered_FM, cache = TRUE}
 # Estimate the Factor Risk Premium for FF5
 ## Create the second-path portfolio for estimation lambda
 Second_Path <- Port_FF5_STL_s7_robust %>%
@@ -2537,7 +2660,7 @@ FM_STL_40_R_PRS <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
 
 ### S4-4-5 Regression Standard Error
 
-```{r}
+```{r Regression_SE, cache = TRUE}
 # Plot the standard error in second-step regression
 FM_FF5_Error %>%
   pivot_longer(cols = -date, names_to = "Factors", values_to = "SE") %>%
@@ -2581,7 +2704,7 @@ FM_PRS_Error %>%
 
 Let's plot the unfiltered lambda together with filtered lambda to see the effect of filtering on lambda.
 
-```{r, cache = TRUE}
+```{r Lambda_Comparison, cache = TRUE}
 # Plot the FM_FF5
 FM_FF5 %>%
   mutate(method = "FM") %>%
@@ -2726,7 +2849,7 @@ FM_STL_PRS %>%
 
 We also performed a KS test to test the FM lambdas and STL FM lambdas for different factors. It seems that their distributions are different.
 
-```{r, cache = TRUE}
+```{r KS_Stats, cache = TRUE}
 # Perform the ks.test for FF5 and PRS lambdas and create a table
 FM_FF5 %>%
   mutate(method = "FM") %>%
@@ -2766,7 +2889,7 @@ FM_FF5 %>%
 
 Here is a comparison of the lambda statistics of the Normal Fama Macbeth and Fama Macbeth Second Step Regression with STL Trend Data.
 
-```{r, cache = TRUE}
+```{r Lambda0, cache = TRUE}
 # Create a table for Lambda0
 FM_FF5_Lambda0 %>%
   mutate(method = "FM",
@@ -3163,7 +3286,7 @@ We will perform 3 different simulations to possible illustrate how the filtered 
 
 Suppose the true 49 sector betas are given (since our focus is lambda) and each of them follows an ARIMA(1,1,0) process, with AR coefficient 0.9. For demonstration purpose, the Factor Premiums follows a sin function lambda = sin(t/60*pi)/10+0.5. The universal time-series noise is the same for all the sectors, following N(0, 1^2); a sector-specific seasonality is randomly generated for each sector following N(0,1^2), and repeats each year; and the idiosyncratic error is also generated following N(0, 0.3^2). The first value of 49 sector betas are generated from N(1, 0.3^2). There are 600 data generated to represent monthly data in 50 years.
 
-```{r, cache = TRUE}
+```{r Sim1, cache = TRUE}
 # Create 600x49 matrix of time-varying betas
 sim_beta <- (replicate(49, arima.sim(list(order = c(1,1,0), ar = 0.9), n=600))/300 + rep(rnorm(49,1,0.3),601) %>% matrix(nrow = 49) %>% t()) %>%
   # remove the first line
@@ -3313,7 +3436,7 @@ $$f(t) = a_0+\sum_{i=1}^n(a_i cos(it)+b_isin(it))$$
 
 The $a_0$ is from a normal distribution N(0.01,0.002^2), both $a_i$ and $b_i$ are following a normal distribution N(0,0.025^2), and the n is a random integer between 20 and 100. This is a random smooth function and $f(t)$ is the random Fourier Lambda.
 
-```{r, cache = TRUE}
+```{r Sim2, cache = TRUE}
 # create random Fourier Transformed Functions as Lambda
 # It is based on http://www.di.fc.ul.pt/~jpn/r/fourier/fourier.html#dc-components
 sim_Fourier <- function(t) {
@@ -3449,13 +3572,13 @@ Finally, we would like to apply the actual Betas, Seasonality, Time-series Error
 
 We will extract the Seasonality and Noise from STL method, and then the idiosyncratic noise from cross-sectional regression. The betas we use are the 5-year rolling window beta.
 
-```{r, cache = TRUE}
+```{r Sim3, cache = TRUE}
 # Extract the Seasonality and Errors from the actual data
 FF5_Errors <- Port_FF5_STL_s7_norobust %>%
   subset(select = -c(x, RP)) %>%
   filter(component %in% c("Seasonal", "Noise")) %>%
   pivot_wider(names_from = "component", values_from = "y") %>%
-  inner_join(Rolling_FF5_Resid) %>%
+  inner_join(FM_STL_FF5_Resid) %>%
   rename(Resid = .resid)
 
 # Plot all the errors
@@ -3502,7 +3625,7 @@ The Noise component is the time-series noise; the Seasonal component is the Seas
 
 In this simulation, I performed 100 simulations of random Fourier Fama French 5 Factor Lambdas. In order to make the lambdas similar to the estimated lambda, I adjusted the standard deviation of simulated lambdas to be the same as standard deviation of the Estimated filtered Fama Macbeth Lambdas.
 
-```{r, cache = TRUE}
+```{r Sim3_analysis, cache = TRUE}
 set.seed(1919)
 # The number of Simulations
 N <- 100
@@ -3595,7 +3718,7 @@ Filtered_lambda3 <- cbind(Rolling_Second[, 1:2], Rolling_Lambdas) %>%
 names(sim_lambda3)[1:5] = names(Filtered_lambda3)[3:7]
 ```
 
-```{r, cache = TRUE}
+```{r Sim3_Figures, cache = TRUE}
 # The strength of Filtered
 sim_return3 %>%
   select(date, Industry, Group, RP) %>%
@@ -3683,7 +3806,7 @@ We want two sets of regressions here:
 
 2. $\sqrt{SSE}$ vs. standard deviation of Seasonal, Noise, and Resid
 
-```{r, cache = TRUE}
+```{r Sim3_Reg, cache = TRUE}
 # Combined SSE and Error
 SSE_Error <- FF5_Errors %>%
   pivot_longer(cols = -c(date, Industry), names_to = "Component", values_to = "Error") %>%
@@ -3723,7 +3846,7 @@ lm(Improvement ~ Noise, data = SSE_Error) %>%
 
 However, Seasonal, Noise, and Resid variances are really highly correlated, the linear regression encounter a multicollinearity problem. Since we have both Seasonal and Noise causing bias in cross-sectional regression in our theoretical explanation,  we combine the Seasonal and Noise as Bias.
 
-```{r, cache = TRUE}
+```{r Sim3_Reg2, cache = TRUE}
 # Combined SSE and Error
 SSE_Error2 <- FF5_Errors %>%
   mutate(Bias = Seasonal + Noise) %>%
@@ -3767,7 +3890,7 @@ From both regression results, we can see that the combined Bias term encourage t
 
 Finally, to further address the Multicollinearity issue, we conducted a principle component regression. 
 
-```{r, cache = TRUE}
+```{r Sim3_Reg_PCA, cache = TRUE}
 # Apply the PCA regression
 SSE_Error2.pca <- prcomp(sqrt(SSE_Error2[,2:3]), center = TRUE,scale. = TRUE)
 
@@ -3794,7 +3917,7 @@ As the equation indicates, $ECC = \sum_{i \in F} \beta_i*E[F_i] + R_f$. We will 
 
 ### S5-1-1 Arithmetic Mean
 
-```{r, cache = TRUE}
+```{r AM_ECC, cache = TRUE}
 # Create an id to join data
 temp <- AM_FF5 %>%
   mutate(id=1)
@@ -3891,7 +4014,7 @@ ECC_AM_PRS %>%
 
 ### S5-1-2 Geometric Mean
 
-```{r, cache = TRUE}
+```{r GM_ECC, cache = TRUE}
 # Create an id to join data
 temp <- GM_FF5 %>%
   mutate(id=1)
@@ -3988,7 +4111,7 @@ ECC_GM_PRS %>%
 
 ### S5-1-3 Fama Macbeth Second Step Regression
 
-```{r, cache = TRUE}
+```{r FM_ECC, cache = TRUE}
 temp <- FM_FF5
 names(temp) <- tolower(names(temp))
 # join the data
@@ -4108,7 +4231,7 @@ ECC_FM_FF5 %>%
 
 ### S5-1-4 Fama Macbeth Second Step Regression with STL Trend Data
 
-```{r, cache = TRUE}
+```{r Filtered_FM_ECC, cache = TRUE}
 temp <- FM_STL_FF5
 names(temp) <- tolower(names(temp))
 # join the data
@@ -4229,7 +4352,7 @@ ECC_FM_STL_FF5 %>%
 
 ## S5-2 Comparative Statics
 
-```{r, cache = TRUE}
+```{r ECC_Compare, cache = TRUE}
 # Create the ECC with other filtering choices and compare different methods
 temp <- FM_STL_7_R_FF5
 names(temp) <- tolower(names(temp))
@@ -4513,7 +4636,7 @@ Based on the Sum Squared Error, the Fama Macbeth Method has the lowest error exp
 
 Here we would compare the Estimated ECC from FM method and Filtered FM method:
 
-```{r, cache = TRUE}
+```{r Compare_Plots, cache = TRUE}
 # Create the ECC with FM and Filtered FM
 All_FF5_ECC %>%
   subset(select = c(date, Industry, AM, FM, FM_STL_7_N)) %>%
@@ -4569,7 +4692,7 @@ All_PRS_ECC %>%
 
 We also performed a KS test to test the FM ECC and STL FM ECC for different sectors. It seems that the distributions are different from FM ECC and STL FM ECC.
 
-```{r, cache = TRUE}
+```{r Compare_Table, cache = TRUE}
 # Perform the ks.test for FF5 and PRS lambdas and create a table
 All_FF5_ECC %>%
   group_by(Industry) %>%
@@ -4606,7 +4729,7 @@ First, we estimate the average ECC across 48 Sectors (without Other) statistics 
 
 Second, we simulated 1000 samples of 250 average ECCs with replacement for each Industry; calculate the mean from each sample; then the standard error for each Industry ECC is the standard deviation of sample mean.
 
-```{r, cache = TRUE}
+```{r Bootstrap_SE, cache = TRUE}
 # Create 250,000 samples with replacement for mean sector returns
 All_FF5_ECC %>%
   filter(Industry != "Other") %>%
@@ -4674,7 +4797,7 @@ $$1 = \frac{ln(|\vec\beta|)}{ln(|E[RP]|)} + \frac{ln(|\vec\lambda|))}{ln(|E[RP]|
 The $\frac{ln(|\vec\beta|)}{ln(|E[RP]|)}$ can be interpreted as importance of $\beta$ in forming the expected risk premium; the $\frac{ln(|\vec\lambda|)}{ln(|E[RP]|)}$ can be interpreted as importance of $\lambda$ in forming the expected risk premium; the $\frac{ln(|PP|)}{ln(|E[RP]|)}$ can be interpreted as importance of projection parameter (PP) in forming the expected risk premium.
 
 
-```{r, cache = TRUE}
+```{r ECC_Decomp, cache = TRUE}
 # Plot the decomposition for ECC_AM_FF5_Norms
 ECC_AM_FF5_Norms %>%
   mutate(date = transDate(date)) %>%
@@ -4781,7 +4904,7 @@ ECC_FM_STL_PRS_Norms %>%
 
 ```
 
-```{r, eval = FALSE}
+```{r Save_ECC_Decomp, eval = FALSE}
 ECC_AM_FF5_Norms %>%
   rename(AM = Percent) %>%
   inner_join(ECC_RAM_FF5_Norms %>%

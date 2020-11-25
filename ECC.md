@@ -2298,7 +2298,7 @@ Whlsl
 </tbody>
 </table>
 
-![](ECC_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-6-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-6-3.png)<!-- -->
+![](ECC_files/figure-gfm/Full_FF5-1.png)<!-- -->![](ECC_files/figure-gfm/Full_FF5-2.png)<!-- -->![](ECC_files/figure-gfm/Full_FF5-3.png)<!-- -->
 
 ### S3-1-2 Rolling Window Estimation
 
@@ -2307,7 +2307,7 @@ Portfolio (Cnstr), and Food Portfolio (Food) Rolling Betas evolution
 here. The smoothing line is based on the loess smoothing. It seems that
 the betas are evolving overtime.
 
-![](ECC_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-7-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-7-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-7-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-7-5.png)<!-- -->
+![](ECC_files/figure-gfm/Rolling_FF5-1.png)<!-- -->![](ECC_files/figure-gfm/Rolling_FF5-2.png)<!-- -->![](ECC_files/figure-gfm/Rolling_FF5-3.png)<!-- -->![](ECC_files/figure-gfm/Rolling_FF5-4.png)<!-- -->![](ECC_files/figure-gfm/Rolling_FF5-5.png)<!-- -->
 
 ### S3-1-3 Full Sample Estimation with STL Trend
 
@@ -4396,14 +4396,14 @@ Whlsl
 </tbody>
 </table>
 
-![](ECC_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](ECC_files/figure-gfm/Full_STL_FF5-1.png)<!-- -->
 
 ### S3-1-4 Rolling Window Estimation with STL Trend
 
 Here, we would try to conduct the STL decomposition before the first
 step regression with full sample.
 
-![](ECC_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](ECC_files/figure-gfm/Rolling_STL_FF5-1.png)<!-- -->
 
 ## S3-2 PRS Five Factor Model
 
@@ -6493,7 +6493,7 @@ Whlsl
 </tbody>
 </table>
 
-![](ECC_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-10-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-10-3.png)<!-- -->
+![](ECC_files/figure-gfm/Full_PRS-1.png)<!-- -->![](ECC_files/figure-gfm/Full_PRS-2.png)<!-- -->![](ECC_files/figure-gfm/Full_PRS-3.png)<!-- -->
 
 ### S3-2-2 Rolling Window Estimation
 
@@ -6502,7 +6502,7 @@ Construction Portfolio (Cnstr), and Food Portfolio (Food) Rolling Betas
 evolution here. The smoothing line is based on the loess smoothing. It
 seems that the betas are evolving overtime.
 
-![](ECC_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-11-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-11-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-11-5.png)<!-- -->
+![](ECC_files/figure-gfm/Rolling_PRS-1.png)<!-- -->![](ECC_files/figure-gfm/Rolling_PRS-2.png)<!-- -->![](ECC_files/figure-gfm/Rolling_PRS-3.png)<!-- -->![](ECC_files/figure-gfm/Rolling_PRS-4.png)<!-- -->![](ECC_files/figure-gfm/Rolling_PRS-5.png)<!-- -->
 
 ### S3-2-3 Full Sample Estimation with STL Trend
 
@@ -8591,14 +8591,14 @@ Whlsl
 </tbody>
 </table>
 
-![](ECC_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](ECC_files/figure-gfm/Full_STL_PRS-1.png)<!-- -->
 
 ### S3-2-4 Rolling Window Estimation with STL Trend
 
 Here, we would try to conduct the STL decomposition before the first
 step regression with full sample.
 
-![](ECC_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](ECC_files/figure-gfm/Rolling_STL_PRS-1.png)<!-- -->
 
 It seems that the STL decomposition does not help the first step
 regression.
@@ -8701,7 +8701,7 @@ UNEXPI
 </tbody>
 </table>
 
-![](ECC_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-14-2.png)<!-- -->
+![](ECC_files/figure-gfm/AM-1.png)<!-- -->![](ECC_files/figure-gfm/AM-2.png)<!-- -->
 
 ## S4-2 Geometric Mean
 
@@ -8797,7 +8797,7 @@ UNEXPI
 </tbody>
 </table>
 
-![](ECC_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-15-2.png)<!-- -->
+![](ECC_files/figure-gfm/GM-1.png)<!-- -->![](ECC_files/figure-gfm/GM-2.png)<!-- -->
 
 ## S4-3 Fama Macbeth Second Step Regression
 
@@ -8805,7 +8805,425 @@ Fama-Macbeth second regression estimated lambda represents the expected
 factor risk premium. In this section, we will apply the second step
 regression to estimate the factor risk premium.
 
-![](ECC_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-16-2.png)<!-- -->
+![](ECC_files/figure-gfm/FM-1.png)<!-- -->![](ECC_files/figure-gfm/FM-2.png)<!-- -->
+
+Now, we decompose the standard error of the second-step regression
+lambdas. At each time t,
+
+![r\_i = \\lambda\_0 + \\lambda\_1\*\\hat\\beta\_i + \\lambda\_2\*\\hat\\theta\_i+e\_i](https://latex.codecogs.com/png.latex?r_i%20%3D%20%5Clambda_0%20%2B%20%5Clambda_1%2A%5Chat%5Cbeta_i%20%2B%20%5Clambda_2%2A%5Chat%5Ctheta_i%2Be_i "r_i = \lambda_0 + \lambda_1*\hat\beta_i + \lambda_2*\hat\theta_i+e_i")
+
+![se(\\hat{\\lambda}) = \\hat{\\sigma}\_e\*\\frac{1}{\\sqrt{SST\_{\\hat\\beta}}}\*\\frac{1}{\\sqrt{1-R^2\_{\\hat\\beta}}}](https://latex.codecogs.com/png.latex?se%28%5Chat%7B%5Clambda%7D%29%20%3D%20%5Chat%7B%5Csigma%7D_e%2A%5Cfrac%7B1%7D%7B%5Csqrt%7BSST_%7B%5Chat%5Cbeta%7D%7D%7D%2A%5Cfrac%7B1%7D%7B%5Csqrt%7B1-R%5E2_%7B%5Chat%5Cbeta%7D%7D%7D "se(\hat{\lambda}) = \hat{\sigma}_e*\frac{1}{\sqrt{SST_{\hat\beta}}}*\frac{1}{\sqrt{1-R^2_{\hat\beta}}}")
+
+where
+![\\hat{\\sigma}\_e](https://latex.codecogs.com/png.latex?%5Chat%7B%5Csigma%7D_e "\hat{\sigma}_e")
+represents the variation of errors,
+![\\sqrt{SST\_{\\hat\\beta}}](https://latex.codecogs.com/png.latex?%5Csqrt%7BSST_%7B%5Chat%5Cbeta%7D%7D "\sqrt{SST_{\hat\beta}}")
+represents intra-group beta variation, and
+![\\sqrt{1-R^2\_{\\hat\\beta}}](https://latex.codecogs.com/png.latex?%5Csqrt%7B1-R%5E2_%7B%5Chat%5Cbeta%7D%7D "\sqrt{1-R^2_{\hat\beta}}")
+represents inter-group beta variation. We can clearly see that with the
+seasonality and time-series noise in the error term, we would get a
+larger standard error for estimated
+![\\lambda](https://latex.codecogs.com/png.latex?%5Clambda "\lambda").
+
+![SST\_{\\hat\\beta} = \\sum\_{i=1}^N (\\hat\\beta\_i - \\bar\\beta)^2](https://latex.codecogs.com/png.latex?SST_%7B%5Chat%5Cbeta%7D%20%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%28%5Chat%5Cbeta_i%20-%20%5Cbar%5Cbeta%29%5E2 "SST_{\hat\beta} = \sum_{i=1}^N (\hat\beta_i - \bar\beta)^2")
+
+![R^2\_{\\hat\\beta} = 1 - \\frac{\\hat\\theta^2\_u}{SST\_{\\hat\\beta}}](https://latex.codecogs.com/png.latex?R%5E2_%7B%5Chat%5Cbeta%7D%20%3D%201%20-%20%5Cfrac%7B%5Chat%5Ctheta%5E2_u%7D%7BSST_%7B%5Chat%5Cbeta%7D%7D "R^2_{\hat\beta} = 1 - \frac{\hat\theta^2_u}{SST_{\hat\beta}}")
+
+where
+![\\hat\\theta^2\_u](https://latex.codecogs.com/png.latex?%5Chat%5Ctheta%5E2_u "\hat\theta^2_u")
+comes from auxiliary regression (aka Factor Spanning Regression)
+
+![\\beta\_i = \\gamma\_0 + \\gamma\_1\*\\hat\\theta\_i+u\_i](https://latex.codecogs.com/png.latex?%5Cbeta_i%20%3D%20%5Cgamma_0%20%2B%20%5Cgamma_1%2A%5Chat%5Ctheta_i%2Bu_i "\beta_i = \gamma_0 + \gamma_1*\hat\theta_i+u_i")
+
+We will rewrite the terms as:
+
+![se(\\hat{\\lambda}) = \\hat{\\sigma}\_e\*\\frac{1}{\\hat{\\sigma}\_{\\beta,intra}}\*\\frac{1}{\\hat{\\sigma}\_{\\beta,inter}}](https://latex.codecogs.com/png.latex?se%28%5Chat%7B%5Clambda%7D%29%20%3D%20%5Chat%7B%5Csigma%7D_e%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D "se(\hat{\lambda}) = \hat{\sigma}_e*\frac{1}{\hat{\sigma}_{\beta,intra}}*\frac{1}{\hat{\sigma}_{\beta,inter}}")
+
+The decomposition would be:
+
+![1 = \\frac{ln(\\hat{\\sigma}\_e)}{ln(se(\\hat\\lambda))}-\\frac{ln(\\hat{\\sigma}\_{\\beta,intra})}{ln(se(\\hat\\lambda))}-\\frac{ln(\\hat{\\sigma}\_{\\beta,inter})}{ln(se(\\hat\\lambda))}](https://latex.codecogs.com/png.latex?1%20%3D%20%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_e%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D "1 = \frac{ln(\hat{\sigma}_e)}{ln(se(\hat\lambda))}-\frac{ln(\hat{\sigma}_{\beta,intra})}{ln(se(\hat\lambda))}-\frac{ln(\hat{\sigma}_{\beta,inter})}{ln(se(\hat\lambda))}")
+
+And each term is the effect of variation to the
+![se(\\hat\\lambda)](https://latex.codecogs.com/png.latex?se%28%5Chat%5Clambda%29 "se(\hat\lambda)")
+and this effect is associated with the sensitivity of
+![se(\\hat\\lambda)](https://latex.codecogs.com/png.latex?se%28%5Chat%5Clambda%29 "se(\hat\lambda)")
+to the specific variation:
+
+![\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}\_e} = \\frac{1}{\\hat{\\sigma}\_{\\beta,intra}}\*\\frac{1}{\\hat{\\sigma}\_{\\beta,inter}} = \\frac{se(\\hat\\lambda)}{\\hat{\\sigma}\_e} = se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}\_e)}{ln(se(\\hat\\lambda))}}](https://latex.codecogs.com/png.latex?%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_e%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_e%7D%20%3D%20se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_e%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D%7D "\frac{d se(\hat\lambda)}{d\hat{\sigma}_e} = \frac{1}{\hat{\sigma}_{\beta,intra}}*\frac{1}{\hat{\sigma}_{\beta,inter}} = \frac{se(\hat\lambda)}{\hat{\sigma}_e} = se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_e)}{ln(se(\hat\lambda))}}")
+
+![\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}\_{\\beta,intra}} = \\frac{-1}{\\hat{\\sigma}^2\_{\\beta,intra}}\*\\frac{\\hat{\\sigma}\_e}{\\hat{\\sigma}\_{\\beta,inter}} = -\\frac{se(\\hat\\lambda)}{\\hat{\\sigma}\_{\\beta,intra}} = -se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}\_{\\beta,intra})}{se(\\hat\\lambda)}}](https://latex.codecogs.com/png.latex?%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20%5Cfrac%7B-1%7D%7B%5Chat%7B%5Csigma%7D%5E2_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B%5Chat%7B%5Csigma%7D_e%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20-%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20-se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%29%7D%7Bse%28%5Chat%5Clambda%29%7D%7D "\frac{d se(\hat\lambda)}{d\hat{\sigma}_{\beta,intra}} = \frac{-1}{\hat{\sigma}^2_{\beta,intra}}*\frac{\hat{\sigma}_e}{\hat{\sigma}_{\beta,inter}} = -\frac{se(\hat\lambda)}{\hat{\sigma}_{\beta,intra}} = -se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_{\beta,intra})}{se(\hat\lambda)}}")
+
+Similarly,
+
+![\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}\_{\\beta,inter}} = \\frac{-1}{\\hat{\\sigma}^2\_{\\beta,inter}}\*\\frac{\\hat{\\sigma}\_e}{\\hat{\\sigma}\_{\\beta,intra}} = -\\frac{se(\\hat\\lambda)}{\\hat{\\sigma}\_{\\beta,inter}} = -se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}\_{\\beta,inter})}{se(\\hat\\lambda)}}](https://latex.codecogs.com/png.latex?%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20%5Cfrac%7B-1%7D%7B%5Chat%7B%5Csigma%7D%5E2_%7B%5Cbeta%2Cinter%7D%7D%2A%5Cfrac%7B%5Chat%7B%5Csigma%7D_e%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20-%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20-se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%29%7D%7Bse%28%5Chat%5Clambda%29%7D%7D "\frac{d se(\hat\lambda)}{d\hat{\sigma}_{\beta,inter}} = \frac{-1}{\hat{\sigma}^2_{\beta,inter}}*\frac{\hat{\sigma}_e}{\hat{\sigma}_{\beta,intra}} = -\frac{se(\hat\lambda)}{\hat{\sigma}_{\beta,inter}} = -se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_{\beta,inter})}{se(\hat\lambda)}}")
+
+We only care about the magnitude of this sensitivity, since
+![se(\\hat\\lambda)&lt;1](https://latex.codecogs.com/png.latex?se%28%5Chat%5Clambda%29%3C1 "se(\hat\lambda)<1"),
+the magnitude of the sensitivity is an increasing function of the
+decomposition component.
+
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Fama Macbeth lambda SE Decomposition Percent
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="2">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
+stats
+
+</div>
+
+</th>
+</tr>
+<tr>
+<th style="text-align:center;">
+Factor
+</th>
+<th style="text-align:center;">
+Type
+</th>
+<th style="text-align:center;">
+mean
+</th>
+<th style="text-align:center;">
+median
+</th>
+<th style="text-align:center;">
+variance
+</th>
+<th style="text-align:center;">
+skewness
+</th>
+<th style="text-align:center;">
+kurtosis
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
+CMA
+</td>
+<td style="text-align:center;">
+sig\_e
+</td>
+<td style="text-align:center;">
+0.7474306
+</td>
+<td style="text-align:center;">
+0.7421545
+</td>
+<td style="text-align:center;">
+0.0022749
+</td>
+<td style="text-align:center;">
+0.9534038
+</td>
+<td style="text-align:center;">
+4.229216
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+sig\_Inter
+</td>
+<td style="text-align:center;">
+-0.3021069
+</td>
+<td style="text-align:center;">
+-0.3019182
+</td>
+<td style="text-align:center;">
+0.0007528
+</td>
+<td style="text-align:center;">
+0.2594155
+</td>
+<td style="text-align:center;">
+3.452309
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+sig\_Intra
+</td>
+<td style="text-align:center;">
+0.0495375
+</td>
+<td style="text-align:center;">
+0.0427195
+</td>
+<td style="text-align:center;">
+0.0009208
+</td>
+<td style="text-align:center;">
+1.3411327
+</td>
+<td style="text-align:center;">
+5.024169
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
+HML
+</td>
+<td style="text-align:center;">
+sig\_e
+</td>
+<td style="text-align:center;">
+0.7863110
+</td>
+<td style="text-align:center;">
+0.7815925
+</td>
+<td style="text-align:center;">
+0.0009377
+</td>
+<td style="text-align:center;">
+0.5832375
+</td>
+<td style="text-align:center;">
+3.632477
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+sig\_Inter
+</td>
+<td style="text-align:center;">
+-0.2912745
+</td>
+<td style="text-align:center;">
+-0.2903845
+</td>
+<td style="text-align:center;">
+0.0006957
+</td>
+<td style="text-align:center;">
+0.1544325
+</td>
+<td style="text-align:center;">
+3.193052
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+sig\_Intra
+</td>
+<td style="text-align:center;">
+0.0775855
+</td>
+<td style="text-align:center;">
+0.0759507
+</td>
+<td style="text-align:center;">
+0.0003940
+</td>
+<td style="text-align:center;">
+0.6111720
+</td>
+<td style="text-align:center;">
+3.667783
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
+Mkt-RF
+</td>
+<td style="text-align:center;">
+sig\_e
+</td>
+<td style="text-align:center;">
+0.9197951
+</td>
+<td style="text-align:center;">
+0.9239368
+</td>
+<td style="text-align:center;">
+0.0048730
+</td>
+<td style="text-align:center;">
+0.1822824
+</td>
+<td style="text-align:center;">
+2.203515
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+sig\_Inter
+</td>
+<td style="text-align:center;">
+-0.2705319
+</td>
+<td style="text-align:center;">
+-0.2684655
+</td>
+<td style="text-align:center;">
+0.0008488
+</td>
+<td style="text-align:center;">
+-0.2958021
+</td>
+<td style="text-align:center;">
+2.647622
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+sig\_Intra
+</td>
+<td style="text-align:center;">
+0.1903269
+</td>
+<td style="text-align:center;">
+0.1897735
+</td>
+<td style="text-align:center;">
+0.0025031
+</td>
+<td style="text-align:center;">
+0.2353964
+</td>
+<td style="text-align:center;">
+2.311712
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
+RMW
+</td>
+<td style="text-align:center;">
+sig\_e
+</td>
+<td style="text-align:center;">
+0.7534711
+</td>
+<td style="text-align:center;">
+0.7584274
+</td>
+<td style="text-align:center;">
+0.0010153
+</td>
+<td style="text-align:center;">
+-0.8269255
+</td>
+<td style="text-align:center;">
+3.912337
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+sig\_Inter
+</td>
+<td style="text-align:center;">
+-0.3040057
+</td>
+<td style="text-align:center;">
+-0.3042495
+</td>
+<td style="text-align:center;">
+0.0004999
+</td>
+<td style="text-align:center;">
+-0.2555446
+</td>
+<td style="text-align:center;">
+3.929053
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+sig\_Intra
+</td>
+<td style="text-align:center;">
+0.0574768
+</td>
+<td style="text-align:center;">
+0.0605057
+</td>
+<td style="text-align:center;">
+0.0008245
+</td>
+<td style="text-align:center;">
+-0.0416081
+</td>
+<td style="text-align:center;">
+1.818473
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
+SMB
+</td>
+<td style="text-align:center;">
+sig\_e
+</td>
+<td style="text-align:center;">
+0.7938181
+</td>
+<td style="text-align:center;">
+0.7955540
+</td>
+<td style="text-align:center;">
+0.0009902
+</td>
+<td style="text-align:center;">
+-0.1072860
+</td>
+<td style="text-align:center;">
+3.282732
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+sig\_Inter
+</td>
+<td style="text-align:center;">
+-0.3049125
+</td>
+<td style="text-align:center;">
+-0.3040103
+</td>
+<td style="text-align:center;">
+0.0003267
+</td>
+<td style="text-align:center;">
+-0.2385390
+</td>
+<td style="text-align:center;">
+3.398846
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+sig\_Intra
+</td>
+<td style="text-align:center;">
+0.0987307
+</td>
+<td style="text-align:center;">
+0.0978239
+</td>
+<td style="text-align:center;">
+0.0005943
+</td>
+<td style="text-align:center;">
+0.3719077
+</td>
+<td style="text-align:center;">
+3.273406
+</td>
+</tr>
+</tbody>
+</table>
+
+![](ECC_files/figure-gfm/FM_Lambda_Decomp-1.png)<!-- -->
 
 ## S4-4 Fama Macbeth Second Step Regression with STL Deseaoned Data
 
@@ -8833,7 +9251,7 @@ non-Gaussian behavior in the time-series leads to extreme, transient
 variation). We will first show the STL decomposition of betas and
 returns.
 
-![](ECC_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-17-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-17-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-17-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-17-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-17-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-17-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-17-8.png)<!-- -->
+![](ECC_files/figure-gfm/Filtering-1.png)<!-- -->![](ECC_files/figure-gfm/Filtering-2.png)<!-- -->![](ECC_files/figure-gfm/Filtering-3.png)<!-- -->![](ECC_files/figure-gfm/Filtering-4.png)<!-- -->![](ECC_files/figure-gfm/Filtering-5.png)<!-- -->![](ECC_files/figure-gfm/Filtering-6.png)<!-- -->![](ECC_files/figure-gfm/Filtering-7.png)<!-- -->![](ECC_files/figure-gfm/Filtering-8.png)<!-- -->
 
 The robustness weighting seems not be appropriate for the Industry Risk
 Premiums since the returns variation are mostly caused by Gaussian
@@ -8846,7 +9264,7 @@ there could be changing seasonal patterns in the short-term.
 Now, we would compare the cross-sectional distribution before and after
 filtering.
 
-![](ECC_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](ECC_files/figure-gfm/cross_sectional_distribution-1.png)<!-- -->
 
 ### S4-4-2 Filtered Seasonality and Trend Strength
 
@@ -10858,7 +11276,7 @@ stronger components.
 
 ### S4-4-3 Beta Decomposition
 
-![](ECC_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-20-8.png)<!-- -->
+![](ECC_files/figure-gfm/Beta_Decomposition-1.png)<!-- -->![](ECC_files/figure-gfm/Beta_Decomposition-2.png)<!-- -->![](ECC_files/figure-gfm/Beta_Decomposition-3.png)<!-- -->![](ECC_files/figure-gfm/Beta_Decomposition-4.png)<!-- -->![](ECC_files/figure-gfm/Beta_Decomposition-5.png)<!-- -->![](ECC_files/figure-gfm/Beta_Decomposition-6.png)<!-- -->![](ECC_files/figure-gfm/Beta_Decomposition-7.png)<!-- -->![](ECC_files/figure-gfm/Beta_Decomposition-8.png)<!-- -->
 
 Beta estimation’s noise or seasonal pattern is much smaller than trend
 so the noise weight or the s\_window does not impact the result as much.
@@ -10869,21 +11287,21 @@ premium.
 
 ### S4-4-4 Filtered Second Pass Regression
 
-![](ECC_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-21-2.png)<!-- -->
+![](ECC_files/figure-gfm/Filtered_FM-1.png)<!-- -->![](ECC_files/figure-gfm/Filtered_FM-2.png)<!-- -->
 
 For robustness check, we also computed the factor risk premium based on
 other filtering.
 
 ### S4-4-5 Regression Standard Error
 
-![](ECC_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-23-2.png)<!-- -->
+![](ECC_files/figure-gfm/Regression_SE-1.png)<!-- -->![](ECC_files/figure-gfm/Regression_SE-2.png)<!-- -->
 
 ### S4-4-6 Unfiltered and Filtered Lambdas
 
 Let’s plot the unfiltered lambda together with filtered lambda to see
 the effect of filtering on lambda.
 
-![](ECC_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-2.png)<!-- -->
+![](ECC_files/figure-gfm/Lambda_Comparison-1.png)<!-- -->![](ECC_files/figure-gfm/Lambda_Comparison-2.png)<!-- -->
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 Correlation between FM lambda and STL filtered FM lambda
@@ -10998,7 +11416,7 @@ UNEXPI
 </tbody>
 </table>
 
-![](ECC_files/figure-gfm/unnamed-chunk-24-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-24-6.png)<!-- -->
+![](ECC_files/figure-gfm/Lambda_Comparison-3.png)<!-- -->![](ECC_files/figure-gfm/Lambda_Comparison-4.png)<!-- -->![](ECC_files/figure-gfm/Lambda_Comparison-5.png)<!-- -->![](ECC_files/figure-gfm/Lambda_Comparison-6.png)<!-- -->
 
 ### S4-4-7 KS test and Stats
 
@@ -13359,151 +13777,151 @@ V9
 FS
 </td>
 <td style="text-align:center;">
-0.3147708
+0.2731571
 </td>
 <td style="text-align:center;">
-0.3160138
+0.3040972
 </td>
 <td style="text-align:center;">
-0.3229152
+0.2748374
 </td>
 <td style="text-align:center;">
-0.3382992
+0.3346482
 </td>
 <td style="text-align:center;">
-0.3204457
+0.2828263
 </td>
 <td style="text-align:center;">
-0.3224987
+0.2989162
 </td>
 <td style="text-align:center;">
-0.348429
+0.3284608
 </td>
 <td style="text-align:center;">
-0.3559615
+0.2911029
 </td>
 <td style="text-align:center;">
-0.3406835
+0.2851915
 </td>
 <td style="text-align:center;">
-0.3565023
+0.2917426
 </td>
 <td style="text-align:center;">
-0.3606489
+0.2707331
 </td>
 <td style="text-align:center;">
-0.3771111
+0.3121570
 </td>
 <td style="text-align:center;">
-0.3443430
+0.2784612
 </td>
 <td style="text-align:center;">
-0.3548006
+0.2766135
 </td>
 <td style="text-align:center;">
-0.3356879
+0.3145189
 </td>
 <td style="text-align:center;">
-0.3500154
+0.2831406
 </td>
 <td style="text-align:center;">
-0.3579637
+0.3016792
 </td>
 <td style="text-align:center;">
-0.3435821
+0.3352061
 </td>
 <td style="text-align:center;">
-0.3531270
+0.3147627
 </td>
 <td style="text-align:center;">
-0.3285363
+0.2881136
 </td>
 <td style="text-align:center;">
-0.3580134
+0.3284747
 </td>
 <td style="text-align:center;">
-0.3550508
+0.2986409
 </td>
 <td style="text-align:center;">
-0.3314386
+0.3066383
 </td>
 <td style="text-align:center;">
-0.3433767
+0.3351108
 </td>
 <td style="text-align:center;">
-0.3381345
+0.3149059
 </td>
 <td style="text-align:center;">
-0.3313798
+0.2921494
 </td>
 <td style="text-align:center;">
-0.3447807
+0.3092182
 </td>
 <td style="text-align:center;">
-0.3222380
+0.2689717
 </td>
 <td style="text-align:center;">
-0.3246989
+0.3131285
 </td>
 <td style="text-align:center;">
-0.3546882
+0.3170629
 </td>
 <td style="text-align:center;">
-0.3599717
+0.2815998
 </td>
 <td style="text-align:center;">
-0.3420806
+0.3017937
 </td>
 <td style="text-align:center;">
-0.3679967
+0.2887340
 </td>
 <td style="text-align:center;">
-0.3599777
+0.2853677
 </td>
 <td style="text-align:center;">
-0.319837
+0.3043975
 </td>
 <td style="text-align:center;">
-0.3195121
+0.2924982
 </td>
 <td style="text-align:center;">
-0.3455079
+0.3170491
 </td>
 <td style="text-align:center;">
-0.3165094
+0.3175839
 </td>
 <td style="text-align:center;">
-0.3307911
+0.2786202
 </td>
 <td style="text-align:center;">
-0.3435170
+0.3085931
 </td>
 <td style="text-align:center;">
-0.3290171
+0.2939152
 </td>
 <td style="text-align:center;">
-0.3404033
+0.2808100
 </td>
 <td style="text-align:center;">
-0.3547390
+0.3004393
 </td>
 <td style="text-align:center;">
-0.3695675
+0.2749622
 </td>
 <td style="text-align:center;">
-0.3514807
+0.3510999
 </td>
 <td style="text-align:center;">
-0.3225653
+0.2881941
 </td>
 <td style="text-align:center;">
-0.3530368
+0.2672899
 </td>
 <td style="text-align:center;">
-0.3210274
+0.2885976
 </td>
 <td style="text-align:center;">
-0.3164515
+0.3059426
 </td>
 </tr>
 <tr>
@@ -13511,157 +13929,157 @@ FS
 FT
 </td>
 <td style="text-align:center;">
-0.1553798
+0.1764298
 </td>
 <td style="text-align:center;">
-0.1563978
+0.1571544
 </td>
 <td style="text-align:center;">
-0.1748719
+0.1512509
 </td>
 <td style="text-align:center;">
-0.1760814
+0.1497350
 </td>
 <td style="text-align:center;">
-0.1627732
+0.1611235
 </td>
 <td style="text-align:center;">
-0.1426414
+0.1685881
 </td>
 <td style="text-align:center;">
-0.160861
+0.1911624
 </td>
 <td style="text-align:center;">
-0.1900994
+0.1595961
 </td>
 <td style="text-align:center;">
-0.1956734
+0.1881474
 </td>
 <td style="text-align:center;">
-0.2098374
+0.1956984
 </td>
 <td style="text-align:center;">
-0.1698746
+0.1679824
 </td>
 <td style="text-align:center;">
-0.1525635
+0.1641449
 </td>
 <td style="text-align:center;">
-0.1880534
+0.2074312
 </td>
 <td style="text-align:center;">
-0.1719677
+0.1616034
 </td>
 <td style="text-align:center;">
-0.2006251
+0.1620607
 </td>
 <td style="text-align:center;">
-0.1753292
+0.1730118
 </td>
 <td style="text-align:center;">
-0.1723736
+0.1766091
 </td>
 <td style="text-align:center;">
-0.1567783
+0.1711152
 </td>
 <td style="text-align:center;">
-0.1952318
+0.1612262
 </td>
 <td style="text-align:center;">
-0.1619940
+0.1629164
 </td>
 <td style="text-align:center;">
-0.1750390
+0.1384298
 </td>
 <td style="text-align:center;">
-0.1893682
+0.1733320
 </td>
 <td style="text-align:center;">
-0.1592204
+0.1466235
 </td>
 <td style="text-align:center;">
-0.1696197
+0.1670197
 </td>
 <td style="text-align:center;">
-0.1949422
+0.1696323
 </td>
 <td style="text-align:center;">
-0.1744160
+0.1736013
 </td>
 <td style="text-align:center;">
-0.1983046
+0.1404461
 </td>
 <td style="text-align:center;">
-0.2225096
+0.1576189
 </td>
 <td style="text-align:center;">
-0.1602732
+0.1670335
 </td>
 <td style="text-align:center;">
-0.1758802
+0.1750563
 </td>
 <td style="text-align:center;">
-0.1787174
+0.1614590
 </td>
 <td style="text-align:center;">
-0.1962561
+0.1946870
 </td>
 <td style="text-align:center;">
-0.1845053
+0.1617112
 </td>
 <td style="text-align:center;">
-0.1764025
+0.1359685
 </td>
 <td style="text-align:center;">
-0.149021
+0.1536370
 </td>
 <td style="text-align:center;">
-0.1439300
+0.1532254
 </td>
 <td style="text-align:center;">
-0.1863259
+0.1585231
 </td>
 <td style="text-align:center;">
-0.1912971
+0.1609291
 </td>
 <td style="text-align:center;">
-0.1805625
+0.1726524
 </td>
 <td style="text-align:center;">
-0.1850881
+0.2076426
 </td>
 <td style="text-align:center;">
-0.1752089
+0.1779242
 </td>
 <td style="text-align:center;">
-0.1828732
+0.1803091
 </td>
 <td style="text-align:center;">
-0.1946617
+0.1984144
 </td>
 <td style="text-align:center;">
-0.2038005
+0.1659429
 </td>
 <td style="text-align:center;">
-0.1972313
+0.2190146
 </td>
 <td style="text-align:center;">
-0.1640699
+0.1655844
 </td>
 <td style="text-align:center;">
-0.2070033
+0.1723806
 </td>
 <td style="text-align:center;">
-0.1868280
+0.1763398
 </td>
 <td style="text-align:center;">
-0.1838204
+0.1660019
 </td>
 </tr>
 </tbody>
 </table>
 
-![](ECC_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
+![](ECC_files/figure-gfm/Sim1-1.png)<!-- -->
 
 #### S4-5-2-2 Simulation with Random Parameter and Random Smooth Lambda
 
@@ -13854,151 +14272,151 @@ V9
 FS
 </td>
 <td style="text-align:center;">
-0.3147307
+0.2731564
 </td>
 <td style="text-align:center;">
-0.3158814
+0.3040592
 </td>
 <td style="text-align:center;">
-0.3228850
+0.2748405
 </td>
 <td style="text-align:center;">
-0.3383838
+0.3346912
 </td>
 <td style="text-align:center;">
-0.3204045
+0.2827652
 </td>
 <td style="text-align:center;">
-0.3224820
+0.2986763
 </td>
 <td style="text-align:center;">
-0.3484076
+0.3284916
 </td>
 <td style="text-align:center;">
-0.3561004
+0.2910822
 </td>
 <td style="text-align:center;">
-0.3406058
+0.2851167
 </td>
 <td style="text-align:center;">
-0.3566557
+0.2917340
 </td>
 <td style="text-align:center;">
-0.3598998
+0.2706293
 </td>
 <td style="text-align:center;">
-0.3772101
+0.3121695
 </td>
 <td style="text-align:center;">
-0.3443625
+0.2783417
 </td>
 <td style="text-align:center;">
-0.3550008
+0.2766421
 </td>
 <td style="text-align:center;">
-0.3356999
+0.3145199
 </td>
 <td style="text-align:center;">
-0.3501299
+0.2831407
 </td>
 <td style="text-align:center;">
-0.3580105
+0.3017363
 </td>
 <td style="text-align:center;">
-0.3437860
+0.3351779
 </td>
 <td style="text-align:center;">
-0.3530056
+0.3146133
 </td>
 <td style="text-align:center;">
-0.3283822
+0.2881331
 </td>
 <td style="text-align:center;">
-0.3580289
+0.3285781
 </td>
 <td style="text-align:center;">
-0.3550108
+0.2983129
 </td>
 <td style="text-align:center;">
-0.3313579
+0.306487
 </td>
 <td style="text-align:center;">
-0.3433600
+0.3349439
 </td>
 <td style="text-align:center;">
-0.3380269
+0.3149940
 </td>
 <td style="text-align:center;">
-0.3314614
+0.2921347
 </td>
 <td style="text-align:center;">
-0.3449127
+0.3091281
 </td>
 <td style="text-align:center;">
-0.3222928
+0.2689724
 </td>
 <td style="text-align:center;">
-0.3246517
+0.3132159
 </td>
 <td style="text-align:center;">
-0.3547598
+0.316953
 </td>
 <td style="text-align:center;">
-0.3600753
+0.2816797
 </td>
 <td style="text-align:center;">
-0.3420104
+0.301810
 </td>
 <td style="text-align:center;">
-0.3678717
+0.2887089
 </td>
 <td style="text-align:center;">
-0.3601261
+0.2852283
 </td>
 <td style="text-align:center;">
-0.3198562
+0.3043262
 </td>
 <td style="text-align:center;">
-0.3194703
+0.2924702
 </td>
 <td style="text-align:center;">
-0.3456023
+0.3169784
 </td>
 <td style="text-align:center;">
-0.3167543
+0.3175624
 </td>
 <td style="text-align:center;">
-0.3309542
+0.2788053
 </td>
 <td style="text-align:center;">
-0.3437164
+0.3081793
 </td>
 <td style="text-align:center;">
-0.3292669
+0.2938226
 </td>
 <td style="text-align:center;">
-0.3405761
+0.2808753
 </td>
 <td style="text-align:center;">
-0.3549822
+0.3004236
 </td>
 <td style="text-align:center;">
-0.3696618
+0.2747320
 </td>
 <td style="text-align:center;">
-0.3514803
+0.3510811
 </td>
 <td style="text-align:center;">
-0.3226859
+0.2880763
 </td>
 <td style="text-align:center;">
-0.3530699
+0.2671374
 </td>
 <td style="text-align:center;">
-0.3212318
+0.2883794
 </td>
 <td style="text-align:center;">
-0.3165091
+0.3058941
 </td>
 </tr>
 <tr>
@@ -14006,159 +14424,159 @@ FS
 FT
 </td>
 <td style="text-align:center;">
-0.1827388
+0.1789011
 </td>
 <td style="text-align:center;">
-0.2119268
+0.1608041
 </td>
 <td style="text-align:center;">
-0.1792739
+0.1729239
 </td>
 <td style="text-align:center;">
-0.3318426
+0.1637743
 </td>
 <td style="text-align:center;">
-0.2588834
+0.1777141
 </td>
 <td style="text-align:center;">
-0.1874553
+0.2063206
 </td>
 <td style="text-align:center;">
-0.2157922
+0.1981820
 </td>
 <td style="text-align:center;">
-0.2088728
+0.1675661
 </td>
 <td style="text-align:center;">
-0.2492320
+0.2161320
 </td>
 <td style="text-align:center;">
-0.2197707
+0.2342431
 </td>
 <td style="text-align:center;">
-0.3124881
+0.1941462
 </td>
 <td style="text-align:center;">
-0.1717347
+0.1591451
 </td>
 <td style="text-align:center;">
-0.2055555
+0.2232872
 </td>
 <td style="text-align:center;">
-0.2101177
+0.1651869
 </td>
 <td style="text-align:center;">
-0.2784476
+0.1590148
 </td>
 <td style="text-align:center;">
-0.2198253
+0.1766445
 </td>
 <td style="text-align:center;">
-0.1886685
+0.1708795
 </td>
 <td style="text-align:center;">
-0.1598235
+0.1698330
 </td>
 <td style="text-align:center;">
-0.2907182
+0.1677709
 </td>
 <td style="text-align:center;">
-0.1778539
+0.1662717
 </td>
 <td style="text-align:center;">
-0.1539902
+0.1397884
 </td>
 <td style="text-align:center;">
-0.1866287
+0.2185614
 </td>
 <td style="text-align:center;">
-0.2110722
+0.164172
 </td>
 <td style="text-align:center;">
-0.2002487
+0.1910380
 </td>
 <td style="text-align:center;">
-0.2142282
+0.1763263
 </td>
 <td style="text-align:center;">
-0.1960794
+0.1817187
 </td>
 <td style="text-align:center;">
-0.2271458
+0.1631998
 </td>
 <td style="text-align:center;">
-0.3296308
+0.1588962
 </td>
 <td style="text-align:center;">
-0.2010063
+0.1615658
 </td>
 <td style="text-align:center;">
-0.2160663
+0.180404
 </td>
 <td style="text-align:center;">
-0.1761577
+0.1887229
 </td>
 <td style="text-align:center;">
-0.2502059
+0.229928
 </td>
 <td style="text-align:center;">
-0.2414900
+0.1781281
 </td>
 <td style="text-align:center;">
-0.2507969
+0.1497735
 </td>
 <td style="text-align:center;">
-0.1785535
+0.1740979
 </td>
 <td style="text-align:center;">
-0.2348655
+0.1639747
 </td>
 <td style="text-align:center;">
-0.2068968
+0.1750800
 </td>
 <td style="text-align:center;">
-0.2005040
+0.1698794
 </td>
 <td style="text-align:center;">
-0.1975432
+0.2088770
 </td>
 <td style="text-align:center;">
-0.1788947
+0.2757677
 </td>
 <td style="text-align:center;">
-0.1620635
+0.1812242
 </td>
 <td style="text-align:center;">
-0.2220345
+0.1754777
 </td>
 <td style="text-align:center;">
-0.2093815
+0.2063588
 </td>
 <td style="text-align:center;">
-0.2890669
+0.2022364
 </td>
 <td style="text-align:center;">
-0.2658439
+0.2441731
 </td>
 <td style="text-align:center;">
-0.2590903
+0.1838192
 </td>
 <td style="text-align:center;">
-0.2161451
+0.1883577
 </td>
 <td style="text-align:center;">
-0.1769645
+0.2133397
 </td>
 <td style="text-align:center;">
-0.1797588
+0.1872009
 </td>
 </tr>
 </tbody>
 </table>
 
-![](ECC_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
+![](ECC_files/figure-gfm/Sim2-1.png)<!-- -->
 
-    ## [1] 0.6654034
+    ## [1] 0.6060643
 
 #### S4-5-2-3 Simulation with Actual Parameters and Smooth Lambdas
 
@@ -14171,7 +14589,7 @@ We will extract the Seasonality and Noise from STL method, and then the
 idiosyncratic noise from cross-sectional regression. The betas we use
 are the 5-year rolling window beta.
 
-![](ECC_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-29-2.png)<!-- -->
+![](ECC_files/figure-gfm/Sim3-1.png)<!-- -->![](ECC_files/figure-gfm/Sim3-2.png)<!-- -->
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 49 Industry Portfolio Error Component Summary Statistics
@@ -17583,7 +18001,7 @@ FT
 </tbody>
 </table>
 
-![](ECC_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->
+![](ECC_files/figure-gfm/Sim3_Figures-1.png)<!-- -->![](ECC_files/figure-gfm/Sim3_Figures-2.png)<!-- -->
 
 #### S4-5-2-4 Regression Analysis of Simulation Results
 
@@ -17815,19 +18233,19 @@ this section refers to the estimated risk premium.
 
 ### S5-1-1 Arithmetic Mean
 
-![](ECC_files/figure-gfm/unnamed-chunk-35-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-35-2.png)<!-- -->
+![](ECC_files/figure-gfm/AM_ECC-1.png)<!-- -->![](ECC_files/figure-gfm/AM_ECC-2.png)<!-- -->
 
 ### S5-1-2 Geometric Mean
 
-![](ECC_files/figure-gfm/unnamed-chunk-36-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-36-2.png)<!-- -->
+![](ECC_files/figure-gfm/GM_ECC-1.png)<!-- -->![](ECC_files/figure-gfm/GM_ECC-2.png)<!-- -->
 
 ### S5-1-3 Fama Macbeth Second Step Regression
 
-![](ECC_files/figure-gfm/unnamed-chunk-37-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-37-4.png)<!-- -->
+![](ECC_files/figure-gfm/FM_ECC-1.png)<!-- -->![](ECC_files/figure-gfm/FM_ECC-2.png)<!-- -->![](ECC_files/figure-gfm/FM_ECC-3.png)<!-- -->![](ECC_files/figure-gfm/FM_ECC-4.png)<!-- -->
 
 ### S5-1-4 Fama Macbeth Second Step Regression with STL Trend Data
 
-![](ECC_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-38-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-38-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-38-4.png)<!-- -->
+![](ECC_files/figure-gfm/Filtered_FM_ECC-1.png)<!-- -->![](ECC_files/figure-gfm/Filtered_FM_ECC-2.png)<!-- -->![](ECC_files/figure-gfm/Filtered_FM_ECC-3.png)<!-- -->![](ECC_files/figure-gfm/Filtered_FM_ECC-4.png)<!-- -->
 
 ## S5-2 Comparative Statics
 
@@ -17992,7 +18410,7 @@ Arithmetic Mean and the Geometric Mean.
 Here we would compare the Estimated ECC from FM method and Filtered FM
 method:
 
-![](ECC_files/figure-gfm/unnamed-chunk-40-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-40-3.png)<!-- -->
+![](ECC_files/figure-gfm/Compare_Plots-1.png)<!-- -->![](ECC_files/figure-gfm/Compare_Plots-2.png)<!-- -->![](ECC_files/figure-gfm/Compare_Plots-3.png)<!-- -->
 
 We also performed a KS test to test the FM ECC and STL FM ECC for
 different sectors. It seems that the distributions are different from FM
@@ -21070,7 +21488,7 @@ forming the expected risk premium; the
 can be interpreted as importance of projection parameter (PP) in forming
 the expected risk premium.
 
-![](ECC_files/figure-gfm/unnamed-chunk-43-1.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-43-2.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-43-3.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-43-4.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-43-5.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-43-6.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-43-7.png)<!-- -->![](ECC_files/figure-gfm/unnamed-chunk-43-8.png)<!-- -->
+![](ECC_files/figure-gfm/ECC_Decomp-1.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-2.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-3.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-4.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-5.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-6.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-7.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-8.png)<!-- -->
 
 ## S5-5 Forcasting???
 

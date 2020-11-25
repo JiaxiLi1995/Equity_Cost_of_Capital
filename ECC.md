@@ -8933,19 +8933,19 @@ sig\_e
 sig\_Inter
 </td>
 <td style="text-align:center;">
--0.3021069
+0.0671794
 </td>
 <td style="text-align:center;">
--0.3019182
+0.0672564
 </td>
 <td style="text-align:center;">
-0.0007528
+0.0007139
 </td>
 <td style="text-align:center;">
-0.2594155
+0.8082294
 </td>
 <td style="text-align:center;">
-3.452309
+5.336149
 </td>
 </tr>
 <tr>
@@ -8953,19 +8953,19 @@ sig\_Inter
 sig\_Intra
 </td>
 <td style="text-align:center;">
-0.0495375
+-0.3197487
 </td>
 <td style="text-align:center;">
-0.0427195
+-0.3263410
 </td>
 <td style="text-align:center;">
-0.0009208
+0.0019805
 </td>
 <td style="text-align:center;">
-1.3411327
+0.6957077
 </td>
 <td style="text-align:center;">
-5.024169
+3.577028
 </td>
 </tr>
 <tr>
@@ -8996,19 +8996,19 @@ sig\_e
 sig\_Inter
 </td>
 <td style="text-align:center;">
--0.2912745
+0.0720098
 </td>
 <td style="text-align:center;">
--0.2903845
+0.0690313
 </td>
 <td style="text-align:center;">
-0.0006957
+0.0008303
 </td>
 <td style="text-align:center;">
-0.1544325
+1.1057488
 </td>
 <td style="text-align:center;">
-3.193052
+5.330316
 </td>
 </tr>
 <tr>
@@ -9016,19 +9016,19 @@ sig\_Inter
 sig\_Intra
 </td>
 <td style="text-align:center;">
-0.0775855
+-0.2856988
 </td>
 <td style="text-align:center;">
-0.0759507
+-0.2869396
 </td>
 <td style="text-align:center;">
-0.0003940
+0.0010530
 </td>
 <td style="text-align:center;">
-0.6111720
+0.0336732
 </td>
 <td style="text-align:center;">
-3.667783
+3.189743
 </td>
 </tr>
 <tr>
@@ -9059,19 +9059,19 @@ sig\_e
 sig\_Inter
 </td>
 <td style="text-align:center;">
--0.2705319
+0.0547342
 </td>
 <td style="text-align:center;">
--0.2684655
+0.0518618
 </td>
 <td style="text-align:center;">
-0.0008488
+0.0005520
 </td>
 <td style="text-align:center;">
--0.2958021
+0.5918467
 </td>
 <td style="text-align:center;">
-2.647622
+3.228067
 </td>
 </tr>
 <tr>
@@ -9079,19 +9079,19 @@ sig\_Inter
 sig\_Intra
 </td>
 <td style="text-align:center;">
-0.1903269
+-0.1349391
 </td>
 <td style="text-align:center;">
-0.1897735
+-0.1322494
 </td>
 <td style="text-align:center;">
-0.0025031
+0.0048024
 </td>
 <td style="text-align:center;">
-0.2353964
+0.1920204
 </td>
 <td style="text-align:center;">
-2.311712
+2.244849
 </td>
 </tr>
 <tr>
@@ -9122,19 +9122,19 @@ sig\_e
 sig\_Inter
 </td>
 <td style="text-align:center;">
--0.3040057
+0.0610090
 </td>
 <td style="text-align:center;">
--0.3042495
+0.0591732
 </td>
 <td style="text-align:center;">
-0.0004999
+0.0007948
 </td>
 <td style="text-align:center;">
--0.2555446
+0.5879833
 </td>
 <td style="text-align:center;">
-3.929053
+3.094051
 </td>
 </tr>
 <tr>
@@ -9142,19 +9142,19 @@ sig\_Inter
 sig\_Intra
 </td>
 <td style="text-align:center;">
-0.0574768
+-0.3075379
 </td>
 <td style="text-align:center;">
-0.0605057
+-0.3045390
 </td>
 <td style="text-align:center;">
-0.0008245
+0.0021026
 </td>
 <td style="text-align:center;">
--0.0416081
+-0.1064799
 </td>
 <td style="text-align:center;">
-1.818473
+2.212334
 </td>
 </tr>
 <tr>
@@ -9185,19 +9185,19 @@ sig\_e
 sig\_Inter
 </td>
 <td style="text-align:center;">
--0.3049125
+0.0420830
 </td>
 <td style="text-align:center;">
--0.3040103
+0.0391009
 </td>
 <td style="text-align:center;">
-0.0003267
+0.0004051
 </td>
 <td style="text-align:center;">
--0.2385390
+1.0027584
 </td>
 <td style="text-align:center;">
-3.398846
+3.799921
 </td>
 </tr>
 <tr>
@@ -9205,19 +9205,19 @@ sig\_Inter
 sig\_Intra
 </td>
 <td style="text-align:center;">
-0.0987307
+-0.2482649
 </td>
 <td style="text-align:center;">
-0.0978239
+-0.2447258
 </td>
 <td style="text-align:center;">
-0.0005943
+0.0007381
 </td>
 <td style="text-align:center;">
-0.3719077
+-0.4879583
 </td>
 <td style="text-align:center;">
-3.273406
+2.873762
 </td>
 </tr>
 </tbody>

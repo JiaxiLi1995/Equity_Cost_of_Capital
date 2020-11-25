@@ -1586,12 +1586,12 @@ sig_e <- FM_FF5_Resid %>%
 INV_sig_Intra <- Port_FF5_Betas %>%
   select(!c(Alpha,Industry)) %>%
   group_by(date) %>%
-  summarise_all(list(~1/sqrt(sd(.))))
+  summarise_all(list(~1/sd(.)/sqrt(length(.)-1)))
 
 sig_Intra <- Port_FF5_Betas %>%
   select(!c(Alpha,Industry)) %>%
   group_by(date) %>%
-  summarise_all(list(~sqrt(sd(.))))
+  summarise_all(list(~sd(.)*sqrt(length(.)-1)))
   
 # R_sq inverse
 INV_sig_Inter <- FM_FF5_Error/INV_sig_Intra/cbind(1/sig_e[,1],rep(sig_e[,2],5))

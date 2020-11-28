@@ -4656,16 +4656,16 @@ All_FF5_ECC %>%
         axis.text.x = element_text(angle = 30, hjust = 1))
 
 All_FF5_ECC %>%
-  subset(select = c(date, Industry, RAM, FM, FM_STL_7_N)) %>%
+  subset(select = c(date, Industry, FM, FM_STL_7_N)) %>%
   filter(Industry == "Cnstr") %>%
-  pivot_longer(cols = c(RAM, FM, FM_STL_7_N), names_to = "method", values_to = "ECC") %>%
+  pivot_longer(cols = c(FM, FM_STL_7_N), names_to = "method", values_to = "ECC") %>%
   mutate(date = transDate(date)) %>%
   # fix order
-  mutate(method = factor(method, levels = c("FM","FM_STL_7_N","RAM"))) %>%
+  mutate(method = factor(method, levels = c("FM","FM_STL_7_N"))) %>%
   ggplot() +
   geom_line(aes(date, ECC, color = method),alpha = 0.4) +
   scale_x_date(minor_breaks = "1 year") +
-  scale_color_manual(values=c("springgreen1", "blue", "red")) +
+  scale_color_manual(values=c("springgreen1", "blue")) +
   labs(title= "Estimated Equity Cost of Capital for Construction with Fama French Five Factors") +
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 30, hjust = 1))

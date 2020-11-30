@@ -21490,6 +21490,8 @@ the expected risk premium.
 
 ![](ECC_files/figure-gfm/ECC_Decomp-1.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-2.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-3.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-4.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-5.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-6.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-7.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-8.png)<!-- -->
 
+![](ECC_files/figure-gfm/ECC_Decomp2-1.png)<!-- -->
+
 ## S5-5 Forcasting???
 
 We can try to apply the previous methods to forecast the ECC and compare

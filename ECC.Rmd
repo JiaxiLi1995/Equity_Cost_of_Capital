@@ -4916,6 +4916,23 @@ ECC_AM_FF5_Norms %>%
   write_csv("Norms_Percent.csv")
 ```
 
+```{r ECC_Decomp2, cache = TRUE}
+# Plot the decomposition for ECC_FM_STL_FF5_Norms
+ECC_FM_STL_FF5_Norms %>%
+  filter(Industry == "Cnstr") %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, Percent, fill = Component)) +
+  geom_area() +
+  scale_x_date(minor_breaks = "1 year") +
+  scale_y_continuous(labels = scales::percent) +
+  scale_color_brewer(palette = "Paired") +
+  labs(title= "Equity Cost of Capital Component Decomposition for Construction",
+       x = "date") + 
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 30, hjust = 1))
+
+```
+
 ## S5-5 Forcasting???
 
 We can try to apply the previous methods to forecast the ECC and compare the accuracy. There is a STL method of forecasting so we might be able to use STL to forcast betas and industry risk premium and perform the second step regression to obtain the lambda. Then we can calculate the ECC.

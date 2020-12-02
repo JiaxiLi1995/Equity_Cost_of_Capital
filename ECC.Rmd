@@ -1616,10 +1616,17 @@ SE_Decomposition <- sig_e %>%
 
 # Summary Stats
 SE_Decomposition %>%
+  mutate(Factor = factor(Factor, levels = unique(Factor))) %>%
   pivot_longer(-c(date, Factor), names_to = "Type", values_to = "Percent") %>%
   select(!date) %>%
   group_by(Factor, Type) %>%
   summarise_all(funs(mean, median, variance = var(.), skewness, kurtosis)) %>%
+  rbind(SE_Decomposition %>%
+          mutate(Factor = "Overall") %>%
+          pivot_longer(-c(date, Factor), names_to = "Type", values_to = "Percent") %>%
+          select(!date) %>%
+          group_by(Factor, Type) %>%
+          summarise_all(funs(mean, median, variance = var(.), skewness, kurtosis))) %>%
   kable(align = "c", caption = "Fama Macbeth lambda SE Decomposition Percent") %>%
   kable_styling(font_size = 10, "striped", full_width = F) %>%
   column_spec(1, bold = T) %>%

@@ -8907,25 +8907,25 @@ kurtosis
 <tbody>
 <tr>
 <td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
-CMA
+Mkt-RF
 </td>
 <td style="text-align:center;">
 sig\_e
 </td>
 <td style="text-align:center;">
-0.7474306
+0.9197951
 </td>
 <td style="text-align:center;">
-0.7421545
+0.9239368
 </td>
 <td style="text-align:center;">
-0.0022749
+0.0048730
 </td>
 <td style="text-align:center;">
-0.9534038
+0.1822824
 </td>
 <td style="text-align:center;">
-4.229216
+2.203515
 </td>
 </tr>
 <tr>
@@ -8933,19 +8933,19 @@ sig\_e
 sig\_Inter
 </td>
 <td style="text-align:center;">
-0.0671794
+0.0547342
 </td>
 <td style="text-align:center;">
-0.0672564
+0.0518618
 </td>
 <td style="text-align:center;">
-0.0007139
+0.0005520
 </td>
 <td style="text-align:center;">
-0.8082294
+0.5918467
 </td>
 <td style="text-align:center;">
-5.336149
+3.228067
 </td>
 </tr>
 <tr>
@@ -8953,19 +8953,82 @@ sig\_Inter
 sig\_Intra
 </td>
 <td style="text-align:center;">
--0.3197487
+-0.1349391
 </td>
 <td style="text-align:center;">
--0.3263410
+-0.1322494
 </td>
 <td style="text-align:center;">
-0.0019805
+0.0048024
 </td>
 <td style="text-align:center;">
-0.6957077
+0.1920204
 </td>
 <td style="text-align:center;">
-3.577028
+2.244849
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
+SMB
+</td>
+<td style="text-align:center;">
+sig\_e
+</td>
+<td style="text-align:center;">
+0.7938181
+</td>
+<td style="text-align:center;">
+0.7955540
+</td>
+<td style="text-align:center;">
+0.0009902
+</td>
+<td style="text-align:center;">
+-0.1072860
+</td>
+<td style="text-align:center;">
+3.282732
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+sig\_Inter
+</td>
+<td style="text-align:center;">
+0.0420830
+</td>
+<td style="text-align:center;">
+0.0391009
+</td>
+<td style="text-align:center;">
+0.0004051
+</td>
+<td style="text-align:center;">
+1.0027584
+</td>
+<td style="text-align:center;">
+3.799921
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+sig\_Intra
+</td>
+<td style="text-align:center;">
+-0.2482649
+</td>
+<td style="text-align:center;">
+-0.2447258
+</td>
+<td style="text-align:center;">
+0.0007381
+</td>
+<td style="text-align:center;">
+-0.4879583
+</td>
+<td style="text-align:center;">
+2.873762
 </td>
 </tr>
 <tr>
@@ -9033,69 +9096,6 @@ sig\_Intra
 </tr>
 <tr>
 <td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
-Mkt-RF
-</td>
-<td style="text-align:center;">
-sig\_e
-</td>
-<td style="text-align:center;">
-0.9197951
-</td>
-<td style="text-align:center;">
-0.9239368
-</td>
-<td style="text-align:center;">
-0.0048730
-</td>
-<td style="text-align:center;">
-0.1822824
-</td>
-<td style="text-align:center;">
-2.203515
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-sig\_Inter
-</td>
-<td style="text-align:center;">
-0.0547342
-</td>
-<td style="text-align:center;">
-0.0518618
-</td>
-<td style="text-align:center;">
-0.0005520
-</td>
-<td style="text-align:center;">
-0.5918467
-</td>
-<td style="text-align:center;">
-3.228067
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-sig\_Intra
-</td>
-<td style="text-align:center;">
--0.1349391
-</td>
-<td style="text-align:center;">
--0.1322494
-</td>
-<td style="text-align:center;">
-0.0048024
-</td>
-<td style="text-align:center;">
-0.1920204
-</td>
-<td style="text-align:center;">
-2.244849
-</td>
-</tr>
-<tr>
-<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
 RMW
 </td>
 <td style="text-align:center;">
@@ -9159,25 +9159,25 @@ sig\_Intra
 </tr>
 <tr>
 <td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
-SMB
+CMA
 </td>
 <td style="text-align:center;">
 sig\_e
 </td>
 <td style="text-align:center;">
-0.7938181
+0.7474306
 </td>
 <td style="text-align:center;">
-0.7955540
+0.7421545
 </td>
 <td style="text-align:center;">
-0.0009902
+0.0022749
 </td>
 <td style="text-align:center;">
--0.1072860
+0.9534038
 </td>
 <td style="text-align:center;">
-3.282732
+4.229216
 </td>
 </tr>
 <tr>
@@ -9185,19 +9185,19 @@ sig\_e
 sig\_Inter
 </td>
 <td style="text-align:center;">
-0.0420830
+0.0671794
 </td>
 <td style="text-align:center;">
-0.0391009
+0.0672564
 </td>
 <td style="text-align:center;">
-0.0004051
+0.0007139
 </td>
 <td style="text-align:center;">
-1.0027584
+0.8082294
 </td>
 <td style="text-align:center;">
-3.799921
+5.336149
 </td>
 </tr>
 <tr>
@@ -9205,19 +9205,82 @@ sig\_Inter
 sig\_Intra
 </td>
 <td style="text-align:center;">
--0.2482649
+-0.3197487
 </td>
 <td style="text-align:center;">
--0.2447258
+-0.3263410
 </td>
 <td style="text-align:center;">
-0.0007381
+0.0019805
 </td>
 <td style="text-align:center;">
--0.4879583
+0.6957077
 </td>
 <td style="text-align:center;">
-2.873762
+3.577028
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
+Overall
+</td>
+<td style="text-align:center;">
+sig\_e
+</td>
+<td style="text-align:center;">
+0.8001652
+</td>
+<td style="text-align:center;">
+0.7832446
+</td>
+<td style="text-align:center;">
+0.0059177
+</td>
+<td style="text-align:center;">
+1.2304489
+</td>
+<td style="text-align:center;">
+4.479720
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+sig\_Inter
+</td>
+<td style="text-align:center;">
+0.0594031
+</td>
+<td style="text-align:center;">
+0.0573691
+</td>
+<td style="text-align:center;">
+0.0007671
+</td>
+<td style="text-align:center;">
+0.8566761
+</td>
+<td style="text-align:center;">
+4.451245
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+sig\_Intra
+</td>
+<td style="text-align:center;">
+-0.2592379
+</td>
+<td style="text-align:center;">
+-0.2713270
+</td>
+<td style="text-align:center;">
+0.0065869
+</td>
+<td style="text-align:center;">
+1.0257907
+</td>
+<td style="text-align:center;">
+4.054408
 </td>
 </tr>
 </tbody>

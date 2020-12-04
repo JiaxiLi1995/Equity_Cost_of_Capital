@@ -11357,7 +11357,102 @@ other filtering.
 
 ### S4-4-5 Regression Standard Error
 
-![](ECC_files/figure-gfm/Regression_SE-1.png)<!-- -->![](ECC_files/figure-gfm/Regression_SE-2.png)<!-- -->
+![](ECC_files/figure-gfm/Regression_SE-1.png)<!-- -->
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Average Cross-sectional Regression Lambda Error
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Factors
+</th>
+<th style="text-align:center;">
+FM
+</th>
+<th style="text-align:center;">
+FM\_STL
+</th>
+<th style="text-align:center;">
+ratio
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Mkt-RF
+</td>
+<td style="text-align:center;">
+0.0240154
+</td>
+<td style="text-align:center;">
+0.0066808
+</td>
+<td style="text-align:center;">
+0.2781904
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+SMB
+</td>
+<td style="text-align:center;">
+0.0134733
+</td>
+<td style="text-align:center;">
+0.0037066
+</td>
+<td style="text-align:center;">
+0.2751085
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+HML
+</td>
+<td style="text-align:center;">
+0.0126575
+</td>
+<td style="text-align:center;">
+0.0035400
+</td>
+<td style="text-align:center;">
+0.2796793
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+RMW
+</td>
+<td style="text-align:center;">
+0.0105174
+</td>
+<td style="text-align:center;">
+0.0029243
+</td>
+<td style="text-align:center;">
+0.2780437
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+CMA
+</td>
+<td style="text-align:center;">
+0.0101584
+</td>
+<td style="text-align:center;">
+0.0028341
+</td>
+<td style="text-align:center;">
+0.2789863
+</td>
+</tr>
+</tbody>
+</table>
+
+![](ECC_files/figure-gfm/Regression_SE-2.png)<!-- -->
 
 ### S4-4-6 Unfiltered and Filtered Lambdas
 

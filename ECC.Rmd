@@ -2687,6 +2687,25 @@ FM_FF5_Error %>%
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 30, hjust = 1))
 
+
+FM_FF5_Error %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "SE") %>%
+  mutate(method = "FM") %>%
+  rbind(FM_STL_FF5_Error %>%
+          pivot_longer(cols = -date, names_to = "Factors", values_to = "SE") %>%
+          mutate(method = "FM_STL")) %>%
+  # fix the Factors order
+  mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  select(!date) %>%
+  group_by(Factors, method) %>%
+  summarise(SE_mean = mean(SE)) %>%
+  pivot_wider(names_from = "method", values_from = "SE_mean") %>%
+  mutate(ratio = FM_STL/FM) %>%
+  kable(align = "c", caption = "Average Cross-sectional Regression Lambda Error") %>%
+    kable_styling(font_size = 10, "striped", full_width = F)
+
+  
+
 # Plot the standard error in second-step regression
 FM_PRS_Error %>%
   pivot_longer(cols = -date, names_to = "Factors", values_to = "SE") %>%

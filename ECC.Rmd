@@ -24,6 +24,7 @@ library(kableExtra)
 library(moments)
 library(RcppRoll)
 library(png)
+library(lme4) # For multilevel
 
 # Set the function to transform yyyymm to Date
 transDate <- function(date) {
@@ -403,6 +404,7 @@ In this section, we will try to apply the simple first-pass regression to estima
 We will first apply the Fama French Five Factor Model to estimate the betas. We will use the Five Factor Model as the base model.
 
 ### S3-1-1 Full Sample Estimation
+
 ```{r Full_FF5, cache = TRUE}
 # We will perform the simple first step regression here
 # Join the portfolios and FF5
@@ -827,6 +829,270 @@ Port_FF5_STL_Betas %>%
   labs(title= "Estimated 5-year Rolling STL Betas with Fama French Five Factors for RlEst",
        x = "date", y = "betas") +
   theme(plot.title = element_text(hjust=0.5))
+```
+
+
+### S3-1-5 Full Sample Estimation with Panel Regression
+
+There are three sets of regressions here: Panel Regression at 49 Industry Level, Panel Regression at 49 Industry Level and clustering at 5 Industry Level, Micro-Macro Multilevel Linear Models.
+
+```{r Full_FF5_Panel, cache = TRUE}
+# We will perform the simple first step regression here
+
+# Calculate the full sample betas
+# apply the full sample regression to calculate the full sample beta for portfolios
+temp1 <- Port_FF5 %>%
+  subset(select = -Selection) %>%
+  mutate(Industry = factor(Industry, unique(Industry))) %>%
+  lm(RP ~ Industry*(. - date - Industry), data = .) %>%
+  coefficients() %>%
+  .[-(1:length(unique(Port_FF5$Industry)))] %>%
+  as_tibble_row()
+
+# Extract the base level coefficient
+Original <- temp1[1:(length(FF5)-2)] %>%
+  pivot_longer(everything(), names_to = "Factors", values_to = "Original")
+
+# Extract betas for each Industry
+Full_Panel_Betas <- temp1 %>%
+  mutate_at(vars(names(.)[1:(length(FF5)-2)]), ~ 0) %>%
+  rename_at(vars(names(.)[1:(length(FF5)-2)]), ~ paste("Industry", unique(Port_FF5$Industry)[1], ":", ., sep = "")) %>%
+  pivot_longer(everything(), names_to = "Name", values_to = "Value") %>%
+  separate(Name, c("Industry", "Factors"), ":") %>%
+  mutate(Industry = str_remove(Industry, "Industry")) %>%
+  inner_join(Original) %>%
+  mutate(betas = Value + Original,
+         Factors = str_remove_all(Factors, "`")) %>%
+  # Fix the order of factors
+  mutate(Industry = factor(Industry, unique(Port_FF5$Industry)),
+         Factors = factor(Factors, names(FF5)[2:(length(FF5)-1)]))
+
+
+# Plot the histogram for betas
+Full_Panel_Betas %>%
+  ggplot(aes(Industry, betas)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title="Simple Panel Full Sample Betas with Fama French Five Factors") + 
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 30, hjust = 1))
+
+Full_Panel_Betas %>%
+  filter(Factors == "Mkt-RF") %>%
+  ggplot(aes(Industry, betas)) +
+  geom_bar(stat = "identity") +
+  labs(title="Simple Panel Full Sample Market Betas with Fama French Five Factors") + 
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+Full_Panel_Betas %>%
+  filter(Factors != "Mkt-RF") %>%
+  ggplot(aes(Industry, betas)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title="Simple Panel Full Sample Rest Betas with Fama French Five Factors") + 
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
+
+```
+
+Next, we get the panel regression clustering at 5 Industry Level.
+
+```{r Full_FF5_Clustered_Panel, eval = FALSE, cache = TRUE}
+# We will perform the simple first step regression here with clustered panel
+# Load the Industry Link data and keep the Siccode5
+Ind_Link <- readxl::read_xlsx("data/Ind_Link.xlsx") %>%
+  rename(Industry = Siccodes49,
+         Group = Siccodes5) %>%
+  select(Industry, Group)
+
+# Calculate the full sample betas
+# apply the full sample regression to calculate the full sample beta for portfolios
+temp1 <- Port_FF5 %>%
+  inner_join(Ind_Link) %>%
+  subset(select = -Selection) %>%
+  mutate(Industry = factor(Industry, unique(Industry)),
+         Group = factor(Group, unique(Group))) %>%
+  lm(RP ~ Industry*(. - date - Industry - Group) + Group:(. - date - Industry - Group), data = .) %>%
+  coefficients() %>%
+  .[-(1:length(unique(Port_FF5$Industry)))] %>%
+  as_tibble_row()
+
+Port_FF5 %>%
+  inner_join(Ind_Link) %>%
+  subset(select = -Selection) %>%
+  mutate(Industry = factor(Industry, unique(Industry)),
+         Group = factor(Group, unique(Group))) %>%
+  lmer(RP ~ (. - date - Industry - Group) + ((. - date - Industry - Group)|Industry), data = .) %>%
+  coefficients()
+
+# Extract the base level coefficient
+Original <- temp1[1:(length(FF5)-2)] %>%
+  pivot_longer(everything(), names_to = "Factors", values_to = "Original")
+
+# Extract betas for each Industry
+Full_Panel_Betas <- temp1 %>%
+  mutate_at(vars(names(.)[1:(length(FF5)-2)]), ~ 0) %>%
+  rename_at(vars(names(.)[1:(length(FF5)-2)]), ~ paste("Industry", unique(Port_FF5$Industry)[1], ":", ., sep = "")) %>%
+  pivot_longer(everything(), names_to = "Name", values_to = "Value") %>%
+  separate(Name, c("Industry", "Factors"), ":") %>%
+  mutate(Industry = str_remove(Industry, "Industry")) %>%
+  inner_join(Original) %>%
+  mutate(betas = Value + Original,
+         Factors = str_remove_all(Factors, "`")) %>%
+  # Fix the order of factors
+  mutate(Industry = factor(Industry, unique(Port_FF5$Industry)),
+         Factors = factor(Factors, names(FF5)[2:(length(FF5)-1)]))
+
+
+# Plot the histogram for betas
+Full_Panel_Betas %>%
+  ggplot(aes(Industry, betas)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title="Simple Panel Full Sample Betas with Fama French Five Factors") + 
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 30, hjust = 1))
+
+Full_Panel_Betas %>%
+  filter(Factors == "Mkt-RF") %>%
+  ggplot(aes(Industry, betas)) +
+  geom_bar(stat = "identity") +
+  labs(title="Simple Panel Full Sample Market Betas with Fama French Five Factors") + 
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+Full_Panel_Betas %>%
+  filter(Factors != "Mkt-RF") %>%
+  ggplot(aes(Industry, betas)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title="Simple Panel Full Sample Rest Betas with Fama French Five Factors") + 
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
+
+```
+
+
+### S3-1-6 Rolling Window Estimation with Panel Regression
+
+We will show examples of the Real Estate Portfolio (RlEst), Construction Portfolio (Cnstr), and Food Portfolio (Food) Rolling Betas evolution here. The smoothing line is based on the loess smoothing. It seems that the betas are evolving overtime.
+
+```{r Rolling_FF5_Panel, cache = TRUE}
+# apply the roll_regres to calculate the 5-year rolling beta (60 data points)
+temp_out <- roll_regres(RP ~ Industry*(. -Industry -date -Selection), (Port_FF5 %>% mutate(Industry = factor(Industry, unique(Industry))) %>% arrange(date)), width = (60*length(unique(Port_FF5$Industry))))
+
+# Save as tibble and join with dates and Industry
+temp_betas <- Port_FF5 %>%
+  mutate(Industry = factor(Industry, unique(Industry))) %>%
+  arrange(date) %>%
+  select(date, Industry, Selection) %>%
+  cbind(temp_out$coefs %>% as_tibble()) %>%
+  # Only keep the good ones (the last Industry in each list) and select = true
+  filter(Industry == unique(Port_FF5$Industry)[length(unique(Port_FF5$Industry))],
+         Selection == TRUE) %>%
+  select(-c(Industry, Selection)) %>%
+  # remove the intercepts
+  .[-(2:(length(unique(Port_FF5$Industry))+1))]
+
+# Extract the base level coefficient at each date
+Original <- temp_betas[1:(length(FF5)-1)] %>%
+  pivot_longer(-date, names_to = "Factors", values_to = "Original")
+
+# Extract betas for each Industry at each date
+Rolling_Panel_Betas <- temp_betas %>%
+  mutate_at(vars(names(temp_betas)[2:(length(FF5)-1)]), ~ 0) %>%
+  rename_at(vars(names(temp_betas)[2:(length(FF5)-1)]), ~ paste("Industry", unique(Port_FF5$Industry)[1], ":", ., sep = "")) %>%
+  pivot_longer(-date, names_to = "Name", values_to = "Value") %>%
+  separate(Name, c("Industry", "Factors"), ":") %>%
+  mutate(Industry = str_remove(Industry, "Industry")) %>%
+  inner_join(Original) %>%
+  mutate(betas = Value + Original,
+         Factors = str_remove_all(Factors, "`")) %>%
+  # Fix the order of factors
+  mutate(Industry = factor(Industry, unique(Port_FF5$Industry)),
+         Factors = factor(Factors, names(FF5)[2:(length(FF5)-1)]))
+
+
+# Plot the rolling betas for RlEst
+Rolling_Panel_Betas %>%
+  # Translate the date
+  mutate(date = transDate(date)) %>%
+  # pivot longer to make factors a category
+  filter(Industry == "RlEst") %>%
+  # Fix the order of Factors
+  ggplot(aes(date, betas)) +
+  geom_line() +
+  # loess method: local regression fitting
+  geom_smooth(method = "loess") +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Simple Panel Estimated 5-year Rolling Betas with Fama French Five Factors for RlEst",
+       x = "date", y = "betas") +
+  theme(plot.title = element_text(hjust=0.5))
+
+# Plot the rolling betas for Cnstr
+Rolling_Panel_Betas %>%
+  # Translate the date
+  mutate(date = transDate(date)) %>%
+  filter(Industry == "Cnstr") %>%
+  ggplot(aes(date, betas)) +
+  geom_line() +
+  # loess method: local regression fitting
+  geom_smooth(method = "loess") +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Simple Panel Estimated 5-year Rolling Betas with Fama French Five Factors for Cnstr",
+       x = "date", y = "betas") +
+  theme(plot.title = element_text(hjust=0.5))
+
+# Plot the rolling betas for Food
+Rolling_Panel_Betas %>%
+  # Translate the date
+  mutate(date = transDate(date)) %>%
+  filter(Industry == "Food") %>%
+  ggplot(aes(date, betas)) +
+  geom_line() +
+  # loess method: local regression fitting
+  geom_smooth(method = "loess") +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Simple Panel Estimated 5-year Rolling Betas with Fama French Five Factors for Food",
+       x = "date", y = "betas") +
+  theme(plot.title = element_text(hjust=0.5))
+
+
+# Plot the rolling betas box plot
+Rolling_Panel_Betas %>%
+  filter(Factors == "Mkt-RF") %>%
+  ggplot(aes(Industry, betas)) +
+  geom_boxplot() +
+  labs(title= "Simple Panel Estimated 5-year Rolling Market Betas with Fama French Five Factors") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1))
+
+Rolling_Panel_Betas %>%
+  filter(Factors != "Mkt-RF") %>%
+  ggplot(aes(Industry, betas)) +
+  geom_boxplot() +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Simple Panel Estimated 5-year Rolling Market Betas with Fama French Five Factors") +
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
 ```
 
 

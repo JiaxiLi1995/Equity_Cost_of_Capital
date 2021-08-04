@@ -928,8 +928,10 @@ Port_FF5 %>%
   subset(select = -Selection) %>%
   mutate(Industry = factor(Industry, unique(Industry)),
          Group = factor(Group, unique(Group))) %>%
-  lmer(RP ~ (. - date - Industry - Group) + ((. - date - Industry - Group)|Industry), data = .) %>%
+  lmer(RP ~ `Mkt-RF` + (`Mkt-RF`|Industry) + (`Mkt-RF`|Group), data = .) %>%
   coefficients()
+
+# as.formula
 
 # Extract the base level coefficient
 Original <- temp1[1:(length(FF5)-2)] %>%
@@ -1671,7 +1673,7 @@ RGM_PRS %>%
 
 ## S4-3 Fama Macbeth Second Step Regression
 
-Fama-Macbeth second regression estimated lambda represents the expected factor risk premium. In this section, we will apply the second step regression to estimate the factor risk premium.
+Fama-Macbeth second regression estimated lambda represents the expected factor risk premium. In this section, we will apply the second step regression on the 48 Portfolios (49 portfolios excluding Other) to estimate the factor risk premium.
 
 ```{r FM, cache = TRUE}
 # Fama Macbeth method
@@ -1681,6 +1683,8 @@ Second_Path <- Port_FF5 %>%
   subset(select = c(date, Industry, RP)) %>%
   inner_join(Port_FF5_Betas) %>%
   subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -1752,6 +1756,8 @@ Second_Path <- Port_PRS %>%
   subset(select = c(date, Industry, RP)) %>%
   inner_join(Port_PRS_Betas) %>%
   subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -1850,11 +1856,15 @@ sig_e <- FM_FF5_Resid %>%
 
 # SST inverse
 INV_sig_Intra <- Port_FF5_Betas %>%
+  # get rid of Other category
+  filter(Industry != "Other") %>%
   select(!c(Alpha,Industry)) %>%
   group_by(date) %>%
   summarise_all(list(~1/sd(.)/sqrt(length(.)-1)))
 
 sig_Intra <- Port_FF5_Betas %>%
+  # get rid of Other category
+  filter(Industry != "Other") %>%
   select(!c(Alpha,Industry)) %>%
   group_by(date) %>%
   summarise_all(list(~sd(.)*sqrt(length(.)-1)))
@@ -2531,6 +2541,8 @@ Second_Path <- Port_FF5_STL_s7_norobust %>%
   rename(RP = y) %>%
   inner_join(Port_FF5_Betas) %>%
   subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2602,6 +2614,8 @@ Second_Path <- Port_PRS_STL_s7_norobust %>%
   rename(RP = y) %>%
   inner_join(Port_PRS_Betas) %>%
   subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2666,6 +2680,8 @@ Second_Path <- Port_FF5_STL_s7_robust %>%
   rename(RP = y) %>%
   inner_join(Port_FF5_Betas) %>%
   subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2693,6 +2709,8 @@ Second_Path <- Port_FF5_STL_s15_norobust %>%
   rename(RP = y) %>%
   inner_join(Port_FF5_Betas) %>%
   subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2720,6 +2738,8 @@ Second_Path <- Port_FF5_STL_s15_robust %>%
   rename(RP = y) %>%
   inner_join(Port_FF5_Betas) %>%
   subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2747,6 +2767,8 @@ Second_Path <- Port_FF5_STL_s40_norobust %>%
   rename(RP = y) %>%
   inner_join(Port_FF5_Betas) %>%
   subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2774,6 +2796,8 @@ Second_Path <- Port_FF5_STL_s40_robust %>%
   rename(RP = y) %>%
   inner_join(Port_FF5_Betas) %>%
   subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2802,6 +2826,8 @@ Second_Path <- Port_PRS_STL_s7_robust %>%
   rename(RP = y) %>%
   inner_join(Port_PRS_Betas) %>%
   subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2829,6 +2855,8 @@ Second_Path <- Port_PRS_STL_s15_norobust %>%
   rename(RP = y) %>%
   inner_join(Port_PRS_Betas) %>%
   subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2856,6 +2884,8 @@ Second_Path <- Port_PRS_STL_s15_robust %>%
   rename(RP = y) %>%
   inner_join(Port_PRS_Betas) %>%
   subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2883,6 +2913,8 @@ Second_Path <- Port_PRS_STL_s40_norobust %>%
   rename(RP = y) %>%
   inner_join(Port_PRS_Betas) %>%
   subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
   ungroup()
 
 # Group the data and do the second pass regression
@@ -2910,6 +2942,8 @@ Second_Path <- Port_PRS_STL_s40_robust %>%
   rename(RP = y) %>%
   inner_join(Port_PRS_Betas) %>%
   subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
   ungroup()
 
 # Group the data and do the second pass regression

@@ -17271,7 +17271,8 @@ UNEXPI
 
 Fama-Macbeth second regression estimated lambda represents the expected
 factor risk premium. In this section, we will apply the second step
-regression to estimate the factor risk premium.
+regression on the 48 Portfolios (49 portfolios excluding Other) to
+estimate the factor risk premium.
 
 ![](ECC_files/figure-gfm/FM-1.png)<!-- -->![](ECC_files/figure-gfm/FM-2.png)<!-- -->
 
@@ -17462,31 +17463,31 @@ sig\_e
 
 <td style="text-align:center;">
 
-0.9197951
+0.9221086
 
 </td>
 
 <td style="text-align:center;">
 
-0.9239368
+0.9256134
 
 </td>
 
 <td style="text-align:center;">
 
-0.0048730
+0.0049834
 
 </td>
 
 <td style="text-align:center;">
 
-0.1822824
+0.2193179
 
 </td>
 
 <td style="text-align:center;">
 
-2.203515
+2.264870
 
 </td>
 
@@ -17502,31 +17503,31 @@ sig\_Inter
 
 <td style="text-align:center;">
 
-0.0547342
+0.0561807
 
 </td>
 
 <td style="text-align:center;">
 
-0.0518618
+0.0529461
 
 </td>
 
 <td style="text-align:center;">
 
-0.0005520
+0.0005990
 
 </td>
 
 <td style="text-align:center;">
 
-0.5918467
+0.5741787
 
 </td>
 
 <td style="text-align:center;">
 
-3.228067
+3.123341
 
 </td>
 
@@ -17542,31 +17543,31 @@ sig\_Intra
 
 <td style="text-align:center;">
 
-\-0.1349391
+\-0.1340721
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.1322494
+\-0.1320920
 
 </td>
 
 <td style="text-align:center;">
 
-0.0048024
+0.0048858
 
 </td>
 
 <td style="text-align:center;">
 
-0.1920204
+0.2027593
 
 </td>
 
 <td style="text-align:center;">
 
-2.244849
+2.272689
 
 </td>
 
@@ -17588,31 +17589,31 @@ sig\_e
 
 <td style="text-align:center;">
 
-0.7938181
+0.7964532
 
 </td>
 
 <td style="text-align:center;">
 
-0.7955540
+0.7985918
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009902
+0.0010026
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.1072860
+\-0.1861730
 
 </td>
 
 <td style="text-align:center;">
 
-3.282732
+3.337908
 
 </td>
 
@@ -17628,31 +17629,31 @@ sig\_Inter
 
 <td style="text-align:center;">
 
-0.0420830
+0.0427958
 
 </td>
 
 <td style="text-align:center;">
 
-0.0391009
+0.0405980
 
 </td>
 
 <td style="text-align:center;">
 
-0.0004051
+0.0003811
 
 </td>
 
 <td style="text-align:center;">
 
-1.0027584
+0.8480575
 
 </td>
 
 <td style="text-align:center;">
 
-3.799921
+3.599156
 
 </td>
 
@@ -17668,31 +17669,31 @@ sig\_Intra
 
 <td style="text-align:center;">
 
-\-0.2482649
+\-0.2463426
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.2447258
+\-0.2436992
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007381
+0.0007515
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.4879583
+\-0.5317432
 
 </td>
 
 <td style="text-align:center;">
 
-2.873762
+2.871307
 
 </td>
 
@@ -17714,31 +17715,31 @@ sig\_e
 
 <td style="text-align:center;">
 
-0.7863110
+0.7886762
 
 </td>
 
 <td style="text-align:center;">
 
-0.7815925
+0.7848998
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009377
+0.0010001
 
 </td>
 
 <td style="text-align:center;">
 
-0.5832375
+0.7153644
 
 </td>
 
 <td style="text-align:center;">
 
-3.632477
+4.130830
 
 </td>
 
@@ -17754,31 +17755,31 @@ sig\_Inter
 
 <td style="text-align:center;">
 
-0.0720098
+0.0734585
 
 </td>
 
 <td style="text-align:center;">
 
-0.0690313
+0.0694639
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008303
+0.0009088
 
 </td>
 
 <td style="text-align:center;">
 
-1.1057488
+1.1271841
 
 </td>
 
 <td style="text-align:center;">
 
-5.330316
+5.060129
 
 </td>
 
@@ -17794,31 +17795,31 @@ sig\_Intra
 
 <td style="text-align:center;">
 
-\-0.2856988
+\-0.2847824
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.2869396
+\-0.2855748
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010530
+0.0010597
 
 </td>
 
 <td style="text-align:center;">
 
-0.0336732
+0.0114950
 
 </td>
 
 <td style="text-align:center;">
 
-3.189743
+3.110442
 
 </td>
 
@@ -17840,31 +17841,31 @@ sig\_e
 
 <td style="text-align:center;">
 
-0.7534711
+0.7548789
 
 </td>
 
 <td style="text-align:center;">
 
-0.7584274
+0.7598159
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010153
+0.0010056
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.8269255
+\-0.8518760
 
 </td>
 
 <td style="text-align:center;">
 
-3.912337
+3.940430
 
 </td>
 
@@ -17880,31 +17881,31 @@ sig\_Inter
 
 <td style="text-align:center;">
 
-0.0610090
+0.0614512
 
 </td>
 
 <td style="text-align:center;">
 
-0.0591732
+0.0597978
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007948
+0.0007965
 
 </td>
 
 <td style="text-align:center;">
 
-0.5879833
+0.5647991
 
 </td>
 
 <td style="text-align:center;">
 
-3.094051
+3.003809
 
 </td>
 
@@ -17920,31 +17921,31 @@ sig\_Intra
 
 <td style="text-align:center;">
 
-\-0.3075379
+\-0.3065724
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.3045390
+\-0.3035063
 
 </td>
 
 <td style="text-align:center;">
 
-0.0021026
+0.0021418
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.1064799
+\-0.1223581
 
 </td>
 
 <td style="text-align:center;">
 
-2.212334
+2.158247
 
 </td>
 
@@ -17966,31 +17967,31 @@ sig\_e
 
 <td style="text-align:center;">
 
-0.7474306
+0.7492459
 
 </td>
 
 <td style="text-align:center;">
 
-0.7421545
+0.7438179
 
 </td>
 
 <td style="text-align:center;">
 
-0.0022749
+0.0022856
 
 </td>
 
 <td style="text-align:center;">
 
-0.9534038
+0.9090989
 
 </td>
 
 <td style="text-align:center;">
 
-4.229216
+4.112772
 
 </td>
 
@@ -18006,31 +18007,31 @@ sig\_Inter
 
 <td style="text-align:center;">
 
-0.0671794
+0.0684693
 
 </td>
 
 <td style="text-align:center;">
 
-0.0672564
+0.0679070
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007139
+0.0007031
 
 </td>
 
 <td style="text-align:center;">
 
-0.8082294
+0.8803875
 
 </td>
 
 <td style="text-align:center;">
 
-5.336149
+5.368109
 
 </td>
 
@@ -18046,31 +18047,31 @@ sig\_Intra
 
 <td style="text-align:center;">
 
-\-0.3197487
+\-0.3192234
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.3263410
+\-0.3259422
 
 </td>
 
 <td style="text-align:center;">
 
-0.0019805
+0.0019675
 
 </td>
 
 <td style="text-align:center;">
 
-0.6957077
+0.6997693
 
 </td>
 
 <td style="text-align:center;">
 
-3.577028
+3.561894
 
 </td>
 
@@ -18092,31 +18093,31 @@ sig\_e
 
 <td style="text-align:center;">
 
-0.8001652
+0.8022726
 
 </td>
 
 <td style="text-align:center;">
 
-0.7832446
+0.7859712
 
 </td>
 
 <td style="text-align:center;">
 
-0.0059177
+0.0059814
 
 </td>
 
 <td style="text-align:center;">
 
-1.2304489
+1.2340299
 
 </td>
 
 <td style="text-align:center;">
 
-4.479720
+4.531087
 
 </td>
 
@@ -18132,31 +18133,31 @@ sig\_Inter
 
 <td style="text-align:center;">
 
-0.0594031
+0.0604711
 
 </td>
 
 <td style="text-align:center;">
 
-0.0573691
+0.0580591
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007671
+0.0007896
 
 </td>
 
 <td style="text-align:center;">
 
-0.8566761
+0.8862114
 
 </td>
 
 <td style="text-align:center;">
 
-4.451245
+4.503449
 
 </td>
 
@@ -18172,31 +18173,31 @@ sig\_Intra
 
 <td style="text-align:center;">
 
-\-0.2592379
+\-0.2581986
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.2713270
+\-0.2704882
 
 </td>
 
 <td style="text-align:center;">
 
-0.0065869
+0.0066235
 
 </td>
 
 <td style="text-align:center;">
 
-1.0257907
+1.0211699
 
 </td>
 
 <td style="text-align:center;">
 
-4.054408
+4.065210
 
 </td>
 

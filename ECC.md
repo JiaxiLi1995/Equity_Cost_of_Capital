@@ -83,6 +83,7 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
       - [S5-8 Levi-Welch Beta???](#s5-8-levi-welch-beta)
       - [S5-9 Filtering Method in Other Second-pass
         Regression???](#s5-9-filtering-method-in-other-second-pass-regression)
+  - [S6 Recreated Figures for ACL](#s6-recreated-figures-for-acl)
 
 # S1 Introduction
 
@@ -22331,19 +22332,19 @@ Mkt-RF
 
 <td style="text-align:center;">
 
-0.0240154
+0.0242209
 
 </td>
 
 <td style="text-align:center;">
 
-0.0066808
+0.0067356
 
 </td>
 
 <td style="text-align:center;">
 
-0.2781904
+0.2780926
 
 </td>
 
@@ -22359,19 +22360,19 @@ SMB
 
 <td style="text-align:center;">
 
-0.0134733
+0.0136397
 
 </td>
 
 <td style="text-align:center;">
 
-0.0037066
+0.0037532
 
 </td>
 
 <td style="text-align:center;">
 
-0.2751085
+0.2751689
 
 </td>
 
@@ -22387,19 +22388,19 @@ HML
 
 <td style="text-align:center;">
 
-0.0126575
+0.0128173
 
 </td>
 
 <td style="text-align:center;">
 
-0.0035400
+0.0035860
 
 </td>
 
 <td style="text-align:center;">
 
-0.2796793
+0.2797759
 
 </td>
 
@@ -22415,19 +22416,19 @@ RMW
 
 <td style="text-align:center;">
 
-0.0105174
+0.0105978
 
 </td>
 
 <td style="text-align:center;">
 
-0.0029243
+0.0029457
 
 </td>
 
 <td style="text-align:center;">
 
-0.2780437
+0.2779490
 
 </td>
 
@@ -22443,19 +22444,19 @@ CMA
 
 <td style="text-align:center;">
 
-0.0101584
+0.0102657
 
 </td>
 
 <td style="text-align:center;">
 
-0.0028341
+0.0028642
 
 </td>
 
 <td style="text-align:center;">
 
-0.2789863
+0.2790084
 
 </td>
 
@@ -22550,7 +22551,7 @@ Mkt-RF
 
 <td style="text-align:center;">
 
-0.3058557
+0.3076751
 
 </td>
 
@@ -22562,7 +22563,7 @@ Mkt-RF
 
 <td style="text-align:center;">
 
-0.3374587
+0.3391793
 
 </td>
 
@@ -22578,7 +22579,7 @@ SMB
 
 <td style="text-align:center;">
 
-0.3216449
+0.3241830
 
 </td>
 
@@ -22590,7 +22591,7 @@ RMW
 
 <td style="text-align:center;">
 
-0.3601626
+0.3566414
 
 </td>
 
@@ -22606,7 +22607,7 @@ HML
 
 <td style="text-align:center;">
 
-0.4158492
+0.4178838
 
 </td>
 
@@ -22618,7 +22619,7 @@ dDP
 
 <td style="text-align:center;">
 
-0.3611585
+0.3544000
 
 </td>
 
@@ -22634,7 +22635,7 @@ RMW
 
 <td style="text-align:center;">
 
-0.3228094
+0.3184673
 
 </td>
 
@@ -22646,7 +22647,7 @@ dTS
 
 <td style="text-align:center;">
 
-0.3914243
+0.3891172
 
 </td>
 
@@ -22662,7 +22663,7 @@ CMA
 
 <td style="text-align:center;">
 
-0.3644662
+0.3677557
 
 </td>
 
@@ -22674,7 +22675,7 @@ UNEXPI
 
 <td style="text-align:center;">
 
-0.3885955
+0.3892405
 
 </td>
 
@@ -22749,7 +22750,7 @@ Mkt-RF
 
 <td style="text-align:center;">
 
-0.2911392
+0.2947559
 
 </td>
 
@@ -22793,7 +22794,7 @@ HML
 
 <td style="text-align:center;">
 
-0.2712477
+0.2676311
 
 </td>
 
@@ -22815,7 +22816,7 @@ RMW
 
 <td style="text-align:center;">
 
-0.2820976
+0.2839060
 
 </td>
 
@@ -22837,7 +22838,7 @@ CMA
 
 <td style="text-align:center;">
 
-0.2658228
+0.2567812
 
 </td>
 
@@ -22865,7 +22866,7 @@ Mkt-RF
 
 <td style="text-align:center;">
 
-0.2820976
+0.2766727
 
 </td>
 
@@ -22887,7 +22888,7 @@ RMW
 
 <td style="text-align:center;">
 
-0.2875226
+0.2857143
 
 </td>
 
@@ -22909,7 +22910,7 @@ dDP
 
 <td style="text-align:center;">
 
-0.3001808
+0.3092224
 
 </td>
 
@@ -22931,7 +22932,7 @@ dTS
 
 <td style="text-align:center;">
 
-0.2585895
+0.2603978
 
 </td>
 
@@ -22953,7 +22954,7 @@ UNEXPI
 
 <td style="text-align:center;">
 
-0.2820976
+0.2694394
 
 </td>
 
@@ -23066,31 +23067,31 @@ FM
 
 <td style="text-align:center;">
 
-0.0055707
+0.0055044
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013966
+0.0014113
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.2170809
+\-0.2326548
 
 </td>
 
 <td style="text-align:center;">
 
-3.768015
+3.751709
 
 </td>
 
 <td style="text-align:center;">
 
-3.505384
+3.445597
 
 </td>
 
@@ -23106,31 +23107,31 @@ FM\_STL
 
 <td style="text-align:center;">
 
-0.0055743
+0.0054579
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001028
+0.0001034
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.2492236
+\-0.2494886
 
 </td>
 
 <td style="text-align:center;">
 
-5.278078
+5.252341
 
 </td>
 
 <td style="text-align:center;">
 
-12.926188
+12.619376
 
 </td>
 
@@ -23152,31 +23153,31 @@ FM
 
 <td style="text-align:center;">
 
-0.0036899
+0.0037148
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014401
+0.0014838
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.1204099
+\-0.1679268
 
 </td>
 
 <td style="text-align:center;">
 
-3.625933
+3.777621
 
 </td>
 
 <td style="text-align:center;">
 
-2.286575
+2.267849
 
 </td>
 
@@ -23192,31 +23193,31 @@ FM\_STL
 
 <td style="text-align:center;">
 
-0.0040573
+0.0040388
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001250
+0.0001288
 
 </td>
 
 <td style="text-align:center;">
 
-0.1192528
+0.0995833
 
 </td>
 
 <td style="text-align:center;">
 
-2.876564
+2.938248
 
 </td>
 
 <td style="text-align:center;">
 
-8.534376
+8.367973
 
 </td>
 
@@ -23302,31 +23303,31 @@ mean
 
 <td style="text-align:center;">
 
-0.0009206
+0.0010818
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008839
+0.0007842
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0001184
+0.0000102
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000019
+\-0.0000596
 
 </td>
 
 <td style="text-align:center;">
 
-0.0016968
+0.0017493
 
 </td>
 
@@ -23342,31 +23343,31 @@ variance
 
 <td style="text-align:center;">
 
-0.0035331
+0.0035660
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011442
+0.0011365
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012661
+0.0012796
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007741
+0.0007818
 
 </td>
 
 <td style="text-align:center;">
 
-0.0006425
+0.0006567
 
 </td>
 
@@ -23382,31 +23383,31 @@ skewness
 
 <td style="text-align:center;">
 
-0.0613148
+0.0533478
 
 </td>
 
 <td style="text-align:center;">
 
-0.0164253
+0.0355414
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.3765078
+\-0.3764520
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.1904382
+\-0.2164438
 
 </td>
 
 <td style="text-align:center;">
 
-0.0781917
+0.0652459
 
 </td>
 
@@ -23422,31 +23423,31 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.7140032
+4.7913659
 
 </td>
 
 <td style="text-align:center;">
 
-5.3531912
+5.3194745
 
 </td>
 
 <td style="text-align:center;">
 
-5.3248040
+5.2950188
 
 </td>
 
 <td style="text-align:center;">
 
-6.6515963
+6.4897245
 
 </td>
 
 <td style="text-align:center;">
 
-4.8082920
+4.7523338
 
 </td>
 
@@ -23468,31 +23469,31 @@ mean
 
 <td style="text-align:center;">
 
-0.0009566
+0.0011720
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009989
+0.0008964
 
 </td>
 
 <td style="text-align:center;">
 
-0.0004335
+0.0005285
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000172
+\-0.0000343
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013575
+0.0014165
 
 </td>
 
@@ -23508,31 +23509,31 @@ variance
 
 <td style="text-align:center;">
 
-0.0001520
+0.0001566
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000776
+0.0000780
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001157
+0.0001184
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000382
+0.0000374
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000610
+0.0000633
 
 </td>
 
@@ -23548,31 +23549,31 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.1550185
+\-0.1523726
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.5120027
+\-0.4725263
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.6922562
+\-0.6367399
 
 </td>
 
 <td style="text-align:center;">
 
-0.1981961
+0.1081381
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.3779798
+\-0.3848396
 
 </td>
 
@@ -23588,31 +23589,31 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.7953765
+3.8671042
 
 </td>
 
 <td style="text-align:center;">
 
-3.7026879
+3.6902413
 
 </td>
 
 <td style="text-align:center;">
 
-5.2279827
+5.0328552
 
 </td>
 
 <td style="text-align:center;">
 
-4.7247995
+4.5186998
 
 </td>
 
 <td style="text-align:center;">
 
-4.0414197
+3.9429493
 
 </td>
 
@@ -23634,31 +23635,31 @@ mean
 
 <td style="text-align:center;">
 
-0.0019549
+0.0020337
 
 </td>
 
 <td style="text-align:center;">
 
-0.0019510
+0.0018278
 
 </td>
 
 <td style="text-align:center;">
 
-0.0017124
+0.0018790
 
 </td>
 
 <td style="text-align:center;">
 
-0.0005276
+0.0005151
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013168
+0.0013900
 
 </td>
 
@@ -23674,31 +23675,31 @@ variance
 
 <td style="text-align:center;">
 
-0.0002194
+0.0002141
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001205
+0.0001214
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001202
+0.0001219
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000567
+0.0000569
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000778
+0.0000789
 
 </td>
 
@@ -23714,31 +23715,31 @@ skewness
 
 <td style="text-align:center;">
 
-0.9560655
+0.8574851
 
 </td>
 
 <td style="text-align:center;">
 
-0.1356300
+0.1225477
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0032643
+0.0098612
 
 </td>
 
 <td style="text-align:center;">
 
-1.4479085
+1.4172714
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.2019692
+\-0.2073834
 
 </td>
 
@@ -23754,31 +23755,31 @@ kurtosis
 
 <td style="text-align:center;">
 
-6.8650921
+6.6636022
 
 </td>
 
 <td style="text-align:center;">
 
-3.7082069
+3.7024126
 
 </td>
 
 <td style="text-align:center;">
 
-3.9002004
+3.8962470
 
 </td>
 
 <td style="text-align:center;">
 
-6.2655494
+6.0934547
 
 </td>
 
 <td style="text-align:center;">
 
-3.7179920
+3.6632893
 
 </td>
 
@@ -23800,31 +23801,31 @@ mean
 
 <td style="text-align:center;">
 
-0.0009559
+0.0011674
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010388
+0.0009365
 
 </td>
 
 <td style="text-align:center;">
 
-0.0004248
+0.0005217
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000193
+\-0.0000329
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013788
+0.0014384
 
 </td>
 
@@ -23840,31 +23841,31 @@ variance
 
 <td style="text-align:center;">
 
-0.0001671
+0.0001720
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000815
+0.0000820
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001250
+0.0001278
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000419
+0.0000411
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000651
+0.0000676
 
 </td>
 
@@ -23880,31 +23881,31 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.1165010
+\-0.1144051
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.5211631
+\-0.4853001
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.7019668
+\-0.6464122
 
 </td>
 
 <td style="text-align:center;">
 
-0.1619697
+0.0788869
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.3576490
+\-0.3672503
 
 </td>
 
@@ -23920,31 +23921,31 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.8691101
+3.9579809
 
 </td>
 
 <td style="text-align:center;">
 
-3.7525148
+3.7468025
 
 </td>
 
 <td style="text-align:center;">
 
-5.3854968
+5.1805032
 
 </td>
 
 <td style="text-align:center;">
 
-4.6711588
+4.4705007
 
 </td>
 
 <td style="text-align:center;">
 
-4.1704342
+4.0648972
 
 </td>
 
@@ -23966,31 +23967,31 @@ mean
 
 <td style="text-align:center;">
 
-0.0010667
+0.0011335
 
 </td>
 
 <td style="text-align:center;">
 
-0.0006087
+0.0005364
 
 </td>
 
 <td style="text-align:center;">
 
-0.0029786
+0.0030949
 
 </td>
 
 <td style="text-align:center;">
 
-0.0003642
+0.0003438
 
 </td>
 
 <td style="text-align:center;">
 
-0.0020707
+0.0021351
 
 </td>
 
@@ -24006,31 +24007,31 @@ variance
 
 <td style="text-align:center;">
 
-0.0002392
+0.0002354
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001316
+0.0001327
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001367
+0.0001389
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000678
+0.0000670
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000913
+0.0000925
 
 </td>
 
@@ -24046,31 +24047,31 @@ skewness
 
 <td style="text-align:center;">
 
-0.4970782
+0.3868185
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.1411555
+\-0.1294217
 
 </td>
 
 <td style="text-align:center;">
 
-0.2945888
+0.3010856
 
 </td>
 
 <td style="text-align:center;">
 
-1.5817513
+1.5258402
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.2289187
+\-0.2398522
 
 </td>
 
@@ -24086,31 +24087,31 @@ kurtosis
 
 <td style="text-align:center;">
 
-5.8182672
+5.5387742
 
 </td>
 
 <td style="text-align:center;">
 
-4.4954640
+4.4109514
 
 </td>
 
 <td style="text-align:center;">
 
-4.0525142
+4.0258277
 
 </td>
 
 <td style="text-align:center;">
 
-6.6975906
+6.4144750
 
 </td>
 
 <td style="text-align:center;">
 
-3.5949859
+3.5596498
 
 </td>
 
@@ -24132,31 +24133,31 @@ mean
 
 <td style="text-align:center;">
 
-0.0009346
+0.0011389
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010411
+0.0009364
 
 </td>
 
 <td style="text-align:center;">
 
-0.0004122
+0.0005129
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000229
+\-0.0000302
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014039
+0.0014645
 
 </td>
 
@@ -24172,31 +24173,31 @@ variance
 
 <td style="text-align:center;">
 
-0.0001905
+0.0001957
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000883
+0.0000888
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001380
+0.0001408
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000475
+0.0000466
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000708
+0.0000734
 
 </td>
 
@@ -24212,31 +24213,31 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.1040944
+\-0.0974769
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.5276172
+\-0.4980775
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.7021418
+\-0.6357321
 
 </td>
 
 <td style="text-align:center;">
 
-0.0748384
+0.0046634
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.3171385
+\-0.3320899
 
 </td>
 
@@ -24252,31 +24253,31 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.9256029
+4.0518101
 
 </td>
 
 <td style="text-align:center;">
 
-3.7886325
+3.7992766
 
 </td>
 
 <td style="text-align:center;">
 
-5.5700599
+5.2908757
 
 </td>
 
 <td style="text-align:center;">
 
-4.6621086
+4.4766374
 
 </td>
 
 <td style="text-align:center;">
 
-4.4242504
+4.3037909
 
 </td>
 
@@ -24298,31 +24299,31 @@ mean
 
 <td style="text-align:center;">
 
-0.0001875
+0.0002368
 
 </td>
 
 <td style="text-align:center;">
 
-0.0003927
+0.0002247
 
 </td>
 
 <td style="text-align:center;">
 
-0.0029093
+0.0030628
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013233
+0.0013073
 
 </td>
 
 <td style="text-align:center;">
 
-0.0023770
+0.0024740
 
 </td>
 
@@ -24338,31 +24339,31 @@ variance
 
 <td style="text-align:center;">
 
-0.0003007
+0.0002963
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001405
+0.0001429
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001607
+0.0001631
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000938
+0.0000927
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001034
+0.0001050
 
 </td>
 
@@ -24378,31 +24379,31 @@ skewness
 
 <td style="text-align:center;">
 
-0.2388522
+0.1637167
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.1610710
+\-0.1650968
 
 </td>
 
 <td style="text-align:center;">
 
-0.4864388
+0.4722141
 
 </td>
 
 <td style="text-align:center;">
 
-1.9358443
+1.8707569
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.1106050
+\-0.1212960
 
 </td>
 
@@ -24418,31 +24419,31 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.9478722
+4.6983221
 
 </td>
 
 <td style="text-align:center;">
 
-4.1071754
+4.0484332
 
 </td>
 
 <td style="text-align:center;">
 
-4.9416716
+4.8745436
 
 </td>
 
 <td style="text-align:center;">
 
-8.0162557
+7.6667926
 
 </td>
 
 <td style="text-align:center;">
 
-4.0449030
+3.9906745
 
 </td>
 
@@ -24860,31 +24861,31 @@ mean
 
 <td style="text-align:center;">
 
-0.0030404
+0.0031291
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0003644
+\-0.0003956
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0000901
+\-0.0001026
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0002660
+\-0.0002690
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001747
+0.0001386
 
 </td>
 
@@ -24900,13 +24901,13 @@ variance
 
 <td style="text-align:center;">
 
-0.0035777
+0.0036451
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007241
+0.0007332
 
 </td>
 
@@ -24918,13 +24919,13 @@ variance
 
 <td style="text-align:center;">
 
-0.0000140
+0.0000144
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000281
+0.0000284
 
 </td>
 
@@ -24940,31 +24941,31 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.0273199
+\-0.0216479
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.3864678
+\-0.4247837
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0642360
+\-0.0610680
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.2376992
+\-0.2540825
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.1347035
+\-0.1645190
 
 </td>
 
@@ -24980,31 +24981,31 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.5708798
+4.6669847
 
 </td>
 
 <td style="text-align:center;">
 
-8.2197855
+8.2207426
 
 </td>
 
 <td style="text-align:center;">
 
-4.0558342
+4.0613918
 
 </td>
 
 <td style="text-align:center;">
 
-5.1619650
+5.5340857
 
 </td>
 
 <td style="text-align:center;">
 
-4.1129898
+4.1609630
 
 </td>
 
@@ -25026,31 +25027,31 @@ mean
 
 <td style="text-align:center;">
 
-0.0026861
+0.0028228
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000776
+0.0000659
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0000664
+\-0.0000786
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0001300
+\-0.0001321
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001296
+0.0000898
 
 </td>
 
@@ -25066,13 +25067,13 @@ variance
 
 <td style="text-align:center;">
 
-0.0001805
+0.0001892
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000419
+0.0000414
 
 </td>
 
@@ -25084,7 +25085,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000012
+0.0000013
 
 </td>
 
@@ -25106,31 +25107,31 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.2365869
+\-0.2055986
 
 </td>
 
 <td style="text-align:center;">
 
-0.6982985
+0.6881088
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.5648704
+\-0.5746100
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.2633246
+\-0.2243895
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.2289524
+\-0.2065819
 
 </td>
 
@@ -25146,31 +25147,31 @@ kurtosis
 
 <td style="text-align:center;">
 
-2.7136550
+2.7048387
 
 </td>
 
 <td style="text-align:center;">
 
-5.4140502
+5.4347382
 
 </td>
 
 <td style="text-align:center;">
 
-3.7941270
+3.7325505
 
 </td>
 
 <td style="text-align:center;">
 
-3.6190017
+3.6548771
 
 </td>
 
 <td style="text-align:center;">
 
-4.1463703
+3.9479532
 
 </td>
 
@@ -25192,31 +25193,31 @@ mean
 
 <td style="text-align:center;">
 
-0.0040933
+0.0041096
 
 </td>
 
 <td style="text-align:center;">
 
-0.0005148
+0.0005276
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0000272
+\-0.0000443
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000271
+0.0000382
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001136
+0.0001024
 
 </td>
 
@@ -25232,13 +25233,13 @@ variance
 
 <td style="text-align:center;">
 
-0.0003168
+0.0003127
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000771
+0.0000768
 
 </td>
 
@@ -25250,7 +25251,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000020
+0.0000021
 
 </td>
 
@@ -25272,31 +25273,31 @@ skewness
 
 <td style="text-align:center;">
 
-1.1864085
+1.1446756
 
 </td>
 
 <td style="text-align:center;">
 
-1.3208387
+1.3360941
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0556996
+\-0.0873533
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.2569690
+\-0.1495967
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.1674264
+\-0.1464002
 
 </td>
 
@@ -25312,31 +25313,31 @@ kurtosis
 
 <td style="text-align:center;">
 
-5.9317575
+5.9157116
 
 </td>
 
 <td style="text-align:center;">
 
-5.9467606
+5.9726645
 
 </td>
 
 <td style="text-align:center;">
 
-3.9837431
+3.9352891
 
 </td>
 
 <td style="text-align:center;">
 
-3.2185529
+3.2361821
 
 </td>
 
 <td style="text-align:center;">
 
-3.4344196
+3.4385836
 
 </td>
 
@@ -25358,31 +25359,31 @@ mean
 
 <td style="text-align:center;">
 
-0.0027072
+0.0028376
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000770
+0.0000643
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0000655
+\-0.0000779
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0001314
+\-0.0001332
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001317
+0.0000920
 
 </td>
 
@@ -25398,13 +25399,13 @@ variance
 
 <td style="text-align:center;">
 
-0.0001992
+0.0002083
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000462
+0.0000457
 
 </td>
 
@@ -25438,31 +25439,31 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.2085670
+\-0.1854673
 
 </td>
 
 <td style="text-align:center;">
 
-0.6842127
+0.6783948
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.5876918
+\-0.5957738
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.1975122
+\-0.1637725
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.2390837
+\-0.2146738
 
 </td>
 
@@ -25478,31 +25479,31 @@ kurtosis
 
 <td style="text-align:center;">
 
-2.7694297
+2.7493410
 
 </td>
 
 <td style="text-align:center;">
 
-5.4629924
+5.4852847
 
 </td>
 
 <td style="text-align:center;">
 
-3.8749536
+3.8185815
 
 </td>
 
 <td style="text-align:center;">
 
-3.4308913
+3.4885478
 
 </td>
 
 <td style="text-align:center;">
 
-4.3714310
+4.1531784
 
 </td>
 
@@ -25524,31 +25525,31 @@ mean
 
 <td style="text-align:center;">
 
-0.0023440
+0.0023113
 
 </td>
 
 <td style="text-align:center;">
 
-0.0004156
+0.0004840
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0000282
+\-0.0000391
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000208
+0.0000316
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001299
+0.0001112
 
 </td>
 
@@ -25564,13 +25565,13 @@ variance
 
 <td style="text-align:center;">
 
-0.0003423
+0.0003395
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000924
+0.0000914
 
 </td>
 
@@ -25582,7 +25583,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000016
+0.0000017
 
 </td>
 
@@ -25604,31 +25605,31 @@ skewness
 
 <td style="text-align:center;">
 
-0.6855439
+0.6174575
 
 </td>
 
 <td style="text-align:center;">
 
-1.7330418
+1.7334369
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.1023556
+\-0.0799205
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.4342521
+\-0.3431201
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.3922152
+\-0.3715099
 
 </td>
 
@@ -25644,31 +25645,31 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.2542720
+4.1222697
 
 </td>
 
 <td style="text-align:center;">
 
-7.4877396
+7.4632586
 
 </td>
 
 <td style="text-align:center;">
 
-4.8062028
+4.7323346
 
 </td>
 
 <td style="text-align:center;">
 
-3.8857504
+3.8630750
 
 </td>
 
 <td style="text-align:center;">
 
-3.3965484
+3.4043251
 
 </td>
 
@@ -25690,31 +25691,31 @@ mean
 
 <td style="text-align:center;">
 
-0.0026991
+0.0028196
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000660
+0.0000529
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0000650
+\-0.0000776
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0001375
+\-0.0001394
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001347
+0.0000952
 
 </td>
 
@@ -25730,13 +25731,13 @@ variance
 
 <td style="text-align:center;">
 
-0.0002284
+0.0002383
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000527
+0.0000521
 
 </td>
 
@@ -25748,7 +25749,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000014
+0.0000015
 
 </td>
 
@@ -25770,31 +25771,31 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.1510075
+\-0.1326063
 
 </td>
 
 <td style="text-align:center;">
 
-0.6507755
+0.6518633
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.6011059
+\-0.6099784
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.1771874
+\-0.1523493
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.2583973
+\-0.2296438
 
 </td>
 
@@ -25810,31 +25811,31 @@ kurtosis
 
 <td style="text-align:center;">
 
-2.8915768
+2.8711135
 
 </td>
 
 <td style="text-align:center;">
 
-5.5378452
+5.5645710
 
 </td>
 
 <td style="text-align:center;">
 
-3.9652704
+3.9238480
 
 </td>
 
 <td style="text-align:center;">
 
-3.4296390
+3.5148144
 
 </td>
 
 <td style="text-align:center;">
 
-4.5700563
+4.3264261
 
 </td>
 
@@ -25856,31 +25857,31 @@ mean
 
 <td style="text-align:center;">
 
-0.0016035
+0.0014976
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013089
+0.0013771
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.0000197
+\-0.0000314
 
 </td>
 
 <td style="text-align:center;">
 
-0.0000013
+0.0000038
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001102
+0.0000849
 
 </td>
 
@@ -25896,13 +25897,13 @@ variance
 
 <td style="text-align:center;">
 
-0.0004042
+0.0004017
 
 </td>
 
 <td style="text-align:center;">
 
-0.0001089
+0.0001082
 
 </td>
 
@@ -25936,31 +25937,31 @@ skewness
 
 <td style="text-align:center;">
 
-0.3177321
+0.2425264
 
 </td>
 
 <td style="text-align:center;">
 
-2.0133797
+2.0198840
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.1706345
+\-0.1387004
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.4332321
+\-0.3529148
 
 </td>
 
 <td style="text-align:center;">
 
-\-0.3567612
+\-0.3131361
 
 </td>
 
@@ -25976,31 +25977,31 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.2242287
+4.0270802
 
 </td>
 
 <td style="text-align:center;">
 
-8.4693602
+8.4414977
 
 </td>
 
 <td style="text-align:center;">
 
-4.5946688
+4.5680272
 
 </td>
 
 <td style="text-align:center;">
 
-4.4758122
+4.3211824
 
 </td>
 
 <td style="text-align:center;">
 
-3.2996522
+3.2924629
 
 </td>
 
@@ -26464,61 +26465,61 @@ s7 norobust
 
 <td style="text-align:center;">
 
-23.24452
+22.77293
 
 </td>
 
 <td style="text-align:center;">
 
-14.751162
+14.570228
 
 </td>
 
 <td style="text-align:center;">
 
-10.944878
+10.809547
 
 </td>
 
 <td style="text-align:center;">
 
-20.269394
+20.893160
 
 </td>
 
 <td style="text-align:center;">
 
-10.525081
+10.366786
 
 </td>
 
 <td style="text-align:center;">
 
-19.820988
+19.262116
 
 </td>
 
 <td style="text-align:center;">
 
-17.276849
+17.712099
 
 </td>
 
 <td style="text-align:center;">
 
-13.889648
+14.209542
 
 </td>
 
 <td style="text-align:center;">
 
-11.299347
+11.408222
 
 </td>
 
 <td style="text-align:center;">
 
-12.368107
+12.314342
 
 </td>
 
@@ -26534,61 +26535,61 @@ s7 robust
 
 <td style="text-align:center;">
 
-16.10298
+16.65304
 
 </td>
 
 <td style="text-align:center;">
 
-9.493088
+9.362006
 
 </td>
 
 <td style="text-align:center;">
 
-10.529444
+10.495870
 
 </td>
 
 <td style="text-align:center;">
 
-13.644140
+13.743164
 
 </td>
 
 <td style="text-align:center;">
 
-8.255695
+8.319420
 
 </td>
 
 <td style="text-align:center;">
 
-11.294073
+11.655951
 
 </td>
 
 <td style="text-align:center;">
 
-9.386693
+9.553198
 
 </td>
 
 <td style="text-align:center;">
 
-10.024348
+10.032194
 
 </td>
 
 <td style="text-align:center;">
 
-6.972330
+6.952451
 
 </td>
 
 <td style="text-align:center;">
 
-10.848982
+10.985869
 
 </td>
 
@@ -26604,61 +26605,61 @@ s15 norobust
 
 <td style="text-align:center;">
 
-21.14075
+20.73586
 
 </td>
 
 <td style="text-align:center;">
 
-14.032428
+13.857042
 
 </td>
 
 <td style="text-align:center;">
 
-10.129817
+10.009840
 
 </td>
 
 <td style="text-align:center;">
 
-18.476326
+19.041364
 
 </td>
 
 <td style="text-align:center;">
 
-9.862964
+9.718030
 
 </td>
 
 <td style="text-align:center;">
 
-17.962607
+17.496282
 
 </td>
 
 <td style="text-align:center;">
 
-15.675084
+16.062063
 
 </td>
 
 <td style="text-align:center;">
 
-12.893170
+13.190607
 
 </td>
 
 <td style="text-align:center;">
 
-10.747707
+10.851985
 
 </td>
 
 <td style="text-align:center;">
 
-11.274582
+11.260447
 
 </td>
 
@@ -26674,61 +26675,61 @@ s15 robust
 
 <td style="text-align:center;">
 
-14.77027
+15.15100
 
 </td>
 
 <td style="text-align:center;">
 
-8.696222
+8.566009
 
 </td>
 
 <td style="text-align:center;">
 
-9.259585
+9.215179
 
 </td>
 
 <td style="text-align:center;">
 
-11.419013
+11.660960
 
 </td>
 
 <td style="text-align:center;">
 
-7.036368
+7.097194
 
 </td>
 
 <td style="text-align:center;">
 
-10.453411
+10.736748
 
 </td>
 
 <td style="text-align:center;">
 
-7.837674
+8.022251
 
 </td>
 
 <td style="text-align:center;">
 
-7.551489
+7.656805
 
 </td>
 
 <td style="text-align:center;">
 
-8.521270
+8.584696
 
 </td>
 
 <td style="text-align:center;">
 
-8.479725
+8.643621
 
 </td>
 
@@ -26744,61 +26745,61 @@ s40 norobust
 
 <td style="text-align:center;">
 
-18.54984
+18.22296
 
 </td>
 
 <td style="text-align:center;">
 
-12.957591
+12.794837
 
 </td>
 
 <td style="text-align:center;">
 
-9.171545
+9.085651
 
 </td>
 
 <td style="text-align:center;">
 
-16.291649
+16.777416
 
 </td>
 
 <td style="text-align:center;">
 
-9.074355
+8.941123
 
 </td>
 
 <td style="text-align:center;">
 
-15.665184
+15.293874
 
 </td>
 
 <td style="text-align:center;">
 
-13.751996
+14.082761
 
 </td>
 
 <td style="text-align:center;">
 
-11.698110
+11.980914
 
 </td>
 
 <td style="text-align:center;">
 
-9.824846
+9.928302
 
 </td>
 
 <td style="text-align:center;">
 
-10.021593
+10.045692
 
 </td>
 
@@ -26814,61 +26815,61 @@ s40 robust
 
 <td style="text-align:center;">
 
-11.74827
+12.03610
 
 </td>
 
 <td style="text-align:center;">
 
-8.145603
+7.954576
 
 </td>
 
 <td style="text-align:center;">
 
-7.878220
+7.845629
 
 </td>
 
 <td style="text-align:center;">
 
-8.252691
+8.429535
 
 </td>
 
 <td style="text-align:center;">
 
-6.214028
+6.254196
 
 </td>
 
 <td style="text-align:center;">
 
-8.852425
+9.073484
 
 </td>
 
 <td style="text-align:center;">
 
-6.646871
+6.777092
 
 </td>
 
 <td style="text-align:center;">
 
-6.810901
+6.899325
 
 </td>
 
 <td style="text-align:center;">
 
-7.138181
+7.229851
 
 </td>
 
 <td style="text-align:center;">
 
-7.884968
+7.992611
 
 </td>
 
@@ -27307,295 +27308,295 @@ FS
 
 <td style="text-align:center;">
 
-0.2731571
+0.3569504
 
 </td>
 
 <td style="text-align:center;">
 
-0.3040972
+0.3520552
 
 </td>
 
 <td style="text-align:center;">
 
-0.2748374
+0.3231936
 
 </td>
 
 <td style="text-align:center;">
 
-0.3346482
+0.3514200
 
 </td>
 
 <td style="text-align:center;">
 
-0.2828263
+0.3211796
 
 </td>
 
 <td style="text-align:center;">
 
-0.2989162
+0.3336670
 
 </td>
 
 <td style="text-align:center;">
 
-0.3284608
+0.3818469
 
 </td>
 
 <td style="text-align:center;">
 
-0.2911029
+0.3458601
 
 </td>
 
 <td style="text-align:center;">
 
-0.2851915
+0.3613007
 
 </td>
 
 <td style="text-align:center;">
 
-0.2917426
+0.3840451
 
 </td>
 
 <td style="text-align:center;">
 
-0.2707331
+0.3411133
 
 </td>
 
 <td style="text-align:center;">
 
-0.3121570
+0.3445558
 
 </td>
 
 <td style="text-align:center;">
 
-0.2784612
+0.3445514
 
 </td>
 
 <td style="text-align:center;">
 
-0.2766135
+0.3310589
 
 </td>
 
 <td style="text-align:center;">
 
-0.3145189
+0.3153521
 
 </td>
 
 <td style="text-align:center;">
 
-0.2831406
+0.3406501
 
 </td>
 
 <td style="text-align:center;">
 
-0.3016792
+0.3433966
 
 </td>
 
 <td style="text-align:center;">
 
-0.3352061
+0.2841405
 
 </td>
 
 <td style="text-align:center;">
 
-0.3147627
+0.3825170
 
 </td>
 
 <td style="text-align:center;">
 
-0.2881136
+0.3327021
 
 </td>
 
 <td style="text-align:center;">
 
-0.3284747
+0.3300950
 
 </td>
 
 <td style="text-align:center;">
 
-0.2986409
+0.3627482
 
 </td>
 
 <td style="text-align:center;">
 
-0.3066383
+0.3658257
 
 </td>
 
 <td style="text-align:center;">
 
-0.3351108
+0.3599986
 
 </td>
 
 <td style="text-align:center;">
 
-0.3149059
+0.3450121
 
 </td>
 
 <td style="text-align:center;">
 
-0.2921494
+0.3580635
 
 </td>
 
 <td style="text-align:center;">
 
-0.3092182
+0.3238538
 
 </td>
 
 <td style="text-align:center;">
 
-0.2689717
+0.3477520
 
 </td>
 
 <td style="text-align:center;">
 
-0.3131285
+0.3429072
 
 </td>
 
 <td style="text-align:center;">
 
-0.3170629
+0.3322392
 
 </td>
 
 <td style="text-align:center;">
 
-0.2815998
+0.3442782
 
 </td>
 
 <td style="text-align:center;">
 
-0.3017937
+0.3791056
 
 </td>
 
 <td style="text-align:center;">
 
-0.2887340
+0.3679235
 
 </td>
 
 <td style="text-align:center;">
 
-0.2853677
+0.3096116
 
 </td>
 
 <td style="text-align:center;">
 
-0.3043975
+0.3538410
 
 </td>
 
 <td style="text-align:center;">
 
-0.2924982
+0.3680132
 
 </td>
 
 <td style="text-align:center;">
 
-0.3170491
+0.3465025
 
 </td>
 
 <td style="text-align:center;">
 
-0.3175839
+0.3615183
 
 </td>
 
 <td style="text-align:center;">
 
-0.2786202
+0.3627638
 
 </td>
 
 <td style="text-align:center;">
 
-0.3085931
+0.3769250
 
 </td>
 
 <td style="text-align:center;">
 
-0.2939152
+0.3571167
 
 </td>
 
 <td style="text-align:center;">
 
-0.2808100
+0.3653521
 
 </td>
 
 <td style="text-align:center;">
 
-0.3004393
+0.3580449
 
 </td>
 
 <td style="text-align:center;">
 
-0.2749622
+0.3444198
 
 </td>
 
 <td style="text-align:center;">
 
-0.3510999
+0.3403561
 
 </td>
 
 <td style="text-align:center;">
 
-0.2881941
+0.3148608
 
 </td>
 
 <td style="text-align:center;">
 
-0.2672899
+0.3500812
 
 </td>
 
 <td style="text-align:center;">
 
-0.2885976
+0.3668095
 
 </td>
 
 <td style="text-align:center;">
 
-0.3059426
+0.3518894
 
 </td>
 
@@ -27611,295 +27612,295 @@ FT
 
 <td style="text-align:center;">
 
-0.1764298
+0.2130622
 
 </td>
 
 <td style="text-align:center;">
 
-0.1571544
+0.2053104
 
 </td>
 
 <td style="text-align:center;">
 
-0.1512509
+0.1555359
 
 </td>
 
 <td style="text-align:center;">
 
-0.1497350
+0.1641863
 
 </td>
 
 <td style="text-align:center;">
 
-0.1611235
+0.1758017
 
 </td>
 
 <td style="text-align:center;">
 
-0.1685881
+0.2100429
 
 </td>
 
 <td style="text-align:center;">
 
-0.1911624
+0.2273491
 
 </td>
 
 <td style="text-align:center;">
 
-0.1595961
+0.1794120
 
 </td>
 
 <td style="text-align:center;">
 
-0.1881474
+0.1634198
 
 </td>
 
 <td style="text-align:center;">
 
-0.1956984
+0.2086547
 
 </td>
 
 <td style="text-align:center;">
 
-0.1679824
+0.2128702
 
 </td>
 
 <td style="text-align:center;">
 
-0.1641449
+0.1892481
 
 </td>
 
 <td style="text-align:center;">
 
-0.2074312
+0.1768706
 
 </td>
 
 <td style="text-align:center;">
 
-0.1616034
+0.1600635
 
 </td>
 
 <td style="text-align:center;">
 
-0.1620607
+0.1516250
 
 </td>
 
 <td style="text-align:center;">
 
-0.1730118
+0.1851433
 
 </td>
 
 <td style="text-align:center;">
 
-0.1766091
+0.2197845
 
 </td>
 
 <td style="text-align:center;">
 
-0.1711152
+0.1465373
 
 </td>
 
 <td style="text-align:center;">
 
-0.1612262
+0.2006438
 
 </td>
 
 <td style="text-align:center;">
 
-0.1629164
+0.2212017
 
 </td>
 
 <td style="text-align:center;">
 
-0.1384298
+0.2092656
 
 </td>
 
 <td style="text-align:center;">
 
-0.1733320
+0.2057660
 
 </td>
 
 <td style="text-align:center;">
 
-0.1466235
+0.1915429
 
 </td>
 
 <td style="text-align:center;">
 
-0.1670197
+0.1670408
 
 </td>
 
 <td style="text-align:center;">
 
-0.1696323
+0.1761352
 
 </td>
 
 <td style="text-align:center;">
 
-0.1736013
+0.1751466
 
 </td>
 
 <td style="text-align:center;">
 
-0.1404461
+0.1649648
 
 </td>
 
 <td style="text-align:center;">
 
-0.1576189
+0.1807811
 
 </td>
 
 <td style="text-align:center;">
 
-0.1670335
+0.1940525
 
 </td>
 
 <td style="text-align:center;">
 
-0.1750563
+0.1845181
 
 </td>
 
 <td style="text-align:center;">
 
-0.1614590
+0.2090903
 
 </td>
 
 <td style="text-align:center;">
 
-0.1946870
+0.2143586
 
 </td>
 
 <td style="text-align:center;">
 
-0.1617112
+0.2022581
 
 </td>
 
 <td style="text-align:center;">
 
-0.1359685
+0.1736960
 
 </td>
 
 <td style="text-align:center;">
 
-0.1536370
+0.1869224
 
 </td>
 
 <td style="text-align:center;">
 
-0.1532254
+0.1865579
 
 </td>
 
 <td style="text-align:center;">
 
-0.1585231
+0.1638511
 
 </td>
 
 <td style="text-align:center;">
 
-0.1609291
+0.2055075
 
 </td>
 
 <td style="text-align:center;">
 
-0.1726524
+0.1945704
 
 </td>
 
 <td style="text-align:center;">
 
-0.2076426
+0.2177127
 
 </td>
 
 <td style="text-align:center;">
 
-0.1779242
+0.1886110
 
 </td>
 
 <td style="text-align:center;">
 
-0.1803091
+0.2005327
 
 </td>
 
 <td style="text-align:center;">
 
-0.1984144
+0.2033714
 
 </td>
 
 <td style="text-align:center;">
 
-0.1659429
+0.2156119
 
 </td>
 
 <td style="text-align:center;">
 
-0.2190146
+0.2055532
 
 </td>
 
 <td style="text-align:center;">
 
-0.1655844
+0.2151363
 
 </td>
 
 <td style="text-align:center;">
 
-0.1723806
+0.1670161
 
 </td>
 
 <td style="text-align:center;">
 
-0.1763398
+0.1818451
 
 </td>
 
 <td style="text-align:center;">
 
-0.1660019
+0.1718659
 
 </td>
 
@@ -28269,295 +28270,295 @@ FS
 
 <td style="text-align:center;">
 
-0.2731564
+0.3568825
 
 </td>
 
 <td style="text-align:center;">
 
-0.3040592
+0.3520259
 
 </td>
 
 <td style="text-align:center;">
 
-0.2748405
+0.3231846
 
 </td>
 
 <td style="text-align:center;">
 
-0.3346912
+0.3514367
 
 </td>
 
 <td style="text-align:center;">
 
-0.2827652
+0.3212359
 
 </td>
 
 <td style="text-align:center;">
 
-0.2986763
+0.3337027
 
 </td>
 
 <td style="text-align:center;">
 
-0.3284916
+0.3818051
 
 </td>
 
 <td style="text-align:center;">
 
-0.2910822
+0.3458441
 
 </td>
 
 <td style="text-align:center;">
 
-0.2851167
+0.3612529
 
 </td>
 
 <td style="text-align:center;">
 
-0.2917340
+0.3840131
 
 </td>
 
 <td style="text-align:center;">
 
-0.2706293
+0.3411463
 
 </td>
 
 <td style="text-align:center;">
 
-0.3121695
+0.3444531
 
 </td>
 
 <td style="text-align:center;">
 
-0.2783417
+0.3445052
 
 </td>
 
 <td style="text-align:center;">
 
-0.2766421
+0.3311272
 
 </td>
 
 <td style="text-align:center;">
 
-0.3145199
+0.3153712
 
 </td>
 
 <td style="text-align:center;">
 
-0.2831407
+0.3406432
 
 </td>
 
 <td style="text-align:center;">
 
-0.3017363
+0.3434072
 
 </td>
 
 <td style="text-align:center;">
 
-0.3351779
+0.2840870
 
 </td>
 
 <td style="text-align:center;">
 
-0.3146133
+0.3825333
 
 </td>
 
 <td style="text-align:center;">
 
-0.2881331
+0.3326992
 
 </td>
 
 <td style="text-align:center;">
 
-0.3285781
+0.3300899
 
 </td>
 
 <td style="text-align:center;">
 
-0.2983129
+0.3626814
 
 </td>
 
 <td style="text-align:center;">
 
-0.306487
+0.3657588
 
 </td>
 
 <td style="text-align:center;">
 
-0.3349439
+0.3599775
 
 </td>
 
 <td style="text-align:center;">
 
-0.3149940
+0.3450138
 
 </td>
 
 <td style="text-align:center;">
 
-0.2921347
+0.3580777
 
 </td>
 
 <td style="text-align:center;">
 
-0.3091281
+0.3239066
 
 </td>
 
 <td style="text-align:center;">
 
-0.2689724
+0.347762
 
 </td>
 
 <td style="text-align:center;">
 
-0.3132159
+0.3428551
 
 </td>
 
 <td style="text-align:center;">
 
-0.316953
+0.3322367
 
 </td>
 
 <td style="text-align:center;">
 
-0.2816797
+0.3443093
 
 </td>
 
 <td style="text-align:center;">
 
-0.301810
+0.3790746
 
 </td>
 
 <td style="text-align:center;">
 
-0.2887089
+0.3679248
 
 </td>
 
 <td style="text-align:center;">
 
-0.2852283
+0.3095392
 
 </td>
 
 <td style="text-align:center;">
 
-0.3043262
+0.3537852
 
 </td>
 
 <td style="text-align:center;">
 
-0.2924702
+0.3680954
 
 </td>
 
 <td style="text-align:center;">
 
-0.3169784
+0.3465408
 
 </td>
 
 <td style="text-align:center;">
 
-0.3175624
+0.3614931
 
 </td>
 
 <td style="text-align:center;">
 
-0.2788053
+0.3627596
 
 </td>
 
 <td style="text-align:center;">
 
-0.3081793
+0.3769485
 
 </td>
 
 <td style="text-align:center;">
 
-0.2938226
+0.3571201
 
 </td>
 
 <td style="text-align:center;">
 
-0.2808753
+0.3652703
 
 </td>
 
 <td style="text-align:center;">
 
-0.3004236
+0.3580327
 
 </td>
 
 <td style="text-align:center;">
 
-0.2747320
+0.3444298
 
 </td>
 
 <td style="text-align:center;">
 
-0.3510811
+0.3404168
 
 </td>
 
 <td style="text-align:center;">
 
-0.2880763
+0.3148286
 
 </td>
 
 <td style="text-align:center;">
 
-0.2671374
+0.3501118
 
 </td>
 
 <td style="text-align:center;">
 
-0.2883794
+0.3668081
 
 </td>
 
 <td style="text-align:center;">
 
-0.3058941
+0.3519010
 
 </td>
 
@@ -28573,295 +28574,295 @@ FT
 
 <td style="text-align:center;">
 
-0.1789011
+0.2104265
 
 </td>
 
 <td style="text-align:center;">
 
-0.1608041
+0.2197058
 
 </td>
 
 <td style="text-align:center;">
 
-0.1729239
+0.1815316
 
 </td>
 
 <td style="text-align:center;">
 
-0.1637743
+0.1758507
 
 </td>
 
 <td style="text-align:center;">
 
-0.1777141
+0.1891375
 
 </td>
 
 <td style="text-align:center;">
 
-0.2063206
+0.2462405
 
 </td>
 
 <td style="text-align:center;">
 
-0.1981820
+0.2541531
 
 </td>
 
 <td style="text-align:center;">
 
-0.1675661
+0.1883863
 
 </td>
 
 <td style="text-align:center;">
 
-0.2161320
+0.1748210
 
 </td>
 
 <td style="text-align:center;">
 
-0.2342431
+0.2150122
 
 </td>
 
 <td style="text-align:center;">
 
-0.1941462
+0.2150995
 
 </td>
 
 <td style="text-align:center;">
 
-0.1591451
+0.1922154
 
 </td>
 
 <td style="text-align:center;">
 
-0.2232872
+0.1890669
 
 </td>
 
 <td style="text-align:center;">
 
-0.1651869
+0.1608834
 
 </td>
 
 <td style="text-align:center;">
 
-0.1590148
+0.1619244
 
 </td>
 
 <td style="text-align:center;">
 
-0.1766445
+0.2063975
 
 </td>
 
 <td style="text-align:center;">
 
-0.1708795
+0.2393811
 
 </td>
 
 <td style="text-align:center;">
 
-0.1698330
+0.1761491
 
 </td>
 
 <td style="text-align:center;">
 
-0.1677709
+0.2140019
 
 </td>
 
 <td style="text-align:center;">
 
-0.1662717
+0.2455735
 
 </td>
 
 <td style="text-align:center;">
 
-0.1397884
+0.2451994
 
 </td>
 
 <td style="text-align:center;">
 
-0.2185614
+0.2183957
 
 </td>
 
 <td style="text-align:center;">
 
-0.164172
+0.1817600
 
 </td>
 
 <td style="text-align:center;">
 
-0.1910380
+0.1868803
 
 </td>
 
 <td style="text-align:center;">
 
-0.1763263
+0.1946243
 
 </td>
 
 <td style="text-align:center;">
 
-0.1817187
+0.1807889
 
 </td>
 
 <td style="text-align:center;">
 
-0.1631998
+0.1831070
 
 </td>
 
 <td style="text-align:center;">
 
-0.1588962
+0.193338
 
 </td>
 
 <td style="text-align:center;">
 
-0.1615658
+0.2099659
 
 </td>
 
 <td style="text-align:center;">
 
-0.180404
+0.1755812
 
 </td>
 
 <td style="text-align:center;">
 
-0.1887229
+0.2217810
 
 </td>
 
 <td style="text-align:center;">
 
-0.229928
+0.2093301
 
 </td>
 
 <td style="text-align:center;">
 
-0.1781281
+0.2336777
 
 </td>
 
 <td style="text-align:center;">
 
-0.1497735
+0.1778772
 
 </td>
 
 <td style="text-align:center;">
 
-0.1740979
+0.1923960
 
 </td>
 
 <td style="text-align:center;">
 
-0.1639747
+0.1977234
 
 </td>
 
 <td style="text-align:center;">
 
-0.1750800
+0.1968199
 
 </td>
 
 <td style="text-align:center;">
 
-0.1698794
+0.2314575
 
 </td>
 
 <td style="text-align:center;">
 
-0.2088770
+0.2151933
 
 </td>
 
 <td style="text-align:center;">
 
-0.2757677
+0.2370363
 
 </td>
 
 <td style="text-align:center;">
 
-0.1812242
+0.1907817
 
 </td>
 
 <td style="text-align:center;">
 
-0.1754777
+0.2425290
 
 </td>
 
 <td style="text-align:center;">
 
-0.2063588
+0.2117354
 
 </td>
 
 <td style="text-align:center;">
 
-0.2022364
+0.2304697
 
 </td>
 
 <td style="text-align:center;">
 
-0.2441731
+0.2109996
 
 </td>
 
 <td style="text-align:center;">
 
-0.1838192
+0.2076817
 
 </td>
 
 <td style="text-align:center;">
 
-0.1883577
+0.1545509
 
 </td>
 
 <td style="text-align:center;">
 
-0.2133397
+0.1724492
 
 </td>
 
 <td style="text-align:center;">
 
-0.1872009
+0.1632517
 
 </td>
 
@@ -28873,7 +28874,7 @@ FT
 
 ![](ECC_files/figure-gfm/Sim2-1.png)<!-- -->
 
-    ## [1] 0.6060643
+    ## [1] 0.5649887
 
 #### S4-5-2-3 Simulation with Actual Parameters and Smooth Lambdas
 
@@ -28976,7 +28977,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0022259
+0.0020675
 
 </td>
 
@@ -29004,7 +29005,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000747
+0.0000738
 
 </td>
 
@@ -29032,7 +29033,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.5638626
+\-0.5764202
 
 </td>
 
@@ -29060,7 +29061,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.6241683
+3.7064000
 
 </td>
 
@@ -29094,7 +29095,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0002923
+\-0.0004052
 
 </td>
 
@@ -29122,7 +29123,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0001178
+0.0001175
 
 </td>
 
@@ -29150,7 +29151,7 @@ skewness
 
 <td style="text-align:center;">
 
-1.0637032
+1.0604306
 
 </td>
 
@@ -29178,7 +29179,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-7.6110927
+7.6558599
 
 </td>
 
@@ -29212,7 +29213,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0017010
+\-0.0017548
 
 </td>
 
@@ -29240,7 +29241,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0001365
+0.0001352
 
 </td>
 
@@ -29268,7 +29269,7 @@ skewness
 
 <td style="text-align:center;">
 
-2.1757614
+2.2025288
 
 </td>
 
@@ -29296,7 +29297,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-15.2461417
+15.3969204
 
 </td>
 
@@ -29330,7 +29331,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0007434
+\-0.0010044
 
 </td>
 
@@ -29358,7 +29359,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000512
+0.0000551
 
 </td>
 
@@ -29386,7 +29387,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.2418990
+0.1634824
 
 </td>
 
@@ -29414,7 +29415,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.1144526
+3.1490351
 
 </td>
 
@@ -29448,7 +29449,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0004433
+0.0002925
 
 </td>
 
@@ -29476,7 +29477,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000646
+0.0000624
 
 </td>
 
@@ -29504,7 +29505,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.2147800
+0.2343103
 
 </td>
 
@@ -29532,7 +29533,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.1534173
+3.2703869
 
 </td>
 
@@ -29566,7 +29567,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0005241
+\-0.0006392
 
 </td>
 
@@ -29594,7 +29595,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000406
+0.0000405
 
 </td>
 
@@ -29622,7 +29623,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.5989819
+\-0.6205342
 
 </td>
 
@@ -29650,7 +29651,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.6313633
+4.7825617
 
 </td>
 
@@ -29684,7 +29685,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0012003
+\-0.0012475
 
 </td>
 
@@ -29712,7 +29713,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000741
+0.0000744
 
 </td>
 
@@ -29740,7 +29741,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.0538865
+\-0.0755728
 
 </td>
 
@@ -29768,7 +29769,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.3343380
+3.3509015
 
 </td>
 
@@ -29802,7 +29803,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0006711
+0.0006542
 
 </td>
 
@@ -29830,7 +29831,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000766
+0.0000756
 
 </td>
 
@@ -29858,7 +29859,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.1090312
+\-0.1263621
 
 </td>
 
@@ -29886,7 +29887,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.9709776
+3.9365138
 
 </td>
 
@@ -29920,7 +29921,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0003667
+0.0003407
 
 </td>
 
@@ -29948,7 +29949,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000252
+0.0000258
 
 </td>
 
@@ -29976,7 +29977,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.5282809
+\-0.5382680
 
 </td>
 
@@ -30004,7 +30005,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.5837665
+4.5428054
 
 </td>
 
@@ -30038,7 +30039,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0004161
+0.0003124
 
 </td>
 
@@ -30066,7 +30067,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000453
+0.0000456
 
 </td>
 
@@ -30094,7 +30095,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.0383387
+0.0688291
 
 </td>
 
@@ -30122,7 +30123,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-2.7969448
+2.8192398
 
 </td>
 
@@ -30156,7 +30157,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0024218
+0.0023300
 
 </td>
 
@@ -30184,7 +30185,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000829
+0.0000819
 
 </td>
 
@@ -30212,7 +30213,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.7517270
+0.7349544
 
 </td>
 
@@ -30240,7 +30241,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.3760411
+3.4335541
 
 </td>
 
@@ -30274,7 +30275,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0015859
+0.0015328
 
 </td>
 
@@ -30302,7 +30303,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000666
+0.0000685
 
 </td>
 
@@ -30330,7 +30331,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.3436015
+\-0.3632635
 
 </td>
 
@@ -30358,7 +30359,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.4566785
+3.4463314
 
 </td>
 
@@ -30392,7 +30393,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0014165
+\-0.0014893
 
 </td>
 
@@ -30420,7 +30421,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0001029
+0.0001036
 
 </td>
 
@@ -30448,7 +30449,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.3687560
+0.3731039
 
 </td>
 
@@ -30476,7 +30477,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-2.6957705
+2.6781217
 
 </td>
 
@@ -30510,7 +30511,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0006145
+\-0.0006530
 
 </td>
 
@@ -30538,7 +30539,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0003568
+0.0003493
 
 </td>
 
@@ -30566,7 +30567,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.2056046
+0.1969015
 
 </td>
 
@@ -30594,7 +30595,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.3122373
+4.3961576
 
 </td>
 
@@ -30628,7 +30629,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0001103
+0.0000253
 
 </td>
 
@@ -30656,7 +30657,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000343
+0.0000331
 
 </td>
 
@@ -30684,7 +30685,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.0131004
+\-0.0278769
 
 </td>
 
@@ -30712,7 +30713,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-2.5228340
+2.4855865
 
 </td>
 
@@ -30746,7 +30747,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0014950
+0.0014520
 
 </td>
 
@@ -30774,7 +30775,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000323
+0.0000329
 
 </td>
 
@@ -30802,7 +30803,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.2924939
+0.3281089
 
 </td>
 
@@ -30830,7 +30831,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.6421570
+3.6285666
 
 </td>
 
@@ -30864,7 +30865,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0015361
+\-0.0015071
 
 </td>
 
@@ -30892,7 +30893,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0001092
+0.0001095
 
 </td>
 
@@ -30920,7 +30921,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.5039808
+\-0.4976986
 
 </td>
 
@@ -30948,7 +30949,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.4574168
+3.5036933
 
 </td>
 
@@ -30982,7 +30983,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0027705
+0.0026142
 
 </td>
 
@@ -31010,7 +31011,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000583
+0.0000568
 
 </td>
 
@@ -31038,7 +31039,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.1163922
+0.1101744
 
 </td>
 
@@ -31066,7 +31067,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.0904909
+3.1483761
 
 </td>
 
@@ -31100,7 +31101,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0002871
+0.0001537
 
 </td>
 
@@ -31128,7 +31129,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000320
+0.0000311
 
 </td>
 
@@ -31156,7 +31157,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.1702553
+0.1624123
 
 </td>
 
@@ -31184,7 +31185,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-2.3552912
+2.4306959
 
 </td>
 
@@ -31218,7 +31219,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0030918
+0.0029695
 
 </td>
 
@@ -31246,7 +31247,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0001216
+0.0001241
 
 </td>
 
@@ -31274,7 +31275,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.3158363
+\-0.3388753
 
 </td>
 
@@ -31302,7 +31303,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.2285774
+3.2237097
 
 </td>
 
@@ -31336,7 +31337,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0009518
+0.0009936
 
 </td>
 
@@ -31364,7 +31365,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0001921
+0.0001900
 
 </td>
 
@@ -31392,7 +31393,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.1998028
+0.2156768
 
 </td>
 
@@ -31420,7 +31421,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.1893606
+3.1488157
 
 </td>
 
@@ -31454,7 +31455,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0028052
+0.0027273
 
 </td>
 
@@ -31482,7 +31483,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0001017
+0.0001008
 
 </td>
 
@@ -31510,7 +31511,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.0817453
+\-0.0900947
 
 </td>
 
@@ -31538,7 +31539,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-2.6346640
+2.6186833
 
 </td>
 
@@ -31572,7 +31573,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0003425
+\-0.0003627
 
 </td>
 
@@ -31600,7 +31601,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000948
+0.0000943
 
 </td>
 
@@ -31628,7 +31629,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.3979724
+\-0.3778307
 
 </td>
 
@@ -31656,7 +31657,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-2.3767986
+2.3592076
 
 </td>
 
@@ -31690,7 +31691,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0006959
+0.0005925
 
 </td>
 
@@ -31718,7 +31719,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0001256
+0.0001232
 
 </td>
 
@@ -31746,7 +31747,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.0624674
+\-0.0261686
 
 </td>
 
@@ -31774,7 +31775,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-2.7791679
+2.7739049
 
 </td>
 
@@ -31808,7 +31809,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0012966
+\-0.0014114
 
 </td>
 
@@ -31836,7 +31837,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000342
+0.0000348
 
 </td>
 
@@ -31864,7 +31865,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-1.2013780
+\-1.1728778
 
 </td>
 
@@ -31892,7 +31893,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-8.3324932
+8.1857208
 
 </td>
 
@@ -31926,7 +31927,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0005357
+0.0003823
 
 </td>
 
@@ -31954,7 +31955,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000408
+0.0000424
 
 </td>
 
@@ -31982,7 +31983,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.0293405
+0.0644756
 
 </td>
 
@@ -32010,7 +32011,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.3735439
+3.3304271
 
 </td>
 
@@ -32044,7 +32045,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0012150
+0.0011653
 
 </td>
 
@@ -32072,7 +32073,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000569
+0.0000571
 
 </td>
 
@@ -32100,7 +32101,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.9909747
+0.9497919
 
 </td>
 
@@ -32128,7 +32129,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-8.0454289
+7.7200155
 
 </td>
 
@@ -32162,7 +32163,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0005770
+0.0004977
 
 </td>
 
@@ -32190,7 +32191,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000459
+0.0000453
 
 </td>
 
@@ -32218,7 +32219,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.3871431
+\-0.4003493
 
 </td>
 
@@ -32246,7 +32247,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.5446108
+3.5020504
 
 </td>
 
@@ -32280,7 +32281,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0006733
+\-0.0007214
 
 </td>
 
@@ -32336,7 +32337,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.6210854
+\-0.6270394
 
 </td>
 
@@ -32364,7 +32365,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.4393104
+3.4287565
 
 </td>
 
@@ -32398,7 +32399,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0005863
+\-0.0006677
 
 </td>
 
@@ -32426,7 +32427,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000543
+0.0000542
 
 </td>
 
@@ -32454,7 +32455,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.5380144
+\-0.5510654
 
 </td>
 
@@ -32482,7 +32483,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.3585728
+4.3175880
 
 </td>
 
@@ -32516,7 +32517,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0021742
+0.0021127
 
 </td>
 
@@ -32544,7 +32545,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0001080
+0.0001071
 
 </td>
 
@@ -32572,7 +32573,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.1412697
+\-0.1411613
 
 </td>
 
@@ -32600,7 +32601,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.4744899
+3.4984646
 
 </td>
 
@@ -32634,7 +32635,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0006244
+0.0005642
 
 </td>
 
@@ -32662,7 +32663,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000801
+0.0000807
 
 </td>
 
@@ -32690,7 +32691,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.2850402
+0.3169656
 
 </td>
 
@@ -32718,131 +32719,13 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.6946531
+3.7381736
 
 </td>
 
 <td style="text-align:center;">
 
 4.0835170
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
-
-Other
-
-</td>
-
-<td style="text-align:center;">
-
-mean
-
-</td>
-
-<td style="text-align:center;">
-
-\-0.0000187
-
-</td>
-
-<td style="text-align:center;">
-
-\-0.0038102
-
-</td>
-
-<td style="text-align:center;">
-
-0.0000225
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;">
-
-variance
-
-</td>
-
-<td style="text-align:center;">
-
-0.0022094
-
-</td>
-
-<td style="text-align:center;">
-
-0.0000710
-
-</td>
-
-<td style="text-align:center;">
-
-0.0009034
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;">
-
-skewness
-
-</td>
-
-<td style="text-align:center;">
-
-\-0.2100342
-
-</td>
-
-<td style="text-align:center;">
-
-\-0.0997927
-
-</td>
-
-<td style="text-align:center;">
-
-\-0.1168204
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;">
-
-kurtosis
-
-</td>
-
-<td style="text-align:center;">
-
-4.1664205
-
-</td>
-
-<td style="text-align:center;">
-
-3.6205541
-
-</td>
-
-<td style="text-align:center;">
-
-3.7191726
 
 </td>
 
@@ -32870,7 +32753,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0006315
+\-0.0007564
 
 </td>
 
@@ -32926,7 +32809,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.2433596
+0.2584164
 
 </td>
 
@@ -32954,7 +32837,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.8311483
+3.8036047
 
 </td>
 
@@ -32988,7 +32871,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0029905
+\-0.0030885
 
 </td>
 
@@ -33016,7 +32899,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000609
+0.0000611
 
 </td>
 
@@ -33044,7 +32927,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.3457587
+\-0.3904692
 
 </td>
 
@@ -33072,7 +32955,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.0853947
+4.1182489
 
 </td>
 
@@ -33106,7 +32989,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0041926
+\-0.0041927
 
 </td>
 
@@ -33134,7 +33017,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000960
+0.0000955
 
 </td>
 
@@ -33162,7 +33045,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.2090267
+\-0.2095859
 
 </td>
 
@@ -33190,7 +33073,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.1283550
+3.2073935
 
 </td>
 
@@ -33224,7 +33107,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0003611
+0.0003091
 
 </td>
 
@@ -33280,7 +33163,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.9721966
+0.9577190
 
 </td>
 
@@ -33308,7 +33191,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.2817150
+4.3060368
 
 </td>
 
@@ -33342,7 +33225,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0002457
+\-0.0003559
 
 </td>
 
@@ -33370,7 +33253,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000588
+0.0000590
 
 </td>
 
@@ -33398,7 +33281,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.6240663
+\-0.5902149
 
 </td>
 
@@ -33426,7 +33309,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.1667420
+3.0755882
 
 </td>
 
@@ -33460,7 +33343,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0002391
+0.0000988
 
 </td>
 
@@ -33488,7 +33371,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0001026
+0.0001015
 
 </td>
 
@@ -33516,7 +33399,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.4668965
+\-0.4358708
 
 </td>
 
@@ -33544,7 +33427,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.0733748
+3.0507018
 
 </td>
 
@@ -33578,7 +33461,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0026287
+0.0025043
 
 </td>
 
@@ -33606,7 +33489,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0001164
+0.0001171
 
 </td>
 
@@ -33634,7 +33517,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.3531009
+0.3515208
 
 </td>
 
@@ -33662,7 +33545,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.2393495
+4.1582200
 
 </td>
 
@@ -33696,7 +33579,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0007619
+\-0.0009015
 
 </td>
 
@@ -33724,7 +33607,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000959
+0.0000957
 
 </td>
 
@@ -33752,7 +33635,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.1025095
+0.0604317
 
 </td>
 
@@ -33780,7 +33663,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.2006697
+3.1295966
 
 </td>
 
@@ -33814,7 +33697,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0029051
+0.0028715
 
 </td>
 
@@ -33842,7 +33725,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000755
+0.0000782
 
 </td>
 
@@ -33870,7 +33753,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-1.0155414
+\-0.9550906
 
 </td>
 
@@ -33898,7 +33781,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-5.9593268
+5.7704356
 
 </td>
 
@@ -33932,7 +33815,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0012017
+\-0.0012693
 
 </td>
 
@@ -33960,7 +33843,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000875
+0.0000872
 
 </td>
 
@@ -33988,7 +33871,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.6331663
+0.5874974
 
 </td>
 
@@ -34016,7 +33899,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.1851287
+4.0303039
 
 </td>
 
@@ -34050,7 +33933,7 @@ mean
 
 <td style="text-align:center;">
 
-0.0000172
+\-0.0000458
 
 </td>
 
@@ -34078,7 +33961,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000876
+0.0000884
 
 </td>
 
@@ -34106,7 +33989,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.1494092
+\-0.1365826
 
 </td>
 
@@ -34134,7 +34017,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.2764916
+4.2250883
 
 </td>
 
@@ -34168,7 +34051,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0023062
+\-0.0022756
 
 </td>
 
@@ -34196,7 +34079,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0001107
+0.0001114
 
 </td>
 
@@ -34224,7 +34107,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.4244271
+\-0.4223758
 
 </td>
 
@@ -34252,7 +34135,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.9513239
+3.9275317
 
 </td>
 
@@ -34286,7 +34169,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0008331
+\-0.0009225
 
 </td>
 
@@ -34314,7 +34197,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000332
+0.0000342
 
 </td>
 
@@ -34342,7 +34225,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.0827198
+\-0.1283863
 
 </td>
 
@@ -34370,7 +34253,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-2.4166943
+2.5028582
 
 </td>
 
@@ -34404,7 +34287,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0028270
+\-0.0029450
 
 </td>
 
@@ -34432,7 +34315,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0001027
+0.0001013
 
 </td>
 
@@ -34460,7 +34343,7 @@ skewness
 
 <td style="text-align:center;">
 
-0.0254405
+0.0192122
 
 </td>
 
@@ -34488,7 +34371,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.9966608
+4.0228921
 
 </td>
 
@@ -34522,7 +34405,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0003070
+\-0.0003171
 
 </td>
 
@@ -34550,7 +34433,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000521
+0.0000529
 
 </td>
 
@@ -34578,7 +34461,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.2547901
+\-0.2271294
 
 </td>
 
@@ -34606,7 +34489,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-3.8200972
+3.7681855
 
 </td>
 
@@ -34640,7 +34523,7 @@ mean
 
 <td style="text-align:center;">
 
-\-0.0005815
+\-0.0006302
 
 </td>
 
@@ -34668,7 +34551,7 @@ variance
 
 <td style="text-align:center;">
 
-0.0000353
+0.0000362
 
 </td>
 
@@ -34696,7 +34579,7 @@ skewness
 
 <td style="text-align:center;">
 
-\-0.1174412
+\-0.1612281
 
 </td>
 
@@ -34724,7 +34607,7 @@ kurtosis
 
 <td style="text-align:center;">
 
-4.8494597
+5.0240942
 
 </td>
 
@@ -34966,12 +34849,6 @@ Oil
 
 <th style="text-align:center;">
 
-Other
-
-</th>
-
-<th style="text-align:center;">
-
 Paper
 
 </th>
@@ -35082,295 +34959,289 @@ FS
 
 <td style="text-align:center;">
 
-0.4020201
+0.4021162
 
 </td>
 
 <td style="text-align:center;">
 
-0.3828984
+0.3827723
 
 </td>
 
 <td style="text-align:center;">
 
-0.4054573
+0.4054248
 
 </td>
 
 <td style="text-align:center;">
 
-0.4082312
+0.4082322
 
 </td>
 
 <td style="text-align:center;">
 
-0.3976898
+0.3975650
 
 </td>
 
 <td style="text-align:center;">
 
-0.4160108
+0.4159221
 
 </td>
 
 <td style="text-align:center;">
 
-0.3983799
+0.3983572
 
 </td>
 
 <td style="text-align:center;">
 
-0.3625758
+0.3628132
 
 </td>
 
 <td style="text-align:center;">
 
-0.3891262
+0.3891655
 
 </td>
 
 <td style="text-align:center;">
 
-0.3718857
+0.3719177
 
 </td>
 
 <td style="text-align:center;">
 
-0.3738292
+0.3738527
 
 </td>
 
 <td style="text-align:center;">
 
-0.4179890
+0.4179591
 
 </td>
 
 <td style="text-align:center;">
 
-0.3900986
+0.3899995
 
 </td>
 
 <td style="text-align:center;">
 
-0.3947077
+0.3946648
 
 </td>
 
 <td style="text-align:center;">
 
-0.3570130
+0.3568852
 
 </td>
 
 <td style="text-align:center;">
 
-0.3831629
+0.3830464
 
 </td>
 
 <td style="text-align:center;">
 
-0.3626465
+0.3627027
 
 </td>
 
 <td style="text-align:center;">
 
-0.3764355
+0.3764779
 
 </td>
 
 <td style="text-align:center;">
 
-0.3693705
+0.3693425
 
 </td>
 
 <td style="text-align:center;">
 
-0.4163183
+0.4164169
 
 </td>
 
 <td style="text-align:center;">
 
-0.3486968
+0.3487103
 
 </td>
 
 <td style="text-align:center;">
 
-0.3500392
+0.3501078
 
 </td>
 
 <td style="text-align:center;">
 
-0.3449402
+0.3449885
 
 </td>
 
 <td style="text-align:center;">
 
-0.3847559
+0.3847837
 
 </td>
 
 <td style="text-align:center;">
 
-0.3868054
+0.3865955
 
 </td>
 
 <td style="text-align:center;">
 
-0.4196529
+0.4196497
 
 </td>
 
 <td style="text-align:center;">
 
-0.3256755
+0.3257202
 
 </td>
 
 <td style="text-align:center;">
 
-0.3729274
+0.3729191
 
 </td>
 
 <td style="text-align:center;">
 
-0.3825072
+0.3824538
 
 </td>
 
 <td style="text-align:center;">
 
-0.3686946
+0.3686570
 
 </td>
 
 <td style="text-align:center;">
 
-0.3389983
+0.3390615
 
 </td>
 
 <td style="text-align:center;">
 
-0.3614319
+0.3614583
 
 </td>
 
 <td style="text-align:center;">
 
-0.3751450
+0.3546661
 
 </td>
 
 <td style="text-align:center;">
 
-0.3546682
+0.3463922
 
 </td>
 
 <td style="text-align:center;">
 
-0.3464305
+0.4123199
 
 </td>
 
 <td style="text-align:center;">
 
-0.4124311
+0.3923757
 
 </td>
 
 <td style="text-align:center;">
 
-0.3923469
+0.4065911
 
 </td>
 
 <td style="text-align:center;">
 
-0.4065176
+0.3823240
 
 </td>
 
 <td style="text-align:center;">
 
-0.3823389
+0.3195290
 
 </td>
 
 <td style="text-align:center;">
 
-0.3195475
+0.3723501
 
 </td>
 
 <td style="text-align:center;">
 
-0.3722978
+0.3586652
 
 </td>
 
 <td style="text-align:center;">
 
-0.3586688
+0.3509088
 
 </td>
 
 <td style="text-align:center;">
 
-0.3508761
+0.3696977
 
 </td>
 
 <td style="text-align:center;">
 
-0.3695746
+0.3754767
 
 </td>
 
 <td style="text-align:center;">
 
-0.3755067
+0.4065448
 
 </td>
 
 <td style="text-align:center;">
 
-0.4065055
+0.4089031
 
 </td>
 
 <td style="text-align:center;">
 
-0.4090120
+0.3790026
 
 </td>
 
 <td style="text-align:center;">
 
-0.3791374
-
-</td>
-
-<td style="text-align:center;">
-
-0.3775596
+0.3775878
 
 </td>
 
@@ -35386,295 +35257,289 @@ FT
 
 <td style="text-align:center;">
 
-0.1428494
+0.1446934
 
 </td>
 
 <td style="text-align:center;">
 
-0.1472960
+0.1486525
 
 </td>
 
 <td style="text-align:center;">
 
-0.1712486
+0.1730795
 
 </td>
 
 <td style="text-align:center;">
 
-0.1741679
+0.1784139
 
 </td>
 
 <td style="text-align:center;">
 
-0.1544587
+0.1555849
 
 </td>
 
 <td style="text-align:center;">
 
-0.1277345
+0.1298311
 
 </td>
 
 <td style="text-align:center;">
 
-0.1572968
+0.1596021
 
 </td>
 
 <td style="text-align:center;">
 
-0.1439276
+0.1457727
 
 </td>
 
 <td style="text-align:center;">
 
-0.1179586
+0.1203761
 
 </td>
 
 <td style="text-align:center;">
 
-0.1382169
+0.1408368
 
 </td>
 
 <td style="text-align:center;">
 
-0.1293600
+0.1305168
 
 </td>
 
 <td style="text-align:center;">
 
-0.1427692
+0.1452650
 
 </td>
 
 <td style="text-align:center;">
 
-0.1438046
+0.1455374
 
 </td>
 
 <td style="text-align:center;">
 
-0.1562804
+0.1564397
 
 </td>
 
 <td style="text-align:center;">
 
-0.1372406
+0.1388148
 
 </td>
 
 <td style="text-align:center;">
 
-0.1124601
+0.1146677
 
 </td>
 
 <td style="text-align:center;">
 
-0.1299934
+0.1313174
 
 </td>
 
 <td style="text-align:center;">
 
-0.1529140
+0.1549981
 
 </td>
 
 <td style="text-align:center;">
 
-0.1460946
+0.1478477
 
 </td>
 
 <td style="text-align:center;">
 
-0.1320239
+0.1344061
 
 </td>
 
 <td style="text-align:center;">
 
-0.1050698
+0.1054386
 
 </td>
 
 <td style="text-align:center;">
 
-0.1236652
+0.1251149
 
 </td>
 
 <td style="text-align:center;">
 
-0.1173722
+0.1186852
 
 </td>
 
 <td style="text-align:center;">
 
-0.1538252
+0.1549092
 
 </td>
 
 <td style="text-align:center;">
 
-0.1534018
+0.1562856
 
 </td>
 
 <td style="text-align:center;">
 
-0.1574408
+0.1606730
 
 </td>
 
 <td style="text-align:center;">
 
-0.1114699
+0.1131162
 
 </td>
 
 <td style="text-align:center;">
 
-0.1289561
+0.1307856
 
 </td>
 
 <td style="text-align:center;">
 
-0.1312438
+0.1331899
 
 </td>
 
 <td style="text-align:center;">
 
-0.1457866
+0.1478657
 
 </td>
 
 <td style="text-align:center;">
 
-0.1422623
+0.1437432
 
 </td>
 
 <td style="text-align:center;">
 
-0.1379026
+0.1400736
 
 </td>
 
 <td style="text-align:center;">
 
-0.1290666
+0.1330149
 
 </td>
 
 <td style="text-align:center;">
 
-0.1306973
+0.1270480
 
 </td>
 
 <td style="text-align:center;">
 
-0.1252609
+0.1409362
 
 </td>
 
 <td style="text-align:center;">
 
-0.1396282
+0.1434605
 
 </td>
 
 <td style="text-align:center;">
 
-0.1412953
+0.1472872
 
 </td>
 
 <td style="text-align:center;">
 
-0.1451990
+0.1217962
 
 </td>
 
 <td style="text-align:center;">
 
-0.1203995
+0.1588424
 
 </td>
 
 <td style="text-align:center;">
 
-0.1570057
+0.1402271
 
 </td>
 
 <td style="text-align:center;">
 
-0.1381827
+0.1076641
 
 </td>
 
 <td style="text-align:center;">
 
-0.1054866
+0.1306857
 
 </td>
 
 <td style="text-align:center;">
 
-0.1289831
+0.1898176
 
 </td>
 
 <td style="text-align:center;">
 
-0.1872276
+0.1241423
 
 </td>
 
 <td style="text-align:center;">
 
-0.1224745
+0.1388892
 
 </td>
 
 <td style="text-align:center;">
 
-0.1361467
+0.1474151
 
 </td>
 
 <td style="text-align:center;">
 
-0.1460563
+0.2035656
 
 </td>
 
 <td style="text-align:center;">
 
-0.2004986
-
-</td>
-
-<td style="text-align:center;">
-
-0.1275598
+0.1301357
 
 </td>
 
@@ -35704,30 +35569,30 @@ We want two sets of regressions here:
     ## 
     ## Residuals:
     ##     Min      1Q  Median      3Q     Max 
-    ## -5.7316 -0.3410  0.0198  0.3678  2.7770 
+    ## -5.7686 -0.3438  0.0186  0.3676  2.6936 
     ## 
     ## Coefficients:
     ##               Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept)  1.095e+00  2.149e-02   50.96   <2e-16 ***
-    ## Seasonal     2.293e+03  8.496e+01   26.99   <2e-16 ***
-    ## Noise       -4.242e+02  3.376e+01  -12.56   <2e-16 ***
-    ## Resid       -5.372e+03  2.881e+02  -18.65   <2e-16 ***
+    ## (Intercept)  1.101e+00  2.172e-02   50.71   <2e-16 ***
+    ## Seasonal     2.319e+03  8.582e+01   27.02   <2e-16 ***
+    ## Noise       -4.262e+02  3.404e+01  -12.52   <2e-16 ***
+    ## Resid       -5.612e+03  2.978e+02  -18.84   <2e-16 ***
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ## 
-    ## Residual standard error: 0.6283 on 4896 degrees of freedom
-    ## Multiple R-squared:  0.3267, Adjusted R-squared:  0.3263 
-    ## F-statistic: 791.9 on 3 and 4896 DF,  p-value: < 2.2e-16
+    ## Residual standard error: 0.6336 on 4796 degrees of freedom
+    ## Multiple R-squared:  0.3322, Adjusted R-squared:  0.3318 
+    ## F-statistic: 795.2 on 3 and 4796 DF,  p-value: < 2.2e-16
 
     ##              var_Seasonal var_Noise var_Resid
-    ## var_Seasonal    1.0000000 0.9733714 0.8022295
-    ## var_Noise       0.9733714 1.0000000 0.7887358
-    ## var_Resid       0.8022295 0.7887358 1.0000000
+    ## var_Seasonal    1.0000000 0.9733405 0.8042760
+    ## var_Noise       0.9733405 1.0000000 0.7900024
+    ## var_Resid       0.8042760 0.7900024 1.0000000
 
     ##             sd_Seasonal  sd_Noise  sd_Resid
-    ## sd_Seasonal   1.0000000 0.9718994 0.7690278
-    ## sd_Noise      0.9718994 1.0000000 0.7760378
-    ## sd_Resid      0.7690278 0.7760378 1.0000000
+    ## sd_Seasonal   1.0000000 0.9718829 0.7716119
+    ## sd_Noise      0.9718829 1.0000000 0.7771335
+    ## sd_Resid      0.7716119 0.7771335 1.0000000
 
     ## 
     ## Call:
@@ -35735,18 +35600,18 @@ We want two sets of regressions here:
     ## 
     ## Residuals:
     ##     Min      1Q  Median      3Q     Max 
-    ## -5.7660 -0.3711  0.0396  0.4134  2.2838 
+    ## -5.7969 -0.3772  0.0407  0.4202  2.1988 
     ## 
     ## Coefficients:
     ##              Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept)   1.11869    0.02235   50.05   <2e-16 ***
-    ## Seasonal    810.31128   19.88290   40.75   <2e-16 ***
+    ## (Intercept)   1.11902    0.02267   49.36   <2e-16 ***
+    ## Seasonal    818.92600   20.08976   40.76   <2e-16 ***
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ## 
-    ## Residual standard error: 0.6615 on 4898 degrees of freedom
-    ## Multiple R-squared:  0.2532, Adjusted R-squared:  0.2531 
-    ## F-statistic:  1661 on 1 and 4898 DF,  p-value: < 2.2e-16
+    ## Residual standard error: 0.668 on 4798 degrees of freedom
+    ## Multiple R-squared:  0.2572, Adjusted R-squared:  0.2571 
+    ## F-statistic:  1662 on 1 and 4798 DF,  p-value: < 2.2e-16
 
     ## 
     ## Call:
@@ -35754,18 +35619,18 @@ We want two sets of regressions here:
     ## 
     ## Residuals:
     ##     Min      1Q  Median      3Q     Max 
-    ## -4.7605 -0.4841  0.0101  0.4757  2.6700 
+    ## -4.7841 -0.4949  0.0122  0.4846  2.6599 
     ## 
     ## Coefficients:
-    ##              Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept) 1.627e+00  1.942e-02   83.79   <2e-16 ***
-    ## Resid       3.922e+03  2.016e+02   19.46   <2e-16 ***
+    ##             Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept)    1.627      0.020   81.34   <2e-16 ***
+    ## Resid       4058.112    208.129   19.50   <2e-16 ***
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ## 
-    ## Residual standard error: 0.7376 on 4898 degrees of freedom
-    ## Multiple R-squared:  0.07175,    Adjusted R-squared:  0.07156 
-    ## F-statistic: 378.6 on 1 and 4898 DF,  p-value: < 2.2e-16
+    ## Residual standard error: 0.7461 on 4798 degrees of freedom
+    ## Multiple R-squared:  0.07342,    Adjusted R-squared:  0.07323 
+    ## F-statistic: 380.2 on 1 and 4798 DF,  p-value: < 2.2e-16
 
     ## 
     ## Call:
@@ -35773,18 +35638,18 @@ We want two sets of regressions here:
     ## 
     ## Residuals:
     ##     Min      1Q  Median      3Q     Max 
-    ## -5.7849 -0.3945  0.0379  0.4296  2.5611 
+    ## -5.8175 -0.4023  0.0400  0.4332  2.4779 
     ## 
     ## Coefficients:
-    ##             Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept)    1.203      0.023   52.32   <2e-16 ***
-    ## Noise        298.548      8.393   35.57   <2e-16 ***
+    ##              Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept)   1.20425    0.02333   51.62   <2e-16 ***
+    ## Noise       301.95408    8.48352   35.59   <2e-16 ***
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ## 
-    ## Residual standard error: 0.6824 on 4898 degrees of freedom
-    ## Multiple R-squared:  0.2053, Adjusted R-squared:  0.2051 
-    ## F-statistic:  1265 on 1 and 4898 DF,  p-value: < 2.2e-16
+    ## Residual standard error: 0.6894 on 4798 degrees of freedom
+    ## Multiple R-squared:  0.2089, Adjusted R-squared:  0.2087 
+    ## F-statistic:  1267 on 1 and 4798 DF,  p-value: < 2.2e-16
 
 However, Seasonal, Noise, and Resid variances are really highly
 correlated, the linear regression encounter a multicollinearity problem.
@@ -35792,13 +35657,13 @@ Since we have both Seasonal and Noise causing bias in cross-sectional
 regression in our theoretical explanation, we combine the Seasonal and
 Noise as Bias.
 
-    ##           var_Bias var_Resid
-    ## var_Bias  1.000000  0.802556
-    ## var_Resid 0.802556  1.000000
+    ##            var_Bias var_Resid
+    ## var_Bias  1.0000000 0.8041382
+    ## var_Resid 0.8041382 1.0000000
 
-    ##            sd_Bias  sd_Resid
-    ## sd_Bias  1.0000000 0.7787272
-    ## sd_Resid 0.7787272 1.0000000
+    ##          sd_Bias sd_Resid
+    ## sd_Bias  1.00000  0.78046
+    ## sd_Resid 0.78046  1.00000
 
     ## 
     ## Call:
@@ -35806,19 +35671,19 @@ Noise as Bias.
     ## 
     ## Residuals:
     ##     Min      1Q  Median      3Q     Max 
-    ## -6.0800 -0.3376  0.0352  0.3739  3.0285 
+    ## -6.1183 -0.3373  0.0383  0.3778  2.9438 
     ## 
     ## Coefficients:
     ##               Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept)  1.068e+00  2.288e-02   46.67   <2e-16 ***
-    ## Bias         3.157e+02  8.537e+00   36.98   <2e-16 ***
-    ## Resid       -4.944e+03  2.988e+02  -16.55   <2e-16 ***
+    ## (Intercept)  1.073e+00  2.313e-02   46.38   <2e-16 ***
+    ## Bias         3.203e+02  8.651e+00   37.02   <2e-16 ***
+    ## Resid       -5.135e+03  3.088e+02  -16.63   <2e-16 ***
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ## 
-    ## Residual standard error: 0.6522 on 4897 degrees of freedom
-    ## Multiple R-squared:  0.2744, Adjusted R-squared:  0.2741 
-    ## F-statistic: 925.8 on 2 and 4897 DF,  p-value: < 2.2e-16
+    ## Residual standard error: 0.6581 on 4797 degrees of freedom
+    ## Multiple R-squared:  0.2793, Adjusted R-squared:  0.279 
+    ## F-statistic: 929.6 on 2 and 4797 DF,  p-value: < 2.2e-16
 
     ## 
     ## Call:
@@ -35827,19 +35692,19 @@ Noise as Bias.
     ## 
     ## Residuals:
     ##     Min      1Q  Median      3Q     Max 
-    ## -3.4536 -0.0980  0.0358  0.1405  0.7944 
+    ## -3.4654 -0.0977  0.0365  0.1414  0.7715 
     ## 
     ## Coefficients:
     ##              Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept)   0.65705    0.01867   35.19   <2e-16 ***
-    ## sqrt(Bias)   18.41704    0.46706   39.43   <2e-16 ***
-    ## sqrt(Resid) -51.07808    2.47531  -20.64   <2e-16 ***
+    ## (Intercept)   0.65722    0.01878   35.00   <2e-16 ***
+    ## sqrt(Bias)   18.60106    0.47105   39.49   <2e-16 ***
+    ## sqrt(Resid) -52.10497    2.52921  -20.60   <2e-16 ***
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ## 
-    ## Residual standard error: 0.2632 on 4897 degrees of freedom
-    ## Multiple R-squared:  0.2701, Adjusted R-squared:  0.2698 
-    ## F-statistic: 906.3 on 2 and 4897 DF,  p-value: < 2.2e-16
+    ## Residual standard error: 0.2644 on 4797 degrees of freedom
+    ## Multiple R-squared:  0.2758, Adjusted R-squared:  0.2755 
+    ## F-statistic: 913.2 on 2 and 4797 DF,  p-value: < 2.2e-16
 
 The correlation of Bias and Resid variances (0.8) is not as much a
 problem and we have two new sets of regressions:
@@ -35857,9 +35722,9 @@ principle component regression.
 
     ## Importance of components:
     ##                           PC1    PC2
-    ## Standard deviation     1.3337 0.4704
-    ## Proportion of Variance 0.8894 0.1106
-    ## Cumulative Proportion  0.8894 1.0000
+    ## Standard deviation     1.3343 0.4686
+    ## Proportion of Variance 0.8902 0.1098
+    ## Cumulative Proportion  0.8902 1.0000
 
     ##              PC1        PC2
     ## Bias  -0.7071068 -0.7071068
@@ -35872,19 +35737,19 @@ principle component regression.
     ## 
     ## Residuals:
     ##     Min      1Q  Median      3Q     Max 
-    ## -3.4536 -0.0980  0.0358  0.1405  0.7944 
+    ## -3.4654 -0.0977  0.0365  0.1414  0.7715 
     ## 
     ## Coefficients:
     ##             Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept) 1.361612   0.003760  362.13   <2e-16 ***
-    ## PC1         0.079666   0.002820   28.25   <2e-16 ***
-    ## PC2         0.254581   0.007994   31.85   <2e-16 ***
+    ## (Intercept) 1.365023   0.003817  357.65   <2e-16 ***
+    ## PC1         0.081537   0.002861   28.50   <2e-16 ***
+    ## PC2         0.259412   0.008146   31.84   <2e-16 ***
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ## 
-    ## Residual standard error: 0.2632 on 4897 degrees of freedom
-    ## Multiple R-squared:  0.2701, Adjusted R-squared:  0.2698 
-    ## F-statistic: 906.3 on 2 and 4897 DF,  p-value: < 2.2e-16
+    ## Residual standard error: 0.2644 on 4797 degrees of freedom
+    ## Multiple R-squared:  0.2758, Adjusted R-squared:  0.2755 
+    ## F-statistic: 913.2 on 2 and 4797 DF,  p-value: < 2.2e-16
 
   
 ![PC1 =
@@ -36082,43 +35947,43 @@ FF5
 
 <td style="text-align:center;">
 
-68.08107
+68.62919
 
 </td>
 
 <td style="text-align:center;">
 
-114.0470
+114.0071
 
 </td>
 
 <td style="text-align:center;">
 
-122.5339
+122.4111
 
 </td>
 
 <td style="text-align:center;">
 
-113.2199
+113.1796
 
 </td>
 
 <td style="text-align:center;">
 
-122.6380
+122.5372
 
 </td>
 
 <td style="text-align:center;">
 
-111.9498
+111.9175
 
 </td>
 
 <td style="text-align:center;">
 
-121.7451
+121.6108
 
 </td>
 
@@ -36176,43 +36041,43 @@ PRS
 
 <td style="text-align:center;">
 
-70.06878
+71.56407
 
 </td>
 
 <td style="text-align:center;">
 
-114.3946
+114.5524
 
 </td>
 
 <td style="text-align:center;">
 
-125.9188
+125.7734
 
 </td>
 
 <td style="text-align:center;">
 
-113.6452
+113.8148
 
 </td>
 
 <td style="text-align:center;">
 
-125.5487
+125.4193
 
 </td>
 
 <td style="text-align:center;">
 
-112.5325
+112.7350
 
 </td>
 
 <td style="text-align:center;">
 
-123.6739
+123.5410
 
 </td>
 
@@ -36342,7 +36207,7 @@ Aero
 
 <td style="text-align:center;">
 
-0.2820976
+0.2929476
 
 </td>
 
@@ -36354,7 +36219,7 @@ Aero
 
 <td style="text-align:center;">
 
-0.2911392
+0.2893309
 
 </td>
 
@@ -36376,7 +36241,7 @@ Agric
 
 <td style="text-align:center;">
 
-0.2947559
+0.2965642
 
 </td>
 
@@ -36388,7 +36253,7 @@ Agric
 
 <td style="text-align:center;">
 
-0.2839060
+0.2802893
 
 </td>
 
@@ -36410,7 +36275,7 @@ Autos
 
 <td style="text-align:center;">
 
-0.3056058
+0.3092224
 
 </td>
 
@@ -36422,7 +36287,7 @@ Autos
 
 <td style="text-align:center;">
 
-0.2748644
+0.2712477
 
 </td>
 
@@ -36444,7 +36309,7 @@ Banks
 
 <td style="text-align:center;">
 
-0.2839060
+0.2820976
 
 </td>
 
@@ -36456,7 +36321,7 @@ Banks
 
 <td style="text-align:center;">
 
-0.2839060
+0.2766727
 
 </td>
 
@@ -36478,7 +36343,7 @@ Beer
 
 <td style="text-align:center;">
 
-0.3236890
+0.3218807
 
 </td>
 
@@ -36490,7 +36355,7 @@ Beer
 
 <td style="text-align:center;">
 
-0.3074141
+0.3110307
 
 </td>
 
@@ -36512,41 +36377,7 @@ BldMt
 
 <td style="text-align:center;">
 
-0.2820976
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-<td style="text-align:center;">
-
-0.2694394
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;font-weight: bold;">
-
-Books
-
-</td>
-
-<td style="text-align:center;">
-
-0.3037975
+0.2857143
 
 </td>
 
@@ -36574,13 +36405,13 @@ Books
 
 <td style="text-align:center;font-weight: bold;">
 
-Boxes
+Books
 
 </td>
 
 <td style="text-align:center;">
 
-0.3037975
+0.2983725
 
 </td>
 
@@ -36592,7 +36423,41 @@ Boxes
 
 <td style="text-align:center;">
 
-0.2929476
+0.2784810
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+Boxes
+
+</td>
+
+<td style="text-align:center;">
+
+0.3056058
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+<td style="text-align:center;">
+
+0.2893309
 
 </td>
 
@@ -36614,7 +36479,7 @@ BusSv
 
 <td style="text-align:center;">
 
-0.3092224
+0.3056058
 
 </td>
 
@@ -36626,7 +36491,7 @@ BusSv
 
 <td style="text-align:center;">
 
-0.2694394
+0.2658228
 
 </td>
 
@@ -36660,7 +36525,7 @@ Chems
 
 <td style="text-align:center;">
 
-0.2911392
+0.2929476
 
 </td>
 
@@ -36682,7 +36547,7 @@ Chips
 
 <td style="text-align:center;">
 
-0.2983725
+0.2929476
 
 </td>
 
@@ -36694,7 +36559,7 @@ Chips
 
 <td style="text-align:center;">
 
-0.2784810
+0.2766727
 
 </td>
 
@@ -36728,7 +36593,7 @@ Clths
 
 <td style="text-align:center;">
 
-0.2947559
+0.2965642
 
 </td>
 
@@ -36750,7 +36615,7 @@ Cnstr
 
 <td style="text-align:center;">
 
-0.3164557
+0.3273056
 
 </td>
 
@@ -36762,7 +36627,7 @@ Cnstr
 
 <td style="text-align:center;">
 
-0.3001808
+0.2983725
 
 </td>
 
@@ -36784,7 +36649,7 @@ Coal
 
 <td style="text-align:center;">
 
-0.2676311
+0.2585895
 
 </td>
 
@@ -36796,7 +36661,7 @@ Coal
 
 <td style="text-align:center;">
 
-0.2441230
+0.2423146
 
 </td>
 
@@ -36818,7 +36683,7 @@ Drugs
 
 <td style="text-align:center;">
 
-0.3164557
+0.3146474
 
 </td>
 
@@ -36830,7 +36695,7 @@ Drugs
 
 <td style="text-align:center;">
 
-0.3164557
+0.3092224
 
 </td>
 
@@ -36852,7 +36717,7 @@ ElcEq
 
 <td style="text-align:center;">
 
-0.2929476
+0.2893309
 
 </td>
 
@@ -36864,7 +36729,7 @@ ElcEq
 
 <td style="text-align:center;">
 
-0.2875226
+0.2857143
 
 </td>
 
@@ -36886,7 +36751,7 @@ FabPr
 
 <td style="text-align:center;">
 
-0.3056058
+0.3037975
 
 </td>
 
@@ -36898,7 +36763,7 @@ FabPr
 
 <td style="text-align:center;">
 
-0.3146474
+0.3037975
 
 </td>
 
@@ -36920,7 +36785,7 @@ Fin
 
 <td style="text-align:center;">
 
-0.2947559
+0.3037975
 
 </td>
 
@@ -36932,7 +36797,7 @@ Fin
 
 <td style="text-align:center;">
 
-0.2694394
+0.2622061
 
 </td>
 
@@ -36966,7 +36831,7 @@ Food
 
 <td style="text-align:center;">
 
-0.2893309
+0.2947559
 
 </td>
 
@@ -36988,7 +36853,7 @@ Fun
 
 <td style="text-align:center;">
 
-0.2893309
+0.2911392
 
 </td>
 
@@ -37000,7 +36865,7 @@ Fun
 
 <td style="text-align:center;">
 
-0.2893309
+0.2911392
 
 </td>
 
@@ -37022,7 +36887,7 @@ Gold
 
 <td style="text-align:center;">
 
-0.2694394
+0.2658228
 
 </td>
 
@@ -37034,7 +36899,7 @@ Gold
 
 <td style="text-align:center;">
 
-0.2585895
+0.2603978
 
 </td>
 
@@ -37056,7 +36921,7 @@ Guns
 
 <td style="text-align:center;">
 
-0.2730561
+0.2857143
 
 </td>
 
@@ -37068,7 +36933,7 @@ Guns
 
 <td style="text-align:center;">
 
-0.3001808
+0.2929476
 
 </td>
 
@@ -37102,7 +36967,7 @@ Hardw
 
 <td style="text-align:center;">
 
-0.2857143
+0.2893309
 
 </td>
 
@@ -37119,244 +36984,6 @@ Hardw
 <td style="text-align:center;font-weight: bold;">
 
 Hlth
-
-</td>
-
-<td style="text-align:center;">
-
-0.2839060
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-<td style="text-align:center;">
-
-0.3074141
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;font-weight: bold;">
-
-Hshld
-
-</td>
-
-<td style="text-align:center;">
-
-0.3056058
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-<td style="text-align:center;">
-
-0.2839060
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;font-weight: bold;">
-
-Insur
-
-</td>
-
-<td style="text-align:center;">
-
-0.2875226
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-<td style="text-align:center;">
-
-0.2730561
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;font-weight: bold;">
-
-LabEq
-
-</td>
-
-<td style="text-align:center;">
-
-0.3146474
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-<td style="text-align:center;">
-
-0.2784810
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;font-weight: bold;">
-
-Mach
-
-</td>
-
-<td style="text-align:center;">
-
-0.3092224
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-<td style="text-align:center;">
-
-0.3092224
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;font-weight: bold;">
-
-Meals
-
-</td>
-
-<td style="text-align:center;">
-
-0.3327306
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-<td style="text-align:center;">
-
-0.3019892
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;font-weight: bold;">
-
-MedEq
-
-</td>
-
-<td style="text-align:center;">
-
-0.3128391
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-<td style="text-align:center;">
-
-0.2911392
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;font-weight: bold;">
-
-Mines
 
 </td>
 
@@ -37390,7 +37017,7 @@ Mines
 
 <td style="text-align:center;font-weight: bold;">
 
-Oil
+Hshld
 
 </td>
 
@@ -37408,7 +37035,245 @@ Oil
 
 <td style="text-align:center;">
 
+0.2802893
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+Insur
+
+</td>
+
+<td style="text-align:center;">
+
+0.2947559
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+<td style="text-align:center;">
+
+0.2766727
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+LabEq
+
+</td>
+
+<td style="text-align:center;">
+
+0.3164557
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+<td style="text-align:center;">
+
+0.2784810
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+Mach
+
+</td>
+
+<td style="text-align:center;">
+
+0.3074141
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+<td style="text-align:center;">
+
 0.3056058
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+Meals
+
+</td>
+
+<td style="text-align:center;">
+
+0.3291139
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+<td style="text-align:center;">
+
+0.3092224
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+MedEq
+
+</td>
+
+<td style="text-align:center;">
+
+0.3056058
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+<td style="text-align:center;">
+
+0.2911392
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+Mines
+
+</td>
+
+<td style="text-align:center;">
+
+0.2839060
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+<td style="text-align:center;">
+
+0.2911392
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+Oil
+
+</td>
+
+<td style="text-align:center;">
+
+0.3074141
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+<td style="text-align:center;">
+
+0.3019892
 
 </td>
 
@@ -37464,7 +37329,7 @@ Paper
 
 <td style="text-align:center;">
 
-0.2911392
+0.2929476
 
 </td>
 
@@ -37498,7 +37363,7 @@ PerSv
 
 <td style="text-align:center;">
 
-0.3056058
+0.3092224
 
 </td>
 
@@ -37532,7 +37397,7 @@ RlEst
 
 <td style="text-align:center;">
 
-0.2820976
+0.2730561
 
 </td>
 
@@ -37544,7 +37409,7 @@ RlEst
 
 <td style="text-align:center;">
 
-0.2694394
+0.2748644
 
 </td>
 
@@ -37578,7 +37443,7 @@ Rtail
 
 <td style="text-align:center;">
 
-0.3056058
+0.2983725
 
 </td>
 
@@ -37600,7 +37465,7 @@ Rubbr
 
 <td style="text-align:center;">
 
-0.3182640
+0.3164557
 
 </td>
 
@@ -37612,7 +37477,7 @@ Rubbr
 
 <td style="text-align:center;">
 
-0.2784810
+0.2820976
 
 </td>
 
@@ -37634,7 +37499,7 @@ Ships
 
 <td style="text-align:center;">
 
-0.2947559
+0.2929476
 
 </td>
 
@@ -37646,7 +37511,7 @@ Ships
 
 <td style="text-align:center;">
 
-0.2802893
+0.2839060
 
 </td>
 
@@ -37668,143 +37533,7 @@ Smoke
 
 <td style="text-align:center;">
 
-0.2820976
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-<td style="text-align:center;">
-
-0.2875226
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;font-weight: bold;">
-
-Soda
-
-</td>
-
-<td style="text-align:center;">
-
-0.3092224
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-<td style="text-align:center;">
-
-0.2911392
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;font-weight: bold;">
-
-Softw
-
-</td>
-
-<td style="text-align:center;">
-
-0.2766727
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-<td style="text-align:center;">
-
-0.2513562
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;font-weight: bold;">
-
-Steel
-
-</td>
-
-<td style="text-align:center;">
-
-0.2965642
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-<td style="text-align:center;">
-
-0.2983725
-
-</td>
-
-<td style="text-align:center;">
-
-0
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:center;font-weight: bold;">
-
-Telcm
-
-</td>
-
-<td style="text-align:center;">
-
-0.2893309
+0.2839060
 
 </td>
 
@@ -37832,13 +37561,13 @@ Telcm
 
 <td style="text-align:center;font-weight: bold;">
 
-Toys
+Soda
 
 </td>
 
 <td style="text-align:center;">
 
-0.3092224
+0.3146474
 
 </td>
 
@@ -37850,7 +37579,143 @@ Toys
 
 <td style="text-align:center;">
 
-0.2820976
+0.2857143
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+Softw
+
+</td>
+
+<td style="text-align:center;">
+
+0.2784810
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+<td style="text-align:center;">
+
+0.2477396
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+Steel
+
+</td>
+
+<td style="text-align:center;">
+
+0.2983725
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+<td style="text-align:center;">
+
+0.3001808
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+Telcm
+
+</td>
+
+<td style="text-align:center;">
+
+0.2875226
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+<td style="text-align:center;">
+
+0.2893309
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+Toys
+
+</td>
+
+<td style="text-align:center;">
+
+0.3037975
+
+</td>
+
+<td style="text-align:center;">
+
+0
+
+</td>
+
+<td style="text-align:center;">
+
+0.2712477
 
 </td>
 
@@ -37872,7 +37737,7 @@ Trans
 
 <td style="text-align:center;">
 
-0.3001808
+0.3037975
 
 </td>
 
@@ -37884,7 +37749,7 @@ Trans
 
 <td style="text-align:center;">
 
-0.2766727
+0.2712477
 
 </td>
 
@@ -37906,7 +37771,7 @@ Txtls
 
 <td style="text-align:center;">
 
-0.2839060
+0.2766727
 
 </td>
 
@@ -37918,7 +37783,7 @@ Txtls
 
 <td style="text-align:center;">
 
-0.2766727
+0.2839060
 
 </td>
 
@@ -37940,7 +37805,7 @@ Util
 
 <td style="text-align:center;">
 
-0.3019892
+0.3001808
 
 </td>
 
@@ -37952,7 +37817,7 @@ Util
 
 <td style="text-align:center;">
 
-0.2730561
+0.2712477
 
 </td>
 
@@ -37974,7 +37839,7 @@ Whlsl
 
 <td style="text-align:center;">
 
-0.3019892
+0.2983725
 
 </td>
 
@@ -37986,7 +37851,7 @@ Whlsl
 
 <td style="text-align:center;">
 
-0.2857143
+0.2875226
 
 </td>
 
@@ -38141,43 +38006,43 @@ RP
 
 <td style="text-align:center;">
 
-0.0038211
+0.0038481
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008115
+0.0008239
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009876
+0.0009794
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008553
+0.0008675
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010556
+0.0010532
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009168
+0.000929
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011204
+0.0011181
 
 </td>
 
@@ -38323,43 +38188,43 @@ Aero
 
 <td style="text-align:center;">
 
-0.0045832
+0.0045928
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009917
+0.0010012
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011807
+0.0011768
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010409
+0.0010502
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012696
+0.0012695
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011083
+0.0011173
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012489
+0.0012451
 
 </td>
 
@@ -38405,43 +38270,43 @@ Agric
 
 <td style="text-align:center;">
 
-0.0036828
+0.0037058
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007931
+0.0008066
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009749
+0.0009706
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008349
+0.0008492
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010621
+0.0010656
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008989
+0.0009137
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010892
+0.0010973
 
 </td>
 
@@ -38487,43 +38352,43 @@ Autos
 
 <td style="text-align:center;">
 
-0.0047951
+0.0048268
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011508
+0.0011570
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011103
+0.0011018
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012026
+0.0012092
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012312
+0.0012265
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012813
+0.0012889
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013669
+0.0013571
 
 </td>
 
@@ -38569,43 +38434,43 @@ Banks
 
 <td style="text-align:center;">
 
-0.0046824
+0.0047027
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009245
+0.0009471
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011730
+0.0011725
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009671
+0.0009898
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012490
+0.0012554
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010350
+0.0010590
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012260
+0.0012349
 
 </td>
 
@@ -38651,43 +38516,43 @@ Beer
 
 <td style="text-align:center;">
 
-0.0033473
+0.0033362
 
 </td>
 
 <td style="text-align:center;">
 
-0.0006515
+0.0006559
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009848
+0.0009726
 
 </td>
 
 <td style="text-align:center;">
 
-0.0006794
+0.0006830
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009211
+0.0009123
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007266
+0.0007292
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008985
+0.0008880
 
 </td>
 
@@ -38733,43 +38598,43 @@ BldMt
 
 <td style="text-align:center;">
 
-0.0046382
+0.0046554
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009015
+0.0009163
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011660
+0.0011608
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009490
+0.0009637
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011911
+0.0011914
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010142
+0.0010291
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012895
+0.0012882
 
 </td>
 
@@ -38815,43 +38680,43 @@ Books
 
 <td style="text-align:center;">
 
-0.0039078
+0.0039246
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008434
+0.0008537
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009908
+0.0009883
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008915
+0.0009024
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010359
+0.0010365
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009580
+0.0009701
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011198
+0.0011205
 
 </td>
 
@@ -38897,43 +38762,43 @@ Boxes
 
 <td style="text-align:center;">
 
-0.0037521
+0.0037812
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007750
+0.0007894
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008334
+0.0008348
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008204
+0.0008349
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008558
+0.0008644
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008837
+0.0008986
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008990
+0.0009016
 
 </td>
 
@@ -38979,43 +38844,43 @@ BusSv
 
 <td style="text-align:center;">
 
-0.0042525
+0.0042707
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009120
+0.0009281
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010655
+0.0010547
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009622
+0.0009786
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011336
+0.0011302
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010311
+0.0010480
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012582
+0.0012578
 
 </td>
 
@@ -39061,43 +38926,43 @@ Chems
 
 <td style="text-align:center;">
 
-0.0043523
+0.0043624
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009068
+0.0009150
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011556
+0.0011480
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009581
+0.0009662
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012193
+0.0012178
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010296
+0.0010382
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012681
+0.0012651
 
 </td>
 
@@ -39143,43 +39008,43 @@ Chips
 
 <td style="text-align:center;">
 
-0.0051429
+0.0051593
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012138
+0.0012304
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014390
+0.0014222
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012710
+0.0012874
 
 </td>
 
 <td style="text-align:center;">
 
-0.0015425
+0.0015290
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013465
+0.0013625
 
 </td>
 
 <td style="text-align:center;">
 
-0.0018505
+0.0018393
 
 </td>
 
@@ -39225,43 +39090,43 @@ Clths
 
 <td style="text-align:center;">
 
-0.0042421
+0.0042705
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008270
+0.0008497
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009541
+0.0009575
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008769
+0.0009007
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009750
+0.0009910
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009477
+0.0009732
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010649
+0.0010851
 
 </td>
 
@@ -39307,43 +39172,43 @@ Cnstr
 
 <td style="text-align:center;">
 
-0.0048911
+0.0049195
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010602
+0.0010863
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012830
+0.0012769
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011171
+0.0011439
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013958
+0.0013989
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012070
+0.0012357
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014702
+0.0014788
 
 </td>
 
@@ -39389,43 +39254,43 @@ Coal
 
 <td style="text-align:center;">
 
-0.0059714
+0.0059923
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013972
+0.0014194
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014475
+0.0014510
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014509
+0.0014746
 
 </td>
 
 <td style="text-align:center;">
 
-0.0015857
+0.0015897
 
 </td>
 
 <td style="text-align:center;">
 
-0.0015401
+0.0015664
 
 </td>
 
 <td style="text-align:center;">
 
-0.0016936
+0.0017007
 
 </td>
 
@@ -39471,43 +39336,43 @@ Drugs
 
 <td style="text-align:center;">
 
-0.0035921
+0.0035988
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007333
+0.0007399
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008624
+0.0008479
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007683
+0.0007747
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008768
+0.0008664
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008199
+0.0008255
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009169
+0.0009059
 
 </td>
 
@@ -39553,43 +39418,43 @@ ElcEq
 
 <td style="text-align:center;">
 
-0.0047915
+0.0048085
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010129
+0.0010317
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012305
+0.0012187
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010644
+0.0010827
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012958
+0.0012886
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011379
+0.0011552
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014622
+0.0014581
 
 </td>
 
@@ -39635,43 +39500,43 @@ FabPr
 
 <td style="text-align:center;">
 
-0.0045842
+0.0046047
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009752
+0.0009947
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011600
+0.0011648
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010271
+0.0010472
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012428
+0.0012511
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011085
+0.0011304
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013489
+0.0013640
 
 </td>
 
@@ -39717,43 +39582,43 @@ Fin
 
 <td style="text-align:center;">
 
-0.0046654
+0.0046853
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010105
+0.0010229
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010955
+0.0010863
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010538
+0.0010661
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011828
+0.0011728
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011276
+0.0011408
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013406
+0.0013270
 
 </td>
 
@@ -39799,43 +39664,43 @@ Food
 
 <td style="text-align:center;">
 
-0.0030312
+0.0030348
 
 </td>
 
 <td style="text-align:center;">
 
-0.0006786
+0.0006842
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007859
+0.0007719
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007049
+0.0007109
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007880
+0.0007768
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007474
+0.0007536
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008119
+0.0008028
 
 </td>
 
@@ -39881,43 +39746,43 @@ Fun
 
 <td style="text-align:center;">
 
-0.0051544
+0.0051789
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011173
+0.0011328
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011696
+0.0011570
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011770
+0.0011922
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012967
+0.0012901
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012584
+0.0012734
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014052
+0.0014028
 
 </td>
 
@@ -39963,43 +39828,43 @@ Gold
 
 <td style="text-align:center;">
 
-0.0050488
+0.0050755
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011574
+0.0011603
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012295
+0.0012388
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012119
+0.0012153
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013364
+0.0013408
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012845
+0.0012882
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014837
+0.0014834
 
 </td>
 
@@ -40045,43 +39910,43 @@ Guns
 
 <td style="text-align:center;">
 
-0.0037697
+0.0037806
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008304
+0.0008328
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010566
+0.0010510
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008662
+0.0008687
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011286
+0.0011249
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009177
+0.0009203
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011544
+0.0011474
 
 </td>
 
@@ -40127,43 +39992,43 @@ Hardw
 
 <td style="text-align:center;">
 
-0.0047868
+0.0048074
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011814
+0.0011953
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014452
+0.0014278
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012244
+0.0012382
 
 </td>
 
 <td style="text-align:center;">
 
-0.0015359
+0.0015220
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012862
+0.0012994
 
 </td>
 
 <td style="text-align:center;">
 
-0.0018024
+0.0017914
 
 </td>
 
@@ -40209,43 +40074,43 @@ Hlth
 
 <td style="text-align:center;">
 
-0.0047348
+0.0047473
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010285
+0.0010395
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012674
+0.0012732
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010811
+0.0010922
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013559
+0.0013616
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011591
+0.0011707
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012934
+0.0012919
 
 </td>
 
@@ -40291,43 +40156,43 @@ Hshld
 
 <td style="text-align:center;">
 
-0.0034634
+0.0034685
 
 </td>
 
 <td style="text-align:center;">
 
-0.0006736
+0.0006873
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008772
+0.0008685
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007027
+0.0007165
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008786
+0.0008764
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007495
+0.0007625
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009078
+0.0009039
 
 </td>
 
@@ -40373,43 +40238,43 @@ Insur
 
 <td style="text-align:center;">
 
-0.0040661
+0.0040925
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007903
+0.0008078
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010065
+0.0009975
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008342
+0.0008522
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011036
+0.0011016
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009055
+0.0009240
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010727
+0.0010685
 
 </td>
 
@@ -40455,43 +40320,43 @@ LabEq
 
 <td style="text-align:center;">
 
-0.0048147
+0.0048274
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010174
+0.0010344
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011800
+0.0011664
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010703
+0.0010872
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012817
+0.0012698
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011393
+0.0011564
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014424
+0.0014318
 
 </td>
 
@@ -40537,43 +40402,43 @@ Mach
 
 <td style="text-align:center;">
 
-0.0049308
+0.0049446
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009243
+0.0009344
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011315
+0.0011278
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009867
+0.0009973
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012390
+0.0012361
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010790
+0.0010900
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013487
+0.0013424
 
 </td>
 
@@ -40619,43 +40484,43 @@ Meals
 
 <td style="text-align:center;">
 
-0.0039387
+0.0039468
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007819
+0.0007996
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010218
+0.0010172
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008234
+0.0008416
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010677
+0.0010658
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008942
+0.0009132
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010635
+0.0010662
 
 </td>
 
@@ -40701,43 +40566,43 @@ MedEq
 
 <td style="text-align:center;">
 
-0.0036980
+0.0037047
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007583
+0.0007631
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009166
+0.0009046
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007990
+0.0008034
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009582
+0.0009514
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008526
+0.0008561
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009907
+0.0009807
 
 </td>
 
@@ -40783,43 +40648,43 @@ Mines
 
 <td style="text-align:center;">
 
-0.0049870
+0.0050126
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011971
+0.0011994
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013691
+0.0013661
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012637
+0.0012666
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014830
+0.0014778
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013573
+0.0013612
 
 </td>
 
 <td style="text-align:center;">
 
-0.0015869
+0.0015796
 
 </td>
 
@@ -40865,43 +40730,43 @@ Oil
 
 <td style="text-align:center;">
 
-0.0036670
+0.0036820
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008488
+0.0008507
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011824
+0.0011828
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008885
+0.0008916
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012309
+0.0012301
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009476
+0.0009522
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012554
+0.0012499
 
 </td>
 
@@ -40947,43 +40812,43 @@ Paper
 
 <td style="text-align:center;">
 
-0.0039022
+0.0039114
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008508
+0.0008679
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010359
+0.0010355
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008942
+0.0009115
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010656
+0.0010715
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009567
+0.0009743
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010963
+0.0010977
 
 </td>
 
@@ -41029,43 +40894,43 @@ PerSv
 
 <td style="text-align:center;">
 
-0.0040981
+0.0041148
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008692
+0.0008919
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010403
+0.0010335
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009155
+0.0009393
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010957
+0.0010971
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009841
+0.0010096
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011288
+0.0011325
 
 </td>
 
@@ -41111,43 +40976,43 @@ RlEst
 
 <td style="text-align:center;">
 
-0.0052713
+0.0052856
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012062
+0.0012224
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014243
+0.0014252
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012653
+0.0012828
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014701
+0.0014704
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013516
+0.0013712
 
 </td>
 
 <td style="text-align:center;">
 
-0.0015905
+0.0015974
 
 </td>
 
@@ -41193,43 +41058,43 @@ Rtail
 
 <td style="text-align:center;">
 
-0.0037912
+0.0037981
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007759
+0.0007877
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008304
+0.0008209
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008125
+0.0008250
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008516
+0.0008504
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008624
+0.0008760
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009733
+0.0009727
 
 </td>
 
@@ -41275,43 +41140,43 @@ Rubbr
 
 <td style="text-align:center;">
 
-0.0041319
+0.0041496
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008241
+0.0008454
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009804
+0.0009794
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008685
+0.0008892
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010193
+0.0010246
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009259
+0.0009459
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010961
+0.0011022
 
 </td>
 
@@ -41357,43 +41222,43 @@ Ships
 
 <td style="text-align:center;">
 
-0.0045939
+0.0046059
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009038
+0.0009167
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012084
+0.0011987
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009511
+0.0009644
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012953
+0.0012895
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010204
+0.0010347
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013087
+0.0013046
 
 </td>
 
@@ -41439,43 +41304,43 @@ Smoke
 
 <td style="text-align:center;">
 
-0.0033104
+0.0033137
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008517
+0.0008563
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010409
+0.0010383
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008769
+0.0008820
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010195
+0.0010207
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009186
+0.0009242
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010544
+0.0010541
 
 </td>
 
@@ -41521,43 +41386,43 @@ Soda
 
 <td style="text-align:center;">
 
-0.0040478
+0.0040331
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007807
+0.0007821
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010911
+0.0010878
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008269
+0.0008271
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010734
+0.0010724
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008971
+0.0008960
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009381
+0.0009317
 
 </td>
 
@@ -41603,43 +41468,43 @@ Softw
 
 <td style="text-align:center;">
 
-0.0061314
+0.0061699
 
 </td>
 
 <td style="text-align:center;">
 
-0.0014685
+0.0014882
 
 </td>
 
 <td style="text-align:center;">
 
-0.0019262
+0.0019124
 
 </td>
 
 <td style="text-align:center;">
 
-0.0015227
+0.0015421
 
 </td>
 
 <td style="text-align:center;">
 
-0.0020502
+0.0020434
 
 </td>
 
 <td style="text-align:center;">
 
-0.0016041
+0.0016233
 
 </td>
 
 <td style="text-align:center;">
 
-0.0022655
+0.0022636
 
 </td>
 
@@ -41685,43 +41550,43 @@ Steel
 
 <td style="text-align:center;">
 
-0.0054230
+0.0054263
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011833
+0.0011952
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012761
+0.0012723
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012451
+0.0012572
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013467
+0.0013412
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013284
+0.0013401
 
 </td>
 
 <td style="text-align:center;">
 
-0.0015372
+0.0015280
 
 </td>
 
@@ -41767,43 +41632,43 @@ Telcm
 
 <td style="text-align:center;">
 
-0.0033856
+0.0033936
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007413
+0.0007511
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008422
+0.0008288
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007712
+0.0007807
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008403
+0.0008293
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008158
+0.0008251
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009701
+0.0009629
 
 </td>
 
@@ -41849,43 +41714,43 @@ Toys
 
 <td style="text-align:center;">
 
-0.0046504
+0.0046592
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009849
+0.0010044
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011553
+0.0011490
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010348
+0.0010542
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011953
+0.0012008
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011003
+0.0011188
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012604
+0.0012660
 
 </td>
 
@@ -41931,43 +41796,43 @@ Trans
 
 <td style="text-align:center;">
 
-0.0040644
+0.0040921
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008029
+0.0008266
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010300
+0.0010340
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008418
+0.0008660
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010653
+0.0010747
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008929
+0.0009179
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010894
+0.0010998
 
 </td>
 
@@ -42013,13 +41878,13 @@ Txtls
 
 <td style="text-align:center;">
 
-0.0047407
+0.0047476
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010239
+0.0010385
 
 </td>
 
@@ -42031,25 +41896,25 @@ Txtls
 
 <td style="text-align:center;">
 
-0.0010771
+0.0010920
 
 </td>
 
 <td style="text-align:center;">
 
-0.0012229
+0.0012239
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011515
+0.0011673
 
 </td>
 
 <td style="text-align:center;">
 
-0.0013547
+0.0013549
 
 </td>
 
@@ -42095,43 +41960,43 @@ Util
 
 <td style="text-align:center;">
 
-0.0025746
+0.0025807
 
 </td>
 
 <td style="text-align:center;">
 
-0.0006354
+0.0006402
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007636
+0.0007597
 
 </td>
 
 <td style="text-align:center;">
 
-0.0006633
+0.0006682
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008100
+0.0008068
 
 </td>
 
 <td style="text-align:center;">
 
-0.0007109
+0.0007161
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008185
+0.0008117
 
 </td>
 
@@ -42177,43 +42042,43 @@ Whlsl
 
 <td style="text-align:center;">
 
-0.0038369
+0.0038575
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008330
+0.0008520
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010031
+0.0009988
 
 </td>
 
 <td style="text-align:center;">
 
-0.0008726
+0.0008917
 
 </td>
 
 <td style="text-align:center;">
 
-0.0010812
+0.0010830
 
 </td>
 
 <td style="text-align:center;">
 
-0.0009280
+0.0009471
 
 </td>
 
 <td style="text-align:center;">
 
-0.0011221
+0.0011241
 
 </td>
 
@@ -42369,3 +42234,9 @@ second stage is where we are trying to find whether something is being
 priced: this involves the cross-sectional regressions of returns on
 betas. This is the spot where what we are showing in the paper may be
 particularly important.
+
+# S6 Recreated Figures for ACL
+
+This section contains figures produced for ACL paper specially.
+
+![](ECC_files/figure-gfm/For_ACL_Paper-1.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-2.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-3.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-4.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-5.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-6.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-7.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-8.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-9.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-10.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-11.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-12.png)<!-- -->

@@ -71,6 +71,8 @@ stl_tibble <- function(data, xvar, yvar, frequency=12, s_window=7, robust = FALS
 
   return(sdc)
 }
+
+theme_set(theme_classic())
 ```
 
 
@@ -5282,4 +5284,219 @@ In this section, we will combine the Levi-Welch Betas with our Filtered Estimate
 ## S5-9 Filtering Method in Other Second-pass Regression???
 
 What we show is that using asset-pricing models to estimate the equity cost of capital is compromised by these seasonal factors in the second-pass regressions. The impact of this finding might actually be far more widespread. The first stage is about estimating betas, but the second stage is where we are trying to find whether something is being priced: this involves the cross-sectional regressions of returns on betas.  This is the spot where what we are showing in the paper may be particularly important.
+
+
+# S6 Recreated Figures for ACL
+
+This section contains figures produced for ACL paper specially.
+
+```{r For_ACL_Paper, cache=TRUE}
+# Figure 1 ECC density and time-series for the Construction Industry
+All_FF5_ECC %>%
+  filter(Industry == "Cnstr") %>%
+  subset(select = c(FM, FM_STL_7_N)) %>%
+  rename(FM_STL = FM_STL_7_N) %>%
+  pivot_longer(cols = c(FM, FM_STL), names_to = "Method", values_to = "ECC") %>%
+  # fix order
+  mutate(Method = factor(Method, levels = c("FM","FM_STL"))) %>%
+  ggplot() +
+  geom_density(aes(ECC, linetype = Method), adjust=1.5) +
+  scale_linetype_manual(values=c("dotted", "solid")) +
+  labs(y = "Density") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        legend.position="bottom")
+
+All_FF5_ECC %>%
+  subset(select = c(date, Industry, FM, FM_STL_7_N)) %>%
+  filter(Industry == "Cnstr") %>%
+  rename(FM_STL = FM_STL_7_N) %>%
+  pivot_longer(cols = c(FM, FM_STL), names_to = "Method", values_to = "ECC") %>%
+  mutate(date = transDate(date)) %>%
+  # fix order
+  mutate(Method = factor(Method, levels = c("FM","FM_STL"))) %>%
+  ggplot() +
+  geom_line(aes(date, ECC, linetype = Method)) +
+  scale_linetype_manual(values=c("dotted", "solid")) +
+  labs(x = "Date") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        legend.position="bottom")
+
+# Figure 2 Construction industry RP decomposition
+Port_FF5_STL_s7_norobust %>%
+  # Fix order
+  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
+  mutate(date = transDate(date)) %>%
+  filter(Industry == "Cnstr") %>%
+  ggplot(aes(date, y)) +
+  geom_line() +
+  facet_wrap(~ component,
+             ncol = 1,
+             scales = "free_y") +
+  labs(x = "Date", y = "Risk Premium")
+
+# Figure 3 Different industry strength of decomposition
+Port_FF5_STL_s7_norobust %>%
+  subset(select = -c(x, RP)) %>%
+  pivot_wider(names_from = "component", values_from = "y") %>%
+  group_by(Industry) %>%
+  summarise(Trend = max(0, 1-var(Noise)/var(Noise+Trend)),
+            Seasonal = max(0, 1-var(Noise)/var(Noise+Seasonal))) %>%
+  pivot_longer(cols = c(Trend,Seasonal), names_to = "Component", values_to = "Strength") %>%
+  subset(select = c(Component, Strength)) %>%
+  mutate(Component = factor(Component, levels = c("Trend","Seasonal"))) %>%
+  ungroup() %>%
+  group_by(Component) %>%
+  ggplot() +
+  geom_density(aes(Strength, linetype = Component), adjust=1.5) +
+  scale_linetype_manual(values=c("dotdash", "solid")) +
+  labs(y = "Density") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        legend.position="bottom")
+
+# Figure 4 Plot the rolling betas box plot for Market
+Port_FF5_Betas %>%
+  subset(select = c(date, Industry, `Mkt-RF`)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -c(date, Industry),
+               names_to = "Factors",
+               values_to = "Betas") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(Industry, Betas)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 75, hjust = 1))
+
+
+# Figure 5 Plot the rolling betas box plot for other 4 factors
+Port_FF5_Betas %>%
+  subset(select = -c(Alpha,`Mkt-RF`)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -c(date, Industry),
+               names_to = "Factors",
+               values_to = "Betas") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(Industry, Betas)) +
+  geom_boxplot() +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  theme(axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
+
+
+# Figure 6 density plot of FM_FF5 lambda
+FM_FF5 %>%
+  mutate(Method = "FM") %>%
+  rbind(FM_STL_FF5 %>%
+          mutate(Method = "FM_STL")) %>%
+  select(-date) %>%
+  pivot_longer(cols = -c(Method), names_to = "Factors", values_to = "Lambda") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot() +
+  geom_density(aes(Lambda, linetype = Method), adjust=1.5) +
+  scale_linetype_manual(values=c("dotdash", "solid")) +
+  labs(y = "Density") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        legend.position = c(0.8, 0.2))
+
+# Figure 7 time-series plot of the FM_FF5 lambda
+FM_FF5 %>%
+  mutate(Method = "FM") %>%
+  rbind(FM_STL_FF5 %>%
+          mutate(Method = "FM_STL")) %>%
+  pivot_longer(cols = -c(date, Method), names_to = "Factors", values_to = "Lambda") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, Lambda, linetype = Method)) +
+  geom_line() +
+  scale_linetype_manual(values=c("dotted", "solid")) +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(x = "Date") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        legend.position = c(0.8, 0.2))
+
+# Figure 8 Lambda SE Decomposition
+SE_Decomposition %>%
+  mutate(date = transDate(date),
+         Factor = factor(Factor, levels = unique(Factor))) %>%
+  rename(Residual = sig_e,
+         `Intergroup Variation` = sig_Inter,
+         `Intragroup Variation` = sig_Intra) %>%
+  pivot_longer(-c(date, Factor), names_to = "Source of Error", values_to = "Contribution to Lambda Uncertainty") %>%
+  mutate(`Source of Error` = factor(`Source of Error`, levels = c("Residual", "Intergroup Variation", "Intragroup Variation"))) %>%
+  ggplot(aes(date, `Contribution to Lambda Uncertainty`, linetype = `Source of Error`)) +
+  geom_line() +
+  scale_linetype_manual(values=c("solid", "longdash", "dotted")) +
+  labs(x = "Date") +
+  facet_wrap(~ Factor) +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        legend.position = c(0.8, 0.2))
+
+# Figure 9 Plot the standard error in second-step regression
+FM_FF5_Error %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Standard Error") %>%
+  mutate(Method = "FM") %>%
+  rbind(FM_STL_FF5_Error %>%
+          pivot_longer(cols = -date, names_to = "Factors", values_to = "Standard Error") %>%
+          mutate(Method = "FM_STL")) %>%
+  # fix the Factors order
+  mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, `Standard Error`, linetype = Method)) +
+  geom_line() +
+  scale_linetype_manual(values=c("dotted", "solid")) +
+  labs(x = "Date") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        legend.position = c(0.8, 0.2))
+
+# Figure 10 Create the stats for Estimated ECC mean and Std across Industries
+ECC_FM_FF5 %>%
+  rename(FM = ECC) %>%
+  select(c(date, FM)) %>%
+  inner_join(ECC_FM_STL_FF5 %>%
+               rename(FM_STL = ECC) %>%
+               select(c(date, FM_STL))) %>%
+  pivot_longer(cols = -date, names_to = "Method", values_to = "ECC") %>%
+  group_by(date, Method) %>%
+  summarise(Mean = mean(ECC),
+            `Standard Deviation` = sd(ECC)) %>%
+  pivot_longer(cols = -c(date, Method), names_to = "Stats", values_to = "ECC") %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, ECC, linetype = Method)) +
+  geom_line() +
+  scale_linetype_manual(values=c("dotdash", "solid")) +
+  labs(x = "Date") +
+  facet_wrap(~ Stats,
+             scales = "free_y",
+             ncol = 1) +
+  theme(legend.position="bottom")
+
+# Figure 11 Create the stats for Estimated ECC mean and Std across time for each industry
+ECC_FM_FF5 %>%
+  rename(FM = ECC) %>%
+  select(c(Industry, FM)) %>%
+  inner_join(ECC_FM_STL_FF5 %>%
+               rename(FM_STL = ECC) %>%
+               select(c(Industry, FM_STL))) %>%
+  pivot_longer(cols = -Industry, names_to = "Method", values_to = "ECC") %>%
+  group_by(Industry, Method) %>%
+  summarise(Mean = mean(ECC),
+            `Standard Deviation` = sd(ECC)) %>%
+  pivot_longer(cols = -c(Industry, Method), names_to = "Stats", values_to = "ECC") %>%
+  ggplot(aes(Industry, ECC, shape = Method)) +
+  geom_point() +
+  scale_shape_manual(values=c(1, 16))+
+  facet_wrap(~ Stats,
+             scales = "free_y",
+             ncol = 1) +
+  theme(axis.text.x = element_text(angle = 75, hjust = 1),
+        legend.position="bottom")
+
+```
 

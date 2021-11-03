@@ -146,6 +146,47 @@ The [Fama French Five Factors](https://mba.tuck.dartmouth.edu/pages/faculty/ken.
       gather(Industry, RET, - date)
 ```
 
+```{r FF5_Descriptive_Stats, cache = TRUE}
+FF5 %>%
+  filter(date > 196906) %>%
+  pivot_longer(-date, names_to = "Factors", values_to = "ret") %>%
+  select(-date) %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  group_by(Factors) %>%
+  summarize(mean = round(mean(ret), digits = 4),
+            Median = round(median(ret), digits = 4),
+            `5th Pct` = round(quantile(ret,.05), digits = 4),
+            `95th Pct` = round(quantile(ret,.05), digits = 4),
+            StdDev = round(sd(ret), digits = 4),
+            Skew = round(skewness(ret), digits = 4),
+            Kurt = round(kurtosis(ret), digits = 4)) %>%
+  kable(align = "c", caption = "Descriptive Statistics for the FF5 Factors") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  # Add header above
+  add_header_above(c(" " = 1, "Statistics" = 7))
+
+Portfolios %>%
+  filter(date > 196906) %>%
+  select(-date) %>%
+  # Fix the order of Industry
+  mutate(Industry = factor(Industry, level= unique(.$Industry))) %>%
+  group_by(Industry) %>%
+  summarize(mean = round(mean(RET), digits = 4),
+            Median = round(median(RET), digits = 4),
+            `5th Pct` = round(quantile(RET,.05), digits = 4),
+            `95th Pct` = round(quantile(RET,.05), digits = 4),
+            StdDev = round(sd(RET), digits = 4),
+            Skew = round(skewness(RET), digits = 4),
+            Kurt = round(kurtosis(RET), digits = 4)) %>%
+  kable(align = "c", caption = "Descriptive Statistics for the 49 Industry Portfolio Returns") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  # Add header above
+  add_header_above(c(" " = 1, "statistics" = 7))
+
+```
+
+
 ## S2-2 Traded PRS Five Factors
 
 In order to construct the traded version of PRS Factor, we first obtain the risk-free rate and the raw CRR Five Factors: the Default Premium (dDP), the Industrial Production Growth Rate (dIP), the Term Premium (dTS), the Unexpected Inflation (UNEXPI), and the Change in Expected Inflation (dEI). We obtained following macro variables from the Federal Reserve Bank of St. Louis Economic Data: [Moody's Seasoned Aaa Corporate Bond Yield (Aaa)](https://fred.stlouisfed.org/series/AAA), [Moody's Seasoned Baa Corporate Bond Yield (Baa)](https://fred.stlouisfed.org/series/BAA), [Industrial Production Index (IP)](https://fred.stlouisfed.org/series/INDPRO), [10-Year Treasury Constant Maturity Rate (GS10)](https://fred.stlouisfed.org/series/GS10), [1-Year Treasury Constant Maturity Rate (GS1)](https://fred.stlouisfed.org/series/GS1), [Seasonally Adjusted CPI derived Inflation Rate (INF)](https://fred.stlouisfed.org/series/CPIAUCSL), [University of Michigan Inflation Expectation (MICH)](https://fred.stlouisfed.org/series/MICH), [3-Month Treasury Bill: Secondary Market Rate (TB3MS)](https://fred.stlouisfed.org/series/TB3MS).

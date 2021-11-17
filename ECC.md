@@ -44,11 +44,13 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
           - [S4-4-3 Beta Decomposition](#s4-4-3-beta-decomposition)
           - [S4-4-4 Filtered Second Pass
             Regression](#s4-4-4-filtered-second-pass-regression)
-          - [S4-4-5 Regression Standard
-            Error](#s4-4-5-regression-standard-error)
-          - [S4-4-6 Unfiltered and Filtered
-            Lambdas](#s4-4-6-unfiltered-and-filtered-lambdas)
-          - [S4-4-7 KS test and Stats](#s4-4-7-ks-test-and-stats)
+          - [S4-4-5 Component Second Pass Regression
+            Comparison](#s4-4-5-component-second-pass-regression-comparison)
+          - [S4-4-6 Regression Standard
+            Error](#s4-4-6-regression-standard-error)
+          - [S4-4-7 Unfiltered and Filtered
+            Lambdas](#s4-4-7-unfiltered-and-filtered-lambdas)
+          - [S4-4-8 KS test and Stats](#s4-4-8-ks-test-and-stats)
       - [S4-5 Why filtering might improve Esimated
         Lamdba?](#s4-5-why-filtering-might-improve-esimated-lamdba)
           - [S4-5-1 Biased Regression](#s4-5-1-biased-regression)
@@ -25312,7 +25314,110 @@ premium.
 For robustness check, we also computed the factor risk premium based on
 other filtering.
 
-### S4-4-5 Regression Standard Error
+### S4-4-5 Component Second Pass Regression Comparison
+
+![](ECC_files/figure-gfm/Component_FM-1.png)<!-- -->
+
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+
+<caption style="font-size: initial !important;">
+
+R Squared from Regressing (Panel) Fama French Five Factor Betas on STL
+Components
+
+</caption>
+
+<thead>
+
+<tr>
+
+<th style="text-align:center;">
+
+component
+
+</th>
+
+<th style="text-align:center;">
+
+r.squared
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+Original
+
+</td>
+
+<td style="text-align:center;">
+
+0.0002428
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+Trend
+
+</td>
+
+<td style="text-align:center;">
+
+0.0027479
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+Seasonal
+
+</td>
+
+<td style="text-align:center;">
+
+0.0000137
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;font-weight: bold;">
+
+Noise
+
+</td>
+
+<td style="text-align:center;">
+
+0.0000424
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+### S4-4-6 Regression Standard Error
 
 ![](ECC_files/figure-gfm/Regression_SE-1.png)<!-- -->
 
@@ -25504,7 +25609,7 @@ CMA
 
 ![](ECC_files/figure-gfm/Regression_SE-2.png)<!-- -->
 
-### S4-4-6 Unfiltered and Filtered Lambdas
+### S4-4-7 Unfiltered and Filtered Lambdas
 
 Let’s plot the unfiltered lambda together with filtered lambda to see
 the effect of filtering on lambda.
@@ -25723,7 +25828,7 @@ UNEXPI
 
 ![](ECC_files/figure-gfm/Lambda_Comparison-3.png)<!-- -->![](ECC_files/figure-gfm/Lambda_Comparison-4.png)<!-- -->![](ECC_files/figure-gfm/Lambda_Comparison-5.png)<!-- -->![](ECC_files/figure-gfm/Lambda_Comparison-6.png)<!-- -->
 
-### S4-4-7 KS test and Stats
+### S4-4-8 KS test and Stats
 
 We also performed a KS test to test the FM lambdas and STL FM lambdas
 for different factors. It seems that their distributions are different.

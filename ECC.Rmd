@@ -2262,6 +2262,10 @@ Port_FF5 %>%
         plot.subtitle = element_text(hjust=0.5))
 ```
 
+```{r save_decomposed_data, eval=TRUE}
+write.csv(Port_FF5_STL_s7_norobust, here("data/Filtered_RP.csv"), na = "",  row.names = FALSE)
+```
+
 
 ### S4-4-2 Filtered Seasonality and Trend Strength
 
@@ -3008,7 +3012,86 @@ FM_STL_40_R_PRS <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = -Lambda0)
 ```
 
-### S4-4-5 Regression Standard Error
+### S4-4-5 Component Second Pass Regression Comparison
+```{r Component_FM, cache=TRUE}
+# Estimate the "Factor Risk Premium" for FF5 using different components from the STL decomposed series
+## Create the second-path portfolio for estimation lambda
+Second_Path_component <- Port_FF5_STL_s7_norobust %>%
+  subset(select = c(date, Industry, y, component)) %>%
+  rename(RP = y) %>%
+  inner_join(Port_FF5_Betas) %>%
+  subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
+  ungroup() %>%
+  # convert component into numbers
+  mutate(component_num = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"), labels = 1:4),
+         component_num = as.numeric(component_num))
+
+# Group the data and do the second pass regression
+Rolling_Second_component <- Second_Path_component %>%
+  select(-c(Industry, component)) %>%
+  group_by(date, component_num) %>%
+  do(model = lm(RP ~ . - date - component_num, data = .) %>%
+       coefficients())
+
+# try the r.squared
+Rolling_r2_Second_component <- Second_Path_component %>%
+  select(-c(Industry, component)) %>%
+  group_by(date, component_num) %>%
+  do(model = lm(RP ~ . - date - component_num, data = .) %>%
+       summary() %>%
+       .["r.squared"])
+
+# Unwrap the results
+Rolling_r2_component <- do.call(rbind.data.frame, Rolling_r2_Second_component$model) %>%
+  as_tibble()
+
+# Add in the dates and components
+STL_Component_FF5 <- cbind(Rolling_r2_Second_component[, 1:2], Rolling_r2_component) %>%
+  # convert component back
+  mutate(component = factor(component_num, levels = 1:4, labels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
+  select(-component_num)
+
+# Plot the STL_Component_FF5
+STL_Component_FF5 %>%
+  mutate(date = transDate(date)) %>%
+  group_by(component) %>%
+  ggplot(aes(date, r.squared)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ component) +
+  labs(title= "R Squared from Regressing Fama French Five Factor Betas on STL Components",
+       x = "date", y = "R^2") +
+  theme(plot.title = element_text(hjust=0.5))
+
+# do the regression using panel data
+# try the r.squared
+Rolling_r2_Second_component_panel <- Second_Path_component %>%
+  select(-c(Industry, component)) %>%
+  group_by(component_num) %>%
+  do(model = lm(RP ~ . - date - component_num, data = .) %>%
+       summary() %>%
+       .["r.squared"])
+
+# Unwrap the results
+Rolling_r2_component_panel <- do.call(rbind.data.frame, Rolling_r2_Second_component_panel$model) %>%
+  as_tibble()
+
+# Add in the dates and components
+STL_Component_panel_FF5 <- cbind(Rolling_r2_Second_component_panel[, 1:2], Rolling_r2_component_panel) %>%
+  # convert component back
+  mutate(component = factor(component_num, levels = 1:4, labels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
+  select(c(component, r.squared))
+
+# create the table
+STL_Component_panel_FF5 %>%
+  kable(align = "c", caption = "R Squared from Regressing (Panel) Fama French Five Factor Betas on STL Components") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T)
+```
+
+### S4-4-6 Regression Standard Error
 
 ```{r Regression_SE, cache = TRUE}
 # Plot the standard error in second-step regression
@@ -3069,7 +3152,7 @@ FM_PRS_Error %>%
         axis.text.x = element_text(angle = 30, hjust = 1))
 ```
 
-### S4-4-6 Unfiltered and Filtered Lambdas
+### S4-4-7 Unfiltered and Filtered Lambdas
 
 Let's plot the unfiltered lambda together with filtered lambda to see the effect of filtering on lambda.
 
@@ -3214,7 +3297,7 @@ FM_STL_PRS %>%
 
 ```
 
-### S4-4-7 KS test and Stats
+### S4-4-8 KS test and Stats
 
 We also performed a KS test to test the FM lambdas and STL FM lambdas for different factors. It seems that their distributions are different.
 

@@ -5484,7 +5484,7 @@ Port_FF5_Betas %>%
   pivot_longer(cols = -c(date, Industry),
                names_to = "Factors",
                values_to = "Betas") %>%
-  # Remove the Industry
+  # Remove the Other Industry
   filter(Industry != "Other") %>%
   # Fix the order of Factors
   mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
@@ -5500,7 +5500,7 @@ Port_FF5_Betas %>%
   pivot_longer(cols = -c(date, Industry),
                names_to = "Factors",
                values_to = "Betas") %>%
-  # Remove the Industry
+  # Remove the Other Industry
   filter(Industry != "Other") %>%
   # Fix the order of Factors
   mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
@@ -5585,6 +5585,8 @@ FM_FF5_Error %>%
 
 # Figure 10 Create the stats for Estimated ECC mean and Std across Industries
 ECC_FM_FF5 %>%
+  # Remove the Other Industry
+  filter(Industry != "Other") %>%
   rename(FM = ECC) %>%
   select(c(date, FM)) %>%
   inner_join(ECC_FM_STL_FF5 %>%
@@ -5607,6 +5609,8 @@ ECC_FM_FF5 %>%
 
 # Figure 11 Create the stats for Estimated ECC mean and Std across time for each industry
 ECC_FM_FF5 %>%
+  # Remove the Other Industry
+  filter(Industry != "Other") %>%
   rename(FM = ECC) %>%
   select(c(Industry, FM)) %>%
   inner_join(ECC_FM_STL_FF5 %>%

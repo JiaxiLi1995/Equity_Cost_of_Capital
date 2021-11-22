@@ -5484,6 +5484,8 @@ Port_FF5_Betas %>%
   pivot_longer(cols = -c(date, Industry),
                names_to = "Factors",
                values_to = "Betas") %>%
+  # Remove the Industry
+  filter(Industry != "Other") %>%
   # Fix the order of Factors
   mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
   ggplot(aes(Industry, Betas)) +
@@ -5498,6 +5500,8 @@ Port_FF5_Betas %>%
   pivot_longer(cols = -c(date, Industry),
                names_to = "Factors",
                values_to = "Betas") %>%
+  # Remove the Industry
+  filter(Industry != "Other") %>%
   # Fix the order of Factors
   mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
   ggplot(aes(Industry, Betas)) +

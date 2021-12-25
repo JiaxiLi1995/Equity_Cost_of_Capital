@@ -5447,8 +5447,10 @@ All_FF5_ECC %>%
 
 # Figure 2 Construction industry RP decomposition
 Port_FF5_STL_s7_norobust %>%
+  # Change the seasonal name to periodic
+  mutate(component = replace(component, component == "Seasonal", "Periodic")) %>%
   # Fix order
-  mutate(component  = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"))) %>%
+  mutate(component = factor(component, levels = c("Original", "Trend", "Periodic", "Noise"))) %>%
   mutate(date = transDate(date)) %>%
   filter(Industry == "Cnstr") %>%
   ggplot(aes(date, y)) +
@@ -5464,10 +5466,10 @@ Port_FF5_STL_s7_norobust %>%
   pivot_wider(names_from = "component", values_from = "y") %>%
   group_by(Industry) %>%
   summarise(Trend = max(0, 1-var(Noise)/var(Noise+Trend)),
-            Seasonal = max(0, 1-var(Noise)/var(Noise+Seasonal))) %>%
-  pivot_longer(cols = c(Trend,Seasonal), names_to = "Component", values_to = "Strength") %>%
+            Periodic = max(0, 1-var(Noise)/var(Noise+Seasonal))) %>%
+  pivot_longer(cols = c(Trend,Periodic), names_to = "Component", values_to = "Strength") %>%
   subset(select = c(Component, Strength)) %>%
-  mutate(Component = factor(Component, levels = c("Trend","Seasonal"))) %>%
+  mutate(Component = factor(Component, levels = c("Trend","Periodic"))) %>%
   ungroup() %>%
   group_by(Component) %>%
   ggplot() +

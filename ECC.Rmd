@@ -5421,8 +5421,10 @@ All_FF5_ECC %>%
   subset(select = c(FM, FM_STL_7_N)) %>%
   rename(FM_STL = FM_STL_7_N) %>%
   pivot_longer(cols = c(FM, FM_STL), names_to = "Method", values_to = "ECC") %>%
+  # Change Method from FM_STL to FM-Filtered
+  mutate(Method = replace(Method, Method == "FM_STL", "FM-Filtered")) %>%
   # fix order
-  mutate(Method = factor(Method, levels = c("FM","FM_STL"))) %>%
+  mutate(Method = factor(Method, levels = c("FM","FM-Filtered"))) %>%
   ggplot() +
   geom_density(aes(ECC, linetype = Method), adjust=1.5) +
   scale_linetype_manual(values=c("dotted", "solid")) +
@@ -5435,9 +5437,11 @@ All_FF5_ECC %>%
   filter(Industry == "Cnstr") %>%
   rename(FM_STL = FM_STL_7_N) %>%
   pivot_longer(cols = c(FM, FM_STL), names_to = "Method", values_to = "ECC") %>%
+  # Change Method from FM_STL to FM-Filtered
+  mutate(Method = replace(Method, Method == "FM_STL", "FM-Filtered")) %>%
   mutate(date = transDate(date)) %>%
   # fix order
-  mutate(Method = factor(Method, levels = c("FM","FM_STL"))) %>%
+  mutate(Method = factor(Method, levels = c("FM","FM-Filtered"))) %>%
   ggplot() +
   geom_line(aes(date, ECC, linetype = Method)) +
   scale_linetype_manual(values=c("dotted", "solid")) +
@@ -5494,7 +5498,6 @@ Port_FF5_Betas %>%
   geom_boxplot() +
   theme(axis.text.x = element_text(angle = 75, hjust = 1))
 
-
 # Figure 5 Plot the rolling betas box plot for other 4 factors
 Port_FF5_Betas %>%
   subset(select = -c(Alpha,`Mkt-RF`)) %>%
@@ -5512,12 +5515,11 @@ Port_FF5_Betas %>%
              scales = "free_y") +
   theme(axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
 
-
 # Figure 6 density plot of FM_FF5 lambda
 FM_FF5 %>%
   mutate(Method = "FM") %>%
   rbind(FM_STL_FF5 %>%
-          mutate(Method = "FM_STL")) %>%
+          mutate(Method = "FM-Filtered")) %>%
   select(-date) %>%
   pivot_longer(cols = -c(Method), names_to = "Factors", values_to = "Lambda") %>%
   # Fix the order of Factors
@@ -5535,7 +5537,7 @@ FM_FF5 %>%
 FM_FF5 %>%
   mutate(Method = "FM") %>%
   rbind(FM_STL_FF5 %>%
-          mutate(Method = "FM_STL")) %>%
+          mutate(Method = "FM-Filtered")) %>%
   pivot_longer(cols = -c(date, Method), names_to = "Factors", values_to = "Lambda") %>%
   # Fix the order of Factors
   mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
@@ -5572,14 +5574,15 @@ FM_FF5_Error %>%
   mutate(Method = "FM") %>%
   rbind(FM_STL_FF5_Error %>%
           pivot_longer(cols = -date, names_to = "Factors", values_to = "Standard Error") %>%
-          mutate(Method = "FM_STL")) %>%
+          mutate(Method = "FM-Filtered")) %>%
   # fix the Factors order
   mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
   mutate(date = transDate(date)) %>%
   ggplot(aes(date, `Standard Error`, linetype = Method)) +
   geom_line() +
   scale_linetype_manual(values=c("dotted", "solid")) +
-  labs(x = "Date") +
+  labs(x = "Date",
+       y = "Standard Error of Lambda") +
   facet_wrap(~ Factors,
              scales = "free_y") +
   theme(axis.text.x = element_text(angle = 30, hjust = 1),
@@ -5595,6 +5598,8 @@ ECC_FM_FF5 %>%
                rename(FM_STL = ECC) %>%
                select(c(date, FM_STL))) %>%
   pivot_longer(cols = -date, names_to = "Method", values_to = "ECC") %>%
+  # Change Method from FM_STL to FM-Filtered
+  mutate(Method = replace(Method, Method == "FM_STL", "FM-Filtered")) %>%
   group_by(date, Method) %>%
   summarise(Mean = mean(ECC),
             `Standard Deviation` = sd(ECC)) %>%
@@ -5619,6 +5624,8 @@ ECC_FM_FF5 %>%
                rename(FM_STL = ECC) %>%
                select(c(Industry, FM_STL))) %>%
   pivot_longer(cols = -Industry, names_to = "Method", values_to = "ECC") %>%
+  # Change Method from FM_STL to FM-Filtered
+  mutate(Method = replace(Method, Method == "FM_STL", "FM-Filtered")) %>%
   group_by(Industry, Method) %>%
   summarise(Mean = mean(ECC),
             `Standard Deviation` = sd(ECC)) %>%
@@ -5631,6 +5638,5 @@ ECC_FM_FF5 %>%
              ncol = 1) +
   theme(axis.text.x = element_text(angle = 75, hjust = 1),
         legend.position="bottom")
-
 ```
 

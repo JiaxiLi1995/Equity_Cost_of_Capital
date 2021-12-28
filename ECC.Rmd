@@ -5449,6 +5449,7 @@ All_FF5_ECC %>%
   theme(axis.text.x = element_text(angle = 30, hjust = 1),
         legend.position="bottom")
 
+
 # Figure 2 Construction industry RP decomposition
 Port_FF5_STL_s7_norobust %>%
   # Change the seasonal name to periodic
@@ -5463,6 +5464,7 @@ Port_FF5_STL_s7_norobust %>%
              ncol = 1,
              scales = "free_y") +
   labs(x = "Date", y = "Risk Premium")
+
 
 # Figure 3 Different industry strength of decomposition
 Port_FF5_STL_s7_norobust %>%
@@ -5483,7 +5485,90 @@ Port_FF5_STL_s7_norobust %>%
   theme(axis.text.x = element_text(angle = 30, hjust = 1),
         legend.position="bottom")
 
-# Figure 4 Plot the rolling betas box plot for Market
+
+# Figure 4 Plot the periodogram for construction industry. The code is made based on https://online.stat.psu.edu/stat510/lesson/6/6.1
+Port_FF5_STL_s7_norobust %>%
+  # Change the seasonal name to periodic
+  mutate(component = replace(component, component == "Seasonal", "Periodic")) %>%
+  # Fix order
+  mutate(component = factor(component, levels = c("Original", "Trend", "Periodic", "Noise"))) %>%
+  filter(Industry == "Cnstr") %>%
+  group_by(component) %>%
+  # calculate the frequency and logPeriod
+  mutate(f = (1:n()-1)/n(),
+         P = log(abs(fft(y)))) %>%
+  filter(f <= 0.5) %>%
+  ggplot(aes(f, P)) +
+  geom_line() +
+  facet_wrap(~ component,
+             ncol = 2) +
+  labs(x = "Frequency", y = "Log Period")
+
+
+# Figure 5 average estimated autocorrelations out to 40 periods for the 48 original industry return series
+Port_FF5_STL_s7_norobust %>%
+  # Change the seasonal name to periodic
+  mutate(component = replace(component, component == "Seasonal", "Periodic")) %>%
+  # Fix order
+  mutate(component = factor(component, levels = c("Original", "Trend", "Periodic", "Noise"))) %>%
+  inner_join(Ind_ID) %>%
+  subset(select = - Industry) %>%
+  # unite the Ind_ID
+  group_by(Ind_ID, component) %>%
+  summarise(autocorrelation = acf(y, plot = FALSE, lag.max = 40) %>% .$acf) %>%
+  mutate(lag = 0:40) %>%
+  filter(lag > 0) %>%
+  ungroup() %>%
+  # regroup by component and lag
+  group_by(component, lag) %>%
+  summarise(autocorrelation = mean(autocorrelation)) %>%
+  ggplot(aes(lag, autocorrelation)) +
+  geom_line() +
+  facet_wrap(~ component,
+             ncol = 2) +
+  labs(x = "Lag", y = "Autocorrelation")
+
+
+# Figure 6 moments original vs. trend for all industries
+Port_FF5_STL_s7_norobust %>%
+  # Keep Original, Trend
+  filter(component %in% c("Original", "Trend")) %>%
+  # Fix order
+  mutate(component = factor(component, levels = c("Original", "Trend"))) %>%
+  group_by(component, date) %>%
+  summarise(Mean = mean(y),
+            StdDev = sd(y),
+            Skewness = skewness(y),
+            Kurtosis = kurtosis(y)) %>%
+  pivot_longer(-c(date, component), names_to = "Moment", values_to = "Value") %>%
+  # Fix order
+  mutate(Moment = factor(Moment, levels = c("Mean", "StdDev", "Skewness", "Kurtosis"))) %>%
+  ggplot() +
+  geom_density(aes(Value, linetype = component), adjust=1.5) +
+  scale_linetype_manual(values=c("dotdash", "solid")) +
+  facet_wrap(~ Moment,
+             ncol = 2,
+             scales = "free") +
+  labs(x = "", y = "Density")
+
+
+# Figure 7 std for all components
+Port_FF5_STL_s7_norobust %>%
+  # Keep Original, Trend
+  filter(component != "Original") %>%
+  # Change the seasonal name to periodic
+  mutate(component = replace(component, component == "Seasonal", "Periodic")) %>%
+  # Fix order
+  mutate(component = factor(component, levels = c("Trend", "Periodic", "Noise"))) %>%
+  group_by(component, date) %>%
+  summarise(StdDev = sd(y)) %>%
+  ggplot() +
+  geom_density(aes(StdDev, linetype = component), adjust=1.5) +
+  scale_linetype_manual(values=c("solid", "dotdash", "1F")) +
+  labs(x = "StdDev", y = "Density")
+
+
+# Figure 8 Plot the rolling betas box plot for Market
 Port_FF5_Betas %>%
   subset(select = c(date, Industry, `Mkt-RF`)) %>%
   # pivot longer to make factors a category
@@ -5498,7 +5583,8 @@ Port_FF5_Betas %>%
   geom_boxplot() +
   theme(axis.text.x = element_text(angle = 75, hjust = 1))
 
-# Figure 5 Plot the rolling betas box plot for other 4 factors
+
+# Figure 9 Plot the rolling betas box plot for other 4 factors
 Port_FF5_Betas %>%
   subset(select = -c(Alpha,`Mkt-RF`)) %>%
   # pivot longer to make factors a category
@@ -5515,7 +5601,8 @@ Port_FF5_Betas %>%
              scales = "free_y") +
   theme(axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
 
-# Figure 6 density plot of FM_FF5 lambda
+
+# Figure 10 density plot of FM_FF5 lambda
 FM_FF5 %>%
   mutate(Method = "FM") %>%
   rbind(FM_STL_FF5 %>%
@@ -5533,7 +5620,8 @@ FM_FF5 %>%
   theme(axis.text.x = element_text(angle = 30, hjust = 1),
         legend.position = c(0.8, 0.2))
 
-# Figure 7 time-series plot of the FM_FF5 lambda
+
+# Figure 11 time-series plot of the FM_FF5 lambda
 FM_FF5 %>%
   mutate(Method = "FM") %>%
   rbind(FM_STL_FF5 %>%
@@ -5551,7 +5639,8 @@ FM_FF5 %>%
   theme(axis.text.x = element_text(angle = 30, hjust = 1),
         legend.position = c(0.8, 0.2))
 
-# Figure 8 Lambda SE Decomposition
+
+# Figure 12 Lambda SE Decomposition
 SE_Decomposition %>%
   mutate(date = transDate(date),
          Factor = factor(Factor, levels = unique(Factor))) %>%
@@ -5568,7 +5657,8 @@ SE_Decomposition %>%
   theme(axis.text.x = element_text(angle = 30, hjust = 1),
         legend.position = c(0.8, 0.2))
 
-# Figure 9 Plot the standard error in second-step regression
+
+# Figure 13 Plot the standard error in second-step regression
 FM_FF5_Error %>%
   pivot_longer(cols = -date, names_to = "Factors", values_to = "Standard Error") %>%
   mutate(Method = "FM") %>%
@@ -5588,7 +5678,8 @@ FM_FF5_Error %>%
   theme(axis.text.x = element_text(angle = 30, hjust = 1),
         legend.position = c(0.8, 0.2))
 
-# Figure 10 Create the stats for Estimated ECC mean and Std across Industries
+
+# Figure 14 Create the stats for Estimated ECC mean and Std across Industries
 ECC_FM_FF5 %>%
   # Remove the Other Industry
   filter(Industry != "Other") %>%
@@ -5614,7 +5705,8 @@ ECC_FM_FF5 %>%
              ncol = 1) +
   theme(legend.position="bottom")
 
-# Figure 11 Create the stats for Estimated ECC mean and Std across time for each industry
+
+# Figure 15 Create the stats for Estimated ECC mean and Std across time for each industry
 ECC_FM_FF5 %>%
   # Remove the Other Industry
   filter(Industry != "Other") %>%

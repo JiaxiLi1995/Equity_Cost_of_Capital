@@ -5564,7 +5564,7 @@ Port_FF5_STL_s7_norobust %>%
   summarise(StdDev = sd(y)) %>%
   ggplot() +
   geom_density(aes(StdDev, linetype = component), adjust=1.5) +
-  scale_linetype_manual(values=c("solid", "dotdash", "1F")) +
+  scale_linetype_manual(values=c("solid", "dotdash", "5B")) +
   labs(x = "StdDev", y = "Density")
 
 

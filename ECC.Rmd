@@ -121,7 +121,7 @@ The [Fama French Five Factors](https://mba.tuck.dartmouth.edu/pages/faculty/ken.
     # Read the contents read_csv
     FF5 <- read_csv(here("data/F-F_Research_Data_5_Factors_2x3.CSV"), skip = 3) %>%
       mutate_all(as.numeric) %>%
-      rename(date = X1) %>%
+      rename(date = `...1`) %>%
       filter(date >196300) %>%
       # Change all the returns into decimals
       mutate_at(vars(-date), function(x, na.rm = FALSE) (x/100)) %>%
@@ -130,7 +130,7 @@ The [Fama French Five Factors](https://mba.tuck.dartmouth.edu/pages/faculty/ken.
     # Read the contents read_csv and extract the desired dates
     Portfolios <- read_csv(here("data/49_Industry_Portfolios.CSV"), skip = 11) %>%
       mutate_all(as.numeric) %>%
-      rename(date = X1) %>%
+      rename(date = `...1`) %>%
       filter(date > 192600) %>%
       # Change all the returns into decimals
       mutate_at(vars(-date), function(x, na.rm = FALSE) (x/100)) %>%
@@ -1756,7 +1756,7 @@ Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
   as_tibble()
 Rolling_Error <- do.call(rbind.data.frame, Rolling_Error_Second$model) %>%
   as_tibble()
-Rolling_FF5_Resid <- do.call(rbind.data.frame, Rolling_Second_Resid$model) %>%
+Rolling_Resid <- do.call(rbind.data.frame, Rolling_Second_Resid$model) %>%
   as_tibble()
 
 # Rename the variables
@@ -1772,7 +1772,7 @@ FM_FF5_Lambda0 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = c(date,Lambda0))
 FM_FF5_Error <- cbind(Rolling_Error_Second[, 1], Rolling_Error) %>%
   subset(select = -Lambda0)
-FM_FF5_Resid <- Rolling_FF5_Resid
+FM_FF5_Resid <- Rolling_Resid
 
 
 # Plot the FM_FF5
@@ -1817,10 +1817,19 @@ Rolling_Error_Second <- Second_Path %>%
        coef() %>%
        .[, "Std. Error"])
 
+# Extract Resid
+Rolling_Second_Resid <- Second_Path %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Industry, data = .) %>%
+       broom::augment() %>%
+       subset(select = c(date, Industry, .resid)))
+
 # Unwrap the results
 Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
   as_tibble()
 Rolling_Error <- do.call(rbind.data.frame, Rolling_Error_Second$model) %>%
+  as_tibble()
+Rolling_Resid <- do.call(rbind.data.frame, Rolling_Second_Resid$model) %>%
   as_tibble()
 
 # Rename the variables
@@ -1836,6 +1845,7 @@ FM_PRS_Lambda0 <- cbind(Rolling_Second[, 1], Rolling_Lambdas) %>%
   subset(select = c(date,Lambda0))
 FM_PRS_Error <- cbind(Rolling_Error_Second[, 1], Rolling_Error) %>%
   subset(select = -Lambda0)
+FM_PRS_Resid <- Rolling_Resid
 
 # Plot the FM_PRS
 FM_PRS %>%
@@ -1893,19 +1903,19 @@ We only care about the magnitude of this sensitivity, since $se(\hat\lambda)<1$,
 
 ```{r FM_Lambda_Decomp, cache = TRUE}
 # Estimate the components
-sig_e <- FM_FF5_Resid %>%
+sig_e_FF5 <- FM_FF5_Resid %>%
   group_by(date) %>%
   summarise(Resid = sd(.resid))
 
 # SST inverse
-INV_sig_Intra <- Port_FF5_Betas %>%
+INV_sig_Intra_FF5 <- Port_FF5_Betas %>%
   # get rid of Other category
   filter(Industry != "Other") %>%
   select(!c(Alpha,Industry)) %>%
   group_by(date) %>%
   summarise_all(list(~1/sd(.)/sqrt(length(.)-1)))
 
-sig_Intra <- Port_FF5_Betas %>%
+sig_Intra_FF5 <- Port_FF5_Betas %>%
   # get rid of Other category
   filter(Industry != "Other") %>%
   select(!c(Alpha,Industry)) %>%
@@ -1913,47 +1923,47 @@ sig_Intra <- Port_FF5_Betas %>%
   summarise_all(list(~sd(.)*sqrt(length(.)-1)))
   
 # R_sq inverse
-INV_sig_Inter <- FM_FF5_Error/INV_sig_Intra/cbind(1/sig_e[,1],rep(sig_e[,2],5))
+INV_sig_Inter_FF5 <- FM_FF5_Error/INV_sig_Intra_FF5/cbind(1/sig_e_FF5[,1],rep(sig_e_FF5[,2],5))
 
-sig_Inter <- cbind(sig_e[,1], (INV_sig_Intra[,2:6]*rep(sig_e[,2],5)/FM_FF5_Error[,2:6])) %>%
+sig_Inter_FF5 <- cbind(sig_e_FF5[,1], (INV_sig_Intra_FF5[,2:6]*rep(sig_e_FF5[,2],5)/FM_FF5_Error[,2:6])) %>%
   tibble() %>%
-  mutate(date = sig_e$date)
+  mutate(date = sig_e_FF5$date)
 
 # Decomposition
-SE_Decomposition <- sig_e %>%
-  rename(sig_e = Resid) %>%
-  inner_join(sig_Inter %>%
-               pivot_longer(-date, names_to = "Factor", values_to = "sig_Inter")) %>%
-  inner_join(sig_Intra %>%
-               pivot_longer(-date, names_to = "Factor", values_to = "sig_Intra")) %>%
+SE_Decomposition_FF5 <- sig_e_FF5 %>%
+  rename(sig_e_FF5 = Resid) %>%
+  inner_join(sig_Inter_FF5 %>%
+               pivot_longer(-date, names_to = "Factor", values_to = "sig_Inter_FF5")) %>%
+  inner_join(sig_Intra_FF5 %>%
+               pivot_longer(-date, names_to = "Factor", values_to = "sig_Intra_FF5")) %>%
   inner_join(FM_FF5_Error %>%
                pivot_longer(-date, names_to = "Factor", values_to = "Lambda_Error")) %>%
-  mutate(sig_e = log(sig_e)/log(Lambda_Error),
-         sig_Inter = log(sig_Inter)/log(Lambda_Error),
-         sig_Intra = log(sig_Intra)/log(Lambda_Error)) %>%
-  select(c(date,Factor,sig_e,sig_Intra,sig_Inter))
+  mutate(sig_e_FF5 = log(sig_e_FF5)/log(Lambda_Error),
+         sig_Inter_FF5 = log(sig_Inter_FF5)/log(Lambda_Error),
+         sig_Intra_FF5 = log(sig_Intra_FF5)/log(Lambda_Error)) %>%
+  select(c(date,Factor,sig_e_FF5,sig_Intra_FF5,sig_Inter_FF5))
 
 # Summary Stats
-SE_Decomposition %>%
+SE_Decomposition_FF5 %>%
   mutate(Factor = factor(Factor, levels = unique(Factor))) %>%
   pivot_longer(-c(date, Factor), names_to = "Type", values_to = "Percent") %>%
   select(!date) %>%
   group_by(Factor, Type) %>%
   summarise_all(funs(mean, median, variance = var(.), skewness, kurtosis)) %>%
-  rbind(SE_Decomposition %>%
+  rbind(SE_Decomposition_FF5 %>%
           mutate(Factor = "Overall") %>%
           pivot_longer(-c(date, Factor), names_to = "Type", values_to = "Percent") %>%
           select(!date) %>%
           group_by(Factor, Type) %>%
           summarise_all(funs(mean, median, variance = var(.), skewness, kurtosis))) %>%
-  kable(align = "c", caption = "Fama Macbeth lambda SE Decomposition Percent") %>%
+  kable(align = "c", caption = "FF5 Fama Macbeth lambda SE Decomposition Percent") %>%
   kable_styling(font_size = 10, "striped", full_width = F) %>%
   column_spec(1, bold = T) %>%
   # Add header above
   add_header_above(c(" " = 2, "stats" = 5)) %>%
   collapse_rows(columns = 1)
 
-SE_Decomposition %>%
+SE_Decomposition_FF5 %>%
   mutate(date = transDate(date),
          Factor = factor(Factor, levels = unique(Factor))) %>%
   pivot_longer(-c(date, Factor), names_to = "Type", values_to = "Percent") %>%
@@ -1963,17 +1973,95 @@ SE_Decomposition %>%
   facet_wrap(~ Factor) +
   scale_x_date(minor_breaks = "1 year") +
   scale_color_brewer(palette = "Paired") +
-  labs(title= "Fama Macbeth lambda SE Component Decomposition",
+  labs(title= "FF5 Fama Macbeth lambda SE Component Decomposition",
        x = "date") + 
   theme(plot.title = element_text(hjust=0.5),
         axis.text.x = element_text(angle = 30, hjust = 1))
 
 
+# Estimate the components
+sig_e_PRS <- FM_PRS_Resid %>%
+  group_by(date) %>%
+  summarise(Resid = sd(.resid))
+
+# SST inverse
+INV_sig_Intra_PRS <- Port_PRS_Betas %>%
+  # get rid of Other category
+  filter(Industry != "Other") %>%
+  select(!c(Alpha,Industry)) %>%
+  group_by(date) %>%
+  summarise_all(list(~1/sd(.)/sqrt(length(.)-1)))
+
+sig_Intra_PRS <- Port_PRS_Betas %>%
+  # get rid of Other category
+  filter(Industry != "Other") %>%
+  select(!c(Alpha,Industry)) %>%
+  group_by(date) %>%
+  summarise_all(list(~sd(.)*sqrt(length(.)-1)))
+
+# R_sq inverse
+INV_sig_Inter_PRS <- FM_PRS_Error/INV_sig_Intra_PRS/cbind(1/sig_e_PRS[,1],rep(sig_e_PRS[,2],5))
+
+sig_Inter_PRS <- cbind(sig_e_PRS[,1], (INV_sig_Intra_PRS[,2:6]*rep(sig_e_PRS[,2],5)/FM_PRS_Error[,2:6])) %>%
+  tibble() %>%
+  mutate(date = sig_e_PRS$date)
+
+# Decomposition
+SE_Decomposition_PRS <- sig_e_PRS %>%
+  rename(sig_e_PRS = Resid) %>%
+  inner_join(sig_Inter_PRS %>%
+               pivot_longer(-date, names_to = "Factor", values_to = "sig_Inter_PRS")) %>%
+  inner_join(sig_Intra_PRS %>%
+               pivot_longer(-date, names_to = "Factor", values_to = "sig_Intra_PRS")) %>%
+  inner_join(FM_PRS_Error %>%
+               pivot_longer(-date, names_to = "Factor", values_to = "Lambda_Error")) %>%
+  mutate(sig_e_PRS = log(sig_e_PRS)/log(Lambda_Error),
+         sig_Inter_PRS = log(sig_Inter_PRS)/log(Lambda_Error),
+         sig_Intra_PRS = log(sig_Intra_PRS)/log(Lambda_Error)) %>%
+  select(c(date,Factor,sig_e_PRS,sig_Intra_PRS,sig_Inter_PRS))
+
+# Summary Stats
+SE_Decomposition_PRS %>%
+  mutate(Factor = factor(Factor, levels = unique(Factor))) %>%
+  pivot_longer(-c(date, Factor), names_to = "Type", values_to = "Percent") %>%
+  select(!date) %>%
+  group_by(Factor, Type) %>%
+  summarise_all(funs(mean, median, variance = var(.), skewness, kurtosis)) %>%
+  rbind(SE_Decomposition_PRS %>%
+          mutate(Factor = "Overall") %>%
+          pivot_longer(-c(date, Factor), names_to = "Type", values_to = "Percent") %>%
+          select(!date) %>%
+          group_by(Factor, Type) %>%
+          summarise_all(funs(mean, median, variance = var(.), skewness, kurtosis))) %>%
+  kable(align = "c", caption = "PRS Fama Macbeth lambda SE Decomposition Percent") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  # Add header above
+  add_header_above(c(" " = 2, "stats" = 5)) %>%
+  collapse_rows(columns = 1)
+
+SE_Decomposition_PRS %>%
+  mutate(date = transDate(date),
+         Factor = factor(Factor, levels = unique(Factor))) %>%
+  pivot_longer(-c(date, Factor), names_to = "Type", values_to = "Percent") %>%
+  mutate(Type = factor(Type, levels = unique(Type))) %>%
+  ggplot(aes(date, Percent, color = Type)) +
+  geom_line() +
+  facet_wrap(~ Factor) +
+  scale_x_date(minor_breaks = "1 year") +
+  scale_color_brewer(palette = "Paired") +
+  labs(title= "PRS Fama Macbeth lambda SE Component Decomposition",
+       x = "date") + 
+  theme(plot.title = element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 30, hjust = 1))
 ```
 
 ```{r FM_Lambda_Decomp_save, eval = FALSE}
-SE_Decomposition %>%
-  write_csv("Lambda_SE_Percent.csv")
+SE_Decomposition_FF5 %>%
+  write_csv("FF5_Lambda_SE_Percent.csv")
+
+SE_Decomposition_PRS %>%
+  write_csv("PRS_Lambda_SE_Percent.csv")
 ```
 
 
@@ -5429,8 +5517,7 @@ All_FF5_ECC %>%
   geom_density(aes(ECC, linetype = Method), adjust=1.5) +
   scale_linetype_manual(values=c("dotted", "solid")) +
   labs(y = "Density") +
-  theme(axis.text.x = element_text(angle = 30, hjust = 1),
-        legend.position="bottom")
+  theme(legend.position="bottom")
 
 All_FF5_ECC %>%
   subset(select = c(date, Industry, FM, FM_STL_7_N)) %>%
@@ -5446,8 +5533,7 @@ All_FF5_ECC %>%
   geom_line(aes(date, ECC, linetype = Method)) +
   scale_linetype_manual(values=c("dotted", "solid")) +
   labs(x = "Date") +
-  theme(axis.text.x = element_text(angle = 30, hjust = 1),
-        legend.position="bottom")
+  theme(legend.position="bottom")
 
 
 # Figure 2 Construction industry RP decomposition
@@ -5482,8 +5568,7 @@ Port_FF5_STL_s7_norobust %>%
   geom_density(aes(Strength, linetype = Component), adjust=1.5) +
   scale_linetype_manual(values=c("dotdash", "solid")) +
   labs(y = "Density") +
-  theme(axis.text.x = element_text(angle = 30, hjust = 1),
-        legend.position="bottom")
+  theme(legend.position="bottom")
 
 
 # Figure 4 Plot the periodogram for construction industry. The code is made based on https://online.stat.psu.edu/stat510/lesson/6/6.1
@@ -5549,7 +5634,8 @@ Port_FF5_STL_s7_norobust %>%
   facet_wrap(~ Moment,
              ncol = 2,
              scales = "free") +
-  labs(x = "", y = "Density")
+  labs(x = "", y = "Density") +
+  theme(legend.position="bottom")
 
 
 # Figure 7 std for all components
@@ -5565,7 +5651,8 @@ Port_FF5_STL_s7_norobust %>%
   ggplot() +
   geom_density(aes(StdDev, linetype = component), adjust=1.5) +
   scale_linetype_manual(values=c("solid", "dotdash", "5B")) +
-  labs(x = "StdDev", y = "Density")
+  labs(x = "StdDev", y = "Density") +
+  theme(legend.position="bottom")
 
 
 # Figure 8 Plot the rolling betas box plot for Market
@@ -5641,12 +5728,12 @@ FM_FF5 %>%
 
 
 # Figure 12 Lambda SE Decomposition
-SE_Decomposition %>%
+SE_Decomposition_FF5 %>%
   mutate(date = transDate(date),
          Factor = factor(Factor, levels = unique(Factor))) %>%
-  rename(Residual = sig_e,
-         `Intergroup Variation` = sig_Inter,
-         `Intragroup Variation` = sig_Intra) %>%
+  rename(Residual = sig_e_FF5,
+         `Intergroup Variation` = sig_Inter_FF5,
+         `Intragroup Variation` = sig_Intra_FF5) %>%
   pivot_longer(-c(date, Factor), names_to = "Source of Error", values_to = "Contribution to Lambda Uncertainty") %>%
   mutate(`Source of Error` = factor(`Source of Error`, levels = c("Residual", "Intergroup Variation", "Intragroup Variation"))) %>%
   ggplot(aes(date, `Contribution to Lambda Uncertainty`, linetype = `Source of Error`)) +
@@ -5730,5 +5817,320 @@ ECC_FM_FF5 %>%
              ncol = 1) +
   theme(axis.text.x = element_text(angle = 75, hjust = 1),
         legend.position="bottom")
+```
+
+
+Figures for Appendix:
+
+```{r For_ACL_Paper_Appendix, cache=TRUE}
+############################################################
+# Simulation Appendix
+# Figure 16 Simulation1 Result
+Filtered_lambda %>%
+  inner_join(Unfiltered_lambda) %>%
+  inner_join(Sim_lambda) %>%
+  rename(Actual = value,
+         Filtered = Filtered_Lambda1,
+         Unfiltered = Unfiltered_Lambda1) %>%
+  pivot_longer(cols = -date, names_to = "Method", values_to = "Lambda") %>%
+  # fix order
+  mutate(Method = factor(Method, levels = c("Unfiltered","Filtered","Actual"))) %>%
+  ggplot(aes(date, Lambda, linetype = Method)) +
+  geom_line() +
+  scale_linetype_manual(values=c("dotted", "longdash", "solid")) +
+  labs(x = "date index") +
+  theme(legend.position="bottom")
+
+
+# Figure 17 Simulation2 Result
+Filtered_lambda2 %>%
+  inner_join(Unfiltered_lambda2) %>%
+  inner_join(Sim_lambda2) %>%
+  rename(Actual = value,
+         Filtered = Filtered_Lambda1,
+         Unfiltered = Unfiltered_Lambda1) %>%
+  pivot_longer(cols = -date, names_to = "Method", values_to = "Lambda") %>%
+  # fix order
+  mutate(Method = factor(Method, levels = c("Unfiltered","Filtered","Actual"))) %>%
+  ggplot(aes(date, Lambda, linetype = Method)) +
+  geom_line() +
+  scale_linetype_manual(values=c("dotted", "longdash", "solid")) +
+  labs(x = "date index") +
+  theme(legend.position="bottom")
+
+
+# Figure 18 Simulation31 Result for factor
+Simulation_Lambda_SSEs %>%
+  pivot_wider(names_from = "Method", values_from = "SSE") %>%
+  mutate(Improvement = Unfiltered - Filtered) %>%
+  mutate(Factors = factor(Factors, levels = (names(FF5)[2:6]))) %>%
+  ggplot(aes(Factors, Improvement)) +
+  geom_boxplot() +
+  theme(legend.position="bottom")
+
+
+# Figure 19 Simulation32 Result for sector
+Simulation_ECC_Errors %>%
+  filter(Industry != "Other") %>%
+  ggplot(aes(Industry, Improvement)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 75, hjust = 1),
+        legend.position="bottom")
+
+############################################################
+# PRS Appendix
+# Figure 20 Plot the rolling betas box plot for Market
+Port_PRS_Betas %>%
+  subset(select = c(date, Industry, `Mkt-RF`)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -c(date, Industry),
+               names_to = "Factors",
+               values_to = "Betas") %>%
+  # Remove the Other Industry
+  filter(Industry != "Other") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(Industry, Betas)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 75, hjust = 1))
+
+
+# Figure 21 Plot the rolling betas box plot for other 4 factors
+Port_PRS_Betas %>%
+  subset(select = -c(Alpha,`Mkt-RF`)) %>%
+  # pivot longer to make factors a category
+  pivot_longer(cols = -c(date, Industry),
+               names_to = "Factors",
+               values_to = "Betas") %>%
+  # Remove the Other Industry
+  filter(Industry != "Other") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot(aes(Industry, Betas)) +
+  geom_boxplot() +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  theme(axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
+
+
+# Figure 22 density plot of FM_FF5 lambda
+FM_PRS %>%
+  mutate(Method = "FM") %>%
+  rbind(FM_STL_PRS %>%
+          mutate(Method = "FM-Filtered")) %>%
+  select(-date) %>%
+  pivot_longer(cols = -c(Method), names_to = "Factors", values_to = "Lambda") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  ggplot() +
+  geom_density(aes(Lambda, linetype = Method), adjust=1.5) +
+  scale_linetype_manual(values=c("dotdash", "solid")) +
+  labs(y = "Density") +
+  facet_wrap(~ Factors,
+             scales = "free") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        legend.position = c(0.8, 0.2))
+
+
+# Figure 23 Lambda SE Decomposition
+SE_Decomposition_PRS %>%
+  mutate(date = transDate(date),
+         Factor = factor(Factor, levels = unique(Factor))) %>%
+  rename(Residual = sig_e_PRS,
+         `Intergroup Variation` = sig_Inter_PRS,
+         `Intragroup Variation` = sig_Intra_PRS) %>%
+  pivot_longer(-c(date, Factor), names_to = "Source of Error", values_to = "Contribution to Lambda Uncertainty") %>%
+  mutate(`Source of Error` = factor(`Source of Error`, levels = c("Residual", "Intergroup Variation", "Intragroup Variation"))) %>%
+  ggplot(aes(date, `Contribution to Lambda Uncertainty`, linetype = `Source of Error`)) +
+  geom_line() +
+  scale_linetype_manual(values=c("solid", "longdash", "dotted")) +
+  labs(x = "Date") +
+  facet_wrap(~ Factor) +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        legend.position = c(0.8, 0.2))
+
+
+# Figure 24 Plot the standard error in second-step regression
+FM_PRS_Error %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Standard Error") %>%
+  mutate(Method = "FM") %>%
+  rbind(FM_STL_PRS_Error %>%
+          pivot_longer(cols = -date, names_to = "Factors", values_to = "Standard Error") %>%
+          mutate(Method = "FM-Filtered")) %>%
+  # fix the Factors order
+  mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, `Standard Error`, linetype = Method)) +
+  geom_line() +
+  scale_linetype_manual(values=c("dotted", "solid")) +
+  labs(x = "Date",
+       y = "Standard Error of Lambda") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        legend.position = c(0.8, 0.2))
+
+
+# Figure 25 Create the stats for Estimated ECC mean and Std across Industries
+ECC_FM_PRS %>%
+  # Remove the Other Industry
+  filter(Industry != "Other") %>%
+  rename(FM = ECC) %>%
+  select(c(date, FM)) %>%
+  inner_join(ECC_FM_STL_PRS %>%
+               rename(FM_STL = ECC) %>%
+               select(c(date, FM_STL))) %>%
+  pivot_longer(cols = -date, names_to = "Method", values_to = "ECC") %>%
+  # Change Method from FM_STL to FM-Filtered
+  mutate(Method = replace(Method, Method == "FM_STL", "FM-Filtered")) %>%
+  group_by(date, Method) %>%
+  summarise(Mean = mean(ECC),
+            `Standard Deviation` = sd(ECC)) %>%
+  pivot_longer(cols = -c(date, Method), names_to = "Stats", values_to = "ECC") %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, ECC, linetype = Method)) +
+  geom_line() +
+  scale_linetype_manual(values=c("dotdash", "solid")) +
+  labs(x = "Date") +
+  facet_wrap(~ Stats,
+             scales = "free_y",
+             ncol = 1) +
+  theme(legend.position="bottom")
+
+
+# Figure 26 Create the stats for Estimated ECC mean and Std across time for each industry
+ECC_FM_PRS %>%
+  # Remove the Other Industry
+  filter(Industry != "Other") %>%
+  rename(FM = ECC) %>%
+  select(c(Industry, FM)) %>%
+  inner_join(ECC_FM_STL_PRS %>%
+               rename(FM_STL = ECC) %>%
+               select(c(Industry, FM_STL))) %>%
+  pivot_longer(cols = -Industry, names_to = "Method", values_to = "ECC") %>%
+  # Change Method from FM_STL to FM-Filtered
+  mutate(Method = replace(Method, Method == "FM_STL", "FM-Filtered")) %>%
+  group_by(Industry, Method) %>%
+  summarise(Mean = mean(ECC),
+            `Standard Deviation` = sd(ECC)) %>%
+  pivot_longer(cols = -c(Industry, Method), names_to = "Stats", values_to = "ECC") %>%
+  ggplot(aes(Industry, ECC, shape = Method)) +
+  geom_point() +
+  scale_shape_manual(values=c(1, 16))+
+  facet_wrap(~ Stats,
+             scales = "free_y",
+             ncol = 1) +
+  theme(axis.text.x = element_text(angle = 75, hjust = 1),
+        legend.position="bottom")
+
+```
+
+Here are the tables:
+
+```{r For_ACL_Paper_Tables, cache=TRUE}
+# Table1 FF5 lambda Summary
+FM_FF5 %>%
+  mutate(method = "FM") %>%
+  rbind(FM_STL_FF5 %>%
+          mutate(method = "Fil. FM")) %>%
+  # fix the method order
+  mutate(method = factor(method, levels = unique(.$method))) %>%
+  select(-date) %>%
+  pivot_longer(-method, names_to = "Factors", values_to = "Value") %>%
+  # fix the Factors order
+  mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  group_by(Factors, method) %>%
+  summarise(Mean = round(mean(Value), digits = 4),
+            Median = round(median(Value), digits = 4),
+            StdDev = round(sd(Value), digits = 4),
+            `5th Pct` = round(quantile(Value, .05), digits = 4),
+            `95th Pct` = round(quantile(Value, .95), digits = 4)) %>%
+  cbind(FM_FF5 %>%
+          mutate(method = "FM") %>%
+          rbind(FM_STL_FF5 %>%
+                  mutate(method = "Fil. FM")) %>%
+          # fix the method order
+          mutate(method = factor(method, levels = unique(.$method))) %>%
+          select(-date) %>%
+          pivot_longer(-method, names_to = "Factors", values_to = "Value") %>%
+          # fix the Factors order
+          mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
+          group_by(Factors) %>%
+          summarise(stat = toString(round(t.test(Value ~ method, data = .)$statistic, digits = 3)),
+                    p_value = paste("(", format(round(t.test(Value ~ method, data = .)$p.value, digits = 2), nsmall = 2), ")", sep = "")) %>%
+          pivot_longer(c(stat, p_value), names_to = "T", values_to = "T-test") %>%
+          select(`T-test`)) %>%
+  cbind(FM_FF5 %>%
+          mutate(method = "FM") %>%
+          rbind(FM_STL_FF5 %>%
+                  mutate(method = "Fil. FM")) %>%
+          # fix the method order
+          mutate(method = factor(method, levels = unique(.$method))) %>%
+          select(-date) %>%
+          pivot_longer(-method, names_to = "Factors", values_to = "Value") %>%
+          # fix the Factors order
+          mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
+          group_by(Factors) %>%
+          summarise(stat = toString(round(var.test(Value ~ method, data = .)$statistic, digits = 3)),
+                    p_value = paste("(", format(round(var.test(Value ~ method, data = .)$p.value, digits = 2), nsmall = 2), ")", sep = "")) %>%
+          pivot_longer(c(stat, p_value), names_to = "F", values_to = "F-test") %>%
+          select(`F-test`)) %>%
+  kable(align = "c", caption = "FF5 Factors Lambda Stats") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  collapse_rows(columns = 1)
+
+
+# Table3 PRS lambda Summary
+FM_PRS %>%
+  mutate(method = "FM") %>%
+  rbind(FM_STL_PRS %>%
+          mutate(method = "Fil. FM")) %>%
+  # fix the method order
+  mutate(method = factor(method, levels = unique(.$method))) %>%
+  select(-date) %>%
+  pivot_longer(-method, names_to = "Factors", values_to = "Value") %>%
+  # fix the Factors order
+  mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  group_by(Factors, method) %>%
+  summarise(Mean = round(mean(Value), digits = 4),
+            Median = round(median(Value), digits = 4),
+            StdDev = round(sd(Value), digits = 4),
+            `5th Pct` = round(quantile(Value, .05), digits = 4),
+            `95th Pct` = round(quantile(Value, .95), digits = 4)) %>%
+  cbind(FM_PRS %>%
+          mutate(method = "FM") %>%
+          rbind(FM_STL_PRS %>%
+                  mutate(method = "Fil. FM")) %>%
+          # fix the method order
+          mutate(method = factor(method, levels = unique(.$method))) %>%
+          select(-date) %>%
+          pivot_longer(-method, names_to = "Factors", values_to = "Value") %>%
+          # fix the Factors order
+          mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
+          group_by(Factors) %>%
+          summarise(stat = toString(round(t.test(Value ~ method, data = .)$statistic, digits = 3)),
+                    p_value = paste("(", format(round(t.test(Value ~ method, data = .)$p.value, digits = 2), nsmall = 2), ")", sep = "")) %>%
+          pivot_longer(c(stat, p_value), names_to = "T", values_to = "T-test") %>%
+          select(`T-test`)) %>%
+  cbind(FM_PRS %>%
+          mutate(method = "FM") %>%
+          rbind(FM_STL_PRS %>%
+                  mutate(method = "Fil. FM")) %>%
+          # fix the method order
+          mutate(method = factor(method, levels = unique(.$method))) %>%
+          select(-date) %>%
+          pivot_longer(-method, names_to = "Factors", values_to = "Value") %>%
+          # fix the Factors order
+          mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
+          group_by(Factors) %>%
+          summarise(stat = toString(round(var.test(Value ~ method, data = .)$statistic, digits = 3)),
+                    p_value = paste("(", format(round(var.test(Value ~ method, data = .)$p.value, digits = 2), nsmall = 2), ")", sep = "")) %>%
+          pivot_longer(c(stat, p_value), names_to = "F", values_to = "F-test") %>%
+          select(`F-test`)) %>%
+  kable(align = "c", caption = "PRS Factors Lambda Stats") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  collapse_rows(columns = 1)
 ```
 

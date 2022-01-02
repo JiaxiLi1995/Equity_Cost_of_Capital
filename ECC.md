@@ -47862,13 +47862,13 @@ FM
 
 <td style="text-align:center;">
 
-\-0.11
+\-0.035
 
 </td>
 
 <td style="text-align:center;">
 
-16.313
+22.77
 
 </td>
 
@@ -47920,7 +47920,7 @@ Fil. FM
 
 <td style="text-align:center;">
 
-(0.91)
+(0.97)
 
 </td>
 
@@ -47978,13 +47978,13 @@ FM
 
 <td style="text-align:center;">
 
-\-0.11
+\-0.076
 
 </td>
 
 <td style="text-align:center;">
 
-16.313
+14.57
 
 </td>
 
@@ -48036,7 +48036,7 @@ Fil. FM
 
 <td style="text-align:center;">
 
-(0.91)
+(0.94)
 
 </td>
 
@@ -48094,13 +48094,13 @@ FM
 
 <td style="text-align:center;">
 
-\-0.11
+\-0.326
 
 </td>
 
 <td style="text-align:center;">
 
-16.313
+10.81
 
 </td>
 
@@ -48152,7 +48152,7 @@ Fil. FM
 
 <td style="text-align:center;">
 
-(0.91)
+(0.74)
 
 </td>
 
@@ -48210,13 +48210,13 @@ FM
 
 <td style="text-align:center;">
 
-\-0.11
+\-0.021
 
 </td>
 
 <td style="text-align:center;">
 
-16.313
+20.89
 
 </td>
 
@@ -48268,7 +48268,7 @@ Fil. FM
 
 <td style="text-align:center;">
 
-(0.91)
+(0.98)
 
 </td>
 
@@ -48326,13 +48326,13 @@ FM
 
 <td style="text-align:center;">
 
-\-0.11
+0.292
 
 </td>
 
 <td style="text-align:center;">
 
-16.313
+10.37
 
 </td>
 
@@ -48384,7 +48384,7 @@ Fil. FM
 
 <td style="text-align:center;">
 
-(0.91)
+(0.77)
 
 </td>
 
@@ -48518,13 +48518,13 @@ FM
 
 <td style="text-align:center;">
 
-\-0.092
+0.116
 
 </td>
 
 <td style="text-align:center;">
 
-18.402
+19.26
 
 </td>
 
@@ -48576,7 +48576,7 @@ Fil. FM
 
 <td style="text-align:center;">
 
-(0.93)
+(0.91)
 
 </td>
 
@@ -48634,13 +48634,13 @@ FM
 
 <td style="text-align:center;">
 
-\-0.092
+\-0.39
 
 </td>
 
 <td style="text-align:center;">
 
-18.402
+17.71
 
 </td>
 
@@ -48692,7 +48692,7 @@ Fil. FM
 
 <td style="text-align:center;">
 
-(0.93)
+(0.70)
 
 </td>
 
@@ -48750,13 +48750,13 @@ FM
 
 <td style="text-align:center;">
 
-\-0.092
+\-0.324
 
 </td>
 
 <td style="text-align:center;">
 
-18.402
+14.21
 
 </td>
 
@@ -48808,7 +48808,7 @@ Fil. FM
 
 <td style="text-align:center;">
 
-(0.93)
+(0.75)
 
 </td>
 
@@ -48866,13 +48866,13 @@ FM
 
 <td style="text-align:center;">
 
-\-0.092
+\-0.813
 
 </td>
 
 <td style="text-align:center;">
 
-18.402
+11.41
 
 </td>
 
@@ -48924,7 +48924,7 @@ Fil. FM
 
 <td style="text-align:center;">
 
-(0.93)
+(0.42)
 
 </td>
 
@@ -48982,13 +48982,13 @@ FM
 
 <td style="text-align:center;">
 
-\-0.092
+0.207
 
 </td>
 
 <td style="text-align:center;">
 
-18.402
+12.31
 
 </td>
 
@@ -49040,7 +49040,7 @@ Fil. FM
 
 <td style="text-align:center;">
 
-(0.93)
+(0.84)
 
 </td>
 

@@ -19,6 +19,7 @@ knitr::opts_chunk$set(warning = FALSE)
 # Packages
 library(here)
 library(tidyverse)
+library(broom)
 library(rollRegres)
 library(kableExtra)
 library(moments)
@@ -6056,9 +6057,11 @@ FM_FF5 %>%
           # fix the Factors order
           mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
           group_by(Factors) %>%
-          summarise(stat = toString(round(t.test(Value ~ method, data = .)$statistic, digits = 3)),
-                    p_value = paste("(", format(round(t.test(Value ~ method, data = .)$p.value, digits = 2), nsmall = 2), ")", sep = "")) %>%
+          do(tidy(t.test(Value ~ method, data = .))) %>% .[c("Factors", "statistic", "p.value")] %>%
+          mutate(stat = toString(round(statistic, digits = 3)),
+                    p_value = paste("(", format(round(p.value, digits = 2), nsmall = 2), ")", sep = "")) %>%
           pivot_longer(c(stat, p_value), names_to = "T", values_to = "T-test") %>%
+          ungroup() %>%
           select(`T-test`)) %>%
   cbind(FM_FF5 %>%
           mutate(method = "FM") %>%
@@ -6071,9 +6074,11 @@ FM_FF5 %>%
           # fix the Factors order
           mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
           group_by(Factors) %>%
-          summarise(stat = toString(round(var.test(Value ~ method, data = .)$statistic, digits = 3)),
-                    p_value = paste("(", format(round(var.test(Value ~ method, data = .)$p.value, digits = 2), nsmall = 2), ")", sep = "")) %>%
+          do(tidy(var.test(Value ~ method, data = .))) %>% .[c("Factors", "statistic", "p.value")] %>%
+          mutate(stat = toString(round(statistic, digits = 2)),
+                    p_value = paste("(", format(round(p.value, digits = 2), nsmall = 2), ")", sep = "")) %>%
           pivot_longer(c(stat, p_value), names_to = "F", values_to = "F-test") %>%
+          ungroup() %>%
           select(`F-test`)) %>%
   kable(align = "c", caption = "FF5 Factors Lambda Stats") %>%
   kable_styling(font_size = 10, "striped", full_width = F) %>%
@@ -6109,9 +6114,11 @@ FM_PRS %>%
           # fix the Factors order
           mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
           group_by(Factors) %>%
-          summarise(stat = toString(round(t.test(Value ~ method, data = .)$statistic, digits = 3)),
-                    p_value = paste("(", format(round(t.test(Value ~ method, data = .)$p.value, digits = 2), nsmall = 2), ")", sep = "")) %>%
+          do(tidy(t.test(Value ~ method, data = .))) %>% .[c("Factors", "statistic", "p.value")] %>%
+          mutate(stat = toString(round(statistic, digits = 3)),
+                    p_value = paste("(", format(round(p.value, digits = 2), nsmall = 2), ")", sep = "")) %>%
           pivot_longer(c(stat, p_value), names_to = "T", values_to = "T-test") %>%
+          ungroup() %>%
           select(`T-test`)) %>%
   cbind(FM_PRS %>%
           mutate(method = "FM") %>%
@@ -6124,9 +6131,11 @@ FM_PRS %>%
           # fix the Factors order
           mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
           group_by(Factors) %>%
-          summarise(stat = toString(round(var.test(Value ~ method, data = .)$statistic, digits = 3)),
-                    p_value = paste("(", format(round(var.test(Value ~ method, data = .)$p.value, digits = 2), nsmall = 2), ")", sep = "")) %>%
+          do(tidy(var.test(Value ~ method, data = .))) %>% .[c("Factors", "statistic", "p.value")] %>%
+          mutate(stat = toString(round(statistic, digits = 2)),
+                    p_value = paste("(", format(round(p.value, digits = 2), nsmall = 2), ")", sep = "")) %>%
           pivot_longer(c(stat, p_value), names_to = "F", values_to = "F-test") %>%
+          ungroup() %>%
           select(`F-test`)) %>%
   kable(align = "c", caption = "PRS Factors Lambda Stats") %>%
   kable_styling(font_size = 10, "striped", full_width = F) %>%

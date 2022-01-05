@@ -5515,7 +5515,9 @@ All_FF5_ECC %>%
   # fix order
   mutate(Method = factor(Method, levels = c("FM","FM-Filtered"))) %>%
   ggplot() +
-  geom_density(aes(ECC, linetype = Method), adjust=1.5) +
+  geom_density(aes(ECC, linetype = Method), show.legend=FALSE) +
+      stat_density(aes(ECC, linetype = Method),
+                   geom="line",position="identity") +
   scale_linetype_manual(values=c("dotted", "solid")) +
   labs(y = "Density") +
   theme(legend.position="bottom")
@@ -5566,7 +5568,9 @@ Port_FF5_STL_s7_norobust %>%
   ungroup() %>%
   group_by(Component) %>%
   ggplot() +
-  geom_density(aes(Strength, linetype = Component), adjust=1.5) +
+  geom_density(aes(Strength, linetype = Component), show.legend=FALSE) +
+  stat_density(aes(Strength, linetype = Component),
+                   geom="line",position="identity") +
   scale_linetype_manual(values=c("dotdash", "solid")) +
   labs(y = "Density") +
   theme(legend.position="bottom")
@@ -5630,7 +5634,9 @@ Port_FF5_STL_s7_norobust %>%
   # Fix order
   mutate(Moment = factor(Moment, levels = c("Mean", "StdDev", "Skewness", "Kurtosis"))) %>%
   ggplot() +
-  geom_density(aes(Value, linetype = component), adjust=1.5) +
+  geom_density(aes(Value, linetype = component), show.legend=FALSE) +
+  stat_density(aes(Value, linetype = component),
+                   geom="line",position="identity") +
   scale_linetype_manual(values=c("dotdash", "solid")) +
   facet_wrap(~ Moment,
              ncol = 2,
@@ -5650,7 +5656,9 @@ Port_FF5_STL_s7_norobust %>%
   group_by(component, date) %>%
   summarise(StdDev = sd(y)) %>%
   ggplot() +
-  geom_density(aes(StdDev, linetype = component), adjust=1.5) +
+  geom_density(aes(StdDev, linetype = component), show.legend=FALSE) +
+  stat_density(aes(StdDev, linetype = component),
+                   geom="line",position="identity") +
   scale_linetype_manual(values=c("solid", "dotdash", "5B")) +
   labs(x = "StdDev", y = "Density") +
   theme(legend.position="bottom")
@@ -5700,7 +5708,9 @@ FM_FF5 %>%
   # Fix the order of Factors
   mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
   ggplot() +
-  geom_density(aes(Lambda, linetype = Method), adjust=1.5) +
+  geom_density(aes(Lambda, linetype = Method), show.legend=FALSE) +
+  stat_density(aes(Lambda, linetype = Method),
+                   geom="line",position="identity") +
   scale_linetype_manual(values=c("dotdash", "solid")) +
   labs(y = "Density") +
   facet_wrap(~ Factors,
@@ -5924,7 +5934,9 @@ FM_PRS %>%
   # Fix the order of Factors
   mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
   ggplot() +
-  geom_density(aes(Lambda, linetype = Method), adjust=1.5) +
+  geom_density(aes(Lambda, linetype = Method), show.legend=FALSE) +
+  stat_density(aes(Lambda, linetype = Method),
+                   geom="line",position="identity") +
   scale_linetype_manual(values=c("dotdash", "solid")) +
   labs(y = "Density") +
   facet_wrap(~ Factors,

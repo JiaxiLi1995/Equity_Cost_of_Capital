@@ -21259,6 +21259,7 @@ whether using the trend component is justified in the full sample.
     ## F-statistic: 0.2249 on 5 and 26538 DF,  p-value: 0.9519
 
 We can clearly see that overall the Periodic (Seasonal) and Noise cannot
+<<<<<<< HEAD
 be explained by the betas (they should not matter for the expected
 return estimation). The coefficients for Periodic (Seasonal) and Noise
 are indistinguishable from 0 and the F test p-value is close to 1 (not
@@ -21271,15 +21272,35 @@ the
 estimation in the second-path regression.
 
 From the previous section, yet, Periodic and Noise Components can alter
+=======
+be explained by the betas (they should matter for the expected return
+estimation). The coefficients for Periodic (Seasonal) and Noise are
+indistinguishable from 0 and the F test p-value is close to 1 (not
+significant from 0). Therefore, Periodic (Seasonal) and Noise should not
+matter in the second-path regression. The Original (actual return) and
+Trend regression coefficients are similar and the F test p-value are all
+small. This result suggests that only the trend component matters in the
+![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
+estimation in the second-path regression.
+
+From the previous section, yet, Periodic and Noise Component can alter
+>>>>>>> d1e652cc5890823cc2a25ed76867595540a1b02b
 the monthly
 ![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
 estimations, which is inappropriate according to the Panel regression
 results. If we want one long-term
 ![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda"),
+<<<<<<< HEAD
 using trend or return on the left-hand side would yield similar
 estimates. However, since our primary goal is to estimate monthly
 expected return, we should only use trend on the left-hand side,
 excluding Noise and Periodic.
+=======
+using trend or return on the left hand side would yield the same
+estimates. However, since our main goal is to estimate monthly expected
+return, we should only use trend on the left hand side, excluding Noise
+and Periodic.
+>>>>>>> d1e652cc5890823cc2a25ed76867595540a1b02b
 
 # S5 Equity Cost of Captial
 

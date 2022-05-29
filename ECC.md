@@ -2,90 +2,95 @@ Industry Equity Cost of Capital
 ================
 Mike Aguilar, Bob Connolly, and Jiaxi Li
 
-  - [S1 Introduction](#s1-introduction)
-  - [S2 Data](#s2-data)
-      - [S2-1 Industry Return and Fama French Five
+-   [S1 Introduction](#s1-introduction)
+-   [S2 Data](#s2-data)
+    -   [S2-1 Industry Return and Fama French Five
         Factors](#s2-1-industry-return-and-fama-french-five-factors)
-      - [S2-2 Traded PRS Five Factors](#s2-2-traded-prs-five-factors)
-  - [S3 First-Pass Regression](#s3-first-pass-regression)
-      - [S3-1 Fama French Five Factor
+    -   [S2-2 Traded PRS Five Factors](#s2-2-traded-prs-five-factors)
+-   [S3 First-Pass Regression](#s3-first-pass-regression)
+    -   [S3-1 Fama French Five Factor
         Model](#s3-1-fama-french-five-factor-model)
-          - [S3-1-1 Full Sample
+        -   [S3-1-1 Full Sample
             Estimation](#s3-1-1-full-sample-estimation)
-          - [S3-1-2 Rolling Window
+        -   [S3-1-2 Rolling Window
             Estimation](#s3-1-2-rolling-window-estimation)
-          - [S3-1-3 Full Sample Estimation with STL
+        -   [S3-1-3 Full Sample Estimation with STL
             Trend](#s3-1-3-full-sample-estimation-with-stl-trend)
-          - [S3-1-4 Rolling Window Estimation with STL
+        -   [S3-1-4 Rolling Window Estimation with STL
             Trend](#s3-1-4-rolling-window-estimation-with-stl-trend)
-          - [S3-1-5 Full Sample Estimation with Panel
+        -   [S3-1-5 Full Sample Estimation with Panel
             Regression](#s3-1-5-full-sample-estimation-with-panel-regression)
-          - [S3-1-6 Rolling Window Estimation with Panel
+        -   [S3-1-6 Rolling Window Estimation with Panel
             Regression](#s3-1-6-rolling-window-estimation-with-panel-regression)
-      - [S3-2 PRS Five Factor Model](#s3-2-prs-five-factor-model)
-          - [S3-2-1 Full Sample
+    -   [S3-2 PRS Five Factor Model](#s3-2-prs-five-factor-model)
+        -   [S3-2-1 Full Sample
             Estimation](#s3-2-1-full-sample-estimation)
-          - [S3-2-2 Rolling Window
+        -   [S3-2-2 Rolling Window
             Estimation](#s3-2-2-rolling-window-estimation)
-          - [S3-2-3 Full Sample Estimation with STL
+        -   [S3-2-3 Full Sample Estimation with STL
             Trend](#s3-2-3-full-sample-estimation-with-stl-trend)
-          - [S3-2-4 Rolling Window Estimation with STL
+        -   [S3-2-4 Rolling Window Estimation with STL
             Trend](#s3-2-4-rolling-window-estimation-with-stl-trend)
-  - [S4 Factor Premium Estimation](#s4-factor-premium-estimation)
-      - [S4-1 Arithmetic Mean](#s4-1-arithmetic-mean)
-      - [S4-2 Geometric Mean](#s4-2-geometric-mean)
-      - [S4-3 Fama Macbeth Second Step
+-   [S4 Factor Premium Estimation](#s4-factor-premium-estimation)
+    -   [S4-1 Arithmetic Mean](#s4-1-arithmetic-mean)
+    -   [S4-2 Geometric Mean](#s4-2-geometric-mean)
+    -   [S4-3 Fama Macbeth Second Step
         Regression](#s4-3-fama-macbeth-second-step-regression)
-      - [S4-4 Fama Macbeth Second Step Regression with STL Deseaoned
+    -   [S4-4 Fama Macbeth Second Step Regression with STL Deseaoned
         Data](#s4-4-fama-macbeth-second-step-regression-with-stl-deseaoned-data)
-          - [S4-4-1 STL Filtering](#s4-4-1-stl-filtering)
-          - [S4-4-2 Filtered Seasonality and Trend
+        -   [S4-4-1 STL Filtering](#s4-4-1-stl-filtering)
+        -   [S4-4-2 Filtered Seasonality and Trend
             Strength](#s4-4-2-filtered-seasonality-and-trend-strength)
-          - [S4-4-3 Beta Decomposition](#s4-4-3-beta-decomposition)
-          - [S4-4-4 Filtered Second Pass
+        -   [S4-4-3 Beta Decomposition](#s4-4-3-beta-decomposition)
+        -   [S4-4-4 Filtered Second Pass
             Regression](#s4-4-4-filtered-second-pass-regression)
-          - [S4-4-5 Component Second Pass Regression
+        -   [S4-4-5 Component Second Pass Regression
             Comparison](#s4-4-5-component-second-pass-regression-comparison)
-          - [S4-4-6 Regression Standard
+        -   [S4-4-6 Regression Standard
             Error](#s4-4-6-regression-standard-error)
-          - [S4-4-7 Unfiltered and Filtered
+        -   [S4-4-7 Unfiltered and Filtered
             Lambdas](#s4-4-7-unfiltered-and-filtered-lambdas)
-          - [S4-4-8 KS test and Stats](#s4-4-8-ks-test-and-stats)
-      - [S4-5 Why filtering might improve Esimated
+        -   [S4-4-8 KS test and Stats](#s4-4-8-ks-test-and-stats)
+    -   [S4-5 Why filtering might improve Esimated
         Lamdba?](#s4-5-why-filtering-might-improve-esimated-lamdba)
-          - [S4-5-1 Biased Regression](#s4-5-1-biased-regression)
-          - [S4-5-2 Simulation](#s4-5-2-simulation)
-              - [S4-5-2-1 Simulation with Random Parameters and Sin
+        -   [S4-5-1 Biased Regression](#s4-5-1-biased-regression)
+        -   [S4-5-2 Simulation](#s4-5-2-simulation)
+            -   [S4-5-2-1 Simulation with Random Parameters and Sin
                 Lamdba](#s4-5-2-1-simulation-with-random-parameters-and-sin-lamdba)
-              - [S4-5-2-2 Simulation with Random Parameter and Random
+            -   [S4-5-2-2 Simulation with Random Parameter and Random
                 Smooth
                 Lambda](#s4-5-2-2-simulation-with-random-parameter-and-random-smooth-lambda)
-              - [S4-5-2-3 Simulation with Actual Parameters and Smooth
+            -   [S4-5-2-3 Simulation with Actual Parameters and Smooth
                 Lambdas](#s4-5-2-3-simulation-with-actual-parameters-and-smooth-lambdas)
-              - [S4-5-2-4 Regression Analysis of Simulation
+            -   [S4-5-2-4 Regression Analysis of Simulation
                 Results](#s4-5-2-4-regression-analysis-of-simulation-results)
-  - [S5 Equity Cost of Captial](#s5-equity-cost-of-captial)
-      - [S5-1 Estimated Equity Cost of
+    -   [S4-6 Robustness Check](#s4-6-robustness-check)
+        -   [S4-6-1 Auxiliary Regression at each
+            t](#s4-6-1-auxiliary-regression-at-each-t)
+        -   [S4-6-2 Panel Auxiliary
+            Regression](#s4-6-2-panel-auxiliary-regression)
+-   [S5 Equity Cost of Captial](#s5-equity-cost-of-captial)
+    -   [S5-1 Estimated Equity Cost of
         Captial](#s5-1-estimated-equity-cost-of-captial)
-          - [S5-1-1 Arithmetic Mean](#s5-1-1-arithmetic-mean)
-          - [S5-1-2 Geometric Mean](#s5-1-2-geometric-mean)
-          - [S5-1-3 Fama Macbeth Second Step
+        -   [S5-1-1 Arithmetic Mean](#s5-1-1-arithmetic-mean)
+        -   [S5-1-2 Geometric Mean](#s5-1-2-geometric-mean)
+        -   [S5-1-3 Fama Macbeth Second Step
             Regression](#s5-1-3-fama-macbeth-second-step-regression)
-          - [S5-1-4 Fama Macbeth Second Step Regression with STL Trend
+        -   [S5-1-4 Fama Macbeth Second Step Regression with STL Trend
             Data](#s5-1-4-fama-macbeth-second-step-regression-with-stl-trend-data)
-      - [S5-2 Comparative Statics](#s5-2-comparative-statics)
-      - [S5-3 Bootstrap Standard Error](#s5-3-bootstrap-standard-error)
-      - [S5-4 Decomposition of the Equity Cost of
+    -   [S5-2 Comparative Statics](#s5-2-comparative-statics)
+    -   [S5-3 Bootstrap Standard Error](#s5-3-bootstrap-standard-error)
+    -   [S5-4 Decomposition of the Equity Cost of
         Captial](#s5-4-decomposition-of-the-equity-cost-of-captial)
-      - [S5-5 Forcasting???](#s5-5-forcasting)
-      - [S5-6 ECC with Consumption
+    -   [S5-5 Forcasting???](#s5-5-forcasting)
+    -   [S5-6 ECC with Consumption
         Growth???](#s5-6-ecc-with-consumption-growth)
-      - [S5-7 Improve AM GM with Markov-switching
+    -   [S5-7 Improve AM GM with Markov-switching
         model???](#s5-7-improve-am-gm-with-markov-switching-model)
-      - [S5-8 Levi-Welch Beta???](#s5-8-levi-welch-beta)
-      - [S5-9 Filtering Method in Other Second-pass
+    -   [S5-8 Levi-Welch Beta???](#s5-8-levi-welch-beta)
+    -   [S5-9 Filtering Method in Other Second-pass
         Regression???](#s5-9-filtering-method-in-other-second-pass-regression)
-  - [S6 Recreated Figures for ACL](#s6-recreated-figures-for-acl)
+-   [S6 Recreated Figures for ACL](#s6-recreated-figures-for-acl)
 
 # S1 Introduction
 
@@ -145,21 +150,13 @@ analysis in July 1969. The risk-free rate is one-month Treasury bill
 rate.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Descriptive Statistics for the FF5 Factors
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
-
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="7">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -169,397 +166,201 @@ Statistics
 </div>
 
 </th>
-
 </tr>
-
 <tr>
-
 <th style="text-align:center;">
-
 Factors
-
 </th>
-
 <th style="text-align:center;">
-
 mean
-
 </th>
-
 <th style="text-align:center;">
-
 Median
-
 </th>
-
 <th style="text-align:center;">
-
 5th Pct
-
 </th>
-
 <th style="text-align:center;">
-
 95th Pct
-
 </th>
-
 <th style="text-align:center;">
-
 StdDev
-
 </th>
-
 <th style="text-align:center;">
-
 Skew
-
 </th>
-
 <th style="text-align:center;">
-
 Kurt
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
 0.0054
-
 </td>
-
 <td style="text-align:center;">
-
 0.0093
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0763
-
+-0.0763
 </td>
-
 <td style="text-align:center;">
-
-\-0.0763
-
+-0.0763
 </td>
-
 <td style="text-align:center;">
-
 0.0457
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.5410
-
+-0.5410
 </td>
-
 <td style="text-align:center;">
-
 4.8275
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 SMB
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0429
-
+-0.0429
 </td>
-
 <td style="text-align:center;">
-
-\-0.0429
-
+-0.0429
 </td>
-
 <td style="text-align:center;">
-
 0.0302
-
 </td>
-
 <td style="text-align:center;">
-
 0.3863
-
 </td>
-
 <td style="text-align:center;">
-
 6.4993
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 HML
-
 </td>
-
 <td style="text-align:center;">
-
 0.0024
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0407
-
+-0.0407
 </td>
-
 <td style="text-align:center;">
-
-\-0.0407
-
+-0.0407
 </td>
-
 <td style="text-align:center;">
-
 0.0298
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0627
-
+-0.0627
 </td>
-
 <td style="text-align:center;">
-
 5.3074
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
 0.0029
-
 </td>
-
 <td style="text-align:center;">
-
 0.0024
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0264
-
+-0.0264
 </td>
-
 <td style="text-align:center;">
-
-\-0.0264
-
+-0.0264
 </td>
-
 <td style="text-align:center;">
-
 0.0221
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3422
-
+-0.3422
 </td>
-
 <td style="text-align:center;">
-
 15.4073
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 CMA
-
 </td>
-
 <td style="text-align:center;">
-
 0.0029
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0256
-
+-0.0256
 </td>
-
 <td style="text-align:center;">
-
-\-0.0256
-
+-0.0256
 </td>
-
 <td style="text-align:center;">
-
 0.0199
-
 </td>
-
 <td style="text-align:center;">
-
 0.3481
-
 </td>
-
 <td style="text-align:center;">
-
 4.5915
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 RF
-
 </td>
-
 <td style="text-align:center;">
-
 0.0038
-
 </td>
-
 <td style="text-align:center;">
-
 0.0040
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000
-
 </td>
-
 <td style="text-align:center;">
-
 0.0028
-
 </td>
-
 <td style="text-align:center;">
-
 0.6020
-
 </td>
-
 <td style="text-align:center;">
-
 3.3587
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
-
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Descriptive Statistics for the 49 Industry Portfolio Returns
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
-
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="7">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -569,2615 +370,1310 @@ statistics
 </div>
 
 </th>
-
 </tr>
-
 <tr>
-
 <th style="text-align:center;">
-
 Industry
-
 </th>
-
 <th style="text-align:center;">
-
 mean
-
 </th>
-
 <th style="text-align:center;">
-
 Median
-
 </th>
-
 <th style="text-align:center;">
-
 5th Pct
-
 </th>
-
 <th style="text-align:center;">
-
 95th Pct
-
 </th>
-
 <th style="text-align:center;">
-
 StdDev
-
 </th>
-
 <th style="text-align:center;">
-
 Skew
-
 </th>
-
 <th style="text-align:center;">
-
 Kurt
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;">
-
 Agric
-
 </td>
-
 <td style="text-align:center;">
-
 0.0093
-
 </td>
-
 <td style="text-align:center;">
-
 0.0082
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0920
-
+-0.0920
 </td>
-
 <td style="text-align:center;">
-
-\-0.0920
-
+-0.0920
 </td>
-
 <td style="text-align:center;">
-
 0.0644
-
 </td>
-
 <td style="text-align:center;">
-
 0.0339
-
 </td>
-
 <td style="text-align:center;">
-
 4.7321
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Food
-
 </td>
-
 <td style="text-align:center;">
-
 0.0106
-
 </td>
-
 <td style="text-align:center;">
-
 0.0101
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0633
-
+-0.0633
 </td>
-
 <td style="text-align:center;">
-
-\-0.0633
-
+-0.0633
 </td>
-
 <td style="text-align:center;">
-
 0.0450
-
 </td>
-
 <td style="text-align:center;">
-
 0.1026
-
 </td>
-
 <td style="text-align:center;">
-
 5.0085
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Soda
-
 </td>
-
 <td style="text-align:center;">
-
 0.0110
-
 </td>
-
 <td style="text-align:center;">
-
 0.0139
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0934
-
+-0.0934
 </td>
-
 <td style="text-align:center;">
-
-\-0.0934
-
+-0.0934
 </td>
-
 <td style="text-align:center;">
-
 0.0646
-
 </td>
-
 <td style="text-align:center;">
-
 0.1156
-
 </td>
-
 <td style="text-align:center;">
-
 7.0876
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Beer
-
 </td>
-
 <td style="text-align:center;">
-
 0.0112
-
 </td>
-
 <td style="text-align:center;">
-
 0.0112
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0733
-
+-0.0733
 </td>
-
 <td style="text-align:center;">
-
-\-0.0733
-
+-0.0733
 </td>
-
 <td style="text-align:center;">
-
 0.0522
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0461
-
+-0.0461
 </td>
-
 <td style="text-align:center;">
-
 5.4091
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Smoke
-
 </td>
-
 <td style="text-align:center;">
-
 0.0136
-
 </td>
-
 <td style="text-align:center;">
-
 0.0179
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0845
-
+-0.0845
 </td>
-
 <td style="text-align:center;">
-
-\-0.0845
-
+-0.0845
 </td>
-
 <td style="text-align:center;">
-
 0.0622
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1316
-
+-0.1316
 </td>
-
 <td style="text-align:center;">
-
 5.4598
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Toys
-
 </td>
-
 <td style="text-align:center;">
-
 0.0077
-
 </td>
-
 <td style="text-align:center;">
-
 0.0107
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1070
-
+-0.1070
 </td>
-
 <td style="text-align:center;">
-
-\-0.1070
-
+-0.1070
 </td>
-
 <td style="text-align:center;">
-
 0.0722
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2487
-
+-0.2487
 </td>
-
 <td style="text-align:center;">
-
 4.3053
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Fun
-
 </td>
-
 <td style="text-align:center;">
-
 0.0133
-
 </td>
-
 <td style="text-align:center;">
-
 0.0141
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1074
-
+-0.1074
 </td>
-
 <td style="text-align:center;">
-
-\-0.1074
-
+-0.1074
 </td>
-
 <td style="text-align:center;">
-
 0.0777
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2208
-
+-0.2208
 </td>
-
 <td style="text-align:center;">
-
 5.8883
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Books
-
 </td>
-
 <td style="text-align:center;">
-
 0.0082
-
 </td>
-
 <td style="text-align:center;">
-
 0.0051
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0849
-
+-0.0849
 </td>
-
 <td style="text-align:center;">
-
-\-0.0849
-
+-0.0849
 </td>
-
 <td style="text-align:center;">
-
 0.0599
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0458
-
+-0.0458
 </td>
-
 <td style="text-align:center;">
-
 5.1192
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Hshld
-
 </td>
-
 <td style="text-align:center;">
-
 0.0086
-
 </td>
-
 <td style="text-align:center;">
-
 0.0108
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0713
-
+-0.0713
 </td>
-
 <td style="text-align:center;">
-
-\-0.0713
-
+-0.0713
 </td>
-
 <td style="text-align:center;">
-
 0.0467
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2878
-
+-0.2878
 </td>
-
 <td style="text-align:center;">
-
 4.9551
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Clths
-
 </td>
-
 <td style="text-align:center;">
-
 0.0106
-
 </td>
-
 <td style="text-align:center;">
-
 0.0110
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0976
-
+-0.0976
 </td>
-
 <td style="text-align:center;">
-
-\-0.0976
-
+-0.0976
 </td>
-
 <td style="text-align:center;">
-
 0.0666
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0852
-
+-0.0852
 </td>
-
 <td style="text-align:center;">
-
 5.3365
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Hlth
-
 </td>
-
 <td style="text-align:center;">
-
 0.0101
-
 </td>
-
 <td style="text-align:center;">
-
 0.0106
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1147
-
+-0.1147
 </td>
-
 <td style="text-align:center;">
-
-\-0.1147
-
+-0.1147
 </td>
-
 <td style="text-align:center;">
-
 0.0809
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0572
-
+-0.0572
 </td>
-
 <td style="text-align:center;">
-
 5.6450
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 MedEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0106
-
 </td>
-
 <td style="text-align:center;">
-
 0.0134
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0790
-
+-0.0790
 </td>
-
 <td style="text-align:center;">
-
-\-0.0790
-
+-0.0790
 </td>
-
 <td style="text-align:center;">
-
 0.0531
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3774
-
+-0.3774
 </td>
-
 <td style="text-align:center;">
-
 4.3351
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Drugs
-
 </td>
-
 <td style="text-align:center;">
-
 0.0108
-
 </td>
-
 <td style="text-align:center;">
-
 0.0105
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0731
-
+-0.0731
 </td>
-
 <td style="text-align:center;">
-
-\-0.0731
-
+-0.0731
 </td>
-
 <td style="text-align:center;">
-
 0.0504
-
 </td>
-
 <td style="text-align:center;">
-
 0.1545
-
 </td>
-
 <td style="text-align:center;">
-
 5.6416
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Chems
-
 </td>
-
 <td style="text-align:center;">
-
 0.0098
-
 </td>
-
 <td style="text-align:center;">
-
 0.0110
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0794
-
+-0.0794
 </td>
-
 <td style="text-align:center;">
-
-\-0.0794
-
+-0.0794
 </td>
-
 <td style="text-align:center;">
-
 0.0578
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1793
-
+-0.1793
 </td>
-
 <td style="text-align:center;">
-
 5.1858
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Rubbr
-
 </td>
-
 <td style="text-align:center;">
-
 0.0101
-
 </td>
-
 <td style="text-align:center;">
-
 0.0130
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0867
-
+-0.0867
 </td>
-
 <td style="text-align:center;">
-
-\-0.0867
-
+-0.0867
 </td>
-
 <td style="text-align:center;">
-
 0.0605
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2301
-
+-0.2301
 </td>
-
 <td style="text-align:center;">
-
 5.7682
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Txtls
-
 </td>
-
 <td style="text-align:center;">
-
 0.0090
-
 </td>
-
 <td style="text-align:center;">
-
 0.0114
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0958
-
+-0.0958
 </td>
-
 <td style="text-align:center;">
-
-\-0.0958
-
+-0.0958
 </td>
-
 <td style="text-align:center;">
-
 0.0753
-
 </td>
-
 <td style="text-align:center;">
-
 0.2066
-
 </td>
-
 <td style="text-align:center;">
-
 11.8632
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 BldMt
-
 </td>
-
 <td style="text-align:center;">
-
 0.0099
-
 </td>
-
 <td style="text-align:center;">
-
 0.0121
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0890
-
+-0.0890
 </td>
-
 <td style="text-align:center;">
-
-\-0.0890
-
+-0.0890
 </td>
-
 <td style="text-align:center;">
-
 0.0638
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1655
-
+-0.1655
 </td>
-
 <td style="text-align:center;">
-
 6.8245
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Cnstr
-
 </td>
-
 <td style="text-align:center;">
-
 0.0088
-
 </td>
-
 <td style="text-align:center;">
-
 0.0088
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1040
-
+-0.1040
 </td>
-
 <td style="text-align:center;">
-
-\-0.1040
-
+-0.1040
 </td>
-
 <td style="text-align:center;">
-
 0.0736
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2105
-
+-0.2105
 </td>
-
 <td style="text-align:center;">
-
 4.3162
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Steel
-
 </td>
-
 <td style="text-align:center;">
-
 0.0067
-
 </td>
-
 <td style="text-align:center;">
-
 0.0065
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1154
-
+-0.1154
 </td>
-
 <td style="text-align:center;">
-
-\-0.1154
-
+-0.1154
 </td>
-
 <td style="text-align:center;">
-
 0.0771
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2077
-
+-0.2077
 </td>
-
 <td style="text-align:center;">
-
 4.8999
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 FabPr
-
 </td>
-
 <td style="text-align:center;">
-
 0.0069
-
 </td>
-
 <td style="text-align:center;">
-
 0.0066
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1084
-
+-0.1084
 </td>
-
 <td style="text-align:center;">
-
-\-0.1084
-
+-0.1084
 </td>
-
 <td style="text-align:center;">
-
 0.0742
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2411
-
+-0.2411
 </td>
-
 <td style="text-align:center;">
-
 4.5885
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Mach
-
 </td>
-
 <td style="text-align:center;">
-
 0.0097
-
 </td>
-
 <td style="text-align:center;">
-
 0.0133
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0941
-
+-0.0941
 </td>
-
 <td style="text-align:center;">
-
-\-0.0941
-
+-0.0941
 </td>
-
 <td style="text-align:center;">
-
 0.0640
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4279
-
+-0.4279
 </td>
-
 <td style="text-align:center;">
-
 5.2166
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 ElcEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0112
-
 </td>
-
 <td style="text-align:center;">
-
 0.0096
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0925
-
+-0.0925
 </td>
-
 <td style="text-align:center;">
-
-\-0.0925
-
+-0.0925
 </td>
-
 <td style="text-align:center;">
-
 0.0638
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2499
-
+-0.2499
 </td>
-
 <td style="text-align:center;">
-
 4.5951
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Autos
-
 </td>
-
 <td style="text-align:center;">
-
 0.0088
-
 </td>
-
 <td style="text-align:center;">
-
 0.0085
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0999
-
+-0.0999
 </td>
-
 <td style="text-align:center;">
-
-\-0.0999
-
+-0.0999
 </td>
-
 <td style="text-align:center;">
-
 0.0712
-
 </td>
-
 <td style="text-align:center;">
-
 0.2136
-
 </td>
-
 <td style="text-align:center;">
-
 8.4154
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Aero
-
 </td>
-
 <td style="text-align:center;">
-
 0.0114
-
 </td>
-
 <td style="text-align:center;">
-
 0.0148
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0983
-
+-0.0983
 </td>
-
 <td style="text-align:center;">
-
-\-0.0983
-
+-0.0983
 </td>
-
 <td style="text-align:center;">
-
 0.0684
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.5716
-
+-0.5716
 </td>
-
 <td style="text-align:center;">
-
 5.7663
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Ships
-
 </td>
-
 <td style="text-align:center;">
-
 0.0103
-
 </td>
-
 <td style="text-align:center;">
-
 0.0116
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0988
-
+-0.0988
 </td>
-
 <td style="text-align:center;">
-
-\-0.0988
-
+-0.0988
 </td>
-
 <td style="text-align:center;">
-
 0.0744
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0768
-
+-0.0768
 </td>
-
 <td style="text-align:center;">
-
 4.4743
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Guns
-
 </td>
-
 <td style="text-align:center;">
-
 0.0129
-
 </td>
-
 <td style="text-align:center;">
-
 0.0139
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0940
-
+-0.0940
 </td>
-
 <td style="text-align:center;">
-
-\-0.0940
-
+-0.0940
 </td>
-
 <td style="text-align:center;">
-
 0.0654
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2047
-
+-0.2047
 </td>
-
 <td style="text-align:center;">
-
 5.2214
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Gold
-
 </td>
-
 <td style="text-align:center;">
-
 0.0094
-
 </td>
-
 <td style="text-align:center;">
-
 0.0053
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1583
-
+-0.1583
 </td>
-
 <td style="text-align:center;">
-
-\-0.1583
-
+-0.1583
 </td>
-
 <td style="text-align:center;">
-
 0.1081
-
 </td>
-
 <td style="text-align:center;">
-
 0.7748
-
 </td>
-
 <td style="text-align:center;">
-
 7.5669
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Mines
-
 </td>
-
 <td style="text-align:center;">
-
 0.0097
-
 </td>
-
 <td style="text-align:center;">
-
 0.0059
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1075
-
+-0.1075
 </td>
-
 <td style="text-align:center;">
-
-\-0.1075
-
+-0.1075
 </td>
-
 <td style="text-align:center;">
-
 0.0764
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3025
-
+-0.3025
 </td>
-
 <td style="text-align:center;">
-
 4.6989
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Coal
-
 </td>
-
 <td style="text-align:center;">
-
 0.0084
-
 </td>
-
 <td style="text-align:center;">
-
 0.0065
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1533
-
+-0.1533
 </td>
-
 <td style="text-align:center;">
-
-\-0.1533
-
+-0.1533
 </td>
-
 <td style="text-align:center;">
-
 0.1094
-
 </td>
-
 <td style="text-align:center;">
-
 0.1033
-
 </td>
-
 <td style="text-align:center;">
-
 4.7758
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Oil
-
 </td>
-
 <td style="text-align:center;">
-
 0.0090
-
 </td>
-
 <td style="text-align:center;">
-
 0.0088
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0961
-
+-0.0961
 </td>
-
 <td style="text-align:center;">
-
-\-0.0961
-
+-0.0961
 </td>
-
 <td style="text-align:center;">
-
 0.0602
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0956
-
+-0.0956
 </td>
-
 <td style="text-align:center;">
-
 6.5773
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Util
-
 </td>
-
 <td style="text-align:center;">
-
 0.0087
-
 </td>
-
 <td style="text-align:center;">
-
 0.0102
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0581
-
+-0.0581
 </td>
-
 <td style="text-align:center;">
-
-\-0.0581
-
+-0.0581
 </td>
-
 <td style="text-align:center;">
-
 0.0410
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1991
-
+-0.1991
 </td>
-
 <td style="text-align:center;">
-
 4.1021
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Telcm
-
 </td>
-
 <td style="text-align:center;">
-
 0.0092
-
 </td>
-
 <td style="text-align:center;">
-
 0.0116
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0748
-
+-0.0748
 </td>
-
 <td style="text-align:center;">
-
-\-0.0748
-
+-0.0748
 </td>
-
 <td style="text-align:center;">
-
 0.0475
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2646
-
+-0.2646
 </td>
-
 <td style="text-align:center;">
-
 4.1808
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 PerSv
-
 </td>
-
 <td style="text-align:center;">
-
 0.0058
-
 </td>
-
 <td style="text-align:center;">
-
 0.0086
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1074
-
+-0.1074
 </td>
-
 <td style="text-align:center;">
-
-\-0.1074
-
+-0.1074
 </td>
-
 <td style="text-align:center;">
-
 0.0670
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3687
-
+-0.3687
 </td>
-
 <td style="text-align:center;">
-
 4.8655
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 BusSv
-
 </td>
-
 <td style="text-align:center;">
-
 0.0097
-
 </td>
-
 <td style="text-align:center;">
-
 0.0150
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0796
-
+-0.0796
 </td>
-
 <td style="text-align:center;">
-
-\-0.0796
-
+-0.0796
 </td>
-
 <td style="text-align:center;">
-
 0.0578
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4441
-
+-0.4441
 </td>
-
 <td style="text-align:center;">
-
 5.3757
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Hardw
-
 </td>
-
 <td style="text-align:center;">
-
 0.0089
-
 </td>
-
 <td style="text-align:center;">
-
 0.0077
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0974
-
+-0.0974
 </td>
-
 <td style="text-align:center;">
-
-\-0.0974
-
+-0.0974
 </td>
-
 <td style="text-align:center;">
-
 0.0718
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1928
-
+-0.1928
 </td>
-
 <td style="text-align:center;">
-
 4.6415
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Softw
-
 </td>
-
 <td style="text-align:center;">
-
 0.0106
-
 </td>
-
 <td style="text-align:center;">
-
 0.0153
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1500
-
+-0.1500
 </td>
-
 <td style="text-align:center;">
-
-\-0.1500
-
+-0.1500
 </td>
-
 <td style="text-align:center;">
-
 0.1053
-
 </td>
-
 <td style="text-align:center;">
-
 0.6292
-
 </td>
-
 <td style="text-align:center;">
-
 8.0571
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Chips
-
 </td>
-
 <td style="text-align:center;">
-
 0.0112
-
 </td>
-
 <td style="text-align:center;">
-
 0.0163
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1009
-
+-0.1009
 </td>
-
 <td style="text-align:center;">
-
-\-0.1009
-
+-0.1009
 </td>
-
 <td style="text-align:center;">
-
 0.0755
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3844
-
+-0.3844
 </td>
-
 <td style="text-align:center;">
-
 4.5711
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 LabEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0106
-
 </td>
-
 <td style="text-align:center;">
-
 0.0130
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0997
-
+-0.0997
 </td>
-
 <td style="text-align:center;">
-
-\-0.0997
-
+-0.0997
 </td>
-
 <td style="text-align:center;">
-
 0.0710
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1871
-
+-0.1871
 </td>
-
 <td style="text-align:center;">
-
 4.1734
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Paper
-
 </td>
-
 <td style="text-align:center;">
-
 0.0094
-
 </td>
-
 <td style="text-align:center;">
-
 0.0110
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0748
-
+-0.0748
 </td>
-
 <td style="text-align:center;">
-
-\-0.0748
-
+-0.0748
 </td>
-
 <td style="text-align:center;">
-
 0.0556
-
 </td>
-
 <td style="text-align:center;">
-
 0.0872
-
 </td>
-
 <td style="text-align:center;">
-
 5.2398
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Boxes
-
 </td>
-
 <td style="text-align:center;">
-
 0.0097
-
 </td>
-
 <td style="text-align:center;">
-
 0.0109
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0875
-
+-0.0875
 </td>
-
 <td style="text-align:center;">
-
-\-0.0875
-
+-0.0875
 </td>
-
 <td style="text-align:center;">
-
 0.0574
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4038
-
+-0.4038
 </td>
-
 <td style="text-align:center;">
-
 4.9025
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Trans
-
 </td>
-
 <td style="text-align:center;">
-
 0.0093
-
 </td>
-
 <td style="text-align:center;">
-
 0.0124
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0900
-
+-0.0900
 </td>
-
 <td style="text-align:center;">
-
-\-0.0900
-
+-0.0900
 </td>
-
 <td style="text-align:center;">
-
 0.0588
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3041
-
+-0.3041
 </td>
-
 <td style="text-align:center;">
-
 4.2192
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Whlsl
-
 </td>
-
 <td style="text-align:center;">
-
 0.0092
-
 </td>
-
 <td style="text-align:center;">
-
 0.0122
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0774
-
+-0.0774
 </td>
-
 <td style="text-align:center;">
-
-\-0.0774
-
+-0.0774
 </td>
-
 <td style="text-align:center;">
-
 0.0554
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3764
-
+-0.3764
 </td>
-
 <td style="text-align:center;">
-
 5.4793
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Rtail
-
 </td>
-
 <td style="text-align:center;">
-
 0.0110
-
 </td>
-
 <td style="text-align:center;">
-
 0.0084
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0798
-
+-0.0798
 </td>
-
 <td style="text-align:center;">
-
-\-0.0798
-
+-0.0798
 </td>
-
 <td style="text-align:center;">
-
 0.0555
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1527
-
+-0.1527
 </td>
-
 <td style="text-align:center;">
-
 5.0659
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Meals
-
 </td>
-
 <td style="text-align:center;">
-
 0.0103
-
 </td>
-
 <td style="text-align:center;">
-
 0.0138
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0882
-
+-0.0882
 </td>
-
 <td style="text-align:center;">
-
-\-0.0882
-
+-0.0882
 </td>
-
 <td style="text-align:center;">
-
 0.0609
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.5697
-
+-0.5697
 </td>
-
 <td style="text-align:center;">
-
 5.9677
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Banks
-
 </td>
-
 <td style="text-align:center;">
-
 0.0096
-
 </td>
-
 <td style="text-align:center;">
-
 0.0114
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0956
-
+-0.0956
 </td>
-
 <td style="text-align:center;">
-
-\-0.0956
-
+-0.0956
 </td>
-
 <td style="text-align:center;">
-
 0.0616
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3724
-
+-0.3724
 </td>
-
 <td style="text-align:center;">
-
 5.0932
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Insur
-
 </td>
-
 <td style="text-align:center;">
-
 0.0104
-
 </td>
-
 <td style="text-align:center;">
-
 0.0150
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0875
-
+-0.0875
 </td>
-
 <td style="text-align:center;">
-
-\-0.0875
-
+-0.0875
 </td>
-
 <td style="text-align:center;">
-
 0.0553
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3089
-
+-0.3089
 </td>
-
 <td style="text-align:center;">
-
 5.1223
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 RlEst
-
 </td>
-
 <td style="text-align:center;">
-
 0.0051
-
 </td>
-
 <td style="text-align:center;">
-
 0.0066
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1183
-
+-0.1183
 </td>
-
 <td style="text-align:center;">
-
-\-0.1183
-
+-0.1183
 </td>
-
 <td style="text-align:center;">
-
 0.0793
-
 </td>
-
 <td style="text-align:center;">
-
 0.6970
-
 </td>
-
 <td style="text-align:center;">
-
 15.3387
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Fin
-
 </td>
-
 <td style="text-align:center;">
-
 0.0108
-
 </td>
-
 <td style="text-align:center;">
-
 0.0139
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1064
-
+-0.1064
 </td>
-
 <td style="text-align:center;">
-
-\-0.1064
-
+-0.1064
 </td>
-
 <td style="text-align:center;">
-
 0.0630
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4311
-
+-0.4311
 </td>
-
 <td style="text-align:center;">
-
 4.2221
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Other
-
 </td>
-
 <td style="text-align:center;">
-
 0.0043
-
 </td>
-
 <td style="text-align:center;">
-
 0.0063
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1098
-
+-0.1098
 </td>
-
 <td style="text-align:center;">
-
-\-0.1098
-
+-0.1098
 </td>
-
 <td style="text-align:center;">
-
 0.0680
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4956
-
+-0.4956
 </td>
-
 <td style="text-align:center;">
-
 4.7414
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ## S2-2 Traded PRS Five Factors
@@ -3204,35 +1700,17 @@ Bill: Secondary Market Rate
 
 Here are the ways that the raw factors are calculated:
 
-  
-![dDP\_{raw,t} = Baa\_t -
-Aaa\_t](https://latex.codecogs.com/png.latex?dDP_%7Braw%2Ct%7D%20%3D%20Baa_t%20-%20Aaa_t
-"dDP_{raw,t} = Baa_t - Aaa_t")  
+![dDP\_{raw,t} = Baa_t - Aaa_t](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;dDP_%7Braw%2Ct%7D%20%3D%20Baa_t%20-%20Aaa_t "dDP_{raw,t} = Baa_t - Aaa_t")
 
-  
-![dIP\_{raw, t} = ln(IP\_t) -
-ln(IP\_{t-1})](https://latex.codecogs.com/png.latex?dIP_%7Braw%2C%20t%7D%20%3D%20ln%28IP_t%29%20-%20ln%28IP_%7Bt-1%7D%29
-"dIP_{raw, t} = ln(IP_t) - ln(IP_{t-1})")  
+![dIP\_{raw, t} = ln(IP_t) - ln(IP\_{t-1})](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;dIP_%7Braw%2C%20t%7D%20%3D%20ln%28IP_t%29%20-%20ln%28IP_%7Bt-1%7D%29 "dIP_{raw, t} = ln(IP_t) - ln(IP_{t-1})")
 
-  
-![dTS\_{raw, t} = GS10\_t -
-GS1\_t](https://latex.codecogs.com/png.latex?dTS_%7Braw%2C%20t%7D%20%3D%20GS10_t%20-%20GS1_t
-"dTS_{raw, t} = GS10_t - GS1_t")  
+![dTS\_{raw, t} = GS10_t - GS1_t](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;dTS_%7Braw%2C%20t%7D%20%3D%20GS10_t%20-%20GS1_t "dTS_{raw, t} = GS10_t - GS1_t")
 
-  
-![EXPINF\_{raw, t} =
-E\_{t-12}\[MICH\_t\]](https://latex.codecogs.com/png.latex?EXPINF_%7Braw%2C%20t%7D%20%3D%20E_%7Bt-12%7D%5BMICH_t%5D
-"EXPINF_{raw, t} = E_{t-12}[MICH_t]")  
+![EXPINF\_{raw, t} = E\_{t-12}\[MICH_t\]](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;EXPINF_%7Braw%2C%20t%7D%20%3D%20E_%7Bt-12%7D%5BMICH_t%5D "EXPINF_{raw, t} = E_{t-12}[MICH_t]")
 
-  
-![UNEXPI\_{raw, t} = INF\_t - EXPINF\_{raw,
-t}](https://latex.codecogs.com/png.latex?UNEXPI_%7Braw%2C%20t%7D%20%3D%20INF_t%20-%20EXPINF_%7Braw%2C%20t%7D
-"UNEXPI_{raw, t} = INF_t - EXPINF_{raw, t}")  
+![UNEXPI\_{raw, t} = INF_t - EXPINF\_{raw, t}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;UNEXPI_%7Braw%2C%20t%7D%20%3D%20INF_t%20-%20EXPINF_%7Braw%2C%20t%7D "UNEXPI_{raw, t} = INF_t - EXPINF_{raw, t}")
 
-  
-![dEI\_t = EXPINF\_{raw, t} - EXPINF\_{raw,
-t-1}](https://latex.codecogs.com/png.latex?dEI_t%20%3D%20EXPINF_%7Braw%2C%20t%7D%20-%20EXPINF_%7Braw%2C%20t-1%7D
-"dEI_t = EXPINF_{raw, t} - EXPINF_{raw, t-1}")  
+![dEI_t = EXPINF\_{raw, t} - EXPINF\_{raw, t-1}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;dEI_t%20%3D%20EXPINF_%7Braw%2C%20t%7D%20-%20EXPINF_%7Braw%2C%20t-1%7D "dEI_t = EXPINF_{raw, t} - EXPINF_{raw, t-1}")
 
 The Default Premium started in Janurary 1919; the Industrial Production
 Growth Rate stared in Feburary 1919; the Term Premium started in April
@@ -3247,10 +1725,10 @@ they need to be converted to monthly frequency.
 After obtaining the raw factors, we need to create the traded version of
 these 5 factors. Similar to the Pukthuanthong et al. (2018) procedure,
 we applied the 50 portfolios,
-![R](https://latex.codecogs.com/png.latex?R "R"), (the ten
-equal-weighted size portfolios, ten equal-weighted book-to-market
-portfolios, ten equal-weighted investment portfolios and ten
-equal-weighted operating profitability portfolios, and ten
+![R](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;R "R"),
+(the ten equal-weighted size portfolios, ten equal-weighted
+book-to-market portfolios, ten equal-weighted investment portfolios and
+ten equal-weighted operating profitability portfolios, and ten
 value-weighted momentum portfolios) from the [Ken French Data
 Library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html)
 to construct the mimicking portfolios. These 50 portfolios all exist
@@ -3258,9 +1736,8 @@ after July 1963. We first regress each of the 50 assets against the raw
 factors to get the coefficient matrix B (50x5) and the diagonal matrix
 of the covariance matrix of the error term V (50x50). The weight of the
 factor mimicking portfolio is
-![w=(B'V^{-1}B)^{-1}B'V^{-1}](https://latex.codecogs.com/png.latex?w%3D%28B%27V%5E%7B-1%7DB%29%5E%7B-1%7DB%27V%5E%7B-1%7D
-"w=(B'V^{-1}B)^{-1}B'V^{-1}"). The traded factors are PRS = wR, and they
-would start in July 1963.
+![w=(B'V^{-1}B)^{-1}B'V^{-1}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;w%3D%28B%27V%5E%7B-1%7DB%29%5E%7B-1%7DB%27V%5E%7B-1%7D "w=(B'V^{-1}B)^{-1}B'V^{-1}").
+The traded factors are PRS = wR, and they would start in July 1963.
 
 # S3 First-Pass Regression
 
@@ -3279,21 +1756,13 @@ betas. We will use the Five Factor Model as the base model.
 ### S3-1-1 Full Sample Estimation
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Fama French Five Factors
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
-
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -3303,7 +1772,6 @@ Coefficients
 </div>
 
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -3313,4115 +1781,2060 @@ Std. Error
 </div>
 
 </th>
-
 </tr>
-
 <tr>
-
 <th style="text-align:center;">
-
 Industry
-
 </th>
-
 <th style="text-align:center;">
-
 Alpha
-
 </th>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 SMB
-
 </th>
-
 <th style="text-align:center;">
-
 HML
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 CMA
-
 </th>
-
 <th style="text-align:center;">
-
 Alpha
-
 </th>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 SMB
-
 </th>
-
 <th style="text-align:center;">
-
 HML
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 CMA
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Aero
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0017060
-
+-0.0017060
 </td>
-
 <td style="text-align:center;">
-
 1.2085983
-
 </td>
-
 <td style="text-align:center;">
-
 0.2931223
-
 </td>
-
 <td style="text-align:center;">
-
 0.2753853
-
 </td>
-
 <td style="text-align:center;">
-
 0.4994864
-
 </td>
-
 <td style="text-align:center;">
-
 0.0879383
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017527
-
 </td>
-
 <td style="text-align:center;">
-
 0.0418819
-
 </td>
-
 <td style="text-align:center;">
-
 0.0607440
-
 </td>
-
 <td style="text-align:center;">
-
 0.0786255
-
 </td>
-
 <td style="text-align:center;">
-
 0.0832089
-
 </td>
-
 <td style="text-align:center;">
-
 0.1241392
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Agric
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0003846
-
+-0.0003846
 </td>
-
 <td style="text-align:center;">
-
 0.8254045
-
 </td>
-
 <td style="text-align:center;">
-
 0.4258726
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0810419
-
+-0.0810419
 </td>
-
 <td style="text-align:center;">
-
 0.2175820
-
 </td>
-
 <td style="text-align:center;">
-
 0.1406175
-
 </td>
-
 <td style="text-align:center;">
-
 0.0020985
-
 </td>
-
 <td style="text-align:center;">
-
 0.0501455
-
 </td>
-
 <td style="text-align:center;">
-
 0.0727292
-
 </td>
-
 <td style="text-align:center;">
-
 0.0941389
-
 </td>
-
 <td style="text-align:center;">
-
 0.0996267
-
 </td>
-
 <td style="text-align:center;">
-
 0.1486328
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Autos
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0036580
-
+-0.0036580
 </td>
-
 <td style="text-align:center;">
-
 1.2273182
-
 </td>
-
 <td style="text-align:center;">
-
 0.2149694
-
 </td>
-
 <td style="text-align:center;">
-
 0.5925738
-
 </td>
-
 <td style="text-align:center;">
-
 0.0694061
-
 </td>
-
 <td style="text-align:center;">
-
 0.0348842
-
 </td>
-
 <td style="text-align:center;">
-
 0.0018550
-
 </td>
-
 <td style="text-align:center;">
-
 0.0443260
-
 </td>
-
 <td style="text-align:center;">
-
 0.0642888
-
 </td>
-
 <td style="text-align:center;">
-
 0.0832137
-
 </td>
-
 <td style="text-align:center;">
-
 0.0880647
-
 </td>
-
 <td style="text-align:center;">
-
 0.1313835
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Banks
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0015445
-
+-0.0015445
 </td>
-
 <td style="text-align:center;">
-
 1.1722823
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1066541
-
+-0.1066541
 </td>
-
 <td style="text-align:center;">
-
 0.8167257
-
 </td>
-
 <td style="text-align:center;">
-
 0.1229449
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3985589
-
+-0.3985589
 </td>
-
 <td style="text-align:center;">
-
 0.0012937
-
 </td>
-
 <td style="text-align:center;">
-
 0.0309150
-
 </td>
-
 <td style="text-align:center;">
-
 0.0448380
-
 </td>
-
 <td style="text-align:center;">
-
 0.0580372
-
 </td>
-
 <td style="text-align:center;">
-
 0.0614205
-
 </td>
-
 <td style="text-align:center;">
-
 0.0916330
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Beer
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000880
-
+-0.0000880
 </td>
-
 <td style="text-align:center;">
-
 0.8635333
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0050819
-
+-0.0050819
 </td>
-
 <td style="text-align:center;">
-
-\-0.1625288
-
+-0.1625288
 </td>
-
 <td style="text-align:center;">
-
 0.6717286
-
 </td>
-
 <td style="text-align:center;">
-
 0.4416518
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015715
-
 </td>
-
 <td style="text-align:center;">
-
 0.0375532
-
 </td>
-
 <td style="text-align:center;">
-
 0.0544658
-
 </td>
-
 <td style="text-align:center;">
-
 0.0704991
-
 </td>
-
 <td style="text-align:center;">
-
 0.0746089
-
 </td>
-
 <td style="text-align:center;">
-
 0.1113088
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BldMt
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0039339
-
+-0.0039339
 </td>
-
 <td style="text-align:center;">
-
 1.2552070
-
 </td>
-
 <td style="text-align:center;">
-
 0.3907534
-
 </td>
-
 <td style="text-align:center;">
-
 0.3157648
-
 </td>
-
 <td style="text-align:center;">
-
 0.4904084
-
 </td>
-
 <td style="text-align:center;">
-
 0.2082103
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012156
-
 </td>
-
 <td style="text-align:center;">
-
 0.0290481
-
 </td>
-
 <td style="text-align:center;">
-
 0.0421303
-
 </td>
-
 <td style="text-align:center;">
-
 0.0545323
-
 </td>
-
 <td style="text-align:center;">
-
 0.0577113
-
 </td>
-
 <td style="text-align:center;">
-
 0.0860993
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Books
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0038772
-
+-0.0038772
 </td>
-
 <td style="text-align:center;">
-
 1.0984117
-
 </td>
-
 <td style="text-align:center;">
-
 0.3571583
-
 </td>
-
 <td style="text-align:center;">
-
 0.2266649
-
 </td>
-
 <td style="text-align:center;">
-
 0.4282332
-
 </td>
-
 <td style="text-align:center;">
-
 0.0268060
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013279
-
 </td>
-
 <td style="text-align:center;">
-
 0.0317302
-
 </td>
-
 <td style="text-align:center;">
-
 0.0460204
-
 </td>
-
 <td style="text-align:center;">
-
 0.0595676
-
 </td>
-
 <td style="text-align:center;">
-
 0.0630401
-
 </td>
-
 <td style="text-align:center;">
-
 0.0940494
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Boxes
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0002691
-
+-0.0002691
 </td>
-
 <td style="text-align:center;">
-
 0.9980460
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0347087
-
+-0.0347087
 </td>
-
 <td style="text-align:center;">
-
 0.1279435
-
 </td>
-
 <td style="text-align:center;">
-
 0.2836173
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0943480
-
+-0.0943480
 </td>
-
 <td style="text-align:center;">
-
 0.0015530
-
 </td>
-
 <td style="text-align:center;">
-
 0.0371104
-
 </td>
-
 <td style="text-align:center;">
-
 0.0538236
-
 </td>
-
 <td style="text-align:center;">
-
 0.0696680
-
 </td>
-
 <td style="text-align:center;">
-
 0.0737293
-
 </td>
-
 <td style="text-align:center;">
-
 0.1099965
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BusSv
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0004619
-
+-0.0004619
 </td>
-
 <td style="text-align:center;">
-
 1.0772166
-
 </td>
-
 <td style="text-align:center;">
-
 0.4047467
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1044015
-
+-0.1044015
 </td>
-
 <td style="text-align:center;">
-
 0.1547087
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0578629
-
+-0.0578629
 </td>
-
 <td style="text-align:center;">
-
 0.0008560
-
 </td>
-
 <td style="text-align:center;">
-
 0.0204539
-
 </td>
-
 <td style="text-align:center;">
-
 0.0296656
-
 </td>
-
 <td style="text-align:center;">
-
 0.0383984
-
 </td>
-
 <td style="text-align:center;">
-
 0.0406368
-
 </td>
-
 <td style="text-align:center;">
-
 0.0606260
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chems
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0024657
-
+-0.0024657
 </td>
-
 <td style="text-align:center;">
-
 1.1597086
-
 </td>
-
 <td style="text-align:center;">
-
 0.0465431
-
 </td>
-
 <td style="text-align:center;">
-
 0.2367452
-
 </td>
-
 <td style="text-align:center;">
-
 0.3082250
-
 </td>
-
 <td style="text-align:center;">
-
 0.2301914
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012458
-
 </td>
-
 <td style="text-align:center;">
-
 0.0297682
-
 </td>
-
 <td style="text-align:center;">
-
 0.0431747
-
 </td>
-
 <td style="text-align:center;">
-
 0.0558843
-
 </td>
-
 <td style="text-align:center;">
-
 0.0591421
-
 </td>
-
 <td style="text-align:center;">
-
 0.0882339
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chips
-
 </td>
-
 <td style="text-align:center;">
-
 0.0039846
-
 </td>
-
 <td style="text-align:center;">
-
 1.1798212
-
 </td>
-
 <td style="text-align:center;">
-
 0.2389137
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3144479
-
+-0.3144479
 </td>
-
 <td style="text-align:center;">
-
-\-0.5561211
-
+-0.5561211
 </td>
-
 <td style="text-align:center;">
-
-\-0.3200445
-
+-0.3200445
 </td>
-
 <td style="text-align:center;">
-
 0.0015209
-
 </td>
-
 <td style="text-align:center;">
-
 0.0363424
-
 </td>
-
 <td style="text-align:center;">
-
 0.0527097
-
 </td>
-
 <td style="text-align:center;">
-
 0.0682262
-
 </td>
-
 <td style="text-align:center;">
-
 0.0722034
-
 </td>
-
 <td style="text-align:center;">
-
 0.1077201
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Clths
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0023532
-
+-0.0023532
 </td>
-
 <td style="text-align:center;">
-
 1.1145901
-
 </td>
-
 <td style="text-align:center;">
-
 0.5484879
-
 </td>
-
 <td style="text-align:center;">
-
 0.3320528
-
 </td>
-
 <td style="text-align:center;">
-
 0.6946888
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1286381
-
+-0.1286381
 </td>
-
 <td style="text-align:center;">
-
 0.0016247
-
 </td>
-
 <td style="text-align:center;">
-
 0.0388233
-
 </td>
-
 <td style="text-align:center;">
-
 0.0563079
-
 </td>
-
 <td style="text-align:center;">
-
 0.0728835
-
 </td>
-
 <td style="text-align:center;">
-
 0.0771323
-
 </td>
-
 <td style="text-align:center;">
-
 0.1150735
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Cnstr
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0043263
-
+-0.0043263
 </td>
-
 <td style="text-align:center;">
-
 1.2827549
-
 </td>
-
 <td style="text-align:center;">
-
 0.5336958
-
 </td>
-
 <td style="text-align:center;">
-
 0.2138833
-
 </td>
-
 <td style="text-align:center;">
-
 0.3989391
-
 </td>
-
 <td style="text-align:center;">
-
 0.0171826
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017163
-
 </td>
-
 <td style="text-align:center;">
-
 0.0410122
-
 </td>
-
 <td style="text-align:center;">
-
 0.0594826
-
 </td>
-
 <td style="text-align:center;">
-
 0.0769928
-
 </td>
-
 <td style="text-align:center;">
-
 0.0814811
-
 </td>
-
 <td style="text-align:center;">
-
 0.1215614
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Coal
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0038319
-
+-0.0038319
 </td>
-
 <td style="text-align:center;">
-
 1.1819738
-
 </td>
-
 <td style="text-align:center;">
-
 0.4471589
-
 </td>
-
 <td style="text-align:center;">
-
 0.2479553
-
 </td>
-
 <td style="text-align:center;">
-
 0.0066664
-
 </td>
-
 <td style="text-align:center;">
-
 0.2912234
-
 </td>
-
 <td style="text-align:center;">
-
 0.0039763
-
 </td>
-
 <td style="text-align:center;">
-
 0.0950160
-
 </td>
-
 <td style="text-align:center;">
-
 0.1378078
-
 </td>
-
 <td style="text-align:center;">
-
 0.1783749
-
 </td>
-
 <td style="text-align:center;">
-
 0.1887733
-
 </td>
-
 <td style="text-align:center;">
-
 0.2816303
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Drugs
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017628
-
 </td>
-
 <td style="text-align:center;">
-
 0.8716268
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2811213
-
+-0.2811213
 </td>
-
 <td style="text-align:center;">
-
-\-0.5057393
-
+-0.5057393
 </td>
-
 <td style="text-align:center;">
-
 0.2873540
-
 </td>
-
 <td style="text-align:center;">
-
 0.4640041
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013488
-
 </td>
-
 <td style="text-align:center;">
-
 0.0322301
-
 </td>
-
 <td style="text-align:center;">
-
 0.0467453
-
 </td>
-
 <td style="text-align:center;">
-
 0.0605060
-
 </td>
-
 <td style="text-align:center;">
-
 0.0640332
-
 </td>
-
 <td style="text-align:center;">
-
 0.0955309
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 ElcEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002728
-
 </td>
-
 <td style="text-align:center;">
-
 1.2175987
-
 </td>
-
 <td style="text-align:center;">
-
 0.0801531
-
 </td>
-
 <td style="text-align:center;">
-
 0.0226345
-
 </td>
-
 <td style="text-align:center;">
-
 0.1260678
-
 </td>
-
 <td style="text-align:center;">
-
 0.0175188
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013435
-
 </td>
-
 <td style="text-align:center;">
-
 0.0321036
-
 </td>
-
 <td style="text-align:center;">
-
 0.0465619
-
 </td>
-
 <td style="text-align:center;">
-
 0.0602686
-
 </td>
-
 <td style="text-align:center;">
-
 0.0637820
-
 </td>
-
 <td style="text-align:center;">
-
 0.0951561
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FabPr
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0038979
-
+-0.0038979
 </td>
-
 <td style="text-align:center;">
-
 1.0036897
-
 </td>
-
 <td style="text-align:center;">
-
 0.7297908
-
 </td>
-
 <td style="text-align:center;">
-
 0.3474556
-
 </td>
-
 <td style="text-align:center;">
-
 0.2546453
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3305400
-
+-0.3305400
 </td>
-
 <td style="text-align:center;">
-
 0.0021110
-
 </td>
-
 <td style="text-align:center;">
-
 0.0504432
-
 </td>
-
 <td style="text-align:center;">
-
 0.0731610
-
 </td>
-
 <td style="text-align:center;">
-
 0.0946978
-
 </td>
-
 <td style="text-align:center;">
-
 0.1002182
-
 </td>
-
 <td style="text-align:center;">
-
 0.1495152
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fin
-
 </td>
-
 <td style="text-align:center;">
-
 0.0019238
-
 </td>
-
 <td style="text-align:center;">
-
 1.1770110
-
 </td>
-
 <td style="text-align:center;">
-
 0.0106150
-
 </td>
-
 <td style="text-align:center;">
-
 0.4035061
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4091644
-
+-0.4091644
 </td>
-
 <td style="text-align:center;">
-
-\-0.3845337
-
+-0.3845337
 </td>
-
 <td style="text-align:center;">
-
 0.0011090
-
 </td>
-
 <td style="text-align:center;">
-
 0.0265001
-
 </td>
-
 <td style="text-align:center;">
-
 0.0384348
-
 </td>
-
 <td style="text-align:center;">
-
 0.0497490
-
 </td>
-
 <td style="text-align:center;">
-
 0.0526491
-
 </td>
-
 <td style="text-align:center;">
-
 0.0785471
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Food
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0003939
-
+-0.0003939
 </td>
-
 <td style="text-align:center;">
-
 0.8133815
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0524832
-
+-0.0524832
 </td>
-
 <td style="text-align:center;">
-
-\-0.0945994
-
+-0.0945994
 </td>
-
 <td style="text-align:center;">
-
 0.5802765
-
 </td>
-
 <td style="text-align:center;">
-
 0.5053513
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012587
-
 </td>
-
 <td style="text-align:center;">
-
 0.0300785
-
 </td>
-
 <td style="text-align:center;">
-
 0.0436247
-
 </td>
-
 <td style="text-align:center;">
-
 0.0564667
-
 </td>
-
 <td style="text-align:center;">
-
 0.0597585
-
 </td>
-
 <td style="text-align:center;">
-
 0.0891535
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fun
-
 </td>
-
 <td style="text-align:center;">
-
 0.0018343
-
 </td>
-
 <td style="text-align:center;">
-
 1.2499559
-
 </td>
-
 <td style="text-align:center;">
-
 0.4911755
-
 </td>
-
 <td style="text-align:center;">
-
 0.1628531
-
 </td>
-
 <td style="text-align:center;">
-
 0.2417360
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2880831
-
+-0.2880831
 </td>
-
 <td style="text-align:center;">
-
 0.0019544
-
 </td>
-
 <td style="text-align:center;">
-
 0.0467018
-
 </td>
-
 <td style="text-align:center;">
-
 0.0677346
-
 </td>
-
 <td style="text-align:center;">
-
 0.0876739
-
 </td>
-
 <td style="text-align:center;">
-
 0.0927848
-
 </td>
-
 <td style="text-align:center;">
-
 0.1384255
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Gold
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011335
-
 </td>
-
 <td style="text-align:center;">
-
 0.5837386
-
 </td>
-
 <td style="text-align:center;">
-
 0.3634198
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2602619
-
+-0.2602619
 </td>
-
 <td style="text-align:center;">
-
 0.0036185
-
 </td>
-
 <td style="text-align:center;">
-
 0.5086043
-
 </td>
-
 <td style="text-align:center;">
-
 0.0044154
-
 </td>
-
 <td style="text-align:center;">
-
 0.1055100
-
 </td>
-
 <td style="text-align:center;">
-
 0.1530279
-
 </td>
-
 <td style="text-align:center;">
-
 0.1980754
-
 </td>
-
 <td style="text-align:center;">
-
 0.2096222
-
 </td>
-
 <td style="text-align:center;">
-
 0.3127349
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Guns
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006980
-
 </td>
-
 <td style="text-align:center;">
-
 0.9055074
-
 </td>
-
 <td style="text-align:center;">
-
 0.3202853
-
 </td>
-
 <td style="text-align:center;">
-
 0.2902131
-
 </td>
-
 <td style="text-align:center;">
-
 0.7185617
-
 </td>
-
 <td style="text-align:center;">
-
 0.1268888
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021436
-
 </td>
-
 <td style="text-align:center;">
-
 0.0512228
-
 </td>
-
 <td style="text-align:center;">
-
 0.0742917
-
 </td>
-
 <td style="text-align:center;">
-
 0.0961613
-
 </td>
-
 <td style="text-align:center;">
-
 0.1017670
-
 </td>
-
 <td style="text-align:center;">
-
 0.1518259
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hardw
-
 </td>
-
 <td style="text-align:center;">
-
 0.0032294
-
 </td>
-
 <td style="text-align:center;">
-
 1.0267954
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0011180
-
+-0.0011180
 </td>
-
 <td style="text-align:center;">
-
-\-0.3041928
-
+-0.3041928
 </td>
-
 <td style="text-align:center;">
-
-\-0.5806640
-
+-0.5806640
 </td>
-
 <td style="text-align:center;">
-
-\-0.4430579
-
+-0.4430579
 </td>
-
 <td style="text-align:center;">
-
 0.0017661
-
 </td>
-
 <td style="text-align:center;">
-
 0.0422015
-
 </td>
-
 <td style="text-align:center;">
-
 0.0612076
-
 </td>
-
 <td style="text-align:center;">
-
 0.0792255
-
 </td>
-
 <td style="text-align:center;">
-
 0.0838440
-
 </td>
-
 <td style="text-align:center;">
-
 0.1250866
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hlth
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0039421
-
+-0.0039421
 </td>
-
 <td style="text-align:center;">
-
 1.0854593
-
 </td>
-
 <td style="text-align:center;">
-
 0.8942400
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0598781
-
+-0.0598781
 </td>
-
 <td style="text-align:center;">
-
 1.0988021
-
 </td>
-
 <td style="text-align:center;">
-
 0.0571197
-
 </td>
-
 <td style="text-align:center;">
-
 0.0023503
-
 </td>
-
 <td style="text-align:center;">
-
 0.0561630
-
 </td>
-
 <td style="text-align:center;">
-
 0.0814568
-
 </td>
-
 <td style="text-align:center;">
-
 0.1054356
-
 </td>
-
 <td style="text-align:center;">
-
 0.1115819
-
 </td>
-
 <td style="text-align:center;">
-
 0.1664688
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hshld
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0020860
-
+-0.0020860
 </td>
-
 <td style="text-align:center;">
-
 0.8901395
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0414269
-
+-0.0414269
 </td>
-
 <td style="text-align:center;">
-
-\-0.1871243
-
+-0.1871243
 </td>
-
 <td style="text-align:center;">
-
 0.5605051
-
 </td>
-
 <td style="text-align:center;">
-
 0.3581377
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011536
-
 </td>
-
 <td style="text-align:center;">
-
 0.0275659
-
 </td>
-
 <td style="text-align:center;">
-
 0.0399806
-
 </td>
-
 <td style="text-align:center;">
-
 0.0517499
-
 </td>
-
 <td style="text-align:center;">
-
 0.0547667
-
 </td>
-
 <td style="text-align:center;">
-
 0.0817063
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Insur
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0004908
-
+-0.0004908
 </td>
-
 <td style="text-align:center;">
-
 1.0621447
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1112492
-
+-0.1112492
 </td>
-
 <td style="text-align:center;">
-
 0.3811060
-
 </td>
-
 <td style="text-align:center;">
-
 0.1961882
-
 </td>
-
 <td style="text-align:center;">
-
 0.0288185
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013260
-
 </td>
-
 <td style="text-align:center;">
-
 0.0316868
-
 </td>
-
 <td style="text-align:center;">
-
 0.0459574
-
 </td>
-
 <td style="text-align:center;">
-
 0.0594861
-
 </td>
-
 <td style="text-align:center;">
-
 0.0629538
-
 </td>
-
 <td style="text-align:center;">
-
 0.0939206
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 LabEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011405
-
 </td>
-
 <td style="text-align:center;">
-
 1.1592554
-
 </td>
-
 <td style="text-align:center;">
-
 0.4285268
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.5027346
-
+-0.5027346
 </td>
-
 <td style="text-align:center;">
-
-\-0.1441310
-
+-0.1441310
 </td>
-
 <td style="text-align:center;">
-
 0.1545286
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014500
-
 </td>
-
 <td style="text-align:center;">
-
 0.0346498
-
 </td>
-
 <td style="text-align:center;">
-
 0.0502549
-
 </td>
-
 <td style="text-align:center;">
-
 0.0650487
-
 </td>
-
 <td style="text-align:center;">
-
 0.0688407
-
 </td>
-
 <td style="text-align:center;">
-
 0.1027032
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mach
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0011806
-
+-0.0011806
 </td>
-
 <td style="text-align:center;">
-
 1.1894700
-
 </td>
-
 <td style="text-align:center;">
-
 0.2848769
-
 </td>
-
 <td style="text-align:center;">
-
 0.0982099
-
 </td>
-
 <td style="text-align:center;">
-
 0.0105856
-
 </td>
-
 <td style="text-align:center;">
-
 0.0159399
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012917
-
 </td>
-
 <td style="text-align:center;">
-
 0.0308666
-
 </td>
-
 <td style="text-align:center;">
-
 0.0447679
-
 </td>
-
 <td style="text-align:center;">
-
 0.0579464
-
 </td>
-
 <td style="text-align:center;">
-
 0.0613244
-
 </td>
-
 <td style="text-align:center;">
-
 0.0914897
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Meals
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0025867
-
+-0.0025867
 </td>
-
 <td style="text-align:center;">
-
 1.0812673
-
 </td>
-
 <td style="text-align:center;">
-
 0.3762794
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0105822
-
+-0.0105822
 </td>
-
 <td style="text-align:center;">
-
 0.8105843
-
 </td>
-
 <td style="text-align:center;">
-
 0.1622857
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014646
-
 </td>
-
 <td style="text-align:center;">
-
 0.0349971
-
 </td>
-
 <td style="text-align:center;">
-
 0.0507585
-
 </td>
-
 <td style="text-align:center;">
-
 0.0657006
-
 </td>
-
 <td style="text-align:center;">
-
 0.0695306
-
 </td>
-
 <td style="text-align:center;">
-
 0.1037325
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 MedEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0016029
-
 </td>
-
 <td style="text-align:center;">
-
 0.8744119
-
 </td>
-
 <td style="text-align:center;">
-
 0.1031781
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3305774
-
+-0.3305774
 </td>
-
 <td style="text-align:center;">
-
 0.2731120
-
 </td>
-
 <td style="text-align:center;">
-
 0.1035343
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013851
-
 </td>
-
 <td style="text-align:center;">
-
 0.0330982
-
 </td>
-
 <td style="text-align:center;">
-
 0.0480045
-
 </td>
-
 <td style="text-align:center;">
-
 0.0621358
-
 </td>
-
 <td style="text-align:center;">
-
 0.0657580
-
 </td>
-
 <td style="text-align:center;">
-
 0.0981042
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mines
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0022027
-
+-0.0022027
 </td>
-
 <td style="text-align:center;">
-
 1.1386038
-
 </td>
-
 <td style="text-align:center;">
-
 0.3314773
-
 </td>
-
 <td style="text-align:center;">
-
 0.1934266
-
 </td>
-
 <td style="text-align:center;">
-
 0.0714566
-
 </td>
-
 <td style="text-align:center;">
-
 0.3088411
-
 </td>
-
 <td style="text-align:center;">
-
 0.0023607
-
 </td>
-
 <td style="text-align:center;">
-
 0.0564106
-
 </td>
-
 <td style="text-align:center;">
-
 0.0818159
-
 </td>
-
 <td style="text-align:center;">
-
 0.1059004
-
 </td>
-
 <td style="text-align:center;">
-
 0.1120738
-
 </td>
-
 <td style="text-align:center;">
-
 0.1672027
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Oil
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0023745
-
+-0.0023745
 </td>
-
 <td style="text-align:center;">
-
 1.0014272
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0682213
-
+-0.0682213
 </td>
-
 <td style="text-align:center;">
-
 0.2534753
-
 </td>
-
 <td style="text-align:center;">
-
 0.2765152
-
 </td>
-
 <td style="text-align:center;">
-
 0.3031233
-
 </td>
-
 <td style="text-align:center;">
-
 0.0018314
-
 </td>
-
 <td style="text-align:center;">
-
 0.0437622
-
 </td>
-
 <td style="text-align:center;">
-
 0.0634711
-
 </td>
-
 <td style="text-align:center;">
-
 0.0821554
-
 </td>
-
 <td style="text-align:center;">
-
 0.0869447
-
 </td>
-
 <td style="text-align:center;">
-
 0.1297125
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Other
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0068442
-
+-0.0068442
 </td>
-
 <td style="text-align:center;">
-
 1.1388078
-
 </td>
-
 <td style="text-align:center;">
-
 0.2549218
-
 </td>
-
 <td style="text-align:center;">
-
 0.0668335
-
 </td>
-
 <td style="text-align:center;">
-
 0.1832071
-
 </td>
-
 <td style="text-align:center;">
-
 0.0732465
-
 </td>
-
 <td style="text-align:center;">
-
 0.0018194
-
 </td>
-
 <td style="text-align:center;">
-
 0.0434749
-
 </td>
-
 <td style="text-align:center;">
-
 0.0630544
-
 </td>
-
 <td style="text-align:center;">
-
 0.0816160
-
 </td>
-
 <td style="text-align:center;">
-
 0.0863738
-
 </td>
-
 <td style="text-align:center;">
-
 0.1288608
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Paper
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0030838
-
+-0.0030838
 </td>
-
 <td style="text-align:center;">
-
 1.0826153
-
 </td>
-
 <td style="text-align:center;">
-
 0.0947014
-
 </td>
-
 <td style="text-align:center;">
-
 0.1514737
-
 </td>
-
 <td style="text-align:center;">
-
 0.4096624
-
 </td>
-
 <td style="text-align:center;">
-
 0.3961297
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013249
-
 </td>
-
 <td style="text-align:center;">
-
 0.0316596
-
 </td>
-
 <td style="text-align:center;">
-
 0.0459180
-
 </td>
-
 <td style="text-align:center;">
-
 0.0594350
-
 </td>
-
 <td style="text-align:center;">
-
 0.0628998
-
 </td>
-
 <td style="text-align:center;">
-
 0.0938401
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 PerSv
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0067203
-
+-0.0067203
 </td>
-
 <td style="text-align:center;">
-
 1.0680857
-
 </td>
-
 <td style="text-align:center;">
-
 0.6052475
-
 </td>
-
 <td style="text-align:center;">
-
 0.0264087
-
 </td>
-
 <td style="text-align:center;">
-
 0.6561786
-
 </td>
-
 <td style="text-align:center;">
-
 0.0508338
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017252
-
 </td>
-
 <td style="text-align:center;">
-
 0.0412259
-
 </td>
-
 <td style="text-align:center;">
-
 0.0597926
-
 </td>
-
 <td style="text-align:center;">
-
 0.0773940
-
 </td>
-
 <td style="text-align:center;">
-
 0.0819057
-
 </td>
-
 <td style="text-align:center;">
-
 0.1221949
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RlEst
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0085585
-
+-0.0085585
 </td>
-
 <td style="text-align:center;">
-
 1.1825155
-
 </td>
-
 <td style="text-align:center;">
-
 0.9911820
-
 </td>
-
 <td style="text-align:center;">
-
 0.7245494
-
 </td>
-
 <td style="text-align:center;">
-
 0.4083650
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2667029
-
+-0.2667029
 </td>
-
 <td style="text-align:center;">
-
 0.0018547
-
 </td>
-
 <td style="text-align:center;">
-
 0.0443193
-
 </td>
-
 <td style="text-align:center;">
-
 0.0642791
-
 </td>
-
 <td style="text-align:center;">
-
 0.0832012
-
 </td>
-
 <td style="text-align:center;">
-
 0.0880514
-
 </td>
-
 <td style="text-align:center;">
-
 0.1313636
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rtail
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001220
-
 </td>
-
 <td style="text-align:center;">
-
 1.0154299
-
 </td>
-
 <td style="text-align:center;">
-
 0.1914579
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0531875
-
+-0.0531875
 </td>
-
 <td style="text-align:center;">
-
 0.4601537
-
 </td>
-
 <td style="text-align:center;">
-
 0.0368127
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012751
-
 </td>
-
 <td style="text-align:center;">
-
 0.0304706
-
 </td>
-
 <td style="text-align:center;">
-
 0.0441935
-
 </td>
-
 <td style="text-align:center;">
-
 0.0572030
-
 </td>
-
 <td style="text-align:center;">
-
 0.0605376
-
 </td>
-
 <td style="text-align:center;">
-
 0.0903159
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rubbr
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0019858
-
+-0.0019858
 </td>
-
 <td style="text-align:center;">
-
 1.0381702
-
 </td>
-
 <td style="text-align:center;">
-
 0.6421157
-
 </td>
-
 <td style="text-align:center;">
-
 0.1301219
-
 </td>
-
 <td style="text-align:center;">
-
 0.3957909
-
 </td>
-
 <td style="text-align:center;">
-
 0.1384205
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013032
-
 </td>
-
 <td style="text-align:center;">
-
 0.0311415
-
 </td>
-
 <td style="text-align:center;">
-
 0.0451666
-
 </td>
-
 <td style="text-align:center;">
-
 0.0584624
-
 </td>
-
 <td style="text-align:center;">
-
 0.0618705
-
 </td>
-
 <td style="text-align:center;">
-
 0.0923044
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Ships
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0038423
-
+-0.0038423
 </td>
-
 <td style="text-align:center;">
-
 1.2237949
-
 </td>
-
 <td style="text-align:center;">
-
 0.3197487
-
 </td>
-
 <td style="text-align:center;">
-
 0.2578553
-
 </td>
-
 <td style="text-align:center;">
-
 0.5764006
-
 </td>
-
 <td style="text-align:center;">
-
 0.3599753
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021729
-
 </td>
-
 <td style="text-align:center;">
-
 0.0519227
-
 </td>
-
 <td style="text-align:center;">
-
 0.0753069
-
 </td>
-
 <td style="text-align:center;">
-
 0.0974753
-
 </td>
-
 <td style="text-align:center;">
-
 0.1031576
-
 </td>
-
 <td style="text-align:center;">
-
 0.1539006
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Smoke
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014748
-
 </td>
-
 <td style="text-align:center;">
-
 0.8539572
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1365032
-
+-0.1365032
 </td>
-
 <td style="text-align:center;">
-
-\-0.2084596
-
+-0.2084596
 </td>
-
 <td style="text-align:center;">
-
 0.7146263
-
 </td>
-
 <td style="text-align:center;">
-
 0.8267503
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021751
-
 </td>
-
 <td style="text-align:center;">
-
 0.0519762
-
 </td>
-
 <td style="text-align:center;">
-
 0.0753844
-
 </td>
-
 <td style="text-align:center;">
-
 0.0975757
-
 </td>
-
 <td style="text-align:center;">
-
 0.1032638
-
 </td>
-
 <td style="text-align:center;">
-
 0.1540590
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Soda
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0006067
-
+-0.0006067
 </td>
-
 <td style="text-align:center;">
-
 0.9415169
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0162179
-
+-0.0162179
 </td>
-
 <td style="text-align:center;">
-
 0.0905335
-
 </td>
-
 <td style="text-align:center;">
-
 0.6206460
-
 </td>
-
 <td style="text-align:center;">
-
 0.2508099
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021578
-
 </td>
-
 <td style="text-align:center;">
-
 0.0515622
-
 </td>
-
 <td style="text-align:center;">
-
 0.0747840
-
 </td>
-
 <td style="text-align:center;">
-
 0.0967985
-
 </td>
-
 <td style="text-align:center;">
-
 0.1024413
-
 </td>
-
 <td style="text-align:center;">
-
 0.1528319
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Softw
-
 </td>
-
 <td style="text-align:center;">
-
 0.0022694
-
 </td>
-
 <td style="text-align:center;">
-
 1.2036278
-
 </td>
-
 <td style="text-align:center;">
-
 0.9190520
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3505056
-
+-0.3505056
 </td>
-
 <td style="text-align:center;">
-
 0.0324944
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.8756008
-
+-0.8756008
 </td>
-
 <td style="text-align:center;">
-
 0.0029187
-
 </td>
-
 <td style="text-align:center;">
-
 0.0697435
-
 </td>
-
 <td style="text-align:center;">
-
 0.1011535
-
 </td>
-
 <td style="text-align:center;">
-
 0.1309305
-
 </td>
-
 <td style="text-align:center;">
-
 0.1385631
-
 </td>
-
 <td style="text-align:center;">
-
 0.2067220
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Steel
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0038405
-
+-0.0038405
 </td>
-
 <td style="text-align:center;">
-
 1.2570695
-
 </td>
-
 <td style="text-align:center;">
-
 0.3171997
-
 </td>
-
 <td style="text-align:center;">
-
 0.3274615
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.5210510
-
+-0.5210510
 </td>
-
 <td style="text-align:center;">
-
 0.0716646
-
 </td>
-
 <td style="text-align:center;">
-
 0.0018950
-
 </td>
-
 <td style="text-align:center;">
-
 0.0452826
-
 </td>
-
 <td style="text-align:center;">
-
 0.0656762
-
 </td>
-
 <td style="text-align:center;">
-
 0.0850096
-
 </td>
-
 <td style="text-align:center;">
-
 0.0899652
-
 </td>
-
 <td style="text-align:center;">
-
 0.1342189
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Telcm
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013014
-
 </td>
-
 <td style="text-align:center;">
-
 0.8432036
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2434141
-
+-0.2434141
 </td>
-
 <td style="text-align:center;">
-
 0.1086228
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2459422
-
+-0.2459422
 </td>
-
 <td style="text-align:center;">
-
 0.1025583
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012521
-
 </td>
-
 <td style="text-align:center;">
-
 0.0299193
-
 </td>
-
 <td style="text-align:center;">
-
 0.0433939
-
 </td>
-
 <td style="text-align:center;">
-
 0.0561679
-
 </td>
-
 <td style="text-align:center;">
-
 0.0594422
-
 </td>
-
 <td style="text-align:center;">
-
 0.0886817
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Toys
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0057075
-
+-0.0057075
 </td>
-
 <td style="text-align:center;">
-
 1.1643575
-
 </td>
-
 <td style="text-align:center;">
-
 0.6314689
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0221004
-
+-0.0221004
 </td>
-
 <td style="text-align:center;">
-
 0.6875766
-
 </td>
-
 <td style="text-align:center;">
-
 0.2072822
-
 </td>
-
 <td style="text-align:center;">
-
 0.0018874
-
 </td>
-
 <td style="text-align:center;">
-
 0.0451021
-
 </td>
-
 <td style="text-align:center;">
-
 0.0654144
-
 </td>
-
 <td style="text-align:center;">
-
 0.0846707
-
 </td>
-
 <td style="text-align:center;">
-
 0.0896066
-
 </td>
-
 <td style="text-align:center;">
-
 0.1336839
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Trans
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0027263
-
+-0.0027263
 </td>
-
 <td style="text-align:center;">
-
 1.0973879
-
 </td>
-
 <td style="text-align:center;">
-
 0.2882354
-
 </td>
-
 <td style="text-align:center;">
-
 0.2579734
-
 </td>
-
 <td style="text-align:center;">
-
 0.4191563
-
 </td>
-
 <td style="text-align:center;">
-
 0.0252591
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013084
-
 </td>
-
 <td style="text-align:center;">
-
 0.0312659
-
 </td>
-
 <td style="text-align:center;">
-
 0.0453469
-
 </td>
-
 <td style="text-align:center;">
-
 0.0586958
-
 </td>
-
 <td style="text-align:center;">
-
 0.0621175
-
 </td>
-
 <td style="text-align:center;">
-
 0.0926730
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Txtls
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0055147
-
+-0.0055147
 </td>
-
 <td style="text-align:center;">
-
 1.1833862
-
 </td>
-
 <td style="text-align:center;">
-
 0.7780645
-
 </td>
-
 <td style="text-align:center;">
-
 0.6083072
-
 </td>
-
 <td style="text-align:center;">
-
 0.5672194
-
 </td>
-
 <td style="text-align:center;">
-
 0.0656111
-
 </td>
-
 <td style="text-align:center;">
-
 0.0019001
-
 </td>
-
 <td style="text-align:center;">
-
 0.0454044
-
 </td>
-
 <td style="text-align:center;">
-
 0.0658530
-
 </td>
-
 <td style="text-align:center;">
-
 0.0852384
-
 </td>
-
 <td style="text-align:center;">
-
 0.0902074
-
 </td>
-
 <td style="text-align:center;">
-
 0.1345801
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Util
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000637
-
+-0.0000637
 </td>
-
 <td style="text-align:center;">
-
 0.6404511
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1488908
-
+-0.1488908
 </td>
-
 <td style="text-align:center;">
-
 0.2200972
-
 </td>
-
 <td style="text-align:center;">
-
 0.1418424
-
 </td>
-
 <td style="text-align:center;">
-
 0.2881115
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013268
-
 </td>
-
 <td style="text-align:center;">
-
 0.0317044
-
 </td>
-
 <td style="text-align:center;">
-
 0.0459830
-
 </td>
-
 <td style="text-align:center;">
-
 0.0595192
-
 </td>
-
 <td style="text-align:center;">
-
 0.0629889
-
 </td>
-
 <td style="text-align:center;">
-
 0.0939729
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Whlsl
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0024485
-
+-0.0024485
 </td>
-
 <td style="text-align:center;">
-
 1.0192465
-
 </td>
-
 <td style="text-align:center;">
-
 0.5300667
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0255673
-
+-0.0255673
 </td>
-
 <td style="text-align:center;">
-
 0.4426080
-
 </td>
-
 <td style="text-align:center;">
-
 0.1441173
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009947
-
 </td>
-
 <td style="text-align:center;">
-
 0.0237680
-
 </td>
-
 <td style="text-align:center;">
-
 0.0344722
-
 </td>
-
 <td style="text-align:center;">
-
 0.0446199
-
 </td>
-
 <td style="text-align:center;">
-
 0.0472211
-
 </td>
-
 <td style="text-align:center;">
-
 0.0704490
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ![](ECC_files/figure-gfm/Full_FF5-1.png)<!-- -->![](ECC_files/figure-gfm/Full_FF5-2.png)<!-- -->![](ECC_files/figure-gfm/Full_FF5-3.png)<!-- -->
@@ -7441,21 +3854,13 @@ Here, we would try to conduct the STL decomposition before the first
 step regression with full sample.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Fama French Five Factors
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
-
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -7465,7 +3870,6 @@ Coefficients
 </div>
 
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -7475,4115 +3879,2060 @@ Std. Error
 </div>
 
 </th>
-
 </tr>
-
 <tr>
-
 <th style="text-align:center;">
-
 Industry
-
 </th>
-
 <th style="text-align:center;">
-
 Alpha
-
 </th>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 SMB
-
 </th>
-
 <th style="text-align:center;">
-
 HML
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 CMA
-
 </th>
-
 <th style="text-align:center;">
-
 Alpha
-
 </th>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 SMB
-
 </th>
-
 <th style="text-align:center;">
-
 HML
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 CMA
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Aero
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0012744
-
+-0.0012744
 </td>
-
 <td style="text-align:center;">
-
 1.2746023
-
 </td>
-
 <td style="text-align:center;">
-
 0.7838737
-
 </td>
-
 <td style="text-align:center;">
-
 0.4368438
-
 </td>
-
 <td style="text-align:center;">
-
 0.1528035
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2526696
-
+-0.2526696
 </td>
-
 <td style="text-align:center;">
-
 0.0005832
-
 </td>
-
 <td style="text-align:center;">
-
 0.0398914
-
 </td>
-
 <td style="text-align:center;">
-
 0.0505159
-
 </td>
-
 <td style="text-align:center;">
-
 0.0552370
-
 </td>
-
 <td style="text-align:center;">
-
 0.0617538
-
 </td>
-
 <td style="text-align:center;">
-
 0.0964317
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Agric
-
 </td>
-
 <td style="text-align:center;">
-
 0.0016461
-
 </td>
-
 <td style="text-align:center;">
-
 0.5825164
-
 </td>
-
 <td style="text-align:center;">
-
 0.1940582
-
 </td>
-
 <td style="text-align:center;">
-
 0.3703844
-
 </td>
-
 <td style="text-align:center;">
-
 0.4506982
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.6421949
-
+-0.6421949
 </td>
-
 <td style="text-align:center;">
-
 0.0006801
-
 </td>
-
 <td style="text-align:center;">
-
 0.0465185
-
 </td>
-
 <td style="text-align:center;">
-
 0.0589079
-
 </td>
-
 <td style="text-align:center;">
-
 0.0644133
-
 </td>
-
 <td style="text-align:center;">
-
 0.0720127
-
 </td>
-
 <td style="text-align:center;">
-
 0.1124515
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Autos
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0063620
-
+-0.0063620
 </td>
-
 <td style="text-align:center;">
-
 1.5229823
-
 </td>
-
 <td style="text-align:center;">
-
 0.0053461
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0961469
-
+-0.0961469
 </td>
-
 <td style="text-align:center;">
-
 0.0515546
-
 </td>
-
 <td style="text-align:center;">
-
 1.0865335
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006652
-
 </td>
-
 <td style="text-align:center;">
-
 0.0455002
-
 </td>
-
 <td style="text-align:center;">
-
 0.0576183
-
 </td>
-
 <td style="text-align:center;">
-
 0.0630033
-
 </td>
-
 <td style="text-align:center;">
-
 0.0704363
-
 </td>
-
 <td style="text-align:center;">
-
 0.1099899
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Banks
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0035956
-
+-0.0035956
 </td>
-
 <td style="text-align:center;">
-
 1.2475803
-
 </td>
-
 <td style="text-align:center;">
-
 0.0222035
-
 </td>
-
 <td style="text-align:center;">
-
 0.6482096
-
 </td>
-
 <td style="text-align:center;">
-
 0.4262404
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0975272
-
+-0.0975272
 </td>
-
 <td style="text-align:center;">
-
 0.0003985
-
 </td>
-
 <td style="text-align:center;">
-
 0.0272579
-
 </td>
-
 <td style="text-align:center;">
-
 0.0345176
-
 </td>
-
 <td style="text-align:center;">
-
 0.0377435
-
 </td>
-
 <td style="text-align:center;">
-
 0.0421965
-
 </td>
-
 <td style="text-align:center;">
-
 0.0658919
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Beer
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000426
-
 </td>
-
 <td style="text-align:center;">
-
 0.9099867
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3158099
-
+-0.3158099
 </td>
-
 <td style="text-align:center;">
-
-\-0.1920509
-
+-0.1920509
 </td>
-
 <td style="text-align:center;">
-
 0.8565533
-
 </td>
-
 <td style="text-align:center;">
-
 0.2840211
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004848
-
 </td>
-
 <td style="text-align:center;">
-
 0.0331595
-
 </td>
-
 <td style="text-align:center;">
-
 0.0419910
-
 </td>
-
 <td style="text-align:center;">
-
 0.0459154
-
 </td>
-
 <td style="text-align:center;">
-
 0.0513324
-
 </td>
-
 <td style="text-align:center;">
-
 0.0801582
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BldMt
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0038180
-
+-0.0038180
 </td>
-
 <td style="text-align:center;">
-
 1.2256726
-
 </td>
-
 <td style="text-align:center;">
-
 0.2746096
-
 </td>
-
 <td style="text-align:center;">
-
 0.2072977
-
 </td>
-
 <td style="text-align:center;">
-
 0.4985308
-
 </td>
-
 <td style="text-align:center;">
-
 0.3151551
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003777
-
 </td>
-
 <td style="text-align:center;">
-
 0.0258339
-
 </td>
-
 <td style="text-align:center;">
-
 0.0327143
-
 </td>
-
 <td style="text-align:center;">
-
 0.0357717
-
 </td>
-
 <td style="text-align:center;">
-
 0.0399920
-
 </td>
-
 <td style="text-align:center;">
-
 0.0624495
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Books
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0071925
-
+-0.0071925
 </td>
-
 <td style="text-align:center;">
-
 1.4360719
-
 </td>
-
 <td style="text-align:center;">
-
 0.4600670
-
 </td>
-
 <td style="text-align:center;">
-
 0.1423312
-
 </td>
-
 <td style="text-align:center;">
-
 0.3140638
-
 </td>
-
 <td style="text-align:center;">
-
 0.6229898
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004771
-
 </td>
-
 <td style="text-align:center;">
-
 0.0326318
-
 </td>
-
 <td style="text-align:center;">
-
 0.0413227
-
 </td>
-
 <td style="text-align:center;">
-
 0.0451847
-
 </td>
-
 <td style="text-align:center;">
-
 0.0505155
-
 </td>
-
 <td style="text-align:center;">
-
 0.0788825
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Boxes
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0016011
-
+-0.0016011
 </td>
-
 <td style="text-align:center;">
-
 0.8638515
-
 </td>
-
 <td style="text-align:center;">
-
 0.0407416
-
 </td>
-
 <td style="text-align:center;">
-
 0.1523267
-
 </td>
-
 <td style="text-align:center;">
-
 0.8222496
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0022294
-
+-0.0022294
 </td>
-
 <td style="text-align:center;">
-
 0.0005539
-
 </td>
-
 <td style="text-align:center;">
-
 0.0378871
-
 </td>
-
 <td style="text-align:center;">
-
 0.0479777
-
 </td>
-
 <td style="text-align:center;">
-
 0.0524616
-
 </td>
-
 <td style="text-align:center;">
-
 0.0586510
-
 </td>
-
 <td style="text-align:center;">
-
 0.0915865
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BusSv
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003938
-
 </td>
-
 <td style="text-align:center;">
-
 1.0525691
-
 </td>
-
 <td style="text-align:center;">
-
 0.4724090
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1246758
-
+-0.1246758
 </td>
-
 <td style="text-align:center;">
-
 0.0187068
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2174015
-
+-0.2174015
 </td>
-
 <td style="text-align:center;">
-
 0.0002714
-
 </td>
-
 <td style="text-align:center;">
-
 0.0185617
-
 </td>
-
 <td style="text-align:center;">
-
 0.0235054
-
 </td>
-
 <td style="text-align:center;">
-
 0.0257021
-
 </td>
-
 <td style="text-align:center;">
-
 0.0287344
-
 </td>
-
 <td style="text-align:center;">
-
 0.0448703
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chems
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0020329
-
+-0.0020329
 </td>
-
 <td style="text-align:center;">
-
 1.0479814
-
 </td>
-
 <td style="text-align:center;">
-
 0.0398632
-
 </td>
-
 <td style="text-align:center;">
-
 0.0610439
-
 </td>
-
 <td style="text-align:center;">
-
 0.3658636
-
 </td>
-
 <td style="text-align:center;">
-
 0.3650244
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004627
-
 </td>
-
 <td style="text-align:center;">
-
 0.0316450
-
 </td>
-
 <td style="text-align:center;">
-
 0.0400731
-
 </td>
-
 <td style="text-align:center;">
-
 0.0438183
-
 </td>
-
 <td style="text-align:center;">
-
 0.0489880
-
 </td>
-
 <td style="text-align:center;">
-
 0.0764972
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chips
-
 </td>
-
 <td style="text-align:center;">
-
 0.0051885
-
 </td>
-
 <td style="text-align:center;">
-
 1.1028458
-
 </td>
-
 <td style="text-align:center;">
-
 0.3129494
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4482885
-
+-0.4482885
 </td>
-
 <td style="text-align:center;">
-
-\-0.9646289
-
+-0.9646289
 </td>
-
 <td style="text-align:center;">
-
-\-0.1232898
-
+-0.1232898
 </td>
-
 <td style="text-align:center;">
-
 0.0005198
-
 </td>
-
 <td style="text-align:center;">
-
 0.0355509
-
 </td>
-
 <td style="text-align:center;">
-
 0.0450192
-
 </td>
-
 <td style="text-align:center;">
-
 0.0492267
-
 </td>
-
 <td style="text-align:center;">
-
 0.0550344
-
 </td>
-
 <td style="text-align:center;">
-
 0.0859390
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Clths
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0051112
-
+-0.0051112
 </td>
-
 <td style="text-align:center;">
-
 1.3268703
-
 </td>
-
 <td style="text-align:center;">
-
 0.7822894
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2454161
-
+-0.2454161
 </td>
-
 <td style="text-align:center;">
-
 0.8865135
-
 </td>
-
 <td style="text-align:center;">
-
 0.5414965
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005851
-
 </td>
-
 <td style="text-align:center;">
-
 0.0400219
-
 </td>
-
 <td style="text-align:center;">
-
 0.0506811
-
 </td>
-
 <td style="text-align:center;">
-
 0.0554176
-
 </td>
-
 <td style="text-align:center;">
-
 0.0619558
-
 </td>
-
 <td style="text-align:center;">
-
 0.0967471
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Cnstr
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0051172
-
+-0.0051172
 </td>
-
 <td style="text-align:center;">
-
 1.2153172
-
 </td>
-
 <td style="text-align:center;">
-
 0.6550769
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1314116
-
+-0.1314116
 </td>
-
 <td style="text-align:center;">
-
 0.5204695
-
 </td>
-
 <td style="text-align:center;">
-
 0.4787251
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007152
-
 </td>
-
 <td style="text-align:center;">
-
 0.0489177
-
 </td>
-
 <td style="text-align:center;">
-
 0.0619460
-
 </td>
-
 <td style="text-align:center;">
-
 0.0677354
-
 </td>
-
 <td style="text-align:center;">
-
 0.0757268
-
 </td>
-
 <td style="text-align:center;">
-
 0.1182512
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Coal
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0018927
-
+-0.0018927
 </td>
-
 <td style="text-align:center;">
-
 0.5321811
-
 </td>
-
 <td style="text-align:center;">
-
 0.7143574
-
 </td>
-
 <td style="text-align:center;">
-
 0.6932167
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.5017013
-
+-0.5017013
 </td>
-
 <td style="text-align:center;">
-
 0.7875115
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017543
-
 </td>
-
 <td style="text-align:center;">
-
 0.1199887
-
 </td>
-
 <td style="text-align:center;">
-
 0.1519456
-
 </td>
-
 <td style="text-align:center;">
-
 0.1661462
-
 </td>
-
 <td style="text-align:center;">
-
 0.1857480
-
 </td>
-
 <td style="text-align:center;">
-
 0.2900548
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Drugs
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013358
-
 </td>
-
 <td style="text-align:center;">
-
 0.8796435
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4621804
-
+-0.4621804
 </td>
-
 <td style="text-align:center;">
-
-\-0.3018292
-
+-0.3018292
 </td>
-
 <td style="text-align:center;">
-
 0.5003218
-
 </td>
-
 <td style="text-align:center;">
-
 0.3002915
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004381
-
 </td>
-
 <td style="text-align:center;">
-
 0.0299632
-
 </td>
-
 <td style="text-align:center;">
-
 0.0379434
-
 </td>
-
 <td style="text-align:center;">
-
 0.0414896
-
 </td>
-
 <td style="text-align:center;">
-
 0.0463845
-
 </td>
-
 <td style="text-align:center;">
-
 0.0724317
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 ElcEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013447
-
 </td>
-
 <td style="text-align:center;">
-
 1.1252624
-
 </td>
-
 <td style="text-align:center;">
-
 0.1206725
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1124701
-
+-0.1124701
 </td>
-
 <td style="text-align:center;">
-
-\-0.0878487
-
+-0.0878487
 </td>
-
 <td style="text-align:center;">
-
 0.1209728
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003518
-
 </td>
-
 <td style="text-align:center;">
-
 0.0240609
-
 </td>
-
 <td style="text-align:center;">
-
 0.0304691
-
 </td>
-
 <td style="text-align:center;">
-
 0.0333167
-
 </td>
-
 <td style="text-align:center;">
-
 0.0372474
-
 </td>
-
 <td style="text-align:center;">
-
 0.0581637
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FabPr
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0022332
-
+-0.0022332
 </td>
-
 <td style="text-align:center;">
-
 0.8453990
-
 </td>
-
 <td style="text-align:center;">
-
 0.7941666
-
 </td>
-
 <td style="text-align:center;">
-
 0.3626176
-
 </td>
-
 <td style="text-align:center;">
-
 0.1845480
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.6243901
-
+-0.6243901
 </td>
-
 <td style="text-align:center;">
-
 0.0007540
-
 </td>
-
 <td style="text-align:center;">
-
 0.0515686
-
 </td>
-
 <td style="text-align:center;">
-
 0.0653031
-
 </td>
-
 <td style="text-align:center;">
-
 0.0714062
-
 </td>
-
 <td style="text-align:center;">
-
 0.0798306
-
 </td>
-
 <td style="text-align:center;">
-
 0.1246596
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fin
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0002833
-
+-0.0002833
 </td>
-
 <td style="text-align:center;">
-
 1.2562560
-
 </td>
-
 <td style="text-align:center;">
-
 0.3107899
-
 </td>
-
 <td style="text-align:center;">
-
 0.5251945
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0987906
-
+-0.0987906
 </td>
-
 <td style="text-align:center;">
-
-\-0.3650579
-
+-0.3650579
 </td>
-
 <td style="text-align:center;">
-
 0.0004104
-
 </td>
-
 <td style="text-align:center;">
-
 0.0280679
-
 </td>
-
 <td style="text-align:center;">
-
 0.0355434
-
 </td>
-
 <td style="text-align:center;">
-
 0.0388652
-
 </td>
-
 <td style="text-align:center;">
-
 0.0434505
-
 </td>
-
 <td style="text-align:center;">
-
 0.0678501
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Food
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0017027
-
+-0.0017027
 </td>
-
 <td style="text-align:center;">
-
 0.8819056
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1021610
-
+-0.1021610
 </td>
-
 <td style="text-align:center;">
-
 0.1128245
-
 </td>
-
 <td style="text-align:center;">
-
 0.7741909
-
 </td>
-
 <td style="text-align:center;">
-
 0.4490797
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004269
-
 </td>
-
 <td style="text-align:center;">
-
 0.0291978
-
 </td>
-
 <td style="text-align:center;">
-
 0.0369741
-
 </td>
-
 <td style="text-align:center;">
-
 0.0404297
-
 </td>
-
 <td style="text-align:center;">
-
 0.0451995
-
 </td>
-
 <td style="text-align:center;">
-
 0.0705813
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fun
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0013404
-
+-0.0013404
 </td>
-
 <td style="text-align:center;">
-
 1.4377854
-
 </td>
-
 <td style="text-align:center;">
-
 0.5898860
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0394015
-
+-0.0394015
 </td>
-
 <td style="text-align:center;">
-
 0.3859710
-
 </td>
-
 <td style="text-align:center;">
-
 0.4124550
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007257
-
 </td>
-
 <td style="text-align:center;">
-
 0.0496341
-
 </td>
-
 <td style="text-align:center;">
-
 0.0628533
-
 </td>
-
 <td style="text-align:center;">
-
 0.0687275
-
 </td>
-
 <td style="text-align:center;">
-
 0.0768359
-
 </td>
-
 <td style="text-align:center;">
-
 0.1199831
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Gold
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003135
-
 </td>
-
 <td style="text-align:center;">
-
 0.3543018
-
 </td>
-
 <td style="text-align:center;">
-
 0.7289414
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.0938949
-
+-1.0938949
 </td>
-
 <td style="text-align:center;">
-
 0.2666569
-
 </td>
-
 <td style="text-align:center;">
-
 1.4469401
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013482
-
 </td>
-
 <td style="text-align:center;">
-
 0.0922090
-
 </td>
-
 <td style="text-align:center;">
-
 0.1167674
-
 </td>
-
 <td style="text-align:center;">
-
 0.1276803
-
 </td>
-
 <td style="text-align:center;">
-
 0.1427438
-
 </td>
-
 <td style="text-align:center;">
-
 0.2229017
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Guns
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000274
-
+-0.0000274
 </td>
-
 <td style="text-align:center;">
-
 0.8382648
-
 </td>
-
 <td style="text-align:center;">
-
 0.5745523
-
 </td>
-
 <td style="text-align:center;">
-
 0.3837487
-
 </td>
-
 <td style="text-align:center;">
-
 0.9507868
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0017038
-
+-0.0017038
 </td>
-
 <td style="text-align:center;">
-
 0.0007288
-
 </td>
-
 <td style="text-align:center;">
-
 0.0498491
-
 </td>
-
 <td style="text-align:center;">
-
 0.0631255
-
 </td>
-
 <td style="text-align:center;">
-
 0.0690251
-
 </td>
-
 <td style="text-align:center;">
-
 0.0771686
-
 </td>
-
 <td style="text-align:center;">
-
 0.1205027
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hardw
-
 </td>
-
 <td style="text-align:center;">
-
 0.0029049
-
 </td>
-
 <td style="text-align:center;">
-
 1.0231410
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0714698
-
+-0.0714698
 </td>
-
 <td style="text-align:center;">
-
-\-0.3301447
-
+-0.3301447
 </td>
-
 <td style="text-align:center;">
-
-\-0.7731021
-
+-0.7731021
 </td>
-
 <td style="text-align:center;">
-
-\-0.0904900
-
+-0.0904900
 </td>
-
 <td style="text-align:center;">
-
 0.0006809
-
 </td>
-
 <td style="text-align:center;">
-
 0.0465711
-
 </td>
-
 <td style="text-align:center;">
-
 0.0589745
-
 </td>
-
 <td style="text-align:center;">
-
 0.0644861
-
 </td>
-
 <td style="text-align:center;">
-
 0.0720941
-
 </td>
-
 <td style="text-align:center;">
-
 0.1125786
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hlth
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0037975
-
+-0.0037975
 </td>
-
 <td style="text-align:center;">
-
 0.9715977
-
 </td>
-
 <td style="text-align:center;">
-
 1.7326988
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4383371
-
+-0.4383371
 </td>
-
 <td style="text-align:center;">
-
 0.8772680
-
 </td>
-
 <td style="text-align:center;">
-
 0.3348111
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008389
-
 </td>
-
 <td style="text-align:center;">
-
 0.0573801
-
 </td>
-
 <td style="text-align:center;">
-
 0.0726623
-
 </td>
-
 <td style="text-align:center;">
-
 0.0794532
-
 </td>
-
 <td style="text-align:center;">
-
 0.0888270
-
 </td>
-
 <td style="text-align:center;">
-
 0.1387078
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hshld
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0031805
-
+-0.0031805
 </td>
-
 <td style="text-align:center;">
-
 0.9866357
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1890740
-
+-0.1890740
 </td>
-
 <td style="text-align:center;">
-
-\-0.0956830
-
+-0.0956830
 </td>
-
 <td style="text-align:center;">
-
 0.7730199
-
 </td>
-
 <td style="text-align:center;">
-
 0.3177266
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003387
-
 </td>
-
 <td style="text-align:center;">
-
 0.0231688
-
 </td>
-
 <td style="text-align:center;">
-
 0.0293394
-
 </td>
-
 <td style="text-align:center;">
-
 0.0320815
-
 </td>
-
 <td style="text-align:center;">
-
 0.0358664
-
 </td>
-
 <td style="text-align:center;">
-
 0.0560072
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Insur
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0013155
-
+-0.0013155
 </td>
-
 <td style="text-align:center;">
-
 1.1047316
-
 </td>
-
 <td style="text-align:center;">
-
 0.2299386
-
 </td>
-
 <td style="text-align:center;">
-
 0.4954510
-
 </td>
-
 <td style="text-align:center;">
-
 0.3090722
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1726943
-
+-0.1726943
 </td>
-
 <td style="text-align:center;">
-
 0.0003704
-
 </td>
-
 <td style="text-align:center;">
-
 0.0253312
-
 </td>
-
 <td style="text-align:center;">
-
 0.0320778
-
 </td>
-
 <td style="text-align:center;">
-
 0.0350757
-
 </td>
-
 <td style="text-align:center;">
-
 0.0392139
-
 </td>
-
 <td style="text-align:center;">
-
 0.0612345
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 LabEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0027968
-
 </td>
-
 <td style="text-align:center;">
-
 0.9891841
-
 </td>
-
 <td style="text-align:center;">
-
 0.4782318
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3755583
-
+-0.3755583
 </td>
-
 <td style="text-align:center;">
-
-\-0.4922250
-
+-0.4922250
 </td>
-
 <td style="text-align:center;">
-
 0.0922078
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004329
-
 </td>
-
 <td style="text-align:center;">
-
 0.0296092
-
 </td>
-
 <td style="text-align:center;">
-
 0.0374951
-
 </td>
-
 <td style="text-align:center;">
-
 0.0409993
-
 </td>
-
 <td style="text-align:center;">
-
 0.0458364
-
 </td>
-
 <td style="text-align:center;">
-
 0.0715758
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mach
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0008106
-
+-0.0008106
 </td>
-
 <td style="text-align:center;">
-
 1.0301561
-
 </td>
-
 <td style="text-align:center;">
-
 0.3575171
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0547854
-
+-0.0547854
 </td>
-
 <td style="text-align:center;">
-
-\-0.0325099
-
+-0.0325099
 </td>
-
 <td style="text-align:center;">
-
 0.2949105
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005178
-
 </td>
-
 <td style="text-align:center;">
-
 0.0354144
-
 </td>
-
 <td style="text-align:center;">
-
 0.0448464
-
 </td>
-
 <td style="text-align:center;">
-
 0.0490377
-
 </td>
-
 <td style="text-align:center;">
-
 0.0548231
-
 </td>
-
 <td style="text-align:center;">
-
 0.0856091
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Meals
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0016492
-
+-0.0016492
 </td>
-
 <td style="text-align:center;">
-
 1.0737487
-
 </td>
-
 <td style="text-align:center;">
-
 0.5459601
-
 </td>
-
 <td style="text-align:center;">
-
 0.1001046
-
 </td>
-
 <td style="text-align:center;">
-
 0.6242171
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1737008
-
+-0.1737008
 </td>
-
 <td style="text-align:center;">
-
 0.0005212
-
 </td>
-
 <td style="text-align:center;">
-
 0.0356514
-
 </td>
-
 <td style="text-align:center;">
-
 0.0451466
-
 </td>
-
 <td style="text-align:center;">
-
 0.0493659
-
 </td>
-
 <td style="text-align:center;">
-
 0.0551901
-
 </td>
-
 <td style="text-align:center;">
-
 0.0861821
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 MedEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014561
-
 </td>
-
 <td style="text-align:center;">
-
 0.8053431
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0565824
-
+-0.0565824
 </td>
-
 <td style="text-align:center;">
-
-\-0.3375237
-
+-0.3375237
 </td>
-
 <td style="text-align:center;">
-
 0.5326186
-
 </td>
-
 <td style="text-align:center;">
-
 0.1033913
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005539
-
 </td>
-
 <td style="text-align:center;">
-
 0.0378871
-
 </td>
-
 <td style="text-align:center;">
-
 0.0479777
-
 </td>
-
 <td style="text-align:center;">
-
 0.0524616
-
 </td>
-
 <td style="text-align:center;">
-
 0.0586510
-
 </td>
-
 <td style="text-align:center;">
-
 0.0915865
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mines
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014572
-
 </td>
-
 <td style="text-align:center;">
-
 0.7813628
-
 </td>
-
 <td style="text-align:center;">
-
 0.2534132
-
 </td>
-
 <td style="text-align:center;">
-
 0.1187663
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2251123
-
+-0.2251123
 </td>
-
 <td style="text-align:center;">
-
 0.0825557
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009507
-
 </td>
-
 <td style="text-align:center;">
-
 0.0650268
-
 </td>
-
 <td style="text-align:center;">
-
 0.0823456
-
 </td>
-
 <td style="text-align:center;">
-
 0.0900415
-
 </td>
-
 <td style="text-align:center;">
-
 0.1006645
-
 </td>
-
 <td style="text-align:center;">
-
 0.1571928
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Oil
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0004014
-
+-0.0004014
 </td>
-
 <td style="text-align:center;">
-
 0.7991301
-
 </td>
-
 <td style="text-align:center;">
-
 0.2298170
-
 </td>
-
 <td style="text-align:center;">
-
 0.4364659
-
 </td>
-
 <td style="text-align:center;">
-
 0.0717533
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1674800
-
+-0.1674800
 </td>
-
 <td style="text-align:center;">
-
 0.0006965
-
 </td>
-
 <td style="text-align:center;">
-
 0.0476356
-
 </td>
-
 <td style="text-align:center;">
-
 0.0603226
-
 </td>
-
 <td style="text-align:center;">
-
 0.0659602
-
 </td>
-
 <td style="text-align:center;">
-
 0.0737421
-
 </td>
-
 <td style="text-align:center;">
-
 0.1151521
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Other
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0095963
-
+-0.0095963
 </td>
-
 <td style="text-align:center;">
-
 1.4180793
-
 </td>
-
 <td style="text-align:center;">
-
 0.4039311
-
 </td>
-
 <td style="text-align:center;">
-
 0.0269255
-
 </td>
-
 <td style="text-align:center;">
-
 0.4086910
-
 </td>
-
 <td style="text-align:center;">
-
 0.1984780
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006627
-
 </td>
-
 <td style="text-align:center;">
-
 0.0453283
-
 </td>
-
 <td style="text-align:center;">
-
 0.0574007
-
 </td>
-
 <td style="text-align:center;">
-
 0.0627653
-
 </td>
-
 <td style="text-align:center;">
-
 0.0701702
-
 </td>
-
 <td style="text-align:center;">
-
 0.1095744
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Paper
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0025994
-
+-0.0025994
 </td>
-
 <td style="text-align:center;">
-
 0.9960178
-
 </td>
-
 <td style="text-align:center;">
-
 0.0411842
-
 </td>
-
 <td style="text-align:center;">
-
 0.1656356
-
 </td>
-
 <td style="text-align:center;">
-
 0.1961619
-
 </td>
-
 <td style="text-align:center;">
-
 0.5961679
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004124
-
 </td>
-
 <td style="text-align:center;">
-
 0.0282042
-
 </td>
-
 <td style="text-align:center;">
-
 0.0357159
-
 </td>
-
 <td style="text-align:center;">
-
 0.0390538
-
 </td>
-
 <td style="text-align:center;">
-
 0.0436613
-
 </td>
-
 <td style="text-align:center;">
-
 0.0681794
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 PerSv
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0087342
-
+-0.0087342
 </td>
-
 <td style="text-align:center;">
-
 1.0919539
-
 </td>
-
 <td style="text-align:center;">
-
 1.1387105
-
 </td>
-
 <td style="text-align:center;">
-
 0.2900208
-
 </td>
-
 <td style="text-align:center;">
-
 0.8993240
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0887214
-
+-0.0887214
 </td>
-
 <td style="text-align:center;">
-
 0.0006290
-
 </td>
-
 <td style="text-align:center;">
-
 0.0430207
-
 </td>
-
 <td style="text-align:center;">
-
 0.0544786
-
 </td>
-
 <td style="text-align:center;">
-
 0.0595700
-
 </td>
-
 <td style="text-align:center;">
-
 0.0665980
-
 </td>
-
 <td style="text-align:center;">
-
 0.1039962
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RlEst
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0107579
-
+-0.0107579
 </td>
-
 <td style="text-align:center;">
-
 1.4524244
-
 </td>
-
 <td style="text-align:center;">
-
 1.4426993
-
 </td>
-
 <td style="text-align:center;">
-
 0.3381476
-
 </td>
-
 <td style="text-align:center;">
-
 0.5862133
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1133795
-
+-0.1133795
 </td>
-
 <td style="text-align:center;">
-
 0.0006743
-
 </td>
-
 <td style="text-align:center;">
-
 0.0461230
-
 </td>
-
 <td style="text-align:center;">
-
 0.0584070
-
 </td>
-
 <td style="text-align:center;">
-
 0.0638657
-
 </td>
-
 <td style="text-align:center;">
-
 0.0714005
-
 </td>
-
 <td style="text-align:center;">
-
 0.1114954
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rtail
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0006359
-
+-0.0006359
 </td>
-
 <td style="text-align:center;">
-
 1.0737444
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0120757
-
+-0.0120757
 </td>
-
 <td style="text-align:center;">
-
-\-0.2910815
-
+-0.2910815
 </td>
-
 <td style="text-align:center;">
-
 0.4432776
-
 </td>
-
 <td style="text-align:center;">
-
 0.4689517
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004659
-
 </td>
-
 <td style="text-align:center;">
-
 0.0318637
-
 </td>
-
 <td style="text-align:center;">
-
 0.0403500
-
 </td>
-
 <td style="text-align:center;">
-
 0.0441211
-
 </td>
-
 <td style="text-align:center;">
-
 0.0493264
-
 </td>
-
 <td style="text-align:center;">
-
 0.0770257
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rubbr
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0030373
-
+-0.0030373
 </td>
-
 <td style="text-align:center;">
-
 1.1609331
-
 </td>
-
 <td style="text-align:center;">
-
 0.3844679
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0232771
-
+-0.0232771
 </td>
-
 <td style="text-align:center;">
-
 0.5958614
-
 </td>
-
 <td style="text-align:center;">
-
 0.2990171
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004376
-
 </td>
-
 <td style="text-align:center;">
-
 0.0299333
-
 </td>
-
 <td style="text-align:center;">
-
 0.0379055
-
 </td>
-
 <td style="text-align:center;">
-
 0.0414481
-
 </td>
-
 <td style="text-align:center;">
-
 0.0463381
-
 </td>
-
 <td style="text-align:center;">
-
 0.0723593
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Ships
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0014874
-
+-0.0014874
 </td>
-
 <td style="text-align:center;">
-
 0.9450218
-
 </td>
-
 <td style="text-align:center;">
-
 0.4640843
-
 </td>
-
 <td style="text-align:center;">
-
 0.5768058
-
 </td>
-
 <td style="text-align:center;">
-
 0.3004754
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0191941
-
+-0.0191941
 </td>
-
 <td style="text-align:center;">
-
 0.0007598
-
 </td>
-
 <td style="text-align:center;">
-
 0.0519653
-
 </td>
-
 <td style="text-align:center;">
-
 0.0658053
-
 </td>
-
 <td style="text-align:center;">
-
 0.0719554
-
 </td>
-
 <td style="text-align:center;">
-
 0.0804446
-
 </td>
-
 <td style="text-align:center;">
-
 0.1256183
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Smoke
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0005108
-
+-0.0005108
 </td>
-
 <td style="text-align:center;">
-
 0.8046435
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1273409
-
+-0.1273409
 </td>
-
 <td style="text-align:center;">
-
 0.0620524
-
 </td>
-
 <td style="text-align:center;">
-
 1.2041922
-
 </td>
-
 <td style="text-align:center;">
-
 0.8914597
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006825
-
 </td>
-
 <td style="text-align:center;">
-
 0.0466837
-
 </td>
-
 <td style="text-align:center;">
-
 0.0591171
-
 </td>
-
 <td style="text-align:center;">
-
 0.0646421
-
 </td>
-
 <td style="text-align:center;">
-
 0.0722685
-
 </td>
-
 <td style="text-align:center;">
-
 0.1128509
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Soda
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0027393
-
+-0.0027393
 </td>
-
 <td style="text-align:center;">
-
 1.0846754
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2058664
-
+-0.2058664
 </td>
-
 <td style="text-align:center;">
-
 0.3111747
-
 </td>
-
 <td style="text-align:center;">
-
 1.0775496
-
 </td>
-
 <td style="text-align:center;">
-
 0.1498779
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006174
-
 </td>
-
 <td style="text-align:center;">
-
 0.0422302
-
 </td>
-
 <td style="text-align:center;">
-
 0.0534775
-
 </td>
-
 <td style="text-align:center;">
-
 0.0584754
-
 </td>
-
 <td style="text-align:center;">
-
 0.0653743
-
 </td>
-
 <td style="text-align:center;">
-
 0.1020853
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Softw
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000276
-
+-0.0000276
 </td>
-
 <td style="text-align:center;">
-
 1.3867136
-
 </td>
-
 <td style="text-align:center;">
-
 0.9454751
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.9717346
-
+-0.9717346
 </td>
-
 <td style="text-align:center;">
-
 0.1336157
-
 </td>
-
 <td style="text-align:center;">
-
 0.0082342
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009466
-
 </td>
-
 <td style="text-align:center;">
-
 0.0647470
-
 </td>
-
 <td style="text-align:center;">
-
 0.0819912
-
 </td>
-
 <td style="text-align:center;">
-
 0.0896540
-
 </td>
-
 <td style="text-align:center;">
-
 0.1002313
-
 </td>
-
 <td style="text-align:center;">
-
 0.1565162
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Steel
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0002085
-
+-0.0002085
 </td>
-
 <td style="text-align:center;">
-
 0.9130251
-
 </td>
-
 <td style="text-align:center;">
-
 0.2016566
-
 </td>
-
 <td style="text-align:center;">
-
 0.4352389
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.0450994
-
+-1.0450994
 </td>
-
 <td style="text-align:center;">
-
-\-0.0849308
-
+-0.0849308
 </td>
-
 <td style="text-align:center;">
-
 0.0007098
-
 </td>
-
 <td style="text-align:center;">
-
 0.0485491
-
 </td>
-
 <td style="text-align:center;">
-
 0.0614794
-
 </td>
-
 <td style="text-align:center;">
-
 0.0672251
-
 </td>
-
 <td style="text-align:center;">
-
 0.0751563
-
 </td>
-
 <td style="text-align:center;">
-
 0.1173603
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Telcm
-
 </td>
-
 <td style="text-align:center;">
-
 0.0025699
-
 </td>
-
 <td style="text-align:center;">
-
 0.8743257
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4497129
-
+-0.4497129
 </td>
-
 <td style="text-align:center;">
-
 0.3961693
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.6882968
-
+-0.6882968
 </td>
-
 <td style="text-align:center;">
-
-\-0.1586806
-
+-0.1586806
 </td>
-
 <td style="text-align:center;">
-
 0.0004282
-
 </td>
-
 <td style="text-align:center;">
-
 0.0292864
-
 </td>
-
 <td style="text-align:center;">
-
 0.0370863
-
 </td>
-
 <td style="text-align:center;">
-
 0.0405524
-
 </td>
-
 <td style="text-align:center;">
-
 0.0453367
-
 </td>
-
 <td style="text-align:center;">
-
 0.0707955
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Toys
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0087620
-
+-0.0087620
 </td>
-
 <td style="text-align:center;">
-
 1.3071589
-
 </td>
-
 <td style="text-align:center;">
-
 0.5646103
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1051569
-
+-0.1051569
 </td>
-
 <td style="text-align:center;">
-
 0.8874877
-
 </td>
-
 <td style="text-align:center;">
-
 0.8351548
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005863
-
 </td>
-
 <td style="text-align:center;">
-
 0.0401014
-
 </td>
-
 <td style="text-align:center;">
-
 0.0507818
-
 </td>
-
 <td style="text-align:center;">
-
 0.0555278
-
 </td>
-
 <td style="text-align:center;">
-
 0.0620789
-
 </td>
-
 <td style="text-align:center;">
-
 0.0969393
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Trans
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0031360
-
+-0.0031360
 </td>
-
 <td style="text-align:center;">
-
 1.0916931
-
 </td>
-
 <td style="text-align:center;">
-
 0.5913613
-
 </td>
-
 <td style="text-align:center;">
-
 0.2065672
-
 </td>
-
 <td style="text-align:center;">
-
 0.4650208
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0213421
-
+-0.0213421
 </td>
-
 <td style="text-align:center;">
-
 0.0004102
-
 </td>
-
 <td style="text-align:center;">
-
 0.0280594
-
 </td>
-
 <td style="text-align:center;">
-
 0.0355325
-
 </td>
-
 <td style="text-align:center;">
-
 0.0388533
-
 </td>
-
 <td style="text-align:center;">
-
 0.0434372
-
 </td>
-
 <td style="text-align:center;">
-
 0.0678293
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Txtls
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0074781
-
+-0.0074781
 </td>
-
 <td style="text-align:center;">
-
 1.3437515
-
 </td>
-
 <td style="text-align:center;">
-
 0.6048901
-
 </td>
-
 <td style="text-align:center;">
-
 0.4749820
-
 </td>
-
 <td style="text-align:center;">
-
 0.5932878
-
 </td>
-
 <td style="text-align:center;">
-
 0.5394235
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007141
-
 </td>
-
 <td style="text-align:center;">
-
 0.0488452
-
 </td>
-
 <td style="text-align:center;">
-
 0.0618543
-
 </td>
-
 <td style="text-align:center;">
-
 0.0676351
-
 </td>
-
 <td style="text-align:center;">
-
 0.0756146
-
 </td>
-
 <td style="text-align:center;">
-
 0.1180760
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Util
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0007362
-
+-0.0007362
 </td>
-
 <td style="text-align:center;">
-
 0.7831676
-
 </td>
-
 <td style="text-align:center;">
-
 0.0052637
-
 </td>
-
 <td style="text-align:center;">
-
 0.4875585
-
 </td>
-
 <td style="text-align:center;">
-
 0.1963733
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1634922
-
+-0.1634922
 </td>
-
 <td style="text-align:center;">
-
 0.0003874
-
 </td>
-
 <td style="text-align:center;">
-
 0.0264995
-
 </td>
-
 <td style="text-align:center;">
-
 0.0335572
-
 </td>
-
 <td style="text-align:center;">
-
 0.0366934
-
 </td>
-
 <td style="text-align:center;">
-
 0.0410224
-
 </td>
-
 <td style="text-align:center;">
-
 0.0640586
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Whlsl
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0024205
-
+-0.0024205
 </td>
-
 <td style="text-align:center;">
-
 1.0757804
-
 </td>
-
 <td style="text-align:center;">
-
 0.5633473
-
 </td>
-
 <td style="text-align:center;">
-
 0.0179133
-
 </td>
-
 <td style="text-align:center;">
-
 0.1885198
-
 </td>
-
 <td style="text-align:center;">
-
 0.1895158
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003568
-
 </td>
-
 <td style="text-align:center;">
-
 0.0244072
-
 </td>
-
 <td style="text-align:center;">
-
 0.0309077
-
 </td>
-
 <td style="text-align:center;">
-
 0.0337962
-
 </td>
-
 <td style="text-align:center;">
-
 0.0377835
-
 </td>
-
 <td style="text-align:center;">
-
 0.0590008
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ![](ECC_files/figure-gfm/Full_STL_FF5-1.png)<!-- -->
@@ -11621,21 +5970,13 @@ We will then apply the PRS Five Factor Model to estimate the betas.
 ### S3-2-1 Full Sample Estimation
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 PRS Five Factors
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
-
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -11645,7 +5986,6 @@ Coefficients
 </div>
 
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -11655,4115 +5995,2060 @@ Std. Error
 </div>
 
 </th>
-
 </tr>
-
 <tr>
-
 <th style="text-align:center;">
-
 Industry
-
 </th>
-
 <th style="text-align:center;">
-
 Alpha
-
 </th>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 dDP
-
 </th>
-
 <th style="text-align:center;">
-
 dTS
-
 </th>
-
 <th style="text-align:center;">
-
 UNEXPI
-
 </th>
-
 <th style="text-align:center;">
-
 Alpha
-
 </th>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 dDP
-
 </th>
-
 <th style="text-align:center;">
-
 dTS
-
 </th>
-
 <th style="text-align:center;">
-
 UNEXPI
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Aero
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0007264
-
+-0.0007264
 </td>
-
 <td style="text-align:center;">
-
 1.2147906
-
 </td>
-
 <td style="text-align:center;">
-
 0.4597678
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.8739102
-
+-1.8739102
 </td>
-
 <td style="text-align:center;">
-
 2.6544959
-
 </td>
-
 <td style="text-align:center;">
-
 0.0695108
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017926
-
 </td>
-
 <td style="text-align:center;">
-
 0.0413396
-
 </td>
-
 <td style="text-align:center;">
-
 0.0827289
-
 </td>
-
 <td style="text-align:center;">
-
 1.6994957
-
 </td>
-
 <td style="text-align:center;">
-
 0.7471528
-
 </td>
-
 <td style="text-align:center;">
-
 0.5863563
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Agric
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000335
-
 </td>
-
 <td style="text-align:center;">
-
 0.8921762
-
 </td>
-
 <td style="text-align:center;">
-
 0.0717091
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4604342
-
+-0.4604342
 </td>
-
 <td style="text-align:center;">
-
 2.0589033
-
 </td>
-
 <td style="text-align:center;">
-
 0.3395515
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021284
-
 </td>
-
 <td style="text-align:center;">
-
 0.0490841
-
 </td>
-
 <td style="text-align:center;">
-
 0.0982271
-
 </td>
-
 <td style="text-align:center;">
-
 2.0178759
-
 </td>
-
 <td style="text-align:center;">
-
 0.8871230
-
 </td>
-
 <td style="text-align:center;">
-
 0.6962031
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Autos
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0030572
-
+-0.0030572
 </td>
-
 <td style="text-align:center;">
-
 1.1977989
-
 </td>
-
 <td style="text-align:center;">
-
 0.0672278
-
 </td>
-
 <td style="text-align:center;">
-
 6.3544567
-
 </td>
-
 <td style="text-align:center;">
-
 4.1598356
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1737414
-
+-0.1737414
 </td>
-
 <td style="text-align:center;">
-
 0.0019354
-
 </td>
-
 <td style="text-align:center;">
-
 0.0446335
-
 </td>
-
 <td style="text-align:center;">
-
 0.0893205
-
 </td>
-
 <td style="text-align:center;">
-
 1.8349080
-
 </td>
-
 <td style="text-align:center;">
-
 0.8066844
-
 </td>
-
 <td style="text-align:center;">
-
 0.6330759
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Banks
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0017131
-
+-0.0017131
 </td>
-
 <td style="text-align:center;">
-
 1.1446243
-
 </td>
-
 <td style="text-align:center;">
-
 0.3036716
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2118326
-
+-0.2118326
 </td>
-
 <td style="text-align:center;">
-
 1.6994764
-
 </td>
-
 <td style="text-align:center;">
-
 0.8416676
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015119
-
 </td>
-
 <td style="text-align:center;">
-
 0.0348658
-
 </td>
-
 <td style="text-align:center;">
-
 0.0697734
-
 </td>
-
 <td style="text-align:center;">
-
 1.4333525
-
 </td>
-
 <td style="text-align:center;">
-
 0.6301478
-
 </td>
-
 <td style="text-align:center;">
-
 0.4945321
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Beer
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013533
-
 </td>
-
 <td style="text-align:center;">
-
 0.8163077
-
 </td>
-
 <td style="text-align:center;">
-
 0.6502316
-
 </td>
-
 <td style="text-align:center;">
-
-\-2.7713156
-
+-2.7713156
 </td>
-
 <td style="text-align:center;">
-
-\-0.3550530
-
+-0.3550530
 </td>
-
 <td style="text-align:center;">
-
 0.5748237
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015697
-
 </td>
-
 <td style="text-align:center;">
-
 0.0361980
-
 </td>
-
 <td style="text-align:center;">
-
 0.0724395
-
 </td>
-
 <td style="text-align:center;">
-
 1.4881224
-
 </td>
-
 <td style="text-align:center;">
-
 0.6542264
-
 </td>
-
 <td style="text-align:center;">
-
 0.5134287
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BldMt
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0030308
-
+-0.0030308
 </td>
-
 <td style="text-align:center;">
-
 1.2794322
-
 </td>
-
 <td style="text-align:center;">
-
 0.3978284
-
 </td>
-
 <td style="text-align:center;">
-
 3.0432575
-
 </td>
-
 <td style="text-align:center;">
-
 3.2402758
-
 </td>
-
 <td style="text-align:center;">
-
 1.2188895
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013397
-
 </td>
-
 <td style="text-align:center;">
-
 0.0308961
-
 </td>
-
 <td style="text-align:center;">
-
 0.0618293
-
 </td>
-
 <td style="text-align:center;">
-
 1.2701560
-
 </td>
-
 <td style="text-align:center;">
-
 0.5584013
-
 </td>
-
 <td style="text-align:center;">
-
 0.4382264
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Books
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0036651
-
+-0.0036651
 </td>
-
 <td style="text-align:center;">
-
 1.1403166
-
 </td>
-
 <td style="text-align:center;">
-
 0.3344491
-
 </td>
-
 <td style="text-align:center;">
-
 3.5192625
-
 </td>
-
 <td style="text-align:center;">
-
 2.8975915
-
 </td>
-
 <td style="text-align:center;">
-
 0.3071983
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013751
-
 </td>
-
 <td style="text-align:center;">
-
 0.0317113
-
 </td>
-
 <td style="text-align:center;">
-
 0.0634607
-
 </td>
-
 <td style="text-align:center;">
-
 1.3036699
-
 </td>
-
 <td style="text-align:center;">
-
 0.5731351
-
 </td>
-
 <td style="text-align:center;">
-
 0.4497893
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Boxes
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0012003
-
+-0.0012003
 </td>
-
 <td style="text-align:center;">
-
 1.0266425
-
 </td>
-
 <td style="text-align:center;">
-
 0.3245770
-
 </td>
-
 <td style="text-align:center;">
-
 3.6059226
-
 </td>
-
 <td style="text-align:center;">
-
 0.9489560
-
 </td>
-
 <td style="text-align:center;">
-
 1.1834596
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015292
-
 </td>
-
 <td style="text-align:center;">
-
 0.0352642
-
 </td>
-
 <td style="text-align:center;">
-
 0.0705708
-
 </td>
-
 <td style="text-align:center;">
-
 1.4497331
-
 </td>
-
 <td style="text-align:center;">
-
 0.6373492
-
 </td>
-
 <td style="text-align:center;">
-
 0.5001837
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BusSv
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0009844
-
+-0.0009844
 </td>
-
 <td style="text-align:center;">
-
 1.1808188
-
 </td>
-
 <td style="text-align:center;">
-
 0.0052199
-
 </td>
-
 <td style="text-align:center;">
-
 1.8003838
-
 </td>
-
 <td style="text-align:center;">
-
 1.5340027
-
 </td>
-
 <td style="text-align:center;">
-
 0.5431220
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009649
-
 </td>
-
 <td style="text-align:center;">
-
 0.0222521
-
 </td>
-
 <td style="text-align:center;">
-
 0.0445309
-
 </td>
-
 <td style="text-align:center;">
-
 0.9147962
-
 </td>
-
 <td style="text-align:center;">
-
 0.4021738
-
 </td>
-
 <td style="text-align:center;">
-
 0.3156210
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chems
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0010222
-
+-0.0010222
 </td>
-
 <td style="text-align:center;">
-
 1.0942887
-
 </td>
-
 <td style="text-align:center;">
-
 0.3027224
-
 </td>
-
 <td style="text-align:center;">
-
 1.0268845
-
 </td>
-
 <td style="text-align:center;">
-
 0.9222256
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2436988
-
+-0.2436988
 </td>
-
 <td style="text-align:center;">
-
 0.0013039
-
 </td>
-
 <td style="text-align:center;">
-
 0.0300690
-
 </td>
-
 <td style="text-align:center;">
-
 0.0601741
-
 </td>
-
 <td style="text-align:center;">
-
 1.2361550
-
 </td>
-
 <td style="text-align:center;">
-
 0.5434534
-
 </td>
-
 <td style="text-align:center;">
-
 0.4264955
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chips
-
 </td>
-
 <td style="text-align:center;">
-
 0.0020900
-
 </td>
-
 <td style="text-align:center;">
-
 1.3194837
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.6845575
-
+-0.6845575
 </td>
-
 <td style="text-align:center;">
-
 2.9293268
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4209634
-
+-0.4209634
 </td>
-
 <td style="text-align:center;">
-
 0.4134730
-
 </td>
-
 <td style="text-align:center;">
-
 0.0016303
-
 </td>
-
 <td style="text-align:center;">
-
 0.0375961
-
 </td>
-
 <td style="text-align:center;">
-
 0.0752373
-
 </td>
-
 <td style="text-align:center;">
-
 1.5455977
-
 </td>
-
 <td style="text-align:center;">
-
 0.6794943
-
 </td>
-
 <td style="text-align:center;">
-
 0.5332587
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Clths
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0025929
-
+-0.0025929
 </td>
-
 <td style="text-align:center;">
-
 1.2208061
-
 </td>
-
 <td style="text-align:center;">
-
 0.5499887
-
 </td>
-
 <td style="text-align:center;">
-
 4.4649420
-
 </td>
-
 <td style="text-align:center;">
-
 3.2403675
-
 </td>
-
 <td style="text-align:center;">
-
 1.3608807
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017273
-
 </td>
-
 <td style="text-align:center;">
-
 0.0398331
-
 </td>
-
 <td style="text-align:center;">
-
 0.0797139
-
 </td>
-
 <td style="text-align:center;">
-
 1.6375599
-
 </td>
-
 <td style="text-align:center;">
-
 0.7199239
-
 </td>
-
 <td style="text-align:center;">
-
 0.5649873
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Cnstr
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0036864
-
+-0.0036864
 </td>
-
 <td style="text-align:center;">
-
 1.3485988
-
 </td>
-
 <td style="text-align:center;">
-
 0.2583720
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0810328
-
+-0.0810328
 </td>
-
 <td style="text-align:center;">
-
 3.2723505
-
 </td>
-
 <td style="text-align:center;">
-
 0.0993218
-
 </td>
-
 <td style="text-align:center;">
-
 0.0018049
-
 </td>
-
 <td style="text-align:center;">
-
 0.0416221
-
 </td>
-
 <td style="text-align:center;">
-
 0.0832942
-
 </td>
-
 <td style="text-align:center;">
-
 1.7111086
-
 </td>
-
 <td style="text-align:center;">
-
 0.7522582
-
 </td>
-
 <td style="text-align:center;">
-
 0.5903629
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Coal
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0008261
-
+-0.0008261
 </td>
-
 <td style="text-align:center;">
-
 1.1302559
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1563914
-
+-0.1563914
 </td>
-
 <td style="text-align:center;">
-
-\-2.7173567
-
+-2.7173567
 </td>
-
 <td style="text-align:center;">
-
 1.2220000
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.5478331
-
+-1.5478331
 </td>
-
 <td style="text-align:center;">
-
 0.0039984
-
 </td>
-
 <td style="text-align:center;">
-
 0.0922079
-
 </td>
-
 <td style="text-align:center;">
-
 0.1845265
-
 </td>
-
 <td style="text-align:center;">
-
 3.7907201
-
 </td>
-
 <td style="text-align:center;">
-
 1.6665222
-
 </td>
-
 <td style="text-align:center;">
-
 1.3078659
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Drugs
-
 </td>
-
 <td style="text-align:center;">
-
 0.0032083
-
 </td>
-
 <td style="text-align:center;">
-
 0.7726803
-
 </td>
-
 <td style="text-align:center;">
-
 0.2510342
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4654955
-
+-0.4654955
 </td>
-
 <td style="text-align:center;">
-
-\-3.7993545
-
+-3.7993545
 </td>
-
 <td style="text-align:center;">
-
-\-0.9603198
-
+-0.9603198
 </td>
-
 <td style="text-align:center;">
-
 0.0014020
-
 </td>
-
 <td style="text-align:center;">
-
 0.0323307
-
 </td>
-
 <td style="text-align:center;">
-
 0.0647001
-
 </td>
-
 <td style="text-align:center;">
-
 1.3291320
-
 </td>
-
 <td style="text-align:center;">
-
 0.5843291
-
 </td>
-
 <td style="text-align:center;">
-
 0.4585742
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 ElcEq
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000093
-
+-0.0000093
 </td>
-
 <td style="text-align:center;">
-
 1.2472556
-
 </td>
-
 <td style="text-align:center;">
-
 0.1235728
-
 </td>
-
 <td style="text-align:center;">
-
 0.2140381
-
 </td>
-
 <td style="text-align:center;">
-
 1.1146499
-
 </td>
-
 <td style="text-align:center;">
-
 0.7610827
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013272
-
 </td>
-
 <td style="text-align:center;">
-
 0.0306063
-
 </td>
-
 <td style="text-align:center;">
-
 0.0612494
-
 </td>
-
 <td style="text-align:center;">
-
 1.2582444
-
 </td>
-
 <td style="text-align:center;">
-
 0.5531646
-
 </td>
-
 <td style="text-align:center;">
-
 0.4341167
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FabPr
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0038139
-
+-0.0038139
 </td>
-
 <td style="text-align:center;">
-
 1.1266090
-
 </td>
-
 <td style="text-align:center;">
-
 0.0762499
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.1887465
-
+-1.1887465
 </td>
-
 <td style="text-align:center;">
-
 3.9521467
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.6579375
-
+-0.6579375
 </td>
-
 <td style="text-align:center;">
-
 0.0022501
-
 </td>
-
 <td style="text-align:center;">
-
 0.0518909
-
 </td>
-
 <td style="text-align:center;">
-
 0.1038441
-
 </td>
-
 <td style="text-align:center;">
-
 2.1332653
-
 </td>
-
 <td style="text-align:center;">
-
 0.9378519
-
 </td>
-
 <td style="text-align:center;">
-
 0.7360145
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fin
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014107
-
 </td>
-
 <td style="text-align:center;">
-
 1.1949440
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3613530
-
+-0.3613530
 </td>
-
 <td style="text-align:center;">
-
 1.4712697
-
 </td>
-
 <td style="text-align:center;">
-
 0.1935016
-
 </td>
-
 <td style="text-align:center;">
-
 0.1564705
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011564
-
 </td>
-
 <td style="text-align:center;">
-
 0.0266671
-
 </td>
-
 <td style="text-align:center;">
-
 0.0533662
-
 </td>
-
 <td style="text-align:center;">
-
 1.0962993
-
 </td>
-
 <td style="text-align:center;">
-
 0.4819683
-
 </td>
-
 <td style="text-align:center;">
-
 0.3782428
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Food
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008191
-
 </td>
-
 <td style="text-align:center;">
-
 0.7514778
-
 </td>
-
 <td style="text-align:center;">
-
 0.5673559
-
 </td>
-
 <td style="text-align:center;">
-
 1.8782697
-
 </td>
-
 <td style="text-align:center;">
-
 0.3299690
-
 </td>
-
 <td style="text-align:center;">
-
 0.8080283
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012865
-
 </td>
-
 <td style="text-align:center;">
-
 0.0296684
-
 </td>
-
 <td style="text-align:center;">
-
 0.0593724
-
 </td>
-
 <td style="text-align:center;">
-
 1.2196840
-
 </td>
-
 <td style="text-align:center;">
-
 0.5362122
-
 </td>
-
 <td style="text-align:center;">
-
 0.4208127
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fun
-
 </td>
-
 <td style="text-align:center;">
-
 0.0016971
-
 </td>
-
 <td style="text-align:center;">
-
 1.3425092
-
 </td>
-
 <td style="text-align:center;">
-
 0.0975973
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0121777
-
+-0.0121777
 </td>
-
 <td style="text-align:center;">
-
 1.9774675
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.7540465
-
+-0.7540465
 </td>
-
 <td style="text-align:center;">
-
 0.0020157
-
 </td>
-
 <td style="text-align:center;">
-
 0.0464845
-
 </td>
-
 <td style="text-align:center;">
-
 0.0930248
-
 </td>
-
 <td style="text-align:center;">
-
 1.9110044
-
 </td>
-
 <td style="text-align:center;">
-
 0.8401388
-
 </td>
-
 <td style="text-align:center;">
-
 0.6593305
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Gold
-
 </td>
-
 <td style="text-align:center;">
-
 0.0052923
-
 </td>
-
 <td style="text-align:center;">
-
 0.4542444
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1285761
-
+-0.1285761
 </td>
-
 <td style="text-align:center;">
-
-\-15.0501707
-
+-15.0501707
 </td>
-
 <td style="text-align:center;">
-
 2.1213699
-
 </td>
-
 <td style="text-align:center;">
-
-\-6.1825022
-
+-6.1825022
 </td>
-
 <td style="text-align:center;">
-
 0.0043092
-
 </td>
-
 <td style="text-align:center;">
-
 0.0993757
-
 </td>
-
 <td style="text-align:center;">
-
 0.1988707
-
 </td>
-
 <td style="text-align:center;">
-
 4.0853923
-
 </td>
-
 <td style="text-align:center;">
-
 1.7960695
-
 </td>
-
 <td style="text-align:center;">
-
 1.4095331
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Guns
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010587
-
 </td>
-
 <td style="text-align:center;">
-
 0.9491310
-
 </td>
-
 <td style="text-align:center;">
-
 0.7103798
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.9627985
-
+-1.9627985
 </td>
-
 <td style="text-align:center;">
-
 3.9500245
-
 </td>
-
 <td style="text-align:center;">
-
 1.5746902
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021537
-
 </td>
-
 <td style="text-align:center;">
-
 0.0496656
-
 </td>
-
 <td style="text-align:center;">
-
 0.0993908
-
 </td>
-
 <td style="text-align:center;">
-
 2.0417807
-
 </td>
-
 <td style="text-align:center;">
-
 0.8976323
-
 </td>
-
 <td style="text-align:center;">
-
 0.7044507
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hardw
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010566
-
 </td>
-
 <td style="text-align:center;">
-
 1.1242786
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.6145549
-
+-0.6145549
 </td>
-
 <td style="text-align:center;">
-
 1.5620568
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.0228818
-
+-1.0228818
 </td>
-
 <td style="text-align:center;">
-
-\-0.7295942
-
+-0.7295942
 </td>
-
 <td style="text-align:center;">
-
 0.0018602
-
 </td>
-
 <td style="text-align:center;">
-
 0.0428974
-
 </td>
-
 <td style="text-align:center;">
-
 0.0858462
-
 </td>
-
 <td style="text-align:center;">
-
 1.7635356
-
 </td>
-
 <td style="text-align:center;">
-
 0.7753068
-
 </td>
-
 <td style="text-align:center;">
-
 0.6084512
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hlth
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0030009
-
+-0.0030009
 </td>
-
 <td style="text-align:center;">
-
 1.2233483
-
 </td>
-
 <td style="text-align:center;">
-
 0.7843342
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.8573374
-
+-1.8573374
 </td>
-
 <td style="text-align:center;">
-
 3.0130115
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1316979
-
+-0.1316979
 </td>
-
 <td style="text-align:center;">
-
 0.0025321
-
 </td>
-
 <td style="text-align:center;">
-
 0.0583941
-
 </td>
-
 <td style="text-align:center;">
-
 0.1168583
-
 </td>
-
 <td style="text-align:center;">
-
 2.4006146
-
 </td>
-
 <td style="text-align:center;">
-
 1.0553872
-
 </td>
-
 <td style="text-align:center;">
-
 0.8282548
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hshld
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0009809
-
+-0.0009809
 </td>
-
 <td style="text-align:center;">
-
 0.8439563
-
 </td>
-
 <td style="text-align:center;">
-
 0.5432179
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.7767449
-
+-1.7767449
 </td>
-
 <td style="text-align:center;">
-
-\-0.4698350
-
+-0.4698350
 </td>
-
 <td style="text-align:center;">
-
 0.0327638
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011595
-
 </td>
-
 <td style="text-align:center;">
-
 0.0267387
-
 </td>
-
 <td style="text-align:center;">
-
 0.0535094
-
 </td>
-
 <td style="text-align:center;">
-
 1.0992423
-
 </td>
-
 <td style="text-align:center;">
-
 0.4832622
-
 </td>
-
 <td style="text-align:center;">
-
 0.3792582
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Insur
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001100
-
 </td>
-
 <td style="text-align:center;">
-
 1.0042571
-
 </td>
-
 <td style="text-align:center;">
-
 0.2872893
-
 </td>
-
 <td style="text-align:center;">
-
 0.9704142
-
 </td>
-
 <td style="text-align:center;">
-
 0.8232041
-
 </td>
-
 <td style="text-align:center;">
-
 0.4140088
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014004
-
 </td>
-
 <td style="text-align:center;">
-
 0.0322959
-
 </td>
-
 <td style="text-align:center;">
-
 0.0646306
-
 </td>
-
 <td style="text-align:center;">
-
 1.3277031
-
 </td>
-
 <td style="text-align:center;">
-
 0.5837009
-
 </td>
-
 <td style="text-align:center;">
-
 0.4580812
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 LabEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011880
-
 </td>
-
 <td style="text-align:center;">
-
 1.2527348
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3991746
-
+-0.3991746
 </td>
-
 <td style="text-align:center;">
-
 2.1224497
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3740978
-
+-0.3740978
 </td>
-
 <td style="text-align:center;">
-
-\-0.2522120
-
+-0.2522120
 </td>
-
 <td style="text-align:center;">
-
 0.0016004
-
 </td>
-
 <td style="text-align:center;">
-
 0.0369063
-
 </td>
-
 <td style="text-align:center;">
-
 0.0738569
-
 </td>
-
 <td style="text-align:center;">
-
 1.5172389
-
 </td>
-
 <td style="text-align:center;">
-
 0.6670269
-
 </td>
-
 <td style="text-align:center;">
-
 0.5234744
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mach
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0008258
-
+-0.0008258
 </td>
-
 <td style="text-align:center;">
-
 1.2250799
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0896013
-
+-0.0896013
 </td>
-
 <td style="text-align:center;">
-
 1.9578641
-
 </td>
-
 <td style="text-align:center;">
-
 1.1650949
-
 </td>
-
 <td style="text-align:center;">
-
 0.1923083
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013205
-
 </td>
-
 <td style="text-align:center;">
-
 0.0304529
-
 </td>
-
 <td style="text-align:center;">
-
 0.0609424
-
 </td>
-
 <td style="text-align:center;">
-
 1.2519381
-
 </td>
-
 <td style="text-align:center;">
-
 0.5503921
-
 </td>
-
 <td style="text-align:center;">
-
 0.4319409
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Meals
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0020684
-
+-0.0020684
 </td>
-
 <td style="text-align:center;">
-
 1.1345247
-
 </td>
-
 <td style="text-align:center;">
-
 0.6679509
-
 </td>
-
 <td style="text-align:center;">
-
 1.7897837
-
 </td>
-
 <td style="text-align:center;">
-
 1.4627125
-
 </td>
-
 <td style="text-align:center;">
-
 0.8186635
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015086
-
 </td>
-
 <td style="text-align:center;">
-
 0.0347892
-
 </td>
-
 <td style="text-align:center;">
-
 0.0696202
-
 </td>
-
 <td style="text-align:center;">
-
 1.4302044
-
 </td>
-
 <td style="text-align:center;">
-
 0.6287637
-
 </td>
-
 <td style="text-align:center;">
-
 0.4934460
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 MedEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0018862
-
 </td>
-
 <td style="text-align:center;">
-
 0.8900137
-
 </td>
-
 <td style="text-align:center;">
-
 0.1622762
-
 </td>
-
 <td style="text-align:center;">
-
 0.2737107
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.1681905
-
+-1.1681905
 </td>
-
 <td style="text-align:center;">
-
-\-0.8031269
-
+-0.8031269
 </td>
-
 <td style="text-align:center;">
-
 0.0014125
-
 </td>
-
 <td style="text-align:center;">
-
 0.0325740
-
 </td>
-
 <td style="text-align:center;">
-
 0.0651871
-
 </td>
-
 <td style="text-align:center;">
-
 1.3391359
-
 </td>
-
 <td style="text-align:center;">
-
 0.5887271
-
 </td>
-
 <td style="text-align:center;">
-
 0.4620257
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mines
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009360
-
 </td>
-
 <td style="text-align:center;">
-
 1.0444750
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0554772
-
+-0.0554772
 </td>
-
 <td style="text-align:center;">
-
-\-3.3840685
-
+-3.3840685
 </td>
-
 <td style="text-align:center;">
-
 1.4138771
-
 </td>
-
 <td style="text-align:center;">
-
-\-3.0440866
-
+-3.0440866
 </td>
-
 <td style="text-align:center;">
-
 0.0023771
-
 </td>
-
 <td style="text-align:center;">
-
 0.0548194
-
 </td>
-
 <td style="text-align:center;">
-
 0.1097047
-
 </td>
-
 <td style="text-align:center;">
-
 2.2536587
-
 </td>
-
 <td style="text-align:center;">
-
 0.9907807
-
 </td>
-
 <td style="text-align:center;">
-
 0.7775524
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Oil
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0004856
-
+-0.0004856
 </td>
-
 <td style="text-align:center;">
-
 0.8956570
-
 </td>
-
 <td style="text-align:center;">
-
 0.3585764
-
 </td>
-
 <td style="text-align:center;">
-
-\-4.3787781
-
+-4.3787781
 </td>
-
 <td style="text-align:center;">
-
 1.5466725
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.7985525
-
+-0.7985525
 </td>
-
 <td style="text-align:center;">
-
 0.0018671
-
 </td>
-
 <td style="text-align:center;">
-
 0.0430567
-
 </td>
-
 <td style="text-align:center;">
-
 0.0861651
-
 </td>
-
 <td style="text-align:center;">
-
 1.7700861
-
 </td>
-
 <td style="text-align:center;">
-
 0.7781867
-
 </td>
-
 <td style="text-align:center;">
-
 0.6107112
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Other
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0061774
-
+-0.0061774
 </td>
-
 <td style="text-align:center;">
-
 1.1533966
-
 </td>
-
 <td style="text-align:center;">
-
 0.1540438
-
 </td>
-
 <td style="text-align:center;">
-
-\-4.6901175
-
+-4.6901175
 </td>
-
 <td style="text-align:center;">
-
 2.6412491
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.7101488
-
+-0.7101488
 </td>
-
 <td style="text-align:center;">
-
 0.0018041
-
 </td>
-
 <td style="text-align:center;">
-
 0.0416042
-
 </td>
-
 <td style="text-align:center;">
-
 0.0832583
-
 </td>
-
 <td style="text-align:center;">
-
 1.7103711
-
 </td>
-
 <td style="text-align:center;">
-
 0.7519340
-
 </td>
-
 <td style="text-align:center;">
-
 0.5901085
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Paper
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0016085
-
+-0.0016085
 </td>
-
 <td style="text-align:center;">
-
 1.0257733
-
 </td>
-
 <td style="text-align:center;">
-
 0.3793307
-
 </td>
-
 <td style="text-align:center;">
-
 2.1978096
-
 </td>
-
 <td style="text-align:center;">
-
 1.5520329
-
 </td>
-
 <td style="text-align:center;">
-
 0.3980158
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013812
-
 </td>
-
 <td style="text-align:center;">
-
 0.0318518
-
 </td>
-
 <td style="text-align:center;">
-
 0.0637418
-
 </td>
-
 <td style="text-align:center;">
-
 1.3094453
-
 </td>
-
 <td style="text-align:center;">
-
 0.5756742
-
 </td>
-
 <td style="text-align:center;">
-
 0.4517819
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 PerSv
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0071988
-
+-0.0071988
 </td>
-
 <td style="text-align:center;">
-
 1.1968124
-
 </td>
-
 <td style="text-align:center;">
-
 0.4656690
-
 </td>
-
 <td style="text-align:center;">
-
 4.3326170
-
 </td>
-
 <td style="text-align:center;">
-
 3.8521636
-
 </td>
-
 <td style="text-align:center;">
-
 1.3106456
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017981
-
 </td>
-
 <td style="text-align:center;">
-
 0.0414669
-
 </td>
-
 <td style="text-align:center;">
-
 0.0829835
-
 </td>
-
 <td style="text-align:center;">
-
 1.7047271
-
 </td>
-
 <td style="text-align:center;">
-
 0.7494527
-
 </td>
-
 <td style="text-align:center;">
-
 0.5881612
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RlEst
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0083295
-
+-0.0083295
 </td>
-
 <td style="text-align:center;">
-
 1.3301310
-
 </td>
-
 <td style="text-align:center;">
-
 0.1860782
-
 </td>
-
 <td style="text-align:center;">
-
 4.1323916
-
 </td>
-
 <td style="text-align:center;">
-
 6.8929026
-
 </td>
-
 <td style="text-align:center;">
-
 0.6621041
-
 </td>
-
 <td style="text-align:center;">
-
 0.0022064
-
 </td>
-
 <td style="text-align:center;">
-
 0.0508823
-
 </td>
-
 <td style="text-align:center;">
-
 0.1018256
-
 </td>
-
 <td style="text-align:center;">
-
 2.0917989
-
 </td>
-
 <td style="text-align:center;">
-
 0.9196219
-
 </td>
-
 <td style="text-align:center;">
-
 0.7217079
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rtail
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0004245
-
+-0.0004245
 </td>
-
 <td style="text-align:center;">
-
 1.0816559
-
 </td>
-
 <td style="text-align:center;">
-
 0.3691614
-
 </td>
-
 <td style="text-align:center;">
-
 4.7293914
-
 </td>
-
 <td style="text-align:center;">
-
 0.4775361
-
 </td>
-
 <td style="text-align:center;">
-
 1.5513571
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012589
-
 </td>
-
 <td style="text-align:center;">
-
 0.0290323
-
 </td>
-
 <td style="text-align:center;">
-
 0.0580994
-
 </td>
-
 <td style="text-align:center;">
-
 1.1935331
-
 </td>
-
 <td style="text-align:center;">
-
 0.5247154
-
 </td>
-
 <td style="text-align:center;">
-
 0.4117902
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rubbr
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0012600
-
+-0.0012600
 </td>
-
 <td style="text-align:center;">
-
 1.1204273
-
 </td>
-
 <td style="text-align:center;">
-
 0.2024823
-
 </td>
-
 <td style="text-align:center;">
-
 1.1525221
-
 </td>
-
 <td style="text-align:center;">
-
 3.8552101
-
 </td>
-
 <td style="text-align:center;">
-
 0.3925701
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014645
-
 </td>
-
 <td style="text-align:center;">
-
 0.0337735
-
 </td>
-
 <td style="text-align:center;">
-
 0.0675875
-
 </td>
-
 <td style="text-align:center;">
-
 1.3884468
-
 </td>
-
 <td style="text-align:center;">
-
 0.6104058
-
 </td>
-
 <td style="text-align:center;">
-
 0.4790389
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Ships
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0017210
-
+-0.0017210
 </td>
-
 <td style="text-align:center;">
-
 1.1840183
-
 </td>
-
 <td style="text-align:center;">
-
 0.4887253
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4676993
-
+-0.4676993
 </td>
-
 <td style="text-align:center;">
-
 2.2800247
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0147524
-
+-0.0147524
 </td>
-
 <td style="text-align:center;">
-
 0.0022415
-
 </td>
-
 <td style="text-align:center;">
-
 0.0516923
-
 </td>
-
 <td style="text-align:center;">
-
 0.1034467
-
 </td>
-
 <td style="text-align:center;">
-
 2.1251006
-
 </td>
-
 <td style="text-align:center;">
-
 0.9342624
-
 </td>
-
 <td style="text-align:center;">
-
 0.7331976
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Smoke
-
 </td>
-
 <td style="text-align:center;">
-
 0.0038290
-
 </td>
-
 <td style="text-align:center;">
-
 0.7342582
-
 </td>
-
 <td style="text-align:center;">
-
 0.6814776
-
 </td>
-
 <td style="text-align:center;">
-
 2.1172818
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.9495259
-
+-0.9495259
 </td>
-
 <td style="text-align:center;">
-
 0.9852468
-
 </td>
-
 <td style="text-align:center;">
-
 0.0022145
-
 </td>
-
 <td style="text-align:center;">
-
 0.0510683
-
 </td>
-
 <td style="text-align:center;">
-
 0.1021978
-
 </td>
-
 <td style="text-align:center;">
-
 2.0994464
-
 </td>
-
 <td style="text-align:center;">
-
 0.9229840
-
 </td>
-
 <td style="text-align:center;">
-
 0.7243464
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Soda
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007333
-
 </td>
-
 <td style="text-align:center;">
-
 0.8879369
-
 </td>
-
 <td style="text-align:center;">
-
 0.5872698
-
 </td>
-
 <td style="text-align:center;">
-
 1.9990626
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.2181298
-
+-1.2181298
 </td>
-
 <td style="text-align:center;">
-
 0.6465674
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021502
-
 </td>
-
 <td style="text-align:center;">
-
 0.0495866
-
 </td>
-
 <td style="text-align:center;">
-
 0.0992326
-
 </td>
-
 <td style="text-align:center;">
-
 2.0385321
-
 </td>
-
 <td style="text-align:center;">
-
 0.8962041
-
 </td>
-
 <td style="text-align:center;">
-
 0.7033299
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Softw
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0012332
-
+-0.0012332
 </td>
-
 <td style="text-align:center;">
-
 1.5437263
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2288175
-
+-0.2288175
 </td>
-
 <td style="text-align:center;">
-
-\-4.4606805
-
+-4.4606805
 </td>
-
 <td style="text-align:center;">
-
 3.7256163
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.6181143
-
+-0.6181143
 </td>
-
 <td style="text-align:center;">
-
 0.0032146
-
 </td>
-
 <td style="text-align:center;">
-
 0.0741315
-
 </td>
-
 <td style="text-align:center;">
-
 0.1483520
-
 </td>
-
 <td style="text-align:center;">
-
 3.0475892
-
 </td>
-
 <td style="text-align:center;">
-
 1.3398180
-
 </td>
-
 <td style="text-align:center;">
-
 1.0514726
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Steel
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0024949
-
+-0.0024949
 </td>
-
 <td style="text-align:center;">
-
 1.2518243
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.5835215
-
+-0.5835215
 </td>
-
 <td style="text-align:center;">
-
-\-1.4425826
-
+-1.4425826
 </td>
-
 <td style="text-align:center;">
-
 2.1058460
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2147757
-
+-0.2147757
 </td>
-
 <td style="text-align:center;">
-
 0.0019541
-
 </td>
-
 <td style="text-align:center;">
-
 0.0450640
-
 </td>
-
 <td style="text-align:center;">
-
 0.0901821
-
 </td>
-
 <td style="text-align:center;">
-
 1.8526069
-
 </td>
-
 <td style="text-align:center;">
-
 0.8144654
-
 </td>
-
 <td style="text-align:center;">
-
 0.6391824
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Telcm
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014088
-
 </td>
-
 <td style="text-align:center;">
-
 0.7826801
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1491935
-
+-0.1491935
 </td>
-
 <td style="text-align:center;">
-
 1.9576403
-
 </td>
-
 <td style="text-align:center;">
-
 0.0525512
-
 </td>
-
 <td style="text-align:center;">
-
 0.1988381
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012836
-
 </td>
-
 <td style="text-align:center;">
-
 0.0296019
-
 </td>
-
 <td style="text-align:center;">
-
 0.0592394
-
 </td>
-
 <td style="text-align:center;">
-
 1.2169531
-
 </td>
-
 <td style="text-align:center;">
-
 0.5350116
-
 </td>
-
 <td style="text-align:center;">
-
 0.4198705
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Toys
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0049002
-
+-0.0049002
 </td>
-
 <td style="text-align:center;">
-
 1.2423499
-
 </td>
-
 <td style="text-align:center;">
-
 0.4384848
-
 </td>
-
 <td style="text-align:center;">
-
 3.7911029
-
 </td>
-
 <td style="text-align:center;">
-
 2.6697370
-
 </td>
-
 <td style="text-align:center;">
-
 0.2016174
-
 </td>
-
 <td style="text-align:center;">
-
 0.0019887
-
 </td>
-
 <td style="text-align:center;">
-
 0.0458612
-
 </td>
-
 <td style="text-align:center;">
-
 0.0917775
-
 </td>
-
 <td style="text-align:center;">
-
 1.8853811
-
 </td>
-
 <td style="text-align:center;">
-
 0.8288740
-
 </td>
-
 <td style="text-align:center;">
-
 0.6504900
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Trans
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0023420
-
+-0.0023420
 </td>
-
 <td style="text-align:center;">
-
 1.1269764
-
 </td>
-
 <td style="text-align:center;">
-
 0.3679268
-
 </td>
-
 <td style="text-align:center;">
-
 0.9930022
-
 </td>
-
 <td style="text-align:center;">
-
 2.5143142
-
 </td>
-
 <td style="text-align:center;">
-
 0.5442995
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013575
-
 </td>
-
 <td style="text-align:center;">
-
 0.0313043
-
 </td>
-
 <td style="text-align:center;">
-
 0.0626462
-
 </td>
-
 <td style="text-align:center;">
-
 1.2869388
-
 </td>
-
 <td style="text-align:center;">
-
 0.5657796
-
 </td>
-
 <td style="text-align:center;">
-
 0.4440168
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Txtls
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0046482
-
+-0.0046482
 </td>
-
 <td style="text-align:center;">
-
 1.2693006
-
 </td>
-
 <td style="text-align:center;">
-
 0.3614604
-
 </td>
-
 <td style="text-align:center;">
-
 7.2068573
-
 </td>
-
 <td style="text-align:center;">
-
 5.2671998
-
 </td>
-
 <td style="text-align:center;">
-
 1.5925489
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021527
-
 </td>
-
 <td style="text-align:center;">
-
 0.0496440
-
 </td>
-
 <td style="text-align:center;">
-
 0.0993477
-
 </td>
-
 <td style="text-align:center;">
-
 2.0408952
-
 </td>
-
 <td style="text-align:center;">
-
 0.8972430
-
 </td>
-
 <td style="text-align:center;">
-
 0.7041452
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Util
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008933
-
 </td>
-
 <td style="text-align:center;">
-
 0.5729589
-
 </td>
-
 <td style="text-align:center;">
-
 0.2307885
-
 </td>
-
 <td style="text-align:center;">
-
 0.0242462
-
 </td>
-
 <td style="text-align:center;">
-
 0.5461290
-
 </td>
-
 <td style="text-align:center;">
-
 1.3811901
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013890
-
 </td>
-
 <td style="text-align:center;">
-
 0.0320330
-
 </td>
-
 <td style="text-align:center;">
-
 0.0641045
-
 </td>
-
 <td style="text-align:center;">
-
 1.3168958
-
 </td>
-
 <td style="text-align:center;">
-
 0.5789497
-
 </td>
-
 <td style="text-align:center;">
-
 0.4543525
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Whlsl
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0019210
-
+-0.0019210
 </td>
-
 <td style="text-align:center;">
-
 1.0903428
-
 </td>
-
 <td style="text-align:center;">
-
 0.2602262
-
 </td>
-
 <td style="text-align:center;">
-
 1.1158367
-
 </td>
-
 <td style="text-align:center;">
-
 2.9195005
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0552985
-
+-0.0552985
 </td>
-
 <td style="text-align:center;">
-
 0.0011282
-
 </td>
-
 <td style="text-align:center;">
-
 0.0260184
-
 </td>
-
 <td style="text-align:center;">
-
 0.0520680
-
 </td>
-
 <td style="text-align:center;">
-
 1.0696306
-
 </td>
-
 <td style="text-align:center;">
-
 0.4702439
-
 </td>
-
 <td style="text-align:center;">
-
 0.3690416
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ![](ECC_files/figure-gfm/Full_PRS-1.png)<!-- -->![](ECC_files/figure-gfm/Full_PRS-2.png)<!-- -->![](ECC_files/figure-gfm/Full_PRS-3.png)<!-- -->
@@ -15783,21 +8068,13 @@ Here, we would try to conduct the STL decomposition before the first
 step regression with full sample.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 PRS Five Factors
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
-
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -15807,7 +8084,6 @@ Coefficients
 </div>
 
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -15817,4115 +8093,2060 @@ Std. Error
 </div>
 
 </th>
-
 </tr>
-
 <tr>
-
 <th style="text-align:center;">
-
 Industry
-
 </th>
-
 <th style="text-align:center;">
-
 Alpha
-
 </th>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 dDP
-
 </th>
-
 <th style="text-align:center;">
-
 dTS
-
 </th>
-
 <th style="text-align:center;">
-
 UNEXPI
-
 </th>
-
 <th style="text-align:center;">
-
 Alpha
-
 </th>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 dDP
-
 </th>
-
 <th style="text-align:center;">
-
 dTS
-
 </th>
-
 <th style="text-align:center;">
-
 UNEXPI
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Aero
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0004699
-
+-0.0004699
 </td>
-
 <td style="text-align:center;">
-
 1.2559452
-
 </td>
-
 <td style="text-align:center;">
-
 0.2550885
-
 </td>
-
 <td style="text-align:center;">
-
-\-7.4904243
-
+-7.4904243
 </td>
-
 <td style="text-align:center;">
-
 3.7497689
-
 </td>
-
 <td style="text-align:center;">
-
 1.0467663
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006237
-
 </td>
-
 <td style="text-align:center;">
-
 0.0452933
-
 </td>
-
 <td style="text-align:center;">
-
 0.0759007
-
 </td>
-
 <td style="text-align:center;">
-
 1.3705160
-
 </td>
-
 <td style="text-align:center;">
-
 0.5758848
-
 </td>
-
 <td style="text-align:center;">
-
 0.5059989
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Agric
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004289
-
 </td>
-
 <td style="text-align:center;">
-
 0.6602813
-
 </td>
-
 <td style="text-align:center;">
-
 0.5519335
-
 </td>
-
 <td style="text-align:center;">
-
-\-10.5637483
-
+-10.5637483
 </td>
-
 <td style="text-align:center;">
-
 2.3202084
-
 </td>
-
 <td style="text-align:center;">
-
 1.2059518
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005833
-
 </td>
-
 <td style="text-align:center;">
-
 0.0423558
-
 </td>
-
 <td style="text-align:center;">
-
 0.0709782
-
 </td>
-
 <td style="text-align:center;">
-
 1.2816316
-
 </td>
-
 <td style="text-align:center;">
-
 0.5385360
-
 </td>
-
 <td style="text-align:center;">
-
 0.4731825
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Autos
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0022983
-
+-0.0022983
 </td>
-
 <td style="text-align:center;">
-
 1.1866378
-
 </td>
-
 <td style="text-align:center;">
-
 0.0706379
-
 </td>
-
 <td style="text-align:center;">
-
 5.1144455
-
 </td>
-
 <td style="text-align:center;">
-
 3.2693485
-
 </td>
-
 <td style="text-align:center;">
-
-\-3.1890841
-
+-3.1890841
 </td>
-
 <td style="text-align:center;">
-
 0.0005963
-
 </td>
-
 <td style="text-align:center;">
-
 0.0433027
-
 </td>
-
 <td style="text-align:center;">
-
 0.0725650
-
 </td>
-
 <td style="text-align:center;">
-
 1.3102834
-
 </td>
-
 <td style="text-align:center;">
-
 0.5505753
-
 </td>
-
 <td style="text-align:center;">
-
 0.4837609
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Banks
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0023066
-
+-0.0023066
 </td>
-
 <td style="text-align:center;">
-
 1.1340974
-
 </td>
-
 <td style="text-align:center;">
-
 0.5477567
-
 </td>
-
 <td style="text-align:center;">
-
-\-4.1858170
-
+-4.1858170
 </td>
-
 <td style="text-align:center;">
-
 2.3093520
-
 </td>
-
 <td style="text-align:center;">
-
 0.9979255
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004533
-
 </td>
-
 <td style="text-align:center;">
-
 0.0329203
-
 </td>
-
 <td style="text-align:center;">
-
 0.0551666
-
 </td>
-
 <td style="text-align:center;">
-
 0.9961262
-
 </td>
-
 <td style="text-align:center;">
-
 0.4185678
-
 </td>
-
 <td style="text-align:center;">
-
 0.3677730
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Beer
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000519
-
+-0.0000519
 </td>
-
 <td style="text-align:center;">
-
 0.9326617
-
 </td>
-
 <td style="text-align:center;">
-
 0.7531810
-
 </td>
-
 <td style="text-align:center;">
-
 6.4028660
-
 </td>
-
 <td style="text-align:center;">
-
-\-2.1259455
-
+-2.1259455
 </td>
-
 <td style="text-align:center;">
-
 1.3059932
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004315
-
 </td>
-
 <td style="text-align:center;">
-
 0.0313359
-
 </td>
-
 <td style="text-align:center;">
-
 0.0525115
-
 </td>
-
 <td style="text-align:center;">
-
 0.9481834
-
 </td>
-
 <td style="text-align:center;">
-
 0.3984225
-
 </td>
-
 <td style="text-align:center;">
-
 0.3500724
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BldMt
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0019669
-
+-0.0019669
 </td>
-
 <td style="text-align:center;">
-
 1.0769237
-
 </td>
-
 <td style="text-align:center;">
-
 0.5483939
-
 </td>
-
 <td style="text-align:center;">
-
-\-4.9986259
-
+-4.9986259
 </td>
-
 <td style="text-align:center;">
-
 4.6113079
-
 </td>
-
 <td style="text-align:center;">
-
 0.0258730
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003546
-
 </td>
-
 <td style="text-align:center;">
-
 0.0257533
-
 </td>
-
 <td style="text-align:center;">
-
 0.0431563
-
 </td>
-
 <td style="text-align:center;">
-
 0.7792595
-
 </td>
-
 <td style="text-align:center;">
-
 0.3274414
-
 </td>
-
 <td style="text-align:center;">
-
 0.2877051
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Books
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0040879
-
+-0.0040879
 </td>
-
 <td style="text-align:center;">
-
 1.2287919
-
 </td>
-
 <td style="text-align:center;">
-
 0.3504133
-
 </td>
-
 <td style="text-align:center;">
-
 3.0017092
-
 </td>
-
 <td style="text-align:center;">
-
 2.7518012
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.0957991
-
+-1.0957991
 </td>
-
 <td style="text-align:center;">
-
 0.0005248
-
 </td>
-
 <td style="text-align:center;">
-
 0.0381116
-
 </td>
-
 <td style="text-align:center;">
-
 0.0638659
-
 </td>
-
 <td style="text-align:center;">
-
 1.1532078
-
 </td>
-
 <td style="text-align:center;">
-
 0.4845729
-
 </td>
-
 <td style="text-align:center;">
-
 0.4257681
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Boxes
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0015721
-
+-0.0015721
 </td>
-
 <td style="text-align:center;">
-
 0.8139235
-
 </td>
-
 <td style="text-align:center;">
-
 0.8367810
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.9577129
-
+-0.9577129
 </td>
-
 <td style="text-align:center;">
-
 3.2508488
-
 </td>
-
 <td style="text-align:center;">
-
 0.0998758
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004751
-
 </td>
-
 <td style="text-align:center;">
-
 0.0345003
-
 </td>
-
 <td style="text-align:center;">
-
 0.0578141
-
 </td>
-
 <td style="text-align:center;">
-
 1.0439323
-
 </td>
-
 <td style="text-align:center;">
-
 0.4386558
-
 </td>
-
 <td style="text-align:center;">
-
 0.3854232
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BusSv
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0007538
-
+-0.0007538
 </td>
-
 <td style="text-align:center;">
-
 1.1558261
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0259993
-
+-0.0259993
 </td>
-
 <td style="text-align:center;">
-
 3.7142979
-
 </td>
-
 <td style="text-align:center;">
-
 0.4987557
-
 </td>
-
 <td style="text-align:center;">
-
 0.1792919
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003057
-
 </td>
-
 <td style="text-align:center;">
-
 0.0222009
-
 </td>
-
 <td style="text-align:center;">
-
 0.0372033
-
 </td>
-
 <td style="text-align:center;">
-
 0.6717694
-
 </td>
-
 <td style="text-align:center;">
-
 0.2822746
-
 </td>
-
 <td style="text-align:center;">
-
 0.2480194
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chems
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001862
-
+-0.0001862
 </td>
-
 <td style="text-align:center;">
-
 0.9111439
-
 </td>
-
 <td style="text-align:center;">
-
 0.4126744
-
 </td>
-
 <td style="text-align:center;">
-
-\-5.4355384
-
+-5.4355384
 </td>
-
 <td style="text-align:center;">
-
 2.5115703
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4099628
-
+-0.4099628
 </td>
-
 <td style="text-align:center;">
-
 0.0004079
-
 </td>
-
 <td style="text-align:center;">
-
 0.0296201
-
 </td>
-
 <td style="text-align:center;">
-
 0.0496361
-
 </td>
-
 <td style="text-align:center;">
-
 0.8962647
-
 </td>
-
 <td style="text-align:center;">
-
 0.3766065
-
 </td>
-
 <td style="text-align:center;">
-
 0.3309038
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chips
-
 </td>
-
 <td style="text-align:center;">
-
 0.0037892
-
 </td>
-
 <td style="text-align:center;">
-
 1.2177130
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.0302893
-
+-1.0302893
 </td>
-
 <td style="text-align:center;">
-
 2.7482944
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3555615
-
+-0.3555615
 </td>
-
 <td style="text-align:center;">
-
-\-1.1093865
-
+-1.1093865
 </td>
-
 <td style="text-align:center;">
-
 0.0005194
-
 </td>
-
 <td style="text-align:center;">
-
 0.0377145
-
 </td>
-
 <td style="text-align:center;">
-
 0.0632005
-
 </td>
-
 <td style="text-align:center;">
-
 1.1411924
-
 </td>
-
 <td style="text-align:center;">
-
 0.4795240
-
 </td>
-
 <td style="text-align:center;">
-
 0.4213319
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Clths
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0039466
-
+-0.0039466
 </td>
-
 <td style="text-align:center;">
-
 1.3081654
-
 </td>
-
 <td style="text-align:center;">
-
 0.7554029
-
 </td>
-
 <td style="text-align:center;">
-
 6.5128374
-
 </td>
-
 <td style="text-align:center;">
-
 2.7042652
-
 </td>
-
 <td style="text-align:center;">
-
 1.3524681
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006108
-
 </td>
-
 <td style="text-align:center;">
-
 0.0443520
-
 </td>
-
 <td style="text-align:center;">
-
 0.0743232
-
 </td>
-
 <td style="text-align:center;">
-
 1.3420319
-
 </td>
-
 <td style="text-align:center;">
-
 0.5639159
-
 </td>
-
 <td style="text-align:center;">
-
 0.4954825
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Cnstr
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0015415
-
+-0.0015415
 </td>
-
 <td style="text-align:center;">
-
 1.0555971
-
 </td>
-
 <td style="text-align:center;">
-
 0.6562803
-
 </td>
-
 <td style="text-align:center;">
-
-\-13.6327199
-
+-13.6327199
 </td>
-
 <td style="text-align:center;">
-
 1.3012961
-
 </td>
-
 <td style="text-align:center;">
-
-\-2.1860200
-
+-2.1860200
 </td>
-
 <td style="text-align:center;">
-
 0.0006611
-
 </td>
-
 <td style="text-align:center;">
-
 0.0480090
-
 </td>
-
 <td style="text-align:center;">
-
 0.0804515
-
 </td>
-
 <td style="text-align:center;">
-
 1.4526890
-
 </td>
-
 <td style="text-align:center;">
-
 0.6104135
-
 </td>
-
 <td style="text-align:center;">
-
 0.5363375
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Coal
-
 </td>
-
 <td style="text-align:center;">
-
 0.0057387
-
 </td>
-
 <td style="text-align:center;">
-
 0.2554940
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2389224
-
+-0.2389224
 </td>
-
 <td style="text-align:center;">
-
-\-21.9551176
-
+-21.9551176
 </td>
-
 <td style="text-align:center;">
-
-\-2.8332555
-
+-2.8332555
 </td>
-
 <td style="text-align:center;">
-
 2.6347515
-
 </td>
-
 <td style="text-align:center;">
-
 0.0016160
-
 </td>
-
 <td style="text-align:center;">
-
 0.1173455
-
 </td>
-
 <td style="text-align:center;">
-
 0.1966428
-
 </td>
-
 <td style="text-align:center;">
-
 3.5507193
-
 </td>
-
 <td style="text-align:center;">
-
 1.4919966
-
 </td>
-
 <td style="text-align:center;">
-
 1.3109370
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Drugs
-
 </td>
-
 <td style="text-align:center;">
-
 0.0020116
-
 </td>
-
 <td style="text-align:center;">
-
 0.8733368
-
 </td>
-
 <td style="text-align:center;">
-
 0.4747889
-
 </td>
-
 <td style="text-align:center;">
-
 5.4946034
-
 </td>
-
 <td style="text-align:center;">
-
-\-5.8223245
-
+-5.8223245
 </td>
-
 <td style="text-align:center;">
-
-\-1.0432201
-
+-1.0432201
 </td>
-
 <td style="text-align:center;">
-
 0.0003703
-
 </td>
-
 <td style="text-align:center;">
-
 0.0268932
-
 </td>
-
 <td style="text-align:center;">
-
 0.0450666
-
 </td>
-
 <td style="text-align:center;">
-
 0.8137531
-
 </td>
-
 <td style="text-align:center;">
-
 0.3419355
-
 </td>
-
 <td style="text-align:center;">
-
 0.3004403
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 ElcEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0016198
-
 </td>
-
 <td style="text-align:center;">
-
 1.1213096
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1062051
-
+-0.1062051
 </td>
-
 <td style="text-align:center;">
-
 1.7791092
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1628531
-
+-0.1628531
 </td>
-
 <td style="text-align:center;">
-
-\-0.2540949
-
+-0.2540949
 </td>
-
 <td style="text-align:center;">
-
 0.0003164
-
 </td>
-
 <td style="text-align:center;">
-
 0.0229739
-
 </td>
-
 <td style="text-align:center;">
-
 0.0384987
-
 </td>
-
 <td style="text-align:center;">
-
 0.6951593
-
 </td>
-
 <td style="text-align:center;">
-
 0.2921029
-
 </td>
-
 <td style="text-align:center;">
-
 0.2566551
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FabPr
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0035111
-
+-0.0035111
 </td>
-
 <td style="text-align:center;">
-
 0.9279794
-
 </td>
-
 <td style="text-align:center;">
-
 0.2515102
-
 </td>
-
 <td style="text-align:center;">
-
-\-8.1150405
-
+-8.1150405
 </td>
-
 <td style="text-align:center;">
-
 5.6433532
-
 </td>
-
 <td style="text-align:center;">
-
 1.2928447
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007046
-
 </td>
-
 <td style="text-align:center;">
-
 0.0511691
-
 </td>
-
 <td style="text-align:center;">
-
 0.0857471
-
 </td>
-
 <td style="text-align:center;">
-
 1.5483088
-
 </td>
-
 <td style="text-align:center;">
-
 0.6505926
-
 </td>
-
 <td style="text-align:center;">
-
 0.5716406
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fin
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001692
-
 </td>
-
 <td style="text-align:center;">
-
 1.2144583
-
 </td>
-
 <td style="text-align:center;">
-
 0.0400154
-
 </td>
-
 <td style="text-align:center;">
-
-\-2.7327489
-
+-2.7327489
 </td>
-
 <td style="text-align:center;">
-
 1.3834701
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3724981
-
+-0.3724981
 </td>
-
 <td style="text-align:center;">
-
 0.0004437
-
 </td>
-
 <td style="text-align:center;">
-
 0.0322228
-
 </td>
-
 <td style="text-align:center;">
-
 0.0539976
-
 </td>
-
 <td style="text-align:center;">
-
 0.9750189
-
 </td>
-
 <td style="text-align:center;">
-
 0.4096986
-
 </td>
-
 <td style="text-align:center;">
-
 0.3599801
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Food
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0002847
-
+-0.0002847
 </td>
-
 <td style="text-align:center;">
-
 0.8098713
-
 </td>
-
 <td style="text-align:center;">
-
 0.7171661
-
 </td>
-
 <td style="text-align:center;">
-
 4.8026349
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4076987
-
+-0.4076987
 </td>
-
 <td style="text-align:center;">
-
 1.9825689
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003966
-
 </td>
-
 <td style="text-align:center;">
-
 0.0287972
-
 </td>
-
 <td style="text-align:center;">
-
 0.0482571
-
 </td>
-
 <td style="text-align:center;">
-
 0.8713647
-
 </td>
-
 <td style="text-align:center;">
-
 0.3661436
-
 </td>
-
 <td style="text-align:center;">
-
 0.3217107
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fun
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008011
-
 </td>
-
 <td style="text-align:center;">
-
 1.3192623
-
 </td>
-
 <td style="text-align:center;">
-
 0.4148489
-
 </td>
-
 <td style="text-align:center;">
-
-\-2.2314608
-
+-2.2314608
 </td>
-
 <td style="text-align:center;">
-
 2.8780558
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.9222569
-
+-0.9222569
 </td>
-
 <td style="text-align:center;">
-
 0.0006951
-
 </td>
-
 <td style="text-align:center;">
-
 0.0504778
-
 </td>
-
 <td style="text-align:center;">
-
 0.0845887
-
 </td>
-
 <td style="text-align:center;">
-
 1.5273919
-
 </td>
-
 <td style="text-align:center;">
-
 0.6418034
-
 </td>
-
 <td style="text-align:center;">
-
 0.5639180
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Gold
-
 </td>
-
 <td style="text-align:center;">
-
 0.0059198
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0184240
-
+-0.0184240
 </td>
-
 <td style="text-align:center;">
-
 0.3556824
-
 </td>
-
 <td style="text-align:center;">
-
-\-10.2539918
-
+-10.2539918
 </td>
-
 <td style="text-align:center;">
-
 4.0421823
-
 </td>
-
 <td style="text-align:center;">
-
-\-9.0223432
-
+-9.0223432
 </td>
-
 <td style="text-align:center;">
-
 0.0011985
-
 </td>
-
 <td style="text-align:center;">
-
 0.0870313
-
 </td>
-
 <td style="text-align:center;">
-
 0.1458435
-
 </td>
-
 <td style="text-align:center;">
-
 2.6334526
-
 </td>
-
 <td style="text-align:center;">
-
 1.1065652
-
 </td>
-
 <td style="text-align:center;">
-
 0.9722792
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Guns
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017087
-
 </td>
-
 <td style="text-align:center;">
-
 0.7157908
-
 </td>
-
 <td style="text-align:center;">
-
 1.0838225
-
 </td>
-
 <td style="text-align:center;">
-
-\-12.4773141
-
+-12.4773141
 </td>
-
 <td style="text-align:center;">
-
 5.7094248
-
 </td>
-
 <td style="text-align:center;">
-
 0.0230467
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006620
-
 </td>
-
 <td style="text-align:center;">
-
 0.0480717
-
 </td>
-
 <td style="text-align:center;">
-
 0.0805566
-
 </td>
-
 <td style="text-align:center;">
-
 1.4545860
-
 </td>
-
 <td style="text-align:center;">
-
 0.6112106
-
 </td>
-
 <td style="text-align:center;">
-
 0.5370378
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hardw
-
 </td>
-
 <td style="text-align:center;">
-
 0.0019391
-
 </td>
-
 <td style="text-align:center;">
-
 1.0782956
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.7935466
-
+-0.7935466
 </td>
-
 <td style="text-align:center;">
-
 5.4459169
-
 </td>
-
 <td style="text-align:center;">
-
-\-2.2299181
-
+-2.2299181
 </td>
-
 <td style="text-align:center;">
-
-\-2.1960074
-
+-2.1960074
 </td>
-
 <td style="text-align:center;">
-
 0.0006066
-
 </td>
-
 <td style="text-align:center;">
-
 0.0440517
-
 </td>
-
 <td style="text-align:center;">
-
 0.0738200
-
 </td>
-
 <td style="text-align:center;">
-
 1.3329457
-
 </td>
-
 <td style="text-align:center;">
-
 0.5600979
-
 </td>
-
 <td style="text-align:center;">
-
 0.4921279
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hlth
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0025195
-
+-0.0025195
 </td>
-
 <td style="text-align:center;">
-
 1.0682492
-
 </td>
-
 <td style="text-align:center;">
-
 0.7689546
-
 </td>
-
 <td style="text-align:center;">
-
 4.6726386
-
 </td>
-
 <td style="text-align:center;">
-
 0.8368552
-
 </td>
-
 <td style="text-align:center;">
-
 0.8415230
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010472
-
 </td>
-
 <td style="text-align:center;">
-
 0.0760429
-
 </td>
-
 <td style="text-align:center;">
-
 0.1274297
-
 </td>
-
 <td style="text-align:center;">
-
 2.3009592
-
 </td>
-
 <td style="text-align:center;">
-
 0.9668529
-
 </td>
-
 <td style="text-align:center;">
-
 0.8495216
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hshld
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0027500
-
+-0.0027500
 </td>
-
 <td style="text-align:center;">
-
 0.9358847
-
 </td>
-
 <td style="text-align:center;">
-
 0.7169600
-
 </td>
-
 <td style="text-align:center;">
-
 3.3111882
-
 </td>
-
 <td style="text-align:center;">
-
 0.7387057
-
 </td>
-
 <td style="text-align:center;">
-
 0.3448121
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003055
-
 </td>
-
 <td style="text-align:center;">
-
 0.0221867
-
 </td>
-
 <td style="text-align:center;">
-
 0.0371795
-
 </td>
-
 <td style="text-align:center;">
-
 0.6713395
-
 </td>
-
 <td style="text-align:center;">
-
 0.2820939
-
 </td>
-
 <td style="text-align:center;">
-
 0.2478607
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Insur
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0004874
-
+-0.0004874
 </td>
-
 <td style="text-align:center;">
-
 1.0369537
-
 </td>
-
 <td style="text-align:center;">
-
 0.4156527
-
 </td>
-
 <td style="text-align:center;">
-
-\-4.2397802
-
+-4.2397802
 </td>
-
 <td style="text-align:center;">
-
 2.3745069
-
 </td>
-
 <td style="text-align:center;">
-
 0.5483219
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003994
-
 </td>
-
 <td style="text-align:center;">
-
 0.0290049
-
 </td>
-
 <td style="text-align:center;">
-
 0.0486052
-
 </td>
-
 <td style="text-align:center;">
-
 0.8776499
-
 </td>
-
 <td style="text-align:center;">
-
 0.3687846
-
 </td>
-
 <td style="text-align:center;">
-
 0.3240312
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 LabEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0027187
-
 </td>
-
 <td style="text-align:center;">
-
 1.0611236
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.5446032
-
+-0.5446032
 </td>
-
 <td style="text-align:center;">
-
 0.1077402
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.5408806
-
+-0.5408806
 </td>
-
 <td style="text-align:center;">
-
-\-0.2223122
-
+-0.2223122
 </td>
-
 <td style="text-align:center;">
-
 0.0004507
-
 </td>
-
 <td style="text-align:center;">
-
 0.0327320
-
 </td>
-
 <td style="text-align:center;">
-
 0.0548510
-
 </td>
-
 <td style="text-align:center;">
-
 0.9904271
-
 </td>
-
 <td style="text-align:center;">
-
 0.4161731
-
 </td>
-
 <td style="text-align:center;">
-
 0.3656689
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mach
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011451
-
 </td>
-
 <td style="text-align:center;">
-
 0.9103207
-
 </td>
-
 <td style="text-align:center;">
-
 0.0461087
-
 </td>
-
 <td style="text-align:center;">
-
-\-9.8508194
-
+-9.8508194
 </td>
-
 <td style="text-align:center;">
-
 3.1017060
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.2805745
-
+-1.2805745
 </td>
-
 <td style="text-align:center;">
-
 0.0004428
-
 </td>
-
 <td style="text-align:center;">
-
 0.0321551
-
 </td>
-
 <td style="text-align:center;">
-
 0.0538843
-
 </td>
-
 <td style="text-align:center;">
-
 0.9729722
-
 </td>
-
 <td style="text-align:center;">
-
 0.4088386
-
 </td>
-
 <td style="text-align:center;">
-
 0.3592245
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Meals
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0026947
-
+-0.0026947
 </td>
-
 <td style="text-align:center;">
-
 1.1458673
-
 </td>
-
 <td style="text-align:center;">
-
 0.5586733
-
 </td>
-
 <td style="text-align:center;">
-
 3.2747786
-
 </td>
-
 <td style="text-align:center;">
-
 3.5601241
-
 </td>
-
 <td style="text-align:center;">
-
 1.8281175
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004796
-
 </td>
-
 <td style="text-align:center;">
-
 0.0348248
-
 </td>
-
 <td style="text-align:center;">
-
 0.0583579
-
 </td>
-
 <td style="text-align:center;">
-
 1.0537511
-
 </td>
-
 <td style="text-align:center;">
-
 0.4427816
-
 </td>
-
 <td style="text-align:center;">
-
 0.3890483
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 MedEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012338
-
 </td>
-
 <td style="text-align:center;">
-
 0.8622370
-
 </td>
-
 <td style="text-align:center;">
-
 0.4855784
-
 </td>
-
 <td style="text-align:center;">
-
 2.5380903
-
 </td>
-
 <td style="text-align:center;">
-
-\-2.9326052
-
+-2.9326052
 </td>
-
 <td style="text-align:center;">
-
-\-0.4160593
-
+-0.4160593
 </td>
-
 <td style="text-align:center;">
-
 0.0004975
-
 </td>
-
 <td style="text-align:center;">
-
 0.0361277
-
 </td>
-
 <td style="text-align:center;">
-
 0.0605413
-
 </td>
-
 <td style="text-align:center;">
-
 1.0931762
-
 </td>
-
 <td style="text-align:center;">
-
 0.4593478
-
 </td>
-
 <td style="text-align:center;">
-
 0.4036042
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mines
-
 </td>
-
 <td style="text-align:center;">
-
 0.0042946
-
 </td>
-
 <td style="text-align:center;">
-
 0.5793633
-
 </td>
-
 <td style="text-align:center;">
-
 0.0318880
-
 </td>
-
 <td style="text-align:center;">
-
-\-18.0068969
-
+-18.0068969
 </td>
-
 <td style="text-align:center;">
-
 2.3640705
-
 </td>
-
 <td style="text-align:center;">
-
-\-4.2438814
-
+-4.2438814
 </td>
-
 <td style="text-align:center;">
-
 0.0007668
-
 </td>
-
 <td style="text-align:center;">
-
 0.0556814
-
 </td>
-
 <td style="text-align:center;">
-
 0.0933086
-
 </td>
-
 <td style="text-align:center;">
-
 1.6848449
-
 </td>
-
 <td style="text-align:center;">
-
 0.7079644
-
 </td>
-
 <td style="text-align:center;">
-
 0.6220502
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Oil
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008542
-
 </td>
-
 <td style="text-align:center;">
-
 0.7436052
-
 </td>
-
 <td style="text-align:center;">
-
 0.2107170
-
 </td>
-
 <td style="text-align:center;">
-
-\-12.6711069
-
+-12.6711069
 </td>
-
 <td style="text-align:center;">
-
 1.8771948
-
 </td>
-
 <td style="text-align:center;">
-
 1.0703727
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006051
-
 </td>
-
 <td style="text-align:center;">
-
 0.0439435
-
 </td>
-
 <td style="text-align:center;">
-
 0.0736387
-
 </td>
-
 <td style="text-align:center;">
-
 1.3296709
-
 </td>
-
 <td style="text-align:center;">
-
 0.5587218
-
 </td>
-
 <td style="text-align:center;">
-
 0.4909188
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Other
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0083802
-
+-0.0083802
 </td>
-
 <td style="text-align:center;">
-
 1.3825021
-
 </td>
-
 <td style="text-align:center;">
-
 0.4180106
-
 </td>
-
 <td style="text-align:center;">
-
-\-2.7136657
-
+-2.7136657
 </td>
-
 <td style="text-align:center;">
-
 1.1897278
-
 </td>
-
 <td style="text-align:center;">
-
 0.6766868
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006164
-
 </td>
-
 <td style="text-align:center;">
-
 0.0447613
-
 </td>
-
 <td style="text-align:center;">
-
 0.0750091
-
 </td>
-
 <td style="text-align:center;">
-
 1.3544174
-
 </td>
-
 <td style="text-align:center;">
-
 0.5691202
-
 </td>
-
 <td style="text-align:center;">
-
 0.5000553
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Paper
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007505
-
 </td>
-
 <td style="text-align:center;">
-
 0.7635057
-
 </td>
-
 <td style="text-align:center;">
-
 0.2889981
-
 </td>
-
 <td style="text-align:center;">
-
-\-4.3612924
-
+-4.3612924
 </td>
-
 <td style="text-align:center;">
-
 1.7959683
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.2592816
-
+-1.2592816
 </td>
-
 <td style="text-align:center;">
-
 0.0004240
-
 </td>
-
 <td style="text-align:center;">
-
 0.0307880
-
 </td>
-
 <td style="text-align:center;">
-
 0.0515933
-
 </td>
-
 <td style="text-align:center;">
-
 0.9316049
-
 </td>
-
 <td style="text-align:center;">
-
 0.3914563
-
 </td>
-
 <td style="text-align:center;">
-
 0.3439515
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 PerSv
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0085266
-
+-0.0085266
 </td>
-
 <td style="text-align:center;">
-
 1.1011684
-
 </td>
-
 <td style="text-align:center;">
-
 0.8807493
-
 </td>
-
 <td style="text-align:center;">
-
-\-2.0986592
-
+-2.0986592
 </td>
-
 <td style="text-align:center;">
-
 7.1662356
-
 </td>
-
 <td style="text-align:center;">
-
 2.2502485
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006989
-
 </td>
-
 <td style="text-align:center;">
-
 0.0507508
-
 </td>
-
 <td style="text-align:center;">
-
 0.0850461
-
 </td>
-
 <td style="text-align:center;">
-
 1.5356511
-
 </td>
-
 <td style="text-align:center;">
-
 0.6452738
-
 </td>
-
 <td style="text-align:center;">
-
 0.5669674
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RlEst
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0097201
-
+-0.0097201
 </td>
-
 <td style="text-align:center;">
-
 1.3200730
-
 </td>
-
 <td style="text-align:center;">
-
 0.6904919
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2395192
-
+-0.2395192
 </td>
-
 <td style="text-align:center;">
-
 10.0352215
-
 </td>
-
 <td style="text-align:center;">
-
-\-2.7040297
-
+-2.7040297
 </td>
-
 <td style="text-align:center;">
-
 0.0007521
-
 </td>
-
 <td style="text-align:center;">
-
 0.0546143
-
 </td>
-
 <td style="text-align:center;">
-
 0.0915204
-
 </td>
-
 <td style="text-align:center;">
-
 1.6525555
-
 </td>
-
 <td style="text-align:center;">
-
 0.6943966
-
 </td>
-
 <td style="text-align:center;">
-
 0.6101288
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rtail
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0004636
-
+-0.0004636
 </td>
-
 <td style="text-align:center;">
-
 1.0932934
-
 </td>
-
 <td style="text-align:center;">
-
 0.2826147
-
 </td>
-
 <td style="text-align:center;">
-
 10.6826872
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.1567588
-
+-1.1567588
 </td>
-
 <td style="text-align:center;">
-
 1.5732409
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003793
-
 </td>
-
 <td style="text-align:center;">
-
 0.0275450
-
 </td>
-
 <td style="text-align:center;">
-
 0.0461587
-
 </td>
-
 <td style="text-align:center;">
-
 0.8334744
-
 </td>
-
 <td style="text-align:center;">
-
 0.3502223
-
 </td>
-
 <td style="text-align:center;">
-
 0.3077215
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rubbr
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0016398
-
+-0.0016398
 </td>
-
 <td style="text-align:center;">
-
 1.0561186
-
 </td>
-
 <td style="text-align:center;">
-
 0.6175342
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.5214037
-
+-1.5214037
 </td>
-
 <td style="text-align:center;">
-
 3.3120986
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.0184067
-
+-1.0184067
 </td>
-
 <td style="text-align:center;">
-
 0.0004080
-
 </td>
-
 <td style="text-align:center;">
-
 0.0296295
-
 </td>
-
 <td style="text-align:center;">
-
 0.0496519
-
 </td>
-
 <td style="text-align:center;">
-
 0.8965495
-
 </td>
-
 <td style="text-align:center;">
-
 0.3767261
-
 </td>
-
 <td style="text-align:center;">
-
 0.3310090
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Ships
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011604
-
 </td>
-
 <td style="text-align:center;">
-
 0.7126336
-
 </td>
-
 <td style="text-align:center;">
-
 0.5420701
-
 </td>
-
 <td style="text-align:center;">
-
-\-12.3165184
-
+-12.3165184
 </td>
-
 <td style="text-align:center;">
-
 5.7767870
-
 </td>
-
 <td style="text-align:center;">
-
-\-2.4924140
-
+-2.4924140
 </td>
-
 <td style="text-align:center;">
-
 0.0007008
-
 </td>
-
 <td style="text-align:center;">
-
 0.0508907
-
 </td>
-
 <td style="text-align:center;">
-
 0.0852805
-
 </td>
-
 <td style="text-align:center;">
-
 1.5398844
-
 </td>
-
 <td style="text-align:center;">
-
 0.6470526
-
 </td>
-
 <td style="text-align:center;">
-
 0.5685303
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Smoke
-
 </td>
-
 <td style="text-align:center;">
-
 0.0029894
-
 </td>
-
 <td style="text-align:center;">
-
 0.6355655
-
 </td>
-
 <td style="text-align:center;">
-
 1.1680262
-
 </td>
-
 <td style="text-align:center;">
-
 1.4176844
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.4322792
-
+-1.4322792
 </td>
-
 <td style="text-align:center;">
-
 1.9889754
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006519
-
 </td>
-
 <td style="text-align:center;">
-
 0.0473369
-
 </td>
-
 <td style="text-align:center;">
-
 0.0793252
-
 </td>
-
 <td style="text-align:center;">
-
 1.4323514
-
 </td>
-
 <td style="text-align:center;">
-
 0.6018677
-
 </td>
-
 <td style="text-align:center;">
-
 0.5288288
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Soda
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0022793
-
+-0.0022793
 </td>
-
 <td style="text-align:center;">
-
 0.9911956
-
 </td>
-
 <td style="text-align:center;">
-
 1.0694227
-
 </td>
-
 <td style="text-align:center;">
-
 5.2613134
-
 </td>
-
 <td style="text-align:center;">
-
 2.1772782
-
 </td>
-
 <td style="text-align:center;">
-
 0.7586857
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005562
-
 </td>
-
 <td style="text-align:center;">
-
 0.0403896
-
 </td>
-
 <td style="text-align:center;">
-
 0.0676833
-
 </td>
-
 <td style="text-align:center;">
-
 1.2221367
-
 </td>
-
 <td style="text-align:center;">
-
 0.5135365
-
 </td>
-
 <td style="text-align:center;">
-
 0.4512168
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Softw
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0017483
-
+-0.0017483
 </td>
-
 <td style="text-align:center;">
-
 1.6128358
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0324200
-
+-0.0324200
 </td>
-
 <td style="text-align:center;">
-
 7.5734792
-
 </td>
-
 <td style="text-align:center;">
-
-\-2.1058664
-
+-2.1058664
 </td>
-
 <td style="text-align:center;">
-
-\-1.5315760
-
+-1.5315760
 </td>
-
 <td style="text-align:center;">
-
 0.0009934
-
 </td>
-
 <td style="text-align:center;">
-
 0.0721372
-
 </td>
-
 <td style="text-align:center;">
-
 0.1208846
-
 </td>
-
 <td style="text-align:center;">
-
 2.1827758
-
 </td>
-
 <td style="text-align:center;">
-
 0.9171928
-
 </td>
-
 <td style="text-align:center;">
-
 0.8058879
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Steel
-
 </td>
-
 <td style="text-align:center;">
-
 0.0016226
-
 </td>
-
 <td style="text-align:center;">
-
 0.8085927
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.8737290
-
+-0.8737290
 </td>
-
 <td style="text-align:center;">
-
-\-13.4512154
-
+-13.4512154
 </td>
-
 <td style="text-align:center;">
-
 1.9169273
-
 </td>
-
 <td style="text-align:center;">
-
 0.0860896
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006183
-
 </td>
-
 <td style="text-align:center;">
-
 0.0448969
-
 </td>
-
 <td style="text-align:center;">
-
 0.0752364
-
 </td>
-
 <td style="text-align:center;">
-
 1.3585217
-
 </td>
-
 <td style="text-align:center;">
-
 0.5708448
-
 </td>
-
 <td style="text-align:center;">
-
 0.5015706
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Telcm
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021548
-
 </td>
-
 <td style="text-align:center;">
-
 0.8264663
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.6534422
-
+-0.6534422
 </td>
-
 <td style="text-align:center;">
-
 2.0158826
-
 </td>
-
 <td style="text-align:center;">
-
 1.1726066
-
 </td>
-
 <td style="text-align:center;">
-
 0.6936346
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004396
-
 </td>
-
 <td style="text-align:center;">
-
 0.0319220
-
 </td>
-
 <td style="text-align:center;">
-
 0.0534936
-
 </td>
-
 <td style="text-align:center;">
-
 0.9659184
-
 </td>
-
 <td style="text-align:center;">
-
 0.4058747
-
 </td>
-
 <td style="text-align:center;">
-
 0.3566202
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Toys
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0065508
-
+-0.0065508
 </td>
-
 <td style="text-align:center;">
-
 1.1544288
-
 </td>
-
 <td style="text-align:center;">
-
 0.7702303
-
 </td>
-
 <td style="text-align:center;">
-
 5.6743488
-
 </td>
-
 <td style="text-align:center;">
-
 5.6704359
-
 </td>
-
 <td style="text-align:center;">
-
 1.0876180
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005625
-
 </td>
-
 <td style="text-align:center;">
-
 0.0408470
-
 </td>
-
 <td style="text-align:center;">
-
 0.0684498
-
 </td>
-
 <td style="text-align:center;">
-
 1.2359770
-
 </td>
-
 <td style="text-align:center;">
-
 0.5193521
-
 </td>
-
 <td style="text-align:center;">
-
 0.4563267
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Trans
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0028268
-
+-0.0028268
 </td>
-
 <td style="text-align:center;">
-
 1.0578052
-
 </td>
-
 <td style="text-align:center;">
-
 0.4748986
-
 </td>
-
 <td style="text-align:center;">
-
-\-1.8906329
-
+-1.8906329
 </td>
-
 <td style="text-align:center;">
-
 5.0980038
-
 </td>
-
 <td style="text-align:center;">
-
 0.7725197
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004092
-
 </td>
-
 <td style="text-align:center;">
-
 0.0297138
-
 </td>
-
 <td style="text-align:center;">
-
 0.0497932
-
 </td>
-
 <td style="text-align:center;">
-
 0.8991006
-
 </td>
-
 <td style="text-align:center;">
-
 0.3777981
-
 </td>
-
 <td style="text-align:center;">
-
 0.3319509
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Txtls
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0045459
-
+-0.0045459
 </td>
-
 <td style="text-align:center;">
-
 1.1023490
-
 </td>
-
 <td style="text-align:center;">
-
 0.6308306
-
 </td>
-
 <td style="text-align:center;">
-
 0.2432470
-
 </td>
-
 <td style="text-align:center;">
-
 7.5846808
-
 </td>
-
 <td style="text-align:center;">
-
 0.6360910
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007338
-
 </td>
-
 <td style="text-align:center;">
-
 0.0532891
-
 </td>
-
 <td style="text-align:center;">
-
 0.0892998
-
 </td>
-
 <td style="text-align:center;">
-
 1.6124589
-
 </td>
-
 <td style="text-align:center;">
-
 0.6775481
-
 </td>
-
 <td style="text-align:center;">
-
 0.5953250
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Util
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0005086
-
+-0.0005086
 </td>
-
 <td style="text-align:center;">
-
 0.7759086
-
 </td>
-
 <td style="text-align:center;">
-
 0.2346717
-
 </td>
-
 <td style="text-align:center;">
-
-\-2.9536624
-
+-2.9536624
 </td>
-
 <td style="text-align:center;">
-
 1.2216997
-
 </td>
-
 <td style="text-align:center;">
-
 2.7335259
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003740
-
 </td>
-
 <td style="text-align:center;">
-
 0.0271553
-
 </td>
-
 <td style="text-align:center;">
-
 0.0455057
-
 </td>
-
 <td style="text-align:center;">
-
 0.8216826
-
 </td>
-
 <td style="text-align:center;">
-
 0.3452674
-
 </td>
-
 <td style="text-align:center;">
-
 0.3033679
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Whlsl
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0018305
-
+-0.0018305
 </td>
-
 <td style="text-align:center;">
-
 1.0649944
-
 </td>
-
 <td style="text-align:center;">
-
 0.1370349
-
 </td>
-
 <td style="text-align:center;">
-
 4.8040164
-
 </td>
-
 <td style="text-align:center;">
-
 2.0207975
-
 </td>
-
 <td style="text-align:center;">
-
 0.8860007
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003900
-
 </td>
-
 <td style="text-align:center;">
-
 0.0283217
-
 </td>
-
 <td style="text-align:center;">
-
 0.0474603
-
 </td>
-
 <td style="text-align:center;">
-
 0.8569768
-
 </td>
-
 <td style="text-align:center;">
-
 0.3600979
-
 </td>
-
 <td style="text-align:center;">
-
 0.3163986
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ![](ECC_files/figure-gfm/Full_STL_PRS-1.png)<!-- -->
@@ -19952,175 +10173,90 @@ expected factor premium. To allow the factor premium to evolve, we also
 estimated RAM which is a 5-year Rolling Arithmetic Mean.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Athrithmetic Mean of Fama French Five Factors Premium
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 SMB
-
 </th>
-
 <th style="text-align:center;">
-
 HML
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 CMA
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;">
-
 0.0053662
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021664
-
 </td>
-
 <td style="text-align:center;">
-
 0.0025373
-
 </td>
-
 <td style="text-align:center;">
-
 0.0025544
-
 </td>
-
 <td style="text-align:center;">
-
 0.0026045
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
-
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Athrithmetic Mean of PRS Five Factors Premium
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 dDP
-
 </th>
-
 <th style="text-align:center;">
-
 dTS
-
 </th>
-
 <th style="text-align:center;">
-
 UNEXPI
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;">
-
 0.0053662
-
 </td>
-
 <td style="text-align:center;">
-
 0.0025544
-
 </td>
-
 <td style="text-align:center;">
-
 8.5e-06
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003148
-
 </td>
-
 <td style="text-align:center;">
-
 0.000189
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ![](ECC_files/figure-gfm/AM-1.png)<!-- -->![](ECC_files/figure-gfm/AM-2.png)<!-- -->
@@ -20133,175 +10269,90 @@ as the factor premium. To allow the factor premium to evolve, we also
 estimated RAM which is a 5-year Rolling Geometric Mean.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Geometric Mean of Fama French Five Factors Premium
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 SMB
-
 </th>
-
 <th style="text-align:center;">
-
 HML
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 CMA
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;">
-
 0.0043649
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017141
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021243
-
 </td>
-
 <td style="text-align:center;">
-
 0.002322
-
 </td>
-
 <td style="text-align:center;">
-
 0.0024072
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
-
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Geometric Mean of PRS Five Factors Premium
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 dDP
-
 </th>
-
 <th style="text-align:center;">
-
 dTS
-
 </th>
-
 <th style="text-align:center;">
-
 UNEXPI
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;">
-
 0.0043649
-
 </td>
-
 <td style="text-align:center;">
-
 0.002322
-
 </td>
-
 <td style="text-align:center;">
-
 7.9e-06
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003117
-
 </td>
-
 <td style="text-align:center;">
-
 0.000184
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ![](ECC_files/figure-gfm/GM-1.png)<!-- -->![](ECC_files/figure-gfm/GM-2.png)<!-- -->
@@ -20318,112 +10369,66 @@ estimate the factor risk premium.
 Now, we decompose the standard error of the second-step regression
 lambdas. At each time t,
 
-  
-![r\_i = \\lambda\_0 + \\lambda\_1\*\\hat\\beta\_i +
-\\lambda\_2\*\\hat\\theta\_i+e\_i](https://latex.codecogs.com/png.latex?r_i%20%3D%20%5Clambda_0%20%2B%20%5Clambda_1%2A%5Chat%5Cbeta_i%20%2B%20%5Clambda_2%2A%5Chat%5Ctheta_i%2Be_i
-"r_i = \\lambda_0 + \\lambda_1*\\hat\\beta_i + \\lambda_2*\\hat\\theta_i+e_i")  
+![r_i = \\lambda_0 + \\lambda_1\*\\hat\\beta_i + \\lambda_2\*\\hat\\theta_i+e_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_i%20%3D%20%5Clambda_0%20%2B%20%5Clambda_1%2A%5Chat%5Cbeta_i%20%2B%20%5Clambda_2%2A%5Chat%5Ctheta_i%2Be_i "r_i = \lambda_0 + \lambda_1*\hat\beta_i + \lambda_2*\hat\theta_i+e_i")
 
-  
-![se(\\hat{\\lambda}) =
-\\hat{\\sigma}\_e\*\\frac{1}{\\sqrt{SST\_{\\hat\\beta}}}\*\\frac{1}{\\sqrt{1-R^2\_{\\hat\\beta}}}](https://latex.codecogs.com/png.latex?se%28%5Chat%7B%5Clambda%7D%29%20%3D%20%5Chat%7B%5Csigma%7D_e%2A%5Cfrac%7B1%7D%7B%5Csqrt%7BSST_%7B%5Chat%5Cbeta%7D%7D%7D%2A%5Cfrac%7B1%7D%7B%5Csqrt%7B1-R%5E2_%7B%5Chat%5Cbeta%7D%7D%7D
-"se(\\hat{\\lambda}) = \\hat{\\sigma}_e*\\frac{1}{\\sqrt{SST_{\\hat\\beta}}}*\\frac{1}{\\sqrt{1-R^2_{\\hat\\beta}}}")  
+![se(\\hat{\\lambda}) = \\hat{\\sigma}\_e\*\\frac{1}{\\sqrt{SST\_{\\hat\\beta}}}\*\\frac{1}{\\sqrt{1-R^2\_{\\hat\\beta}}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%7B%5Clambda%7D%29%20%3D%20%5Chat%7B%5Csigma%7D_e%2A%5Cfrac%7B1%7D%7B%5Csqrt%7BSST_%7B%5Chat%5Cbeta%7D%7D%7D%2A%5Cfrac%7B1%7D%7B%5Csqrt%7B1-R%5E2_%7B%5Chat%5Cbeta%7D%7D%7D "se(\hat{\lambda}) = \hat{\sigma}_e*\frac{1}{\sqrt{SST_{\hat\beta}}}*\frac{1}{\sqrt{1-R^2_{\hat\beta}}}")
 
 where
-![\\hat{\\sigma}\_e](https://latex.codecogs.com/png.latex?%5Chat%7B%5Csigma%7D_e
-"\\hat{\\sigma}_e") represents the variation of errors,
-![\\sqrt{SST\_{\\hat\\beta}}](https://latex.codecogs.com/png.latex?%5Csqrt%7BSST_%7B%5Chat%5Cbeta%7D%7D
-"\\sqrt{SST_{\\hat\\beta}}") represents intra-group beta variation, and
-![\\sqrt{1-R^2\_{\\hat\\beta}}](https://latex.codecogs.com/png.latex?%5Csqrt%7B1-R%5E2_%7B%5Chat%5Cbeta%7D%7D
-"\\sqrt{1-R^2_{\\hat\\beta}}") represents inter-group beta variation. We
-can clearly see that with the seasonality and time-series noise in the
-error term, we would get a larger standard error for estimated
-![\\lambda](https://latex.codecogs.com/png.latex?%5Clambda "\\lambda").
+![\\hat{\\sigma}\_e](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7B%5Csigma%7D_e "\hat{\sigma}_e")
+represents the variation of errors,
+![\\sqrt{SST\_{\\hat\\beta}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csqrt%7BSST_%7B%5Chat%5Cbeta%7D%7D "\sqrt{SST_{\hat\beta}}")
+represents intra-group beta variation, and
+![\\sqrt{1-R^2\_{\\hat\\beta}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csqrt%7B1-R%5E2_%7B%5Chat%5Cbeta%7D%7D "\sqrt{1-R^2_{\hat\beta}}")
+represents inter-group beta variation. We can clearly see that with the
+seasonality and time-series noise in the error term, we would get a
+larger standard error for estimated
+![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda").
 
-  
-![SST\_{\\hat\\beta} = \\sum\_{i=1}^N (\\hat\\beta\_i -
-\\bar\\beta)^2](https://latex.codecogs.com/png.latex?SST_%7B%5Chat%5Cbeta%7D%20%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%28%5Chat%5Cbeta_i%20-%20%5Cbar%5Cbeta%29%5E2
-"SST_{\\hat\\beta} = \\sum_{i=1}^N (\\hat\\beta_i - \\bar\\beta)^2")  
+![SST\_{\\hat\\beta} = \\sum\_{i=1}^N (\\hat\\beta_i - \\bar\\beta)^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;SST_%7B%5Chat%5Cbeta%7D%20%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%28%5Chat%5Cbeta_i%20-%20%5Cbar%5Cbeta%29%5E2 "SST_{\hat\beta} = \sum_{i=1}^N (\hat\beta_i - \bar\beta)^2")
 
-  
-![R^2\_{\\hat\\beta} = 1 -
-\\frac{\\hat\\theta^2\_u}{SST\_{\\hat\\beta}}](https://latex.codecogs.com/png.latex?R%5E2_%7B%5Chat%5Cbeta%7D%20%3D%201%20-%20%5Cfrac%7B%5Chat%5Ctheta%5E2_u%7D%7BSST_%7B%5Chat%5Cbeta%7D%7D
-"R^2_{\\hat\\beta} = 1 - \\frac{\\hat\\theta^2_u}{SST_{\\hat\\beta}}")  
+![R^2\_{\\hat\\beta} = 1 - \\frac{\\hat\\theta^2_u}{SST\_{\\hat\\beta}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;R%5E2_%7B%5Chat%5Cbeta%7D%20%3D%201%20-%20%5Cfrac%7B%5Chat%5Ctheta%5E2_u%7D%7BSST_%7B%5Chat%5Cbeta%7D%7D "R^2_{\hat\beta} = 1 - \frac{\hat\theta^2_u}{SST_{\hat\beta}}")
 
 where
-![\\hat\\theta^2\_u](https://latex.codecogs.com/png.latex?%5Chat%5Ctheta%5E2_u
-"\\hat\\theta^2_u") comes from auxiliary regression (aka Factor Spanning
-Regression)
+![\\hat\\theta^2_u](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%5Ctheta%5E2_u "\hat\theta^2_u")
+comes from auxiliary regression (aka Factor Spanning Regression)
 
-  
-![\\beta\_i = \\gamma\_0 +
-\\gamma\_1\*\\hat\\theta\_i+u\_i](https://latex.codecogs.com/png.latex?%5Cbeta_i%20%3D%20%5Cgamma_0%20%2B%20%5Cgamma_1%2A%5Chat%5Ctheta_i%2Bu_i
-"\\beta_i = \\gamma_0 + \\gamma_1*\\hat\\theta_i+u_i")  
+![\\beta_i = \\gamma_0 + \\gamma_1\*\\hat\\theta_i+u_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta_i%20%3D%20%5Cgamma_0%20%2B%20%5Cgamma_1%2A%5Chat%5Ctheta_i%2Bu_i "\beta_i = \gamma_0 + \gamma_1*\hat\theta_i+u_i")
 
 We will rewrite the terms as:
 
-  
-![se(\\hat{\\lambda}) =
-\\hat{\\sigma}\_e\*\\frac{1}{\\hat{\\sigma}\_{\\beta,intra}}\*\\frac{1}{\\hat{\\sigma}\_{\\beta,inter}}](https://latex.codecogs.com/png.latex?se%28%5Chat%7B%5Clambda%7D%29%20%3D%20%5Chat%7B%5Csigma%7D_e%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D
-"se(\\hat{\\lambda}) = \\hat{\\sigma}_e*\\frac{1}{\\hat{\\sigma}_{\\beta,intra}}*\\frac{1}{\\hat{\\sigma}_{\\beta,inter}}")  
+![se(\\hat{\\lambda}) = \\hat{\\sigma}\_e\*\\frac{1}{\\hat{\\sigma}\_{\\beta,intra}}\*\\frac{1}{\\hat{\\sigma}\_{\\beta,inter}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%7B%5Clambda%7D%29%20%3D%20%5Chat%7B%5Csigma%7D_e%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D "se(\hat{\lambda}) = \hat{\sigma}_e*\frac{1}{\hat{\sigma}_{\beta,intra}}*\frac{1}{\hat{\sigma}_{\beta,inter}}")
 
 The decomposition would be:
 
-  
-![1 =
-\\frac{ln(\\hat{\\sigma}\_e)}{ln(se(\\hat\\lambda))}-\\frac{ln(\\hat{\\sigma}\_{\\beta,intra})}{ln(se(\\hat\\lambda))}-\\frac{ln(\\hat{\\sigma}\_{\\beta,inter})}{ln(se(\\hat\\lambda))}](https://latex.codecogs.com/png.latex?1%20%3D%20%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_e%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D
-"1 = \\frac{ln(\\hat{\\sigma}_e)}{ln(se(\\hat\\lambda))}-\\frac{ln(\\hat{\\sigma}_{\\beta,intra})}{ln(se(\\hat\\lambda))}-\\frac{ln(\\hat{\\sigma}_{\\beta,inter})}{ln(se(\\hat\\lambda))}")  
+![1 = \\frac{ln(\\hat{\\sigma}\_e)}{ln(se(\\hat\\lambda))}-\\frac{ln(\\hat{\\sigma}\_{\\beta,intra})}{ln(se(\\hat\\lambda))}-\\frac{ln(\\hat{\\sigma}\_{\\beta,inter})}{ln(se(\\hat\\lambda))}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;1%20%3D%20%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_e%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D "1 = \frac{ln(\hat{\sigma}_e)}{ln(se(\hat\lambda))}-\frac{ln(\hat{\sigma}_{\beta,intra})}{ln(se(\hat\lambda))}-\frac{ln(\hat{\sigma}_{\beta,inter})}{ln(se(\hat\lambda))}")
 
 And each term is the effect of variation to the
-![se(\\hat\\lambda)](https://latex.codecogs.com/png.latex?se%28%5Chat%5Clambda%29
-"se(\\hat\\lambda)") and this effect is associated with the sensitivity
-of
-![se(\\hat\\lambda)](https://latex.codecogs.com/png.latex?se%28%5Chat%5Clambda%29
-"se(\\hat\\lambda)") to the specific variation:
+![se(\\hat\\lambda)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%5Clambda%29 "se(\hat\lambda)")
+and this effect is associated with the sensitivity of
+![se(\\hat\\lambda)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%5Clambda%29 "se(\hat\lambda)")
+to the specific variation:
 
-  
-![\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}\_e} =
-\\frac{1}{\\hat{\\sigma}\_{\\beta,intra}}\*\\frac{1}{\\hat{\\sigma}\_{\\beta,inter}}
-= \\frac{se(\\hat\\lambda)}{\\hat{\\sigma}\_e} =
-se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}\_e)}{ln(se(\\hat\\lambda))}}](https://latex.codecogs.com/png.latex?%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_e%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_e%7D%20%3D%20se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_e%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D%7D
-"\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}_e} = \\frac{1}{\\hat{\\sigma}_{\\beta,intra}}*\\frac{1}{\\hat{\\sigma}_{\\beta,inter}} = \\frac{se(\\hat\\lambda)}{\\hat{\\sigma}_e} = se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}_e)}{ln(se(\\hat\\lambda))}}")  
+![\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}\_e} = \\frac{1}{\\hat{\\sigma}\_{\\beta,intra}}\*\\frac{1}{\\hat{\\sigma}\_{\\beta,inter}} = \\frac{se(\\hat\\lambda)}{\\hat{\\sigma}\_e} = se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}\_e)}{ln(se(\\hat\\lambda))}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_e%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_e%7D%20%3D%20se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_e%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D%7D "\frac{d se(\hat\lambda)}{d\hat{\sigma}_e} = \frac{1}{\hat{\sigma}_{\beta,intra}}*\frac{1}{\hat{\sigma}_{\beta,inter}} = \frac{se(\hat\lambda)}{\hat{\sigma}_e} = se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_e)}{ln(se(\hat\lambda))}}")
 
-  
-![\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}\_{\\beta,intra}} =
-\\frac{-1}{\\hat{\\sigma}^2\_{\\beta,intra}}\*\\frac{\\hat{\\sigma}\_e}{\\hat{\\sigma}\_{\\beta,inter}}
-= -\\frac{se(\\hat\\lambda)}{\\hat{\\sigma}\_{\\beta,intra}} =
--se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}\_{\\beta,intra})}{se(\\hat\\lambda)}}](https://latex.codecogs.com/png.latex?%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20%5Cfrac%7B-1%7D%7B%5Chat%7B%5Csigma%7D%5E2_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B%5Chat%7B%5Csigma%7D_e%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20-%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20-se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%29%7D%7Bse%28%5Chat%5Clambda%29%7D%7D
-"\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}_{\\beta,intra}} = \\frac{-1}{\\hat{\\sigma}^2_{\\beta,intra}}*\\frac{\\hat{\\sigma}_e}{\\hat{\\sigma}_{\\beta,inter}} = -\\frac{se(\\hat\\lambda)}{\\hat{\\sigma}_{\\beta,intra}} = -se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}_{\\beta,intra})}{se(\\hat\\lambda)}}")  
+![\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}\_{\\beta,intra}} = \\frac{-1}{\\hat{\\sigma}^2\_{\\beta,intra}}\*\\frac{\\hat{\\sigma}\_e}{\\hat{\\sigma}\_{\\beta,inter}} = -\\frac{se(\\hat\\lambda)}{\\hat{\\sigma}\_{\\beta,intra}} = -se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}\_{\\beta,intra})}{se(\\hat\\lambda)}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20%5Cfrac%7B-1%7D%7B%5Chat%7B%5Csigma%7D%5E2_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B%5Chat%7B%5Csigma%7D_e%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20-%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20-se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%29%7D%7Bse%28%5Chat%5Clambda%29%7D%7D "\frac{d se(\hat\lambda)}{d\hat{\sigma}_{\beta,intra}} = \frac{-1}{\hat{\sigma}^2_{\beta,intra}}*\frac{\hat{\sigma}_e}{\hat{\sigma}_{\beta,inter}} = -\frac{se(\hat\lambda)}{\hat{\sigma}_{\beta,intra}} = -se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_{\beta,intra})}{se(\hat\lambda)}}")
 
 Similarly,
 
-  
-![\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}\_{\\beta,inter}} =
-\\frac{-1}{\\hat{\\sigma}^2\_{\\beta,inter}}\*\\frac{\\hat{\\sigma}\_e}{\\hat{\\sigma}\_{\\beta,intra}}
-= -\\frac{se(\\hat\\lambda)}{\\hat{\\sigma}\_{\\beta,inter}} =
--se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}\_{\\beta,inter})}{se(\\hat\\lambda)}}](https://latex.codecogs.com/png.latex?%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20%5Cfrac%7B-1%7D%7B%5Chat%7B%5Csigma%7D%5E2_%7B%5Cbeta%2Cinter%7D%7D%2A%5Cfrac%7B%5Chat%7B%5Csigma%7D_e%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20-%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20-se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%29%7D%7Bse%28%5Chat%5Clambda%29%7D%7D
-"\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}_{\\beta,inter}} = \\frac{-1}{\\hat{\\sigma}^2_{\\beta,inter}}*\\frac{\\hat{\\sigma}_e}{\\hat{\\sigma}_{\\beta,intra}} = -\\frac{se(\\hat\\lambda)}{\\hat{\\sigma}_{\\beta,inter}} = -se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}_{\\beta,inter})}{se(\\hat\\lambda)}}")  
+![\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}\_{\\beta,inter}} = \\frac{-1}{\\hat{\\sigma}^2\_{\\beta,inter}}\*\\frac{\\hat{\\sigma}\_e}{\\hat{\\sigma}\_{\\beta,intra}} = -\\frac{se(\\hat\\lambda)}{\\hat{\\sigma}\_{\\beta,inter}} = -se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}\_{\\beta,inter})}{se(\\hat\\lambda)}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20%5Cfrac%7B-1%7D%7B%5Chat%7B%5Csigma%7D%5E2_%7B%5Cbeta%2Cinter%7D%7D%2A%5Cfrac%7B%5Chat%7B%5Csigma%7D_e%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20-%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20-se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%29%7D%7Bse%28%5Chat%5Clambda%29%7D%7D "\frac{d se(\hat\lambda)}{d\hat{\sigma}_{\beta,inter}} = \frac{-1}{\hat{\sigma}^2_{\beta,inter}}*\frac{\hat{\sigma}_e}{\hat{\sigma}_{\beta,intra}} = -\frac{se(\hat\lambda)}{\hat{\sigma}_{\beta,inter}} = -se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_{\beta,inter})}{se(\hat\lambda)}}")
 
 We only care about the magnitude of this sensitivity, since
-![se(\\hat\\lambda)\<1](https://latex.codecogs.com/png.latex?se%28%5Chat%5Clambda%29%3C1
-"se(\\hat\\lambda)\<1"), the magnitude of the sensitivity is an
-increasing function of the decomposition component.
+![se(\\hat\\lambda)\<1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%5Clambda%29%3C1 "se(\hat\lambda)<1"),
+the magnitude of the sensitivity is an increasing function of the
+decomposition component.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 FF5 Fama Macbeth lambda SE Decomposition Percent
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="2">
-
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -20433,909 +10438,457 @@ stats
 </div>
 
 </th>
-
 </tr>
-
 <tr>
-
 <th style="text-align:center;">
-
 Factor
-
 </th>
-
 <th style="text-align:center;">
-
 Type
-
 </th>
-
 <th style="text-align:center;">
-
 mean
-
 </th>
-
 <th style="text-align:center;">
-
 median
-
 </th>
-
 <th style="text-align:center;">
-
 variance
-
 </th>
-
 <th style="text-align:center;">
-
 skewness
-
 </th>
-
 <th style="text-align:center;">
-
 kurtosis
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_e\_FF5
-
+sig_e\_FF5
 </td>
-
 <td style="text-align:center;">
-
 0.9221086
-
 </td>
-
 <td style="text-align:center;">
-
 0.9256134
-
 </td>
-
 <td style="text-align:center;">
-
 0.0049834
-
 </td>
-
 <td style="text-align:center;">
-
 0.2193179
-
 </td>
-
 <td style="text-align:center;">
-
 2.264870
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Inter\_FF5
-
+sig_Inter_FF5
 </td>
-
 <td style="text-align:center;">
-
 0.0561807
-
 </td>
-
 <td style="text-align:center;">
-
 0.0529461
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005990
-
 </td>
-
 <td style="text-align:center;">
-
 0.5741787
-
 </td>
-
 <td style="text-align:center;">
-
 3.123341
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Intra\_FF5
-
+sig_Intra_FF5
 </td>
-
 <td style="text-align:center;">
-
-\-0.1340721
-
+-0.1340721
 </td>
-
 <td style="text-align:center;">
-
-\-0.1320920
-
+-0.1320920
 </td>
-
 <td style="text-align:center;">
-
 0.0048858
-
 </td>
-
 <td style="text-align:center;">
-
 0.2027593
-
 </td>
-
 <td style="text-align:center;">
-
 2.272689
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 SMB
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_e\_FF5
-
+sig_e\_FF5
 </td>
-
 <td style="text-align:center;">
-
 0.7964532
-
 </td>
-
 <td style="text-align:center;">
-
 0.7985918
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010026
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1861730
-
+-0.1861730
 </td>
-
 <td style="text-align:center;">
-
 3.337908
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 SMB
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Inter\_FF5
-
+sig_Inter_FF5
 </td>
-
 <td style="text-align:center;">
-
 0.0427958
-
 </td>
-
 <td style="text-align:center;">
-
 0.0405980
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003811
-
 </td>
-
 <td style="text-align:center;">
-
 0.8480575
-
 </td>
-
 <td style="text-align:center;">
-
 3.599156
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 SMB
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Intra\_FF5
-
+sig_Intra_FF5
 </td>
-
 <td style="text-align:center;">
-
-\-0.2463426
-
+-0.2463426
 </td>
-
 <td style="text-align:center;">
-
-\-0.2436992
-
+-0.2436992
 </td>
-
 <td style="text-align:center;">
-
 0.0007515
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.5317432
-
+-0.5317432
 </td>
-
 <td style="text-align:center;">
-
 2.871307
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 HML
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_e\_FF5
-
+sig_e\_FF5
 </td>
-
 <td style="text-align:center;">
-
 0.7886762
-
 </td>
-
 <td style="text-align:center;">
-
 0.7848998
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010001
-
 </td>
-
 <td style="text-align:center;">
-
 0.7153644
-
 </td>
-
 <td style="text-align:center;">
-
 4.130830
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 HML
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Inter\_FF5
-
+sig_Inter_FF5
 </td>
-
 <td style="text-align:center;">
-
 0.0734585
-
 </td>
-
 <td style="text-align:center;">
-
 0.0694639
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009088
-
 </td>
-
 <td style="text-align:center;">
-
 1.1271841
-
 </td>
-
 <td style="text-align:center;">
-
 5.060129
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 HML
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Intra\_FF5
-
+sig_Intra_FF5
 </td>
-
 <td style="text-align:center;">
-
-\-0.2847824
-
+-0.2847824
 </td>
-
 <td style="text-align:center;">
-
-\-0.2855748
-
+-0.2855748
 </td>
-
 <td style="text-align:center;">
-
 0.0010597
-
 </td>
-
 <td style="text-align:center;">
-
 0.0114950
-
 </td>
-
 <td style="text-align:center;">
-
 3.110442
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_e\_FF5
-
+sig_e\_FF5
 </td>
-
 <td style="text-align:center;">
-
 0.7548789
-
 </td>
-
 <td style="text-align:center;">
-
 0.7598159
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010056
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.8518760
-
+-0.8518760
 </td>
-
 <td style="text-align:center;">
-
 3.940430
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Inter\_FF5
-
+sig_Inter_FF5
 </td>
-
 <td style="text-align:center;">
-
 0.0614512
-
 </td>
-
 <td style="text-align:center;">
-
 0.0597978
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007965
-
 </td>
-
 <td style="text-align:center;">
-
 0.5647991
-
 </td>
-
 <td style="text-align:center;">
-
 3.003809
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Intra\_FF5
-
+sig_Intra_FF5
 </td>
-
 <td style="text-align:center;">
-
-\-0.3065724
-
+-0.3065724
 </td>
-
 <td style="text-align:center;">
-
-\-0.3035063
-
+-0.3035063
 </td>
-
 <td style="text-align:center;">
-
 0.0021418
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1223581
-
+-0.1223581
 </td>
-
 <td style="text-align:center;">
-
 2.158247
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 CMA
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_e\_FF5
-
+sig_e\_FF5
 </td>
-
 <td style="text-align:center;">
-
 0.7492459
-
 </td>
-
 <td style="text-align:center;">
-
 0.7438179
-
 </td>
-
 <td style="text-align:center;">
-
 0.0022856
-
 </td>
-
 <td style="text-align:center;">
-
 0.9090989
-
 </td>
-
 <td style="text-align:center;">
-
 4.112772
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 CMA
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Inter\_FF5
-
+sig_Inter_FF5
 </td>
-
 <td style="text-align:center;">
-
 0.0684693
-
 </td>
-
 <td style="text-align:center;">
-
 0.0679070
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007031
-
 </td>
-
 <td style="text-align:center;">
-
 0.8803875
-
 </td>
-
 <td style="text-align:center;">
-
 5.368109
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 CMA
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Intra\_FF5
-
+sig_Intra_FF5
 </td>
-
 <td style="text-align:center;">
-
-\-0.3192234
-
+-0.3192234
 </td>
-
 <td style="text-align:center;">
-
-\-0.3259422
-
+-0.3259422
 </td>
-
 <td style="text-align:center;">
-
 0.0019675
-
 </td>
-
 <td style="text-align:center;">
-
 0.6997693
-
 </td>
-
 <td style="text-align:center;">
-
 3.561894
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Overall
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_e\_FF5
-
+sig_e\_FF5
 </td>
-
 <td style="text-align:center;">
-
 0.8022726
-
 </td>
-
 <td style="text-align:center;">
-
 0.7859712
-
 </td>
-
 <td style="text-align:center;">
-
 0.0059814
-
 </td>
-
 <td style="text-align:center;">
-
 1.2340299
-
 </td>
-
 <td style="text-align:center;">
-
 4.531087
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Overall
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Inter\_FF5
-
+sig_Inter_FF5
 </td>
-
 <td style="text-align:center;">
-
 0.0604711
-
 </td>
-
 <td style="text-align:center;">
-
 0.0580591
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007896
-
 </td>
-
 <td style="text-align:center;">
-
 0.8862114
-
 </td>
-
 <td style="text-align:center;">
-
 4.503449
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Overall
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Intra\_FF5
-
+sig_Intra_FF5
 </td>
-
 <td style="text-align:center;">
-
-\-0.2581986
-
+-0.2581986
 </td>
-
 <td style="text-align:center;">
-
-\-0.2704882
-
+-0.2704882
 </td>
-
 <td style="text-align:center;">
-
 0.0066235
-
 </td>
-
 <td style="text-align:center;">
-
 1.0211699
-
 </td>
-
 <td style="text-align:center;">
-
 4.065210
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
-
 ![](ECC_files/figure-gfm/FM_Lambda_Decomp-1.png)<!-- -->
-
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 PRS Fama Macbeth lambda SE Decomposition Percent
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="2">
-
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -21345,889 +10898,447 @@ stats
 </div>
 
 </th>
-
 </tr>
-
 <tr>
-
 <th style="text-align:center;">
-
 Factor
-
 </th>
-
 <th style="text-align:center;">
-
 Type
-
 </th>
-
 <th style="text-align:center;">
-
 mean
-
 </th>
-
 <th style="text-align:center;">
-
 median
-
 </th>
-
 <th style="text-align:center;">
-
 variance
-
 </th>
-
 <th style="text-align:center;">
-
 skewness
-
 </th>
-
 <th style="text-align:center;">
-
 kurtosis
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_e\_PRS
-
+sig_e\_PRS
 </td>
-
 <td style="text-align:center;">
-
 0.8921369
-
 </td>
-
 <td style="text-align:center;">
-
 0.8925240
-
 </td>
-
 <td style="text-align:center;">
-
 0.0044635
-
 </td>
-
 <td style="text-align:center;">
-
 0.3718549
-
 </td>
-
 <td style="text-align:center;">
-
 2.420393
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Inter\_PRS
-
+sig_Inter_PRS
 </td>
-
 <td style="text-align:center;">
-
 0.0754232
-
 </td>
-
 <td style="text-align:center;">
-
 0.0709048
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011538
-
 </td>
-
 <td style="text-align:center;">
-
 0.6935927
-
 </td>
-
 <td style="text-align:center;">
-
 2.696948
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Intra\_PRS
-
+sig_Intra_PRS
 </td>
-
 <td style="text-align:center;">
-
-\-0.1832863
-
+-0.1832863
 </td>
-
 <td style="text-align:center;">
-
-\-0.1900066
-
+-0.1900066
 </td>
-
 <td style="text-align:center;">
-
 0.0033675
-
 </td>
-
 <td style="text-align:center;">
-
 0.2802443
-
 </td>
-
 <td style="text-align:center;">
-
 2.617348
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_e\_PRS
-
+sig_e\_PRS
 </td>
-
 <td style="text-align:center;">
-
 0.7500582
-
 </td>
-
 <td style="text-align:center;">
-
 0.7543060
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011622
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.5775623
-
+-0.5775623
 </td>
-
 <td style="text-align:center;">
-
 3.482099
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Inter\_PRS
-
+sig_Inter_PRS
 </td>
-
 <td style="text-align:center;">
-
 0.0496949
-
 </td>
-
 <td style="text-align:center;">
-
 0.0475774
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004904
-
 </td>
-
 <td style="text-align:center;">
-
 0.9444963
-
 </td>
-
 <td style="text-align:center;">
-
 4.277493
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Intra\_PRS
-
+sig_Intra_PRS
 </td>
-
 <td style="text-align:center;">
-
-\-0.2996367
-
+-0.2996367
 </td>
-
 <td style="text-align:center;">
-
-\-0.2933821
-
+-0.2933821
 </td>
-
 <td style="text-align:center;">
-
 0.0013720
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.5493869
-
+-0.5493869
 </td>
-
 <td style="text-align:center;">
-
 2.864400
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 dDP
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_e\_PRS
-
+sig_e\_PRS
 </td>
-
 <td style="text-align:center;">
-
 0.4859092
-
 </td>
-
 <td style="text-align:center;">
-
 0.4894028
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007011
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.6087042
-
+-0.6087042
 </td>
-
 <td style="text-align:center;">
-
 3.400923
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 dDP
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Inter\_PRS
-
+sig_Inter_PRS
 </td>
-
 <td style="text-align:center;">
-
 0.0432956
-
 </td>
-
 <td style="text-align:center;">
-
 0.0391457
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003785
-
 </td>
-
 <td style="text-align:center;">
-
 0.6134561
-
 </td>
-
 <td style="text-align:center;">
-
 2.681542
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 dDP
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Intra\_PRS
-
+sig_Intra_PRS
 </td>
-
 <td style="text-align:center;">
-
-\-0.5573864
-
+-0.5573864
 </td>
-
 <td style="text-align:center;">
-
-\-0.5540237
-
+-0.5540237
 </td>
-
 <td style="text-align:center;">
-
 0.0006239
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.4763120
-
+-0.4763120
 </td>
-
 <td style="text-align:center;">
-
 3.184229
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 dTS
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_e\_PRS
-
+sig_e\_PRS
 </td>
-
 <td style="text-align:center;">
-
 0.5451656
-
 </td>
-
 <td style="text-align:center;">
-
 0.5501938
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007816
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.8727470
-
+-0.8727470
 </td>
-
 <td style="text-align:center;">
-
 3.597077
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 dTS
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Inter\_PRS
-
+sig_Inter_PRS
 </td>
-
 <td style="text-align:center;">
-
 0.0446729
-
 </td>
-
 <td style="text-align:center;">
-
 0.0384789
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007683
-
 </td>
-
 <td style="text-align:center;">
-
 1.3167315
-
 </td>
-
 <td style="text-align:center;">
-
 4.396183
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 dTS
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Intra\_PRS
-
+sig_Intra_PRS
 </td>
-
 <td style="text-align:center;">
-
-\-0.4995073
-
+-0.4995073
 </td>
-
 <td style="text-align:center;">
-
-\-0.4972835
-
+-0.4972835
 </td>
-
 <td style="text-align:center;">
-
 0.0010940
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1361855
-
+-0.1361855
 </td>
-
 <td style="text-align:center;">
-
 2.432020
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 UNEXPI
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_e\_PRS
-
+sig_e\_PRS
 </td>
-
 <td style="text-align:center;">
-
 0.5771389
-
 </td>
-
 <td style="text-align:center;">
-
 0.5756492
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011292
-
 </td>
-
 <td style="text-align:center;">
-
 0.0080468
-
 </td>
-
 <td style="text-align:center;">
-
 2.763339
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 UNEXPI
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Inter\_PRS
-
+sig_Inter_PRS
 </td>
-
 <td style="text-align:center;">
-
 0.0540574
-
 </td>
-
 <td style="text-align:center;">
-
 0.0484538
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010859
-
 </td>
-
 <td style="text-align:center;">
-
 0.9794146
-
 </td>
-
 <td style="text-align:center;">
-
 3.763792
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 UNEXPI
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Intra\_PRS
-
+sig_Intra_PRS
 </td>
-
 <td style="text-align:center;">
-
-\-0.4769185
-
+-0.4769185
 </td>
-
 <td style="text-align:center;">
-
-\-0.4783074
-
+-0.4783074
 </td>
-
 <td style="text-align:center;">
-
 0.0013293
-
 </td>
-
 <td style="text-align:center;">
-
 0.0083400
-
 </td>
-
 <td style="text-align:center;">
-
 2.140898
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Overall
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_e\_PRS
-
+sig_e\_PRS
 </td>
-
 <td style="text-align:center;">
-
 0.6500818
-
 </td>
-
 <td style="text-align:center;">
-
 0.5817475
-
 </td>
-
 <td style="text-align:center;">
-
 0.0240266
-
 </td>
-
 <td style="text-align:center;">
-
 0.6457346
-
 </td>
-
 <td style="text-align:center;">
-
 2.225353
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Overall
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Inter\_PRS
-
+sig_Inter_PRS
 </td>
-
 <td style="text-align:center;">
-
 0.0534288
-
 </td>
-
 <td style="text-align:center;">
-
 0.0469201
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009098
-
 </td>
-
 <td style="text-align:center;">
-
 1.1270689
-
 </td>
-
 <td style="text-align:center;">
-
 4.200933
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Overall
-
 </td>
-
 <td style="text-align:center;">
-
-sig\_Intra\_PRS
-
+sig_Intra_PRS
 </td>
-
 <td style="text-align:center;">
-
-\-0.4033470
-
+-0.4033470
 </td>
-
 <td style="text-align:center;">
-
-\-0.4628683
-
+-0.4628683
 </td>
-
 <td style="text-align:center;">
-
 0.0210762
-
 </td>
-
 <td style="text-align:center;">
-
 0.5620643
-
 </td>
-
 <td style="text-align:center;">
-
 2.019343
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ![](ECC_files/figure-gfm/FM_Lambda_Decomp-2.png)<!-- -->
@@ -22251,7 +11362,7 @@ extraction.
 We will extract the trend of risk premium of the industry portfolios and
 the trend of the betas with the STL method, and then conduct the second
 step regression. There are two options with the STL method: the loess
-window for seasonal extraction (s\_window, large value means no rapidly
+window for seasonal extraction (s_window, large value means no rapidly
 evolving seasonal component, needs to be odd and at least 7) and robust
 weights for noise (downweight the noisy data in smoothing if
 non-Gaussian behavior in the time-series leads to extreme, transient
@@ -22265,7 +11376,7 @@ Premiums since the returns variation are mostly caused by Gaussian
 behavior. One example is the end of the trend curve: there was a market
 crash at the beginning of 2020, so the trend should go down. However,
 with the robust weighting, the market crash was given little wight and
-disappeared. At the same time, we might just choose s\_window = 7, since
+disappeared. At the same time, we might just choose s_window = 7, since
 there could be changing seasonal patterns in the short-term.
 
 Now, we would compare the cross-sectional distribution before and after
@@ -22278,4066 +11389,2037 @@ filtering.
 Now we estimate the strength of trend and strength of seasonality. The
 Strength of the trend is defined as:
 
-  
-![F\_T =
-max(0,1-\\frac{Var(R\_t)}{Var(T\_t+R\_t)})](https://latex.codecogs.com/png.latex?F_T%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28T_t%2BR_t%29%7D%29
-"F_T = max(0,1-\\frac{Var(R_t)}{Var(T_t+R_t)})")  
+![F_T = max(0,1-\\frac{Var(R_t)}{Var(T_t+R_t)})](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;F_T%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28T_t%2BR_t%29%7D%29 "F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})")
 
-  
-![F\_S =
-max(0,1-\\frac{Var(R\_t)}{Var(S\_t+R\_t)})](https://latex.codecogs.com/png.latex?F_S%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28S_t%2BR_t%29%7D%29
-"F_S = max(0,1-\\frac{Var(R_t)}{Var(S_t+R_t)})")  
+![F_S = max(0,1-\\frac{Var(R_t)}{Var(S_t+R_t)})](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;F_S%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28S_t%2BR_t%29%7D%29 "F_S = max(0,1-\frac{Var(R_t)}{Var(S_t+R_t)})")
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 STL Decomposition Component Strength for Portfolio Risk Premium
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 Strength
-
 </th>
-
 <th style="text-align:center;">
-
 method
-
 </th>
-
 <th style="text-align:center;">
-
 Aero
-
 </th>
-
 <th style="text-align:center;">
-
 Agric
-
 </th>
-
 <th style="text-align:center;">
-
 Autos
-
 </th>
-
 <th style="text-align:center;">
-
 Banks
-
 </th>
-
 <th style="text-align:center;">
-
 Beer
-
 </th>
-
 <th style="text-align:center;">
-
 BldMt
-
 </th>
-
 <th style="text-align:center;">
-
 Books
-
 </th>
-
 <th style="text-align:center;">
-
 Boxes
-
 </th>
-
 <th style="text-align:center;">
-
 BusSv
-
 </th>
-
 <th style="text-align:center;">
-
 Chems
-
 </th>
-
 <th style="text-align:center;">
-
 Chips
-
 </th>
-
 <th style="text-align:center;">
-
 Clths
-
 </th>
-
 <th style="text-align:center;">
-
 Cnstr
-
 </th>
-
 <th style="text-align:center;">
-
 Coal
-
 </th>
-
 <th style="text-align:center;">
-
 Drugs
-
 </th>
-
 <th style="text-align:center;">
-
 ElcEq
-
 </th>
-
 <th style="text-align:center;">
-
 FabPr
-
 </th>
-
 <th style="text-align:center;">
-
 Fin
-
 </th>
-
 <th style="text-align:center;">
-
 Food
-
 </th>
-
 <th style="text-align:center;">
-
 Fun
-
 </th>
-
 <th style="text-align:center;">
-
 Gold
-
 </th>
-
 <th style="text-align:center;">
-
 Guns
-
 </th>
-
 <th style="text-align:center;">
-
 Hardw
-
 </th>
-
 <th style="text-align:center;">
-
 Hlth
-
 </th>
-
 <th style="text-align:center;">
-
 Hshld
-
 </th>
-
 <th style="text-align:center;">
-
 Insur
-
 </th>
-
 <th style="text-align:center;">
-
 LabEq
-
 </th>
-
 <th style="text-align:center;">
-
 Mach
-
 </th>
-
 <th style="text-align:center;">
-
 Meals
-
 </th>
-
 <th style="text-align:center;">
-
 MedEq
-
 </th>
-
 <th style="text-align:center;">
-
 Mines
-
 </th>
-
 <th style="text-align:center;">
-
 Oil
-
 </th>
-
 <th style="text-align:center;">
-
 Other
-
 </th>
-
 <th style="text-align:center;">
-
 Paper
-
 </th>
-
 <th style="text-align:center;">
-
 PerSv
-
 </th>
-
 <th style="text-align:center;">
-
 RlEst
-
 </th>
-
 <th style="text-align:center;">
-
 Rtail
-
 </th>
-
 <th style="text-align:center;">
-
 Rubbr
-
 </th>
-
 <th style="text-align:center;">
-
 Ships
-
 </th>
-
 <th style="text-align:center;">
-
 Smoke
-
 </th>
-
 <th style="text-align:center;">
-
 Soda
-
 </th>
-
 <th style="text-align:center;">
-
 Softw
-
 </th>
-
 <th style="text-align:center;">
-
 Steel
-
 </th>
-
 <th style="text-align:center;">
-
 Telcm
-
 </th>
-
 <th style="text-align:center;">
-
 Toys
-
 </th>
-
 <th style="text-align:center;">
-
 Trans
-
 </th>
-
 <th style="text-align:center;">
-
 Txtls
-
 </th>
-
 <th style="text-align:center;">
-
 Util
-
 </th>
-
 <th style="text-align:center;">
-
 Whlsl
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FS
-
 </td>
-
 <td style="text-align:center;">
-
 s07 norobust
-
 </td>
-
 <td style="text-align:center;">
-
 0.3911851
-
 </td>
-
 <td style="text-align:center;">
-
 0.3725901
-
 </td>
-
 <td style="text-align:center;">
-
 0.4018774
-
 </td>
-
 <td style="text-align:center;">
-
 0.4123642
-
 </td>
-
 <td style="text-align:center;">
-
 0.3927234
-
 </td>
-
 <td style="text-align:center;">
-
 0.4078828
-
 </td>
-
 <td style="text-align:center;">
-
 0.3910922
-
 </td>
-
 <td style="text-align:center;">
-
 0.3648795
-
 </td>
-
 <td style="text-align:center;">
-
 0.3812723
-
 </td>
-
 <td style="text-align:center;">
-
 0.3675350
-
 </td>
-
 <td style="text-align:center;">
-
 0.3616610
-
 </td>
-
 <td style="text-align:center;">
-
 0.4190785
-
 </td>
-
 <td style="text-align:center;">
-
 0.3798464
-
 </td>
-
 <td style="text-align:center;">
-
 0.3773576
-
 </td>
-
 <td style="text-align:center;">
-
 0.3700809
-
 </td>
-
 <td style="text-align:center;">
-
 0.3704741
-
 </td>
-
 <td style="text-align:center;">
-
 0.3684705
-
 </td>
-
 <td style="text-align:center;">
-
 0.3673023
-
 </td>
-
 <td style="text-align:center;">
-
 0.3680159
-
 </td>
-
 <td style="text-align:center;">
-
 0.4094499
-
 </td>
-
 <td style="text-align:center;">
-
 0.3472977
-
 </td>
-
 <td style="text-align:center;">
-
 0.3537860
-
 </td>
-
 <td style="text-align:center;">
-
 0.3597511
-
 </td>
-
 <td style="text-align:center;">
-
 0.3807114
-
 </td>
-
 <td style="text-align:center;">
-
 0.3932478
-
 </td>
-
 <td style="text-align:center;">
-
 0.3934480
-
 </td>
-
 <td style="text-align:center;">
-
 0.3332523
-
 </td>
-
 <td style="text-align:center;">
-
 0.3668646
-
 </td>
-
 <td style="text-align:center;">
-
 0.3629374
-
 </td>
-
 <td style="text-align:center;">
-
 0.3584366
-
 </td>
-
 <td style="text-align:center;">
-
 0.3371663
-
 </td>
-
 <td style="text-align:center;">
-
 0.3550115
-
 </td>
-
 <td style="text-align:center;">
-
 0.3970981
-
 </td>
-
 <td style="text-align:center;">
-
 0.3472353
-
 </td>
-
 <td style="text-align:center;">
-
 0.3540942
-
 </td>
-
 <td style="text-align:center;">
-
 0.4210761
-
 </td>
-
 <td style="text-align:center;">
-
 0.3944570
-
 </td>
-
 <td style="text-align:center;">
-
 0.3988149
-
 </td>
-
 <td style="text-align:center;">
-
 0.3716232
-
 </td>
-
 <td style="text-align:center;">
-
 0.3130075
-
 </td>
-
 <td style="text-align:center;">
-
 0.3659172
-
 </td>
-
 <td style="text-align:center;">
-
 0.3278624
-
 </td>
-
 <td style="text-align:center;">
-
 0.3442852
-
 </td>
-
 <td style="text-align:center;">
-
 0.3609891
-
 </td>
-
 <td style="text-align:center;">
-
 0.3592305
-
 </td>
-
 <td style="text-align:center;">
-
 0.3992945
-
 </td>
-
 <td style="text-align:center;">
-
 0.4088416
-
 </td>
-
 <td style="text-align:center;">
-
 0.3775854
-
 </td>
-
 <td style="text-align:center;">
-
 0.3694408
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FS
-
 </td>
-
 <td style="text-align:center;">
-
 s07 robust
-
 </td>
-
 <td style="text-align:center;">
-
 0.1935022
-
 </td>
-
 <td style="text-align:center;">
-
 0.1330849
-
 </td>
-
 <td style="text-align:center;">
-
 0.1373592
-
 </td>
-
 <td style="text-align:center;">
-
 0.1786056
-
 </td>
-
 <td style="text-align:center;">
-
 0.1579393
-
 </td>
-
 <td style="text-align:center;">
-
 0.1348414
-
 </td>
-
 <td style="text-align:center;">
-
 0.1442415
-
 </td>
-
 <td style="text-align:center;">
-
 0.1368121
-
 </td>
-
 <td style="text-align:center;">
-
 0.1622529
-
 </td>
-
 <td style="text-align:center;">
-
 0.1123085
-
 </td>
-
 <td style="text-align:center;">
-
 0.1806169
-
 </td>
-
 <td style="text-align:center;">
-
 0.1924230
-
 </td>
-
 <td style="text-align:center;">
-
 0.1737184
-
 </td>
-
 <td style="text-align:center;">
-
 0.1818465
-
 </td>
-
 <td style="text-align:center;">
-
 0.1716535
-
 </td>
-
 <td style="text-align:center;">
-
 0.1602079
-
 </td>
-
 <td style="text-align:center;">
-
 0.1653442
-
 </td>
-
 <td style="text-align:center;">
-
 0.1365543
-
 </td>
-
 <td style="text-align:center;">
-
 0.2150892
-
 </td>
-
 <td style="text-align:center;">
-
 0.1515594
-
 </td>
-
 <td style="text-align:center;">
-
 0.1352441
-
 </td>
-
 <td style="text-align:center;">
-
 0.1784574
-
 </td>
-
 <td style="text-align:center;">
-
 0.1794134
-
 </td>
-
 <td style="text-align:center;">
-
 0.1686052
-
 </td>
-
 <td style="text-align:center;">
-
 0.1177779
-
 </td>
-
 <td style="text-align:center;">
-
 0.1909530
-
 </td>
-
 <td style="text-align:center;">
-
 0.1055538
-
 </td>
-
 <td style="text-align:center;">
-
 0.1627177
-
 </td>
-
 <td style="text-align:center;">
-
 0.0888803
-
 </td>
-
 <td style="text-align:center;">
-
 0.1570241
-
 </td>
-
 <td style="text-align:center;">
-
 0.0914811
-
 </td>
-
 <td style="text-align:center;">
-
 0.1353939
-
 </td>
-
 <td style="text-align:center;">
-
 0.2213339
-
 </td>
-
 <td style="text-align:center;">
-
 0.1559026
-
 </td>
-
 <td style="text-align:center;">
-
 0.1508374
-
 </td>
-
 <td style="text-align:center;">
-
 0.1097639
-
 </td>
-
 <td style="text-align:center;">
-
 0.1847783
-
 </td>
-
 <td style="text-align:center;">
-
 0.2223238
-
 </td>
-
 <td style="text-align:center;">
-
 0.1754397
-
 </td>
-
 <td style="text-align:center;">
-
 0.1644021
-
 </td>
-
 <td style="text-align:center;">
-
 0.1154241
-
 </td>
-
 <td style="text-align:center;">
-
 0.0835594
-
 </td>
-
 <td style="text-align:center;">
-
 0.1388996
-
 </td>
-
 <td style="text-align:center;">
-
 0.1721490
-
 </td>
-
 <td style="text-align:center;">
-
 0.1827868
-
 </td>
-
 <td style="text-align:center;">
-
 0.2070766
-
 </td>
-
 <td style="text-align:center;">
-
 0.1616175
-
 </td>
-
 <td style="text-align:center;">
-
 0.1465886
-
 </td>
-
 <td style="text-align:center;">
-
 0.1340354
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FS
-
 </td>
-
 <td style="text-align:center;">
-
 s15 norobust
-
 </td>
-
 <td style="text-align:center;">
-
 0.1715220
-
 </td>
-
 <td style="text-align:center;">
-
 0.1542386
-
 </td>
-
 <td style="text-align:center;">
-
 0.1466074
-
 </td>
-
 <td style="text-align:center;">
-
 0.1530480
-
 </td>
-
 <td style="text-align:center;">
-
 0.1629970
-
 </td>
-
 <td style="text-align:center;">
-
 0.1507389
-
 </td>
-
 <td style="text-align:center;">
-
 0.1425589
-
 </td>
-
 <td style="text-align:center;">
-
 0.1462846
-
 </td>
-
 <td style="text-align:center;">
-
 0.1499812
-
 </td>
-
 <td style="text-align:center;">
-
 0.1554518
-
 </td>
-
 <td style="text-align:center;">
-
 0.1437995
-
 </td>
-
 <td style="text-align:center;">
-
 0.1732677
-
 </td>
-
 <td style="text-align:center;">
-
 0.1592202
-
 </td>
-
 <td style="text-align:center;">
-
 0.1584251
-
 </td>
-
 <td style="text-align:center;">
-
 0.1356105
-
 </td>
-
 <td style="text-align:center;">
-
 0.1468336
-
 </td>
-
 <td style="text-align:center;">
-
 0.1364764
-
 </td>
-
 <td style="text-align:center;">
-
 0.1302110
-
 </td>
-
 <td style="text-align:center;">
-
 0.1434273
-
 </td>
-
 <td style="text-align:center;">
-
 0.1684885
-
 </td>
-
 <td style="text-align:center;">
-
 0.1532860
-
 </td>
-
 <td style="text-align:center;">
-
 0.1455716
-
 </td>
-
 <td style="text-align:center;">
-
 0.1570901
-
 </td>
-
 <td style="text-align:center;">
-
 0.1521780
-
 </td>
-
 <td style="text-align:center;">
-
 0.1346499
-
 </td>
-
 <td style="text-align:center;">
-
 0.1337293
-
 </td>
-
 <td style="text-align:center;">
-
 0.1358997
-
 </td>
-
 <td style="text-align:center;">
-
 0.1452397
-
 </td>
-
 <td style="text-align:center;">
-
 0.1303147
-
 </td>
-
 <td style="text-align:center;">
-
 0.1455287
-
 </td>
-
 <td style="text-align:center;">
-
 0.1229566
-
 </td>
-
 <td style="text-align:center;">
-
 0.1441907
-
 </td>
-
 <td style="text-align:center;">
-
 0.1853615
-
 </td>
-
 <td style="text-align:center;">
-
 0.1412987
-
 </td>
-
 <td style="text-align:center;">
-
 0.1435338
-
 </td>
-
 <td style="text-align:center;">
-
 0.1646089
-
 </td>
-
 <td style="text-align:center;">
-
 0.1462893
-
 </td>
-
 <td style="text-align:center;">
-
 0.1754984
-
 </td>
-
 <td style="text-align:center;">
-
 0.1499311
-
 </td>
-
 <td style="text-align:center;">
-
 0.1391745
-
 </td>
-
 <td style="text-align:center;">
-
 0.1533818
-
 </td>
-
 <td style="text-align:center;">
-
 0.1506773
-
 </td>
-
 <td style="text-align:center;">
-
 0.1417627
-
 </td>
-
 <td style="text-align:center;">
-
 0.1533034
-
 </td>
-
 <td style="text-align:center;">
-
 0.1544247
-
 </td>
-
 <td style="text-align:center;">
-
 0.1641945
-
 </td>
-
 <td style="text-align:center;">
-
 0.1755422
-
 </td>
-
 <td style="text-align:center;">
-
 0.1608538
-
 </td>
-
 <td style="text-align:center;">
-
 0.1414738
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FS
-
 </td>
-
 <td style="text-align:center;">
-
 s15 robust
-
 </td>
-
 <td style="text-align:center;">
-
 0.0932133
-
 </td>
-
 <td style="text-align:center;">
-
 0.0630820
-
 </td>
-
 <td style="text-align:center;">
-
 0.0636732
-
 </td>
-
 <td style="text-align:center;">
-
 0.0817096
-
 </td>
-
 <td style="text-align:center;">
-
 0.0697414
-
 </td>
-
 <td style="text-align:center;">
-
 0.0525724
-
 </td>
-
 <td style="text-align:center;">
-
 0.0654441
-
 </td>
-
 <td style="text-align:center;">
-
 0.0697971
-
 </td>
-
 <td style="text-align:center;">
-
 0.0682196
-
 </td>
-
 <td style="text-align:center;">
-
 0.0665752
-
 </td>
-
 <td style="text-align:center;">
-
 0.0817959
-
 </td>
-
 <td style="text-align:center;">
-
 0.1038690
-
 </td>
-
 <td style="text-align:center;">
-
 0.0931980
-
 </td>
-
 <td style="text-align:center;">
-
 0.0929010
-
 </td>
-
 <td style="text-align:center;">
-
 0.0748362
-
 </td>
-
 <td style="text-align:center;">
-
 0.0922239
-
 </td>
-
 <td style="text-align:center;">
-
 0.0735943
-
 </td>
-
 <td style="text-align:center;">
-
 0.0615121
-
 </td>
-
 <td style="text-align:center;">
-
 0.0560796
-
 </td>
-
 <td style="text-align:center;">
-
 0.0896648
-
 </td>
-
 <td style="text-align:center;">
-
 0.0709464
-
 </td>
-
 <td style="text-align:center;">
-
 0.0728823
-
 </td>
-
 <td style="text-align:center;">
-
 0.0856320
-
 </td>
-
 <td style="text-align:center;">
-
 0.0734410
-
 </td>
-
 <td style="text-align:center;">
-
 0.0392797
-
 </td>
-
 <td style="text-align:center;">
-
 0.0729093
-
 </td>
-
 <td style="text-align:center;">
-
 0.0600954
-
 </td>
-
 <td style="text-align:center;">
-
 0.0791513
-
 </td>
-
 <td style="text-align:center;">
-
 0.0629090
-
 </td>
-
 <td style="text-align:center;">
-
 0.0719507
-
 </td>
-
 <td style="text-align:center;">
-
 0.0405025
-
 </td>
-
 <td style="text-align:center;">
-
 0.0672994
-
 </td>
-
 <td style="text-align:center;">
-
 0.0831488
-
 </td>
-
 <td style="text-align:center;">
-
 0.0756608
-
 </td>
-
 <td style="text-align:center;">
-
 0.0719348
-
 </td>
-
 <td style="text-align:center;">
-
 0.0549216
-
 </td>
-
 <td style="text-align:center;">
-
 0.1015209
-
 </td>
-
 <td style="text-align:center;">
-
 0.1059332
-
 </td>
-
 <td style="text-align:center;">
-
 0.0761996
-
 </td>
-
 <td style="text-align:center;">
-
 0.0945961
-
 </td>
-
 <td style="text-align:center;">
-
 0.0624700
-
 </td>
-
 <td style="text-align:center;">
-
 0.0397197
-
 </td>
-
 <td style="text-align:center;">
-
 0.0834692
-
 </td>
-
 <td style="text-align:center;">
-
 0.0966527
-
 </td>
-
 <td style="text-align:center;">
-
 0.0892999
-
 </td>
-
 <td style="text-align:center;">
-
 0.0813360
-
 </td>
-
 <td style="text-align:center;">
-
 0.0726407
-
 </td>
-
 <td style="text-align:center;">
-
 0.0763601
-
 </td>
-
 <td style="text-align:center;">
-
 0.0562639
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FS
-
 </td>
-
 <td style="text-align:center;">
-
 s40 norobust
-
 </td>
-
 <td style="text-align:center;">
-
 0.0601633
-
 </td>
-
 <td style="text-align:center;">
-
 0.0475928
-
 </td>
-
 <td style="text-align:center;">
-
 0.0765333
-
 </td>
-
 <td style="text-align:center;">
-
 0.0434124
-
 </td>
-
 <td style="text-align:center;">
-
 0.0579168
-
 </td>
-
 <td style="text-align:center;">
-
 0.0552060
-
 </td>
-
 <td style="text-align:center;">
-
 0.0386767
-
 </td>
-
 <td style="text-align:center;">
-
 0.0649526
-
 </td>
-
 <td style="text-align:center;">
-
 0.0409870
-
 </td>
-
 <td style="text-align:center;">
-
 0.0739656
-
 </td>
-
 <td style="text-align:center;">
-
 0.0395210
-
 </td>
-
 <td style="text-align:center;">
-
 0.0581979
-
 </td>
-
 <td style="text-align:center;">
-
 0.0514092
-
 </td>
-
 <td style="text-align:center;">
-
 0.0598806
-
 </td>
-
 <td style="text-align:center;">
-
 0.0303644
-
 </td>
-
 <td style="text-align:center;">
-
 0.0567801
-
 </td>
-
 <td style="text-align:center;">
-
 0.0596509
-
 </td>
-
 <td style="text-align:center;">
-
 0.0341185
-
 </td>
-
 <td style="text-align:center;">
-
 0.0403368
-
 </td>
-
 <td style="text-align:center;">
-
 0.0688779
-
 </td>
-
 <td style="text-align:center;">
-
 0.0462200
-
 </td>
-
 <td style="text-align:center;">
-
 0.0607677
-
 </td>
-
 <td style="text-align:center;">
-
 0.0491420
-
 </td>
-
 <td style="text-align:center;">
-
 0.0502315
-
 </td>
-
 <td style="text-align:center;">
-
 0.0405826
-
 </td>
-
 <td style="text-align:center;">
-
 0.0413409
-
 </td>
-
 <td style="text-align:center;">
-
 0.0437884
-
 </td>
-
 <td style="text-align:center;">
-
 0.0599790
-
 </td>
-
 <td style="text-align:center;">
-
 0.0544320
-
 </td>
-
 <td style="text-align:center;">
-
 0.0421698
-
 </td>
-
 <td style="text-align:center;">
-
 0.0489724
-
 </td>
-
 <td style="text-align:center;">
-
 0.0491735
-
 </td>
-
 <td style="text-align:center;">
-
 0.0641968
-
 </td>
-
 <td style="text-align:center;">
-
 0.0637719
-
 </td>
-
 <td style="text-align:center;">
-
 0.0418764
-
 </td>
-
 <td style="text-align:center;">
-
 0.0671636
-
 </td>
-
 <td style="text-align:center;">
-
 0.0499496
-
 </td>
-
 <td style="text-align:center;">
-
 0.0782749
-
 </td>
-
 <td style="text-align:center;">
-
 0.0561672
-
 </td>
-
 <td style="text-align:center;">
-
 0.0422292
-
 </td>
-
 <td style="text-align:center;">
-
 0.0467096
-
 </td>
-
 <td style="text-align:center;">
-
 0.0500458
-
 </td>
-
 <td style="text-align:center;">
-
 0.0678029
-
 </td>
-
 <td style="text-align:center;">
-
 0.0453633
-
 </td>
-
 <td style="text-align:center;">
-
 0.0563154
-
 </td>
-
 <td style="text-align:center;">
-
 0.0566933
-
 </td>
-
 <td style="text-align:center;">
-
 0.0613601
-
 </td>
-
 <td style="text-align:center;">
-
 0.0558211
-
 </td>
-
 <td style="text-align:center;">
-
 0.0480012
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FS
-
 </td>
-
 <td style="text-align:center;">
-
 s40 robust
-
 </td>
-
 <td style="text-align:center;">
-
 0.0195290
-
 </td>
-
 <td style="text-align:center;">
-
 0.0251790
-
 </td>
-
 <td style="text-align:center;">
-
 0.0436084
-
 </td>
-
 <td style="text-align:center;">
-
 0.0206615
-
 </td>
-
 <td style="text-align:center;">
-
 0.0184751
-
 </td>
-
 <td style="text-align:center;">
-
 0.0271615
-
 </td>
-
 <td style="text-align:center;">
-
 0.0184102
-
 </td>
-
 <td style="text-align:center;">
-
 0.0451552
-
 </td>
-
 <td style="text-align:center;">
-
 0.0161600
-
 </td>
-
 <td style="text-align:center;">
-
 0.0406732
-
 </td>
-
 <td style="text-align:center;">
-
 0.0254891
-
 </td>
-
 <td style="text-align:center;">
-
 0.0289817
-
 </td>
-
 <td style="text-align:center;">
-
 0.0398457
-
 </td>
-
 <td style="text-align:center;">
-
 0.0294088
-
 </td>
-
 <td style="text-align:center;">
-
 0.0173966
-
 </td>
-
 <td style="text-align:center;">
-
 0.0393771
-
 </td>
-
 <td style="text-align:center;">
-
 0.0358616
-
 </td>
-
 <td style="text-align:center;">
-
 0.0173265
-
 </td>
-
 <td style="text-align:center;">
-
 0.0129435
-
 </td>
-
 <td style="text-align:center;">
-
 0.0496558
-
 </td>
-
 <td style="text-align:center;">
-
 0.0325875
-
 </td>
-
 <td style="text-align:center;">
-
 0.0330893
-
 </td>
-
 <td style="text-align:center;">
-
 0.0326774
-
 </td>
-
 <td style="text-align:center;">
-
 0.0252610
-
 </td>
-
 <td style="text-align:center;">
-
 0.0195269
-
 </td>
-
 <td style="text-align:center;">
-
 0.0293054
-
 </td>
-
 <td style="text-align:center;">
-
 0.0302699
-
 </td>
-
 <td style="text-align:center;">
-
 0.0410299
-
 </td>
-
 <td style="text-align:center;">
-
 0.0383096
-
 </td>
-
 <td style="text-align:center;">
-
 0.0285954
-
 </td>
-
 <td style="text-align:center;">
-
 0.0365749
-
 </td>
-
 <td style="text-align:center;">
-
 0.0225854
-
 </td>
-
 <td style="text-align:center;">
-
 0.0280083
-
 </td>
-
 <td style="text-align:center;">
-
 0.0411606
-
 </td>
-
 <td style="text-align:center;">
-
 0.0199753
-
 </td>
-
 <td style="text-align:center;">
-
 0.0302439
-
 </td>
-
 <td style="text-align:center;">
-
 0.0300381
-
 </td>
-
 <td style="text-align:center;">
-
 0.0465594
-
 </td>
-
 <td style="text-align:center;">
-
 0.0432242
-
 </td>
-
 <td style="text-align:center;">
-
 0.0279197
-
 </td>
-
 <td style="text-align:center;">
-
 0.0230431
-
 </td>
-
 <td style="text-align:center;">
-
 0.0100405
-
 </td>
-
 <td style="text-align:center;">
-
 0.0457963
-
 </td>
-
 <td style="text-align:center;">
-
 0.0332615
-
 </td>
-
 <td style="text-align:center;">
-
 0.0369541
-
 </td>
-
 <td style="text-align:center;">
-
 0.0330005
-
 </td>
-
 <td style="text-align:center;">
-
 0.0367820
-
 </td>
-
 <td style="text-align:center;">
-
 0.0359658
-
 </td>
-
 <td style="text-align:center;">
-
 0.0233252
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FT
-
 </td>
-
 <td style="text-align:center;">
-
 s07 norobust
-
 </td>
-
 <td style="text-align:center;">
-
 0.1747301
-
 </td>
-
 <td style="text-align:center;">
-
 0.1218548
-
 </td>
-
 <td style="text-align:center;">
-
 0.1722092
-
 </td>
-
 <td style="text-align:center;">
-
 0.1530624
-
 </td>
-
 <td style="text-align:center;">
-
 0.1444809
-
 </td>
-
 <td style="text-align:center;">
-
 0.1299203
-
 </td>
-
 <td style="text-align:center;">
-
 0.1915024
-
 </td>
-
 <td style="text-align:center;">
-
 0.1342552
-
 </td>
-
 <td style="text-align:center;">
-
 0.1548790
-
 </td>
-
 <td style="text-align:center;">
-
 0.1323798
-
 </td>
-
 <td style="text-align:center;">
-
 0.1731102
-
 </td>
-
 <td style="text-align:center;">
-
 0.1781217
-
 </td>
-
 <td style="text-align:center;">
-
 0.1544956
-
 </td>
-
 <td style="text-align:center;">
-
 0.1934636
-
 </td>
-
 <td style="text-align:center;">
-
 0.1346082
-
 </td>
-
 <td style="text-align:center;">
-
 0.1277598
-
 </td>
-
 <td style="text-align:center;">
-
 0.1373339
-
 </td>
-
 <td style="text-align:center;">
-
 0.1621637
-
 </td>
-
 <td style="text-align:center;">
-
 0.1402085
-
 </td>
-
 <td style="text-align:center;">
-
 0.1668559
-
 </td>
-
 <td style="text-align:center;">
-
 0.1174218
-
 </td>
-
 <td style="text-align:center;">
-
 0.1392205
-
 </td>
-
 <td style="text-align:center;">
-
 0.1688858
-
 </td>
-
 <td style="text-align:center;">
-
 0.1965993
-
 </td>
-
 <td style="text-align:center;">
-
 0.1523608
-
 </td>
-
 <td style="text-align:center;">
-
 0.1570573
-
 </td>
-
 <td style="text-align:center;">
-
 0.1306660
-
 </td>
-
 <td style="text-align:center;">
-
 0.1365207
-
 </td>
-
 <td style="text-align:center;">
-
 0.1473765
-
 </td>
-
 <td style="text-align:center;">
-
 0.1511585
-
 </td>
-
 <td style="text-align:center;">
-
 0.1497665
-
 </td>
-
 <td style="text-align:center;">
-
 0.1316594
-
 </td>
-
 <td style="text-align:center;">
-
 0.1699624
-
 </td>
-
 <td style="text-align:center;">
-
 0.1222298
-
 </td>
-
 <td style="text-align:center;">
-
 0.1515716
-
 </td>
-
 <td style="text-align:center;">
-
 0.2029502
-
 </td>
-
 <td style="text-align:center;">
-
 0.1425971
-
 </td>
-
 <td style="text-align:center;">
-
 0.1441369
-
 </td>
-
 <td style="text-align:center;">
-
 0.1251990
-
 </td>
-
 <td style="text-align:center;">
-
 0.1381937
-
 </td>
-
 <td style="text-align:center;">
-
 0.1379424
-
 </td>
-
 <td style="text-align:center;">
-
 0.1290404
-
 </td>
-
 <td style="text-align:center;">
-
 0.1376526
-
 </td>
-
 <td style="text-align:center;">
-
 0.1838286
-
 </td>
-
 <td style="text-align:center;">
-
 0.1301331
-
 </td>
-
 <td style="text-align:center;">
-
 0.1520290
-
 </td>
-
 <td style="text-align:center;">
-
 0.1622098
-
 </td>
-
 <td style="text-align:center;">
-
 0.1708918
-
 </td>
-
 <td style="text-align:center;">
-
 0.1498722
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FT
-
 </td>
-
 <td style="text-align:center;">
-
 s07 robust
-
 </td>
-
 <td style="text-align:center;">
-
 0.0615722
-
 </td>
-
 <td style="text-align:center;">
-
 0.0310825
-
 </td>
-
 <td style="text-align:center;">
-
 0.0513790
-
 </td>
-
 <td style="text-align:center;">
-
 0.0051914
-
 </td>
-
 <td style="text-align:center;">
-
 0.0480184
-
 </td>
-
 <td style="text-align:center;">
-
 0.0108255
-
 </td>
-
 <td style="text-align:center;">
-
 0.0755777
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000000
-
 </td>
-
 <td style="text-align:center;">
-
 0.0617244
-
 </td>
-
 <td style="text-align:center;">
-
 0.0317907
-
 </td>
-
 <td style="text-align:center;">
-
 0.0788905
-
 </td>
-
 <td style="text-align:center;">
-
 0.0470572
-
 </td>
-
 <td style="text-align:center;">
-
 0.0623079
-
 </td>
-
 <td style="text-align:center;">
-
 0.0886780
-
 </td>
-
 <td style="text-align:center;">
-
 0.0386053
-
 </td>
-
 <td style="text-align:center;">
-
 0.0212144
-
 </td>
-
 <td style="text-align:center;">
-
 0.0290154
-
 </td>
-
 <td style="text-align:center;">
-
 0.0314009
-
 </td>
-
 <td style="text-align:center;">
-
 0.0609016
-
 </td>
-
 <td style="text-align:center;">
-
 0.0495621
-
 </td>
-
 <td style="text-align:center;">
-
 0.0458769
-
 </td>
-
 <td style="text-align:center;">
-
 0.0429066
-
 </td>
-
 <td style="text-align:center;">
-
 0.0669126
-
 </td>
-
 <td style="text-align:center;">
-
 0.0657843
-
 </td>
-
 <td style="text-align:center;">
-
 0.0016019
-
 </td>
-
 <td style="text-align:center;">
-
 0.0502745
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000000
-
 </td>
-
 <td style="text-align:center;">
-
 0.0365109
-
 </td>
-
 <td style="text-align:center;">
-
 0.0552708
-
 </td>
-
 <td style="text-align:center;">
-
 0.0375878
-
 </td>
-
 <td style="text-align:center;">
-
 0.0047704
-
 </td>
-
 <td style="text-align:center;">
-
 0.0351032
-
 </td>
-
 <td style="text-align:center;">
-
 0.0507331
-
 </td>
-
 <td style="text-align:center;">
-
 0.0294042
-
 </td>
-
 <td style="text-align:center;">
-
 0.0800777
-
 </td>
-
 <td style="text-align:center;">
-
 0.0567200
-
 </td>
-
 <td style="text-align:center;">
-
 0.0456076
-
 </td>
-
 <td style="text-align:center;">
-
 0.0515451
-
 </td>
-
 <td style="text-align:center;">
-
 0.0251869
-
 </td>
-
 <td style="text-align:center;">
-
 0.0375225
-
 </td>
-
 <td style="text-align:center;">
-
 0.0453823
-
 </td>
-
 <td style="text-align:center;">
-
 0.0023200
-
 </td>
-
 <td style="text-align:center;">
-
 0.0252830
-
 </td>
-
 <td style="text-align:center;">
-
 0.0698966
-
 </td>
-
 <td style="text-align:center;">
-
 0.0704611
-
 </td>
-
 <td style="text-align:center;">
-
 0.0167496
-
 </td>
-
 <td style="text-align:center;">
-
 0.0664586
-
 </td>
-
 <td style="text-align:center;">
-
 0.0025032
-
 </td>
-
 <td style="text-align:center;">
-
 0.0457656
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FT
-
 </td>
-
 <td style="text-align:center;">
-
 s15 norobust
-
 </td>
-
 <td style="text-align:center;">
-
 0.1407848
-
 </td>
-
 <td style="text-align:center;">
-
 0.1029359
-
 </td>
-
 <td style="text-align:center;">
-
 0.1354323
-
 </td>
-
 <td style="text-align:center;">
-
 0.1209299
-
 </td>
-
 <td style="text-align:center;">
-
 0.1143252
-
 </td>
-
 <td style="text-align:center;">
-
 0.1003318
-
 </td>
-
 <td style="text-align:center;">
-
 0.1502053
-
 </td>
-
 <td style="text-align:center;">
-
 0.1105516
-
 </td>
-
 <td style="text-align:center;">
-
 0.1281721
-
 </td>
-
 <td style="text-align:center;">
-
 0.1114761
-
 </td>
-
 <td style="text-align:center;">
-
 0.1419507
-
 </td>
-
 <td style="text-align:center;">
-
 0.1352655
-
 </td>
-
 <td style="text-align:center;">
-
 0.1278098
-
 </td>
-
 <td style="text-align:center;">
-
 0.1614405
-
 </td>
-
 <td style="text-align:center;">
-
 0.1074691
-
 </td>
-
 <td style="text-align:center;">
-
 0.1046091
-
 </td>
-
 <td style="text-align:center;">
-
 0.1142497
-
 </td>
-
 <td style="text-align:center;">
-
 0.1322714
-
 </td>
-
 <td style="text-align:center;">
-
 0.1098999
-
 </td>
-
 <td style="text-align:center;">
-
 0.1320479
-
 </td>
-
 <td style="text-align:center;">
-
 0.1008032
-
 </td>
-
 <td style="text-align:center;">
-
 0.1114172
-
 </td>
-
 <td style="text-align:center;">
-
 0.1402189
-
 </td>
-
 <td style="text-align:center;">
-
 0.1674478
-
 </td>
-
 <td style="text-align:center;">
-
 0.1172914
-
 </td>
-
 <td style="text-align:center;">
-
 0.1240296
-
 </td>
-
 <td style="text-align:center;">
-
 0.1111200
-
 </td>
-
 <td style="text-align:center;">
-
 0.1148631
-
 </td>
-
 <td style="text-align:center;">
-
 0.1169995
-
 </td>
-
 <td style="text-align:center;">
-
 0.1288658
-
 </td>
-
 <td style="text-align:center;">
-
 0.1301918
-
 </td>
-
 <td style="text-align:center;">
-
 0.1043315
-
 </td>
-
 <td style="text-align:center;">
-
 0.1362260
-
 </td>
-
 <td style="text-align:center;">
-
 0.1029547
-
 </td>
-
 <td style="text-align:center;">
-
 0.1200181
-
 </td>
-
 <td style="text-align:center;">
-
 0.1597103
-
 </td>
-
 <td style="text-align:center;">
-
 0.1105676
-
 </td>
-
 <td style="text-align:center;">
-
 0.1161866
-
 </td>
-
 <td style="text-align:center;">
-
 0.1039593
-
 </td>
-
 <td style="text-align:center;">
-
 0.1200972
-
 </td>
-
 <td style="text-align:center;">
-
 0.1113521
-
 </td>
-
 <td style="text-align:center;">
-
 0.1110099
-
 </td>
-
 <td style="text-align:center;">
-
 0.1156434
-
 </td>
-
 <td style="text-align:center;">
-
 0.1492082
-
 </td>
-
 <td style="text-align:center;">
-
 0.1104237
-
 </td>
-
 <td style="text-align:center;">
-
 0.1213890
-
 </td>
-
 <td style="text-align:center;">
-
 0.1256044
-
 </td>
-
 <td style="text-align:center;">
-
 0.1371936
-
 </td>
-
 <td style="text-align:center;">
-
 0.1203757
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FT
-
 </td>
-
 <td style="text-align:center;">
-
 s15 robust
-
 </td>
-
 <td style="text-align:center;">
-
 0.0697357
-
 </td>
-
 <td style="text-align:center;">
-
 0.0377960
-
 </td>
-
 <td style="text-align:center;">
-
 0.0695943
-
 </td>
-
 <td style="text-align:center;">
-
 0.0444541
-
 </td>
-
 <td style="text-align:center;">
-
 0.0643411
-
 </td>
-
 <td style="text-align:center;">
-
 0.0181430
-
 </td>
-
 <td style="text-align:center;">
-
 0.0962614
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000000
-
 </td>
-
 <td style="text-align:center;">
-
 0.0574438
-
 </td>
-
 <td style="text-align:center;">
-
 0.0420824
-
 </td>
-
 <td style="text-align:center;">
-
 0.0881330
-
 </td>
-
 <td style="text-align:center;">
-
 0.0849883
-
 </td>
-
 <td style="text-align:center;">
-
 0.0770077
-
 </td>
-
 <td style="text-align:center;">
-
 0.1030379
-
 </td>
-
 <td style="text-align:center;">
-
 0.0671929
-
 </td>
-
 <td style="text-align:center;">
-
 0.0481982
-
 </td>
-
 <td style="text-align:center;">
-
 0.0477861
-
 </td>
-
 <td style="text-align:center;">
-
 0.0127605
-
 </td>
-
 <td style="text-align:center;">
-
 0.0360501
-
 </td>
-
 <td style="text-align:center;">
-
 0.0535708
-
 </td>
-
 <td style="text-align:center;">
-
 0.0591903
-
 </td>
-
 <td style="text-align:center;">
-
 0.0614146
-
 </td>
-
 <td style="text-align:center;">
-
 0.0539884
-
 </td>
-
 <td style="text-align:center;">
-
 0.0736465
-
 </td>
-
 <td style="text-align:center;">
-
 0.0315696
-
 </td>
-
 <td style="text-align:center;">
-
 0.0272153
-
 </td>
-
 <td style="text-align:center;">
-
 0.0372867
-
 </td>
-
 <td style="text-align:center;">
-
 0.0646442
-
 </td>
-
 <td style="text-align:center;">
-
 0.0446057
-
 </td>
-
 <td style="text-align:center;">
-
 0.0334147
-
 </td>
-
 <td style="text-align:center;">
-
 0.0578639
-
 </td>
-
 <td style="text-align:center;">
-
 0.0509970
-
 </td>
-
 <td style="text-align:center;">
-
 0.0502580
-
 </td>
-
 <td style="text-align:center;">
-
 0.0502323
-
 </td>
-
 <td style="text-align:center;">
-
 0.0820566
-
 </td>
-
 <td style="text-align:center;">
-
 0.0540329
-
 </td>
-
 <td style="text-align:center;">
-
 0.0797632
-
 </td>
-
 <td style="text-align:center;">
-
 0.0579009
-
 </td>
-
 <td style="text-align:center;">
-
 0.0385608
-
 </td>
-
 <td style="text-align:center;">
-
 0.0580475
-
 </td>
-
 <td style="text-align:center;">
-
 0.0615840
-
 </td>
-
 <td style="text-align:center;">
-
 0.0340669
-
 </td>
-
 <td style="text-align:center;">
-
 0.0293688
-
 </td>
-
 <td style="text-align:center;">
-
 0.0958803
-
 </td>
-
 <td style="text-align:center;">
-
 0.0777113
-
 </td>
-
 <td style="text-align:center;">
-
 0.0384853
-
 </td>
-
 <td style="text-align:center;">
-
 0.0531726
-
 </td>
-
 <td style="text-align:center;">
-
 0.0310471
-
 </td>
-
 <td style="text-align:center;">
-
 0.0478614
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FT
-
 </td>
-
 <td style="text-align:center;">
-
 s40 norobust
-
 </td>
-
 <td style="text-align:center;">
-
 0.1392491
-
 </td>
-
 <td style="text-align:center;">
-
 0.1061359
-
 </td>
-
 <td style="text-align:center;">
-
 0.1370404
-
 </td>
-
 <td style="text-align:center;">
-
 0.1228059
-
 </td>
-
 <td style="text-align:center;">
-
 0.1128373
-
 </td>
-
 <td style="text-align:center;">
-
 0.1046560
-
 </td>
-
 <td style="text-align:center;">
-
 0.1527875
-
 </td>
-
 <td style="text-align:center;">
-
 0.1122508
-
 </td>
-
 <td style="text-align:center;">
-
 0.1315556
-
 </td>
-
 <td style="text-align:center;">
-
 0.1136538
-
 </td>
-
 <td style="text-align:center;">
-
 0.1424726
-
 </td>
-
 <td style="text-align:center;">
-
 0.1297128
-
 </td>
-
 <td style="text-align:center;">
-
 0.1314119
-
 </td>
-
 <td style="text-align:center;">
-
 0.1663026
-
 </td>
-
 <td style="text-align:center;">
-
 0.1058051
-
 </td>
-
 <td style="text-align:center;">
-
 0.1075340
-
 </td>
-
 <td style="text-align:center;">
-
 0.1211150
-
 </td>
-
 <td style="text-align:center;">
-
 0.1374774
-
 </td>
-
 <td style="text-align:center;">
-
 0.1093715
-
 </td>
-
 <td style="text-align:center;">
-
 0.1351366
-
 </td>
-
 <td style="text-align:center;">
-
 0.0999502
-
 </td>
-
 <td style="text-align:center;">
-
 0.1145405
-
 </td>
-
 <td style="text-align:center;">
-
 0.1379634
-
 </td>
-
 <td style="text-align:center;">
-
 0.1762155
-
 </td>
-
 <td style="text-align:center;">
-
 0.1224816
-
 </td>
-
 <td style="text-align:center;">
-
 0.1257258
-
 </td>
-
 <td style="text-align:center;">
-
 0.1160512
-
 </td>
-
 <td style="text-align:center;">
-
 0.1197718
-
 </td>
-
 <td style="text-align:center;">
-
 0.1240796
-
 </td>
-
 <td style="text-align:center;">
-
 0.1310452
-
 </td>
-
 <td style="text-align:center;">
-
 0.1339221
-
 </td>
-
 <td style="text-align:center;">
-
 0.1046548
-
 </td>
-
 <td style="text-align:center;">
-
 0.1344719
-
 </td>
-
 <td style="text-align:center;">
-
 0.1031931
-
 </td>
-
 <td style="text-align:center;">
-
 0.1191116
-
 </td>
-
 <td style="text-align:center;">
-
 0.1628746
-
 </td>
-
 <td style="text-align:center;">
-
 0.1128658
-
 </td>
-
 <td style="text-align:center;">
-
 0.1215241
-
 </td>
-
 <td style="text-align:center;">
-
 0.1089579
-
 </td>
-
 <td style="text-align:center;">
-
 0.1198918
-
 </td>
-
 <td style="text-align:center;">
-
 0.1094232
-
 </td>
-
 <td style="text-align:center;">
-
 0.1117915
-
 </td>
-
 <td style="text-align:center;">
-
 0.1187315
-
 </td>
-
 <td style="text-align:center;">
-
 0.1438505
-
 </td>
-
 <td style="text-align:center;">
-
 0.1144191
-
 </td>
-
 <td style="text-align:center;">
-
 0.1202181
-
 </td>
-
 <td style="text-align:center;">
-
 0.1212746
-
 </td>
-
 <td style="text-align:center;">
-
 0.1337691
-
 </td>
-
 <td style="text-align:center;">
-
 0.1221408
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FT
-
 </td>
-
 <td style="text-align:center;">
-
 s40 robust
-
 </td>
-
 <td style="text-align:center;">
-
 0.0620425
-
 </td>
-
 <td style="text-align:center;">
-
 0.0524872
-
 </td>
-
 <td style="text-align:center;">
-
 0.0787254
-
 </td>
-
 <td style="text-align:center;">
-
 0.0299023
-
 </td>
-
 <td style="text-align:center;">
-
 0.0653389
-
 </td>
-
 <td style="text-align:center;">
-
 0.0345767
-
 </td>
-
 <td style="text-align:center;">
-
 0.1057528
-
 </td>
-
 <td style="text-align:center;">
-
 0.0325341
-
 </td>
-
 <td style="text-align:center;">
-
 0.0764593
-
 </td>
-
 <td style="text-align:center;">
-
 0.0490294
-
 </td>
-
 <td style="text-align:center;">
-
 0.1017065
-
 </td>
-
 <td style="text-align:center;">
-
 0.0784469
-
 </td>
-
 <td style="text-align:center;">
-
 0.0940683
-
 </td>
-
 <td style="text-align:center;">
-
 0.1243466
-
 </td>
-
 <td style="text-align:center;">
-
 0.0745595
-
 </td>
-
 <td style="text-align:center;">
-
 0.0610655
-
 </td>
-
 <td style="text-align:center;">
-
 0.0637757
-
 </td>
-
 <td style="text-align:center;">
-
 0.0645653
-
 </td>
-
 <td style="text-align:center;">
-
 0.0460254
-
 </td>
-
 <td style="text-align:center;">
-
 0.0605526
-
 </td>
-
 <td style="text-align:center;">
-
 0.0686601
-
 </td>
-
 <td style="text-align:center;">
-
 0.0708301
-
 </td>
-
 <td style="text-align:center;">
-
 0.0756040
-
 </td>
-
 <td style="text-align:center;">
-
 0.1048584
-
 </td>
-
 <td style="text-align:center;">
-
 0.0531525
-
 </td>
-
 <td style="text-align:center;">
-
 0.0459628
-
 </td>
-
 <td style="text-align:center;">
-
 0.0578484
-
 </td>
-
 <td style="text-align:center;">
-
 0.0792166
-
 </td>
-
 <td style="text-align:center;">
-
 0.0643925
-
 </td>
-
 <td style="text-align:center;">
-
 0.0663802
-
 </td>
-
 <td style="text-align:center;">
-
 0.0841352
-
 </td>
-
 <td style="text-align:center;">
-
 0.0527248
-
 </td>
-
 <td style="text-align:center;">
-
 0.0639323
-
 </td>
-
 <td style="text-align:center;">
-
 0.0601636
-
 </td>
-
 <td style="text-align:center;">
-
 0.0855092
-
 </td>
-
 <td style="text-align:center;">
-
 0.0640592
-
 </td>
-
 <td style="text-align:center;">
-
 0.0843181
-
 </td>
-
 <td style="text-align:center;">
-
 0.0763113
-
 </td>
-
 <td style="text-align:center;">
-
 0.0602987
-
 </td>
-
 <td style="text-align:center;">
-
 0.0718530
-
 </td>
-
 <td style="text-align:center;">
-
 0.0629026
-
 </td>
-
 <td style="text-align:center;">
-
 0.0356287
-
 </td>
-
 <td style="text-align:center;">
-
 0.0470413
-
 </td>
-
 <td style="text-align:center;">
-
 0.0859378
-
 </td>
-
 <td style="text-align:center;">
-
 0.0830256
-
 </td>
-
 <td style="text-align:center;">
-
 0.0734112
-
 </td>
-
 <td style="text-align:center;">
-
 0.0606631
-
 </td>
-
 <td style="text-align:center;">
-
 0.0579499
-
 </td>
-
 <td style="text-align:center;">
-
 0.0611395
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 It seems that the both the trend and seasonal components are weak. No
-robust is stronger than robust, and smaller s\_window would yield
+robust is stronger than robust, and smaller s_window would yield
 stronger components.
 
 ### S4-4-3 Beta Decomposition
@@ -26345,9 +13427,9 @@ stronger components.
 ![](ECC_files/figure-gfm/Beta_Decomposition-1.png)<!-- -->![](ECC_files/figure-gfm/Beta_Decomposition-2.png)<!-- -->![](ECC_files/figure-gfm/Beta_Decomposition-3.png)<!-- -->![](ECC_files/figure-gfm/Beta_Decomposition-4.png)<!-- -->![](ECC_files/figure-gfm/Beta_Decomposition-5.png)<!-- -->![](ECC_files/figure-gfm/Beta_Decomposition-6.png)<!-- -->![](ECC_files/figure-gfm/Beta_Decomposition-7.png)<!-- -->![](ECC_files/figure-gfm/Beta_Decomposition-8.png)<!-- -->
 
 Beta estimation’s noise or seasonal pattern is much smaller than trend
-so the noise weight or the s\_window does not impact the result as much.
+so the noise weight or the s_window does not impact the result as much.
 
-Now, we will take the desired no robust weighting, s\_window = 7 trend
+Now, we will take the desired no robust weighting, s_window = 7 trend
 results of the Industry Risk Premium to estimate the factor risk
 premium.
 
@@ -26361,294 +13443,152 @@ other filtering.
 ### S4-4-5 Component Second Pass Regression Comparison
 
 ![](ECC_files/figure-gfm/Component_FM-1.png)<!-- -->
-
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 R Squared from Regressing (Panel) Fama French Five Factor Betas on STL
 Components
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 component
-
 </th>
-
 <th style="text-align:center;">
-
 r.squared
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Original
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002428
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Trend
-
 </td>
-
 <td style="text-align:center;">
-
 0.0027479
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Seasonal
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000137
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Noise
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000424
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ### S4-4-6 Regression Standard Error
 
 ![](ECC_files/figure-gfm/Regression_SE-1.png)<!-- -->
-
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Average Cross-sectional Regression Lambda Error
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 Factors
-
 </th>
-
 <th style="text-align:center;">
-
 FM
-
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL
-
+FM_STL
 </th>
-
 <th style="text-align:center;">
-
 ratio
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
 0.0242209
-
 </td>
-
 <td style="text-align:center;">
-
 0.0067356
-
 </td>
-
 <td style="text-align:center;">
-
 0.2780926
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 SMB
-
 </td>
-
 <td style="text-align:center;">
-
 0.0136397
-
 </td>
-
 <td style="text-align:center;">
-
 0.0037532
-
 </td>
-
 <td style="text-align:center;">
-
 0.2751689
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 HML
-
 </td>
-
 <td style="text-align:center;">
-
 0.0128173
-
 </td>
-
 <td style="text-align:center;">
-
 0.0035860
-
 </td>
-
 <td style="text-align:center;">
-
 0.2797759
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
 0.0105978
-
 </td>
-
 <td style="text-align:center;">
-
 0.0029457
-
 </td>
-
 <td style="text-align:center;">
-
 0.2779490
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 CMA
-
 </td>
-
 <td style="text-align:center;">
-
 0.0102657
-
 </td>
-
 <td style="text-align:center;">
-
 0.0028642
-
 </td>
-
 <td style="text-align:center;">
-
 0.2790084
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ![](ECC_files/figure-gfm/Regression_SE-2.png)<!-- -->
@@ -26659,19 +13599,12 @@ Let’s plot the unfiltered lambda together with filtered lambda to see
 the effect of filtering on lambda.
 
 ![](ECC_files/figure-gfm/Lambda_Comparison-1.png)<!-- -->![](ECC_files/figure-gfm/Lambda_Comparison-2.png)<!-- -->
-
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Correlation between FM lambda and STL filtered FM lambda
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -26681,7 +13614,6 @@ FF5
 </div>
 
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -26691,183 +13623,94 @@ PRS
 </div>
 
 </th>
-
 </tr>
-
 <tr>
-
 <th style="text-align:center;">
-
 Factors
-
 </th>
-
 <th style="text-align:center;">
-
 FF5
-
 </th>
-
 <th style="text-align:center;">
-
 Factors
-
 </th>
-
 <th style="text-align:center;">
-
 PRS
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
 0.3076751
-
 </td>
-
 <td style="text-align:center;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
 0.3391793
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 SMB
-
 </td>
-
 <td style="text-align:center;">
-
 0.3241830
-
 </td>
-
 <td style="text-align:center;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
 0.3566414
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 HML
-
 </td>
-
 <td style="text-align:center;">
-
 0.4178838
-
 </td>
-
 <td style="text-align:center;">
-
 dDP
-
 </td>
-
 <td style="text-align:center;">
-
 0.3544000
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
 0.3184673
-
 </td>
-
 <td style="text-align:center;">
-
 dTS
-
 </td>
-
 <td style="text-align:center;">
-
 0.3891172
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 CMA
-
 </td>
-
 <td style="text-align:center;">
-
 0.3677557
-
 </td>
-
 <td style="text-align:center;">
-
 UNEXPI
-
 </td>
-
 <td style="text-align:center;">
-
 0.3892405
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ![](ECC_files/figure-gfm/Lambda_Comparison-3.png)<!-- -->![](ECC_files/figure-gfm/Lambda_Comparison-4.png)<!-- -->![](ECC_files/figure-gfm/Lambda_Comparison-5.png)<!-- -->![](ECC_files/figure-gfm/Lambda_Comparison-6.png)<!-- -->
@@ -26878,414 +13721,180 @@ We also performed a KS test to test the FM lambdas and STL FM lambdas
 for different factors. It seems that their distributions are different.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 KS Test for Fama Mecbeth Lambdas and STL FM Lambdas
-
 </caption>
-
 <thead>
-
 <tr>
-
-<th style="text-align:left;">
-
-</th>
-
 <th style="text-align:center;">
-
 model
-
 </th>
-
 <th style="text-align:center;">
-
 Factors
-
 </th>
-
 <th style="text-align:center;">
-
 statistic
-
 </th>
-
 <th style="text-align:center;">
-
 p.value
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
-<td style="text-align:left;font-weight: bold;">
-
-2
-
-</td>
-
-<td style="text-align:center;">
-
+<td style="text-align:center;font-weight: bold;">
 FF5
-
 </td>
-
 <td style="text-align:center;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
 0.2947559
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
-<td style="text-align:left;font-weight: bold;">
-
-21
-
-</td>
-
-<td style="text-align:center;">
-
+<td style="text-align:center;font-weight: bold;">
 FF5
-
 </td>
-
 <td style="text-align:center;">
-
 SMB
-
 </td>
-
 <td style="text-align:center;">
-
 0.3092224
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
-<td style="text-align:left;font-weight: bold;">
-
-3
-
-</td>
-
-<td style="text-align:center;">
-
+<td style="text-align:center;font-weight: bold;">
 FF5
-
 </td>
-
 <td style="text-align:center;">
-
 HML
-
 </td>
-
 <td style="text-align:center;">
-
 0.2676311
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
-<td style="text-align:left;font-weight: bold;">
-
-4
-
-</td>
-
-<td style="text-align:center;">
-
+<td style="text-align:center;font-weight: bold;">
 FF5
-
 </td>
-
 <td style="text-align:center;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
 0.2839060
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
-<td style="text-align:left;font-weight: bold;">
-
-5
-
-</td>
-
-<td style="text-align:center;">
-
+<td style="text-align:center;font-weight: bold;">
 FF5
-
 </td>
-
 <td style="text-align:center;">
-
 CMA
-
 </td>
-
 <td style="text-align:center;">
-
 0.2567812
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
-<td style="text-align:left;font-weight: bold;">
-
-22
-
-</td>
-
-<td style="text-align:center;">
-
+<td style="text-align:center;font-weight: bold;">
 PRS
-
 </td>
-
 <td style="text-align:center;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
 0.2766727
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
-<td style="text-align:left;font-weight: bold;">
-
-211
-
-</td>
-
-<td style="text-align:center;">
-
+<td style="text-align:center;font-weight: bold;">
 PRS
-
 </td>
-
 <td style="text-align:center;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
 0.2857143
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
-<td style="text-align:left;font-weight: bold;">
-
-31
-
-</td>
-
-<td style="text-align:center;">
-
+<td style="text-align:center;font-weight: bold;">
 PRS
-
 </td>
-
 <td style="text-align:center;">
-
 dDP
-
 </td>
-
 <td style="text-align:center;">
-
 0.3092224
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
-<td style="text-align:left;font-weight: bold;">
-
-41
-
-</td>
-
-<td style="text-align:center;">
-
+<td style="text-align:center;font-weight: bold;">
 PRS
-
 </td>
-
 <td style="text-align:center;">
-
 dTS
-
 </td>
-
 <td style="text-align:center;">
-
 0.2603978
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
-<td style="text-align:left;font-weight: bold;">
-
-51
-
-</td>
-
-<td style="text-align:center;">
-
+<td style="text-align:center;font-weight: bold;">
 PRS
-
 </td>
-
 <td style="text-align:center;">
-
 UNEXPI
-
 </td>
-
 <td style="text-align:center;">
-
 0.2694394
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 Here is a comparison of the lambda statistics of the Normal Fama Macbeth
 and Fama Macbeth Second Step Regression with STL Trend Data.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Fama Macbeth/STL Fama Macbeth Lambda0 Stats
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="2">
-
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -27295,3703 +13904,1854 @@ stats
 </div>
 
 </th>
-
 </tr>
-
 <tr>
-
 <th style="text-align:center;">
-
 model
-
 </th>
-
 <th style="text-align:center;">
-
 method
-
 </th>
-
 <th style="text-align:center;">
-
 mean
-
 </th>
-
 <th style="text-align:center;">
-
 variance
-
 </th>
-
 <th style="text-align:center;">
-
 skewness
-
 </th>
-
 <th style="text-align:center;">
-
 kurtosis
-
 </th>
-
 <th style="text-align:center;">
-
-z\_score
-
+z_score
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FF5
-
 </td>
-
 <td style="text-align:center;">
-
 FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0055044
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014113
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2326548
-
+-0.2326548
 </td>
-
 <td style="text-align:center;">
-
 3.751709
-
 </td>
-
 <td style="text-align:center;">
-
 3.445597
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FF5
-
 </td>
-
 <td style="text-align:center;">
-
-FM\_STL
-
+FM_STL
 </td>
-
 <td style="text-align:center;">
-
 0.0054579
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001034
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2494886
-
+-0.2494886
 </td>
-
 <td style="text-align:center;">
-
 5.252341
-
 </td>
-
 <td style="text-align:center;">
-
 12.619376
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 PRS
-
 </td>
-
 <td style="text-align:center;">
-
 FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0037148
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014838
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1679268
-
+-0.1679268
 </td>
-
 <td style="text-align:center;">
-
 3.777621
-
 </td>
-
 <td style="text-align:center;">
-
 2.267849
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 PRS
-
 </td>
-
 <td style="text-align:center;">
-
-FM\_STL
-
+FM_STL
 </td>
-
 <td style="text-align:center;">
-
 0.0040388
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001288
-
 </td>
-
 <td style="text-align:center;">
-
 0.0995833
-
 </td>
-
 <td style="text-align:center;">
-
 2.938248
-
 </td>
-
 <td style="text-align:center;">
-
 8.367973
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
-
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Fama French Five Factors Lambdas
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 method
-
 </th>
-
 <th style="text-align:center;">
-
 stats
-
 </th>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 SMB
-
 </th>
-
 <th style="text-align:center;">
-
 HML
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 CMA
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_FF5
-
+FM_FF5
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010818
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007842
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000102
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000596
-
+-0.0000596
 </td>
-
 <td style="text-align:center;">
-
 0.0017493
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_FF5
-
+FM_FF5
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0035660
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011365
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012796
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007818
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006567
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_FF5
-
+FM_FF5
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.0533478
-
 </td>
-
 <td style="text-align:center;">
-
 0.0355414
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3764520
-
+-0.3764520
 </td>
-
 <td style="text-align:center;">
-
-\-0.2164438
-
+-0.2164438
 </td>
-
 <td style="text-align:center;">
-
 0.0652459
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_FF5
-
+FM_FF5
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.7913659
-
 </td>
-
 <td style="text-align:center;">
-
 5.3194745
-
 </td>
-
 <td style="text-align:center;">
-
 5.2950188
-
 </td>
-
 <td style="text-align:center;">
-
 6.4897245
-
 </td>
-
 <td style="text-align:center;">
-
 4.7523338
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_N\_FF5
-
+FM_STL_7\_N_FF5
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011720
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008964
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005285
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000343
-
+-0.0000343
 </td>
-
 <td style="text-align:center;">
-
 0.0014165
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_N\_FF5
-
+FM_STL_7\_N_FF5
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001566
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000780
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001184
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000374
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000633
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_N\_FF5
-
+FM_STL_7\_N_FF5
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1523726
-
+-0.1523726
 </td>
-
 <td style="text-align:center;">
-
-\-0.4725263
-
+-0.4725263
 </td>
-
 <td style="text-align:center;">
-
-\-0.6367399
-
+-0.6367399
 </td>
-
 <td style="text-align:center;">
-
 0.1081381
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3848396
-
+-0.3848396
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_N\_FF5
-
+FM_STL_7\_N_FF5
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 3.8671042
-
 </td>
-
 <td style="text-align:center;">
-
 3.6902413
-
 </td>
-
 <td style="text-align:center;">
-
 5.0328552
-
 </td>
-
 <td style="text-align:center;">
-
 4.5186998
-
 </td>
-
 <td style="text-align:center;">
-
 3.9429493
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_R\_FF5
-
+FM_STL_7\_R_FF5
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0020337
-
 </td>
-
 <td style="text-align:center;">
-
 0.0018278
-
 </td>
-
 <td style="text-align:center;">
-
 0.0018790
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005151
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013900
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_R\_FF5
-
+FM_STL_7\_R_FF5
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002141
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001214
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001219
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000569
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000789
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_R\_FF5
-
+FM_STL_7\_R_FF5
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.8574851
-
 </td>
-
 <td style="text-align:center;">
-
 0.1225477
-
 </td>
-
 <td style="text-align:center;">
-
 0.0098612
-
 </td>
-
 <td style="text-align:center;">
-
 1.4172714
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2073834
-
+-0.2073834
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_R\_FF5
-
+FM_STL_7\_R_FF5
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 6.6636022
-
 </td>
-
 <td style="text-align:center;">
-
 3.7024126
-
 </td>
-
 <td style="text-align:center;">
-
 3.8962470
-
 </td>
-
 <td style="text-align:center;">
-
 6.0934547
-
 </td>
-
 <td style="text-align:center;">
-
 3.6632893
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_N\_FF5
-
+FM_STL_15_N\_FF5
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011674
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009365
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005217
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000329
-
+-0.0000329
 </td>
-
 <td style="text-align:center;">
-
 0.0014384
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_N\_FF5
-
+FM_STL_15_N\_FF5
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001720
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000820
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001278
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000411
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000676
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_N\_FF5
-
+FM_STL_15_N\_FF5
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1144051
-
+-0.1144051
 </td>
-
 <td style="text-align:center;">
-
-\-0.4853001
-
+-0.4853001
 </td>
-
 <td style="text-align:center;">
-
-\-0.6464122
-
+-0.6464122
 </td>
-
 <td style="text-align:center;">
-
 0.0788869
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3672503
-
+-0.3672503
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_N\_FF5
-
+FM_STL_15_N\_FF5
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 3.9579809
-
 </td>
-
 <td style="text-align:center;">
-
 3.7468025
-
 </td>
-
 <td style="text-align:center;">
-
 5.1805032
-
 </td>
-
 <td style="text-align:center;">
-
 4.4705007
-
 </td>
-
 <td style="text-align:center;">
-
 4.0648972
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_R\_FF5
-
+FM_STL_15_R\_FF5
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011335
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005364
-
 </td>
-
 <td style="text-align:center;">
-
 0.0030949
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003438
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021351
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_R\_FF5
-
+FM_STL_15_R\_FF5
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002354
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001327
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001389
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000670
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000925
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_R\_FF5
-
+FM_STL_15_R\_FF5
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.3868185
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1294217
-
+-0.1294217
 </td>
-
 <td style="text-align:center;">
-
 0.3010856
-
 </td>
-
 <td style="text-align:center;">
-
 1.5258402
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2398522
-
+-0.2398522
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_R\_FF5
-
+FM_STL_15_R\_FF5
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 5.5387742
-
 </td>
-
 <td style="text-align:center;">
-
 4.4109514
-
 </td>
-
 <td style="text-align:center;">
-
 4.0258277
-
 </td>
-
 <td style="text-align:center;">
-
 6.4144750
-
 </td>
-
 <td style="text-align:center;">
-
 3.5596498
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_N\_FF5
-
+FM_STL_40_N\_FF5
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011389
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009364
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005129
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000302
-
+-0.0000302
 </td>
-
 <td style="text-align:center;">
-
 0.0014645
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_N\_FF5
-
+FM_STL_40_N\_FF5
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001957
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000888
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001408
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000466
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000734
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_N\_FF5
-
+FM_STL_40_N\_FF5
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0974769
-
+-0.0974769
 </td>
-
 <td style="text-align:center;">
-
-\-0.4980775
-
+-0.4980775
 </td>
-
 <td style="text-align:center;">
-
-\-0.6357321
-
+-0.6357321
 </td>
-
 <td style="text-align:center;">
-
 0.0046634
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3320899
-
+-0.3320899
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_N\_FF5
-
+FM_STL_40_N\_FF5
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.0518101
-
 </td>
-
 <td style="text-align:center;">
-
 3.7992766
-
 </td>
-
 <td style="text-align:center;">
-
 5.2908757
-
 </td>
-
 <td style="text-align:center;">
-
 4.4766374
-
 </td>
-
 <td style="text-align:center;">
-
 4.3037909
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_R\_FF5
-
+FM_STL_40_R\_FF5
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002368
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002247
-
 </td>
-
 <td style="text-align:center;">
-
 0.0030628
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013073
-
 </td>
-
 <td style="text-align:center;">
-
 0.0024740
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_R\_FF5
-
+FM_STL_40_R\_FF5
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002963
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001429
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001631
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000927
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001050
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_R\_FF5
-
+FM_STL_40_R\_FF5
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.1637167
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1650968
-
+-0.1650968
 </td>
-
 <td style="text-align:center;">
-
 0.4722141
-
 </td>
-
 <td style="text-align:center;">
-
 1.8707569
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1212960
-
+-0.1212960
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_R\_FF5
-
+FM_STL_40_R\_FF5
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.6983221
-
 </td>
-
 <td style="text-align:center;">
-
 4.0484332
-
 </td>
-
 <td style="text-align:center;">
-
 4.8745436
-
 </td>
-
 <td style="text-align:center;">
-
 7.6667926
-
 </td>
-
 <td style="text-align:center;">
-
 3.9906745
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RAM\_FF5
-
+RAM_FF5
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0051121
-
 </td>
-
 <td style="text-align:center;">
-
 0.0022967
-
 </td>
-
 <td style="text-align:center;">
-
 0.0032389
-
 </td>
-
 <td style="text-align:center;">
-
 0.0027066
-
 </td>
-
 <td style="text-align:center;">
-
 0.0030245
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RAM\_FF5
-
+RAM_FF5
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000280
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000284
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000156
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000075
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000093
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RAM\_FF5
-
+RAM_FF5
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.0223254
-
 </td>
-
 <td style="text-align:center;">
-
 0.3948825
-
 </td>
-
 <td style="text-align:center;">
-
 0.1498031
-
 </td>
-
 <td style="text-align:center;">
-
 0.1038219
-
 </td>
-
 <td style="text-align:center;">
-
 0.5005268
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RAM\_FF5
-
+RAM_FF5
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 2.3686070
-
 </td>
-
 <td style="text-align:center;">
-
 2.2736340
-
 </td>
-
 <td style="text-align:center;">
-
 2.9118074
-
 </td>
-
 <td style="text-align:center;">
-
 3.4515945
-
 </td>
-
 <td style="text-align:center;">
-
 3.1245590
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RGM\_FF5
-
+RGM_FF5
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0041103
-
 </td>
-
 <td style="text-align:center;">
-
 0.0018484
-
 </td>
-
 <td style="text-align:center;">
-
 0.0028396
-
 </td>
-
 <td style="text-align:center;">
-
 0.0024631
-
 </td>
-
 <td style="text-align:center;">
-
 0.0028268
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RGM\_FF5
-
+RGM_FF5
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000300
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000280
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000152
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000070
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000089
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RGM\_FF5
-
+RGM_FF5
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.0270841
-
 </td>
-
 <td style="text-align:center;">
-
 0.3753467
-
 </td>
-
 <td style="text-align:center;">
-
 0.1104960
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0376499
-
+-0.0376499
 </td>
-
 <td style="text-align:center;">
-
 0.4463740
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RGM\_FF5
-
+RGM_FF5
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 2.2899895
-
 </td>
-
 <td style="text-align:center;">
-
 2.2857798
-
 </td>
-
 <td style="text-align:center;">
-
 2.9634918
-
 </td>
-
 <td style="text-align:center;">
-
 3.3248415
-
 </td>
-
 <td style="text-align:center;">
-
 3.0420264
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
-
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 PRS Five Factors Lambdas
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 method
-
 </th>
-
 <th style="text-align:center;">
-
 stats
-
 </th>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 dDP
-
 </th>
-
 <th style="text-align:center;">
-
 dTS
-
 </th>
-
 <th style="text-align:center;">
-
 UNEXPI
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_PRS
-
+FM_PRS
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0031291
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0003956
-
+-0.0003956
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001026
-
+-0.0001026
 </td>
-
 <td style="text-align:center;">
-
-\-0.0002690
-
+-0.0002690
 </td>
-
 <td style="text-align:center;">
-
 0.0001386
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_PRS
-
+FM_PRS
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0036451
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007332
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000028
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000144
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000284
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_PRS
-
+FM_PRS
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0216479
-
+-0.0216479
 </td>
-
 <td style="text-align:center;">
-
-\-0.4247837
-
+-0.4247837
 </td>
-
 <td style="text-align:center;">
-
-\-0.0610680
-
+-0.0610680
 </td>
-
 <td style="text-align:center;">
-
-\-0.2540825
-
+-0.2540825
 </td>
-
 <td style="text-align:center;">
-
-\-0.1645190
-
+-0.1645190
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_PRS
-
+FM_PRS
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.6669847
-
 </td>
-
 <td style="text-align:center;">
-
 8.2207426
-
 </td>
-
 <td style="text-align:center;">
-
 4.0613918
-
 </td>
-
 <td style="text-align:center;">
-
 5.5340857
-
 </td>
-
 <td style="text-align:center;">
-
 4.1609630
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_N\_PRS
-
+FM_STL_7\_N_PRS
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0028228
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000659
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000786
-
+-0.0000786
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001321
-
+-0.0001321
 </td>
-
 <td style="text-align:center;">
-
 0.0000898
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_N\_PRS
-
+FM_STL_7\_N_PRS
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001892
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000414
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000002
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000013
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000023
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_N\_PRS
-
+FM_STL_7\_N_PRS
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2055986
-
+-0.2055986
 </td>
-
 <td style="text-align:center;">
-
 0.6881088
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.5746100
-
+-0.5746100
 </td>
-
 <td style="text-align:center;">
-
-\-0.2243895
-
+-0.2243895
 </td>
-
 <td style="text-align:center;">
-
-\-0.2065819
-
+-0.2065819
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_N\_PRS
-
+FM_STL_7\_N_PRS
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 2.7048387
-
 </td>
-
 <td style="text-align:center;">
-
 5.4347382
-
 </td>
-
 <td style="text-align:center;">
-
 3.7325505
-
 </td>
-
 <td style="text-align:center;">
-
 3.6548771
-
 </td>
-
 <td style="text-align:center;">
-
 3.9479532
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_R\_PRS
-
+FM_STL_7\_R_PRS
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0041096
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005276
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000443
-
+-0.0000443
 </td>
-
 <td style="text-align:center;">
-
 0.0000382
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001024
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_R\_PRS
-
+FM_STL_7\_R_PRS
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003127
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000768
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000003
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000021
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000026
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_R\_PRS
-
+FM_STL_7\_R_PRS
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 1.1446756
-
 </td>
-
 <td style="text-align:center;">
-
 1.3360941
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0873533
-
+-0.0873533
 </td>
-
 <td style="text-align:center;">
-
-\-0.1495967
-
+-0.1495967
 </td>
-
 <td style="text-align:center;">
-
-\-0.1464002
-
+-0.1464002
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_7\_R\_PRS
-
+FM_STL_7\_R_PRS
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 5.9157116
-
 </td>
-
 <td style="text-align:center;">
-
 5.9726645
-
 </td>
-
 <td style="text-align:center;">
-
 3.9352891
-
 </td>
-
 <td style="text-align:center;">
-
 3.2361821
-
 </td>
-
 <td style="text-align:center;">
-
 3.4385836
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_N\_PRS
-
+FM_STL_15_N\_PRS
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0028376
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000643
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000779
-
+-0.0000779
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001332
-
+-0.0001332
 </td>
-
 <td style="text-align:center;">
-
 0.0000920
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_N\_PRS
-
+FM_STL_15_N\_PRS
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002083
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000457
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000002
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000013
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000025
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_N\_PRS
-
+FM_STL_15_N\_PRS
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1854673
-
+-0.1854673
 </td>
-
 <td style="text-align:center;">
-
 0.6783948
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.5957738
-
+-0.5957738
 </td>
-
 <td style="text-align:center;">
-
-\-0.1637725
-
+-0.1637725
 </td>
-
 <td style="text-align:center;">
-
-\-0.2146738
-
+-0.2146738
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_N\_PRS
-
+FM_STL_15_N\_PRS
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 2.7493410
-
 </td>
-
 <td style="text-align:center;">
-
 5.4852847
-
 </td>
-
 <td style="text-align:center;">
-
 3.8185815
-
 </td>
-
 <td style="text-align:center;">
-
 3.4885478
-
 </td>
-
 <td style="text-align:center;">
-
 4.1531784
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_R\_PRS
-
+FM_STL_15_R\_PRS
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0023113
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004840
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000391
-
+-0.0000391
 </td>
-
 <td style="text-align:center;">
-
 0.0000316
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001112
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_R\_PRS
-
+FM_STL_15_R\_PRS
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003395
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000914
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000004
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000017
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000033
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_R\_PRS
-
+FM_STL_15_R\_PRS
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.6174575
-
 </td>
-
 <td style="text-align:center;">
-
 1.7334369
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0799205
-
+-0.0799205
 </td>
-
 <td style="text-align:center;">
-
-\-0.3431201
-
+-0.3431201
 </td>
-
 <td style="text-align:center;">
-
-\-0.3715099
-
+-0.3715099
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_15\_R\_PRS
-
+FM_STL_15_R\_PRS
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.1222697
-
 </td>
-
 <td style="text-align:center;">
-
 7.4632586
-
 </td>
-
 <td style="text-align:center;">
-
 4.7323346
-
 </td>
-
 <td style="text-align:center;">
-
 3.8630750
-
 </td>
-
 <td style="text-align:center;">
-
 3.4043251
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_N\_PRS
-
+FM_STL_40_N\_PRS
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0028196
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000529
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000776
-
+-0.0000776
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001394
-
+-0.0001394
 </td>
-
 <td style="text-align:center;">
-
 0.0000952
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_N\_PRS
-
+FM_STL_40_N\_PRS
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002383
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000521
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000002
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000015
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000028
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_N\_PRS
-
+FM_STL_40_N\_PRS
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1326063
-
+-0.1326063
 </td>
-
 <td style="text-align:center;">
-
 0.6518633
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.6099784
-
+-0.6099784
 </td>
-
 <td style="text-align:center;">
-
-\-0.1523493
-
+-0.1523493
 </td>
-
 <td style="text-align:center;">
-
-\-0.2296438
-
+-0.2296438
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_N\_PRS
-
+FM_STL_40_N\_PRS
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 2.8711135
-
 </td>
-
 <td style="text-align:center;">
-
 5.5645710
-
 </td>
-
 <td style="text-align:center;">
-
 3.9238480
-
 </td>
-
 <td style="text-align:center;">
-
 3.5148144
-
 </td>
-
 <td style="text-align:center;">
-
 4.3264261
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_R\_PRS
-
+FM_STL_40_R\_PRS
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014976
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013771
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000314
-
+-0.0000314
 </td>
-
 <td style="text-align:center;">
-
 0.0000038
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000849
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_R\_PRS
-
+FM_STL_40_R\_PRS
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004017
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001082
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000004
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000020
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000036
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_R\_PRS
-
+FM_STL_40_R\_PRS
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.2425264
-
 </td>
-
 <td style="text-align:center;">
-
 2.0198840
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1387004
-
+-0.1387004
 </td>
-
 <td style="text-align:center;">
-
-\-0.3529148
-
+-0.3529148
 </td>
-
 <td style="text-align:center;">
-
-\-0.3131361
-
+-0.3131361
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-FM\_STL\_40\_R\_PRS
-
+FM_STL_40_R\_PRS
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.0270802
-
 </td>
-
 <td style="text-align:center;">
-
 8.4414977
-
 </td>
-
 <td style="text-align:center;">
-
 4.5680272
-
 </td>
-
 <td style="text-align:center;">
-
 4.3211824
-
 </td>
-
 <td style="text-align:center;">
-
 3.2924629
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RAM\_PRS
-
+RAM_PRS
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0051121
-
 </td>
-
 <td style="text-align:center;">
-
 0.0027066
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000226
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003300
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002188
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RAM\_PRS
-
+RAM_PRS
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000280
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000075
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000001
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000002
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000002
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RAM\_PRS
-
+RAM_PRS
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.0223254
-
 </td>
-
 <td style="text-align:center;">
-
 0.1038219
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0597998
-
+-0.0597998
 </td>
-
 <td style="text-align:center;">
-
-\-0.3634110
-
+-0.3634110
 </td>
-
 <td style="text-align:center;">
-
-\-0.4190866
-
+-0.4190866
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RAM\_PRS
-
+RAM_PRS
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 2.3686070
-
 </td>
-
 <td style="text-align:center;">
-
 3.4515945
-
 </td>
-
 <td style="text-align:center;">
-
 3.4759408
-
 </td>
-
 <td style="text-align:center;">
-
 2.9208853
-
 </td>
-
 <td style="text-align:center;">
-
 3.2613141
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RGM\_PRS
-
+RGM_PRS
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0041103
-
 </td>
-
 <td style="text-align:center;">
-
 0.0024631
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000220
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003271
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002139
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RGM\_PRS
-
+RGM_PRS
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000300
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000070
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000001
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000002
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000002
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RGM\_PRS
-
+RGM_PRS
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.0270841
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0376499
-
+-0.0376499
 </td>
-
 <td style="text-align:center;">
-
-\-0.0610550
-
+-0.0610550
 </td>
-
 <td style="text-align:center;">
-
-\-0.3657935
-
+-0.3657935
 </td>
-
 <td style="text-align:center;">
-
-\-0.4211790
-
+-0.4211790
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
-RGM\_PRS
-
+RGM_PRS
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 2.2899895
-
 </td>
-
 <td style="text-align:center;">
-
 3.3248415
-
 </td>
-
 <td style="text-align:center;">
-
 3.4770569
-
 </td>
-
 <td style="text-align:center;">
-
 2.9162949
-
 </td>
-
 <td style="text-align:center;">
-
 3.2639812
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
-
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Fama Macbeth/STL Lambda Variance Ratio
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
-
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -31001,7 +15761,6 @@ FF5
 </div>
 
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -31011,505 +15770,255 @@ PRS
 </div>
 
 </th>
-
 </tr>
-
 <tr>
-
 <th style="text-align:center;">
-
 choice
-
 </th>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 SMB
-
 </th>
-
 <th style="text-align:center;">
-
 HML
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 CMA
-
 </th>
-
 <th style="text-align:center;">
-
 Mkt-RF
-
 </th>
-
 <th style="text-align:center;">
-
 RMW
-
 </th>
-
 <th style="text-align:center;">
-
 dDP
-
 </th>
-
 <th style="text-align:center;">
-
 dTS
-
 </th>
-
 <th style="text-align:center;">
-
 UNEXPI
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;">
-
 s7 norobust
-
 </td>
-
 <td style="text-align:center;">
-
 22.77293
-
 </td>
-
 <td style="text-align:center;">
-
 14.570228
-
 </td>
-
 <td style="text-align:center;">
-
 10.809547
-
 </td>
-
 <td style="text-align:center;">
-
 20.893160
-
 </td>
-
 <td style="text-align:center;">
-
 10.366786
-
 </td>
-
 <td style="text-align:center;">
-
 19.262116
-
 </td>
-
 <td style="text-align:center;">
-
 17.712099
-
 </td>
-
 <td style="text-align:center;">
-
 14.209542
-
 </td>
-
 <td style="text-align:center;">
-
 11.408222
-
 </td>
-
 <td style="text-align:center;">
-
 12.314342
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 s7 robust
-
 </td>
-
 <td style="text-align:center;">
-
 16.65304
-
 </td>
-
 <td style="text-align:center;">
-
 9.362006
-
 </td>
-
 <td style="text-align:center;">
-
 10.495870
-
 </td>
-
 <td style="text-align:center;">
-
 13.743164
-
 </td>
-
 <td style="text-align:center;">
-
 8.319420
-
 </td>
-
 <td style="text-align:center;">
-
 11.655951
-
 </td>
-
 <td style="text-align:center;">
-
 9.553198
-
 </td>
-
 <td style="text-align:center;">
-
 10.032194
-
 </td>
-
 <td style="text-align:center;">
-
 6.952451
-
 </td>
-
 <td style="text-align:center;">
-
 10.985869
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 s15 norobust
-
 </td>
-
 <td style="text-align:center;">
-
 20.73586
-
 </td>
-
 <td style="text-align:center;">
-
 13.857042
-
 </td>
-
 <td style="text-align:center;">
-
 10.009840
-
 </td>
-
 <td style="text-align:center;">
-
 19.041364
-
 </td>
-
 <td style="text-align:center;">
-
 9.718030
-
 </td>
-
 <td style="text-align:center;">
-
 17.496282
-
 </td>
-
 <td style="text-align:center;">
-
 16.062063
-
 </td>
-
 <td style="text-align:center;">
-
 13.190607
-
 </td>
-
 <td style="text-align:center;">
-
 10.851985
-
 </td>
-
 <td style="text-align:center;">
-
 11.260447
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 s15 robust
-
 </td>
-
 <td style="text-align:center;">
-
 15.15100
-
 </td>
-
 <td style="text-align:center;">
-
 8.566009
-
 </td>
-
 <td style="text-align:center;">
-
 9.215179
-
 </td>
-
 <td style="text-align:center;">
-
 11.660960
-
 </td>
-
 <td style="text-align:center;">
-
 7.097194
-
 </td>
-
 <td style="text-align:center;">
-
 10.736748
-
 </td>
-
 <td style="text-align:center;">
-
 8.022251
-
 </td>
-
 <td style="text-align:center;">
-
 7.656805
-
 </td>
-
 <td style="text-align:center;">
-
 8.584696
-
 </td>
-
 <td style="text-align:center;">
-
 8.643621
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 s40 norobust
-
 </td>
-
 <td style="text-align:center;">
-
 18.22296
-
 </td>
-
 <td style="text-align:center;">
-
 12.794837
-
 </td>
-
 <td style="text-align:center;">
-
 9.085651
-
 </td>
-
 <td style="text-align:center;">
-
 16.777416
-
 </td>
-
 <td style="text-align:center;">
-
 8.941123
-
 </td>
-
 <td style="text-align:center;">
-
 15.293874
-
 </td>
-
 <td style="text-align:center;">
-
 14.082761
-
 </td>
-
 <td style="text-align:center;">
-
 11.980914
-
 </td>
-
 <td style="text-align:center;">
-
 9.928302
-
 </td>
-
 <td style="text-align:center;">
-
 10.045692
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 s40 robust
-
 </td>
-
 <td style="text-align:center;">
-
 12.03610
-
 </td>
-
 <td style="text-align:center;">
-
 7.954576
-
 </td>
-
 <td style="text-align:center;">
-
 7.845629
-
 </td>
-
 <td style="text-align:center;">
-
 8.429535
-
 </td>
-
 <td style="text-align:center;">
-
 6.254196
-
 </td>
-
 <td style="text-align:center;">
-
 9.073484
-
 </td>
-
 <td style="text-align:center;">
-
 6.777092
-
 </td>
-
 <td style="text-align:center;">
-
 6.899325
-
 </td>
-
 <td style="text-align:center;">
-
 7.229851
-
 </td>
-
 <td style="text-align:center;">
-
 7.992611
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ## S4-5 Why filtering might improve Esimated Lamdba?
@@ -31527,66 +16036,46 @@ regression is due to the seasonality.
 Now, assume the return (or risk premium) is formed by the following
 equation:
 
-  
-![r\_{it} =
-\\beta\_{it}\*\\lambda\_t+\\eta\_{it}](https://latex.codecogs.com/png.latex?r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Ceta_%7Bit%7D
-"r_{it} = \\beta_{it}*\\lambda_t+\\eta_{it}")  
+![r\_{it} = \\beta\_{it}\*\\lambda_t+\\eta\_{it}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Ceta_%7Bit%7D "r_{it} = \beta_{it}*\lambda_t+\eta_{it}")
 
 Where beta is the sector specific risk exposure, lambda is the factor
 premium, and eta is the idiosyncratic noise.
 
-  
-![E\[\\eta\_{it}|i\]
-= 0](https://latex.codecogs.com/png.latex?E%5B%5Ceta_%7Bit%7D%7Ci%5D%20%3D%200
-"E[\\eta_{it}|i] = 0")  
+![E\[\\eta\_{it}\|i\] = 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5B%5Ceta_%7Bit%7D%7Ci%5D%20%3D%200 "E[\eta_{it}|i] = 0")
 
 However, the eta might actually contain 3 components:
-![\\epsilon\_t](https://latex.codecogs.com/png.latex?%5Cepsilon_t
-"\\epsilon_t"),
-![s\_{im}](https://latex.codecogs.com/png.latex?s_%7Bim%7D "s_{im}"),
+![\\epsilon_t](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cepsilon_t "\epsilon_t"),
+![s\_{im}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;s_%7Bim%7D "s_{im}"),
 and
-![epsilon\_{it}](https://latex.codecogs.com/png.latex?epsilon_%7Bit%7D
-"epsilon_{it}").
+![epsilon\_{it}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;epsilon_%7Bit%7D "epsilon_{it}").
 
-  
-![\\eta\_{it} = \\epsilon\_t + s\_{im} +
-\\epsilon\_{it}](https://latex.codecogs.com/png.latex?%5Ceta_%7Bit%7D%20%3D%20%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D
-"\\eta_{it} = \\epsilon_t + s_{im} + \\epsilon_{it}")  
+![\\eta\_{it} = \\epsilon_t + s\_{im} + \\epsilon\_{it}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Ceta_%7Bit%7D%20%3D%20%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D "\eta_{it} = \epsilon_t + s_{im} + \epsilon_{it}")
 
-eps\_t is the universal time-series error, s\_i is the sector-specific
-seasonality, and eps\_it is the idiosyncratic error. Therefore, the
+eps_t is the universal time-series error, s_i is the sector-specific
+seasonality, and eps_it is the idiosyncratic error. Therefore, the
 equation is actually:
 
-  
-![r\_{it} = \\beta\_{it}\*\\lambda\_t+\\epsilon\_t + s\_{im} +
-\\epsilon\_{it}](https://latex.codecogs.com/png.latex?r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D
-"r_{it} = \\beta_{it}*\\lambda_t+\\epsilon_t + s_{im} + \\epsilon_{it}")  
+![r\_{it} = \\beta\_{it}\*\\lambda_t+\\epsilon_t + s\_{im} + \\epsilon\_{it}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D "r_{it} = \beta_{it}*\lambda_t+\epsilon_t + s_{im} + \epsilon_{it}")
 
 Again, we would have:
 
-  
-![E\[\\epsilon\_t + s\_{im} + \\epsilon\_{it}|i\]
-= 0](https://latex.codecogs.com/png.latex?E%5B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D%7Ci%5D%20%3D%200
-"E[\\epsilon_t + s_{im} + \\epsilon_{it}|i] = 0")  
+![E\[\\epsilon_t + s\_{im} + \\epsilon\_{it}\|i\] = 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D%7Ci%5D%20%3D%200 "E[\epsilon_t + s_{im} + \epsilon_{it}|i] = 0")
 
 However, the cross-sectional regression error at each time t:
 
-  
-![E\[\\epsilon\_t + s\_{im} + \\epsilon\_{it}|t\] =
-\\epsilon\_t+s\_{im}](https://latex.codecogs.com/png.latex?E%5B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D%7Ct%5D%20%3D%20%5Cepsilon_t%2Bs_%7Bim%7D
-"E[\\epsilon_t + s_{im} + \\epsilon_{it}|t] = \\epsilon_t+s_{im}")  
+![E\[\\epsilon_t + s\_{im} + \\epsilon\_{it}\|t\] = \\epsilon_t+s\_{im}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D%7Ct%5D%20%3D%20%5Cepsilon_t%2Bs_%7Bim%7D "E[\epsilon_t + s_{im} + \epsilon_{it}|t] = \epsilon_t+s_{im}")
 
 The unbiased least square estimation requires the error term expected to
-be 0. The existence of ![( \\epsilon\_t + s\_{im} |
-t)](https://latex.codecogs.com/png.latex?%28%20%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%7C%20t%29
-"( \\epsilon_t + s_{im} | t)") in each cross-sectional regression,
-therefore, would randomly bias the estimated lambda. (Biasness is the
-last thing we want from a regression.) This might be why we see the FM
-method lambdas behave so “abruptly”. If we randomly bias the lambda, the
-regression error of lambda is similar to the one without bias at each t.
-However, this bias is changing over time, which would add to the
-regression error of the lambdas. And therefore, bias might manifest
-itself in a higher standard error in the resulting ECC estimates.
+be 0. The existence of
+![( \\epsilon_t + s\_{im} \| t)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%28%20%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%7C%20t%29 "( \epsilon_t + s_{im} | t)")
+in each cross-sectional regression, therefore, would randomly bias the
+estimated lambda. (Biasness is the last thing we want from a
+regression.) This might be why we see the FM method lambdas behave so
+“abruptly”. If we randomly bias the lambda, the regression error of
+lambda is similar to the one without bias at each t. However, this bias
+is changing over time, which would add to the regression error of the
+lambdas. And therefore, bias might manifest itself in a higher standard
+error in the resulting ECC estimates.
 
 The universal time-series error and the seasonality would actually bias
 the lambda estimation. Filtering out the universal time-series noise and
@@ -31613,934 +16102,470 @@ from N(1, 0.3^2). There are 600 data generated to represent monthly data
 in 50 years.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 STL Decomposition Component Strength for Simulated Portfolio Risk
 Premium: Random Beta and Noise + Sin Lambda
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 Strength
-
 </th>
-
 <th style="text-align:center;">
-
 V1
-
 </th>
-
 <th style="text-align:center;">
-
 V10
-
 </th>
-
 <th style="text-align:center;">
-
 V11
-
 </th>
-
 <th style="text-align:center;">
-
 V12
-
 </th>
-
 <th style="text-align:center;">
-
 V13
-
 </th>
-
 <th style="text-align:center;">
-
 V14
-
 </th>
-
 <th style="text-align:center;">
-
 V15
-
 </th>
-
 <th style="text-align:center;">
-
 V16
-
 </th>
-
 <th style="text-align:center;">
-
 V17
-
 </th>
-
 <th style="text-align:center;">
-
 V18
-
 </th>
-
 <th style="text-align:center;">
-
 V19
-
 </th>
-
 <th style="text-align:center;">
-
 V2
-
 </th>
-
 <th style="text-align:center;">
-
 V20
-
 </th>
-
 <th style="text-align:center;">
-
 V21
-
 </th>
-
 <th style="text-align:center;">
-
 V22
-
 </th>
-
 <th style="text-align:center;">
-
 V23
-
 </th>
-
 <th style="text-align:center;">
-
 V24
-
 </th>
-
 <th style="text-align:center;">
-
 V25
-
 </th>
-
 <th style="text-align:center;">
-
 V26
-
 </th>
-
 <th style="text-align:center;">
-
 V27
-
 </th>
-
 <th style="text-align:center;">
-
 V28
-
 </th>
-
 <th style="text-align:center;">
-
 V29
-
 </th>
-
 <th style="text-align:center;">
-
 V3
-
 </th>
-
 <th style="text-align:center;">
-
 V30
-
 </th>
-
 <th style="text-align:center;">
-
 V31
-
 </th>
-
 <th style="text-align:center;">
-
 V32
-
 </th>
-
 <th style="text-align:center;">
-
 V33
-
 </th>
-
 <th style="text-align:center;">
-
 V34
-
 </th>
-
 <th style="text-align:center;">
-
 V35
-
 </th>
-
 <th style="text-align:center;">
-
 V36
-
 </th>
-
 <th style="text-align:center;">
-
 V37
-
 </th>
-
 <th style="text-align:center;">
-
 V38
-
 </th>
-
 <th style="text-align:center;">
-
 V39
-
 </th>
-
 <th style="text-align:center;">
-
 V4
-
 </th>
-
 <th style="text-align:center;">
-
 V40
-
 </th>
-
 <th style="text-align:center;">
-
 V41
-
 </th>
-
 <th style="text-align:center;">
-
 V42
-
 </th>
-
 <th style="text-align:center;">
-
 V43
-
 </th>
-
 <th style="text-align:center;">
-
 V44
-
 </th>
-
 <th style="text-align:center;">
-
 V45
-
 </th>
-
 <th style="text-align:center;">
-
 V46
-
 </th>
-
 <th style="text-align:center;">
-
 V47
-
 </th>
-
 <th style="text-align:center;">
-
 V48
-
 </th>
-
 <th style="text-align:center;">
-
 V49
-
 </th>
-
 <th style="text-align:center;">
-
 V5
-
 </th>
-
 <th style="text-align:center;">
-
 V6
-
 </th>
-
 <th style="text-align:center;">
-
 V7
-
 </th>
-
 <th style="text-align:center;">
-
 V8
-
 </th>
-
 <th style="text-align:center;">
-
 V9
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FS
-
 </td>
-
 <td style="text-align:center;">
-
 0.2877349
-
 </td>
-
 <td style="text-align:center;">
-
 0.3335476
-
 </td>
-
 <td style="text-align:center;">
-
 0.3149714
-
 </td>
-
 <td style="text-align:center;">
-
 0.3096854
-
 </td>
-
 <td style="text-align:center;">
-
 0.3229165
-
 </td>
-
 <td style="text-align:center;">
-
 0.2883830
-
 </td>
-
 <td style="text-align:center;">
-
 0.3186782
-
 </td>
-
 <td style="text-align:center;">
-
 0.3446907
-
 </td>
-
 <td style="text-align:center;">
-
 0.3286704
-
 </td>
-
 <td style="text-align:center;">
-
 0.3289679
-
 </td>
-
 <td style="text-align:center;">
-
 0.3021720
-
 </td>
-
 <td style="text-align:center;">
-
 0.3179226
-
 </td>
-
 <td style="text-align:center;">
-
 0.2756993
-
 </td>
-
 <td style="text-align:center;">
-
 0.2906194
-
 </td>
-
 <td style="text-align:center;">
-
 0.2862579
-
 </td>
-
 <td style="text-align:center;">
-
 0.3207532
-
 </td>
-
 <td style="text-align:center;">
-
 0.3246668
-
 </td>
-
 <td style="text-align:center;">
-
 0.3189673
-
 </td>
-
 <td style="text-align:center;">
-
 0.3270848
-
 </td>
-
 <td style="text-align:center;">
-
 0.3390797
-
 </td>
-
 <td style="text-align:center;">
-
 0.3166132
-
 </td>
-
 <td style="text-align:center;">
-
 0.3216064
-
 </td>
-
 <td style="text-align:center;">
-
 0.3151442
-
 </td>
-
 <td style="text-align:center;">
-
 0.3194073
-
 </td>
-
 <td style="text-align:center;">
-
 0.3245700
-
 </td>
-
 <td style="text-align:center;">
-
 0.3298339
-
 </td>
-
 <td style="text-align:center;">
-
 0.3052869
-
 </td>
-
 <td style="text-align:center;">
-
 0.3321490
-
 </td>
-
 <td style="text-align:center;">
-
 0.3052606
-
 </td>
-
 <td style="text-align:center;">
-
 0.3356774
-
 </td>
-
 <td style="text-align:center;">
-
 0.2876273
-
 </td>
-
 <td style="text-align:center;">
-
 0.2973086
-
 </td>
-
 <td style="text-align:center;">
-
 0.2760627
-
 </td>
-
 <td style="text-align:center;">
-
 0.3203888
-
 </td>
-
 <td style="text-align:center;">
-
 0.2862315
-
 </td>
-
 <td style="text-align:center;">
-
 0.2888154
-
 </td>
-
 <td style="text-align:center;">
-
 0.3129931
-
 </td>
-
 <td style="text-align:center;">
-
 0.2972769
-
 </td>
-
 <td style="text-align:center;">
-
 0.2967366
-
 </td>
-
 <td style="text-align:center;">
-
 0.2893792
-
 </td>
-
 <td style="text-align:center;">
-
 0.3229949
-
 </td>
-
 <td style="text-align:center;">
-
 0.3053957
-
 </td>
-
 <td style="text-align:center;">
-
 0.3148422
-
 </td>
-
 <td style="text-align:center;">
-
 0.3464769
-
 </td>
-
 <td style="text-align:center;">
-
 0.3087854
-
 </td>
-
 <td style="text-align:center;">
-
 0.2837142
-
 </td>
-
 <td style="text-align:center;">
-
 0.3190104
-
 </td>
-
 <td style="text-align:center;">
-
 0.2976108
-
 </td>
-
 <td style="text-align:center;">
-
 0.3255942
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FT
-
 </td>
-
 <td style="text-align:center;">
-
 0.1686705
-
 </td>
-
 <td style="text-align:center;">
-
 0.1470765
-
 </td>
-
 <td style="text-align:center;">
-
 0.1951275
-
 </td>
-
 <td style="text-align:center;">
-
 0.1887673
-
 </td>
-
 <td style="text-align:center;">
-
 0.1810675
-
 </td>
-
 <td style="text-align:center;">
-
 0.1905483
-
 </td>
-
 <td style="text-align:center;">
-
 0.2048640
-
 </td>
-
 <td style="text-align:center;">
-
 0.1651790
-
 </td>
-
 <td style="text-align:center;">
-
 0.1655371
-
 </td>
-
 <td style="text-align:center;">
-
 0.1865783
-
 </td>
-
 <td style="text-align:center;">
-
 0.1624421
-
 </td>
-
 <td style="text-align:center;">
-
 0.1633001
-
 </td>
-
 <td style="text-align:center;">
-
 0.1850697
-
 </td>
-
 <td style="text-align:center;">
-
 0.2098950
-
 </td>
-
 <td style="text-align:center;">
-
 0.1836507
-
 </td>
-
 <td style="text-align:center;">
-
 0.1659455
-
 </td>
-
 <td style="text-align:center;">
-
 0.1960071
-
 </td>
-
 <td style="text-align:center;">
-
 0.1751685
-
 </td>
-
 <td style="text-align:center;">
-
 0.1969018
-
 </td>
-
 <td style="text-align:center;">
-
 0.1912627
-
 </td>
-
 <td style="text-align:center;">
-
 0.1820294
-
 </td>
-
 <td style="text-align:center;">
-
 0.1659238
-
 </td>
-
 <td style="text-align:center;">
-
 0.1703465
-
 </td>
-
 <td style="text-align:center;">
-
 0.1749263
-
 </td>
-
 <td style="text-align:center;">
-
 0.1675453
-
 </td>
-
 <td style="text-align:center;">
-
 0.1777935
-
 </td>
-
 <td style="text-align:center;">
-
 0.1704559
-
 </td>
-
 <td style="text-align:center;">
-
 0.1945402
-
 </td>
-
 <td style="text-align:center;">
-
 0.2011128
-
 </td>
-
 <td style="text-align:center;">
-
 0.1817851
-
 </td>
-
 <td style="text-align:center;">
-
 0.1199505
-
 </td>
-
 <td style="text-align:center;">
-
 0.1579033
-
 </td>
-
 <td style="text-align:center;">
-
 0.1565443
-
 </td>
-
 <td style="text-align:center;">
-
 0.2021757
-
 </td>
-
 <td style="text-align:center;">
-
 0.1806883
-
 </td>
-
 <td style="text-align:center;">
-
 0.1873669
-
 </td>
-
 <td style="text-align:center;">
-
 0.1690738
-
 </td>
-
 <td style="text-align:center;">
-
 0.2090781
-
 </td>
-
 <td style="text-align:center;">
-
 0.2243963
-
 </td>
-
 <td style="text-align:center;">
-
 0.1823015
-
 </td>
-
 <td style="text-align:center;">
-
 0.1679967
-
 </td>
-
 <td style="text-align:center;">
-
 0.1700804
-
 </td>
-
 <td style="text-align:center;">
-
 0.1937016
-
 </td>
-
 <td style="text-align:center;">
-
 0.1907413
-
 </td>
-
 <td style="text-align:center;">
-
 0.1433021
-
 </td>
-
 <td style="text-align:center;">
-
 0.1734540
-
 </td>
-
 <td style="text-align:center;">
-
 0.1955687
-
 </td>
-
 <td style="text-align:center;">
-
 0.1637241
-
 </td>
-
 <td style="text-align:center;">
-
 0.1393486
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ![](ECC_files/figure-gfm/Sim1-1.png)<!-- -->
@@ -32560,949 +16585,484 @@ equation to simulate a random curve as the true factor premium.
 The ramdom Fourier Lambdas are generated by the following Fourier
 Equations:
 
-  
-![f(t) = a\_0+\\sum\_{i=1}^n(a\_i
-cos(it)+b\_isin(it))](https://latex.codecogs.com/png.latex?f%28t%29%20%3D%20a_0%2B%5Csum_%7Bi%3D1%7D%5En%28a_i%20cos%28it%29%2Bb_isin%28it%29%29
-"f(t) = a_0+\\sum_{i=1}^n(a_i cos(it)+b_isin(it))")  
+![f(t) = a_0+\\sum\_{i=1}^n(a_i cos(it)+b_isin(it))](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;f%28t%29%20%3D%20a_0%2B%5Csum_%7Bi%3D1%7D%5En%28a_i%20cos%28it%29%2Bb_isin%28it%29%29 "f(t) = a_0+\sum_{i=1}^n(a_i cos(it)+b_isin(it))")
 
-The ![a\_0](https://latex.codecogs.com/png.latex?a_0 "a_0") is from a
-normal distribution N(0.01,0.002^2), both
-![a\_i](https://latex.codecogs.com/png.latex?a_i "a_i") and
-![b\_i](https://latex.codecogs.com/png.latex?b_i "b_i") are following a
-normal distribution N(0,0.025^2), and the n is a random integer between
-20 and 100. This is a random smooth function and
-![f(t)](https://latex.codecogs.com/png.latex?f%28t%29 "f(t)") is the
-random Fourier Lambda.
+The
+![a_0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;a_0 "a_0")
+is from a normal distribution N(0.01,0.002^2), both
+![a_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;a_i "a_i")
+and
+![b_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;b_i "b_i")
+are following a normal distribution N(0,0.025^2), and the n is a random
+integer between 20 and 100. This is a random smooth function and
+![f(t)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;f%28t%29 "f(t)")
+is the random Fourier Lambda.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 STL Decomposition Component Strength for Simulated Portfolio Risk
 Premium: Random Beta and Noise + Random Fourier Lambda
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 Strength
-
 </th>
-
 <th style="text-align:center;">
-
 V1
-
 </th>
-
 <th style="text-align:center;">
-
 V10
-
 </th>
-
 <th style="text-align:center;">
-
 V11
-
 </th>
-
 <th style="text-align:center;">
-
 V12
-
 </th>
-
 <th style="text-align:center;">
-
 V13
-
 </th>
-
 <th style="text-align:center;">
-
 V14
-
 </th>
-
 <th style="text-align:center;">
-
 V15
-
 </th>
-
 <th style="text-align:center;">
-
 V16
-
 </th>
-
 <th style="text-align:center;">
-
 V17
-
 </th>
-
 <th style="text-align:center;">
-
 V18
-
 </th>
-
 <th style="text-align:center;">
-
 V19
-
 </th>
-
 <th style="text-align:center;">
-
 V2
-
 </th>
-
 <th style="text-align:center;">
-
 V20
-
 </th>
-
 <th style="text-align:center;">
-
 V21
-
 </th>
-
 <th style="text-align:center;">
-
 V22
-
 </th>
-
 <th style="text-align:center;">
-
 V23
-
 </th>
-
 <th style="text-align:center;">
-
 V24
-
 </th>
-
 <th style="text-align:center;">
-
 V25
-
 </th>
-
 <th style="text-align:center;">
-
 V26
-
 </th>
-
 <th style="text-align:center;">
-
 V27
-
 </th>
-
 <th style="text-align:center;">
-
 V28
-
 </th>
-
 <th style="text-align:center;">
-
 V29
-
 </th>
-
 <th style="text-align:center;">
-
 V3
-
 </th>
-
 <th style="text-align:center;">
-
 V30
-
 </th>
-
 <th style="text-align:center;">
-
 V31
-
 </th>
-
 <th style="text-align:center;">
-
 V32
-
 </th>
-
 <th style="text-align:center;">
-
 V33
-
 </th>
-
 <th style="text-align:center;">
-
 V34
-
 </th>
-
 <th style="text-align:center;">
-
 V35
-
 </th>
-
 <th style="text-align:center;">
-
 V36
-
 </th>
-
 <th style="text-align:center;">
-
 V37
-
 </th>
-
 <th style="text-align:center;">
-
 V38
-
 </th>
-
 <th style="text-align:center;">
-
 V39
-
 </th>
-
 <th style="text-align:center;">
-
 V4
-
 </th>
-
 <th style="text-align:center;">
-
 V40
-
 </th>
-
 <th style="text-align:center;">
-
 V41
-
 </th>
-
 <th style="text-align:center;">
-
 V42
-
 </th>
-
 <th style="text-align:center;">
-
 V43
-
 </th>
-
 <th style="text-align:center;">
-
 V44
-
 </th>
-
 <th style="text-align:center;">
-
 V45
-
 </th>
-
 <th style="text-align:center;">
-
 V46
-
 </th>
-
 <th style="text-align:center;">
-
 V47
-
 </th>
-
 <th style="text-align:center;">
-
 V48
-
 </th>
-
 <th style="text-align:center;">
-
 V49
-
 </th>
-
 <th style="text-align:center;">
-
 V5
-
 </th>
-
 <th style="text-align:center;">
-
 V6
-
 </th>
-
 <th style="text-align:center;">
-
 V7
-
 </th>
-
 <th style="text-align:center;">
-
 V8
-
 </th>
-
 <th style="text-align:center;">
-
 V9
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FS
-
 </td>
-
 <td style="text-align:center;">
-
 0.2877484
-
 </td>
-
 <td style="text-align:center;">
-
 0.3335358
-
 </td>
-
 <td style="text-align:center;">
-
 0.3149668
-
 </td>
-
 <td style="text-align:center;">
-
 0.3096893
-
 </td>
-
 <td style="text-align:center;">
-
 0.3229090
-
 </td>
-
 <td style="text-align:center;">
-
 0.2883619
-
 </td>
-
 <td style="text-align:center;">
-
 0.3186713
-
 </td>
-
 <td style="text-align:center;">
-
 0.3446802
-
 </td>
-
 <td style="text-align:center;">
-
 0.3286480
-
 </td>
-
 <td style="text-align:center;">
-
 0.3289589
-
 </td>
-
 <td style="text-align:center;">
-
 0.3021487
-
 </td>
-
 <td style="text-align:center;">
-
 0.3179500
-
 </td>
-
 <td style="text-align:center;">
-
 0.2756987
-
 </td>
-
 <td style="text-align:center;">
-
 0.2905972
-
 </td>
-
 <td style="text-align:center;">
-
 0.2862627
-
 </td>
-
 <td style="text-align:center;">
-
 0.3207774
-
 </td>
-
 <td style="text-align:center;">
-
 0.3246619
-
 </td>
-
 <td style="text-align:center;">
-
 0.3189488
-
 </td>
-
 <td style="text-align:center;">
-
 0.327089
-
 </td>
-
 <td style="text-align:center;">
-
 0.3390595
-
 </td>
-
 <td style="text-align:center;">
-
 0.3166466
-
 </td>
-
 <td style="text-align:center;">
-
 0.3216048
-
 </td>
-
 <td style="text-align:center;">
-
 0.3151483
-
 </td>
-
 <td style="text-align:center;">
-
 0.3194180
-
 </td>
-
 <td style="text-align:center;">
-
 0.3245892
-
 </td>
-
 <td style="text-align:center;">
-
 0.3298874
-
 </td>
-
 <td style="text-align:center;">
-
 0.3052884
-
 </td>
-
 <td style="text-align:center;">
-
 0.3321316
-
 </td>
-
 <td style="text-align:center;">
-
 0.3052600
-
 </td>
-
 <td style="text-align:center;">
-
 0.3357148
-
 </td>
-
 <td style="text-align:center;">
-
 0.2876232
-
 </td>
-
 <td style="text-align:center;">
-
 0.2972842
-
 </td>
-
 <td style="text-align:center;">
-
 0.2760377
-
 </td>
-
 <td style="text-align:center;">
-
 0.3204300
-
 </td>
-
 <td style="text-align:center;">
-
 0.2862362
-
 </td>
-
 <td style="text-align:center;">
-
 0.2887918
-
 </td>
-
 <td style="text-align:center;">
-
 0.3130056
-
 </td>
-
 <td style="text-align:center;">
-
 0.2972683
-
 </td>
-
 <td style="text-align:center;">
-
 0.2967307
-
 </td>
-
 <td style="text-align:center;">
-
 0.2893727
-
 </td>
-
 <td style="text-align:center;">
-
 0.3229508
-
 </td>
-
 <td style="text-align:center;">
-
 0.3053630
-
 </td>
-
 <td style="text-align:center;">
-
 0.314843
-
 </td>
-
 <td style="text-align:center;">
-
 0.3464791
-
 </td>
-
 <td style="text-align:center;">
-
 0.3087634
-
 </td>
-
 <td style="text-align:center;">
-
 0.2837117
-
 </td>
-
 <td style="text-align:center;">
-
 0.3189938
-
 </td>
-
 <td style="text-align:center;">
-
 0.2975690
-
 </td>
-
 <td style="text-align:center;">
-
 0.3255799
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FT
-
 </td>
-
 <td style="text-align:center;">
-
 0.1702181
-
 </td>
-
 <td style="text-align:center;">
-
 0.1561673
-
 </td>
-
 <td style="text-align:center;">
-
 0.1947236
-
 </td>
-
 <td style="text-align:center;">
-
 0.1838378
-
 </td>
-
 <td style="text-align:center;">
-
 0.1673519
-
 </td>
-
 <td style="text-align:center;">
-
 0.1603241
-
 </td>
-
 <td style="text-align:center;">
-
 0.1858933
-
 </td>
-
 <td style="text-align:center;">
-
 0.1560521
-
 </td>
-
 <td style="text-align:center;">
-
 0.1553333
-
 </td>
-
 <td style="text-align:center;">
-
 0.1829989
-
 </td>
-
 <td style="text-align:center;">
-
 0.1652590
-
 </td>
-
 <td style="text-align:center;">
-
 0.1613722
-
 </td>
-
 <td style="text-align:center;">
-
 0.1871876
-
 </td>
-
 <td style="text-align:center;">
-
 0.2093413
-
 </td>
-
 <td style="text-align:center;">
-
 0.1741929
-
 </td>
-
 <td style="text-align:center;">
-
 0.1563133
-
 </td>
-
 <td style="text-align:center;">
-
 0.1917552
-
 </td>
-
 <td style="text-align:center;">
-
 0.1720379
-
 </td>
-
 <td style="text-align:center;">
-
 0.196851
-
 </td>
-
 <td style="text-align:center;">
-
 0.1933668
-
 </td>
-
 <td style="text-align:center;">
-
 0.1818064
-
 </td>
-
 <td style="text-align:center;">
-
 0.1689296
-
 </td>
-
 <td style="text-align:center;">
-
 0.1634493
-
 </td>
-
 <td style="text-align:center;">
-
 0.1741703
-
 </td>
-
 <td style="text-align:center;">
-
 0.1675947
-
 </td>
-
 <td style="text-align:center;">
-
 0.1616762
-
 </td>
-
 <td style="text-align:center;">
-
 0.1593248
-
 </td>
-
 <td style="text-align:center;">
-
 0.1850050
-
 </td>
-
 <td style="text-align:center;">
-
 0.1889078
-
 </td>
-
 <td style="text-align:center;">
-
 0.1714876
-
 </td>
-
 <td style="text-align:center;">
-
 0.1169804
-
 </td>
-
 <td style="text-align:center;">
-
 0.1647452
-
 </td>
-
 <td style="text-align:center;">
-
 0.1634914
-
 </td>
-
 <td style="text-align:center;">
-
 0.1922011
-
 </td>
-
 <td style="text-align:center;">
-
 0.1823374
-
 </td>
-
 <td style="text-align:center;">
-
 0.1877427
-
 </td>
-
 <td style="text-align:center;">
-
 0.1642921
-
 </td>
-
 <td style="text-align:center;">
-
 0.1891301
-
 </td>
-
 <td style="text-align:center;">
-
 0.1959173
-
 </td>
-
 <td style="text-align:center;">
-
 0.1706186
-
 </td>
-
 <td style="text-align:center;">
-
 0.1536934
-
 </td>
-
 <td style="text-align:center;">
-
 0.1673237
-
 </td>
-
 <td style="text-align:center;">
-
 0.195152
-
 </td>
-
 <td style="text-align:center;">
-
 0.1862571
-
 </td>
-
 <td style="text-align:center;">
-
 0.1375588
-
 </td>
-
 <td style="text-align:center;">
-
 0.1713641
-
 </td>
-
 <td style="text-align:center;">
-
 0.1968904
-
 </td>
-
 <td style="text-align:center;">
-
 0.1637141
-
 </td>
-
 <td style="text-align:center;">
-
 0.1459637
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ![](ECC_files/figure-gfm/Sim2-1.png)<!-- -->
@@ -33521,23 +17081,14 @@ idiosyncratic noise from cross-sectional regression. The betas we use
 are the 5-year rolling window beta.
 
 ![](ECC_files/figure-gfm/Sim3-1.png)<!-- -->![](ECC_files/figure-gfm/Sim3-2.png)<!-- -->
-
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 49 Industry Portfolio Error Component Summary Statistics
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="2">
-
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -33547,6577 +17098,3291 @@ Error Component
 </div>
 
 </th>
-
 </tr>
-
 <tr>
-
 <th style="text-align:center;">
-
 Industry
-
 </th>
-
 <th style="text-align:center;">
-
 stats
-
 </th>
-
 <th style="text-align:center;">
-
 Noise
-
 </th>
-
 <th style="text-align:center;">
-
 Resid
-
 </th>
-
 <th style="text-align:center;">
-
 Seasonal
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Aero
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000509
-
 </td>
-
 <td style="text-align:center;">
-
 0.0020675
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001170
-
+-0.0001170
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Aero
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0023188
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000738
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010712
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Aero
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2969914
-
+-0.2969914
 </td>
-
 <td style="text-align:center;">
-
-\-0.5764202
-
+-0.5764202
 </td>
-
 <td style="text-align:center;">
-
-\-0.5072681
-
+-0.5072681
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Aero
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.4499248
-
 </td>
-
 <td style="text-align:center;">
-
 3.7064000
-
 </td>
-
 <td style="text-align:center;">
-
 4.3562388
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Agric
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000531
-
+-0.0000531
 </td>
-
 <td style="text-align:center;">
-
-\-0.0004052
-
+-0.0004052
 </td>
-
 <td style="text-align:center;">
-
 0.0001342
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Agric
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0022339
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001175
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009227
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Agric
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.0493232
-
 </td>
-
 <td style="text-align:center;">
-
 1.0604306
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0490256
-
+-0.0490256
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Agric
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.5829899
-
 </td>
-
 <td style="text-align:center;">
-
 7.6558599
-
 </td>
-
 <td style="text-align:center;">
-
 3.7269152
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Autos
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0002450
-
+-0.0002450
 </td>
-
 <td style="text-align:center;">
-
-\-0.0017548
-
+-0.0017548
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000215
-
+-0.0000215
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Autos
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0027580
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001352
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011692
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Autos
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0612042
-
+-0.0612042
 </td>
-
 <td style="text-align:center;">
-
 2.2025288
-
 </td>
-
 <td style="text-align:center;">
-
 0.7016818
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Autos
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 5.3855323
-
 </td>
-
 <td style="text-align:center;">
-
 15.3969204
-
 </td>
-
 <td style="text-align:center;">
-
 7.2443446
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Banks
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000370
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0010044
-
+-0.0010044
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000132
-
+-0.0000132
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Banks
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0020135
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000551
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008918
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Banks
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1460466
-
+-0.1460466
 </td>
-
 <td style="text-align:center;">
-
 0.1634824
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1401175
-
+-0.1401175
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Banks
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.1473485
-
 </td>
-
 <td style="text-align:center;">
-
 3.1490351
-
 </td>
-
 <td style="text-align:center;">
-
 3.5677840
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Beer
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000378
-
+-0.0000378
 </td>
-
 <td style="text-align:center;">
-
 0.0002925
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000568
-
+-0.0000568
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Beer
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014941
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000624
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006644
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Beer
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0669276
-
+-0.0669276
 </td>
-
 <td style="text-align:center;">
-
 0.2343103
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2354574
-
+-0.2354574
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Beer
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.5023577
-
 </td>
-
 <td style="text-align:center;">
-
 3.2703869
-
 </td>
-
 <td style="text-align:center;">
-
 5.3104241
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BldMt
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000117
-
+-0.0000117
 </td>
-
 <td style="text-align:center;">
-
-\-0.0006392
-
+-0.0006392
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000278
-
+-0.0000278
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BldMt
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021939
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000405
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010086
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BldMt
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1908276
-
+-0.1908276
 </td>
-
 <td style="text-align:center;">
-
-\-0.6205342
-
+-0.6205342
 </td>
-
 <td style="text-align:center;">
-
 0.2074275
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BldMt
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 5.1165517
-
 </td>
-
 <td style="text-align:center;">
-
 4.7825617
-
 </td>
-
 <td style="text-align:center;">
-
 4.7278995
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Books
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000251
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0012475
-
+-0.0012475
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000183
-
+-0.0000183
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Books
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017959
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000744
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007603
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Books
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.0023874
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0755728
-
+-0.0755728
 </td>
-
 <td style="text-align:center;">
-
 0.1670989
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Books
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.4111684
-
 </td>
-
 <td style="text-align:center;">
-
 3.3509015
-
 </td>
-
 <td style="text-align:center;">
-
 3.7284200
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Boxes
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000374
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006542
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000503
-
+-0.0000503
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Boxes
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0019637
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000756
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007687
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Boxes
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1912494
-
+-0.1912494
 </td>
-
 <td style="text-align:center;">
-
-\-0.1263621
-
+-0.1263621
 </td>
-
 <td style="text-align:center;">
-
-\-0.1700891
-
+-0.1700891
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Boxes
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.2168868
-
 </td>
-
 <td style="text-align:center;">
-
 3.9365138
-
 </td>
-
 <td style="text-align:center;">
-
 3.5053433
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BusSv
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000387
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003407
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000439
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BusSv
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017141
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000258
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007256
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BusSv
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3637742
-
+-0.3637742
 </td>
-
 <td style="text-align:center;">
-
-\-0.5382680
-
+-0.5382680
 </td>
-
 <td style="text-align:center;">
-
-\-0.0578777
-
+-0.0578777
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BusSv
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.9642851
-
 </td>
-
 <td style="text-align:center;">
-
 4.5428054
-
 </td>
-
 <td style="text-align:center;">
-
 3.8274163
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chems
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000742
-
+-0.0000742
 </td>
-
 <td style="text-align:center;">
-
 0.0003124
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000688
-
+-0.0000688
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chems
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0019577
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000456
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007803
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chems
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1609509
-
+-0.1609509
 </td>
-
 <td style="text-align:center;">
-
 0.0688291
-
 </td>
-
 <td style="text-align:center;">
-
 0.0341466
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chems
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.3013758
-
 </td>
-
 <td style="text-align:center;">
-
 2.8192398
-
 </td>
-
 <td style="text-align:center;">
-
 3.2591208
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chips
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000839
-
+-0.0000839
 </td>
-
 <td style="text-align:center;">
-
 0.0023300
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000833
-
+-0.0000833
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chips
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0031496
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000819
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012757
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chips
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2092896
-
+-0.2092896
 </td>
-
 <td style="text-align:center;">
-
 0.7349544
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1999405
-
+-0.1999405
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chips
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 5.2964874
-
 </td>
-
 <td style="text-align:center;">
-
 3.4335541
-
 </td>
-
 <td style="text-align:center;">
-
 5.1716138
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Clths
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000441
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015328
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000168
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Clths
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021819
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000685
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010723
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Clths
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1497544
-
+-0.1497544
 </td>
-
 <td style="text-align:center;">
-
-\-0.3632635
-
+-0.3632635
 </td>
-
 <td style="text-align:center;">
-
 0.1227580
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Clths
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.3011460
-
 </td>
-
 <td style="text-align:center;">
-
 3.4463314
-
 </td>
-
 <td style="text-align:center;">
-
 4.3749283
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Cnstr
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000039
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0014893
-
+-0.0014893
 </td>
-
 <td style="text-align:center;">
-
 0.0000496
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Cnstr
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0029290
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001036
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012349
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Cnstr
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2163360
-
+-0.2163360
 </td>
-
 <td style="text-align:center;">
-
 0.3731039
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0872456
-
+-0.0872456
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Cnstr
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.4963979
-
 </td>
-
 <td style="text-align:center;">
-
 2.6781217
-
 </td>
-
 <td style="text-align:center;">
-
 3.2430720
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Coal
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002183
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0006530
-
+-0.0006530
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001057
-
+-0.0001057
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Coal
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0064209
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003493
-
 </td>
-
 <td style="text-align:center;">
-
 0.0028125
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Coal
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0270895
-
+-0.0270895
 </td>
-
 <td style="text-align:center;">
-
 0.1969015
-
 </td>
-
 <td style="text-align:center;">
-
 0.3194791
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Coal
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.1617681
-
 </td>
-
 <td style="text-align:center;">
-
 4.3961576
-
 </td>
-
 <td style="text-align:center;">
-
 4.3935656
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Drugs
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000338
-
+-0.0000338
 </td>
-
 <td style="text-align:center;">
-
 0.0000253
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000760
-
+-0.0000760
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Drugs
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014868
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000331
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005663
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Drugs
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.1254102
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0278769
-
+-0.0278769
 </td>
-
 <td style="text-align:center;">
-
 0.2480485
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Drugs
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.0264767
-
 </td>
-
 <td style="text-align:center;">
-
 2.4855865
-
 </td>
-
 <td style="text-align:center;">
-
 4.6515378
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 ElcEq
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000278
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014520
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000792
-
+-0.0000792
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 ElcEq
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0023444
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000329
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009608
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 ElcEq
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2035731
-
+-0.2035731
 </td>
-
 <td style="text-align:center;">
-
 0.3281089
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0545667
-
+-0.0545667
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 ElcEq
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 3.7279423
-
 </td>
-
 <td style="text-align:center;">
-
 3.6285666
-
 </td>
-
 <td style="text-align:center;">
-
 3.3886519
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FabPr
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000267
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0015071
-
+-0.0015071
 </td>
-
 <td style="text-align:center;">
-
 0.0000545
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FabPr
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0031162
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001095
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011838
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FabPr
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0153191
-
+-0.0153191
 </td>
-
 <td style="text-align:center;">
-
-\-0.4976986
-
+-0.4976986
 </td>
-
 <td style="text-align:center;">
-
 0.2170739
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FabPr
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 3.8933118
-
 </td>
-
 <td style="text-align:center;">
-
 3.5036933
-
 </td>
-
 <td style="text-align:center;">
-
 4.1327760
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fin
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000200
-
 </td>
-
 <td style="text-align:center;">
-
 0.0026142
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000032
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fin
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021970
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000568
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008348
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fin
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3539270
-
+-0.3539270
 </td>
-
 <td style="text-align:center;">
-
 0.1101744
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1894040
-
+-0.1894040
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fin
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.7631864
-
 </td>
-
 <td style="text-align:center;">
-
 3.1483761
-
 </td>
-
 <td style="text-align:center;">
-
 3.6709092
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Food
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000007
-
+-0.0000007
 </td>
-
 <td style="text-align:center;">
-
 0.0001537
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000014
-
+-0.0000014
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Food
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011213
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000311
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004580
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Food
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0665311
-
+-0.0665311
 </td>
-
 <td style="text-align:center;">
-
 0.1624123
-
 </td>
-
 <td style="text-align:center;">
-
 0.0942918
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Food
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 5.9314600
-
 </td>
-
 <td style="text-align:center;">
-
 2.4306959
-
 </td>
-
 <td style="text-align:center;">
-
 3.6390364
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fun
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000099
-
 </td>
-
 <td style="text-align:center;">
-
 0.0029695
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000588
-
+-0.0000588
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fun
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0029659
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001241
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014381
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fun
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3528272
-
+-0.3528272
 </td>
-
 <td style="text-align:center;">
-
-\-0.3388753
-
+-0.3388753
 </td>
-
 <td style="text-align:center;">
-
 0.2147968
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fun
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.5632775
-
 </td>
-
 <td style="text-align:center;">
-
 3.2237097
-
 </td>
-
 <td style="text-align:center;">
-
 4.1082462
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Gold
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001407
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009936
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000422
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Gold
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0073743
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001900
-
 </td>
-
 <td style="text-align:center;">
-
 0.0027980
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Gold
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.2656551
-
 </td>
-
 <td style="text-align:center;">
-
 0.2156768
-
 </td>
-
 <td style="text-align:center;">
-
 0.9138509
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Gold
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.7344656
-
 </td>
-
 <td style="text-align:center;">
-
 3.1488157
-
 </td>
-
 <td style="text-align:center;">
-
 6.4728123
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Guns
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000038
-
 </td>
-
 <td style="text-align:center;">
-
 0.0027273
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000550
-
+-0.0000550
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Guns
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0023550
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001008
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008961
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Guns
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1970840
-
+-0.1970840
 </td>
-
 <td style="text-align:center;">
-
-\-0.0900947
-
+-0.0900947
 </td>
-
 <td style="text-align:center;">
-
 0.0706345
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Guns
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.8834997
-
 </td>
-
 <td style="text-align:center;">
-
 2.6186833
-
 </td>
-
 <td style="text-align:center;">
-
 4.0091202
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hardw
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000209
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0003627
-
+-0.0003627
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000647
-
+-0.0000647
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hardw
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0031082
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000943
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011867
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hardw
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.0016452
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3778307
-
+-0.3778307
 </td>
-
 <td style="text-align:center;">
-
 0.0536588
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hardw
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.5292911
-
 </td>
-
 <td style="text-align:center;">
-
 2.3592076
-
 </td>
-
 <td style="text-align:center;">
-
 4.3799688
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hlth
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001546
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005925
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000052
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hlth
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0027862
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001232
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011752
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hlth
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1300384
-
+-0.1300384
 </td>
-
 <td style="text-align:center;">
-
-\-0.0261686
-
+-0.0261686
 </td>
-
 <td style="text-align:center;">
-
-\-0.1366119
-
+-0.1366119
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hlth
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 3.8259132
-
 </td>
-
 <td style="text-align:center;">
-
 2.7739049
-
 </td>
-
 <td style="text-align:center;">
-
 4.0781697
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hshld
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000138
-
+-0.0000138
 </td>
-
 <td style="text-align:center;">
-
-\-0.0014114
-
+-0.0014114
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000795
-
+-0.0000795
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hshld
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012039
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000348
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005051
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hshld
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1787213
-
+-0.1787213
 </td>
-
 <td style="text-align:center;">
-
-\-1.1728778
-
+-1.1728778
 </td>
-
 <td style="text-align:center;">
-
 0.1067881
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hshld
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 3.9298907
-
 </td>
-
 <td style="text-align:center;">
-
 8.1857208
-
 </td>
-
 <td style="text-align:center;">
-
 4.1481763
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Insur
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000685
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003823
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000243
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Insur
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015070
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000424
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006940
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Insur
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0145023
-
+-0.0145023
 </td>
-
 <td style="text-align:center;">
-
 0.0644756
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2234665
-
+-0.2234665
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Insur
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.2261243
-
 </td>
-
 <td style="text-align:center;">
-
 3.3304271
-
 </td>
-
 <td style="text-align:center;">
-
 3.5291096
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 LabEq
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000549
-
+-0.0000549
 </td>
-
 <td style="text-align:center;">
-
 0.0011653
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000852
-
+-0.0000852
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 LabEq
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0029874
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000571
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010425
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 LabEq
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0369663
-
+-0.0369663
 </td>
-
 <td style="text-align:center;">
-
 0.9497919
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1640833
-
+-0.1640833
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 LabEq
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 3.7963501
-
 </td>
-
 <td style="text-align:center;">
-
 7.7200155
-
 </td>
-
 <td style="text-align:center;">
-
 3.7443458
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mach
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000226
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004977
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000116
-
+-0.0000116
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mach
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0024020
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000453
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009513
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mach
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2205315
-
+-0.2205315
 </td>
-
 <td style="text-align:center;">
-
-\-0.4003493
-
+-0.4003493
 </td>
-
 <td style="text-align:center;">
-
-\-0.3288396
-
+-0.3288396
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mach
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.2940837
-
 </td>
-
 <td style="text-align:center;">
-
 3.5020504
-
 </td>
-
 <td style="text-align:center;">
-
 4.5528673
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Meals
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000235
-
+-0.0000235
 </td>
-
 <td style="text-align:center;">
-
-\-0.0007214
-
+-0.0007214
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000784
-
+-0.0000784
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Meals
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017919
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000472
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007285
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Meals
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2842865
-
+-0.2842865
 </td>
-
 <td style="text-align:center;">
-
-\-0.6270394
-
+-0.6270394
 </td>
-
 <td style="text-align:center;">
-
-\-0.3432362
-
+-0.3432362
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Meals
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.4797076
-
 </td>
-
 <td style="text-align:center;">
-
 3.4287565
-
 </td>
-
 <td style="text-align:center;">
-
 4.6594096
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 MedEq
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000708
-
+-0.0000708
 </td>
-
 <td style="text-align:center;">
-
-\-0.0006677
-
+-0.0006677
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000258
-
+-0.0000258
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 MedEq
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0016007
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000542
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006379
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 MedEq
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1789201
-
+-0.1789201
 </td>
-
 <td style="text-align:center;">
-
-\-0.5510654
-
+-0.5510654
 </td>
-
 <td style="text-align:center;">
-
-\-0.1061039
-
+-0.1061039
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 MedEq
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 3.5525295
-
 </td>
-
 <td style="text-align:center;">
-
 4.3175880
-
 </td>
-
 <td style="text-align:center;">
-
 3.2731740
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mines
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001195
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021127
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000704
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mines
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0036296
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001071
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011863
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mines
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2408983
-
+-0.2408983
 </td>
-
 <td style="text-align:center;">
-
-\-0.1411613
-
+-0.1411613
 </td>
-
 <td style="text-align:center;">
-
-\-0.1343639
-
+-0.1343639
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mines
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.5478862
-
 </td>
-
 <td style="text-align:center;">
-
 3.4984646
-
 </td>
-
 <td style="text-align:center;">
-
 3.7039445
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Oil
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001127
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005642
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000597
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Oil
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0021707
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000807
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007774
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Oil
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0853560
-
+-0.0853560
 </td>
-
 <td style="text-align:center;">
-
 0.3169656
-
 </td>
-
 <td style="text-align:center;">
-
 0.5660070
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Oil
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 5.8979075
-
 </td>
-
 <td style="text-align:center;">
-
 3.7381736
-
 </td>
-
 <td style="text-align:center;">
-
 4.0835170
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Paper
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000109
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0007564
-
+-0.0007564
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000070
-
+-0.0000070
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Paper
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017939
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000397
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006619
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Paper
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1241207
-
+-0.1241207
 </td>
-
 <td style="text-align:center;">
-
 0.2584164
-
 </td>
-
 <td style="text-align:center;">
-
 0.0460775
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Paper
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.0556531
-
 </td>
-
 <td style="text-align:center;">
-
 3.8036047
-
 </td>
-
 <td style="text-align:center;">
-
 3.7241459
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 PerSv
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000197
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0030885
-
+-0.0030885
 </td>
-
 <td style="text-align:center;">
-
 0.0000706
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 PerSv
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0022614
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000611
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008197
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 PerSv
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0550326
-
+-0.0550326
 </td>
-
 <td style="text-align:center;">
-
-\-0.3904692
-
+-0.3904692
 </td>
-
 <td style="text-align:center;">
-
-\-0.1294835
-
+-0.1294835
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 PerSv
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.3823429
-
 </td>
-
 <td style="text-align:center;">
-
 4.1182489
-
 </td>
-
 <td style="text-align:center;">
-
 3.5645186
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RlEst
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000263
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0041927
-
+-0.0041927
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000286
-
+-0.0000286
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RlEst
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0030640
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000955
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014537
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RlEst
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.4457618
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2095859
-
+-0.2095859
 </td>
-
 <td style="text-align:center;">
-
 0.9107560
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RlEst
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 12.2099242
-
 </td>
-
 <td style="text-align:center;">
-
 3.2073935
-
 </td>
-
 <td style="text-align:center;">
-
 10.4326386
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rtail
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001676
-
+-0.0001676
 </td>
-
 <td style="text-align:center;">
-
 0.0003091
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000538
-
+-0.0000538
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rtail
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0016388
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000536
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007233
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rtail
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1453546
-
+-0.1453546
 </td>
-
 <td style="text-align:center;">
-
 0.9577190
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1461251
-
+-0.1461251
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rtail
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.6774274
-
 </td>
-
 <td style="text-align:center;">
-
 4.3060368
-
 </td>
-
 <td style="text-align:center;">
-
 3.3283238
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rubbr
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000359
-
+-0.0000359
 </td>
-
 <td style="text-align:center;">
-
-\-0.0003559
-
+-0.0003559
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000427
-
+-0.0000427
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rubbr
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0019398
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000590
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009062
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rubbr
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1957441
-
+-0.1957441
 </td>
-
 <td style="text-align:center;">
-
-\-0.5902149
-
+-0.5902149
 </td>
-
 <td style="text-align:center;">
-
-\-0.0274027
-
+-0.0274027
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rubbr
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 5.0034896
-
 </td>
-
 <td style="text-align:center;">
-
 3.0755882
-
 </td>
-
 <td style="text-align:center;">
-
 4.7857813
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Ships
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001153
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000988
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000176
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Ships
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0032555
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001015
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013427
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Ships
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0528730
-
+-0.0528730
 </td>
-
 <td style="text-align:center;">
-
-\-0.4358708
-
+-0.4358708
 </td>
-
 <td style="text-align:center;">
-
 0.1819941
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Ships
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 3.7834371
-
 </td>
-
 <td style="text-align:center;">
-
 3.0507018
-
 </td>
-
 <td style="text-align:center;">
-
 4.3282648
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Smoke
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000073
-
 </td>
-
 <td style="text-align:center;">
-
 0.0025043
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000428
-
+-0.0000428
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Smoke
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0024284
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001171
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008113
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Smoke
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1024922
-
+-0.1024922
 </td>
-
 <td style="text-align:center;">
-
 0.3515208
-
 </td>
-
 <td style="text-align:center;">
-
 0.0545842
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Smoke
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 5.0838472
-
 </td>
-
 <td style="text-align:center;">
-
 4.1582200
-
 </td>
-
 <td style="text-align:center;">
-
 3.3913118
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Soda
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000417
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0009015
-
+-0.0009015
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001151
-
+-0.0001151
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Soda
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0025064
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000957
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010048
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Soda
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.3384673
-
 </td>
-
 <td style="text-align:center;">
-
 0.0604317
-
 </td>
-
 <td style="text-align:center;">
-
 0.2385755
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Soda
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 5.5470605
-
 </td>
-
 <td style="text-align:center;">
-
 3.1295966
-
 </td>
-
 <td style="text-align:center;">
-
 5.4499185
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Softw
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001408
-
+-0.0001408
 </td>
-
 <td style="text-align:center;">
-
 0.0028715
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000703
-
+-0.0000703
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Softw
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0043342
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000782
-
 </td>
-
 <td style="text-align:center;">
-
 0.0019265
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Softw
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.0120298
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.9550906
-
+-0.9550906
 </td>
-
 <td style="text-align:center;">
-
 0.8398891
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Softw
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.4094943
-
 </td>
-
 <td style="text-align:center;">
-
 5.7704356
-
 </td>
-
 <td style="text-align:center;">
-
 9.6853614
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Steel
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000530
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0012693
-
+-0.0012693
 </td>
-
 <td style="text-align:center;">
-
 0.0000132
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Steel
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0036254
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000872
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012876
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Steel
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0563650
-
+-0.0563650
 </td>
-
 <td style="text-align:center;">
-
 0.5874974
-
 </td>
-
 <td style="text-align:center;">
-
 0.0447428
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Steel
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.1953108
-
 </td>
-
 <td style="text-align:center;">
-
 4.0303039
-
 </td>
-
 <td style="text-align:center;">
-
 4.0433686
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Telcm
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000567
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000458
-
+-0.0000458
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000059
-
+-0.0000059
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Telcm
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012521
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000884
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004921
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Telcm
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.1646993
-
+-0.1646993
 </td>
-
 <td style="text-align:center;">
-
-\-0.1365826
-
+-0.1365826
 </td>
-
 <td style="text-align:center;">
-
-\-0.1258483
-
+-0.1258483
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Telcm
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.4441432
-
 </td>
-
 <td style="text-align:center;">
-
 4.2250883
-
 </td>
-
 <td style="text-align:center;">
-
 3.3439989
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Toys
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000289
-
+-0.0000289
 </td>
-
 <td style="text-align:center;">
-
-\-0.0022756
-
+-0.0022756
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000270
-
+-0.0000270
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Toys
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0028384
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001114
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011627
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Toys
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2376400
-
+-0.2376400
 </td>
-
 <td style="text-align:center;">
-
-\-0.4223758
-
+-0.4223758
 </td>
-
 <td style="text-align:center;">
-
-\-0.3036611
-
+-0.3036611
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Toys
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 3.6166223
-
 </td>
-
 <td style="text-align:center;">
-
 3.9275317
-
 </td>
-
 <td style="text-align:center;">
-
 3.9330825
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Trans
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000263
-
+-0.0000263
 </td>
-
 <td style="text-align:center;">
-
-\-0.0009225
-
+-0.0009225
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000225
-
+-0.0000225
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Trans
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017235
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000342
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008057
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Trans
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.2809391
-
+-0.2809391
 </td>
-
 <td style="text-align:center;">
-
-\-0.1283863
-
+-0.1283863
 </td>
-
 <td style="text-align:center;">
-
-\-0.0885051
-
+-0.0885051
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Trans
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.2412440
-
 </td>
-
 <td style="text-align:center;">
-
 2.5028582
-
 </td>
-
 <td style="text-align:center;">
-
 3.5668781
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Txtls
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000065
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0029450
-
+-0.0029450
 </td>
-
 <td style="text-align:center;">
-
 0.0000378
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Txtls
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0030480
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001013
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014408
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Txtls
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
 0.0112919
-
 </td>
-
 <td style="text-align:center;">
-
 0.0192122
-
 </td>
-
 <td style="text-align:center;">
-
 0.7155881
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Txtls
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 8.0332361
-
 </td>
-
 <td style="text-align:center;">
-
 4.0228921
-
 </td>
-
 <td style="text-align:center;">
-
 8.0101321
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Util
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001290
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0003171
-
+-0.0003171
 </td>
-
 <td style="text-align:center;">
-
 0.0000300
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Util
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008705
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000529
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003717
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Util
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0739852
-
+-0.0739852
 </td>
-
 <td style="text-align:center;">
-
-\-0.2271294
-
+-0.2271294
 </td>
-
 <td style="text-align:center;">
-
 0.1238850
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Util
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 3.3162753
-
 </td>
-
 <td style="text-align:center;">
-
 3.7681855
-
 </td>
-
 <td style="text-align:center;">
-
 3.4544205
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Whlsl
-
 </td>
-
 <td style="text-align:center;">
-
 mean
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000326
-
+-0.0000326
 </td>
-
 <td style="text-align:center;">
-
-\-0.0006302
-
+-0.0006302
 </td>
-
 <td style="text-align:center;">
-
-\-0.0000055
-
+-0.0000055
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Whlsl
-
 </td>
-
 <td style="text-align:center;">
-
 variance
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015439
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000362
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006297
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Whlsl
-
 </td>
-
 <td style="text-align:center;">
-
 skewness
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.3479152
-
+-0.3479152
 </td>
-
 <td style="text-align:center;">
-
-\-0.1612281
-
+-0.1612281
 </td>
-
 <td style="text-align:center;">
-
-\-0.2212298
-
+-0.2212298
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Whlsl
-
 </td>
-
 <td style="text-align:center;">
-
 kurtosis
-
 </td>
-
 <td style="text-align:center;">
-
 4.8313939
-
 </td>
-
 <td style="text-align:center;">
-
 5.0240942
-
 </td>
-
 <td style="text-align:center;">
-
 3.9759001
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 The Noise component is the time-series noise; the Seasonal component is
@@ -40134,916 +20399,461 @@ to be the same as standard deviation of the Estimated filtered Fama
 Macbeth Lambdas.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 STL Decomposition Component Strength for Simulated Portfolio Risk
 Premium: Acutal Beta and Noise + Random Fourier Lambda
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 Strength
-
 </th>
-
 <th style="text-align:center;">
-
 Aero
-
 </th>
-
 <th style="text-align:center;">
-
 Agric
-
 </th>
-
 <th style="text-align:center;">
-
 Autos
-
 </th>
-
 <th style="text-align:center;">
-
 Banks
-
 </th>
-
 <th style="text-align:center;">
-
 Beer
-
 </th>
-
 <th style="text-align:center;">
-
 BldMt
-
 </th>
-
 <th style="text-align:center;">
-
 Books
-
 </th>
-
 <th style="text-align:center;">
-
 Boxes
-
 </th>
-
 <th style="text-align:center;">
-
 BusSv
-
 </th>
-
 <th style="text-align:center;">
-
 Chems
-
 </th>
-
 <th style="text-align:center;">
-
 Chips
-
 </th>
-
 <th style="text-align:center;">
-
 Clths
-
 </th>
-
 <th style="text-align:center;">
-
 Cnstr
-
 </th>
-
 <th style="text-align:center;">
-
 Coal
-
 </th>
-
 <th style="text-align:center;">
-
 Drugs
-
 </th>
-
 <th style="text-align:center;">
-
 ElcEq
-
 </th>
-
 <th style="text-align:center;">
-
 FabPr
-
 </th>
-
 <th style="text-align:center;">
-
 Fin
-
 </th>
-
 <th style="text-align:center;">
-
 Food
-
 </th>
-
 <th style="text-align:center;">
-
 Fun
-
 </th>
-
 <th style="text-align:center;">
-
 Gold
-
 </th>
-
 <th style="text-align:center;">
-
 Guns
-
 </th>
-
 <th style="text-align:center;">
-
 Hardw
-
 </th>
-
 <th style="text-align:center;">
-
 Hlth
-
 </th>
-
 <th style="text-align:center;">
-
 Hshld
-
 </th>
-
 <th style="text-align:center;">
-
 Insur
-
 </th>
-
 <th style="text-align:center;">
-
 LabEq
-
 </th>
-
 <th style="text-align:center;">
-
 Mach
-
 </th>
-
 <th style="text-align:center;">
-
 Meals
-
 </th>
-
 <th style="text-align:center;">
-
 MedEq
-
 </th>
-
 <th style="text-align:center;">
-
 Mines
-
 </th>
-
 <th style="text-align:center;">
-
 Oil
-
 </th>
-
 <th style="text-align:center;">
-
 Paper
-
 </th>
-
 <th style="text-align:center;">
-
 PerSv
-
 </th>
-
 <th style="text-align:center;">
-
 RlEst
-
 </th>
-
 <th style="text-align:center;">
-
 Rtail
-
 </th>
-
 <th style="text-align:center;">
-
 Rubbr
-
 </th>
-
 <th style="text-align:center;">
-
 Ships
-
 </th>
-
 <th style="text-align:center;">
-
 Smoke
-
 </th>
-
 <th style="text-align:center;">
-
 Soda
-
 </th>
-
 <th style="text-align:center;">
-
 Softw
-
 </th>
-
 <th style="text-align:center;">
-
 Steel
-
 </th>
-
 <th style="text-align:center;">
-
 Telcm
-
 </th>
-
 <th style="text-align:center;">
-
 Toys
-
 </th>
-
 <th style="text-align:center;">
-
 Trans
-
 </th>
-
 <th style="text-align:center;">
-
 Txtls
-
 </th>
-
 <th style="text-align:center;">
-
 Util
-
 </th>
-
 <th style="text-align:center;">
-
 Whlsl
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FS
-
 </td>
-
 <td style="text-align:center;">
-
 0.4021162
-
 </td>
-
 <td style="text-align:center;">
-
 0.3827723
-
 </td>
-
 <td style="text-align:center;">
-
 0.4054248
-
 </td>
-
 <td style="text-align:center;">
-
 0.4082322
-
 </td>
-
 <td style="text-align:center;">
-
 0.3975650
-
 </td>
-
 <td style="text-align:center;">
-
 0.4159221
-
 </td>
-
 <td style="text-align:center;">
-
 0.3983572
-
 </td>
-
 <td style="text-align:center;">
-
 0.3628132
-
 </td>
-
 <td style="text-align:center;">
-
 0.3891655
-
 </td>
-
 <td style="text-align:center;">
-
 0.3719177
-
 </td>
-
 <td style="text-align:center;">
-
 0.3738527
-
 </td>
-
 <td style="text-align:center;">
-
 0.4179591
-
 </td>
-
 <td style="text-align:center;">
-
 0.3899995
-
 </td>
-
 <td style="text-align:center;">
-
 0.3946648
-
 </td>
-
 <td style="text-align:center;">
-
 0.3568852
-
 </td>
-
 <td style="text-align:center;">
-
 0.3830464
-
 </td>
-
 <td style="text-align:center;">
-
 0.3627027
-
 </td>
-
 <td style="text-align:center;">
-
 0.3764779
-
 </td>
-
 <td style="text-align:center;">
-
 0.3693425
-
 </td>
-
 <td style="text-align:center;">
-
 0.4164169
-
 </td>
-
 <td style="text-align:center;">
-
 0.3487103
-
 </td>
-
 <td style="text-align:center;">
-
 0.3501078
-
 </td>
-
 <td style="text-align:center;">
-
 0.3449885
-
 </td>
-
 <td style="text-align:center;">
-
 0.3847837
-
 </td>
-
 <td style="text-align:center;">
-
 0.3865955
-
 </td>
-
 <td style="text-align:center;">
-
 0.4196497
-
 </td>
-
 <td style="text-align:center;">
-
 0.3257202
-
 </td>
-
 <td style="text-align:center;">
-
 0.3729191
-
 </td>
-
 <td style="text-align:center;">
-
 0.3824538
-
 </td>
-
 <td style="text-align:center;">
-
 0.3686570
-
 </td>
-
 <td style="text-align:center;">
-
 0.3390615
-
 </td>
-
 <td style="text-align:center;">
-
 0.3614583
-
 </td>
-
 <td style="text-align:center;">
-
 0.3546661
-
 </td>
-
 <td style="text-align:center;">
-
 0.3463922
-
 </td>
-
 <td style="text-align:center;">
-
 0.4123199
-
 </td>
-
 <td style="text-align:center;">
-
 0.3923757
-
 </td>
-
 <td style="text-align:center;">
-
 0.4065911
-
 </td>
-
 <td style="text-align:center;">
-
 0.3823240
-
 </td>
-
 <td style="text-align:center;">
-
 0.3195290
-
 </td>
-
 <td style="text-align:center;">
-
 0.3723501
-
 </td>
-
 <td style="text-align:center;">
-
 0.3586652
-
 </td>
-
 <td style="text-align:center;">
-
 0.3509088
-
 </td>
-
 <td style="text-align:center;">
-
 0.3696977
-
 </td>
-
 <td style="text-align:center;">
-
 0.3754767
-
 </td>
-
 <td style="text-align:center;">
-
 0.4065448
-
 </td>
-
 <td style="text-align:center;">
-
 0.4089031
-
 </td>
-
 <td style="text-align:center;">
-
 0.3790026
-
 </td>
-
 <td style="text-align:center;">
-
 0.3775878
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FT
-
 </td>
-
 <td style="text-align:center;">
-
 0.1446934
-
 </td>
-
 <td style="text-align:center;">
-
 0.1486525
-
 </td>
-
 <td style="text-align:center;">
-
 0.1730795
-
 </td>
-
 <td style="text-align:center;">
-
 0.1784139
-
 </td>
-
 <td style="text-align:center;">
-
 0.1555849
-
 </td>
-
 <td style="text-align:center;">
-
 0.1298311
-
 </td>
-
 <td style="text-align:center;">
-
 0.1596021
-
 </td>
-
 <td style="text-align:center;">
-
 0.1457727
-
 </td>
-
 <td style="text-align:center;">
-
 0.1203761
-
 </td>
-
 <td style="text-align:center;">
-
 0.1408368
-
 </td>
-
 <td style="text-align:center;">
-
 0.1305168
-
 </td>
-
 <td style="text-align:center;">
-
 0.1452650
-
 </td>
-
 <td style="text-align:center;">
-
 0.1455374
-
 </td>
-
 <td style="text-align:center;">
-
 0.1564397
-
 </td>
-
 <td style="text-align:center;">
-
 0.1388148
-
 </td>
-
 <td style="text-align:center;">
-
 0.1146677
-
 </td>
-
 <td style="text-align:center;">
-
 0.1313174
-
 </td>
-
 <td style="text-align:center;">
-
 0.1549981
-
 </td>
-
 <td style="text-align:center;">
-
 0.1478477
-
 </td>
-
 <td style="text-align:center;">
-
 0.1344061
-
 </td>
-
 <td style="text-align:center;">
-
 0.1054386
-
 </td>
-
 <td style="text-align:center;">
-
 0.1251149
-
 </td>
-
 <td style="text-align:center;">
-
 0.1186852
-
 </td>
-
 <td style="text-align:center;">
-
 0.1549092
-
 </td>
-
 <td style="text-align:center;">
-
 0.1562856
-
 </td>
-
 <td style="text-align:center;">
-
 0.1606730
-
 </td>
-
 <td style="text-align:center;">
-
 0.1131162
-
 </td>
-
 <td style="text-align:center;">
-
 0.1307856
-
 </td>
-
 <td style="text-align:center;">
-
 0.1331899
-
 </td>
-
 <td style="text-align:center;">
-
 0.1478657
-
 </td>
-
 <td style="text-align:center;">
-
 0.1437432
-
 </td>
-
 <td style="text-align:center;">
-
 0.1400736
-
 </td>
-
 <td style="text-align:center;">
-
 0.1330149
-
 </td>
-
 <td style="text-align:center;">
-
 0.1270480
-
 </td>
-
 <td style="text-align:center;">
-
 0.1409362
-
 </td>
-
 <td style="text-align:center;">
-
 0.1434605
-
 </td>
-
 <td style="text-align:center;">
-
 0.1472872
-
 </td>
-
 <td style="text-align:center;">
-
 0.1217962
-
 </td>
-
 <td style="text-align:center;">
-
 0.1588424
-
 </td>
-
 <td style="text-align:center;">
-
 0.1402271
-
 </td>
-
 <td style="text-align:center;">
-
 0.1076641
-
 </td>
-
 <td style="text-align:center;">
-
 0.1306857
-
 </td>
-
 <td style="text-align:center;">
-
 0.1898176
-
 </td>
-
 <td style="text-align:center;">
-
 0.1241423
-
 </td>
-
 <td style="text-align:center;">
-
 0.1388892
-
 </td>
-
 <td style="text-align:center;">
-
 0.1474151
-
 </td>
-
 <td style="text-align:center;">
-
 0.2035656
-
 </td>
-
 <td style="text-align:center;">
-
 0.1301357
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ![](ECC_files/figure-gfm/Sim3_Figures-1.png)<!-- -->![](ECC_files/figure-gfm/Sim3_Figures-2.png)<!-- -->
@@ -41055,10 +20865,10 @@ We want two sets of regressions here:
 1.  SSE Improvement of Estimated ECC vs. variance of Seasonal, Noise,
     and Resid
 
-2.  ![\\sqrt{SSE}](https://latex.codecogs.com/png.latex?%5Csqrt%7BSSE%7D
-    "\\sqrt{SSE}") vs. standard deviation of Seasonal, Noise, and Resid
+2.  ![\\sqrt{SSE}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csqrt%7BSSE%7D "\sqrt{SSE}")
+    vs. standard deviation of Seasonal, Noise, and Resid
 
-<!-- end list -->
+<!-- -->
 
     ## 
     ## Call:
@@ -41208,8 +21018,8 @@ problem and we have two new sets of regressions:
 
 1.  SSE Improvement of Estimated ECC vs. variance of Bias and Resid
 
-2.  ![\\sqrt{SSE}](https://latex.codecogs.com/png.latex?%5Csqrt%7BSSE%7D
-    "\\sqrt{SSE}") vs. standard deviation of Bias and Resid
+2.  ![\\sqrt{SSE}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csqrt%7BSSE%7D "\sqrt{SSE}")
+    vs. standard deviation of Bias and Resid
 
 From both regression results, we can see that the combined Bias term
 encourage the filtering method.
@@ -41248,22 +21058,16 @@ principle component regression.
     ## Multiple R-squared:  0.2758, Adjusted R-squared:  0.2755 
     ## F-statistic: 913.2 on 2 and 4797 DF,  p-value: < 2.2e-16
 
-  
-![PC1 =
--0.707\*(Bias+Resid)](https://latex.codecogs.com/png.latex?PC1%20%3D%20-0.707%2A%28Bias%2BResid%29
-"PC1 = -0.707*(Bias+Resid)")  
-  
-![PC2 =
--0.707\*(Bias-Resid)](https://latex.codecogs.com/png.latex?PC2%20%3D%20-0.707%2A%28Bias-Resid%29
-"PC2 = -0.707*(Bias-Resid)")  
+![PC1 = -0.707\*(Bias+Resid)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;PC1%20%3D%20-0.707%2A%28Bias%2BResid%29 "PC1 = -0.707*(Bias+Resid)")
+
+![PC2 = -0.707\*(Bias-Resid)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;PC2%20%3D%20-0.707%2A%28Bias-Resid%29 "PC2 = -0.707*(Bias-Resid)")
 
 where Bias and Resid are standard deviations of Bias and Resid, To make
-it easier to interpret, we flipped the sign such that ![PC1
-= 0.707(Bias+Resid)](https://latex.codecogs.com/png.latex?PC1%20%3D%200.707%28Bias%2BResid%29
-"PC1 = 0.707(Bias+Resid)"), which is approximately 0.707 times the total
-Error of the return, and ![PC2
-= 0.707(Bias-Resid)](https://latex.codecogs.com/png.latex?PC2%20%3D%200.707%28Bias-Resid%29
-"PC2 = 0.707(Bias-Resid)"), which represents excess error from bias.
+it easier to interpret, we flipped the sign such that
+![PC1 = 0.707(Bias+Resid)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;PC1%20%3D%200.707%28Bias%2BResid%29 "PC1 = 0.707(Bias+Resid)"),
+which is approximately 0.707 times the total Error of the return, and
+![PC2 = 0.707(Bias-Resid)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;PC2%20%3D%200.707%28Bias-Resid%29 "PC2 = 0.707(Bias-Resid)"),
+which represents excess error from bias.
 
 From the regression, we can see the PC1 (total Error) would cost the
 accuracy of the ECC estimation and the PC2 (excess error from bias)
@@ -41273,16 +21077,217 @@ that the large bias from Seasonality and Time-series Noise relative to
 the idiosyncratic noise (Resid) would cost the accuracy of the
 cross-sectional regression.
 
+## S4-6 Robustness Check
+
+### S4-6-1 Auxiliary Regression at each t
+
+In this session, we want to ensure that regression with only trend
+component on the left-hand-side gives unbiased result in second-step
+regression.
+
+In regular second-step regression, we have:
+![r_i = \\lambda_0 + \\lambda_1^s \\hat{\\beta}\_i + u_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_i%20%3D%20%5Clambda_0%20%2B%20%5Clambda_1%5Es%20%5Chat%7B%5Cbeta%7D_i%20%2B%20u_i "r_i = \lambda_0 + \lambda_1^s \hat{\beta}_i + u_i").
+
+The return series can be decomposed into:
+![r_i = T_i + P_i + R_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_i%20%3D%20T_i%20%2B%20P_i%20%2B%20R_i "r_i = T_i + P_i + R_i"),
+where
+![T_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;T_i "T_i")
+component the trend component;
+![P_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;P_i "P_i")
+is the periodic component; and
+![R_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;R_i "R_i")
+is the time-series residual component.
+
+Therefore, an alternative second-step regression would be:
+![T_i = \\lambda_0 + \\lambda_1^l \\hat{\\beta}\_i + \\lambda_2^l P_i + u_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;T_i%20%3D%20%5Clambda_0%20%2B%20%5Clambda_1%5El%20%5Chat%7B%5Cbeta%7D_i%20%2B%20%5Clambda_2%5El%20P_i%20%2B%20u_i "T_i = \lambda_0 + \lambda_1^l \hat{\beta}_i + \lambda_2^l P_i + u_i").
+And
+![\\lambda_1^s = \\lambda_1^l + \\lambda_2^l \\pi_1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda_1%5Es%20%3D%20%5Clambda_1%5El%20%2B%20%5Clambda_2%5El%20%5Cpi_1 "\lambda_1^s = \lambda_1^l + \lambda_2^l \pi_1"),
+where
+![\\pi_1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cpi_1 "\pi_1")
+is from the Auxiliary regression
+![P_i = \\pi_0 + \\pi_1 \\hat{\\beta}\_i + \\eta_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;P_i%20%3D%20%5Cpi_0%20%2B%20%5Cpi_1%20%5Chat%7B%5Cbeta%7D_i%20%2B%20%5Ceta_i "P_i = \pi_0 + \pi_1 \hat{\beta}_i + \eta_i").
+
+First of all, we would like to perform the Auxiliary regression at each
+time period t:
+
+![](ECC_files/figure-gfm/Aux_reg-1.png)<!-- -->![](ECC_files/figure-gfm/Aux_reg-2.png)<!-- -->
+
+    ## [1] "Proportion of siginificant F statistics"
+
+    ## [1] 0.5605787
+
+    ## [1] "Proportion of siginificant t statistics"
+
+    ##    Mkt-RF       SMB       HML       RMW       CMA 
+    ## 0.2679289 0.2478914 0.2433092 0.2834084 0.2828664
+
+For Periodic (Seasonal) component. based on the F-test result, we only
+reject the null hypothesis that the coefficients are not jointly
+different from 0 about half the time. Individually, we have the p-value
+less than 30% of the time to be less than 0.05.
+
+![](ECC_files/figure-gfm/Aux_reg_Noise-1.png)<!-- -->![](ECC_files/figure-gfm/Aux_reg_Noise-2.png)<!-- -->
+
+    ## [1] "Proportion of siginificant F statistics"
+
+    ## [1] 0.5280289
+
+    ## [1] "Proportion of siginificant t statistics"
+
+    ##    Mkt-RF       SMB       HML       RMW       CMA 
+    ## 0.2741039 0.2725600 0.2546087 0.2698500 0.2946964
+
+We obtain similar results for noise component.
+
+![](ECC_files/figure-gfm/Aux_reg_Trend-1.png)<!-- -->![](ECC_files/figure-gfm/Aux_reg_Trend-2.png)<!-- -->
+
+    ## [1] "Proportion of siginificant F statistics"
+
+    ## [1] 0.5280289
+
+    ## [1] "Proportion of siginificant t statistics"
+
+    ##    Mkt-RF       SMB       HML       RMW       CMA 
+    ## 0.2741039 0.2725600 0.2546087 0.2698500 0.2946964
+
+We obtain similar results for trend component.
+
+This shows that at a given time t, we would have the Noise and Periodic
+(Seasonal) component affecting the
+![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
+estimation.
+
+### S4-6-2 Panel Auxiliary Regression
+
+This session would apply panel regression to each components to see
+whether using the trend component is justified in the full sample.
+
+    ## [1] "Original"
+
+    ## 
+    ## Call:
+    ## lm(formula = RP ~ . - date - component_num, data = .)
+    ## 
+    ## Residuals:
+    ##      Min       1Q   Median       3Q      Max 
+    ## -0.42041 -0.03611  0.00176  0.03707  0.77616 
+    ## 
+    ## Coefficients:
+    ##               Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept)  7.478e-03  1.688e-03   4.429 9.49e-06 ***
+    ## `Mkt-RF`    -7.864e-04  1.607e-03  -0.490   0.6245    
+    ## SMB          2.201e-03  9.641e-04   2.283   0.0224 *  
+    ## HML         -6.808e-05  8.702e-04  -0.078   0.9376    
+    ## RMW          3.624e-04  6.824e-04   0.531   0.5953    
+    ## CMA          4.959e-04  6.740e-04   0.736   0.4619    
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 0.06687 on 26538 degrees of freedom
+    ## Multiple R-squared:  0.0002428,  Adjusted R-squared:  5.441e-05 
+    ## F-statistic: 1.289 on 5 and 26538 DF,  p-value: 0.2654
+
+    ## [1] "Trend"
+
+    ## 
+    ## Call:
+    ## lm(formula = RP ~ . - date - component_num, data = .)
+    ## 
+    ## Residuals:
+    ##       Min        1Q    Median        3Q       Max 
+    ## -0.113684 -0.008837  0.000906  0.009553  0.070951 
+    ## 
+    ## Coefficients:
+    ##               Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept)  7.623e-03  4.082e-04  18.674  < 2e-16 ***
+    ## `Mkt-RF`    -7.865e-04  3.884e-04  -2.025 0.042901 *  
+    ## SMB          1.661e-03  2.331e-04   7.124 1.07e-12 ***
+    ## HML          8.639e-05  2.104e-04   0.411 0.681383    
+    ## RMW          6.147e-04  1.650e-04   3.726 0.000195 ***
+    ## CMA          5.124e-05  1.630e-04   0.314 0.753179    
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 0.01617 on 26538 degrees of freedom
+    ## Multiple R-squared:  0.002748,   Adjusted R-squared:  0.00256 
+    ## F-statistic: 14.62 on 5 and 26538 DF,  p-value: 2.399e-14
+
+    ## [1] "Periodic (Seasonal)"
+
+    ## 
+    ## Call:
+    ## lm(formula = RP ~ . - date - component_num, data = .)
+    ## 
+    ## Residuals:
+    ##       Min        1Q    Median        3Q       Max 
+    ## -0.175196 -0.018452  0.000096  0.018247  0.314272 
+    ## 
+    ## Coefficients:
+    ##               Estimate Std. Error t value Pr(>|t|)
+    ## (Intercept) -8.751e-05  8.062e-04  -0.109    0.914
+    ## `Mkt-RF`     4.812e-05  7.671e-04   0.063    0.950
+    ## SMB          6.591e-05  4.604e-04   0.143    0.886
+    ## HML         -1.010e-04  4.155e-04  -0.243    0.808
+    ## RMW          1.022e-05  3.258e-04   0.031    0.975
+    ## CMA          1.241e-04  3.218e-04   0.385    0.700
+    ## 
+    ## Residual standard error: 0.03193 on 26538 degrees of freedom
+    ## Multiple R-squared:  1.374e-05,  Adjusted R-squared:  -0.0001747 
+    ## F-statistic: 0.07293 on 5 and 26538 DF,  p-value: 0.9962
+
+    ## [1] "Noise"
+
+    ## 
+    ## Call:
+    ## lm(formula = RP ~ . - date - component_num, data = .)
+    ## 
+    ## Residuals:
+    ##      Min       1Q   Median       3Q      Max 
+    ## -0.28288 -0.02829  0.00049  0.02894  0.47970 
+    ## 
+    ## Coefficients:
+    ##               Estimate Std. Error t value Pr(>|t|)
+    ## (Intercept) -5.731e-05  1.258e-03  -0.046    0.964
+    ## `Mkt-RF`    -4.807e-05  1.197e-03  -0.040    0.968
+    ## SMB          4.746e-04  7.185e-04   0.661    0.509
+    ## HML         -5.352e-05  6.485e-04  -0.083    0.934
+    ## RMW         -2.625e-04  5.085e-04  -0.516    0.606
+    ## CMA          3.206e-04  5.023e-04   0.638    0.523
+    ## 
+    ## Residual standard error: 0.04983 on 26538 degrees of freedom
+    ## Multiple R-squared:  4.236e-05,  Adjusted R-squared:  -0.000146 
+    ## F-statistic: 0.2249 on 5 and 26538 DF,  p-value: 0.9519
+
+We can clearly see that overall the Periodic (Seasonal) and Noise cannot
+be explained by the betas (they should matter for the expected return
+estimation). The coefficients for Periodic (Seasonal) and Noise are
+indistinguishable from 0 and the F test p-value is close to 1 (not
+significant from 0). Therefore, Periodic (Seasonal) and Noise should not
+matter in the second-path regression. The Original (actual return) and
+Trend regression coefficients are similar and the F test p-value are all
+small. This result suggests that only the trend component matters in the
+![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
+estimation in the second-path regression.
+
+From the previous section, yet, Periodic and Noise Component can alter
+the monthly
+![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
+estimations, which is inappropriate according to the Panel regression
+results. If we want one long-term
+![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda"),
+using trend or return on the left hand side would yield the same
+estimates. However, since our main goal is to estimate monthly expected
+return, we should only use trend on the left hand side, excluding Noise
+and Periodic.
+
 # S5 Equity Cost of Captial
 
 ## S5-1 Estimated Equity Cost of Captial
 
-As the equation indicates, ![ECC = \\sum\_{i \\in F}
-\\beta\_i\*E\[F\_i\] +
-R\_f](https://latex.codecogs.com/png.latex?ECC%20%3D%20%5Csum_%7Bi%20%5Cin%20F%7D%20%5Cbeta_i%2AE%5BF_i%5D%20%2B%20R_f
-"ECC = \\sum_{i \\in F} \\beta_i*E[F_i] + R_f"). We will ignore the risk
-free rate part and the Equity Cost of Capital in this section refers to
-the estimated risk premium.
+As the equation indicates,
+![ECC = \\sum\_{i \\in F} \\beta_i\*E\[F_i\] + R_f](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;ECC%20%3D%20%5Csum_%7Bi%20%5Cin%20F%7D%20%5Cbeta_i%2AE%5BF_i%5D%20%2B%20R_f "ECC = \sum_{i \in F} \beta_i*E[F_i] + R_f").
+We will ignore the risk free rate part and the Equity Cost of Capital in
+this section refers to the estimated risk premium.
 
 ### S5-1-1 Arithmetic Mean
 
@@ -41303,310 +21308,161 @@ the estimated risk premium.
 ## S5-2 Comparative Statics
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Different Lambda Method Estimated ECC SSE
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 Model
-
 </th>
-
 <th style="text-align:center;">
-
 AM
-
 </th>
-
 <th style="text-align:center;">
-
 GM
-
 </th>
-
 <th style="text-align:center;">
-
 RAM
-
 </th>
-
 <th style="text-align:center;">
-
 RGM
-
 </th>
-
 <th style="text-align:center;">
-
 FM
-
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_7\_N
-
+FM_STL_7\_N
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_7\_R
-
+FM_STL_7\_R
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_15\_N
-
+FM_STL_15_N
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_15\_R
-
+FM_STL_15_R
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_40\_N
-
+FM_STL_40_N
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_40\_R
-
+FM_STL_40_R
 </th>
-
 <th style="text-align:center;">
-
 0
-
 </th>
-
 <th style="text-align:center;">
-
 Total Mean
-
 </th>
-
 <th style="text-align:center;">
-
 Industry Mean
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FF5
-
 </td>
-
 <td style="text-align:center;">
-
 121.1423
-
 </td>
-
 <td style="text-align:center;">
-
 121.1661
-
 </td>
-
 <td style="text-align:center;">
-
 120.6818
-
 </td>
-
 <td style="text-align:center;">
-
 120.8422
-
 </td>
-
 <td style="text-align:center;">
-
 68.62919
-
 </td>
-
 <td style="text-align:center;">
-
 114.0071
-
 </td>
-
 <td style="text-align:center;">
-
 122.4111
-
 </td>
-
 <td style="text-align:center;">
-
 113.1796
-
 </td>
-
 <td style="text-align:center;">
-
 122.5372
-
 </td>
-
 <td style="text-align:center;">
-
 111.9175
-
 </td>
-
 <td style="text-align:center;">
-
 121.6108
-
 </td>
-
 <td style="text-align:center;">
-
 122.2910
-
 </td>
-
 <td style="text-align:center;">
-
 120.8953
-
 </td>
-
 <td style="text-align:center;">
-
 120.738
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 PRS
-
 </td>
-
 <td style="text-align:center;">
-
 120.9655
-
 </td>
-
 <td style="text-align:center;">
-
 121.0273
-
 </td>
-
 <td style="text-align:center;">
-
 120.6923
-
 </td>
-
 <td style="text-align:center;">
-
 120.9091
-
 </td>
-
 <td style="text-align:center;">
-
 71.56407
-
 </td>
-
 <td style="text-align:center;">
-
 114.5524
-
 </td>
-
 <td style="text-align:center;">
-
 125.7734
-
 </td>
-
 <td style="text-align:center;">
-
 113.8148
-
 </td>
-
 <td style="text-align:center;">
-
 125.4193
-
 </td>
-
 <td style="text-align:center;">
-
 112.7350
-
 </td>
-
 <td style="text-align:center;">
-
 123.5410
-
 </td>
-
 <td style="text-align:center;">
-
 122.2386
-
 </td>
-
 <td style="text-align:center;">
-
 120.8257
-
 </td>
-
 <td style="text-align:center;">
-
 120.738
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 Based on the Sum Squared Error, the Fama Macbeth Method has the lowest
 error explaining the Portfolio Risk Premium (This is because the FM
 second step regression applied the least square method). The STL
 decomposition with no robust weight works better than the one with
-robust weight; the FM\_STL lambda works slightly better than the
+robust weight; the FM_STL lambda works slightly better than the
 Arithmetic Mean and the Geometric Mean.
 
 Here we would compare the Estimated ECC from FM method and Filtered FM
@@ -41619,21 +21475,13 @@ different sectors. It seems that the distributions are different from FM
 ECC and STL FM ECC.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 KS Test for Fama Mecbeth ECC and STL FM ECC
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
-
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -41643,7 +21491,6 @@ FF5
 </div>
 
 </th>
-
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
@@ -41653,1715 +21500,860 @@ PRS
 </div>
 
 </th>
-
 </tr>
-
 <tr>
-
 <th style="text-align:center;">
-
 Industry
-
 </th>
-
 <th style="text-align:center;">
-
 statistic
-
 </th>
-
 <th style="text-align:center;">
-
 p.value
-
 </th>
-
 <th style="text-align:center;">
-
 statistic
-
 </th>
-
 <th style="text-align:center;">
-
 p.value
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Aero
-
 </td>
-
 <td style="text-align:center;">
-
 0.2929476
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2893309
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Agric
-
 </td>
-
 <td style="text-align:center;">
-
 0.2965642
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2802893
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Autos
-
 </td>
-
 <td style="text-align:center;">
-
 0.3092224
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2712477
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Banks
-
 </td>
-
 <td style="text-align:center;">
-
 0.2820976
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2766727
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Beer
-
 </td>
-
 <td style="text-align:center;">
-
 0.3218807
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.3110307
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BldMt
-
 </td>
-
 <td style="text-align:center;">
-
 0.2857143
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2730561
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Books
-
 </td>
-
 <td style="text-align:center;">
-
 0.2983725
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2784810
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Boxes
-
 </td>
-
 <td style="text-align:center;">
-
 0.3056058
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2893309
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 BusSv
-
 </td>
-
 <td style="text-align:center;">
-
 0.3056058
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2658228
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chems
-
 </td>
-
 <td style="text-align:center;">
-
 0.3092224
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2929476
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Chips
-
 </td>
-
 <td style="text-align:center;">
-
 0.2929476
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2766727
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Clths
-
 </td>
-
 <td style="text-align:center;">
-
 0.3128391
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2965642
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Cnstr
-
 </td>
-
 <td style="text-align:center;">
-
 0.3273056
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2983725
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Coal
-
 </td>
-
 <td style="text-align:center;">
-
 0.2585895
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2423146
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Drugs
-
 </td>
-
 <td style="text-align:center;">
-
 0.3146474
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.3092224
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 ElcEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.2893309
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2857143
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 FabPr
-
 </td>
-
 <td style="text-align:center;">
-
 0.3037975
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.3037975
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fin
-
 </td>
-
 <td style="text-align:center;">
-
 0.3037975
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2622061
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Food
-
 </td>
-
 <td style="text-align:center;">
-
 0.2929476
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2947559
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Fun
-
 </td>
-
 <td style="text-align:center;">
-
 0.2911392
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2911392
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Gold
-
 </td>
-
 <td style="text-align:center;">
-
 0.2658228
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2603978
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Guns
-
 </td>
-
 <td style="text-align:center;">
-
 0.2857143
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2929476
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hardw
-
 </td>
-
 <td style="text-align:center;">
-
 0.2983725
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2893309
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hlth
-
 </td>
-
 <td style="text-align:center;">
-
 0.2802893
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2983725
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Hshld
-
 </td>
-
 <td style="text-align:center;">
-
 0.3056058
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2802893
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Insur
-
 </td>
-
 <td style="text-align:center;">
-
 0.2947559
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2766727
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 LabEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.3164557
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2784810
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mach
-
 </td>
-
 <td style="text-align:center;">
-
 0.3074141
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.3056058
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Meals
-
 </td>
-
 <td style="text-align:center;">
-
 0.3291139
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.3092224
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 MedEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.3056058
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2911392
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mines
-
 </td>
-
 <td style="text-align:center;">
-
 0.2839060
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2911392
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Oil
-
 </td>
-
 <td style="text-align:center;">
-
 0.3074141
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.3019892
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Other
-
 </td>
-
 <td style="text-align:center;">
-
 0.2875226
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2965642
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Paper
-
 </td>
-
 <td style="text-align:center;">
-
 0.2929476
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2820976
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 PerSv
-
 </td>
-
 <td style="text-align:center;">
-
 0.3092224
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2730561
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RlEst
-
 </td>
-
 <td style="text-align:center;">
-
 0.2730561
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2748644
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rtail
-
 </td>
-
 <td style="text-align:center;">
-
 0.3254973
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2983725
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Rubbr
-
 </td>
-
 <td style="text-align:center;">
-
 0.3164557
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2820976
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Ships
-
 </td>
-
 <td style="text-align:center;">
-
 0.2929476
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2839060
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Smoke
-
 </td>
-
 <td style="text-align:center;">
-
 0.2839060
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2947559
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Soda
-
 </td>
-
 <td style="text-align:center;">
-
 0.3146474
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2857143
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Softw
-
 </td>
-
 <td style="text-align:center;">
-
 0.2784810
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2477396
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Steel
-
 </td>
-
 <td style="text-align:center;">
-
 0.2983725
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.3001808
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Telcm
-
 </td>
-
 <td style="text-align:center;">
-
 0.2875226
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2893309
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Toys
-
 </td>
-
 <td style="text-align:center;">
-
 0.3037975
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2712477
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Trans
-
 </td>
-
 <td style="text-align:center;">
-
 0.3037975
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2712477
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Txtls
-
 </td>
-
 <td style="text-align:center;">
-
 0.2766727
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2839060
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Util
-
 </td>
-
 <td style="text-align:center;">
-
 0.3001808
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2712477
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Whlsl
-
 </td>
-
 <td style="text-align:center;">
-
 0.2983725
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 <td style="text-align:center;">
-
 0.2875226
-
 </td>
-
 <td style="text-align:center;">
-
 0
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 Next, we plot the plots for FM vs. STL Filtered FM statistics.
@@ -43386,4209 +22378,2107 @@ standard error for each Industry ECC is the standard deviation of sample
 mean.
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Bootstrap Estimated ECC Standard Error
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 AM
-
 </th>
-
 <th style="text-align:center;">
-
 GM
-
 </th>
-
 <th style="text-align:center;">
-
 RAM
-
 </th>
-
 <th style="text-align:center;">
-
 RGM
-
 </th>
-
 <th style="text-align:center;">
-
 FM
-
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_7\_N
-
+FM_STL_7\_N
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_7\_R
-
+FM_STL_7\_R
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_15\_N
-
+FM_STL_15_N
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_15\_R
-
+FM_STL_15_R
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_40\_N
-
+FM_STL_40_N
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_40\_R
-
+FM_STL_40_R
 </th>
-
 <th style="text-align:center;">
-
 RP
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;">
-
 5.25e-05
-
 </td>
-
 <td style="text-align:center;">
-
 4.57e-05
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003272
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003409
-
 </td>
-
 <td style="text-align:center;">
-
 0.0038481
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008239
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009794
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008675
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010532
-
 </td>
-
 <td style="text-align:center;">
-
 0.000929
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011181
-
 </td>
-
 <td style="text-align:center;">
-
 0.0030506
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
-
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 Bootstrap Estimated Industry ECC Standard Error
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 Industry
-
 </th>
-
 <th style="text-align:center;">
-
 AM
-
 </th>
-
 <th style="text-align:center;">
-
 GM
-
 </th>
-
 <th style="text-align:center;">
-
 RAM
-
 </th>
-
 <th style="text-align:center;">
-
 RGM
-
 </th>
-
 <th style="text-align:center;">
-
 FM
-
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_7\_N
-
+FM_STL_7\_N
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_7\_R
-
+FM_STL_7\_R
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_15\_N
-
+FM_STL_15_N
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_15\_R
-
+FM_STL_15_R
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_40\_N
-
+FM_STL_40_N
 </th>
-
 <th style="text-align:center;">
-
-FM\_STL\_40\_R
-
+FM_STL_40_R
 </th>
-
 <th style="text-align:center;">
-
 RP
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;">
-
 Aero
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001584
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001368
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004144
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004147
-
 </td>
-
 <td style="text-align:center;">
-
 0.0045928
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010012
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011768
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010502
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012695
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011173
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012451
-
 </td>
-
 <td style="text-align:center;">
-
 0.0042458
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Agric
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002068
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001780
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004868
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004809
-
 </td>
-
 <td style="text-align:center;">
-
 0.0037058
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008066
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009706
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008492
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010656
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009137
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010973
-
 </td>
-
 <td style="text-align:center;">
-
 0.0041157
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Autos
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002127
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001856
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003623
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003740
-
 </td>
-
 <td style="text-align:center;">
-
 0.0048268
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011570
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011018
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012092
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012265
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012889
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013571
-
 </td>
-
 <td style="text-align:center;">
-
 0.0044525
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Banks
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001536
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001318
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005544
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005603
-
 </td>
-
 <td style="text-align:center;">
-
 0.0047027
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009471
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011725
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009898
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012554
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010590
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012349
-
 </td>
-
 <td style="text-align:center;">
-
 0.0039556
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Beer
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001674
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001450
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004221
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004131
-
 </td>
-
 <td style="text-align:center;">
-
 0.0033362
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006559
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009726
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006830
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009123
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007292
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008880
-
 </td>
-
 <td style="text-align:center;">
-
 0.0033264
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 BldMt
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001603
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001388
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003486
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003564
-
 </td>
-
 <td style="text-align:center;">
-
 0.0046554
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009163
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011608
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009637
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011914
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010291
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012882
-
 </td>
-
 <td style="text-align:center;">
-
 0.0040398
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Books
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001190
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001026
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003623
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003777
-
 </td>
-
 <td style="text-align:center;">
-
 0.0039246
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008537
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009883
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009024
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010365
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009701
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011205
-
 </td>
-
 <td style="text-align:center;">
-
 0.0035939
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Boxes
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002107
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001814
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003978
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003948
-
 </td>
-
 <td style="text-align:center;">
-
 0.0037812
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007894
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008348
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008349
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008644
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008986
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009016
-
 </td>
-
 <td style="text-align:center;">
-
 0.0035907
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 BusSv
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000593
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000533
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003936
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004065
-
 </td>
-
 <td style="text-align:center;">
-
 0.0042707
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009281
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010547
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009786
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011302
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010480
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012578
-
 </td>
-
 <td style="text-align:center;">
-
 0.0034894
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Chems
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001273
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001132
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003055
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003178
-
 </td>
-
 <td style="text-align:center;">
-
 0.0043624
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009150
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011480
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009662
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012178
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010382
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012651
-
 </td>
-
 <td style="text-align:center;">
-
 0.0038913
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Chips
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001530
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001315
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005662
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005699
-
 </td>
-
 <td style="text-align:center;">
-
 0.0051593
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012304
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014222
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012874
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015290
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013625
-
 </td>
-
 <td style="text-align:center;">
-
 0.0018393
-
 </td>
-
 <td style="text-align:center;">
-
 0.0046930
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Clths
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001660
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001407
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003047
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003261
-
 </td>
-
 <td style="text-align:center;">
-
 0.0042705
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008497
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009575
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009007
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009910
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009732
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010851
-
 </td>
-
 <td style="text-align:center;">
-
 0.0039804
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Cnstr
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002019
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001731
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004860
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004877
-
 </td>
-
 <td style="text-align:center;">
-
 0.0049195
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010863
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012769
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011439
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013989
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012357
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014788
-
 </td>
-
 <td style="text-align:center;">
-
 0.0045027
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Coal
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003020
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002687
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005115
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005102
-
 </td>
-
 <td style="text-align:center;">
-
 0.0059923
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014194
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014510
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014746
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015897
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015664
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017007
-
 </td>
-
 <td style="text-align:center;">
-
 0.0069547
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Drugs
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000982
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000874
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004109
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004107
-
 </td>
-
 <td style="text-align:center;">
-
 0.0035988
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007399
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008479
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007747
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008664
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008255
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009059
-
 </td>
-
 <td style="text-align:center;">
-
 0.0032738
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 ElcEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001818
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001583
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004926
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004990
-
 </td>
-
 <td style="text-align:center;">
-
 0.0048085
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010317
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012187
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010827
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012886
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011552
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014581
-
 </td>
-
 <td style="text-align:center;">
-
 0.0040325
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 FabPr
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002428
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002100
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003993
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003925
-
 </td>
-
 <td style="text-align:center;">
-
 0.0046047
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009947
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011648
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010472
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012511
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011304
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013640
-
 </td>
-
 <td style="text-align:center;">
-
 0.0044812
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Fin
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001187
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001025
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004950
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005062
-
 </td>
-
 <td style="text-align:center;">
-
 0.0046853
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010229
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010863
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010661
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011728
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011408
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013270
-
 </td>
-
 <td style="text-align:center;">
-
 0.0039428
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Food
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001632
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001463
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003837
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003779
-
 </td>
-
 <td style="text-align:center;">
-
 0.0030348
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006842
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007719
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007109
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007768
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007536
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008028
-
 </td>
-
 <td style="text-align:center;">
-
 0.0028799
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Fun
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001841
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001588
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004539
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004817
-
 </td>
-
 <td style="text-align:center;">
-
 0.0051789
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011328
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011570
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011922
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012901
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012734
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014028
-
 </td>
-
 <td style="text-align:center;">
-
 0.0047852
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Gold
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003343
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003025
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004871
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004718
-
 </td>
-
 <td style="text-align:center;">
-
 0.0050755
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011603
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012388
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012153
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013408
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012882
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014834
-
 </td>
-
 <td style="text-align:center;">
-
 0.0071254
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Guns
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001903
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001655
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003364
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003283
-
 </td>
-
 <td style="text-align:center;">
-
 0.0037806
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008328
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010510
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008687
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011249
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009203
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011474
-
 </td>
-
 <td style="text-align:center;">
-
 0.0041205
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Hardw
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002035
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001798
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004727
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004700
-
 </td>
-
 <td style="text-align:center;">
-
 0.0048074
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011953
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014278
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012382
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015220
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012994
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017914
-
 </td>
-
 <td style="text-align:center;">
-
 0.0047711
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Hlth
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002788
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002448
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006298
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006036
-
 </td>
-
 <td style="text-align:center;">
-
 0.0047473
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010395
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012732
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010922
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013616
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011707
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012919
-
 </td>
-
 <td style="text-align:center;">
-
 0.0046224
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Hshld
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001279
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001098
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003738
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003785
-
 </td>
-
 <td style="text-align:center;">
-
 0.0034685
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006873
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008685
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007165
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008764
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007625
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009039
-
 </td>
-
 <td style="text-align:center;">
-
 0.0029608
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Insur
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001801
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001607
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004260
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004274
-
 </td>
-
 <td style="text-align:center;">
-
 0.0040925
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008078
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009975
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008522
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011016
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009240
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010685
-
 </td>
-
 <td style="text-align:center;">
-
 0.0034270
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 LabEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001803
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001562
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005065
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005116
-
 </td>
-
 <td style="text-align:center;">
-
 0.0048274
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010344
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011664
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010872
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012698
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011564
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014318
-
 </td>
-
 <td style="text-align:center;">
-
 0.0044467
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Mach
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001688
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001441
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004165
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004227
-
 </td>
-
 <td style="text-align:center;">
-
 0.0049446
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009344
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011278
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009973
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012361
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010900
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013424
-
 </td>
-
 <td style="text-align:center;">
-
 0.0042228
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Meals
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001552
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001314
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003983
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004101
-
 </td>
-
 <td style="text-align:center;">
-
 0.0039468
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007996
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010172
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008416
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010658
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009132
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010662
-
 </td>
-
 <td style="text-align:center;">
-
 0.0035498
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 MedEq
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001309
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001179
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003897
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003904
-
 </td>
-
 <td style="text-align:center;">
-
 0.0037047
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007631
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009046
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008034
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009514
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008561
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009807
-
 </td>
-
 <td style="text-align:center;">
-
 0.0033273
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Mines
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002300
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002032
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004895
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004879
-
 </td>
-
 <td style="text-align:center;">
-
 0.0050126
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011994
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013661
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012666
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014778
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013612
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015796
-
 </td>
-
 <td style="text-align:center;">
-
 0.0049717
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Oil
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001838
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001608
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004077
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004012
-
 </td>
-
 <td style="text-align:center;">
-
 0.0036820
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008507
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011828
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008916
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012301
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009522
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012499
-
 </td>
-
 <td style="text-align:center;">
-
 0.0037882
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Paper
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001519
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001338
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003441
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003407
-
 </td>
-
 <td style="text-align:center;">
-
 0.0039114
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008679
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010355
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009115
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010715
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009743
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010977
-
 </td>
-
 <td style="text-align:center;">
-
 0.0034934
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 PerSv
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001797
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001542
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004724
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004680
-
 </td>
-
 <td style="text-align:center;">
-
 0.0041148
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008919
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010335
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009393
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010971
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010096
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011325
-
 </td>
-
 <td style="text-align:center;">
-
 0.0039313
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 RlEst
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001884
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001599
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004342
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004507
-
 </td>
-
 <td style="text-align:center;">
-
 0.0052856
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012224
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014252
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012828
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014704
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013712
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015974
-
 </td>
-
 <td style="text-align:center;">
-
 0.0048584
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Rtail
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001058
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000923
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003246
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003463
-
 </td>
-
 <td style="text-align:center;">
-
 0.0037981
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007877
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008209
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008250
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008504
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008760
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009727
-
 </td>
-
 <td style="text-align:center;">
-
 0.0035357
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Rubbr
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001245
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001100
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003672
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003799
-
 </td>
-
 <td style="text-align:center;">
-
 0.0041496
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008454
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009794
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008892
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010246
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009459
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011022
-
 </td>
-
 <td style="text-align:center;">
-
 0.0037432
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Ships
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002733
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002400
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004757
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004662
-
 </td>
-
 <td style="text-align:center;">
-
 0.0046059
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009167
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011987
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009644
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012895
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010347
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013046
-
 </td>
-
 <td style="text-align:center;">
-
 0.0048598
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Smoke
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002471
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002188
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004687
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004457
-
 </td>
-
 <td style="text-align:center;">
-
 0.0033137
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008563
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010383
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008820
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010207
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009242
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010541
-
 </td>
-
 <td style="text-align:center;">
-
 0.0038224
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Soda
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002252
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001936
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005185
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005043
-
 </td>
-
 <td style="text-align:center;">
-
 0.0040331
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007821
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010878
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008271
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010724
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008960
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009317
-
 </td>
-
 <td style="text-align:center;">
-
 0.0041634
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Softw
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003608
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003143
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008863
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008670
-
 </td>
-
 <td style="text-align:center;">
-
 0.0061699
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014882
-
 </td>
-
 <td style="text-align:center;">
-
 0.0019124
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015421
-
 </td>
-
 <td style="text-align:center;">
-
 0.0020434
-
 </td>
-
 <td style="text-align:center;">
-
 0.0016233
-
 </td>
-
 <td style="text-align:center;">
-
 0.0022636
-
 </td>
-
 <td style="text-align:center;">
-
 0.0057091
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Steel
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002063
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001788
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004330
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004438
-
 </td>
-
 <td style="text-align:center;">
-
 0.0054263
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011952
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012723
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012572
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013412
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013401
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015280
-
 </td>
-
 <td style="text-align:center;">
-
 0.0048519
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Telcm
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001357
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001198
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004089
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004019
-
 </td>
-
 <td style="text-align:center;">
-
 0.0033936
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007511
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008288
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007807
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008293
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008251
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009629
-
 </td>
-
 <td style="text-align:center;">
-
 0.0030401
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Toys
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002237
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001951
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004063
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004103
-
 </td>
-
 <td style="text-align:center;">
-
 0.0046592
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010044
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011490
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010542
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012008
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011188
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012660
-
 </td>
-
 <td style="text-align:center;">
-
 0.0043925
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Trans
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001295
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001158
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003229
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003320
-
 </td>
-
 <td style="text-align:center;">
-
 0.0040921
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008266
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010340
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008660
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010747
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009179
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010998
-
 </td>
-
 <td style="text-align:center;">
-
 0.0034197
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Txtls
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002215
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001855
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003394
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003536
-
 </td>
-
 <td style="text-align:center;">
-
 0.0047476
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010385
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012050
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010920
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012239
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011673
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013549
-
 </td>
-
 <td style="text-align:center;">
-
 0.0047777
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Util
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001408
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001281
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002368
-
 </td>
-
 <td style="text-align:center;">
-
 0.0002337
-
 </td>
-
 <td style="text-align:center;">
-
 0.0025807
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006402
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007597
-
 </td>
-
 <td style="text-align:center;">
-
 0.0006682
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008068
-
 </td>
-
 <td style="text-align:center;">
-
 0.0007161
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008117
-
 </td>
-
 <td style="text-align:center;">
-
 0.0026138
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 Whlsl
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000836
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000741
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003453
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003549
-
 </td>
-
 <td style="text-align:center;">
-
 0.0038575
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008520
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009988
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008917
-
 </td>
-
 <td style="text-align:center;">
-
 0.0010830
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009471
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011241
-
 </td>
-
 <td style="text-align:center;">
-
 0.0031538
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 ## S5-4 Decomposition of the Equity Cost of Captial
@@ -47598,81 +24488,64 @@ In this section, we would try to decompose the ECC.
 Based on the Model, at each period t, the estimated Risk Premium is
 calculated as follows:
 
-  
-![E\[RP\] =
-\\vec\\beta\*\\vec\\lambda'](https://latex.codecogs.com/png.latex?E%5BRP%5D%20%3D%20%5Cvec%5Cbeta%2A%5Cvec%5Clambda%27
-"E[RP] = \\vec\\beta*\\vec\\lambda'")  
+![E\[RP\] = \\vec\\beta\*\\vec\\lambda'](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5BRP%5D%20%3D%20%5Cvec%5Cbeta%2A%5Cvec%5Clambda%27 "E[RP] = \vec\beta*\vec\lambda'")
 
-![\\vec\\beta](https://latex.codecogs.com/png.latex?%5Cvec%5Cbeta
-"\\vec\\beta") is the 1xk vecotr which represents k factor exposures;
-![\\vec\\lambda](https://latex.codecogs.com/png.latex?%5Cvec%5Clambda
-"\\vec\\lambda") is the 1xk Matrix which represents k factor premium
-across T periods. In order to decompose the
-![E\[RP\]](https://latex.codecogs.com/png.latex?E%5BRP%5D "E[RP]") into
-one ![\\beta](https://latex.codecogs.com/png.latex?%5Cbeta "\\beta") and
-one ![\\lambda](https://latex.codecogs.com/png.latex?%5Clambda
-"\\lambda") components, we apply the property of vector product:
+![\\vec\\beta](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cvec%5Cbeta "\vec\beta")
+is the 1xk vecotr which represents k factor exposures;
+![\\vec\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cvec%5Clambda "\vec\lambda")
+is the 1xk Matrix which represents k factor premium across T periods. In
+order to decompose the
+![E\[RP\]](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5BRP%5D "E[RP]")
+into one
+![\\beta](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta "\beta")
+and one
+![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
+components, we apply the property of vector product:
 
-  
-![E\[RP\] =
-|\\vec\\beta|\*|\\vec\\lambda|\*cos(\\vec\\beta,\\vec\\lambda)](https://latex.codecogs.com/png.latex?E%5BRP%5D%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2Acos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29
-"E[RP] = |\\vec\\beta|*|\\vec\\lambda|*cos(\\vec\\beta,\\vec\\lambda)")  
+![E\[RP\] = \|\\vec\\beta\|\*\|\\vec\\lambda\|\*cos(\\vec\\beta,\\vec\\lambda)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5BRP%5D%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2Acos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29 "E[RP] = |\vec\beta|*|\vec\lambda|*cos(\vec\beta,\vec\lambda)")
 
 We would call the
-![cos(\\vec\\beta,\\vec\\lambda)](https://latex.codecogs.com/png.latex?cos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29
-"cos(\\vec\\beta,\\vec\\lambda)") part projection parameter (![-1 \\leq
-PP
-\\leq 1](https://latex.codecogs.com/png.latex?-1%20%5Cleq%20PP%20%5Cleq%201
-"-1 \\leq PP \\leq 1")), since it is how effective the L2 norms,
-![|\\vec\\beta|](https://latex.codecogs.com/png.latex?%7C%5Cvec%5Cbeta%7C
-"|\\vec\\beta|") and
-![|\\vec\\lambda|](https://latex.codecogs.com/png.latex?%7C%5Cvec%5Clambda%7C
-"|\\vec\\lambda|"), work together to form the expected risk premium. If
-![cos(\\vec\\beta,\\vec\\lambda)=0](https://latex.codecogs.com/png.latex?cos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29%3D0
-"cos(\\vec\\beta,\\vec\\lambda)=0"), no matter how large
-![|\\vec\\beta|](https://latex.codecogs.com/png.latex?%7C%5Cvec%5Cbeta%7C
-"|\\vec\\beta|") and
-![|\\vec\\lambda|](https://latex.codecogs.com/png.latex?%7C%5Cvec%5Clambda%7C
-"|\\vec\\lambda|") are, the expected risk premium would be 0.
+![cos(\\vec\\beta,\\vec\\lambda)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;cos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29 "cos(\vec\beta,\vec\lambda)")
+part projection parameter
+(![-1 \\leq PP \\leq 1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;-1%20%5Cleq%20PP%20%5Cleq%201 "-1 \leq PP \leq 1")),
+since it is how effective the L2 norms,
+![\|\\vec\\beta\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7C%5Cvec%5Cbeta%7C "|\vec\beta|")
+and
+![\|\\vec\\lambda\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7C%5Cvec%5Clambda%7C "|\vec\lambda|"),
+work together to form the expected risk premium. If
+![cos(\\vec\\beta,\\vec\\lambda)=0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;cos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29%3D0 "cos(\vec\beta,\vec\lambda)=0"),
+no matter how large
+![\|\\vec\\beta\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7C%5Cvec%5Cbeta%7C "|\vec\beta|")
+and
+![\|\\vec\\lambda\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7C%5Cvec%5Clambda%7C "|\vec\lambda|")
+are, the expected risk premium would be 0.
 
-  
-![E\[RP\] =
-|\\vec\\beta|\*|\\vec\\lambda|\*PP](https://latex.codecogs.com/png.latex?E%5BRP%5D%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2APP
-"E[RP] = |\\vec\\beta|*|\\vec\\lambda|*PP")  
+![E\[RP\] = \|\\vec\\beta\|\*\|\\vec\\lambda\|\*PP](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5BRP%5D%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2APP "E[RP] = |\vec\beta|*|\vec\lambda|*PP")
 
-and, ![|E\[RP\]| =
-|\\vec\\beta|\*|\\vec\\lambda|\*|PP|](https://latex.codecogs.com/png.latex?%7CE%5BRP%5D%7C%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2A%7CPP%7C
-"|E[RP]| = |\\vec\\beta|*|\\vec\\lambda|*|PP|")
+and,
+![\|E\[RP\]\| = \|\\vec\\beta\|\*\|\\vec\\lambda\|\*\|PP\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7CE%5BRP%5D%7C%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2A%7CPP%7C "|E[RP]| = |\vec\beta|*|\vec\lambda|*|PP|")
 
 The decomposition would be more intuitive with an additive form. We take
 the log of both sides:
 
-  
-![ln(|E\[RP\]|) = ln(|\\vec\\beta|\*|\\vec\\lambda|\*|PP|) =
-ln(|\\vec\\beta|) + ln(|\\vec\\lambda|) +
-ln(|PP|)](https://latex.codecogs.com/png.latex?ln%28%7CE%5BRP%5D%7C%29%20%3D%20ln%28%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2A%7CPP%7C%29%20%3D%20ln%28%7C%5Cvec%5Cbeta%7C%29%20%2B%20ln%28%7C%5Cvec%5Clambda%7C%29%20%2B%20ln%28%7CPP%7C%29
-"ln(|E[RP]|) = ln(|\\vec\\beta|*|\\vec\\lambda|*|PP|) = ln(|\\vec\\beta|) + ln(|\\vec\\lambda|) + ln(|PP|)")  
+![ln(\|E\[RP\]\|) = ln(\|\\vec\\beta\|\*\|\\vec\\lambda\|\*\|PP\|) = ln(\|\\vec\\beta\|) + ln(\|\\vec\\lambda\|) + ln(\|PP\|)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;ln%28%7CE%5BRP%5D%7C%29%20%3D%20ln%28%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2A%7CPP%7C%29%20%3D%20ln%28%7C%5Cvec%5Cbeta%7C%29%20%2B%20ln%28%7C%5Cvec%5Clambda%7C%29%20%2B%20ln%28%7CPP%7C%29 "ln(|E[RP]|) = ln(|\vec\beta|*|\vec\lambda|*|PP|) = ln(|\vec\beta|) + ln(|\vec\lambda|) + ln(|PP|)")
 
 Therefore,
 
-  
-![1 = \\frac{ln(|\\vec\\beta|)}{ln(|E\[RP\]|)} +
-\\frac{ln(|\\vec\\lambda|))}{ln(|E\[RP\]|)} +
-\\frac{ln(|PP|)}{ln(|E\[RP\]|)}](https://latex.codecogs.com/png.latex?1%20%3D%20%5Cfrac%7Bln%28%7C%5Cvec%5Cbeta%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D%20%2B%20%5Cfrac%7Bln%28%7C%5Cvec%5Clambda%7C%29%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D%20%2B%20%5Cfrac%7Bln%28%7CPP%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D
-"1 = \\frac{ln(|\\vec\\beta|)}{ln(|E[RP]|)} + \\frac{ln(|\\vec\\lambda|))}{ln(|E[RP]|)} + \\frac{ln(|PP|)}{ln(|E[RP]|)}")  
+![1 = \\frac{ln(\|\\vec\\beta\|)}{ln(\|E\[RP\]\|)} + \\frac{ln(\|\\vec\\lambda\|))}{ln(\|E\[RP\]\|)} + \\frac{ln(\|PP\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;1%20%3D%20%5Cfrac%7Bln%28%7C%5Cvec%5Cbeta%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D%20%2B%20%5Cfrac%7Bln%28%7C%5Cvec%5Clambda%7C%29%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D%20%2B%20%5Cfrac%7Bln%28%7CPP%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "1 = \frac{ln(|\vec\beta|)}{ln(|E[RP]|)} + \frac{ln(|\vec\lambda|))}{ln(|E[RP]|)} + \frac{ln(|PP|)}{ln(|E[RP]|)}")
 
 The
-![\\frac{ln(|\\vec\\beta|)}{ln(|E\[RP\]|)}](https://latex.codecogs.com/png.latex?%5Cfrac%7Bln%28%7C%5Cvec%5Cbeta%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D
-"\\frac{ln(|\\vec\\beta|)}{ln(|E[RP]|)}") can be interpreted as
-importance of ![\\beta](https://latex.codecogs.com/png.latex?%5Cbeta
-"\\beta") in forming the expected risk premium; the
-![\\frac{ln(|\\vec\\lambda|)}{ln(|E\[RP\]|)}](https://latex.codecogs.com/png.latex?%5Cfrac%7Bln%28%7C%5Cvec%5Clambda%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D
-"\\frac{ln(|\\vec\\lambda|)}{ln(|E[RP]|)}") can be interpreted as
-importance of ![\\lambda](https://latex.codecogs.com/png.latex?%5Clambda
-"\\lambda") in forming the expected risk premium; the
-![\\frac{ln(|PP|)}{ln(|E\[RP\]|)}](https://latex.codecogs.com/png.latex?%5Cfrac%7Bln%28%7CPP%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D
-"\\frac{ln(|PP|)}{ln(|E[RP]|)}") can be interpreted as importance of
-projection parameter (PP) in forming the expected risk premium.
+![\\frac{ln(\|\\vec\\beta\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bln%28%7C%5Cvec%5Cbeta%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "\frac{ln(|\vec\beta|)}{ln(|E[RP]|)}")
+can be interpreted as importance of
+![\\beta](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta "\beta")
+in forming the expected risk premium; the
+![\\frac{ln(\|\\vec\\lambda\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bln%28%7C%5Cvec%5Clambda%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "\frac{ln(|\vec\lambda|)}{ln(|E[RP]|)}")
+can be interpreted as importance of
+![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
+in forming the expected risk premium; the
+![\\frac{ln(\|PP\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bln%28%7CPP%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "\frac{ln(|PP|)}{ln(|E[RP]|)}")
+can be interpreted as importance of projection parameter (PP) in forming
+the expected risk premium.
 
 ![](ECC_files/figure-gfm/ECC_Decomp-1.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-2.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-3.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-4.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-5.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-6.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-7.png)<!-- -->![](ECC_files/figure-gfm/ECC_Decomp-8.png)<!-- -->
 
@@ -47745,1313 +24618,658 @@ Figures for Appendix:
 Here are the tables:
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 FF5 Factors Lambda Stats
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 Factors
-
 </th>
-
 <th style="text-align:center;">
-
 method
-
 </th>
-
 <th style="text-align:center;">
-
 Mean
-
 </th>
-
 <th style="text-align:center;">
-
 Median
-
 </th>
-
 <th style="text-align:center;">
-
 StdDev
-
 </th>
-
 <th style="text-align:center;">
-
 5th Pct
-
 </th>
-
 <th style="text-align:center;">
-
 95th Pct
-
 </th>
-
 <th style="text-align:center;">
-
 T-test
-
 </th>
-
 <th style="text-align:center;">
-
 F-test
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
 FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0003
-
+-0.0003
 </td>
-
 <td style="text-align:center;">
-
 0.0597
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0897
-
+-0.0897
 </td>
-
 <td style="text-align:center;">
-
 0.1013
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.035
-
+-0.035
 </td>
-
 <td style="text-align:center;">
-
 22.77
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
 Fil. FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0012
-
 </td>
-
 <td style="text-align:center;">
-
 0.0027
-
 </td>
-
 <td style="text-align:center;">
-
 0.0125
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0209
-
+-0.0209
 </td>
-
 <td style="text-align:center;">
-
 0.0199
-
 </td>
-
 <td style="text-align:center;">
-
 (0.97)
-
 </td>
-
 <td style="text-align:center;">
-
 (0.00)
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 SMB
-
 </td>
-
 <td style="text-align:center;">
-
 FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008
-
 </td>
-
 <td style="text-align:center;">
-
 0.0003
-
 </td>
-
 <td style="text-align:center;">
-
 0.0337
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0545
-
+-0.0545
 </td>
-
 <td style="text-align:center;">
-
 0.0526
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.076
-
+-0.076
 </td>
-
 <td style="text-align:center;">
-
 14.57
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 SMB
-
 </td>
-
 <td style="text-align:center;">
-
 Fil. FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0009
-
 </td>
-
 <td style="text-align:center;">
-
 0.0019
-
 </td>
-
 <td style="text-align:center;">
-
 0.0088
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0142
-
+-0.0142
 </td>
-
 <td style="text-align:center;">
-
 0.0135
-
 </td>
-
 <td style="text-align:center;">
-
 (0.94)
-
 </td>
-
 <td style="text-align:center;">
-
 (0.00)
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 HML
-
 </td>
-
 <td style="text-align:center;">
-
 FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001
-
+-0.0001
 </td>
-
 <td style="text-align:center;">
-
 0.0358
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0578
-
+-0.0578
 </td>
-
 <td style="text-align:center;">
-
 0.0515
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.326
-
+-0.326
 </td>
-
 <td style="text-align:center;">
-
 10.81
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 HML
-
 </td>
-
 <td style="text-align:center;">
-
 Fil. FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0005
-
 </td>
-
 <td style="text-align:center;">
-
 0.0011
-
 </td>
-
 <td style="text-align:center;">
-
 0.0109
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0180
-
+-0.0180
 </td>
-
 <td style="text-align:center;">
-
 0.0157
-
 </td>
-
 <td style="text-align:center;">
-
 (0.74)
-
 </td>
-
 <td style="text-align:center;">
-
 (0.00)
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
 FM
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001
-
+-0.0001
 </td>
-
 <td style="text-align:center;">
-
 0.0002
-
 </td>
-
 <td style="text-align:center;">
-
 0.0280
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0406
-
+-0.0406
 </td>
-
 <td style="text-align:center;">
-
 0.0454
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.021
-
+-0.021
 </td>
-
 <td style="text-align:center;">
-
 20.89
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
 Fil. FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0000
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0002
-
+-0.0002
 </td>
-
 <td style="text-align:center;">
-
 0.0061
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0092
-
+-0.0092
 </td>
-
 <td style="text-align:center;">
-
 0.0091
-
 </td>
-
 <td style="text-align:center;">
-
 (0.98)
-
 </td>
-
 <td style="text-align:center;">
-
 (0.00)
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 CMA
-
 </td>
-
 <td style="text-align:center;">
-
 FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0017
-
 </td>
-
 <td style="text-align:center;">
-
 0.0008
-
 </td>
-
 <td style="text-align:center;">
-
 0.0256
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0402
-
+-0.0402
 </td>
-
 <td style="text-align:center;">
-
 0.0444
-
 </td>
-
 <td style="text-align:center;">
-
 0.292
-
 </td>
-
 <td style="text-align:center;">
-
 10.37
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 CMA
-
 </td>
-
 <td style="text-align:center;">
-
 Fil. FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0014
-
 </td>
-
 <td style="text-align:center;">
-
 0.0027
-
 </td>
-
 <td style="text-align:center;">
-
 0.0080
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0110
-
+-0.0110
 </td>
-
 <td style="text-align:center;">
-
 0.0122
-
 </td>
-
 <td style="text-align:center;">
-
 (0.77)
-
 </td>
-
 <td style="text-align:center;">
-
 (0.00)
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
-
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
-
 <caption style="font-size: initial !important;">
-
 PRS Factors Lambda Stats
-
 </caption>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 Factors
-
 </th>
-
 <th style="text-align:center;">
-
 method
-
 </th>
-
 <th style="text-align:center;">
-
 Mean
-
 </th>
-
 <th style="text-align:center;">
-
 Median
-
 </th>
-
 <th style="text-align:center;">
-
 StdDev
-
 </th>
-
 <th style="text-align:center;">
-
 5th Pct
-
 </th>
-
 <th style="text-align:center;">
-
 95th Pct
-
 </th>
-
 <th style="text-align:center;">
-
 T-test
-
 </th>
-
 <th style="text-align:center;">
-
 F-test
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
 FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0031
-
 </td>
-
 <td style="text-align:center;">
-
 0.0013
-
 </td>
-
 <td style="text-align:center;">
-
 0.0604
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0899
-
+-0.0899
 </td>
-
 <td style="text-align:center;">
-
 0.1057
-
 </td>
-
 <td style="text-align:center;">
-
 0.116
-
 </td>
-
 <td style="text-align:center;">
-
 19.26
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 Mkt-RF
-
 </td>
-
 <td style="text-align:center;">
-
 Fil. FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0028
-
 </td>
-
 <td style="text-align:center;">
-
 0.0045
-
 </td>
-
 <td style="text-align:center;">
-
 0.0138
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0196
-
+-0.0196
 </td>
-
 <td style="text-align:center;">
-
 0.0241
-
 </td>
-
 <td style="text-align:center;">
-
 (0.91)
-
 </td>
-
 <td style="text-align:center;">
-
 (0.00)
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
 FM
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0004
-
+-0.0004
 </td>
-
 <td style="text-align:center;">
-
-\-0.0003
-
+-0.0003
 </td>
-
 <td style="text-align:center;">
-
 0.0271
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0399
-
+-0.0399
 </td>
-
 <td style="text-align:center;">
-
 0.0419
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.39
-
+-0.39
 </td>
-
 <td style="text-align:center;">
-
 17.71
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 RMW
-
 </td>
-
 <td style="text-align:center;">
-
 Fil. FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0002
-
+-0.0002
 </td>
-
 <td style="text-align:center;">
-
 0.0064
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0093
-
+-0.0093
 </td>
-
 <td style="text-align:center;">
-
 0.0084
-
 </td>
-
 <td style="text-align:center;">
-
 (0.70)
-
 </td>
-
 <td style="text-align:center;">
-
 (0.00)
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 dDP
-
 </td>
-
 <td style="text-align:center;">
-
 FM
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001
-
+-0.0001
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001
-
+-0.0001
 </td>
-
 <td style="text-align:center;">
-
 0.0017
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0030
-
+-0.0030
 </td>
-
 <td style="text-align:center;">
-
 0.0025
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.324
-
+-0.324
 </td>
-
 <td style="text-align:center;">
-
 14.21
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 dDP
-
 </td>
-
 <td style="text-align:center;">
-
 Fil. FM
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001
-
+-0.0001
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001
-
+-0.0001
 </td>
-
 <td style="text-align:center;">
-
 0.0004
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0008
-
+-0.0008
 </td>
-
 <td style="text-align:center;">
-
 0.0006
-
 </td>
-
 <td style="text-align:center;">
-
 (0.75)
-
 </td>
-
 <td style="text-align:center;">
-
 (0.00)
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 dTS
-
 </td>
-
 <td style="text-align:center;">
-
 FM
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0003
-
+-0.0003
 </td>
-
 <td style="text-align:center;">
-
-\-0.0002
-
+-0.0002
 </td>
-
 <td style="text-align:center;">
-
 0.0038
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0063
-
+-0.0063
 </td>
-
 <td style="text-align:center;">
-
 0.0057
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.813
-
+-0.813
 </td>
-
 <td style="text-align:center;">
-
 11.41
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 dTS
-
 </td>
-
 <td style="text-align:center;">
-
 Fil. FM
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0001
-
+-0.0001
 </td>
-
 <td style="text-align:center;">
-
-\-0.0002
-
+-0.0002
 </td>
-
 <td style="text-align:center;">
-
 0.0011
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0020
-
+-0.0020
 </td>
-
 <td style="text-align:center;">
-
 0.0016
-
 </td>
-
 <td style="text-align:center;">
-
 (0.42)
-
 </td>
-
 <td style="text-align:center;">
-
 (0.00)
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 UNEXPI
-
 </td>
-
 <td style="text-align:center;">
-
 FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001
-
 </td>
-
 <td style="text-align:center;">
-
 0.0004
-
 </td>
-
 <td style="text-align:center;">
-
 0.0053
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0080
-
+-0.0080
 </td>
-
 <td style="text-align:center;">
-
 0.0082
-
 </td>
-
 <td style="text-align:center;">
-
 0.207
-
 </td>
-
 <td style="text-align:center;">
-
 12.31
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;font-weight: bold;">
-
 UNEXPI
-
 </td>
-
 <td style="text-align:center;">
-
 Fil. FM
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001
-
 </td>
-
 <td style="text-align:center;">
-
 0.0001
-
 </td>
-
 <td style="text-align:center;">
-
 0.0015
-
 </td>
-
 <td style="text-align:center;">
-
-\-0.0026
-
+-0.0026
 </td>
-
 <td style="text-align:center;">
-
 0.0024
-
 </td>
-
 <td style="text-align:center;">
-
 (0.84)
-
 </td>
-
 <td style="text-align:center;">
-
 (0.00)
-
 </td>
-
 </tr>
-
 </tbody>
-
 </table>

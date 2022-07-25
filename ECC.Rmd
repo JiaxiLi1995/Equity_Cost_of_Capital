@@ -28,6 +28,7 @@ library(png)
 library(lme4) # For multilevel
 library(lmtest) # For robust se
 library(sandwich) # For robust se
+library(timetk) # For expanding multiple lags
 
 
 # Set the function to transform yyyymm to Date
@@ -5224,6 +5225,347 @@ inner_join(
   column_spec(1, bold = T)
 
 ```
+
+
+
+
+### S4-6-4 Second Pass Panel Regression Comparison
+
+Now, we would like to compare the standard errors of the original second pass regression vs. ACL second pass regression.
+
+```{r Second_Pass_Rolling_Panel_Comparison, cache = TRUE}
+# Fama Macbeth method
+# Create the second-path portfolio for estimation lambda: 1 stands for original regression, 2 stands for ACL regression
+Original_long <- Port_FF5 %>%
+  subset(select = c(date, Industry, RP)) %>%
+  inner_join(Port_FF5_Betas) %>%
+  subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
+  ungroup() %>%
+  pivot_longer(-c(date, Industry), values_to = "Value", names_to = "Factors") %>%
+  mutate(Reg_type = 1)
+  
+ACL_long <- Port_FF5_STL_s7_norobust %>%
+  filter(component == "Trend") %>%
+  subset(select = c(date, Industry, y)) %>%
+  rename(RP = y) %>%
+  inner_join(Port_FF5_Betas) %>%
+  subset(select = -Alpha) %>%
+  # get rid of Other category before regression
+  filter(Industry != "Other") %>%
+  ungroup() %>%
+  pivot_longer(-c(date, Industry), values_to = "Value", names_to = "Factors") %>%
+  mutate(Reg_type = 2)
+  
+Rolling_Panel_Long <- rbind(Original_long, ACL_long)
+
+# apply the tk_augment_lags to calculate the 1,3,5-year rolling lambda (12,36,60 data points)
+Second_Path_lag_1 <- Rolling_Panel_Long %>%
+  group_by(Industry, Factors, Reg_type) %>%
+  tk_augment_lags(Value, .lags = 1:(1*12-1)) %>%
+  na.omit() %>%
+  pivot_longer(-c(date, Industry, Factors, Reg_type), values_to = "Values", names_to = "Lags") %>%
+  pivot_wider(names_from = "Factors", values_from = "Values") %>%
+  select(-Lags) %>%
+  mutate(Panel = 1)
+
+Second_Path_lag_3 <- Rolling_Panel_Long %>%
+  group_by(Industry, Factors, Reg_type) %>%
+  tk_augment_lags(Value, .lags = 1:(3*12-1)) %>%
+  na.omit() %>%
+  pivot_longer(-c(date, Industry, Factors, Reg_type), values_to = "Values", names_to = "Lags") %>%
+  pivot_wider(names_from = "Factors", values_from = "Values") %>%
+  select(-Lags) %>%
+  mutate(Panel = 3)
+
+Second_Path_lag_5 <- Rolling_Panel_Long %>%
+  group_by(Industry, Factors, Reg_type) %>%
+  tk_augment_lags(Value, .lags = 1:(5*12-1)) %>%
+  na.omit() %>%
+  pivot_longer(-c(date, Industry, Factors, Reg_type), values_to = "Values", names_to = "Lags") %>%
+  pivot_wider(names_from = "Factors", values_from = "Values") %>%
+  select(-Lags) %>%
+  mutate(Panel = 5)
+
+
+Second_Path_lag <- rbind((Rolling_Panel_Long %>% pivot_wider(names_from = "Factors", values_from = "Value") %>% mutate(Panel = 0)),Second_Path_lag_1,Second_Path_lag_3,Second_Path_lag_5) %>%
+  ungroup() %>%
+  select(-Industry)
+
+# Group the data and do the second pass regression
+Rolling_Second <- Second_Path_lag %>%
+  group_by(date, Reg_type, Panel) %>%
+  do(model = lm(RP ~ . - date - Reg_type - Panel, data = .) %>%
+       coefficients())
+
+# try the standard error
+Rolling_Error_Second <- Second_Path_lag %>%
+  group_by(date, Reg_type, Panel) %>%
+  do(model = lm(RP ~ . - date - Reg_type - Panel, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "Std. Error"])
+
+# try the t stat
+Rolling_t_stat_Second <- Second_Path_lag %>%
+  group_by(date, Reg_type, Panel) %>%
+  do(model = lm(RP ~ . - date - Reg_type - Panel, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "t value"])
+
+# try the p_value
+Rolling_p_value_Second <- Second_Path_lag %>%
+  group_by(date, Reg_type, Panel) %>%
+  do(model = lm(RP ~ . - date - Reg_type - Panel, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "Pr(>|t|)"])
+
+# Unwrap the results
+Rolling_Lambdas <- do.call(rbind.data.frame, Rolling_Second$model) %>%
+  as_tibble()
+Rolling_Error <- do.call(rbind.data.frame, Rolling_Error_Second$model) %>%
+  as_tibble()
+Rolling_t_stat <- do.call(rbind.data.frame, Rolling_t_stat_Second$model) %>%
+  as_tibble()
+Rolling_p_value <- do.call(rbind.data.frame, Rolling_p_value_Second$model) %>%
+  as_tibble()
+
+# Rename the variables
+names(Rolling_Lambdas) = names(FF5)[-length(FF5)]
+names(Rolling_Lambdas)[1] = "Lambda0"
+names(Rolling_Error) = names(FF5)[-length(FF5)]
+names(Rolling_Error)[1] = "Lambda0"
+names(Rolling_t_stat) = names(FF5)[-length(FF5)]
+names(Rolling_t_stat)[1] = "Lambda0"
+names(Rolling_p_value) = names(FF5)[-length(FF5)]
+names(Rolling_p_value)[1] = "Lambda0"
+
+# Add in the dates and other info
+Panel_Long <- cbind(Rolling_Second[, c("date", "Reg_type", "Panel")], Rolling_Lambdas) %>%
+  subset(select = -Lambda0) %>%
+  mutate(Reg_type = factor(Reg_type, 1:2, c("Original", "ACL")))
+Panel_Long_Lambda0 <- cbind(Rolling_Second[, c("date", "Reg_type", "Panel")], Rolling_Lambdas) %>%
+  mutate(Reg_type = factor(Reg_type, 1:2, c("Original", "ACL"))) %>%
+  subset(select = c(date,Reg_type, Panel, Lambda0))
+Panel_Long_Error <- cbind(Rolling_Second[, c("date", "Reg_type", "Panel")], Rolling_Error) %>%
+  subset(select = -Lambda0) %>%
+  mutate(Reg_type = factor(Reg_type, 1:2, c("Original", "ACL")))
+Panel_Long_t_stat <- cbind(Rolling_Second[, c("date", "Reg_type", "Panel")], Rolling_t_stat) %>%
+  subset(select = -Lambda0) %>%
+  mutate(Reg_type = factor(Reg_type, 1:2, c("Original", "ACL")))
+Panel_Long_p_value <- cbind(Rolling_Second[, c("date", "Reg_type", "Panel")], Rolling_p_value) %>%
+  subset(select = -Lambda0) %>%
+  mutate(Reg_type = factor(Reg_type, 1:2, c("Original", "ACL")))
+
+
+# Plot the Panel_Long
+Panel_Long %>%
+  subset(Panel == 0) %>%
+  pivot_longer(cols = -c(date, Reg_type, Panel), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, RP, color = Reg_type)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Estimated Factors Premium at each t",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+Panel_Long %>%
+  subset(Panel == 1) %>%
+  pivot_longer(cols = -c(date, Reg_type, Panel), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, RP, color = Reg_type)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Estimated Factors Premium from Rolling 1-year Panel",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+Panel_Long %>%
+  subset(Panel == 3) %>%
+  pivot_longer(cols = -c(date, Reg_type, Panel), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, RP, color = Reg_type)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Estimated Factors Premium from Rolling 3-year Panel",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+Panel_Long %>%
+  subset(Panel == 5) %>%
+  pivot_longer(cols = -c(date, Reg_type, Panel), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, RP, color = Reg_type)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Estimated Factors Premium from Rolling 5-year Panel",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+Panel_Long %>%
+  subset(Reg_type == "ACL") %>%
+  pivot_longer(cols = -c(date, Reg_type, Panel), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  mutate(Year = as.character(Panel)) %>%
+  ggplot(aes(date, RP, color = Year)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Estimated Factors Premium from ACL Rolling Panel",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+Panel_Long %>%
+  subset(Reg_type == "Original") %>%
+  pivot_longer(cols = -c(date, Reg_type, Panel), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  mutate(Year = as.character(Panel)) %>%
+  ggplot(aes(date, RP, color = Year)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Estimated Factors Premium from Original FM Rolling Panel",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+
+# Plot the Panel_Long_Error
+Panel_Long_Error %>%
+  subset(Panel == 0) %>%
+  pivot_longer(cols = -c(date, Reg_type, Panel), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, RP, color = Reg_type)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Factors Premium Standard Error at each t",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+Panel_Long_Error %>%
+  subset(Panel == 1) %>%
+  pivot_longer(cols = -c(date, Reg_type, Panel), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, RP, color = Reg_type)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Factors Premium Standard Error from Rolling 1-year Panel",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+Panel_Long_Error %>%
+  subset(Panel == 3) %>%
+  pivot_longer(cols = -c(date, Reg_type, Panel), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, RP, color = Reg_type)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Factors Premium Standard Error from Rolling 3-year Panel",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+Panel_Long_Error %>%
+  subset(Panel == 5) %>%
+  pivot_longer(cols = -c(date, Reg_type, Panel), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, RP, color = Reg_type)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Factors Premium Standard Error from Rolling 5-year Panel",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+Panel_Long_Error %>%
+  subset(Reg_type == "ACL") %>%
+  pivot_longer(cols = -c(date, Reg_type, Panel), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  mutate(Year = as.character(Panel)) %>%
+  ggplot(aes(date, RP, color = Year)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Factors Premium Standard Error from ACL Rolling Panel",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+Panel_Long_Error %>%
+  subset(Reg_type == "Original") %>%
+  pivot_longer(cols = -c(date, Reg_type, Panel), names_to = "Factors", values_to = "RP") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  mutate(Year = as.character(Panel)) %>%
+  ggplot(aes(date, RP, color = Year)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Factors Premium Standard Error from Original FM Rolling Panel",
+       x = "date", y = "Lambda") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+```
+
+
+From the figures above, it seems that with longer panel:
+
+1. the estimates of ACL and Fama Macbeth regression are converging
+
+2. the standard error of ACL and Fama Macbeth regression are converging
+
+For any given length of Panel, ACL panel regression can produce lambda with relatively low risk.
 
 
 

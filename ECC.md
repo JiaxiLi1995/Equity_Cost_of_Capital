@@ -71,6 +71,8 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
             Regression](#s4-6-2-panel-auxiliary-regression)
         -   [S4-6-3 Long Regression with omitted variable (Periodic and
             Noise)](#s4-6-3-long-regression-with-omitted-variable-periodic-and-noise)
+        -   [S4-6-4 Second Pass Panel Regression
+            Comparison](#s4-6-4-second-pass-panel-regression-comparison)
 -   [S5 Equity Cost of Captial](#s5-equity-cost-of-captial)
     -   [S5-1 Estimated Equity Cost of
         Captial](#s5-1-estimated-equity-cost-of-captial)
@@ -24137,6 +24139,22 @@ CMA
 </tr>
 </tbody>
 </table>
+
+### S4-6-4 Second Pass Panel Regression Comparison
+
+Now, we would like to compare the standard errors of the original second
+pass regression vs. ACL second pass regression.
+
+![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-1.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-2.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-3.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-4.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-5.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-6.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-7.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-8.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-9.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-10.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-11.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-12.png)<!-- -->
+
+From the figures above, it seems that with longer panel:
+
+1.  the estimates of ACL and Fama Macbeth regression are converging
+
+2.  the standard error of ACL and Fama Macbeth regression are converging
+
+For any given length of Panel, ACL panel regression can produce lambda
+with relatively low risk.
 
 # S5 Equity Cost of Captial
 

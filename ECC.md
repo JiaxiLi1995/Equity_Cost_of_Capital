@@ -2,99 +2,155 @@ Industry Equity Cost of Capital
 ================
 Mike Aguilar, Bob Connolly, and Jiaxi Li
 
--   [S1 Introduction](#s1-introduction)
--   [S2 Data](#s2-data)
-    -   [S2-1 Industry Return and Fama French Five
-        Factors](#s2-1-industry-return-and-fama-french-five-factors)
-    -   [S2-2 Traded PRS Five Factors](#s2-2-traded-prs-five-factors)
--   [S3 First-Pass Regression](#s3-first-pass-regression)
-    -   [S3-1 Fama French Five Factor
-        Model](#s3-1-fama-french-five-factor-model)
-        -   [S3-1-1 Full Sample
-            Estimation](#s3-1-1-full-sample-estimation)
-        -   [S3-1-2 Rolling Window
-            Estimation](#s3-1-2-rolling-window-estimation)
-        -   [S3-1-3 Full Sample Estimation with STL
-            Trend](#s3-1-3-full-sample-estimation-with-stl-trend)
-        -   [S3-1-4 Rolling Window Estimation with STL
-            Trend](#s3-1-4-rolling-window-estimation-with-stl-trend)
-        -   [S3-1-5 Full Sample Estimation with Panel
-            Regression](#s3-1-5-full-sample-estimation-with-panel-regression)
-        -   [S3-1-6 Rolling Window Estimation with Panel
-            Regression](#s3-1-6-rolling-window-estimation-with-panel-regression)
-    -   [S3-2 PRS Five Factor Model](#s3-2-prs-five-factor-model)
-        -   [S3-2-1 Full Sample
-            Estimation](#s3-2-1-full-sample-estimation)
-        -   [S3-2-2 Rolling Window
-            Estimation](#s3-2-2-rolling-window-estimation)
-        -   [S3-2-3 Full Sample Estimation with STL
-            Trend](#s3-2-3-full-sample-estimation-with-stl-trend)
-        -   [S3-2-4 Rolling Window Estimation with STL
-            Trend](#s3-2-4-rolling-window-estimation-with-stl-trend)
--   [S4 Factor Premium Estimation](#s4-factor-premium-estimation)
-    -   [S4-1 Arithmetic Mean](#s4-1-arithmetic-mean)
-    -   [S4-2 Geometric Mean](#s4-2-geometric-mean)
-    -   [S4-3 Fama Macbeth Second Step
-        Regression](#s4-3-fama-macbeth-second-step-regression)
-    -   [S4-4 Fama Macbeth Second Step Regression with STL Deseaoned
-        Data](#s4-4-fama-macbeth-second-step-regression-with-stl-deseaoned-data)
-        -   [S4-4-1 STL Filtering](#s4-4-1-stl-filtering)
-        -   [S4-4-2 Filtered Seasonality and Trend
-            Strength](#s4-4-2-filtered-seasonality-and-trend-strength)
-        -   [S4-4-3 Beta Decomposition](#s4-4-3-beta-decomposition)
-        -   [S4-4-4 Filtered Second Pass
-            Regression](#s4-4-4-filtered-second-pass-regression)
-        -   [S4-4-5 Component Second Pass Regression
-            Comparison](#s4-4-5-component-second-pass-regression-comparison)
-        -   [S4-4-6 Regression Standard
-            Error](#s4-4-6-regression-standard-error)
-        -   [S4-4-7 Unfiltered and Filtered
-            Lambdas](#s4-4-7-unfiltered-and-filtered-lambdas)
-        -   [S4-4-8 KS test and Stats](#s4-4-8-ks-test-and-stats)
-    -   [S4-5 Why filtering might improve Esimated
-        Lamdba?](#s4-5-why-filtering-might-improve-esimated-lamdba)
-        -   [S4-5-1 Biased Regression](#s4-5-1-biased-regression)
-        -   [S4-5-2 Simulation](#s4-5-2-simulation)
-            -   [S4-5-2-1 Simulation with Random Parameters and Sin
-                Lamdba](#s4-5-2-1-simulation-with-random-parameters-and-sin-lamdba)
-            -   [S4-5-2-2 Simulation with Random Parameter and Random
-                Smooth
-                Lambda](#s4-5-2-2-simulation-with-random-parameter-and-random-smooth-lambda)
-            -   [S4-5-2-3 Simulation with Actual Parameters and Smooth
-                Lambdas](#s4-5-2-3-simulation-with-actual-parameters-and-smooth-lambdas)
-            -   [S4-5-2-4 Regression Analysis of Simulation
-                Results](#s4-5-2-4-regression-analysis-of-simulation-results)
-    -   [S4-6 Robustness Check](#s4-6-robustness-check)
-        -   [S4-6-1 Auxiliary Regression at each
-            t](#s4-6-1-auxiliary-regression-at-each-t)
-        -   [S4-6-2 Panel Auxiliary
-            Regression](#s4-6-2-panel-auxiliary-regression)
-        -   [S4-6-3 Long Regression with omitted variable (Periodic and
-            Noise)](#s4-6-3-long-regression-with-omitted-variable-periodic-and-noise)
-        -   [S4-6-4 Second Pass Panel Regression
-            Comparison](#s4-6-4-second-pass-panel-regression-comparison)
--   [S5 Equity Cost of Captial](#s5-equity-cost-of-captial)
-    -   [S5-1 Estimated Equity Cost of
-        Captial](#s5-1-estimated-equity-cost-of-captial)
-        -   [S5-1-1 Arithmetic Mean](#s5-1-1-arithmetic-mean)
-        -   [S5-1-2 Geometric Mean](#s5-1-2-geometric-mean)
-        -   [S5-1-3 Fama Macbeth Second Step
-            Regression](#s5-1-3-fama-macbeth-second-step-regression)
-        -   [S5-1-4 Fama Macbeth Second Step Regression with STL Trend
-            Data](#s5-1-4-fama-macbeth-second-step-regression-with-stl-trend-data)
-    -   [S5-2 Comparative Statics](#s5-2-comparative-statics)
-    -   [S5-3 Bootstrap Standard Error](#s5-3-bootstrap-standard-error)
-    -   [S5-4 Decomposition of the Equity Cost of
-        Captial](#s5-4-decomposition-of-the-equity-cost-of-captial)
-    -   [S5-5 Forcasting???](#s5-5-forcasting)
-    -   [S5-6 ECC with Consumption
-        Growth???](#s5-6-ecc-with-consumption-growth)
-    -   [S5-7 Improve AM GM with Markov-switching
-        model???](#s5-7-improve-am-gm-with-markov-switching-model)
-    -   [S5-8 Levi-Welch Beta???](#s5-8-levi-welch-beta)
-    -   [S5-9 Filtering Method in Other Second-pass
-        Regression???](#s5-9-filtering-method-in-other-second-pass-regression)
--   [S6 Recreated Figures for ACL](#s6-recreated-figures-for-acl)
+-   <a href="#s1-introduction" id="toc-s1-introduction">S1 Introduction</a>
+-   <a href="#s2-data" id="toc-s2-data">S2 Data</a>
+    -   <a href="#s2-1-industry-return-and-fama-french-five-factors"
+        id="toc-s2-1-industry-return-and-fama-french-five-factors">S2-1 Industry
+        Return and Fama French Five Factors</a>
+    -   <a href="#s2-2-traded-prs-five-factors"
+        id="toc-s2-2-traded-prs-five-factors">S2-2 Traded PRS Five Factors</a>
+-   <a href="#s3-first-pass-regression" id="toc-s3-first-pass-regression">S3
+    First-Pass Regression</a>
+    -   <a href="#s3-1-fama-french-five-factor-model"
+        id="toc-s3-1-fama-french-five-factor-model">S3-1 Fama French Five Factor
+        Model</a>
+        -   <a href="#s3-1-1-full-sample-estimation"
+            id="toc-s3-1-1-full-sample-estimation">S3-1-1 Full Sample Estimation</a>
+        -   <a href="#s3-1-2-rolling-window-estimation"
+            id="toc-s3-1-2-rolling-window-estimation">S3-1-2 Rolling Window
+            Estimation</a>
+        -   <a href="#s3-1-3-full-sample-estimation-with-stl-trend"
+            id="toc-s3-1-3-full-sample-estimation-with-stl-trend">S3-1-3 Full Sample
+            Estimation with STL Trend</a>
+        -   <a href="#s3-1-4-rolling-window-estimation-with-stl-trend"
+            id="toc-s3-1-4-rolling-window-estimation-with-stl-trend">S3-1-4 Rolling
+            Window Estimation with STL Trend</a>
+        -   <a href="#s3-1-5-full-sample-estimation-with-panel-regression"
+            id="toc-s3-1-5-full-sample-estimation-with-panel-regression">S3-1-5 Full
+            Sample Estimation with Panel Regression</a>
+        -   <a href="#s3-1-6-rolling-window-estimation-with-panel-regression"
+            id="toc-s3-1-6-rolling-window-estimation-with-panel-regression">S3-1-6
+            Rolling Window Estimation with Panel Regression</a>
+    -   <a href="#s3-2-prs-five-factor-model"
+        id="toc-s3-2-prs-five-factor-model">S3-2 PRS Five Factor Model</a>
+        -   <a href="#s3-2-1-full-sample-estimation"
+            id="toc-s3-2-1-full-sample-estimation">S3-2-1 Full Sample Estimation</a>
+        -   <a href="#s3-2-2-rolling-window-estimation"
+            id="toc-s3-2-2-rolling-window-estimation">S3-2-2 Rolling Window
+            Estimation</a>
+        -   <a href="#s3-2-3-full-sample-estimation-with-stl-trend"
+            id="toc-s3-2-3-full-sample-estimation-with-stl-trend">S3-2-3 Full Sample
+            Estimation with STL Trend</a>
+        -   <a href="#s3-2-4-rolling-window-estimation-with-stl-trend"
+            id="toc-s3-2-4-rolling-window-estimation-with-stl-trend">S3-2-4 Rolling
+            Window Estimation with STL Trend</a>
+-   <a href="#s4-factor-premium-estimation"
+    id="toc-s4-factor-premium-estimation">S4 Factor Premium Estimation</a>
+    -   <a href="#s4-1-arithmetic-mean" id="toc-s4-1-arithmetic-mean">S4-1
+        Arithmetic Mean</a>
+    -   <a href="#s4-2-geometric-mean" id="toc-s4-2-geometric-mean">S4-2
+        Geometric Mean</a>
+    -   <a href="#s4-3-fama-macbeth-second-step-regression"
+        id="toc-s4-3-fama-macbeth-second-step-regression">S4-3 Fama Macbeth
+        Second Step Regression</a>
+    -   <a
+        href="#s4-4-fama-macbeth-second-step-regression-with-stl-deseaoned-data"
+        id="toc-s4-4-fama-macbeth-second-step-regression-with-stl-deseaoned-data">S4-4
+        Fama Macbeth Second Step Regression with STL Deseaoned Data</a>
+        -   <a href="#s4-4-1-stl-filtering" id="toc-s4-4-1-stl-filtering">S4-4-1 STL
+            Filtering</a>
+        -   <a href="#s4-4-2-filtered-seasonality-and-trend-strength"
+            id="toc-s4-4-2-filtered-seasonality-and-trend-strength">S4-4-2 Filtered
+            Seasonality and Trend Strength</a>
+        -   <a href="#s4-4-3-beta-decomposition"
+            id="toc-s4-4-3-beta-decomposition">S4-4-3 Beta Decomposition</a>
+        -   <a href="#s4-4-4-filtered-second-pass-regression"
+            id="toc-s4-4-4-filtered-second-pass-regression">S4-4-4 Filtered Second
+            Pass Regression</a>
+        -   <a href="#s4-4-5-component-second-pass-regression-comparison"
+            id="toc-s4-4-5-component-second-pass-regression-comparison">S4-4-5
+            Component Second Pass Regression Comparison</a>
+        -   <a href="#s4-4-6-regression-standard-error"
+            id="toc-s4-4-6-regression-standard-error">S4-4-6 Regression Standard
+            Error</a>
+        -   <a href="#s4-4-7-unfiltered-and-filtered-lambdas"
+            id="toc-s4-4-7-unfiltered-and-filtered-lambdas">S4-4-7 Unfiltered and
+            Filtered Lambdas</a>
+        -   <a href="#s4-4-8-ks-test-and-stats"
+            id="toc-s4-4-8-ks-test-and-stats">S4-4-8 KS test and Stats</a>
+    -   <a href="#s4-5-why-filtering-might-improve-esimated-lamdba"
+        id="toc-s4-5-why-filtering-might-improve-esimated-lamdba">S4-5 Why
+        filtering might improve Esimated Lamdba?</a>
+        -   <a href="#s4-5-1-biased-regression"
+            id="toc-s4-5-1-biased-regression">S4-5-1 Biased Regression</a>
+        -   <a href="#s4-5-2-simulation" id="toc-s4-5-2-simulation">S4-5-2
+            Simulation</a>
+            -   <a href="#s4-5-2-1-simulation-with-random-parameters-and-sin-lamdba"
+                id="toc-s4-5-2-1-simulation-with-random-parameters-and-sin-lamdba">S4-5-2-1
+                Simulation with Random Parameters and Sin Lamdba</a>
+            -   <a
+                href="#s4-5-2-2-simulation-with-random-parameter-and-random-smooth-lambda"
+                id="toc-s4-5-2-2-simulation-with-random-parameter-and-random-smooth-lambda">S4-5-2-2
+                Simulation with Random Parameter and Random Smooth Lambda</a>
+            -   <a href="#s4-5-2-3-simulation-with-actual-parameters-and-smooth-lambdas"
+                id="toc-s4-5-2-3-simulation-with-actual-parameters-and-smooth-lambdas">S4-5-2-3
+                Simulation with Actual Parameters and Smooth Lambdas</a>
+            -   <a href="#s4-5-2-4-regression-analysis-of-simulation-results"
+                id="toc-s4-5-2-4-regression-analysis-of-simulation-results">S4-5-2-4
+                Regression Analysis of Simulation Results</a>
+    -   <a href="#s4-6-robustness-check" id="toc-s4-6-robustness-check">S4-6
+        Robustness Check</a>
+        -   <a href="#s4-6-1-auxiliary-regression-at-each-t"
+            id="toc-s4-6-1-auxiliary-regression-at-each-t">S4-6-1 Auxiliary
+            Regression at each t</a>
+        -   <a href="#s4-6-2-panel-auxiliary-regression"
+            id="toc-s4-6-2-panel-auxiliary-regression">S4-6-2 Panel Auxiliary
+            Regression</a>
+        -   <a
+            href="#s4-6-3-long-regression-with-omitted-variable-periodic-and-noise"
+            id="toc-s4-6-3-long-regression-with-omitted-variable-periodic-and-noise">S4-6-3
+            Long Regression with omitted variable (Periodic and Noise)</a>
+        -   <a href="#s4-6-4-second-pass-panel-regression-comparison"
+            id="toc-s4-6-4-second-pass-panel-regression-comparison">S4-6-4 Second
+            Pass Panel Regression Comparison</a>
+-   <a href="#s5-equity-cost-of-captial"
+    id="toc-s5-equity-cost-of-captial">S5 Equity Cost of Captial</a>
+    -   <a href="#s5-1-estimated-equity-cost-of-captial"
+        id="toc-s5-1-estimated-equity-cost-of-captial">S5-1 Estimated Equity
+        Cost of Captial</a>
+        -   <a href="#s5-1-1-arithmetic-mean" id="toc-s5-1-1-arithmetic-mean">S5-1-1
+            Arithmetic Mean</a>
+        -   <a href="#s5-1-2-geometric-mean" id="toc-s5-1-2-geometric-mean">S5-1-2
+            Geometric Mean</a>
+        -   <a href="#s5-1-3-fama-macbeth-second-step-regression"
+            id="toc-s5-1-3-fama-macbeth-second-step-regression">S5-1-3 Fama Macbeth
+            Second Step Regression</a>
+        -   <a
+            href="#s5-1-4-fama-macbeth-second-step-regression-with-stl-trend-data"
+            id="toc-s5-1-4-fama-macbeth-second-step-regression-with-stl-trend-data">S5-1-4
+            Fama Macbeth Second Step Regression with STL Trend Data</a>
+    -   <a href="#s5-2-comparative-statics"
+        id="toc-s5-2-comparative-statics">S5-2 Comparative Statics</a>
+    -   <a href="#s5-3-bootstrap-standard-error"
+        id="toc-s5-3-bootstrap-standard-error">S5-3 Bootstrap Standard Error</a>
+    -   <a href="#s5-4-decomposition-of-the-equity-cost-of-captial"
+        id="toc-s5-4-decomposition-of-the-equity-cost-of-captial">S5-4
+        Decomposition of the Equity Cost of Captial</a>
+    -   <a href="#s5-5-forcasting" id="toc-s5-5-forcasting">S5-5
+        Forcasting???</a>
+    -   <a href="#s5-6-ecc-with-consumption-growth"
+        id="toc-s5-6-ecc-with-consumption-growth">S5-6 ECC with Consumption
+        Growth???</a>
+    -   <a href="#s5-7-improve-am-gm-with-markov-switching-model"
+        id="toc-s5-7-improve-am-gm-with-markov-switching-model">S5-7 Improve AM
+        GM with Markov-switching model???</a>
+    -   <a href="#s5-8-levi-welch-beta" id="toc-s5-8-levi-welch-beta">S5-8
+        Levi-Welch Beta???</a>
+    -   <a href="#s5-9-filtering-method-in-other-second-pass-regression"
+        id="toc-s5-9-filtering-method-in-other-second-pass-regression">S5-9
+        Filtering Method in Other Second-pass Regression???</a>
+-   <a href="#s6-recreated-figures-for-acl"
+    id="toc-s6-recreated-figures-for-acl">S6 Recreated Figures for ACL</a>
 
 # S1 Introduction
 
@@ -10373,55 +10429,55 @@ estimate the factor risk premium.
 Now, we decompose the standard error of the second-step regression
 lambdas. At each time t,
 
-![r_i = \\lambda_0 + \\lambda_1\*\\hat\\beta_i + \\lambda_2\*\\hat\\theta_i+e_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_i%20%3D%20%5Clambda_0%20%2B%20%5Clambda_1%2A%5Chat%5Cbeta_i%20%2B%20%5Clambda_2%2A%5Chat%5Ctheta_i%2Be_i "r_i = \lambda_0 + \lambda_1*\hat\beta_i + \lambda_2*\hat\theta_i+e_i")
+![r_i = \lambda_0 + \lambda_1\*\hat\beta_i + \lambda_2\*\hat\theta_i+e_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_i%20%3D%20%5Clambda_0%20%2B%20%5Clambda_1%2A%5Chat%5Cbeta_i%20%2B%20%5Clambda_2%2A%5Chat%5Ctheta_i%2Be_i "r_i = \lambda_0 + \lambda_1*\hat\beta_i + \lambda_2*\hat\theta_i+e_i")
 
-![se(\\hat{\\lambda}) = \\hat{\\sigma}\_e\*\\frac{1}{\\sqrt{SST\_{\\hat\\beta}}}\*\\frac{1}{\\sqrt{1-R^2\_{\\hat\\beta}}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%7B%5Clambda%7D%29%20%3D%20%5Chat%7B%5Csigma%7D_e%2A%5Cfrac%7B1%7D%7B%5Csqrt%7BSST_%7B%5Chat%5Cbeta%7D%7D%7D%2A%5Cfrac%7B1%7D%7B%5Csqrt%7B1-R%5E2_%7B%5Chat%5Cbeta%7D%7D%7D "se(\hat{\lambda}) = \hat{\sigma}_e*\frac{1}{\sqrt{SST_{\hat\beta}}}*\frac{1}{\sqrt{1-R^2_{\hat\beta}}}")
+![se(\hat{\lambda}) = \hat{\sigma}\_e\*\frac{1}{\sqrt{SST\_{\hat\beta}}}\*\frac{1}{\sqrt{1-R^2\_{\hat\beta}}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%7B%5Clambda%7D%29%20%3D%20%5Chat%7B%5Csigma%7D_e%2A%5Cfrac%7B1%7D%7B%5Csqrt%7BSST_%7B%5Chat%5Cbeta%7D%7D%7D%2A%5Cfrac%7B1%7D%7B%5Csqrt%7B1-R%5E2_%7B%5Chat%5Cbeta%7D%7D%7D "se(\hat{\lambda}) = \hat{\sigma}_e*\frac{1}{\sqrt{SST_{\hat\beta}}}*\frac{1}{\sqrt{1-R^2_{\hat\beta}}}")
 
 where
-![\\hat{\\sigma}\_e](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7B%5Csigma%7D_e "\hat{\sigma}_e")
+![\hat{\sigma}\_e](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7B%5Csigma%7D_e "\hat{\sigma}_e")
 represents the variation of errors,
-![\\sqrt{SST\_{\\hat\\beta}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csqrt%7BSST_%7B%5Chat%5Cbeta%7D%7D "\sqrt{SST_{\hat\beta}}")
+![\sqrt{SST\_{\hat\beta}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csqrt%7BSST_%7B%5Chat%5Cbeta%7D%7D "\sqrt{SST_{\hat\beta}}")
 represents intra-group beta variation, and
-![\\sqrt{1-R^2\_{\\hat\\beta}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csqrt%7B1-R%5E2_%7B%5Chat%5Cbeta%7D%7D "\sqrt{1-R^2_{\hat\beta}}")
+![\sqrt{1-R^2\_{\hat\beta}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csqrt%7B1-R%5E2_%7B%5Chat%5Cbeta%7D%7D "\sqrt{1-R^2_{\hat\beta}}")
 represents inter-group beta variation. We can clearly see that with the
 seasonality and time-series noise in the error term, we would get a
 larger standard error for estimated
-![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda").
+![\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda").
 
-![SST\_{\\hat\\beta} = \\sum\_{i=1}^N (\\hat\\beta_i - \\bar\\beta)^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;SST_%7B%5Chat%5Cbeta%7D%20%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%28%5Chat%5Cbeta_i%20-%20%5Cbar%5Cbeta%29%5E2 "SST_{\hat\beta} = \sum_{i=1}^N (\hat\beta_i - \bar\beta)^2")
+![SST\_{\hat\beta} = \sum\_{i=1}^N (\hat\beta_i - \bar\beta)^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;SST_%7B%5Chat%5Cbeta%7D%20%3D%20%5Csum_%7Bi%3D1%7D%5EN%20%28%5Chat%5Cbeta_i%20-%20%5Cbar%5Cbeta%29%5E2 "SST_{\hat\beta} = \sum_{i=1}^N (\hat\beta_i - \bar\beta)^2")
 
-![R^2\_{\\hat\\beta} = 1 - \\frac{\\hat\\theta^2_u}{SST\_{\\hat\\beta}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;R%5E2_%7B%5Chat%5Cbeta%7D%20%3D%201%20-%20%5Cfrac%7B%5Chat%5Ctheta%5E2_u%7D%7BSST_%7B%5Chat%5Cbeta%7D%7D "R^2_{\hat\beta} = 1 - \frac{\hat\theta^2_u}{SST_{\hat\beta}}")
+![R^2\_{\hat\beta} = 1 - \frac{\hat\theta^2_u}{SST\_{\hat\beta}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;R%5E2_%7B%5Chat%5Cbeta%7D%20%3D%201%20-%20%5Cfrac%7B%5Chat%5Ctheta%5E2_u%7D%7BSST_%7B%5Chat%5Cbeta%7D%7D "R^2_{\hat\beta} = 1 - \frac{\hat\theta^2_u}{SST_{\hat\beta}}")
 
 where
-![\\hat\\theta^2_u](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%5Ctheta%5E2_u "\hat\theta^2_u")
+![\hat\theta^2_u](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%5Ctheta%5E2_u "\hat\theta^2_u")
 comes from auxiliary regression (aka Factor Spanning Regression)
 
-![\\beta_i = \\gamma_0 + \\gamma_1\*\\hat\\theta_i+u_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta_i%20%3D%20%5Cgamma_0%20%2B%20%5Cgamma_1%2A%5Chat%5Ctheta_i%2Bu_i "\beta_i = \gamma_0 + \gamma_1*\hat\theta_i+u_i")
+![\beta_i = \gamma_0 + \gamma_1\*\hat\theta_i+u_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta_i%20%3D%20%5Cgamma_0%20%2B%20%5Cgamma_1%2A%5Chat%5Ctheta_i%2Bu_i "\beta_i = \gamma_0 + \gamma_1*\hat\theta_i+u_i")
 
 We will rewrite the terms as:
 
-![se(\\hat{\\lambda}) = \\hat{\\sigma}\_e\*\\frac{1}{\\hat{\\sigma}\_{\\beta,intra}}\*\\frac{1}{\\hat{\\sigma}\_{\\beta,inter}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%7B%5Clambda%7D%29%20%3D%20%5Chat%7B%5Csigma%7D_e%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D "se(\hat{\lambda}) = \hat{\sigma}_e*\frac{1}{\hat{\sigma}_{\beta,intra}}*\frac{1}{\hat{\sigma}_{\beta,inter}}")
+![se(\hat{\lambda}) = \hat{\sigma}\_e\*\frac{1}{\hat{\sigma}\_{\beta,intra}}\*\frac{1}{\hat{\sigma}\_{\beta,inter}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%7B%5Clambda%7D%29%20%3D%20%5Chat%7B%5Csigma%7D_e%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D "se(\hat{\lambda}) = \hat{\sigma}_e*\frac{1}{\hat{\sigma}_{\beta,intra}}*\frac{1}{\hat{\sigma}_{\beta,inter}}")
 
 The decomposition would be:
 
-![1 = \\frac{ln(\\hat{\\sigma}\_e)}{ln(se(\\hat\\lambda))}-\\frac{ln(\\hat{\\sigma}\_{\\beta,intra})}{ln(se(\\hat\\lambda))}-\\frac{ln(\\hat{\\sigma}\_{\\beta,inter})}{ln(se(\\hat\\lambda))}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;1%20%3D%20%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_e%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D "1 = \frac{ln(\hat{\sigma}_e)}{ln(se(\hat\lambda))}-\frac{ln(\hat{\sigma}_{\beta,intra})}{ln(se(\hat\lambda))}-\frac{ln(\hat{\sigma}_{\beta,inter})}{ln(se(\hat\lambda))}")
+![1 = \frac{ln(\hat{\sigma}\_e)}{ln(se(\hat\lambda))}-\frac{ln(\hat{\sigma}\_{\beta,intra})}{ln(se(\hat\lambda))}-\frac{ln(\hat{\sigma}\_{\beta,inter})}{ln(se(\hat\lambda))}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;1%20%3D%20%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_e%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D "1 = \frac{ln(\hat{\sigma}_e)}{ln(se(\hat\lambda))}-\frac{ln(\hat{\sigma}_{\beta,intra})}{ln(se(\hat\lambda))}-\frac{ln(\hat{\sigma}_{\beta,inter})}{ln(se(\hat\lambda))}")
 
 And each term is the effect of variation to the
-![se(\\hat\\lambda)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%5Clambda%29 "se(\hat\lambda)")
+![se(\hat\lambda)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%5Clambda%29 "se(\hat\lambda)")
 and this effect is associated with the sensitivity of
-![se(\\hat\\lambda)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%5Clambda%29 "se(\hat\lambda)")
+![se(\hat\lambda)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%5Clambda%29 "se(\hat\lambda)")
 to the specific variation:
 
-![\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}\_e} = \\frac{1}{\\hat{\\sigma}\_{\\beta,intra}}\*\\frac{1}{\\hat{\\sigma}\_{\\beta,inter}} = \\frac{se(\\hat\\lambda)}{\\hat{\\sigma}\_e} = se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}\_e)}{ln(se(\\hat\\lambda))}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_e%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_e%7D%20%3D%20se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_e%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D%7D "\frac{d se(\hat\lambda)}{d\hat{\sigma}_e} = \frac{1}{\hat{\sigma}_{\beta,intra}}*\frac{1}{\hat{\sigma}_{\beta,inter}} = \frac{se(\hat\lambda)}{\hat{\sigma}_e} = se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_e)}{ln(se(\hat\lambda))}}")
+![\frac{d se(\hat\lambda)}{d\hat{\sigma}\_e} = \frac{1}{\hat{\sigma}\_{\beta,intra}}\*\frac{1}{\hat{\sigma}\_{\beta,inter}} = \frac{se(\hat\lambda)}{\hat{\sigma}\_e} = se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}\_e)}{ln(se(\hat\lambda))}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_e%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B1%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_e%7D%20%3D%20se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_e%29%7D%7Bln%28se%28%5Chat%5Clambda%29%29%7D%7D "\frac{d se(\hat\lambda)}{d\hat{\sigma}_e} = \frac{1}{\hat{\sigma}_{\beta,intra}}*\frac{1}{\hat{\sigma}_{\beta,inter}} = \frac{se(\hat\lambda)}{\hat{\sigma}_e} = se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_e)}{ln(se(\hat\lambda))}}")
 
-![\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}\_{\\beta,intra}} = \\frac{-1}{\\hat{\\sigma}^2\_{\\beta,intra}}\*\\frac{\\hat{\\sigma}\_e}{\\hat{\\sigma}\_{\\beta,inter}} = -\\frac{se(\\hat\\lambda)}{\\hat{\\sigma}\_{\\beta,intra}} = -se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}\_{\\beta,intra})}{se(\\hat\\lambda)}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20%5Cfrac%7B-1%7D%7B%5Chat%7B%5Csigma%7D%5E2_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B%5Chat%7B%5Csigma%7D_e%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20-%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20-se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%29%7D%7Bse%28%5Chat%5Clambda%29%7D%7D "\frac{d se(\hat\lambda)}{d\hat{\sigma}_{\beta,intra}} = \frac{-1}{\hat{\sigma}^2_{\beta,intra}}*\frac{\hat{\sigma}_e}{\hat{\sigma}_{\beta,inter}} = -\frac{se(\hat\lambda)}{\hat{\sigma}_{\beta,intra}} = -se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_{\beta,intra})}{se(\hat\lambda)}}")
+![\frac{d se(\hat\lambda)}{d\hat{\sigma}\_{\beta,intra}} = \frac{-1}{\hat{\sigma}^2\_{\beta,intra}}\*\frac{\hat{\sigma}\_e}{\hat{\sigma}\_{\beta,inter}} = -\frac{se(\hat\lambda)}{\hat{\sigma}\_{\beta,intra}} = -se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}\_{\beta,intra})}{se(\hat\lambda)}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20%5Cfrac%7B-1%7D%7B%5Chat%7B%5Csigma%7D%5E2_%7B%5Cbeta%2Cintra%7D%7D%2A%5Cfrac%7B%5Chat%7B%5Csigma%7D_e%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20-%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20-se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%29%7D%7Bse%28%5Chat%5Clambda%29%7D%7D "\frac{d se(\hat\lambda)}{d\hat{\sigma}_{\beta,intra}} = \frac{-1}{\hat{\sigma}^2_{\beta,intra}}*\frac{\hat{\sigma}_e}{\hat{\sigma}_{\beta,inter}} = -\frac{se(\hat\lambda)}{\hat{\sigma}_{\beta,intra}} = -se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_{\beta,intra})}{se(\hat\lambda)}}")
 
 Similarly,
 
-![\\frac{d se(\\hat\\lambda)}{d\\hat{\\sigma}\_{\\beta,inter}} = \\frac{-1}{\\hat{\\sigma}^2\_{\\beta,inter}}\*\\frac{\\hat{\\sigma}\_e}{\\hat{\\sigma}\_{\\beta,intra}} = -\\frac{se(\\hat\\lambda)}{\\hat{\\sigma}\_{\\beta,inter}} = -se(\\hat\\lambda)^{1-\\frac{ln(\\hat{\\sigma}\_{\\beta,inter})}{se(\\hat\\lambda)}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20%5Cfrac%7B-1%7D%7B%5Chat%7B%5Csigma%7D%5E2_%7B%5Cbeta%2Cinter%7D%7D%2A%5Cfrac%7B%5Chat%7B%5Csigma%7D_e%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20-%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20-se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%29%7D%7Bse%28%5Chat%5Clambda%29%7D%7D "\frac{d se(\hat\lambda)}{d\hat{\sigma}_{\beta,inter}} = \frac{-1}{\hat{\sigma}^2_{\beta,inter}}*\frac{\hat{\sigma}_e}{\hat{\sigma}_{\beta,intra}} = -\frac{se(\hat\lambda)}{\hat{\sigma}_{\beta,inter}} = -se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_{\beta,inter})}{se(\hat\lambda)}}")
+![\frac{d se(\hat\lambda)}{d\hat{\sigma}\_{\beta,inter}} = \frac{-1}{\hat{\sigma}^2\_{\beta,inter}}\*\frac{\hat{\sigma}\_e}{\hat{\sigma}\_{\beta,intra}} = -\frac{se(\hat\lambda)}{\hat{\sigma}\_{\beta,inter}} = -se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}\_{\beta,inter})}{se(\hat\lambda)}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bd%20se%28%5Chat%5Clambda%29%7D%7Bd%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20%5Cfrac%7B-1%7D%7B%5Chat%7B%5Csigma%7D%5E2_%7B%5Cbeta%2Cinter%7D%7D%2A%5Cfrac%7B%5Chat%7B%5Csigma%7D_e%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cintra%7D%7D%20%3D%20-%5Cfrac%7Bse%28%5Chat%5Clambda%29%7D%7B%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%7D%20%3D%20-se%28%5Chat%5Clambda%29%5E%7B1-%5Cfrac%7Bln%28%5Chat%7B%5Csigma%7D_%7B%5Cbeta%2Cinter%7D%29%7D%7Bse%28%5Chat%5Clambda%29%7D%7D "\frac{d se(\hat\lambda)}{d\hat{\sigma}_{\beta,inter}} = \frac{-1}{\hat{\sigma}^2_{\beta,inter}}*\frac{\hat{\sigma}_e}{\hat{\sigma}_{\beta,intra}} = -\frac{se(\hat\lambda)}{\hat{\sigma}_{\beta,inter}} = -se(\hat\lambda)^{1-\frac{ln(\hat{\sigma}_{\beta,inter})}{se(\hat\lambda)}}")
 
 We only care about the magnitude of this sensitivity, since
-![se(\\hat\\lambda)\<1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%5Clambda%29%3C1 "se(\hat\lambda)<1"),
+![se(\hat\lambda)\<1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;se%28%5Chat%5Clambda%29%3C1 "se(\hat\lambda)<1"),
 the magnitude of the sensitivity is an increasing function of the
 decomposition component.
 
@@ -11393,9 +11449,9 @@ filtering.
 Now we estimate the strength of trend and strength of seasonality. The
 Strength of the trend is defined as:
 
-![F_T = max(0,1-\\frac{Var(R_t)}{Var(T_t+R_t)})](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;F_T%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28T_t%2BR_t%29%7D%29 "F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})")
+![F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;F_T%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28T_t%2BR_t%29%7D%29 "F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})")
 
-![F_S = max(0,1-\\frac{Var(R_t)}{Var(S_t+R_t)})](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;F_S%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28S_t%2BR_t%29%7D%29 "F_S = max(0,1-\frac{Var(R_t)}{Var(S_t+R_t)})")
+![F_S = max(0,1-\frac{Var(R_t)}{Var(S_t+R_t)})](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;F_S%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28S_t%2BR_t%29%7D%29 "F_S = max(0,1-\frac{Var(R_t)}{Var(S_t+R_t)})")
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -16040,38 +16096,38 @@ regression is due to the seasonality.
 Now, assume the return (or risk premium) is formed by the following
 equation:
 
-![r\_{it} = \\beta\_{it}\*\\lambda_t+\\eta\_{it}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Ceta_%7Bit%7D "r_{it} = \beta_{it}*\lambda_t+\eta_{it}")
+![r\_{it} = \beta\_{it}\*\lambda_t+\eta\_{it}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Ceta_%7Bit%7D "r_{it} = \beta_{it}*\lambda_t+\eta_{it}")
 
 Where beta is the sector specific risk exposure, lambda is the factor
 premium, and eta is the idiosyncratic noise.
 
-![E\[\\eta\_{it}\|i\] = 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5B%5Ceta_%7Bit%7D%7Ci%5D%20%3D%200 "E[\eta_{it}|i] = 0")
+![E\[\eta\_{it}\|i\] = 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5B%5Ceta_%7Bit%7D%7Ci%5D%20%3D%200 "E[\eta_{it}|i] = 0")
 
 However, the eta might actually contain 3 components:
-![\\epsilon_t](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cepsilon_t "\epsilon_t"),
+![\epsilon_t](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cepsilon_t "\epsilon_t"),
 ![s\_{im}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;s_%7Bim%7D "s_{im}"),
 and
 ![epsilon\_{it}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;epsilon_%7Bit%7D "epsilon_{it}").
 
-![\\eta\_{it} = \\epsilon_t + s\_{im} + \\epsilon\_{it}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Ceta_%7Bit%7D%20%3D%20%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D "\eta_{it} = \epsilon_t + s_{im} + \epsilon_{it}")
+![\eta\_{it} = \epsilon_t + s\_{im} + \epsilon\_{it}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Ceta_%7Bit%7D%20%3D%20%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D "\eta_{it} = \epsilon_t + s_{im} + \epsilon_{it}")
 
 eps_t is the universal time-series error, s_i is the sector-specific
 seasonality, and eps_it is the idiosyncratic error. Therefore, the
 equation is actually:
 
-![r\_{it} = \\beta\_{it}\*\\lambda_t+\\epsilon_t + s\_{im} + \\epsilon\_{it}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D "r_{it} = \beta_{it}*\lambda_t+\epsilon_t + s_{im} + \epsilon_{it}")
+![r\_{it} = \beta\_{it}\*\lambda_t+\epsilon_t + s\_{im} + \epsilon\_{it}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_%7Bit%7D%20%3D%20%5Cbeta_%7Bit%7D%2A%5Clambda_t%2B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D "r_{it} = \beta_{it}*\lambda_t+\epsilon_t + s_{im} + \epsilon_{it}")
 
 Again, we would have:
 
-![E\[\\epsilon_t + s\_{im} + \\epsilon\_{it}\|i\] = 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D%7Ci%5D%20%3D%200 "E[\epsilon_t + s_{im} + \epsilon_{it}|i] = 0")
+![E\[\epsilon_t + s\_{im} + \epsilon\_{it}\|i\] = 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D%7Ci%5D%20%3D%200 "E[\epsilon_t + s_{im} + \epsilon_{it}|i] = 0")
 
 However, the cross-sectional regression error at each time t:
 
-![E\[\\epsilon_t + s\_{im} + \\epsilon\_{it}\|t\] = \\epsilon_t+s\_{im}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D%7Ct%5D%20%3D%20%5Cepsilon_t%2Bs_%7Bim%7D "E[\epsilon_t + s_{im} + \epsilon_{it}|t] = \epsilon_t+s_{im}")
+![E\[\epsilon_t + s\_{im} + \epsilon\_{it}\|t\] = \epsilon_t+s\_{im}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5B%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%2B%20%5Cepsilon_%7Bit%7D%7Ct%5D%20%3D%20%5Cepsilon_t%2Bs_%7Bim%7D "E[\epsilon_t + s_{im} + \epsilon_{it}|t] = \epsilon_t+s_{im}")
 
 The unbiased least square estimation requires the error term expected to
 be 0. The existence of
-![( \\epsilon_t + s\_{im} \| t)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%28%20%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%7C%20t%29 "( \epsilon_t + s_{im} | t)")
+![( \epsilon_t + s\_{im} \| t)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%28%20%5Cepsilon_t%20%2B%20s_%7Bim%7D%20%7C%20t%29 "( \epsilon_t + s_{im} | t)")
 in each cross-sectional regression, therefore, would randomly bias the
 estimated lambda. (Biasness is the last thing we want from a
 regression.) This might be why we see the FM method lambdas behave so
@@ -16589,7 +16645,7 @@ equation to simulate a random curve as the true factor premium.
 The ramdom Fourier Lambdas are generated by the following Fourier
 Equations:
 
-![f(t) = a_0+\\sum\_{i=1}^n(a_i cos(it)+b_isin(it))](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;f%28t%29%20%3D%20a_0%2B%5Csum_%7Bi%3D1%7D%5En%28a_i%20cos%28it%29%2Bb_isin%28it%29%29 "f(t) = a_0+\sum_{i=1}^n(a_i cos(it)+b_isin(it))")
+![f(t) = a_0+\sum\_{i=1}^n(a_i cos(it)+b_isin(it))](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;f%28t%29%20%3D%20a_0%2B%5Csum_%7Bi%3D1%7D%5En%28a_i%20cos%28it%29%2Bb_isin%28it%29%29 "f(t) = a_0+\sum_{i=1}^n(a_i cos(it)+b_isin(it))")
 
 The
 ![a_0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;a_0 "a_0")
@@ -20869,7 +20925,7 @@ We want two sets of regressions here:
 1.  SSE Improvement of Estimated ECC vs. variance of Seasonal, Noise,
     and Resid
 
-2.  ![\\sqrt{SSE}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csqrt%7BSSE%7D "\sqrt{SSE}")
+2.  ![\sqrt{SSE}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csqrt%7BSSE%7D "\sqrt{SSE}")
     vs. standard deviation of Seasonal, Noise, and Resid
 
 <!-- -->
@@ -21022,7 +21078,7 @@ problem and we have two new sets of regressions:
 
 1.  SSE Improvement of Estimated ECC vs. variance of Bias and Resid
 
-2.  ![\\sqrt{SSE}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csqrt%7BSSE%7D "\sqrt{SSE}")
+2.  ![\sqrt{SSE}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csqrt%7BSSE%7D "\sqrt{SSE}")
     vs. standard deviation of Bias and Resid
 
 From both regression results, we can see that the combined Bias term
@@ -21090,7 +21146,7 @@ component on the left-hand-side gives unbiased result in second-step
 regression.
 
 In regular second-step regression, we have:
-![r_i = \\lambda_0 + \\lambda_1^s \\hat{\\beta}\_i + u_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_i%20%3D%20%5Clambda_0%20%2B%20%5Clambda_1%5Es%20%5Chat%7B%5Cbeta%7D_i%20%2B%20u_i "r_i = \lambda_0 + \lambda_1^s \hat{\beta}_i + u_i").
+![r_i = \lambda_0 + \lambda_1^s \hat{\beta}\_i + u_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_i%20%3D%20%5Clambda_0%20%2B%20%5Clambda_1%5Es%20%5Chat%7B%5Cbeta%7D_i%20%2B%20u_i "r_i = \lambda_0 + \lambda_1^s \hat{\beta}_i + u_i").
 
 The return series can be decomposed into:
 ![r_i = T_i + P_i + R_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_i%20%3D%20T_i%20%2B%20P_i%20%2B%20R_i "r_i = T_i + P_i + R_i"),
@@ -21103,13 +21159,13 @@ is the periodic component; and
 is the time-series residual component.
 
 Therefore, an alternative second-step regression would be:
-![T_i = \\lambda_0 + \\lambda_1^l \\hat{\\beta}\_i + \\lambda_2^l P_i + u_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;T_i%20%3D%20%5Clambda_0%20%2B%20%5Clambda_1%5El%20%5Chat%7B%5Cbeta%7D_i%20%2B%20%5Clambda_2%5El%20P_i%20%2B%20u_i "T_i = \lambda_0 + \lambda_1^l \hat{\beta}_i + \lambda_2^l P_i + u_i").
+![T_i = \lambda_0 + \lambda_1^l \hat{\beta}\_i + \lambda_2^l P_i + u_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;T_i%20%3D%20%5Clambda_0%20%2B%20%5Clambda_1%5El%20%5Chat%7B%5Cbeta%7D_i%20%2B%20%5Clambda_2%5El%20P_i%20%2B%20u_i "T_i = \lambda_0 + \lambda_1^l \hat{\beta}_i + \lambda_2^l P_i + u_i").
 And
-![\\lambda_1^s = \\lambda_1^l + \\lambda_2^l \\pi_1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda_1%5Es%20%3D%20%5Clambda_1%5El%20%2B%20%5Clambda_2%5El%20%5Cpi_1 "\lambda_1^s = \lambda_1^l + \lambda_2^l \pi_1"),
+![\lambda_1^s = \lambda_1^l + \lambda_2^l \pi_1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda_1%5Es%20%3D%20%5Clambda_1%5El%20%2B%20%5Clambda_2%5El%20%5Cpi_1 "\lambda_1^s = \lambda_1^l + \lambda_2^l \pi_1"),
 where
-![\\pi_1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cpi_1 "\pi_1")
+![\pi_1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cpi_1 "\pi_1")
 is from the Auxiliary regression
-![P_i = \\pi_0 + \\pi_1 \\hat{\\beta}\_i + \\eta_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;P_i%20%3D%20%5Cpi_0%20%2B%20%5Cpi_1%20%5Chat%7B%5Cbeta%7D_i%20%2B%20%5Ceta_i "P_i = \pi_0 + \pi_1 \hat{\beta}_i + \eta_i").
+![P_i = \pi_0 + \pi_1 \hat{\beta}\_i + \eta_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;P_i%20%3D%20%5Cpi_0%20%2B%20%5Cpi_1%20%5Chat%7B%5Cbeta%7D_i%20%2B%20%5Ceta_i "P_i = \pi_0 + \pi_1 \hat{\beta}_i + \eta_i").
 
 First of all, we would like to perform the Auxiliary regression at each
 time period t:
@@ -23053,7 +23109,7 @@ Original
 
 This shows that at a given time t, we would have the Noise and Periodic
 (Seasonal) component affecting the
-![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
+![\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
 estimation.
 
 ### S4-6-2 Panel Auxiliary Regression
@@ -23126,21 +23182,30 @@ matter in the second-path regression. The Original (actual return) and
 Trend regression coefficients are similar and the F test p-values are
 all small. This result suggests that only the trend component matters in
 the
-![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
+![\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
 estimation in the second-path regression.
 
 From the previous section, yet, Periodic and Noise Components can alter
 the monthly
-![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
+![\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
 estimations, which is inappropriate according to the Panel regression
 results. If we want one long-term
-![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda"),
+![\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda"),
 using trend or return on the left-hand side would yield similar
 estimates. However, since our primary goal is to estimate monthly
 expected return, we should only use trend on the left-hand side,
 excluding Noise and Periodic.
 
 ### S4-6-3 Long Regression with omitted variable (Periodic and Noise)
+
+In this session, we present the longer version of second step
+regression, where
+
+![T_i = \lambda_0 + \lambda_1^l \hat{\beta}\_i + \lambda_2^l P_i + \lambda_3^l N_i + u_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;T_i%20%3D%20%5Clambda_0%20%2B%20%5Clambda_1%5El%20%5Chat%7B%5Cbeta%7D_i%20%2B%20%5Clambda_2%5El%20P_i%20%2B%20%5Clambda_3%5El%20N_i%20%2B%20u_i "T_i = \lambda_0 + \lambda_1^l \hat{\beta}_i + \lambda_2^l P_i + \lambda_3^l N_i + u_i")
+
+We would use the result of this longer version regression to compare
+with the original Fama Macbeth second step regression to test whether
+periodic and noise terms would affect the regression result.
 
 ![](ECC_files/figure-gfm/Long_reg-1.png)<!-- -->![](ECC_files/figure-gfm/Long_reg-2.png)<!-- -->
 
@@ -23154,7 +23219,7 @@ excluding Noise and Periodic.
     ## 0.3553214 0.3328261 0.3050228 0.2394596 0.1980998 0.3248519 0.1901164
 
 Now, let’s compare the long-regression lambdas with the original
-second-path and ACL results:
+second-path result:
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -24140,10 +24205,35 @@ CMA
 </tbody>
 </table>
 
+It seems that 30% of the time, the result from long regression would be
+different from the second-step regression. This result is consistent
+with previous short regressions, which showed Period and Noise are
+associated with
+![\hat{\beta}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7B%5Cbeta%7D "\hat{\beta}")
+and would introduce a bias to the second-step regression.
+
 ### S4-6-4 Second Pass Panel Regression Comparison
 
-Now, we would like to compare the standard errors of the original second
-pass regression vs. ACL second pass regression.
+Now, we would like to compare the original second pass regression
+vs. ACL second pass regression in a rolling panel setting:
+
+![r\_{p,ym} = \lambda\_{0,ym} + \boldsymbol{\lambda\_{ym}}\*\boldsymbol{\widehat{\beta\_{p,t}}} + \eta\_{pt} \\ \\ \\  for \\ t \in ym](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_%7Bp%2Cym%7D%20%3D%20%5Clambda_%7B0%2Cym%7D%20%2B%20%5Cboldsymbol%7B%5Clambda_%7Bym%7D%7D%2A%5Cboldsymbol%7B%5Cwidehat%7B%5Cbeta_%7Bp%2Ct%7D%7D%7D%20%2B%20%5Ceta_%7Bpt%7D%20%5C%20%5C%20%5C%20%20for%20%5C%20t%20%5Cin%20ym "r_{p,ym} = \lambda_{0,ym} + \boldsymbol{\lambda_{ym}}*\boldsymbol{\widehat{\beta_{p,t}}} + \eta_{pt} \ \ \  for \ t \in ym")
+
+where
+![ym](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;ym "ym")
+stands for year-month for the monthly return. For example, in 5-year
+rolling panel regression, we use estimated betas and returns(or trend)
+from January 1993 through December 1997 to estimate the lambda for
+December 1997. We then iterate forward, using February 1993 through
+January 1998 to estimate the lambda for January 1998, and so on. In the
+ACL regression, we simply replace
+![r\_{p,ym}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_%7Bp%2Cym%7D "r_{p,ym}")
+with the trend component,
+![T\_{p,ym}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;T_%7Bp%2Cym%7D "T_{p,ym}").
+
+We apply this rolling panel regression for the original FM and ACL with
+1-year, 3-year, and 5-year horizon. 0-year is the regular
+cross-sectional monthly regression.
 
 ![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-1.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-2.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-3.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-4.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-5.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-6.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-7.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-8.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-9.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-10.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-11.png)<!-- -->![](ECC_files/figure-gfm/Second_Pass_Rolling_Panel_Comparison-12.png)<!-- -->
 
@@ -24161,7 +24251,7 @@ with relatively low risk.
 ## S5-1 Estimated Equity Cost of Captial
 
 As the equation indicates,
-![ECC = \\sum\_{i \\in F} \\beta_i\*E\[F_i\] + R_f](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;ECC%20%3D%20%5Csum_%7Bi%20%5Cin%20F%7D%20%5Cbeta_i%2AE%5BF_i%5D%20%2B%20R_f "ECC = \sum_{i \in F} \beta_i*E[F_i] + R_f").
+![ECC = \sum\_{i \in F} \beta_i\*E\[F_i\] + R_f](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;ECC%20%3D%20%5Csum_%7Bi%20%5Cin%20F%7D%20%5Cbeta_i%2AE%5BF_i%5D%20%2B%20R_f "ECC = \sum_{i \in F} \beta_i*E[F_i] + R_f").
 We will ignore the risk free rate part and the Equity Cost of Capital in
 this section refers to the estimated risk premium.
 
@@ -27364,62 +27454,62 @@ In this section, we would try to decompose the ECC.
 Based on the Model, at each period t, the estimated Risk Premium is
 calculated as follows:
 
-![E\[RP\] = \\vec\\beta\*\\vec\\lambda'](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5BRP%5D%20%3D%20%5Cvec%5Cbeta%2A%5Cvec%5Clambda%27 "E[RP] = \vec\beta*\vec\lambda'")
+![E\[RP\] = \vec\beta\*\vec\lambda'](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5BRP%5D%20%3D%20%5Cvec%5Cbeta%2A%5Cvec%5Clambda%27 "E[RP] = \vec\beta*\vec\lambda'")
 
-![\\vec\\beta](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cvec%5Cbeta "\vec\beta")
+![\vec\beta](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cvec%5Cbeta "\vec\beta")
 is the 1xk vecotr which represents k factor exposures;
-![\\vec\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cvec%5Clambda "\vec\lambda")
+![\vec\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cvec%5Clambda "\vec\lambda")
 is the 1xk Matrix which represents k factor premium across T periods. In
 order to decompose the
 ![E\[RP\]](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5BRP%5D "E[RP]")
 into one
-![\\beta](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta "\beta")
+![\beta](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta "\beta")
 and one
-![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
+![\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
 components, we apply the property of vector product:
 
-![E\[RP\] = \|\\vec\\beta\|\*\|\\vec\\lambda\|\*cos(\\vec\\beta,\\vec\\lambda)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5BRP%5D%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2Acos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29 "E[RP] = |\vec\beta|*|\vec\lambda|*cos(\vec\beta,\vec\lambda)")
+![E\[RP\] = \|\vec\beta\|\*\|\vec\lambda\|\*cos(\vec\beta,\vec\lambda)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5BRP%5D%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2Acos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29 "E[RP] = |\vec\beta|*|\vec\lambda|*cos(\vec\beta,\vec\lambda)")
 
 We would call the
-![cos(\\vec\\beta,\\vec\\lambda)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;cos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29 "cos(\vec\beta,\vec\lambda)")
+![cos(\vec\beta,\vec\lambda)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;cos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29 "cos(\vec\beta,\vec\lambda)")
 part projection parameter
-(![-1 \\leq PP \\leq 1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;-1%20%5Cleq%20PP%20%5Cleq%201 "-1 \leq PP \leq 1")),
+(![-1 \leq PP \leq 1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;-1%20%5Cleq%20PP%20%5Cleq%201 "-1 \leq PP \leq 1")),
 since it is how effective the L2 norms,
-![\|\\vec\\beta\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7C%5Cvec%5Cbeta%7C "|\vec\beta|")
+![\|\vec\beta\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7C%5Cvec%5Cbeta%7C "|\vec\beta|")
 and
-![\|\\vec\\lambda\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7C%5Cvec%5Clambda%7C "|\vec\lambda|"),
+![\|\vec\lambda\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7C%5Cvec%5Clambda%7C "|\vec\lambda|"),
 work together to form the expected risk premium. If
-![cos(\\vec\\beta,\\vec\\lambda)=0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;cos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29%3D0 "cos(\vec\beta,\vec\lambda)=0"),
+![cos(\vec\beta,\vec\lambda)=0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;cos%28%5Cvec%5Cbeta%2C%5Cvec%5Clambda%29%3D0 "cos(\vec\beta,\vec\lambda)=0"),
 no matter how large
-![\|\\vec\\beta\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7C%5Cvec%5Cbeta%7C "|\vec\beta|")
+![\|\vec\beta\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7C%5Cvec%5Cbeta%7C "|\vec\beta|")
 and
-![\|\\vec\\lambda\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7C%5Cvec%5Clambda%7C "|\vec\lambda|")
+![\|\vec\lambda\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7C%5Cvec%5Clambda%7C "|\vec\lambda|")
 are, the expected risk premium would be 0.
 
-![E\[RP\] = \|\\vec\\beta\|\*\|\\vec\\lambda\|\*PP](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5BRP%5D%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2APP "E[RP] = |\vec\beta|*|\vec\lambda|*PP")
+![E\[RP\] = \|\vec\beta\|\*\|\vec\lambda\|\*PP](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;E%5BRP%5D%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2APP "E[RP] = |\vec\beta|*|\vec\lambda|*PP")
 
 and,
-![\|E\[RP\]\| = \|\\vec\\beta\|\*\|\\vec\\lambda\|\*\|PP\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7CE%5BRP%5D%7C%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2A%7CPP%7C "|E[RP]| = |\vec\beta|*|\vec\lambda|*|PP|")
+![\|E\[RP\]\| = \|\vec\beta\|\*\|\vec\lambda\|\*\|PP\|](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%7CE%5BRP%5D%7C%20%3D%20%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2A%7CPP%7C "|E[RP]| = |\vec\beta|*|\vec\lambda|*|PP|")
 
 The decomposition would be more intuitive with an additive form. We take
 the log of both sides:
 
-![ln(\|E\[RP\]\|) = ln(\|\\vec\\beta\|\*\|\\vec\\lambda\|\*\|PP\|) = ln(\|\\vec\\beta\|) + ln(\|\\vec\\lambda\|) + ln(\|PP\|)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;ln%28%7CE%5BRP%5D%7C%29%20%3D%20ln%28%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2A%7CPP%7C%29%20%3D%20ln%28%7C%5Cvec%5Cbeta%7C%29%20%2B%20ln%28%7C%5Cvec%5Clambda%7C%29%20%2B%20ln%28%7CPP%7C%29 "ln(|E[RP]|) = ln(|\vec\beta|*|\vec\lambda|*|PP|) = ln(|\vec\beta|) + ln(|\vec\lambda|) + ln(|PP|)")
+![ln(\|E\[RP\]\|) = ln(\|\vec\beta\|\*\|\vec\lambda\|\*\|PP\|) = ln(\|\vec\beta\|) + ln(\|\vec\lambda\|) + ln(\|PP\|)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;ln%28%7CE%5BRP%5D%7C%29%20%3D%20ln%28%7C%5Cvec%5Cbeta%7C%2A%7C%5Cvec%5Clambda%7C%2A%7CPP%7C%29%20%3D%20ln%28%7C%5Cvec%5Cbeta%7C%29%20%2B%20ln%28%7C%5Cvec%5Clambda%7C%29%20%2B%20ln%28%7CPP%7C%29 "ln(|E[RP]|) = ln(|\vec\beta|*|\vec\lambda|*|PP|) = ln(|\vec\beta|) + ln(|\vec\lambda|) + ln(|PP|)")
 
 Therefore,
 
-![1 = \\frac{ln(\|\\vec\\beta\|)}{ln(\|E\[RP\]\|)} + \\frac{ln(\|\\vec\\lambda\|))}{ln(\|E\[RP\]\|)} + \\frac{ln(\|PP\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;1%20%3D%20%5Cfrac%7Bln%28%7C%5Cvec%5Cbeta%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D%20%2B%20%5Cfrac%7Bln%28%7C%5Cvec%5Clambda%7C%29%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D%20%2B%20%5Cfrac%7Bln%28%7CPP%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "1 = \frac{ln(|\vec\beta|)}{ln(|E[RP]|)} + \frac{ln(|\vec\lambda|))}{ln(|E[RP]|)} + \frac{ln(|PP|)}{ln(|E[RP]|)}")
+![1 = \frac{ln(\|\vec\beta\|)}{ln(\|E\[RP\]\|)} + \frac{ln(\|\vec\lambda\|))}{ln(\|E\[RP\]\|)} + \frac{ln(\|PP\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;1%20%3D%20%5Cfrac%7Bln%28%7C%5Cvec%5Cbeta%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D%20%2B%20%5Cfrac%7Bln%28%7C%5Cvec%5Clambda%7C%29%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D%20%2B%20%5Cfrac%7Bln%28%7CPP%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "1 = \frac{ln(|\vec\beta|)}{ln(|E[RP]|)} + \frac{ln(|\vec\lambda|))}{ln(|E[RP]|)} + \frac{ln(|PP|)}{ln(|E[RP]|)}")
 
 The
-![\\frac{ln(\|\\vec\\beta\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bln%28%7C%5Cvec%5Cbeta%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "\frac{ln(|\vec\beta|)}{ln(|E[RP]|)}")
+![\frac{ln(\|\vec\beta\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bln%28%7C%5Cvec%5Cbeta%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "\frac{ln(|\vec\beta|)}{ln(|E[RP]|)}")
 can be interpreted as importance of
-![\\beta](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta "\beta")
+![\beta](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta "\beta")
 in forming the expected risk premium; the
-![\\frac{ln(\|\\vec\\lambda\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bln%28%7C%5Cvec%5Clambda%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "\frac{ln(|\vec\lambda|)}{ln(|E[RP]|)}")
+![\frac{ln(\|\vec\lambda\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bln%28%7C%5Cvec%5Clambda%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "\frac{ln(|\vec\lambda|)}{ln(|E[RP]|)}")
 can be interpreted as importance of
-![\\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
+![\lambda](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clambda "\lambda")
 in forming the expected risk premium; the
-![\\frac{ln(\|PP\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bln%28%7CPP%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "\frac{ln(|PP|)}{ln(|E[RP]|)}")
+![\frac{ln(\|PP\|)}{ln(\|E\[RP\]\|)}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7Bln%28%7CPP%7C%29%7D%7Bln%28%7CE%5BRP%5D%7C%29%7D "\frac{ln(|PP|)}{ln(|E[RP]|)}")
 can be interpreted as importance of projection parameter (PP) in forming
 the expected risk premium.
 

@@ -4979,6 +4979,12 @@ From the previous section, yet, Periodic and Noise Components can alter the mont
 
 ### S4-6-3 Long Regression with omitted variable (Periodic and Noise)
 
+In this session, we present the longer version of second step regression, where
+
+$$T_i = \lambda_0 + \lambda_1^l \hat{\beta}_i + \lambda_2^l P_i + \lambda_3^l N_i + u_i$$
+
+We would use the result of this longer version regression to compare with the original Fama Macbeth second step regression to test whether periodic and noise terms would affect the regression result.
+
 ```{r Long_reg, cache = TRUE}
 ## Create the portfolio for Long_reg
 Long_data <- Port_FF5_STL_s7_norobust %>%
@@ -5102,7 +5108,7 @@ Long_p_value %>%
   colMeans(.<0.05)
 ```
 
-Now, let's compare the long-regression lambdas with the original second-path and ACL results:
+Now, let's compare the long-regression lambdas with the original second-path result:
 
 ```{r Long_vs_SP, cache = TRUE}
 # This is a table for Long regression coefficient result comparing with Original Second pass regression
@@ -5164,6 +5170,8 @@ inner_join(
   column_spec(1, bold = T)
 
 ```
+
+It seems that 30\% of the time, the result from long regression would be different from the second-step regression. This result is consistent with previous short regressions, which showed Period and Noise are associated with $\hat{\beta}$ and would introduce a bias to the second-step regression.
 
 ```{r Long_vs_ACL, cache = TRUE, eval=FALSE}
 # This is a table for Long regression coefficient result comparing with ACL regression
@@ -5231,7 +5239,13 @@ inner_join(
 
 ### S4-6-4 Second Pass Panel Regression Comparison
 
-Now, we would like to compare the standard errors of the original second pass regression vs. ACL second pass regression.
+Now, we would like to compare the original second pass regression vs. ACL second pass regression in a rolling panel setting:
+
+$$r_{p,ym} = \lambda_{0,ym} + \boldsymbol{\lambda_{ym}}*\boldsymbol{\widehat{\beta_{p,t}}} + \eta_{pt} \ \ \  for \ t \in ym$$
+
+where $ym$ stands for year-month for the monthly return. For example, in 5-year rolling panel regression, we use estimated betas and returns(or trend) from January 1993 through December 1997 to estimate the lambda for December 1997.  We then iterate forward, using February 1993 through January 1998 to estimate the lambda for January 1998, and so on. In the ACL regression, we simply replace $r_{p,ym}$ with the trend component, $T_{p,ym}$.
+
+We apply this rolling panel regression for the original FM and ACL with 1-year, 3-year, and 5-year horizon. 0-year is the regular cross-sectional monthly regression.
 
 ```{r Second_Pass_Rolling_Panel_Comparison, cache = TRUE}
 # Fama Macbeth method

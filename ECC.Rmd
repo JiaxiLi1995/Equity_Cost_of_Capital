@@ -2371,8 +2371,8 @@ Port_FF5 %>%
   geom_line() +
   scale_x_date(minor_breaks = "1 year") +
   facet_wrap(~ Stats,
-             scales = "free_y",
-             ncol = 1) +
+             ncol = 1,
+             scales = "free_y") +
   labs(title= "Cross-sectional Risk Premium Statistics",
        subtitle = "Unfiltered vs. STL Filtered with s7 norobust") +
   theme(plot.title = element_text(hjust=0.5),
@@ -4562,15 +4562,15 @@ names(Aux_p_value)[1] = "Pi0"
 names(Aux_F_test) = "f_p_value"
 
 # Add in the dates
-Aux_result <- cbind(Rolling_Second[, 1], Aux_result) %>%
+Aux_result <- cbind(Aux_reg[, 1], Aux_result) %>%
   subset(select = -Pi0)
-Aux_se <- cbind(Rolling_Second[, 1], Aux_se) %>%
+Aux_se <- cbind(Aux_reg[, 1], Aux_se) %>%
   subset(select = -Pi0)
-Aux_t_stat <- cbind(Rolling_Second[, 1], Aux_t_stat) %>%
+Aux_t_stat <- cbind(Aux_reg[, 1], Aux_t_stat) %>%
   subset(select = -Pi0)
-Aux_p_value <- cbind(Rolling_Second[, 1], Aux_p_value) %>%
+Aux_p_value <- cbind(Aux_reg[, 1], Aux_p_value) %>%
   subset(select = -Pi0)
-Aux_F_test <- cbind(Rolling_Second[, 1], Aux_F_test)
+Aux_F_test <- cbind(Aux_reg[, 1], Aux_F_test)
 
 # Plot the Aux_result
 Aux_result %>%
@@ -4578,6 +4578,7 @@ Aux_result %>%
   # Fix the order of Factors
   mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
   mutate(date = transDate(date)) %>%
+  group_by(Factors) %>%
   ggplot(aes(date, Pi)) +
   geom_line() +
   scale_x_date(minor_breaks = "1 year") +
@@ -4686,15 +4687,15 @@ names(Aux_p_value_Noise)[1] = "Pi0"
 names(Aux_F_test_Noise) = "f_p_value"
 
 # Add in the dates
-Aux_result_Noise <- cbind(Rolling_Second[, 1], Aux_result_Noise) %>%
+Aux_result_Noise <- cbind(Aux_reg_Noise[, 1], Aux_result_Noise) %>%
   subset(select = -Pi0)
-Aux_se_Noise <- cbind(Rolling_Second[, 1], Aux_se_Noise) %>%
+Aux_se_Noise <- cbind(Aux_reg_Noise[, 1], Aux_se_Noise) %>%
   subset(select = -Pi0)
-Aux_t_stat_Noise <- cbind(Rolling_Second[, 1], Aux_t_stat_Noise) %>%
+Aux_t_stat_Noise <- cbind(Aux_reg_Noise[, 1], Aux_t_stat_Noise) %>%
   subset(select = -Pi0)
-Aux_p_value_Noise <- cbind(Rolling_Second[, 1], Aux_p_value_Noise) %>%
+Aux_p_value_Noise <- cbind(Aux_reg_Noise[, 1], Aux_p_value_Noise) %>%
   subset(select = -Pi0)
-Aux_F_test_Noise <- cbind(Rolling_Second[, 1], Aux_F_test_Noise)
+Aux_F_test_Noise <- cbind(Aux_reg_Noise[, 1], Aux_F_test_Noise)
 
 # Plot the Aux_result
 Aux_result_Noise %>%
@@ -4702,6 +4703,7 @@ Aux_result_Noise %>%
   # Fix the order of Factors
   mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
   mutate(date = transDate(date)) %>%
+  group_by(Factors) %>%
   ggplot(aes(date, Pi)) +
   geom_line() +
   scale_x_date(minor_breaks = "1 year") +
@@ -4810,15 +4812,15 @@ names(Aux_p_value_Trend)[1] = "Pi0"
 names(Aux_F_test_Trend) = "f_p_value"
 
 # Add in the dates
-Aux_result_Trend <- cbind(Rolling_Second[, 1], Aux_result_Trend) %>%
+Aux_result_Trend <- cbind(Aux_reg_Trend[, 1], Aux_result_Trend) %>%
   subset(select = -Pi0)
-Aux_se_Trend <- cbind(Rolling_Second[, 1], Aux_se_Trend) %>%
+Aux_se_Trend <- cbind(Aux_reg_Trend[, 1], Aux_se_Trend) %>%
   subset(select = -Pi0)
-Aux_t_stat_Trend <- cbind(Rolling_Second[, 1], Aux_t_stat_Trend) %>%
+Aux_t_stat_Trend <- cbind(Aux_reg_Trend[, 1], Aux_t_stat_Trend) %>%
   subset(select = -Pi0)
-Aux_p_value_Trend <- cbind(Rolling_Second[, 1], Aux_p_value_Trend) %>%
+Aux_p_value_Trend <- cbind(Aux_reg_Trend[, 1], Aux_p_value_Trend) %>%
   subset(select = -Pi0)
-Aux_F_test_Trend <- cbind(Rolling_Second[, 1], Aux_F_test_Trend)
+Aux_F_test_Trend <- cbind(Aux_reg_Trend[, 1], Aux_F_test_Trend)
 
 # Plot the Aux_result
 Aux_result_Trend %>%
@@ -4826,6 +4828,7 @@ Aux_result_Trend %>%
   # Fix the order of Factors
   mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
   mutate(date = transDate(date)) %>%
+  group_by(Factors) %>%
   ggplot(aes(date, Pi)) +
   geom_line() +
   scale_x_date(minor_breaks = "1 year") +
@@ -5059,15 +5062,15 @@ names(Long_p_value)[3] = "Noise"
 names(Long_F_test) = "f_p_value"
 
 # Add in the dates
-Long_result <- cbind(Rolling_Second[, 1], Long_result) %>%
+Long_result <- cbind(Long_reg[, 1], Long_result) %>%
   subset(select = -Pi0)
-Long_se <- cbind(Rolling_Second[, 1], Long_se) %>%
+Long_se <- cbind(Long_reg[, 1], Long_se) %>%
   subset(select = -Pi0)
-Long_t_stat <- cbind(Rolling_Second[, 1], Long_t_stat) %>%
+Long_t_stat <- cbind(Long_reg[, 1], Long_t_stat) %>%
   subset(select = -Pi0)
-Long_p_value <- cbind(Rolling_Second[, 1], Long_p_value) %>%
+Long_p_value <- cbind(Long_reg[, 1], Long_p_value) %>%
   subset(select = -Pi0)
-Long_F_test <- cbind(Rolling_Second[, 1], Long_F_test)
+Long_F_test <- cbind(Long_reg[, 1], Long_F_test)
 
 # Plot the Long_result
 Long_result %>%
@@ -5075,6 +5078,7 @@ Long_result %>%
   # Fix the order of Factors
   mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
   mutate(date = transDate(date)) %>%
+  group_by(Factors) %>%
   ggplot(aes(date, Pi)) +
   geom_line() +
   scale_x_date(minor_breaks = "1 year") +
@@ -6370,12 +6374,14 @@ We also performed a KS test to test the FM ECC and STL FM ECC for different sect
 # Perform the ks.test for FF5 and PRS lambdas and create a table
 All_FF5_ECC %>%
   group_by(Industry) %>%
-  do(KS = ks.test(.$FM, .$FM_STL_7_N)) %>%
+  do(KS = ks.test(.$FM, .$FM_STL_7_N) %>%
+       .[c("statistic", "p.value")]) %>%
   cbind(.[,1], do.call(rbind.data.frame, .$KS)) %>%
   subset(select = c(1,4,5)) %>%
   cbind(All_PRS_ECC %>%
     group_by(Industry) %>%
-    do(KS = ks.test(.$FM, .$FM_STL_7_N)) %>%
+    do(KS = ks.test(.$FM, .$FM_STL_7_N) %>%
+       .[c("statistic", "p.value")]) %>%
     cbind(.[,1], do.call(rbind.data.frame, .$KS)) %>%
     subset(select = c(4,5))) %>%
   remove_rownames() %>%

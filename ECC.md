@@ -10525,417 +10525,381 @@ kurtosis
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
 Mkt-RF
 </td>
 <td style="text-align:center;">
 sig_e\_FF5
 </td>
 <td style="text-align:center;">
-0.9221086
+0.9202457
 </td>
 <td style="text-align:center;">
-0.9256134
+0.9162902
 </td>
 <td style="text-align:center;">
-0.0049834
+0.0069901
 </td>
 <td style="text-align:center;">
-0.2193179
+0.3387119
 </td>
 <td style="text-align:center;">
-2.264870
+2.600725
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Mkt-RF
-</td>
 <td style="text-align:center;">
 sig_Inter_FF5
 </td>
 <td style="text-align:center;">
-0.0561807
+0.0541696
 </td>
 <td style="text-align:center;">
-0.0529461
+0.0492186
 </td>
 <td style="text-align:center;">
-0.0005990
+0.0035123
 </td>
 <td style="text-align:center;">
-0.5741787
+0.6500037
 </td>
 <td style="text-align:center;">
-3.123341
+3.871893
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Mkt-RF
-</td>
 <td style="text-align:center;">
 sig_Intra_FF5
 </td>
 <td style="text-align:center;">
--0.1340721
+-0.1339239
 </td>
 <td style="text-align:center;">
--0.1320920
+-0.1318783
 </td>
 <td style="text-align:center;">
-0.0048858
+0.0049252
 </td>
 <td style="text-align:center;">
-0.2027593
+0.1678332
 </td>
 <td style="text-align:center;">
-2.272689
+2.290173
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
 SMB
 </td>
 <td style="text-align:center;">
 sig_e\_FF5
 </td>
 <td style="text-align:center;">
-0.7964532
+0.7887184
 </td>
 <td style="text-align:center;">
-0.7985918
+0.7886925
 </td>
 <td style="text-align:center;">
-0.0010026
+0.0019820
 </td>
 <td style="text-align:center;">
--0.1861730
+0.0593860
 </td>
 <td style="text-align:center;">
-3.337908
+3.607900
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-SMB
-</td>
 <td style="text-align:center;">
 sig_Inter_FF5
 </td>
 <td style="text-align:center;">
-0.0427958
+0.0327195
 </td>
 <td style="text-align:center;">
-0.0405980
+0.0323251
 </td>
 <td style="text-align:center;">
-0.0003811
+0.0022025
 </td>
 <td style="text-align:center;">
-0.8480575
+0.3546110
 </td>
 <td style="text-align:center;">
-3.599156
+3.567401
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-SMB
-</td>
 <td style="text-align:center;">
 sig_Intra_FF5
 </td>
 <td style="text-align:center;">
--0.2463426
+-0.2440011
 </td>
 <td style="text-align:center;">
--0.2436992
+-0.2400781
 </td>
 <td style="text-align:center;">
-0.0007515
+0.0008699
 </td>
 <td style="text-align:center;">
--0.5317432
+-0.6900268
 </td>
 <td style="text-align:center;">
-2.871307
+3.478217
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
 HML
 </td>
 <td style="text-align:center;">
 sig_e\_FF5
 </td>
 <td style="text-align:center;">
-0.7886762
+0.7782415
 </td>
 <td style="text-align:center;">
-0.7848998
+0.7786695
 </td>
 <td style="text-align:center;">
-0.0010001
+0.0020406
 </td>
 <td style="text-align:center;">
-0.7153644
+0.3500786
 </td>
 <td style="text-align:center;">
-4.130830
+3.603001
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-HML
-</td>
 <td style="text-align:center;">
 sig_Inter_FF5
 </td>
 <td style="text-align:center;">
-0.0734585
+0.0593943
 </td>
 <td style="text-align:center;">
-0.0694639
+0.0538872
 </td>
 <td style="text-align:center;">
-0.0009088
+0.0032396
 </td>
 <td style="text-align:center;">
-1.1271841
+1.1200564
 </td>
 <td style="text-align:center;">
-5.060129
+7.021683
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-HML
-</td>
 <td style="text-align:center;">
 sig_Intra_FF5
 </td>
 <td style="text-align:center;">
--0.2847824
+-0.2811528
 </td>
 <td style="text-align:center;">
--0.2855748
+-0.2806090
 </td>
 <td style="text-align:center;">
-0.0010597
+0.0012649
 </td>
 <td style="text-align:center;">
-0.0114950
+-0.2729449
 </td>
 <td style="text-align:center;">
-3.110442
+3.922569
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
 RMW
 </td>
 <td style="text-align:center;">
 sig_e\_FF5
 </td>
 <td style="text-align:center;">
-0.7548789
+0.7516094
 </td>
 <td style="text-align:center;">
-0.7598159
+0.7515744
 </td>
 <td style="text-align:center;">
-0.0010056
+0.0021709
 </td>
 <td style="text-align:center;">
--0.8518760
+0.0818818
 </td>
 <td style="text-align:center;">
-3.940430
+3.896102
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RMW
-</td>
 <td style="text-align:center;">
 sig_Inter_FF5
 </td>
 <td style="text-align:center;">
-0.0614512
+0.0570850
 </td>
 <td style="text-align:center;">
-0.0597978
+0.0521098
 </td>
 <td style="text-align:center;">
-0.0007965
+0.0036207
 </td>
 <td style="text-align:center;">
-0.5647991
+0.6237924
 </td>
 <td style="text-align:center;">
-3.003809
+4.122122
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RMW
-</td>
 <td style="text-align:center;">
 sig_Intra_FF5
 </td>
 <td style="text-align:center;">
--0.3065724
+-0.3054755
 </td>
 <td style="text-align:center;">
--0.3035063
+-0.3028222
 </td>
 <td style="text-align:center;">
-0.0021418
+0.0024940
 </td>
 <td style="text-align:center;">
--0.1223581
+-0.3160567
 </td>
 <td style="text-align:center;">
-2.158247
+2.497955
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
 CMA
 </td>
 <td style="text-align:center;">
 sig_e\_FF5
 </td>
 <td style="text-align:center;">
-0.7492459
+0.7510412
 </td>
 <td style="text-align:center;">
-0.7438179
+0.7393003
 </td>
 <td style="text-align:center;">
-0.0022856
+0.0034946
 </td>
 <td style="text-align:center;">
-0.9090989
+0.5709104
 </td>
 <td style="text-align:center;">
-4.112772
+3.403128
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-CMA
-</td>
 <td style="text-align:center;">
 sig_Inter_FF5
 </td>
 <td style="text-align:center;">
-0.0684693
+0.0709069
 </td>
 <td style="text-align:center;">
-0.0679070
+0.0657348
 </td>
 <td style="text-align:center;">
-0.0007031
+0.0029238
 </td>
 <td style="text-align:center;">
-0.8803875
+0.6674758
 </td>
 <td style="text-align:center;">
-5.368109
+3.859638
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-CMA
-</td>
 <td style="text-align:center;">
 sig_Intra_FF5
 </td>
 <td style="text-align:center;">
--0.3192234
+-0.3198657
 </td>
 <td style="text-align:center;">
--0.3259422
+-0.3242588
 </td>
 <td style="text-align:center;">
-0.0019675
+0.0021213
 </td>
 <td style="text-align:center;">
-0.6997693
+0.5220585
 </td>
 <td style="text-align:center;">
-3.561894
+3.716074
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
 Overall
 </td>
 <td style="text-align:center;">
 sig_e\_FF5
 </td>
 <td style="text-align:center;">
-0.8022726
+0.7979712
 </td>
 <td style="text-align:center;">
-0.7859712
+0.7820576
 </td>
 <td style="text-align:center;">
-0.0059814
+0.0072878
 </td>
 <td style="text-align:center;">
-1.2340299
+1.1478966
 </td>
 <td style="text-align:center;">
-4.531087
+4.614380
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Overall
-</td>
 <td style="text-align:center;">
 sig_Inter_FF5
 </td>
 <td style="text-align:center;">
-0.0604711
+0.0548550
 </td>
 <td style="text-align:center;">
-0.0580591
+0.0505288
 </td>
 <td style="text-align:center;">
-0.0007896
+0.0032501
 </td>
 <td style="text-align:center;">
-0.8862114
+0.7205417
 </td>
 <td style="text-align:center;">
-4.503449
+4.639844
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Overall
-</td>
 <td style="text-align:center;">
 sig_Intra_FF5
 </td>
 <td style="text-align:center;">
--0.2581986
+-0.2568838
 </td>
 <td style="text-align:center;">
--0.2704882
+-0.2662635
 </td>
 <td style="text-align:center;">
-0.0066235
+0.0067737
 </td>
 <td style="text-align:center;">
-1.0211699
+0.9024052
 </td>
 <td style="text-align:center;">
-4.065210
+3.957138
 </td>
 </tr>
 </tbody>
@@ -10985,417 +10949,381 @@ kurtosis
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
 Mkt-RF
 </td>
 <td style="text-align:center;">
 sig_e\_PRS
 </td>
 <td style="text-align:center;">
-0.8921369
+0.8863715
 </td>
 <td style="text-align:center;">
-0.8925240
+0.8840503
 </td>
 <td style="text-align:center;">
-0.0044635
+0.0055825
 </td>
 <td style="text-align:center;">
-0.3718549
+0.2535348
 </td>
 <td style="text-align:center;">
-2.420393
+2.348183
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Mkt-RF
-</td>
 <td style="text-align:center;">
 sig_Inter_PRS
 </td>
 <td style="text-align:center;">
-0.0754232
+0.0687302
 </td>
 <td style="text-align:center;">
-0.0709048
+0.0639179
 </td>
 <td style="text-align:center;">
-0.0011538
+0.0034716
 </td>
 <td style="text-align:center;">
-0.6935927
+0.6259408
 </td>
 <td style="text-align:center;">
-2.696948
+4.167884
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Mkt-RF
-</td>
 <td style="text-align:center;">
 sig_Intra_PRS
 </td>
 <td style="text-align:center;">
--0.1832863
+-0.1823587
 </td>
 <td style="text-align:center;">
--0.1900066
+-0.1886293
 </td>
 <td style="text-align:center;">
-0.0033675
+0.0034359
 </td>
 <td style="text-align:center;">
-0.2802443
+0.2536340
 </td>
 <td style="text-align:center;">
-2.617348
+2.675027
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
 RMW
 </td>
 <td style="text-align:center;">
 sig_e\_PRS
 </td>
 <td style="text-align:center;">
-0.7500582
+0.7455529
 </td>
 <td style="text-align:center;">
-0.7543060
+0.7446269
 </td>
 <td style="text-align:center;">
-0.0011622
+0.0017228
 </td>
 <td style="text-align:center;">
--0.5775623
+0.0714474
 </td>
 <td style="text-align:center;">
-3.482099
+2.769358
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RMW
-</td>
 <td style="text-align:center;">
 sig_Inter_PRS
 </td>
 <td style="text-align:center;">
-0.0496949
+0.0435787
 </td>
 <td style="text-align:center;">
-0.0475774
+0.0424090
 </td>
 <td style="text-align:center;">
-0.0004904
+0.0019716
 </td>
 <td style="text-align:center;">
-0.9444963
+0.3791908
 </td>
 <td style="text-align:center;">
-4.277493
+3.763429
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RMW
-</td>
 <td style="text-align:center;">
 sig_Intra_PRS
 </td>
 <td style="text-align:center;">
--0.2996367
+-0.2980258
 </td>
 <td style="text-align:center;">
--0.2933821
+-0.2921951
 </td>
 <td style="text-align:center;">
-0.0013720
+0.0015839
 </td>
 <td style="text-align:center;">
--0.5493869
+-0.7533507
 </td>
 <td style="text-align:center;">
-2.864400
+3.923141
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
 dDP
 </td>
 <td style="text-align:center;">
 sig_e\_PRS
 </td>
 <td style="text-align:center;">
-0.4859092
+0.4863080
 </td>
 <td style="text-align:center;">
-0.4894028
+0.4880740
 </td>
 <td style="text-align:center;">
-0.0007011
+0.0008311
 </td>
 <td style="text-align:center;">
--0.6087042
+-0.4266713
 </td>
 <td style="text-align:center;">
-3.400923
+3.415340
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-dDP
-</td>
 <td style="text-align:center;">
 sig_Inter_PRS
 </td>
 <td style="text-align:center;">
-0.0432956
+0.0442519
 </td>
 <td style="text-align:center;">
-0.0391457
+0.0419968
 </td>
 <td style="text-align:center;">
-0.0003785
+0.0011857
 </td>
 <td style="text-align:center;">
-0.6134561
+0.2921538
 </td>
 <td style="text-align:center;">
-2.681542
+2.856368
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-dDP
-</td>
 <td style="text-align:center;">
 sig_Intra_PRS
 </td>
 <td style="text-align:center;">
--0.5573864
+-0.5579439
 </td>
 <td style="text-align:center;">
--0.5540237
+-0.5546927
 </td>
 <td style="text-align:center;">
-0.0006239
+0.0009137
 </td>
 <td style="text-align:center;">
--0.4763120
+-0.5533388
 </td>
 <td style="text-align:center;">
-3.184229
+3.265180
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
 dTS
 </td>
 <td style="text-align:center;">
 sig_e\_PRS
 </td>
 <td style="text-align:center;">
-0.5451656
+0.5446233
 </td>
 <td style="text-align:center;">
-0.5501938
+0.5481474
 </td>
 <td style="text-align:center;">
-0.0007816
+0.0009658
 </td>
 <td style="text-align:center;">
--0.8727470
+-0.5860243
 </td>
 <td style="text-align:center;">
-3.597077
+3.459016
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-dTS
-</td>
 <td style="text-align:center;">
 sig_Inter_PRS
 </td>
 <td style="text-align:center;">
-0.0446729
+0.0437228
 </td>
 <td style="text-align:center;">
-0.0384789
+0.0376299
 </td>
 <td style="text-align:center;">
-0.0007683
+0.0016396
 </td>
 <td style="text-align:center;">
-1.3167315
+0.5933920
 </td>
 <td style="text-align:center;">
-4.396183
+3.450989
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-dTS
-</td>
 <td style="text-align:center;">
 sig_Intra_PRS
 </td>
 <td style="text-align:center;">
--0.4995073
+-0.4990995
 </td>
 <td style="text-align:center;">
--0.4972835
+-0.4972175
 </td>
 <td style="text-align:center;">
-0.0010940
+0.0013408
 </td>
 <td style="text-align:center;">
--0.1361855
+-0.2039930
 </td>
 <td style="text-align:center;">
-2.432020
+2.535622
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
 UNEXPI
 </td>
 <td style="text-align:center;">
 sig_e\_PRS
 </td>
 <td style="text-align:center;">
-0.5771389
+0.5764970
 </td>
 <td style="text-align:center;">
-0.5756492
+0.5739325
 </td>
 <td style="text-align:center;">
-0.0011292
+0.0013937
 </td>
 <td style="text-align:center;">
-0.0080468
+0.2204320
 </td>
 <td style="text-align:center;">
-2.763339
+2.941613
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-UNEXPI
-</td>
 <td style="text-align:center;">
 sig_Inter_PRS
 </td>
 <td style="text-align:center;">
-0.0540574
+0.0529888
 </td>
 <td style="text-align:center;">
-0.0484538
+0.0472368
 </td>
 <td style="text-align:center;">
-0.0010859
+0.0021806
 </td>
 <td style="text-align:center;">
-0.9794146
+0.7426188
 </td>
 <td style="text-align:center;">
-3.763792
+3.671413
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-UNEXPI
-</td>
 <td style="text-align:center;">
 sig_Intra_PRS
 </td>
 <td style="text-align:center;">
--0.4769185
+-0.4764918
 </td>
 <td style="text-align:center;">
--0.4783074
+-0.4752967
 </td>
 <td style="text-align:center;">
-0.0013293
+0.0016147
 </td>
 <td style="text-align:center;">
-0.0083400
+-0.1986976
 </td>
 <td style="text-align:center;">
-2.140898
+2.494332
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="3">
 Overall
 </td>
 <td style="text-align:center;">
 sig_e\_PRS
 </td>
 <td style="text-align:center;">
-0.6500818
+0.6478705
 </td>
 <td style="text-align:center;">
-0.5817475
+0.5835444
 </td>
 <td style="text-align:center;">
-0.0240266
+0.0237602
 </td>
 <td style="text-align:center;">
-0.6457346
+0.6777209
 </td>
 <td style="text-align:center;">
-2.225353
+2.335436
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Overall
-</td>
 <td style="text-align:center;">
 sig_Inter_PRS
 </td>
 <td style="text-align:center;">
-0.0534288
+0.0506545
 </td>
 <td style="text-align:center;">
-0.0469201
+0.0458758
 </td>
 <td style="text-align:center;">
-0.0009098
+0.0021811
 </td>
 <td style="text-align:center;">
-1.1270689
+0.7798647
 </td>
 <td style="text-align:center;">
-4.200933
+4.678571
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Overall
-</td>
 <td style="text-align:center;">
 sig_Intra_PRS
 </td>
 <td style="text-align:center;">
--0.4033470
+-0.4027839
 </td>
 <td style="text-align:center;">
--0.4628683
+-0.4589547
 </td>
 <td style="text-align:center;">
-0.0210762
+0.0214515
 </td>
 <td style="text-align:center;">
-0.5620643
+0.5345487
 </td>
 <td style="text-align:center;">
-2.019343
+2.016473
 </td>
 </tr>
 </tbody>
@@ -11616,7 +11544,7 @@ Whlsl
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="6">
 FS
 </td>
 <td style="text-align:center;">
@@ -11771,9 +11699,6 @@ s07 norobust
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FS
-</td>
 <td style="text-align:center;">
 s07 robust
 </td>
@@ -11926,9 +11851,6 @@ s07 robust
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FS
-</td>
 <td style="text-align:center;">
 s15 norobust
 </td>
@@ -12081,9 +12003,6 @@ s15 norobust
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FS
-</td>
 <td style="text-align:center;">
 s15 robust
 </td>
@@ -12236,9 +12155,6 @@ s15 robust
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FS
-</td>
 <td style="text-align:center;">
 s40 norobust
 </td>
@@ -12391,9 +12307,6 @@ s40 norobust
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FS
-</td>
 <td style="text-align:center;">
 s40 robust
 </td>
@@ -12546,7 +12459,7 @@ s40 robust
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="6">
 FT
 </td>
 <td style="text-align:center;">
@@ -12701,9 +12614,6 @@ s07 norobust
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FT
-</td>
 <td style="text-align:center;">
 s07 robust
 </td>
@@ -12856,9 +12766,6 @@ s07 robust
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FT
-</td>
 <td style="text-align:center;">
 s15 norobust
 </td>
@@ -13011,9 +12918,6 @@ s15 norobust
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FT
-</td>
 <td style="text-align:center;">
 s15 robust
 </td>
@@ -13166,9 +13070,6 @@ s15 robust
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FT
-</td>
 <td style="text-align:center;">
 s40 norobust
 </td>
@@ -13321,9 +13222,6 @@ s40 norobust
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FT
-</td>
 <td style="text-align:center;">
 s40 robust
 </td>
@@ -13583,13 +13481,13 @@ ratio
 Mkt-RF
 </td>
 <td style="text-align:center;">
-0.0242209
+0.0241975
 </td>
 <td style="text-align:center;">
-0.0067356
+0.0065465
 </td>
 <td style="text-align:center;">
-0.2780926
+0.2705442
 </td>
 </tr>
 <tr>
@@ -13597,13 +13495,13 @@ Mkt-RF
 SMB
 </td>
 <td style="text-align:center;">
-0.0136397
+0.0131768
 </td>
 <td style="text-align:center;">
-0.0037532
+0.0036023
 </td>
 <td style="text-align:center;">
-0.2751689
+0.2733812
 </td>
 </tr>
 <tr>
@@ -13611,13 +13509,13 @@ SMB
 HML
 </td>
 <td style="text-align:center;">
-0.0128173
+0.0122650
 </td>
 <td style="text-align:center;">
-0.0035860
+0.0034898
 </td>
 <td style="text-align:center;">
-0.2797759
+0.2845358
 </td>
 </tr>
 <tr>
@@ -13625,13 +13523,13 @@ HML
 RMW
 </td>
 <td style="text-align:center;">
-0.0105978
+0.0106381
 </td>
 <td style="text-align:center;">
-0.0029457
+0.0029752
 </td>
 <td style="text-align:center;">
-0.2779490
+0.2796756
 </td>
 </tr>
 <tr>
@@ -13639,13 +13537,13 @@ RMW
 CMA
 </td>
 <td style="text-align:center;">
-0.0102657
+0.0105354
 </td>
 <td style="text-align:center;">
-0.0028642
+0.0028469
 </td>
 <td style="text-align:center;">
-0.2790084
+0.2702182
 </td>
 </tr>
 </tbody>
@@ -13802,7 +13700,7 @@ p.value
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="5">
 FF5
 </td>
 <td style="text-align:center;">
@@ -13816,9 +13714,6 @@ Mkt-RF
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FF5
-</td>
 <td style="text-align:center;">
 SMB
 </td>
@@ -13830,9 +13725,6 @@ SMB
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FF5
-</td>
 <td style="text-align:center;">
 HML
 </td>
@@ -13844,9 +13736,6 @@ HML
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FF5
-</td>
 <td style="text-align:center;">
 RMW
 </td>
@@ -13858,9 +13747,6 @@ RMW
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FF5
-</td>
 <td style="text-align:center;">
 CMA
 </td>
@@ -13872,7 +13758,7 @@ CMA
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="5">
 PRS
 </td>
 <td style="text-align:center;">
@@ -13886,9 +13772,6 @@ Mkt-RF
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-PRS
-</td>
 <td style="text-align:center;">
 RMW
 </td>
@@ -13900,9 +13783,6 @@ RMW
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-PRS
-</td>
 <td style="text-align:center;">
 dDP
 </td>
@@ -13914,9 +13794,6 @@ dDP
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-PRS
-</td>
 <td style="text-align:center;">
 dTS
 </td>
@@ -13928,9 +13805,6 @@ dTS
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-PRS
-</td>
 <td style="text-align:center;">
 UNEXPI
 </td>
@@ -13991,7 +13865,7 @@ z_score
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
 FF5
 </td>
 <td style="text-align:center;">
@@ -14014,9 +13888,6 @@ FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FF5
-</td>
 <td style="text-align:center;">
 FM_STL
 </td>
@@ -14037,7 +13908,7 @@ FM_STL
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
 PRS
 </td>
 <td style="text-align:center;">
@@ -14060,9 +13931,6 @@ FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-PRS
-</td>
 <td style="text-align:center;">
 FM_STL
 </td>
@@ -14115,7 +13983,7 @@ CMA
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FM_FF5
 </td>
 <td style="text-align:center;">
@@ -14138,9 +14006,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_FF5
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -14161,9 +14026,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_FF5
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -14184,9 +14046,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_FF5
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -14207,7 +14066,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FM_STL_7\_N_FF5
 </td>
 <td style="text-align:center;">
@@ -14230,9 +14089,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_7\_N_FF5
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -14253,9 +14109,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_7\_N_FF5
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -14276,9 +14129,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_7\_N_FF5
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -14299,7 +14149,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FM_STL_7\_R_FF5
 </td>
 <td style="text-align:center;">
@@ -14322,9 +14172,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_7\_R_FF5
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -14345,9 +14192,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_7\_R_FF5
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -14368,9 +14212,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_7\_R_FF5
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -14391,7 +14232,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FM_STL_15_N\_FF5
 </td>
 <td style="text-align:center;">
@@ -14414,9 +14255,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_15_N\_FF5
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -14437,9 +14275,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_15_N\_FF5
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -14460,9 +14295,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_15_N\_FF5
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -14483,7 +14315,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FM_STL_15_R\_FF5
 </td>
 <td style="text-align:center;">
@@ -14506,9 +14338,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_15_R\_FF5
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -14529,9 +14358,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_15_R\_FF5
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -14552,9 +14378,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_15_R\_FF5
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -14575,7 +14398,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FM_STL_40_N\_FF5
 </td>
 <td style="text-align:center;">
@@ -14598,9 +14421,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_40_N\_FF5
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -14621,9 +14441,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_40_N\_FF5
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -14644,9 +14461,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_40_N\_FF5
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -14667,7 +14481,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FM_STL_40_R\_FF5
 </td>
 <td style="text-align:center;">
@@ -14690,9 +14504,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_40_R\_FF5
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -14713,9 +14524,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_40_R\_FF5
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -14736,9 +14544,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_40_R\_FF5
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -14759,7 +14564,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 RAM_FF5
 </td>
 <td style="text-align:center;">
@@ -14782,9 +14587,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RAM_FF5
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -14805,9 +14607,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RAM_FF5
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -14828,9 +14627,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RAM_FF5
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -14851,7 +14647,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 RGM_FF5
 </td>
 <td style="text-align:center;">
@@ -14874,9 +14670,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RGM_FF5
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -14897,9 +14690,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RGM_FF5
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -14920,9 +14710,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RGM_FF5
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -14975,7 +14762,7 @@ UNEXPI
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FM_PRS
 </td>
 <td style="text-align:center;">
@@ -14998,9 +14785,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_PRS
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -15021,9 +14805,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_PRS
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -15044,9 +14825,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_PRS
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -15067,7 +14845,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FM_STL_7\_N_PRS
 </td>
 <td style="text-align:center;">
@@ -15090,9 +14868,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_7\_N_PRS
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -15113,9 +14888,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_7\_N_PRS
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -15136,9 +14908,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_7\_N_PRS
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -15159,7 +14928,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FM_STL_7\_R_PRS
 </td>
 <td style="text-align:center;">
@@ -15182,9 +14951,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_7\_R_PRS
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -15205,9 +14971,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_7\_R_PRS
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -15228,9 +14991,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_7\_R_PRS
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -15251,7 +15011,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FM_STL_15_N\_PRS
 </td>
 <td style="text-align:center;">
@@ -15274,9 +15034,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_15_N\_PRS
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -15297,9 +15054,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_15_N\_PRS
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -15320,9 +15074,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_15_N\_PRS
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -15343,7 +15094,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FM_STL_15_R\_PRS
 </td>
 <td style="text-align:center;">
@@ -15366,9 +15117,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_15_R\_PRS
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -15389,9 +15137,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_15_R\_PRS
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -15412,9 +15157,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_15_R\_PRS
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -15435,7 +15177,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FM_STL_40_N\_PRS
 </td>
 <td style="text-align:center;">
@@ -15458,9 +15200,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_40_N\_PRS
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -15481,9 +15220,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_40_N\_PRS
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -15504,9 +15240,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_40_N\_PRS
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -15527,7 +15260,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FM_STL_40_R\_PRS
 </td>
 <td style="text-align:center;">
@@ -15550,9 +15283,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_40_R\_PRS
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -15573,9 +15303,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_40_R\_PRS
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -15596,9 +15323,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FM_STL_40_R\_PRS
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -15619,7 +15343,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 RAM_PRS
 </td>
 <td style="text-align:center;">
@@ -15642,9 +15366,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RAM_PRS
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -15665,9 +15386,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RAM_PRS
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -15688,9 +15406,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RAM_PRS
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -15711,7 +15426,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 RGM_PRS
 </td>
 <td style="text-align:center;">
@@ -15734,9 +15449,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RGM_PRS
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -15757,9 +15469,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RGM_PRS
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -15780,9 +15489,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RGM_PRS
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -16326,151 +16032,151 @@ V9
 FS
 </td>
 <td style="text-align:center;">
-0.2877349
+0.2973625
 </td>
 <td style="text-align:center;">
-0.3335476
+0.2667574
 </td>
 <td style="text-align:center;">
-0.3149714
+0.2812470
 </td>
 <td style="text-align:center;">
-0.3096854
+0.3267244
 </td>
 <td style="text-align:center;">
-0.3229165
+0.2660506
 </td>
 <td style="text-align:center;">
-0.2883830
+0.3174261
 </td>
 <td style="text-align:center;">
-0.3186782
+0.3184409
 </td>
 <td style="text-align:center;">
-0.3446907
+0.3155632
 </td>
 <td style="text-align:center;">
-0.3286704
+0.3179214
 </td>
 <td style="text-align:center;">
-0.3289679
+0.3052934
 </td>
 <td style="text-align:center;">
-0.3021720
+0.3154350
 </td>
 <td style="text-align:center;">
-0.3179226
+0.2858016
 </td>
 <td style="text-align:center;">
-0.2756993
+0.2918008
 </td>
 <td style="text-align:center;">
-0.2906194
+0.2779253
 </td>
 <td style="text-align:center;">
-0.2862579
+0.2958378
 </td>
 <td style="text-align:center;">
-0.3207532
+0.2792435
 </td>
 <td style="text-align:center;">
-0.3246668
+0.2859368
 </td>
 <td style="text-align:center;">
-0.3189673
+0.3094686
 </td>
 <td style="text-align:center;">
-0.3270848
+0.2915093
 </td>
 <td style="text-align:center;">
-0.3390797
+0.3067241
 </td>
 <td style="text-align:center;">
-0.3166132
+0.3119979
 </td>
 <td style="text-align:center;">
-0.3216064
+0.2761473
 </td>
 <td style="text-align:center;">
-0.3151442
+0.2887624
 </td>
 <td style="text-align:center;">
-0.3194073
+0.2822443
 </td>
 <td style="text-align:center;">
-0.3245700
+0.2933295
 </td>
 <td style="text-align:center;">
-0.3298339
+0.2795010
 </td>
 <td style="text-align:center;">
-0.3052869
+0.2930222
 </td>
 <td style="text-align:center;">
-0.3321490
+0.3358200
 </td>
 <td style="text-align:center;">
-0.3052606
+0.2877118
 </td>
 <td style="text-align:center;">
-0.3356774
+0.3025020
 </td>
 <td style="text-align:center;">
-0.2876273
+0.3273754
 </td>
 <td style="text-align:center;">
-0.2973086
+0.2795871
 </td>
 <td style="text-align:center;">
-0.2760627
+0.2831967
 </td>
 <td style="text-align:center;">
-0.3203888
+0.3148087
 </td>
 <td style="text-align:center;">
-0.2862315
+0.3056720
 </td>
 <td style="text-align:center;">
-0.2888154
+0.2958208
 </td>
 <td style="text-align:center;">
-0.3129931
+0.2888257
 </td>
 <td style="text-align:center;">
-0.2972769
+0.3185029
 </td>
 <td style="text-align:center;">
-0.2967366
+0.3299772
 </td>
 <td style="text-align:center;">
-0.2893792
+0.3289958
 </td>
 <td style="text-align:center;">
-0.3229949
+0.3160440
 </td>
 <td style="text-align:center;">
-0.3053957
+0.3018819
 </td>
 <td style="text-align:center;">
-0.3148422
+0.2930727
 </td>
 <td style="text-align:center;">
-0.3464769
+0.2831307
 </td>
 <td style="text-align:center;">
-0.3087854
+0.2775073
 </td>
 <td style="text-align:center;">
-0.2837142
+0.2982922
 </td>
 <td style="text-align:center;">
-0.3190104
+0.2815174
 </td>
 <td style="text-align:center;">
-0.2976108
+0.2563318
 </td>
 <td style="text-align:center;">
-0.3255942
+0.2915774
 </td>
 </tr>
 <tr>
@@ -16478,151 +16184,151 @@ FS
 FT
 </td>
 <td style="text-align:center;">
-0.1686705
+0.1312793
 </td>
 <td style="text-align:center;">
-0.1470765
+0.1425082
 </td>
 <td style="text-align:center;">
-0.1951275
+0.1637551
 </td>
 <td style="text-align:center;">
-0.1887673
+0.1320510
 </td>
 <td style="text-align:center;">
-0.1810675
+0.1474124
 </td>
 <td style="text-align:center;">
-0.1905483
+0.1567196
 </td>
 <td style="text-align:center;">
-0.2048640
+0.1569543
 </td>
 <td style="text-align:center;">
-0.1651790
+0.1504137
 </td>
 <td style="text-align:center;">
-0.1655371
+0.1563358
 </td>
 <td style="text-align:center;">
-0.1865783
+0.1624479
 </td>
 <td style="text-align:center;">
-0.1624421
+0.1938685
 </td>
 <td style="text-align:center;">
-0.1633001
+0.1631372
 </td>
 <td style="text-align:center;">
-0.1850697
+0.1460869
 </td>
 <td style="text-align:center;">
-0.2098950
+0.1700280
 </td>
 <td style="text-align:center;">
-0.1836507
+0.1679171
 </td>
 <td style="text-align:center;">
-0.1659455
+0.1511400
 </td>
 <td style="text-align:center;">
-0.1960071
+0.1641910
 </td>
 <td style="text-align:center;">
-0.1751685
+0.1405327
 </td>
 <td style="text-align:center;">
-0.1969018
+0.1578352
 </td>
 <td style="text-align:center;">
-0.1912627
+0.1822098
 </td>
 <td style="text-align:center;">
-0.1820294
+0.1961669
 </td>
 <td style="text-align:center;">
-0.1659238
+0.1512989
 </td>
 <td style="text-align:center;">
-0.1703465
+0.1314109
 </td>
 <td style="text-align:center;">
-0.1749263
+0.1671032
 </td>
 <td style="text-align:center;">
-0.1675453
+0.1505182
 </td>
 <td style="text-align:center;">
-0.1777935
+0.1789303
 </td>
 <td style="text-align:center;">
-0.1704559
+0.1235336
 </td>
 <td style="text-align:center;">
-0.1945402
+0.1562375
 </td>
 <td style="text-align:center;">
-0.2011128
+0.1336336
 </td>
 <td style="text-align:center;">
-0.1817851
+0.1656643
 </td>
 <td style="text-align:center;">
-0.1199505
+0.1723743
 </td>
 <td style="text-align:center;">
-0.1579033
+0.1738549
 </td>
 <td style="text-align:center;">
-0.1565443
+0.1436565
 </td>
 <td style="text-align:center;">
-0.2021757
+0.1315427
 </td>
 <td style="text-align:center;">
-0.1806883
+0.1600513
 </td>
 <td style="text-align:center;">
-0.1873669
+0.1898100
 </td>
 <td style="text-align:center;">
-0.1690738
+0.1468081
 </td>
 <td style="text-align:center;">
-0.2090781
+0.1602792
 </td>
 <td style="text-align:center;">
-0.2243963
+0.1844403
 </td>
 <td style="text-align:center;">
-0.1823015
+0.1814154
 </td>
 <td style="text-align:center;">
-0.1679967
+0.1486883
 </td>
 <td style="text-align:center;">
-0.1700804
+0.1774202
 </td>
 <td style="text-align:center;">
-0.1937016
+0.1839150
 </td>
 <td style="text-align:center;">
-0.1907413
+0.1906410
 </td>
 <td style="text-align:center;">
-0.1433021
+0.1599922
 </td>
 <td style="text-align:center;">
-0.1734540
+0.1687835
 </td>
 <td style="text-align:center;">
-0.1955687
+0.1461885
 </td>
 <td style="text-align:center;">
-0.1637241
+0.1608500
 </td>
 <td style="text-align:center;">
-0.1393486
+0.2114507
 </td>
 </tr>
 </tbody>
@@ -16823,151 +16529,151 @@ V9
 FS
 </td>
 <td style="text-align:center;">
-0.2877484
+0.2974563
 </td>
 <td style="text-align:center;">
-0.3335358
+0.2667794
 </td>
 <td style="text-align:center;">
-0.3149668
+0.2811205
 </td>
 <td style="text-align:center;">
-0.3096893
+0.3266229
 </td>
 <td style="text-align:center;">
-0.3229090
+0.2659828
 </td>
 <td style="text-align:center;">
-0.2883619
+0.3173646
 </td>
 <td style="text-align:center;">
-0.3186713
+0.3183694
 </td>
 <td style="text-align:center;">
-0.3446802
+0.3156687
 </td>
 <td style="text-align:center;">
-0.3286480
+0.3179443
 </td>
 <td style="text-align:center;">
-0.3289589
+0.3053149
 </td>
 <td style="text-align:center;">
-0.3021487
+0.3155407
 </td>
 <td style="text-align:center;">
-0.3179500
+0.2859763
 </td>
 <td style="text-align:center;">
-0.2756987
+0.2918141
 </td>
 <td style="text-align:center;">
-0.2905972
+0.2778399
 </td>
 <td style="text-align:center;">
-0.2862627
+0.2958428
 </td>
 <td style="text-align:center;">
-0.3207774
+0.2790786
 </td>
 <td style="text-align:center;">
-0.3246619
+0.2858829
 </td>
 <td style="text-align:center;">
-0.3189488
+0.3095404
 </td>
 <td style="text-align:center;">
-0.327089
+0.2915576
 </td>
 <td style="text-align:center;">
-0.3390595
+0.3066597
 </td>
 <td style="text-align:center;">
-0.3166466
+0.3120395
 </td>
 <td style="text-align:center;">
-0.3216048
+0.2761873
 </td>
 <td style="text-align:center;">
-0.3151483
+0.2887213
 </td>
 <td style="text-align:center;">
-0.3194180
+0.2822836
 </td>
 <td style="text-align:center;">
-0.3245892
+0.2932720
 </td>
 <td style="text-align:center;">
-0.3298874
+0.2795126
 </td>
 <td style="text-align:center;">
-0.3052884
+0.2930530
 </td>
 <td style="text-align:center;">
-0.3321316
+0.3357824
 </td>
 <td style="text-align:center;">
-0.3052600
+0.2877216
 </td>
 <td style="text-align:center;">
-0.3357148
+0.3025293
 </td>
 <td style="text-align:center;">
-0.2876232
+0.3274287
 </td>
 <td style="text-align:center;">
-0.2972842
+0.2796773
 </td>
 <td style="text-align:center;">
-0.2760377
+0.2831454
 </td>
 <td style="text-align:center;">
-0.3204300
+0.3148809
 </td>
 <td style="text-align:center;">
-0.2862362
+0.3057236
 </td>
 <td style="text-align:center;">
-0.2887918
+0.2958169
 </td>
 <td style="text-align:center;">
-0.3130056
+0.2886969
 </td>
 <td style="text-align:center;">
-0.2972683
+0.3184894
 </td>
 <td style="text-align:center;">
-0.2967307
+0.3300035
 </td>
 <td style="text-align:center;">
-0.2893727
+0.3290322
 </td>
 <td style="text-align:center;">
-0.3229508
+0.3160747
 </td>
 <td style="text-align:center;">
-0.3053630
+0.3018580
 </td>
 <td style="text-align:center;">
-0.314843
+0.2930440
 </td>
 <td style="text-align:center;">
-0.3464791
+0.2831196
 </td>
 <td style="text-align:center;">
-0.3087634
+0.2775227
 </td>
 <td style="text-align:center;">
-0.2837117
+0.2982824
 </td>
 <td style="text-align:center;">
-0.3189938
+0.2815070
 </td>
 <td style="text-align:center;">
-0.2975690
+0.2562649
 </td>
 <td style="text-align:center;">
-0.3255799
+0.2914519
 </td>
 </tr>
 <tr>
@@ -16975,151 +16681,151 @@ FS
 FT
 </td>
 <td style="text-align:center;">
-0.1702181
+0.1480634
 </td>
 <td style="text-align:center;">
-0.1561673
+0.1579855
 </td>
 <td style="text-align:center;">
-0.1947236
+0.1865408
 </td>
 <td style="text-align:center;">
-0.1838378
+0.1647241
 </td>
 <td style="text-align:center;">
-0.1673519
+0.1622697
 </td>
 <td style="text-align:center;">
-0.1603241
+0.1860868
 </td>
 <td style="text-align:center;">
-0.1858933
+0.1786755
 </td>
 <td style="text-align:center;">
-0.1560521
+0.2073208
 </td>
 <td style="text-align:center;">
-0.1553333
+0.1510921
 </td>
 <td style="text-align:center;">
-0.1829989
+0.2052882
 </td>
 <td style="text-align:center;">
-0.1652590
+0.2329099
 </td>
 <td style="text-align:center;">
-0.1613722
+0.1816787
 </td>
 <td style="text-align:center;">
-0.1871876
+0.1637339
 </td>
 <td style="text-align:center;">
-0.2093413
+0.2369495
 </td>
 <td style="text-align:center;">
-0.1741929
+0.1929776
 </td>
 <td style="text-align:center;">
-0.1563133
+0.2011531
 </td>
 <td style="text-align:center;">
-0.1917552
+0.1894799
 </td>
 <td style="text-align:center;">
-0.1720379
+0.1452047
 </td>
 <td style="text-align:center;">
-0.196851
+0.1593446
 </td>
 <td style="text-align:center;">
-0.1933668
+0.2110484
 </td>
 <td style="text-align:center;">
-0.1818064
+0.2118901
 </td>
 <td style="text-align:center;">
-0.1689296
+0.1704645
 </td>
 <td style="text-align:center;">
-0.1634493
+0.1283619
 </td>
 <td style="text-align:center;">
-0.1741703
+0.1917782
 </td>
 <td style="text-align:center;">
-0.1675947
+0.1786033
 </td>
 <td style="text-align:center;">
-0.1616762
+0.1980264
 </td>
 <td style="text-align:center;">
-0.1593248
+0.1262625
 </td>
 <td style="text-align:center;">
-0.1850050
+0.1730679
 </td>
 <td style="text-align:center;">
-0.1889078
+0.1427238
 </td>
 <td style="text-align:center;">
-0.1714876
+0.1787686
 </td>
 <td style="text-align:center;">
-0.1169804
+0.2200575
 </td>
 <td style="text-align:center;">
-0.1647452
+0.2024116
 </td>
 <td style="text-align:center;">
-0.1634914
+0.1642037
 </td>
 <td style="text-align:center;">
-0.1922011
+0.1407534
 </td>
 <td style="text-align:center;">
-0.1823374
+0.1689121
 </td>
 <td style="text-align:center;">
-0.1877427
+0.2424488
 </td>
 <td style="text-align:center;">
-0.1642921
+0.2150874
 </td>
 <td style="text-align:center;">
-0.1891301
+0.2047947
 </td>
 <td style="text-align:center;">
-0.1959173
+0.2206409
 </td>
 <td style="text-align:center;">
-0.1706186
+0.2209065
 </td>
 <td style="text-align:center;">
-0.1536934
+0.1842800
 </td>
 <td style="text-align:center;">
-0.1673237
+0.1946457
 </td>
 <td style="text-align:center;">
-0.195152
+0.2002476
 </td>
 <td style="text-align:center;">
-0.1862571
+0.2537143
 </td>
 <td style="text-align:center;">
-0.1375588
+0.2016340
 </td>
 <td style="text-align:center;">
-0.1713641
+0.2377516
 </td>
 <td style="text-align:center;">
-0.1968904
+0.1587773
 </td>
 <td style="text-align:center;">
-0.1637141
+0.2008080
 </td>
 <td style="text-align:center;">
-0.1459637
+0.2675672
 </td>
 </tr>
 </tbody>
@@ -17127,7 +16833,7 @@ FT
 
 ![](ECC_files/figure-gfm/Sim2-1.png)<!-- -->
 
-    ## [1] 0.3823998
+    ## [1] 0.5956056
 
 #### S4-5-2-3 Simulation with Actual Parameters and Smooth Lambdas
 
@@ -17179,7 +16885,7 @@ Seasonal
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Aero
 </td>
 <td style="text-align:center;">
@@ -17196,9 +16902,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Aero
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -17213,9 +16916,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Aero
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -17230,9 +16930,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Aero
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -17247,7 +16944,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Agric
 </td>
 <td style="text-align:center;">
@@ -17264,9 +16961,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Agric
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -17281,9 +16975,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Agric
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -17298,9 +16989,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Agric
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -17315,7 +17003,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Autos
 </td>
 <td style="text-align:center;">
@@ -17332,9 +17020,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Autos
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -17349,9 +17034,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Autos
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -17366,9 +17048,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Autos
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -17383,7 +17062,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Banks
 </td>
 <td style="text-align:center;">
@@ -17400,9 +17079,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Banks
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -17417,9 +17093,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Banks
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -17434,9 +17107,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Banks
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -17451,7 +17121,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Beer
 </td>
 <td style="text-align:center;">
@@ -17468,9 +17138,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Beer
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -17485,9 +17152,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Beer
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -17502,9 +17166,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Beer
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -17519,7 +17180,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 BldMt
 </td>
 <td style="text-align:center;">
@@ -17536,9 +17197,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-BldMt
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -17553,9 +17211,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-BldMt
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -17570,9 +17225,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-BldMt
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -17587,7 +17239,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Books
 </td>
 <td style="text-align:center;">
@@ -17604,9 +17256,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Books
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -17621,9 +17270,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Books
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -17638,9 +17284,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Books
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -17655,7 +17298,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Boxes
 </td>
 <td style="text-align:center;">
@@ -17672,9 +17315,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Boxes
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -17689,9 +17329,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Boxes
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -17706,9 +17343,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Boxes
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -17723,7 +17357,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 BusSv
 </td>
 <td style="text-align:center;">
@@ -17740,9 +17374,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-BusSv
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -17757,9 +17388,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-BusSv
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -17774,9 +17402,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-BusSv
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -17791,7 +17416,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Chems
 </td>
 <td style="text-align:center;">
@@ -17808,9 +17433,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Chems
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -17825,9 +17447,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Chems
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -17842,9 +17461,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Chems
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -17859,7 +17475,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Chips
 </td>
 <td style="text-align:center;">
@@ -17876,9 +17492,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Chips
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -17893,9 +17506,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Chips
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -17910,9 +17520,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Chips
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -17927,7 +17534,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Clths
 </td>
 <td style="text-align:center;">
@@ -17944,9 +17551,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Clths
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -17961,9 +17565,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Clths
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -17978,9 +17579,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Clths
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -17995,7 +17593,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Cnstr
 </td>
 <td style="text-align:center;">
@@ -18012,9 +17610,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Cnstr
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18029,9 +17624,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Cnstr
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18046,9 +17638,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Cnstr
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -18063,7 +17652,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Coal
 </td>
 <td style="text-align:center;">
@@ -18080,9 +17669,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Coal
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18097,9 +17683,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Coal
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18114,9 +17697,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Coal
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -18131,7 +17711,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Drugs
 </td>
 <td style="text-align:center;">
@@ -18148,9 +17728,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Drugs
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18165,9 +17742,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Drugs
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18182,9 +17756,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Drugs
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -18199,7 +17770,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 ElcEq
 </td>
 <td style="text-align:center;">
@@ -18216,9 +17787,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-ElcEq
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18233,9 +17801,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-ElcEq
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18250,9 +17815,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-ElcEq
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -18267,7 +17829,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 FabPr
 </td>
 <td style="text-align:center;">
@@ -18284,9 +17846,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FabPr
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18301,9 +17860,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FabPr
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18318,9 +17874,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-FabPr
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -18335,7 +17888,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Fin
 </td>
 <td style="text-align:center;">
@@ -18352,9 +17905,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Fin
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18369,9 +17919,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Fin
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18386,9 +17933,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Fin
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -18403,7 +17947,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Food
 </td>
 <td style="text-align:center;">
@@ -18420,9 +17964,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Food
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18437,9 +17978,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Food
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18454,9 +17992,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Food
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -18471,7 +18006,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Fun
 </td>
 <td style="text-align:center;">
@@ -18488,9 +18023,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Fun
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18505,9 +18037,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Fun
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18522,9 +18051,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Fun
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -18539,7 +18065,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Gold
 </td>
 <td style="text-align:center;">
@@ -18556,9 +18082,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Gold
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18573,9 +18096,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Gold
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18590,9 +18110,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Gold
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -18607,7 +18124,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Guns
 </td>
 <td style="text-align:center;">
@@ -18624,9 +18141,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Guns
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18641,9 +18155,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Guns
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18658,9 +18169,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Guns
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -18675,7 +18183,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Hardw
 </td>
 <td style="text-align:center;">
@@ -18692,9 +18200,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Hardw
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18709,9 +18214,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Hardw
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18726,9 +18228,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Hardw
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -18743,7 +18242,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Hlth
 </td>
 <td style="text-align:center;">
@@ -18760,9 +18259,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Hlth
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18777,9 +18273,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Hlth
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18794,9 +18287,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Hlth
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -18811,7 +18301,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Hshld
 </td>
 <td style="text-align:center;">
@@ -18828,9 +18318,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Hshld
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18845,9 +18332,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Hshld
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18862,9 +18346,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Hshld
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -18879,7 +18360,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Insur
 </td>
 <td style="text-align:center;">
@@ -18896,9 +18377,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Insur
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18913,9 +18391,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Insur
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18930,9 +18405,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Insur
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -18947,7 +18419,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 LabEq
 </td>
 <td style="text-align:center;">
@@ -18964,9 +18436,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-LabEq
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -18981,9 +18450,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-LabEq
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -18998,9 +18464,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-LabEq
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19015,7 +18478,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Mach
 </td>
 <td style="text-align:center;">
@@ -19032,9 +18495,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Mach
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -19049,9 +18509,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Mach
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -19066,9 +18523,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Mach
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19083,7 +18537,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Meals
 </td>
 <td style="text-align:center;">
@@ -19100,9 +18554,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Meals
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -19117,9 +18568,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Meals
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -19134,9 +18582,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Meals
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19151,7 +18596,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 MedEq
 </td>
 <td style="text-align:center;">
@@ -19168,9 +18613,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-MedEq
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -19185,9 +18627,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-MedEq
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -19202,9 +18641,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-MedEq
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19219,7 +18655,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Mines
 </td>
 <td style="text-align:center;">
@@ -19236,9 +18672,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Mines
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -19253,9 +18686,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Mines
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -19270,9 +18700,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Mines
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19287,7 +18714,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Oil
 </td>
 <td style="text-align:center;">
@@ -19304,9 +18731,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Oil
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -19321,9 +18745,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Oil
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -19338,9 +18759,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Oil
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19355,7 +18773,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Paper
 </td>
 <td style="text-align:center;">
@@ -19372,9 +18790,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Paper
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -19389,9 +18804,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Paper
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -19406,9 +18818,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Paper
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19423,7 +18832,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 PerSv
 </td>
 <td style="text-align:center;">
@@ -19440,9 +18849,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-PerSv
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -19457,9 +18863,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-PerSv
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -19474,9 +18877,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-PerSv
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19491,7 +18891,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 RlEst
 </td>
 <td style="text-align:center;">
@@ -19508,9 +18908,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RlEst
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -19525,9 +18922,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RlEst
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -19542,9 +18936,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RlEst
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19559,7 +18950,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Rtail
 </td>
 <td style="text-align:center;">
@@ -19576,9 +18967,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Rtail
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -19593,9 +18981,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Rtail
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -19610,9 +18995,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Rtail
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19627,7 +19009,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Rubbr
 </td>
 <td style="text-align:center;">
@@ -19644,9 +19026,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Rubbr
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -19661,9 +19040,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Rubbr
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -19678,9 +19054,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Rubbr
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19695,7 +19068,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Ships
 </td>
 <td style="text-align:center;">
@@ -19712,9 +19085,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Ships
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -19729,9 +19099,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Ships
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -19746,9 +19113,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Ships
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19763,7 +19127,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Smoke
 </td>
 <td style="text-align:center;">
@@ -19780,9 +19144,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Smoke
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -19797,9 +19158,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Smoke
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -19814,9 +19172,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Smoke
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19831,7 +19186,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Soda
 </td>
 <td style="text-align:center;">
@@ -19848,9 +19203,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Soda
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -19865,9 +19217,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Soda
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -19882,9 +19231,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Soda
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19899,7 +19245,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Softw
 </td>
 <td style="text-align:center;">
@@ -19916,9 +19262,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Softw
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -19933,9 +19276,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Softw
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -19950,9 +19290,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Softw
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -19967,7 +19304,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Steel
 </td>
 <td style="text-align:center;">
@@ -19984,9 +19321,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Steel
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -20001,9 +19335,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Steel
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -20018,9 +19349,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Steel
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -20035,7 +19363,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Telcm
 </td>
 <td style="text-align:center;">
@@ -20052,9 +19380,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Telcm
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -20069,9 +19394,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Telcm
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -20086,9 +19408,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Telcm
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -20103,7 +19422,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Toys
 </td>
 <td style="text-align:center;">
@@ -20120,9 +19439,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Toys
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -20137,9 +19453,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Toys
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -20154,9 +19467,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Toys
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -20171,7 +19481,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Trans
 </td>
 <td style="text-align:center;">
@@ -20188,9 +19498,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Trans
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -20205,9 +19512,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Trans
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -20222,9 +19526,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Trans
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -20239,7 +19540,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Txtls
 </td>
 <td style="text-align:center;">
@@ -20256,9 +19557,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Txtls
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -20273,9 +19571,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Txtls
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -20290,9 +19585,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Txtls
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -20307,7 +19599,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Util
 </td>
 <td style="text-align:center;">
@@ -20324,9 +19616,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Util
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -20341,9 +19630,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Util
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -20358,9 +19644,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Util
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -20375,7 +19658,7 @@ kurtosis
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="4">
 Whlsl
 </td>
 <td style="text-align:center;">
@@ -20392,9 +19675,6 @@ mean
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Whlsl
-</td>
 <td style="text-align:center;">
 variance
 </td>
@@ -20409,9 +19689,6 @@ variance
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Whlsl
-</td>
 <td style="text-align:center;">
 skewness
 </td>
@@ -20426,9 +19703,6 @@ skewness
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Whlsl
-</td>
 <td style="text-align:center;">
 kurtosis
 </td>
@@ -27620,7 +26894,7 @@ F-test
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
 Mkt-RF
 </td>
 <td style="text-align:center;">
@@ -27649,9 +26923,6 @@ FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Mkt-RF
-</td>
 <td style="text-align:center;">
 Fil. FM
 </td>
@@ -27678,7 +26949,7 @@ Fil. FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
 SMB
 </td>
 <td style="text-align:center;">
@@ -27707,9 +26978,6 @@ FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-SMB
-</td>
 <td style="text-align:center;">
 Fil. FM
 </td>
@@ -27736,7 +27004,7 @@ Fil. FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
 HML
 </td>
 <td style="text-align:center;">
@@ -27765,9 +27033,6 @@ FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-HML
-</td>
 <td style="text-align:center;">
 Fil. FM
 </td>
@@ -27794,7 +27059,7 @@ Fil. FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
 RMW
 </td>
 <td style="text-align:center;">
@@ -27823,9 +27088,6 @@ FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RMW
-</td>
 <td style="text-align:center;">
 Fil. FM
 </td>
@@ -27852,7 +27114,7 @@ Fil. FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
 CMA
 </td>
 <td style="text-align:center;">
@@ -27881,9 +27143,6 @@ FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-CMA
-</td>
 <td style="text-align:center;">
 Fil. FM
 </td>
@@ -27948,7 +27207,7 @@ F-test
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
 Mkt-RF
 </td>
 <td style="text-align:center;">
@@ -27977,9 +27236,6 @@ FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-Mkt-RF
-</td>
 <td style="text-align:center;">
 Fil. FM
 </td>
@@ -28006,7 +27262,7 @@ Fil. FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
 RMW
 </td>
 <td style="text-align:center;">
@@ -28035,9 +27291,6 @@ FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-RMW
-</td>
 <td style="text-align:center;">
 Fil. FM
 </td>
@@ -28064,7 +27317,7 @@ Fil. FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
 dDP
 </td>
 <td style="text-align:center;">
@@ -28093,9 +27346,6 @@ FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-dDP
-</td>
 <td style="text-align:center;">
 Fil. FM
 </td>
@@ -28122,7 +27372,7 @@ Fil. FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
 dTS
 </td>
 <td style="text-align:center;">
@@ -28151,9 +27401,6 @@ FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-dTS
-</td>
 <td style="text-align:center;">
 Fil. FM
 </td>
@@ -28180,7 +27427,7 @@ Fil. FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
+<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
 UNEXPI
 </td>
 <td style="text-align:center;">
@@ -28209,9 +27456,6 @@ FM
 </td>
 </tr>
 <tr>
-<td style="text-align:center;font-weight: bold;">
-UNEXPI
-</td>
 <td style="text-align:center;">
 Fil. FM
 </td>

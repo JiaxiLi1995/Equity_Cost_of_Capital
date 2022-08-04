@@ -4947,13 +4947,13 @@ This shows that at a given time t, we would have the Noise and Periodic (Seasona
 
 This session would apply panel regression to each components to see whether using the trend component is justified in the full sample. We present 4 separate Panel regressions using all portfolios across all time. In each regression, Original Return / Trend / Period / Noise is on the LHS and the betas are on the RHS.
 
-$$R_{i,t} = a + a_1 \hat{\beta}_{i,t} + u_i$$
+$$R_{i,t} = a + a_1 \hat{\beta}_{i,t} + ua_i$$
 
-$$T_{i,t} = b_0 + b_1 \hat{\beta}_{i,t} + u_i$$
+$$T_{i,t} = b_0 + b_1 \hat{\beta}_{i,t} + ub_i$$
 
-$$P_{i,t} = c_0 + c_1 \hat{\beta}_{i,t} + u_i$$
+$$P_{i,t} = c_0 + c_1 \hat{\beta}_{i,t} + uc_i$$
 
-$$N_{i,t} = d_0 + d_1 \hat{\beta}_{i,t} + u_i$$
+$$N_{i,t} = d_0 + d_1 \hat{\beta}_{i,t} + ud_i$$
 
 
 ```{r Panel_Check, cache = TRUE}
@@ -4987,6 +4987,19 @@ We can clearly see that overall the Periodic (Seasonal) and Noise cannot be expl
 
 
 From the previous section, yet, Periodic and Noise Components can alter the monthly $\lambda$ estimations, which is inappropriate according to the Panel regression results. If we want one long-term $\lambda$, using trend or return on the left-hand side would yield similar estimates. However, since our primary goal is to estimate monthly expected return, we should only use trend on the left-hand side, excluding Noise and Periodic.
+
+Here are the mathematical explanations: the regression are with assumptions that:
+
+$$E[R_{i,t}|\hat{\beta}_{i,t}] = a + a_1 \hat{\beta}_{i,t}$$
+
+$$E[T_{i,t}|\hat{\beta}_{i,t}] = b + b_1 \hat{\beta}_{i,t}$$
+
+$$E[P_{i,t}|\hat{\beta}_{i,t}] = c + c_1 \hat{\beta}_{i,t}$$
+
+$$E[N_{i,t}|\hat{\beta}_{i,t}] = d + d_1 \hat{\beta}_{i,t}$$
+
+With $R = T + P + N$, $a = b + c + d$ and $a_1 = b_1 + c_1 + d_1$. However, we have $c$, $d$, $c_1$ and $d_1$ almost being 0 from regression 3 and 4. $a \approx b$ and $a_1 \approx b_1$. which means we should be able to use trend (2nd regression) to recover the expected ECC. This is an informal illustration.
+
 
 
 ### S4-6-3 Long Regression with omitted variable (Periodic and Noise)

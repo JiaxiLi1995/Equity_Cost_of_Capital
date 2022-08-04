@@ -5177,7 +5177,7 @@ inner_join(
 
 It seems that 30\% of the time, the result from long regression would be different from the second-step regression. This result is consistent with previous short regressions, which showed Period and Noise are associated with $\hat{\beta}$ and would introduce a bias to the second-step regression.
 
-```{r Long_vs_ACL, cache = TRUE, eval=FALSE}
+```{r Long_vs_ACL, cache = TRUE}
 # This is a table for Long regression coefficient result comparing with ACL regression
 inner_join(
   inner_join(Long_result %>%
@@ -5238,7 +5238,7 @@ inner_join(
 
 ```
 
-
+It seems that 30\% of the time, the result from long regression would be different from the ACL regression. This result is consistent with previous short regressions, which showed Period and Noise are associated with $\hat{\beta}$ and would introduce a bias to the second-step regression.
 
 
 ### S4-6-4 Second Pass Panel Regression Comparison

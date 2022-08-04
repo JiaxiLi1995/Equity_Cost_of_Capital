@@ -22389,7 +22389,18 @@ estimation.
 ### S4-6-2 Panel Auxiliary Regression
 
 This session would apply panel regression to each components to see
-whether using the trend component is justified in the full sample.
+whether using the trend component is justified in the full sample. We
+present 4 separate Panel regressions using all portfolios across all
+time. In each regression, Original Return / Trend / Period / Noise is on
+the LHS and the betas are on the RHS.
+
+![R\_{i,t} = a + a_1 \hat{\beta}\_{i,t} + u_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;R_%7Bi%2Ct%7D%20%3D%20a%20%2B%20a_1%20%5Chat%7B%5Cbeta%7D_%7Bi%2Ct%7D%20%2B%20u_i "R_{i,t} = a + a_1 \hat{\beta}_{i,t} + u_i")
+
+![T\_{i,t} = b_0 + b_1 \hat{\beta}\_{i,t} + u_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;T_%7Bi%2Ct%7D%20%3D%20b_0%20%2B%20b_1%20%5Chat%7B%5Cbeta%7D_%7Bi%2Ct%7D%20%2B%20u_i "T_{i,t} = b_0 + b_1 \hat{\beta}_{i,t} + u_i")
+
+![P\_{i,t} = c_0 + c_1 \hat{\beta}\_{i,t} + u_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;P_%7Bi%2Ct%7D%20%3D%20c_0%20%2B%20c_1%20%5Chat%7B%5Cbeta%7D_%7Bi%2Ct%7D%20%2B%20u_i "P_{i,t} = c_0 + c_1 \hat{\beta}_{i,t} + u_i")
+
+![N\_{i,t} = d_0 + d_1 \hat{\beta}\_{i,t} + u_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;N_%7Bi%2Ct%7D%20%3D%20d_0%20%2B%20d_1%20%5Chat%7B%5Cbeta%7D_%7Bi%2Ct%7D%20%2B%20u_i "N_{i,t} = d_0 + d_1 \hat{\beta}_{i,t} + u_i")
 
     ## [1] "Original"
 

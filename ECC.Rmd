@@ -4945,7 +4945,16 @@ This shows that at a given time t, we would have the Noise and Periodic (Seasona
 
 ### S4-6-2 Panel Auxiliary Regression
 
-This session would apply panel regression to each components to see whether using the trend component is justified in the full sample.
+This session would apply panel regression to each components to see whether using the trend component is justified in the full sample. We present 4 separate Panel regressions using all portfolios across all time. In each regression, Original Return / Trend / Period / Noise is on the LHS and the betas are on the RHS.
+
+$$R_{i,t} = a + a_1 \hat{\beta}_{i,t} + u_i$$
+
+$$T_{i,t} = b_0 + b_1 \hat{\beta}_{i,t} + u_i$$
+
+$$P_{i,t} = c_0 + c_1 \hat{\beta}_{i,t} + u_i$$
+
+$$N_{i,t} = d_0 + d_1 \hat{\beta}_{i,t} + u_i$$
+
 
 ```{r Panel_Check, cache = TRUE}
 # data from S4-4-5

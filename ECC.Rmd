@@ -5199,6 +5199,8 @@ inner_join(
 
 It seems that 30\% of the time, the result from long regression would be different from the second-step regression. This result is consistent with previous short regressions, which showed Period and Noise are associated with $\hat{\beta}$ and would introduce a bias to the second-step regression.
 
+Next, let's compare the long-regression lambdas with the ACL second-path result:
+
 ```{r Long_vs_ACL, cache = TRUE}
 # This is a table for Long regression coefficient result comparing with ACL regression
 inner_join(
@@ -5260,7 +5262,71 @@ inner_join(
 
 ```
 
-It seems that 30\% of the time, the result from long regression would be different from the ACL regression. This result is consistent with previous short regressions, which showed Period and Noise are associated with $\hat{\beta}$ and would introduce a bias to the second-step regression.
+It seems that 35-40\% of the time, the result from long regression would be different from the ACL regression. This result is consistent with previous short regressions, which showed Period and Noise are associated with $\hat{\beta}$ and would introduce a bias to the second-step regression.
+
+Finally, let's compare the ACL-regression lambdas with the original second-path result:
+
+```{r Original_vs_ACL, cache = TRUE}
+# This is a table for Original FM regression coefficient result comparing with ACL regression
+inner_join(
+  inner_join(FM_FF5 %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "Original_Estimate"),
+             FM_FF5_Error %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "Original_Std. Error")),
+  inner_join(Aux_result_Trend %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "ACL_Estimate"),
+             Aux_se_Trend %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "ACL_Std. Error"))
+) %>%
+  mutate(Diff_Estimate = Original_Estimate - ACL_Estimate,
+         `Diff_Std. Error` = `Original_Std. Error` - `ACL_Std. Error`,
+         Diff_t_stat = Diff_Estimate/`Diff_Std. Error`,
+         Diff_P_value = pt(Diff_t_stat, df = 2*(nrow(Long_result) - 1), lower.tail = FALSE)) %>%
+  pivot_longer(-c(date,Factors), names_to = "Type", values_to = "Values") %>%
+  mutate(Type = factor(Type, levels = unique(.$Type)),
+         Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  select(-date) %>%
+  group_by(Factors, Type) %>%
+  summarise(min = min(Values),
+            Q25 = quantile(Values, .25),
+            Q50 = quantile(Values, .5),
+            Q75 = quantile(Values, .75),
+            max = max(Values),
+            mean = mean(Values)) %>%
+  pivot_longer(-c(Factors, Type), names_to = "Stat", values_to = "Values") %>%
+  pivot_wider(names_from = "Type", values_from = "Values") %>%
+  kable(align = "c", caption = "Original FM vs. ACL Regression Results") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1:2, bold = T) %>%
+  collapse_rows(columns = 1:2)
+
+# This is a table for Original FM regression coefficient result comparing with Original Second pass regression percentage of significantly different coefficients
+inner_join(
+  inner_join(FM_FF5 %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "Original_Estimate"),
+             FM_FF5_Error %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "Original_Std. Error")),
+  inner_join(Aux_result_Trend %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "ACL_Estimate"),
+             Aux_se_Trend %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "ACL_Std. Error"))
+) %>%
+  mutate(Diff_Estimate = Original_Estimate - ACL_Estimate,
+         `Diff_Std. Error` = `Original_Std. Error` - `ACL_Std. Error`,
+         Diff_t_stat = Diff_Estimate/`Diff_Std. Error`,
+         Diff_P_value = pt(Diff_t_stat, df = 2*(nrow(Long_result) - 1), lower.tail = FALSE)) %>%
+  mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  select(c(Factors,Diff_P_value)) %>%
+  group_by(Factors) %>%
+  summarise(Sig_Percent = mean(Diff_P_value < 0.05)) %>%
+  kable(align = "c", caption = "Original FM vs. ACL Difference Significance Percentage") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T)
+
+```
+
+It seems that 30\% of the time, the result from original regression would be different from the ACL regression. This result is consistent with previous short regressions, which showed Period and Noise are associated with $\hat{\beta}$ and would introduce a bias to the second-step regression.
+
 
 
 ### S4-6-4 Second Pass Panel Regression Comparison

@@ -5772,6 +5772,18 @@ Aux_result_Trend %>%
 
 ```
 
+We had the lambda estimations of Long-regression (T = a + b Beta + c Periodic + d Noise + error), ACL regression(T = a + b Beta + error), and Originial Second-pass regression (R = a + b Beta + error).
+
+The shaded areas indicate when we have significantly different estimates between a pair of methods. For example, red area indicates "Long vs. ACL" which means long regression and ACL method produce significantly different results.
+
+The shaded areas are transparent. I chose "red, green, and blue" to have them blend together. So, the light green area is where we only have "original vs. ACL" differences. However, when we have dark blue, it means that we have both green and blue, so we have "original vs. ACL" and "Long vs. original" differences. When we get gray bar, it means all there pairs of methods produce different estimates.
+
+The black lines on the plots are: 
+1. The original Fama French 5 Factors time series.
+2. The coefficients of Noise Auxiliary Regression: N = a + b Beta + error
+3. The coefficients of Periodic Auxiliary Regression: P = a + b Beta + error
+4. The coefficients of ACL Regression: T = a + b Beta + error
+
 
 
 # S5 Equity Cost of Captial

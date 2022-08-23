@@ -113,6 +113,9 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
         -   <a href="#s4-6-4-second-pass-panel-regression-comparison"
             id="toc-s4-6-4-second-pass-panel-regression-comparison">S4-6-4 Second
             Pass Panel Regression Comparison</a>
+        -   <a href="#s4-6-5-plot-comparison-when-estimates-are-different"
+            id="toc-s4-6-5-plot-comparison-when-estimates-are-different">S4-6-5 Plot
+            Comparison when Estimates are Different</a>
 -   <a href="#s5-equity-cost-of-captial"
     id="toc-s5-equity-cost-of-captial">S5 Equity Cost of Captial</a>
     -   <a href="#s5-1-estimated-equity-cost-of-captial"
@@ -22594,13 +22597,13 @@ min
 0.0070778
 </td>
 <td style="text-align:center;">
--0.2993926
+-0.2533239
 </td>
 <td style="text-align:center;">
--0.0614516
+-0.0596762
 </td>
 <td style="text-align:center;">
--3.335242e+04
+-29.7087668
 </td>
 <td style="text-align:center;">
 0.0000000
@@ -22623,16 +22626,16 @@ Q25
 0.0178901
 </td>
 <td style="text-align:center;">
--0.0333102
+-0.0295718
 </td>
 <td style="text-align:center;">
--0.0227747
+-0.0214706
 </td>
 <td style="text-align:center;">
--2.195925e+00
+-1.9631914
 </td>
 <td style="text-align:center;">
-0.0148568
+0.0343796
 </td>
 </tr>
 <tr>
@@ -22652,16 +22655,16 @@ Q50
 0.0225425
 </td>
 <td style="text-align:center;">
-0.0026814
+0.0018570
 </td>
 <td style="text-align:center;">
--0.0160595
+-0.0160961
 </td>
 <td style="text-align:center;">
--1.620375e-01
+-0.0993259
 </td>
 <td style="text-align:center;">
-0.5643617
+0.5395512
 </td>
 </tr>
 <tr>
@@ -22681,16 +22684,16 @@ Q75
 0.0292714
 </td>
 <td style="text-align:center;">
-0.0354274
+0.0341044
 </td>
 <td style="text-align:center;">
--0.0108783
+-0.0119799
 </td>
 <td style="text-align:center;">
-2.173915e+00
+1.8217772
 </td>
 <td style="text-align:center;">
-0.9859503
+0.9750627
 </td>
 </tr>
 <tr>
@@ -22710,13 +22713,13 @@ max
 0.0647344
 </td>
 <td style="text-align:center;">
-0.2886511
+0.2169964
 </td>
 <td style="text-align:center;">
-0.0091955
+-0.0028672
 </td>
 <td style="text-align:center;">
-7.205316e+04
+27.2862027
 </td>
 <td style="text-align:center;">
 1.0000000
@@ -22745,10 +22748,10 @@ mean
 -0.0175437
 </td>
 <td style="text-align:center;">
--6.576268e-01
+-0.0472883
 </td>
 <td style="text-align:center;">
-0.5167541
+0.5156322
 </td>
 </tr>
 <tr>
@@ -22771,13 +22774,13 @@ min
 0.0042591
 </td>
 <td style="text-align:center;">
--0.1823527
+-0.1443598
 </td>
 <td style="text-align:center;">
--0.0375622
+-0.0325967
 </td>
 <td style="text-align:center;">
--7.478730e+05
+-87.4662260
 </td>
 <td style="text-align:center;">
 0.0000000
@@ -22800,16 +22803,16 @@ Q25
 0.0092698
 </td>
 <td style="text-align:center;">
--0.0199641
+-0.0180497
 </td>
 <td style="text-align:center;">
--0.0121953
+-0.0118195
 </td>
 <td style="text-align:center;">
--2.402849e+00
+-2.2694751
 </td>
 <td style="text-align:center;">
-0.0080231
+0.0122330
 </td>
 </tr>
 <tr>
@@ -22829,16 +22832,16 @@ Q50
 0.0121029
 </td>
 <td style="text-align:center;">
--0.0006457
+-0.0006971
 </td>
 <td style="text-align:center;">
--0.0083955
+-0.0086813
 </td>
 <td style="text-align:center;">
-6.405850e-02
+0.0977739
 </td>
 <td style="text-align:center;">
-0.4744619
+0.4610648
 </td>
 </tr>
 <tr>
@@ -22858,16 +22861,16 @@ Q75
 0.0156304
 </td>
 <td style="text-align:center;">
-0.0195639
+0.0184378
 </td>
 <td style="text-align:center;">
--0.0056042
+-0.0060240
 </td>
 <td style="text-align:center;">
-2.407898e+00
+2.2528242
 </td>
 <td style="text-align:center;">
-0.9918652
+0.9882842
 </td>
 </tr>
 <tr>
@@ -22887,13 +22890,13 @@ max
 0.0392316
 </td>
 <td style="text-align:center;">
-0.1704367
+0.1655418
 </td>
 <td style="text-align:center;">
-0.0068468
+0.0016373
 </td>
 <td style="text-align:center;">
-4.544479e+05
+109.5779270
 </td>
 <td style="text-align:center;">
 1.0000000
@@ -22922,10 +22925,10 @@ mean
 -0.0095084
 </td>
 <td style="text-align:center;">
--6.815720e-02
+-0.2217230
 </td>
 <td style="text-align:center;">
-0.4933763
+0.4961706
 </td>
 </tr>
 <tr>
@@ -22948,13 +22951,13 @@ min
 0.0042443
 </td>
 <td style="text-align:center;">
--0.1895791
+-0.1346646
 </td>
 <td style="text-align:center;">
--0.0481682
+-0.0479267
 </td>
 <td style="text-align:center;">
--6.216224e+03
+-24.3715550
 </td>
 <td style="text-align:center;">
 0.0000000
@@ -22977,16 +22980,16 @@ Q25
 0.0091743
 </td>
 <td style="text-align:center;">
--0.0224023
+-0.0178740
 </td>
 <td style="text-align:center;">
--0.0111528
+-0.0108118
 </td>
 <td style="text-align:center;">
--2.794991e+00
+-2.2797721
 </td>
 <td style="text-align:center;">
-0.0015164
+0.0130360
 </td>
 </tr>
 <tr>
@@ -23006,16 +23009,16 @@ Q50
 0.0115813
 </td>
 <td style="text-align:center;">
-0.0003369
+0.0006492
 </td>
 <td style="text-align:center;">
--0.0080654
+-0.0080693
 </td>
 <td style="text-align:center;">
--5.301750e-02
+-0.1131069
 </td>
 <td style="text-align:center;">
-0.5211410
+0.5450168
 </td>
 </tr>
 <tr>
@@ -23035,16 +23038,16 @@ Q75
 0.0145976
 </td>
 <td style="text-align:center;">
-0.0214629
+0.0179807
 </td>
 <td style="text-align:center;">
--0.0055491
+-0.0057351
 </td>
 <td style="text-align:center;">
-2.964463e+00
+2.2281405
 </td>
 <td style="text-align:center;">
-0.9974045
+0.9885944
 </td>
 </tr>
 <tr>
@@ -23064,13 +23067,13 @@ max
 0.0500856
 </td>
 <td style="text-align:center;">
-0.1864815
+0.1276300
 </td>
 <td style="text-align:center;">
-0.0090267
+-0.0009458
 </td>
 <td style="text-align:center;">
-2.077765e+04
+16.5499331
 </td>
 <td style="text-align:center;">
 1.0000000
@@ -23099,10 +23102,10 @@ mean
 -0.0086460
 </td>
 <td style="text-align:center;">
-4.082348e-01
+0.0064283
 </td>
 <td style="text-align:center;">
-0.5035871
+0.5044602
 </td>
 </tr>
 <tr>
@@ -23125,13 +23128,13 @@ min
 0.0037281
 </td>
 <td style="text-align:center;">
--0.1465308
+-0.1866234
 </td>
 <td style="text-align:center;">
--0.0362146
+-0.0332109
 </td>
 <td style="text-align:center;">
--4.317206e+04
+-100.0151642
 </td>
 <td style="text-align:center;">
 0.0000000
@@ -23154,16 +23157,16 @@ Q25
 0.0074791
 </td>
 <td style="text-align:center;">
--0.0151771
+-0.0151219
 </td>
 <td style="text-align:center;">
--0.0094613
+-0.0089046
 </td>
 <td style="text-align:center;">
--2.336980e+00
+-1.8366984
 </td>
 <td style="text-align:center;">
-0.0097337
+0.0159984
 </td>
 </tr>
 <tr>
@@ -23183,16 +23186,16 @@ Q50
 0.0096283
 </td>
 <td style="text-align:center;">
--0.0000940
+-0.0002369
 </td>
 <td style="text-align:center;">
--0.0066763
+-0.0065752
 </td>
 <td style="text-align:center;">
-5.251100e-03
+0.0178862
 </td>
 <td style="text-align:center;">
-0.4979051
+0.4928664
 </td>
 </tr>
 <tr>
@@ -23212,16 +23215,16 @@ Q75
 0.0121935
 </td>
 <td style="text-align:center;">
-0.0158491
+0.0142433
 </td>
 <td style="text-align:center;">
--0.0045068
+-0.0048933
 </td>
 <td style="text-align:center;">
-2.336491e+00
+2.1471722
 </td>
 <td style="text-align:center;">
-0.9902790
+0.9667384
 </td>
 </tr>
 <tr>
@@ -23241,13 +23244,13 @@ max
 0.0374597
 </td>
 <td style="text-align:center;">
-0.1656575
+0.1138824
 </td>
 <td style="text-align:center;">
-0.0099531
+0.0005101
 </td>
 <td style="text-align:center;">
-3.476303e+04
+28.6360413
 </td>
 <td style="text-align:center;">
 1.0000000
@@ -23276,10 +23279,10 @@ mean
 -0.0076453
 </td>
 <td style="text-align:center;">
-7.712780e-02
+-0.1415703
 </td>
 <td style="text-align:center;">
-0.4968805
+0.4925608
 </td>
 </tr>
 <tr>
@@ -23302,13 +23305,13 @@ min
 0.0034985
 </td>
 <td style="text-align:center;">
--0.1383939
+-0.1079040
 </td>
 <td style="text-align:center;">
--0.0373231
+-0.0365704
 </td>
 <td style="text-align:center;">
--1.079566e+05
+-66.4267037
 </td>
 <td style="text-align:center;">
 0.0000000
@@ -23331,16 +23334,16 @@ Q25
 0.0073836
 </td>
 <td style="text-align:center;">
--0.0154931
+-0.0138593
 </td>
 <td style="text-align:center;">
--0.0096181
+-0.0093635
 </td>
 <td style="text-align:center;">
--2.262469e+00
+-1.7410804
 </td>
 <td style="text-align:center;">
-0.0109665
+0.0259373
 </td>
 </tr>
 <tr>
@@ -23360,16 +23363,16 @@ Q50
 0.0094724
 </td>
 <td style="text-align:center;">
--0.0001832
+0.0008993
 </td>
 <td style="text-align:center;">
--0.0066998
+-0.0068526
 </td>
 <td style="text-align:center;">
-2.899300e-02
+-0.1349773
 </td>
 <td style="text-align:center;">
-0.4884351
+0.5536728
 </td>
 </tr>
 <tr>
@@ -23389,16 +23392,16 @@ Q75
 0.0125296
 </td>
 <td style="text-align:center;">
-0.0145294
+0.0127675
 </td>
 <td style="text-align:center;">
--0.0044737
+-0.0048197
 </td>
 <td style="text-align:center;">
-2.291557e+00
+1.9462790
 </td>
 <td style="text-align:center;">
-0.9881648
+0.9590260
 </td>
 </tr>
 <tr>
@@ -23418,13 +23421,13 @@ max
 0.0384205
 </td>
 <td style="text-align:center;">
-0.1042683
+0.1080476
 </td>
 <td style="text-align:center;">
-0.0030333
+-0.0004355
 </td>
 <td style="text-align:center;">
-3.134689e+04
+91.0079405
 </td>
 <td style="text-align:center;">
 1.0000000
@@ -23453,10 +23456,10 @@ mean
 -0.0076723
 </td>
 <td style="text-align:center;">
--7.174415e-01
+0.1489364
 </td>
 <td style="text-align:center;">
-0.4972898
+0.4986151
 </td>
 </tr>
 </tbody>
@@ -23481,7 +23484,7 @@ Sig_Percent
 Mkt-RF
 </td>
 <td style="text-align:center;">
-0.2920998
+0.2640145
 </td>
 </tr>
 <tr>
@@ -23489,7 +23492,7 @@ Mkt-RF
 SMB
 </td>
 <td style="text-align:center;">
-0.3229159
+0.3074141
 </td>
 </tr>
 <tr>
@@ -23497,7 +23500,7 @@ SMB
 HML
 </td>
 <td style="text-align:center;">
-0.3482673
+0.3164557
 </td>
 </tr>
 <tr>
@@ -23505,7 +23508,7 @@ HML
 RMW
 </td>
 <td style="text-align:center;">
-0.3125318
+0.3110307
 </td>
 </tr>
 <tr>
@@ -23513,7 +23516,7 @@ RMW
 CMA
 </td>
 <td style="text-align:center;">
-0.3097837
+0.2839060
 </td>
 </tr>
 </tbody>
@@ -25547,6 +25550,13 @@ From the figures above, it seems that with longer panel:
 
 For any given length of Panel, ACL panel regression can produce lambda
 with relatively low risk.
+
+### S4-6-5 Plot Comparison when Estimates are Different
+
+In this section, we will plot regressions again but indicating where
+second step regression estimates are different.
+
+![](ECC_files/figure-gfm/Diff_estimate_Plots-1.png)<!-- -->![](ECC_files/figure-gfm/Diff_estimate_Plots-2.png)<!-- -->![](ECC_files/figure-gfm/Diff_estimate_Plots-3.png)<!-- -->![](ECC_files/figure-gfm/Diff_estimate_Plots-4.png)<!-- -->
 
 # S5 Equity Cost of Captial
 

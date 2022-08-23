@@ -5138,7 +5138,7 @@ Now, let's compare the long-regression lambdas with the original second-path res
 
 ```{r Long_vs_SP, cache = TRUE}
 # This is a table for Long regression coefficient result comparing with Original Second pass regression
-inner_join(
+Long_vs_SP <- inner_join(
   inner_join(Long_result %>%
           pivot_longer(-date, names_to = "Factors", values_to = "Long_Estimate"),
         Long_se %>%
@@ -5152,7 +5152,9 @@ inner_join(
   mutate(Diff_Estimate = Long_Estimate - Original_Estimate,
          `Diff_Std. Error` = `Long_Std. Error` - `Original_Std. Error`,
          Diff_t_stat = Diff_Estimate/`Diff_Std. Error`,
-         Diff_P_value = pt(Diff_t_stat, df = 2*(nrow(Long_result) - 1), lower.tail = FALSE)) %>%
+         Diff_P_value = pt(Diff_t_stat, df = 2*(nrow(Long_result) - 1), lower.tail = FALSE))
+
+Long_vs_SP %>%
   pivot_longer(-c(date,Factors), names_to = "Type", values_to = "Values") %>%
   mutate(Type = factor(Type, levels = unique(.$Type)),
          Factors = factor(Factors, levels = unique(.$Factors))) %>%
@@ -5172,21 +5174,7 @@ inner_join(
   collapse_rows(columns = 1:2)
 
 # This is a table for Long regression coefficient result comparing with Original Second pass regression percentage of significantly different coefficients
-inner_join(
-  inner_join(Long_result %>%
-          pivot_longer(-date, names_to = "Factors", values_to = "Long_Estimate"),
-        Long_se %>%
-          pivot_longer(-date, names_to = "Factors", values_to = "Long_Std. Error")) %>%
-    subset(!(Factors %in% c("Periodic", "Noise"))),
-  inner_join(FM_FF5 %>%
-               pivot_longer(-date, names_to = "Factors", values_to = "Original_Estimate"),
-             FM_FF5_Error %>%
-               pivot_longer(-date, names_to = "Factors", values_to = "Original_Std. Error"))
-  ) %>%
-  mutate(Diff_Estimate = Long_Estimate - Original_Estimate,
-         `Diff_Std. Error` = `Long_Std. Error` - `Original_Std. Error`,
-         Diff_t_stat = Diff_Estimate/`Diff_Std. Error`,
-         Diff_P_value = pt(Diff_t_stat, df = 2*(nrow(Long_result) - 1), lower.tail = FALSE)) %>%
+Long_vs_SP %>%
   mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
   select(c(Factors,Diff_P_value)) %>%
   group_by(Factors) %>%
@@ -5203,7 +5191,7 @@ Next, let's compare the long-regression lambdas with the ACL second-path result:
 
 ```{r Long_vs_ACL, cache = TRUE}
 # This is a table for Long regression coefficient result comparing with ACL regression
-inner_join(
+Long_vs_ACL <- inner_join(
   inner_join(Long_result %>%
           pivot_longer(-date, names_to = "Factors", values_to = "Long_Estimate"),
         Long_se %>%
@@ -5217,7 +5205,9 @@ inner_join(
   mutate(Diff_Estimate = Long_Estimate - ACL_Estimate,
          `Diff_Std. Error` = `Long_Std. Error` - `ACL_Std. Error`,
          Diff_t_stat = Diff_Estimate/`Diff_Std. Error`,
-         Diff_P_value = pt(Diff_t_stat, df = 2*(nrow(Long_result) - 1), lower.tail = FALSE)) %>%
+         Diff_P_value = pt(Diff_t_stat, df = 2*(nrow(Long_result) - 1), lower.tail = FALSE))
+
+Long_vs_ACL %>%
   pivot_longer(-c(date,Factors), names_to = "Type", values_to = "Values") %>%
   mutate(Type = factor(Type, levels = unique(.$Type)),
          Factors = factor(Factors, levels = unique(.$Factors))) %>%
@@ -5237,21 +5227,7 @@ inner_join(
   collapse_rows(columns = 1:2)
 
 # This is a table for Long regression coefficient result comparing with Original Second pass regression percentage of significantly different coefficients
-inner_join(
-  inner_join(Long_result %>%
-          pivot_longer(-date, names_to = "Factors", values_to = "Long_Estimate"),
-        Long_se %>%
-          pivot_longer(-date, names_to = "Factors", values_to = "Long_Std. Error")) %>%
-    subset(!(Factors %in% c("Periodic", "Noise"))),
-  inner_join(Aux_result_Trend %>%
-               pivot_longer(-date, names_to = "Factors", values_to = "ACL_Estimate"),
-             Aux_se_Trend %>%
-               pivot_longer(-date, names_to = "Factors", values_to = "ACL_Std. Error"))
-  ) %>%
-  mutate(Diff_Estimate = Long_Estimate - ACL_Estimate,
-         `Diff_Std. Error` = `Long_Std. Error` - `ACL_Std. Error`,
-         Diff_t_stat = Diff_Estimate/`Diff_Std. Error`,
-         Diff_P_value = pt(Diff_t_stat, df = 2*(nrow(Long_result) - 1), lower.tail = FALSE)) %>%
+Long_vs_ACL %>%
   mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
   select(c(Factors,Diff_P_value)) %>%
   group_by(Factors) %>%
@@ -5268,7 +5244,7 @@ Finally, let's compare the ACL-regression lambdas with the original second-path 
 
 ```{r Original_vs_ACL, cache = TRUE}
 # This is a table for Original FM regression coefficient result comparing with ACL regression
-inner_join(
+Original_vs_ACL <- inner_join(
   inner_join(FM_FF5 %>%
                pivot_longer(-date, names_to = "Factors", values_to = "Original_Estimate"),
              FM_FF5_Error %>%
@@ -5281,7 +5257,9 @@ inner_join(
   mutate(Diff_Estimate = Original_Estimate - ACL_Estimate,
          `Diff_Std. Error` = `Original_Std. Error` - `ACL_Std. Error`,
          Diff_t_stat = Diff_Estimate/`Diff_Std. Error`,
-         Diff_P_value = pt(Diff_t_stat, df = 2*(nrow(Long_result) - 1), lower.tail = FALSE)) %>%
+         Diff_P_value = pt(Diff_t_stat, df = 2*(nrow(Long_result) - 1), lower.tail = FALSE))
+
+Original_vs_ACL %>%
   pivot_longer(-c(date,Factors), names_to = "Type", values_to = "Values") %>%
   mutate(Type = factor(Type, levels = unique(.$Type)),
          Factors = factor(Factors, levels = unique(.$Factors))) %>%
@@ -5301,20 +5279,7 @@ inner_join(
   collapse_rows(columns = 1:2)
 
 # This is a table for Original FM regression coefficient result comparing with Original Second pass regression percentage of significantly different coefficients
-inner_join(
-  inner_join(FM_FF5 %>%
-               pivot_longer(-date, names_to = "Factors", values_to = "Original_Estimate"),
-             FM_FF5_Error %>%
-               pivot_longer(-date, names_to = "Factors", values_to = "Original_Std. Error")),
-  inner_join(Aux_result_Trend %>%
-               pivot_longer(-date, names_to = "Factors", values_to = "ACL_Estimate"),
-             Aux_se_Trend %>%
-               pivot_longer(-date, names_to = "Factors", values_to = "ACL_Std. Error"))
-) %>%
-  mutate(Diff_Estimate = Original_Estimate - ACL_Estimate,
-         `Diff_Std. Error` = `Original_Std. Error` - `ACL_Std. Error`,
-         Diff_t_stat = Diff_Estimate/`Diff_Std. Error`,
-         Diff_P_value = pt(Diff_t_stat, df = 2*(nrow(Long_result) - 1), lower.tail = FALSE)) %>%
+Original_vs_ACL %>%
   mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
   select(c(Factors,Diff_P_value)) %>%
   group_by(Factors) %>%
@@ -5672,6 +5637,140 @@ From the figures above, it seems that with longer panel:
 2. the standard error of ACL and Fama Macbeth regression are converging
 
 For any given length of Panel, ACL panel regression can produce lambda with relatively low risk.
+
+
+
+
+### S4-6-5 Plot Comparison when Estimates are Different
+
+In this section, we will plot regressions again but indicating where second step regression estimates are different.
+
+```{r Diff_estimate_Plots, cache = TRUE}
+# First, find the different estimates
+Long_vs_ACL_Diff <- Long_vs_ACL %>%
+  subset(Diff_P_value <= 0.05) %>%
+  mutate(Factors = factor(Factors, levels = unique(.$Factors)),
+         date = transDate(date)) %>%
+  group_by(Factors) %>%
+  select(date, Factors)
+
+Long_vs_SP_Diff <- Long_vs_SP %>%
+  subset(Diff_P_value <= 0.05) %>%
+  mutate(Factors = factor(Factors, levels = unique(.$Factors)),
+         date = transDate(date)) %>%
+  group_by(Factors) %>%
+  select(date, Factors)
+
+Original_vs_ACL_Diff <- Original_vs_ACL %>%
+  subset(Diff_P_value <= 0.05) %>%
+  mutate(Factors = factor(Factors, levels = unique(.$Factors)),
+         date = transDate(date)) %>%
+  group_by(Factors) %>%
+  select(date, Factors)
+  
+
+# First, plot the factor data
+FF5 %>%
+  select(-RF) %>%
+  pivot_longer(-date, names_to = "Factors", values_to = "Return") %>%
+  mutate(date = as.numeric(date)) %>%
+  subset(date %in% Long_vs_ACL$date) %>%
+  mutate(Factors = factor(Factors, levels = unique(.$Factors)),
+         date = transDate(date)) %>%
+  group_by(Factors) %>%
+  ggplot() +
+  geom_line(aes(date, Return)) +
+  geom_rect(data=Long_vs_ACL_Diff, aes(xmin=date-16, xmax=date+16, ymin=-Inf, ymax=+Inf, fill='red'), alpha=0.35) +
+  geom_rect(data=Long_vs_SP_Diff, aes(xmin=date-16, xmax=date+16, ymin=-Inf, ymax=+Inf, fill='blue'), alpha=0.35) +
+  geom_rect(data=Original_vs_ACL_Diff, aes(xmin=date-16, xmax=date+16, ymin=-Inf, ymax=+Inf, fill='green'), alpha=0.35) +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Fama French 5 Factor Plots and when Model Estimates are Different",
+       x = "date", y = "Return") +
+  scale_fill_identity(name = "Different Estimates",
+                       breaks = c("red", "blue", "green"),
+                       labels = c("Long vs. ACL", "Long vs. Original", "Original vs. ACL"),
+                       guide = "legend") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+
+# Next, plot the Noise Auxiliary result data
+Aux_result_Noise %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Pi") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  group_by(Factors) %>%
+  ggplot() +
+  geom_line(aes(date, Pi)) +
+  geom_rect(data=Long_vs_ACL_Diff, aes(xmin=date-16, xmax=date+16, ymin=-Inf, ymax=+Inf, fill='red'), alpha=0.35) +
+  geom_rect(data=Long_vs_SP_Diff, aes(xmin=date-16, xmax=date+16, ymin=-Inf, ymax=+Inf, fill='blue'), alpha=0.35) +
+  geom_rect(data=Original_vs_ACL_Diff, aes(xmin=date-16, xmax=date+16, ymin=-Inf, ymax=+Inf, fill='green'), alpha=0.35) +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Noise Auxiliary Result Plots and when Model Estimates are Different",
+       x = "date", y = "Return") +
+  scale_fill_identity(name = "Different Estimates",
+                       breaks = c("red", "blue", "green"),
+                       labels = c("Long vs. ACL", "Long vs. Original", "Original vs. ACL"),
+                       guide = "legend") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+
+# Next, plot the Periodic Auxiliary result data
+Aux_result %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Pi") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  group_by(Factors) %>%
+  ggplot() +
+  geom_line(aes(date, Pi)) +
+  geom_rect(data=Long_vs_ACL_Diff, aes(xmin=date-16, xmax=date+16, ymin=-Inf, ymax=+Inf, fill='red'), alpha=0.35) +
+  geom_rect(data=Long_vs_SP_Diff, aes(xmin=date-16, xmax=date+16, ymin=-Inf, ymax=+Inf, fill='blue'), alpha=0.35) +
+  geom_rect(data=Original_vs_ACL_Diff, aes(xmin=date-16, xmax=date+16, ymin=-Inf, ymax=+Inf, fill='green'), alpha=0.35) +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Periodic Auxiliary Result Plots and when Model Estimates are Different",
+       x = "date", y = "Return") +
+  scale_fill_identity(name = "Different Estimates",
+                       breaks = c("red", "blue", "green"),
+                       labels = c("Long vs. ACL", "Long vs. Original", "Original vs. ACL"),
+                       guide = "legend") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+
+# Next, plot the ACL result data
+Aux_result_Trend %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Pi") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  group_by(Factors) %>%
+  ggplot() +
+  geom_line(aes(date, Pi)) +
+  geom_rect(data=Long_vs_ACL_Diff, aes(xmin=date-16, xmax=date+16, ymin=-Inf, ymax=+Inf, fill='red'), alpha=0.35) +
+  geom_rect(data=Long_vs_SP_Diff, aes(xmin=date-16, xmax=date+16, ymin=-Inf, ymax=+Inf, fill='blue'), alpha=0.35) +
+  geom_rect(data=Original_vs_ACL_Diff, aes(xmin=date-16, xmax=date+16, ymin=-Inf, ymax=+Inf, fill='green'), alpha=0.35) +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "ACL Result Plots and when Model Estimates are Different",
+       x = "date", y = "Return") +
+  scale_fill_identity(name = "Different Estimates",
+                       breaks = c("red", "blue", "green"),
+                       labels = c("Long vs. ACL", "Long vs. Original", "Original vs. ACL"),
+                       guide = "legend") +
+  theme(plot.title = element_text(hjust=0.5),
+        legend.position = c(0.8, 0.2))
+
+```
 
 
 

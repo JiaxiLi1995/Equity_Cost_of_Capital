@@ -25517,6 +25517,29 @@ with
 ![\hat{\beta}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7B%5Cbeta%7D "\hat{\beta}")
 and would introduce a bias to the second-step regression.
 
+Finally, I conduct a panel regression for the long regression:
+
+![T\_{i,t} = \alpha + \beta F\_{i,t}, + \gamma P\_{i,t} + \delta N\_{i,t} + \epsilon](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;T_%7Bi%2Ct%7D%20%3D%20%5Calpha%20%2B%20%5Cbeta%20F_%7Bi%2Ct%7D%2C%20%2B%20%5Cgamma%20P_%7Bi%2Ct%7D%20%2B%20%5Cdelta%20N_%7Bi%2Ct%7D%20%2B%20%5Cepsilon "T_{i,t} = \alpha + \beta F_{i,t}, + \gamma P_{i,t} + \delta N_{i,t} + \epsilon")
+
+    ## 
+    ## t test of coefficients:
+    ## 
+    ##                Estimate  Std. Error t value  Pr(>|t|)    
+    ## (Intercept)  7.6244e-03  4.9147e-04 15.5133 < 2.2e-16 ***
+    ## Seasonal    -8.8063e-03  4.0389e-03 -2.1804  0.029239 *  
+    ## Noise        3.3847e-02  2.6970e-03 12.5500 < 2.2e-16 ***
+    ## `Mkt-RF`    -7.8442e-04  5.0161e-04 -1.5638  0.117872    
+    ## SMB          1.6452e-03  2.9398e-04  5.5964  2.21e-08 ***
+    ## HML          8.7311e-05  2.6960e-04  0.3239  0.746047    
+    ## RMW          6.2367e-04  2.1586e-04  2.8893  0.003865 ** 
+    ## CMA          4.1487e-05  2.2337e-04  0.1857  0.852661    
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+It seems that overall, the periodic(seasonal) component and Noise
+component are not orthogonal to the Trend. This is a result due to our
+local smoothing method.
+
 ### S4-6-4 Second Pass Panel Regression Comparison
 
 Now, we would like to compare the original second pass regression

@@ -7,3 +7,16 @@ Equity_Cost_of_Capital.Rproj
 ECC_ahead_cache
 Norms_Percent.csv
 Lambda_SE_Percent.csv
+Original_vs_ACL_Diff.csv
+Aux_p_value_Noise.csv
+ACL_result.csv
+Aux_p_value_Periodic.csv
+Aux_result_Noise.csv
+Aux_result_Periodic.csv
+FF5.csv
+FM_FF5.csv
+FM_FF5_p_value.csv
+Long_p_value.csv
+Long_result.csv
+Long_vs_ACL_Diff.csv
+Long_vs_SP_Diff.csv

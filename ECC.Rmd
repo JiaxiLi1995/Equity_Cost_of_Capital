@@ -5293,6 +5293,18 @@ Original_vs_ACL %>%
 It seems that 30\% of the time, the result from original regression would be different from the ACL regression. This result is consistent with previous short regressions, which showed Period and Noise are associated with $\hat{\beta}$ and would introduce a bias to the second-step regression.
 
 
+Finally, I conduct a panel regression for the long regression:
+$$T_{i,t} = \alpha + \beta F_{i,t}, + \gamma P_{i,t} + \delta N_{i,t} + \epsilon$$
+
+```{r Long_Panel_reg, cache = TRUE}
+# Group the data and do the second pass regression
+Long_data %>%
+  lm(RP ~ . - date - Industry, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0"))
+```
+
+It seems that overall, the periodic(seasonal) component and Noise component are not orthogonal to the Trend. This is a result due to our local smoothing method.
+
 
 ### S4-6-4 Second Pass Panel Regression Comparison
 

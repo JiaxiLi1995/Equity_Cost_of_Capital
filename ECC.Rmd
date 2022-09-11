@@ -19,6 +19,7 @@ knitr::opts_chunk$set(warning = FALSE)
 # Packages
 library(here)
 library(tidyverse)
+library(readxl)
 library(broom)
 library(rollRegres)
 library(kableExtra)
@@ -2379,7 +2380,7 @@ Port_FF5 %>%
         plot.subtitle = element_text(hjust=0.5))
 ```
 
-```{r save_decomposed_data, eval=TRUE}
+```{r save_decomposed_data, eval=FALSE}
 write.csv(Port_FF5_STL_s7_norobust, here("data/Filtered_RP.csv"), na = "",  row.names = FALSE)
 ```
 
@@ -2389,6 +2390,8 @@ write.csv(Port_FF5_STL_s7_norobust, here("data/Filtered_RP.csv"), na = "",  row.
 Now we estimate the strength of trend and strength of seasonality. The Strength of the trend is defined as:
 
 $$F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})$$
+
+The Strength of the seasonality (periodic) is defined as:
 
 $$F_S = max(0,1-\frac{Var(R_t)}{Var(S_t+R_t)})$$
 
@@ -5797,6 +5800,89 @@ The black lines on the plots are:
 4. The coefficients of ACL Regression: T = a + b Beta + error
 
 
+## S4-7 Other Test Portfolios under Filtering
+
+In this session, we will apply the filter again to a new set of test portfolios. Lu Zhang at Ohio State has provided a huge amount of these test portfolios, and breaks them into some categories. We selected some of these portfolios: Friction	(30), Intangible (60), Investment (81), Profitability (66), VVG (63).
+
+### S4-7-1 Strength of each component
+
+First, we would like to see whether a strong periodic component is common in all testing portfolios.
+
+The Strength of the trend is defined as:
+
+$$F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})$$
+
+The Strength of the seasonality (periodic) is defined as:
+
+$$F_S = max(0,1-\frac{Var(R_t)}{Var(S_t+R_t)})$$
+
+```{r Other_Port_Strength, cache = TRUE}
+# Load all the other portfolios
+Other_Port <- rbind(
+  read_excel(here("data/Test_Ports/Frictions_test_portfolios_090322.xlsx")) %>%
+    mutate(Type = "Friction") %>%
+    pivot_longer(-c(dateym, Type), names_to = "Port", values_to = "Return"),
+  read_excel(here("data/Test_Ports/Intangibles_test_portfolios_090322.xlsx")) %>%
+    mutate(Type = "Intangible") %>%
+    pivot_longer(-c(dateym, Type), names_to = "Port", values_to = "Return"),
+  read_excel(here("data/Test_Ports/Investment_test_portfolios_090222.xlsx")) %>%
+    mutate(Type = "Investment") %>%
+    pivot_longer(-c(dateym, Type), names_to = "Port", values_to = "Return"),
+  read_excel(here("data/Test_Ports/Profitability_test_portfolios_090322.xlsx")) %>%
+    mutate(Type = "Profitability") %>%
+    pivot_longer(-c(dateym, Type), names_to = "Port", values_to = "Return"),
+  read_excel(here("data/Test_Ports/VVG_test_portfolios_090222.xlsx")) %>%
+    mutate(Type = "VVG") %>%
+    pivot_longer(-c(dateym, Type), names_to = "Port", values_to = "Return")) %>%
+  na.omit() %>%
+  rename(date = dateym)
+
+# STL method with s_window = 7, no robust weight
+Other_Port_STL_s7_norobust <- Other_Port %>%
+  subset(select = c(date, Port, Type, Return)) %>%
+  group_by(Port) %>%
+  do(model = stl_tibble(., "date", "Return")) %>%
+  .$model %>%
+  do.call(what = rbind.data.frame)
+
+# Strength of all portfolios
+Other_Port_Component_Strength <- Other_Port_STL_s7_norobust %>%
+  subset(select = -c(x, Return)) %>%
+  pivot_wider(names_from = "component", values_from = "y") %>%
+  group_by(Port, Type) %>%
+  summarise(FT = max(0, 1-var(Noise)/var(Noise+Trend)),
+            FS = max(0, 1-var(Noise)/var(Noise+Seasonal))) %>%
+  subset(select = c(Type, Port, FT, FS)) %>%
+  rename(`Strength of Trend` = FT,
+         `Strength of Periodic` = FS)
+
+# Create a table showing the percentage of portfolios have larger strenth of periodic
+Other_Port_Component_Strength %>%
+  mutate(`Strong Period` = `Strength of Trend` < `Strength of Periodic`) %>%
+  group_by(Type) %>%
+  summarise(Percentage = mean(`Strong Period`),
+            Number = n()) %>%
+  mutate(Percentage = scales::label_percent()(Percentage)) %>%
+  kable(align = "c", caption = "Strength of Period > Strength of Trend") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T)
+
+# Save as csv
+# write_csv(Other_Port_Component_Strength, "Other_Port_Component_Strength.csv")
+
+# Plot them
+Other_Port_Component_Strength %>%
+  ggplot() +
+  geom_abline(intercept = 0, slope = 1, linetype = "dashed", size = 0.75) +
+  geom_point(aes(`Strength of Trend`, `Strength of Periodic`, color = Type)) +
+  coord_cartesian(xlim = c(0.1, 0.45), ylim = c(0.1, 0.45)) +
+  labs(title= "Strength of Components for other Test Portfolios") + 
+  theme(plot.title = element_text(hjust=0.5))
+
+
+```
+
+As the table suggests, all of the test portfolios we have suffer from strong periodic component (stronger than trend strength). This shows that the ACL regression can be used in the general setting of ECC estimation.
 
 # S5 Equity Cost of Captial
 

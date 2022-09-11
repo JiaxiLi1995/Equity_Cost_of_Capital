@@ -116,6 +116,12 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
         -   <a href="#s4-6-5-plot-comparison-when-estimates-are-different"
             id="toc-s4-6-5-plot-comparison-when-estimates-are-different">S4-6-5 Plot
             Comparison when Estimates are Different</a>
+    -   <a href="#s4-7-other-test-portfolios-under-filtering"
+        id="toc-s4-7-other-test-portfolios-under-filtering">S4-7 Other Test
+        Portfolios under Filtering</a>
+        -   <a href="#s4-7-1-strength-of-each-component"
+            id="toc-s4-7-1-strength-of-each-component">S4-7-1 Strength of each
+            component</a>
 -   <a href="#s5-equity-cost-of-captial"
     id="toc-s5-equity-cost-of-captial">S5 Equity Cost of Captial</a>
     -   <a href="#s5-1-estimated-equity-cost-of-captial"
@@ -11382,6 +11388,8 @@ Strength of the trend is defined as:
 
 ![F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;F_T%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28T_t%2BR_t%29%7D%29 "F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})")
 
+The Strength of the seasonality (periodic) is defined as:
+
 ![F_S = max(0,1-\frac{Var(R_t)}{Var(S_t+R_t)})](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;F_S%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28S_t%2BR_t%29%7D%29 "F_S = max(0,1-\frac{Var(R_t)}{Var(S_t+R_t)})")
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -16035,151 +16043,151 @@ V9
 FS
 </td>
 <td style="text-align:center;">
-0.2973625
+0.2634219
 </td>
 <td style="text-align:center;">
-0.2667574
+0.3001354
 </td>
 <td style="text-align:center;">
-0.2812470
+0.2798679
 </td>
 <td style="text-align:center;">
-0.3267244
+0.2708604
 </td>
 <td style="text-align:center;">
-0.2660506
+0.2743259
 </td>
 <td style="text-align:center;">
-0.3174261
+0.2603544
 </td>
 <td style="text-align:center;">
-0.3184409
+0.2790762
 </td>
 <td style="text-align:center;">
-0.3155632
+0.2860069
 </td>
 <td style="text-align:center;">
-0.3179214
+0.2654510
 </td>
 <td style="text-align:center;">
-0.3052934
+0.2885707
 </td>
 <td style="text-align:center;">
-0.3154350
+0.2560516
 </td>
 <td style="text-align:center;">
-0.2858016
+0.2772037
 </td>
 <td style="text-align:center;">
-0.2918008
+0.2848788
 </td>
 <td style="text-align:center;">
-0.2779253
+0.2772704
 </td>
 <td style="text-align:center;">
-0.2958378
+0.3140011
 </td>
 <td style="text-align:center;">
-0.2792435
+0.3012527
 </td>
 <td style="text-align:center;">
-0.2859368
+0.2931627
 </td>
 <td style="text-align:center;">
-0.3094686
+0.2989929
 </td>
 <td style="text-align:center;">
-0.2915093
+0.2758958
 </td>
 <td style="text-align:center;">
-0.3067241
+0.2926436
 </td>
 <td style="text-align:center;">
-0.3119979
+0.2982269
 </td>
 <td style="text-align:center;">
-0.2761473
+0.2636153
 </td>
 <td style="text-align:center;">
-0.2887624
+0.2887117
 </td>
 <td style="text-align:center;">
-0.2822443
+0.2732442
 </td>
 <td style="text-align:center;">
-0.2933295
+0.2814349
 </td>
 <td style="text-align:center;">
-0.2795010
+0.2816012
 </td>
 <td style="text-align:center;">
-0.2930222
+0.2665864
 </td>
 <td style="text-align:center;">
-0.3358200
+0.2921500
 </td>
 <td style="text-align:center;">
-0.2877118
+0.2998514
 </td>
 <td style="text-align:center;">
-0.3025020
+0.2980622
 </td>
 <td style="text-align:center;">
-0.3273754
+0.2729467
 </td>
 <td style="text-align:center;">
-0.2795871
+0.3042912
 </td>
 <td style="text-align:center;">
-0.2831967
+0.2534946
 </td>
 <td style="text-align:center;">
-0.3148087
+0.3012737
 </td>
 <td style="text-align:center;">
-0.3056720
+0.3050266
 </td>
 <td style="text-align:center;">
-0.2958208
+0.2860880
 </td>
 <td style="text-align:center;">
-0.2888257
+0.3037908
 </td>
 <td style="text-align:center;">
-0.3185029
+0.2899671
 </td>
 <td style="text-align:center;">
-0.3299772
+0.2852088
 </td>
 <td style="text-align:center;">
-0.3289958
+0.3160749
 </td>
 <td style="text-align:center;">
-0.3160440
+0.2869484
 </td>
 <td style="text-align:center;">
-0.3018819
+0.2881558
 </td>
 <td style="text-align:center;">
-0.2930727
+0.2750379
 </td>
 <td style="text-align:center;">
-0.2831307
+0.2870901
 </td>
 <td style="text-align:center;">
-0.2775073
+0.3021325
 </td>
 <td style="text-align:center;">
-0.2982922
+0.3074663
 </td>
 <td style="text-align:center;">
-0.2815174
+0.3134360
 </td>
 <td style="text-align:center;">
-0.2563318
+0.2990491
 </td>
 <td style="text-align:center;">
-0.2915774
+0.3077191
 </td>
 </tr>
 <tr>
@@ -16187,151 +16195,151 @@ FS
 FT
 </td>
 <td style="text-align:center;">
-0.1312793
+0.1780013
 </td>
 <td style="text-align:center;">
-0.1425082
+0.1724956
 </td>
 <td style="text-align:center;">
-0.1637551
+0.1551467
 </td>
 <td style="text-align:center;">
-0.1320510
+0.1678195
 </td>
 <td style="text-align:center;">
-0.1474124
+0.1837961
 </td>
 <td style="text-align:center;">
-0.1567196
+0.1499207
 </td>
 <td style="text-align:center;">
-0.1569543
+0.1962995
 </td>
 <td style="text-align:center;">
-0.1504137
+0.1874131
 </td>
 <td style="text-align:center;">
-0.1563358
+0.1935601
 </td>
 <td style="text-align:center;">
-0.1624479
+0.1798238
 </td>
 <td style="text-align:center;">
-0.1938685
+0.1896363
 </td>
 <td style="text-align:center;">
-0.1631372
+0.2170076
 </td>
 <td style="text-align:center;">
-0.1460869
+0.1500673
 </td>
 <td style="text-align:center;">
-0.1700280
+0.1820561
 </td>
 <td style="text-align:center;">
-0.1679171
+0.1664470
 </td>
 <td style="text-align:center;">
-0.1511400
+0.1514300
 </td>
 <td style="text-align:center;">
-0.1641910
+0.1592540
 </td>
 <td style="text-align:center;">
-0.1405327
+0.1845145
 </td>
 <td style="text-align:center;">
-0.1578352
+0.1486655
 </td>
 <td style="text-align:center;">
-0.1822098
+0.1810209
 </td>
 <td style="text-align:center;">
-0.1961669
+0.1846337
 </td>
 <td style="text-align:center;">
-0.1512989
+0.1649288
 </td>
 <td style="text-align:center;">
-0.1314109
+0.1618491
 </td>
 <td style="text-align:center;">
-0.1671032
+0.1666709
 </td>
 <td style="text-align:center;">
-0.1505182
+0.1811619
 </td>
 <td style="text-align:center;">
-0.1789303
+0.2015198
 </td>
 <td style="text-align:center;">
-0.1235336
+0.1358103
 </td>
 <td style="text-align:center;">
-0.1562375
+0.1976629
 </td>
 <td style="text-align:center;">
-0.1336336
+0.1949679
 </td>
 <td style="text-align:center;">
-0.1656643
+0.1976755
 </td>
 <td style="text-align:center;">
-0.1723743
+0.1725237
 </td>
 <td style="text-align:center;">
-0.1738549
+0.1920053
 </td>
 <td style="text-align:center;">
-0.1436565
+0.1510259
 </td>
 <td style="text-align:center;">
-0.1315427
+0.1895360
 </td>
 <td style="text-align:center;">
-0.1600513
+0.1834563
 </td>
 <td style="text-align:center;">
-0.1898100
+0.1509972
 </td>
 <td style="text-align:center;">
-0.1468081
+0.1617413
 </td>
 <td style="text-align:center;">
-0.1602792
+0.1391560
 </td>
 <td style="text-align:center;">
-0.1844403
+0.1557675
 </td>
 <td style="text-align:center;">
-0.1814154
+0.1490231
 </td>
 <td style="text-align:center;">
-0.1486883
+0.1658692
 </td>
 <td style="text-align:center;">
-0.1774202
+0.1758902
 </td>
 <td style="text-align:center;">
-0.1839150
+0.1693830
 </td>
 <td style="text-align:center;">
-0.1906410
+0.1925448
 </td>
 <td style="text-align:center;">
-0.1599922
+0.1444220
 </td>
 <td style="text-align:center;">
-0.1687835
+0.1905618
 </td>
 <td style="text-align:center;">
-0.1461885
+0.1769553
 </td>
 <td style="text-align:center;">
-0.1608500
+0.1565983
 </td>
 <td style="text-align:center;">
-0.2114507
+0.1483216
 </td>
 </tr>
 </tbody>
@@ -16532,151 +16540,151 @@ V9
 FS
 </td>
 <td style="text-align:center;">
-0.2974563
+0.2633867
 </td>
 <td style="text-align:center;">
-0.2667794
+0.3000740
 </td>
 <td style="text-align:center;">
-0.2811205
+0.2797678
 </td>
 <td style="text-align:center;">
-0.3266229
+0.2708732
 </td>
 <td style="text-align:center;">
-0.2659828
+0.2741302
 </td>
 <td style="text-align:center;">
-0.3173646
+0.2603395
 </td>
 <td style="text-align:center;">
-0.3183694
+0.2791576
 </td>
 <td style="text-align:center;">
-0.3156687
+0.2860439
 </td>
 <td style="text-align:center;">
-0.3179443
+0.2654983
 </td>
 <td style="text-align:center;">
-0.3053149
+0.2885143
 </td>
 <td style="text-align:center;">
-0.3155407
+0.2559847
 </td>
 <td style="text-align:center;">
-0.2859763
+0.2771378
 </td>
 <td style="text-align:center;">
-0.2918141
+0.2848144
 </td>
 <td style="text-align:center;">
-0.2778399
+0.2772531
 </td>
 <td style="text-align:center;">
-0.2958428
+0.3141172
 </td>
 <td style="text-align:center;">
-0.2790786
+0.3011748
 </td>
 <td style="text-align:center;">
-0.2858829
+0.2932418
 </td>
 <td style="text-align:center;">
-0.3095404
+0.2989611
 </td>
 <td style="text-align:center;">
-0.2915576
+0.2758803
 </td>
 <td style="text-align:center;">
-0.3066597
+0.2925153
 </td>
 <td style="text-align:center;">
-0.3120395
+0.2980870
 </td>
 <td style="text-align:center;">
-0.2761873
+0.2636707
 </td>
 <td style="text-align:center;">
-0.2887213
+0.2886450
 </td>
 <td style="text-align:center;">
-0.2822836
+0.2732799
 </td>
 <td style="text-align:center;">
-0.2932720
+0.2814798
 </td>
 <td style="text-align:center;">
-0.2795126
+0.2815420
 </td>
 <td style="text-align:center;">
-0.2930530
+0.2665829
 </td>
 <td style="text-align:center;">
-0.3357824
+0.2921599
 </td>
 <td style="text-align:center;">
-0.2877216
+0.2997897
 </td>
 <td style="text-align:center;">
-0.3025293
+0.2980505
 </td>
 <td style="text-align:center;">
-0.3274287
+0.2728517
 </td>
 <td style="text-align:center;">
-0.2796773
+0.3042208
 </td>
 <td style="text-align:center;">
-0.2831454
+0.2533593
 </td>
 <td style="text-align:center;">
-0.3148809
+0.3013007
 </td>
 <td style="text-align:center;">
-0.3057236
+0.3049950
 </td>
 <td style="text-align:center;">
-0.2958169
+0.2861031
 </td>
 <td style="text-align:center;">
-0.2886969
+0.3037808
 </td>
 <td style="text-align:center;">
-0.3184894
+0.2899034
 </td>
 <td style="text-align:center;">
-0.3300035
+0.2851871
 </td>
 <td style="text-align:center;">
-0.3290322
+0.3160852
 </td>
 <td style="text-align:center;">
-0.3160747
+0.2868628
 </td>
 <td style="text-align:center;">
-0.3018580
+0.2880006
 </td>
 <td style="text-align:center;">
-0.2930440
+0.275036
 </td>
 <td style="text-align:center;">
-0.2831196
+0.2870597
 </td>
 <td style="text-align:center;">
-0.2775227
+0.3020272
 </td>
 <td style="text-align:center;">
-0.2982824
+0.3073083
 </td>
 <td style="text-align:center;">
-0.2815070
+0.3134854
 </td>
 <td style="text-align:center;">
-0.2562649
+0.2990815
 </td>
 <td style="text-align:center;">
-0.2914519
+0.3076485
 </td>
 </tr>
 <tr>
@@ -16684,151 +16692,151 @@ FS
 FT
 </td>
 <td style="text-align:center;">
-0.1480634
+0.1871198
 </td>
 <td style="text-align:center;">
-0.1579855
+0.1844919
 </td>
 <td style="text-align:center;">
-0.1865408
+0.1608612
 </td>
 <td style="text-align:center;">
-0.1647241
+0.1587881
 </td>
 <td style="text-align:center;">
-0.1622697
+0.2521438
 </td>
 <td style="text-align:center;">
-0.1860868
+0.1632153
 </td>
 <td style="text-align:center;">
-0.1786755
+0.2012987
 </td>
 <td style="text-align:center;">
-0.2073208
+0.1998170
 </td>
 <td style="text-align:center;">
-0.1510921
+0.1969347
 </td>
 <td style="text-align:center;">
-0.2052882
+0.1852086
 </td>
 <td style="text-align:center;">
-0.2329099
+0.2533450
 </td>
 <td style="text-align:center;">
-0.1816787
+0.2450107
 </td>
 <td style="text-align:center;">
-0.1637339
+0.1715273
 </td>
 <td style="text-align:center;">
-0.2369495
+0.1998130
 </td>
 <td style="text-align:center;">
-0.1929776
+0.1788008
 </td>
 <td style="text-align:center;">
-0.2011531
+0.2105572
 </td>
 <td style="text-align:center;">
-0.1894799
+0.1622776
 </td>
 <td style="text-align:center;">
-0.1452047
+0.1948091
 </td>
 <td style="text-align:center;">
-0.1593446
+0.1699433
 </td>
 <td style="text-align:center;">
-0.2110484
+0.2322946
 </td>
 <td style="text-align:center;">
-0.2118901
+0.2303708
 </td>
 <td style="text-align:center;">
-0.1704645
+0.1981500
 </td>
 <td style="text-align:center;">
-0.1283619
+0.1676955
 </td>
 <td style="text-align:center;">
-0.1917782
+0.2119506
 </td>
 <td style="text-align:center;">
-0.1786033
+0.1733729
 </td>
 <td style="text-align:center;">
-0.1980264
+0.2355132
 </td>
 <td style="text-align:center;">
-0.1262625
+0.1630510
 </td>
 <td style="text-align:center;">
-0.1730679
+0.2054606
 </td>
 <td style="text-align:center;">
-0.1427238
+0.2040506
 </td>
 <td style="text-align:center;">
-0.1787686
+0.1943324
 </td>
 <td style="text-align:center;">
-0.2200575
+0.1633744
 </td>
 <td style="text-align:center;">
-0.2024116
+0.1967478
 </td>
 <td style="text-align:center;">
-0.1642037
+0.1658325
 </td>
 <td style="text-align:center;">
-0.1407534
+0.1863226
 </td>
 <td style="text-align:center;">
-0.1689121
+0.1881801
 </td>
 <td style="text-align:center;">
-0.2424488
+0.1463421
 </td>
 <td style="text-align:center;">
-0.2150874
+0.1664503
 </td>
 <td style="text-align:center;">
-0.2047947
+0.1582727
 </td>
 <td style="text-align:center;">
-0.2206409
+0.1754214
 </td>
 <td style="text-align:center;">
-0.2209065
+0.1720033
 </td>
 <td style="text-align:center;">
-0.1842800
+0.1746599
 </td>
 <td style="text-align:center;">
-0.1946457
+0.2008263
 </td>
 <td style="text-align:center;">
-0.2002476
+0.171372
 </td>
 <td style="text-align:center;">
-0.2537143
+0.1893007
 </td>
 <td style="text-align:center;">
-0.2016340
+0.1569539
 </td>
 <td style="text-align:center;">
-0.2377516
+0.2004413
 </td>
 <td style="text-align:center;">
-0.1587773
+0.1772307
 </td>
 <td style="text-align:center;">
-0.2008080
+0.1548268
 </td>
 <td style="text-align:center;">
-0.2675672
+0.1558446
 </td>
 </tr>
 </tbody>
@@ -16836,7 +16844,7 @@ FT
 
 ![](ECC_files/figure-gfm/Sim2-1.png)<!-- -->
 
-    ## [1] 0.5956056
+    ## [1] 0.5910278
 
 #### S4-5-2-3 Simulation with Actual Parameters and Smooth Lambdas
 
@@ -25602,6 +25610,110 @@ time series. 2. The coefficients of Noise Auxiliary Regression: N = a +
 b Beta + error 3. The coefficients of Periodic Auxiliary Regression: P =
 a + b Beta + error 4. The coefficients of ACL Regression: T = a + b
 Beta + error
+
+## S4-7 Other Test Portfolios under Filtering
+
+In this session, we will apply the filter again to a new set of test
+portfolios. Lu Zhang at Ohio State has provided a huge amount of these
+test portfolios, and breaks them into some categories. We selected some
+of these portfolios: Friction (30), Intangible (60), Investment (81),
+Profitability (66), VVG (63).
+
+### S4-7-1 Strength of each component
+
+First, we would like to see whether a strong periodic component is
+common in all testing portfolios.
+
+The Strength of the trend is defined as:
+
+![F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;F_T%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28T_t%2BR_t%29%7D%29 "F_T = max(0,1-\frac{Var(R_t)}{Var(T_t+R_t)})")
+
+The Strength of the seasonality (periodic) is defined as:
+
+![F_S = max(0,1-\frac{Var(R_t)}{Var(S_t+R_t)})](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;F_S%20%3D%20max%280%2C1-%5Cfrac%7BVar%28R_t%29%7D%7BVar%28S_t%2BR_t%29%7D%29 "F_S = max(0,1-\frac{Var(R_t)}{Var(S_t+R_t)})")
+
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Strength of Period \> Strength of Trend
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Type
+</th>
+<th style="text-align:center;">
+Percentage
+</th>
+<th style="text-align:center;">
+Number
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Friction
+</td>
+<td style="text-align:center;">
+100%
+</td>
+<td style="text-align:center;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Intangible
+</td>
+<td style="text-align:center;">
+100%
+</td>
+<td style="text-align:center;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Investment
+</td>
+<td style="text-align:center;">
+100%
+</td>
+<td style="text-align:center;">
+81
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Profitability
+</td>
+<td style="text-align:center;">
+100%
+</td>
+<td style="text-align:center;">
+66
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+VVG
+</td>
+<td style="text-align:center;">
+100%
+</td>
+<td style="text-align:center;">
+63
+</td>
+</tr>
+</tbody>
+</table>
+
+![](ECC_files/figure-gfm/Other_Port_Strength-1.png)<!-- -->
+
+As the table suggests, all of the test portfolios we have suffer from
+strong periodic component (stronger than trend strength). This shows
+that the ACL regression can be used in the general setting of ECC
+estimation.
 
 # S5 Equity Cost of Captial
 

@@ -30,6 +30,7 @@ library(lme4) # For multilevel
 library(lmtest) # For robust se
 library(sandwich) # For robust se
 library(timetk) # For expanding multiple lags
+library(lubridate)
 
 
 # Set the function to transform yyyymm to Date
@@ -4610,12 +4611,12 @@ Aux_t_stat %>%
 mean(Aux_F_test$f_p_value < 0.05)
 
 "Proportion of siginificant t statistics"
-Aux_p_value %>%
-  select(-date) %>%
-  colMeans(.<0.05)
+((Aux_p_value %>%
+    select(-date))<0.05) %>%
+  colMeans()
 ```
 
-For Periodic (Seasonal) component. based on the F-test result, we only reject the null hypothesis that the coefficients are not jointly different from 0 about half the time. Individually, we have the p-value less than 30% of the time to be less than 0.05.
+For Periodic (Seasonal) component. based on the F-test result, we only reject the null hypothesis that the coefficients are not jointly different from 0 about half the time. Individually, we have the p-value about 35% of the time to be less than 0.05.
 
 ```{r Aux_reg_Noise, cache = TRUE}
 ## Create the portfolio for aux_reg
@@ -4735,9 +4736,9 @@ Aux_t_stat_Noise %>%
 mean(Aux_F_test_Noise$f_p_value < 0.05)
 
 "Proportion of siginificant t statistics"
-Aux_p_value_Noise %>%
-  select(-date) %>%
-  colMeans(.<0.05)
+((Aux_p_value_Noise %>%
+    select(-date))<0.05) %>%
+  colMeans()
 ```
 
 We obtain similar results for noise component.
@@ -4860,12 +4861,12 @@ Aux_t_stat_Trend %>%
 mean(Aux_F_test_Trend$f_p_value < 0.05)
 
 "Proportion of siginificant t statistics"
-Aux_p_value_Trend %>%
-  select(-date) %>%
-  colMeans(.<0.05)
+((Aux_p_value_Trend %>%
+    select(-date))<0.05) %>%
+  colMeans()
 ```
 
-We obtain similar results for trend component although slightly more significant.
+We obtain different results for trend component: The market component significance happens less frequent, and the HML and CMA component significance happen more frequent. 
 
 ```{r Aux_summary, cache = TRUE}
 rbind(
@@ -5132,10 +5133,12 @@ Long_t_stat %>%
 mean(Long_F_test$f_p_value < 0.05)
 
 "Proportion of siginificant t statistics"
-Long_p_value %>%
-  select(-date) %>%
-  colMeans(.<0.05)
+((Long_p_value %>%
+    select(-date))<0.05) %>%
+  colMeans()
 ```
+
+The proportion of significant lambda numbers is closer to the ACL regression (or the trend auxiliary regression).
 
 Now, let's compare the long-regression lambdas with the original second-path result:
 
@@ -5837,17 +5840,42 @@ Other_Port <- rbind(
   na.omit() %>%
   rename(date = dateym)
 
-# STL method with s_window = 7, no robust weight
-Other_Port_STL_s7_norobust <- Other_Port %>%
-  subset(select = c(date, Port, Type, Return)) %>%
+# Join the Other portfolios and FF5
+Other_Port_FF5 <- Other_Port %>%
+  mutate(date = 100*year(date)+month(date),
+         date = as.character(date)) %>%
+  inner_join(FF5) %>%
+  # Create Risk Premium as RP
+  rename(RP = Return) %>%
+  mutate(RP = RP - RF) %>%
+  # Get rid of RF
+  subset(select = -RF) %>%
+  # Change date back to numeric
+  mutate(date = as.integer(date)) %>%
+  arrange(Port) %>%
+  # Locate the time and asset when 5-year rolling beta is possible to estimate (59 entries before, the PERMNO is the same, the date is 4 year 11 month less)
+  mutate(Selection = (Port == lag(Port,59)) & ((date == (lag(date,59)+411))|(date == lag(date,59)+499)),
+         Selection = replace_na(Selection,FALSE))
+
+# Calculate the full sample betas
+# Create the IDs for Industry
+Other_ID <- Other_Port_FF5 %>%
   group_by(Port) %>%
-  do(model = stl_tibble(., "date", "Return")) %>%
+  summarise(n = n()) %>%
+  mutate(Ind_ID = 1:length(unique(Other_Port_FF5$Port))) %>%
+  subset(select = -n)
+
+# STL method with s_window = 7, no robust weight
+Other_Port_STL_s7_norobust <- Other_Port_FF5 %>%
+  subset(select = c(date, Port, Type, RP)) %>%
+  group_by(Port) %>%
+  do(model = stl_tibble(., "date", "RP")) %>%
   .$model %>%
   do.call(what = rbind.data.frame)
 
 # Strength of all portfolios
 Other_Port_Component_Strength <- Other_Port_STL_s7_norobust %>%
-  subset(select = -c(x, Return)) %>%
+  subset(select = -c(x, RP)) %>%
   pivot_wider(names_from = "component", values_from = "y") %>%
   group_by(Port, Type) %>%
   summarise(FT = max(0, 1-var(Noise)/var(Noise+Trend)),
@@ -5883,6 +5911,959 @@ Other_Port_Component_Strength %>%
 ```
 
 As the table suggests, all of the test portfolios we have suffer from strong periodic component (stronger than trend strength). This shows that the ACL regression can be used in the general setting of ECC estimation.
+
+### S4-7-2 5-year Rolling FF5 Betas
+
+In this section, we estimate the FF5 betas applying a 5-year rolling window.
+
+
+```{r Other_Rolling_FF5, cache = TRUE}
+# Create the estimated portfolio beta matrix
+Other_Port_FF5_Betas <- Other_Port_FF5 %>%
+  rename(Alpha = RP)
+
+# apply the roll_regres to calculate the 5-year rolling beta (60 data points)
+temp_out <- roll_regres(RP ~ . -Type -Port -date -Selection, Other_Port_FF5, width = 60L)
+# Save as tibble
+temp_betas <- temp_out$coefs %>% as_tibble()
+
+# Assign them to Betas
+for (j in 4:(length(Other_Port_FF5_Betas)-1)) {
+  Other_Port_FF5_Betas[,j] <- temp_betas[,j-3]
+}
+
+# Filter the needed ones and remove Selection
+Other_Port_FF5_Betas <- Other_Port_FF5_Betas %>%
+  filter(Selection == TRUE) %>%
+  select(-Selection)
+
+```
+
+### S4-7-3 Second-pass and Auxilary Regressions
+
+In this session, we will perform the second-pass and the same set of Auxilary regressions as S4-6-1. Note that the Trend Auxilary regressoin is also the ACL regression. Orignial is referring to the Fama Macbeth second-pass regression.
+
+```{r Other_Aux_reg, cache = TRUE}
+## Create the portfolio for Other_FF5_reg
+Other_FF5_data <- Other_Port_STL_s7_norobust %>%
+  filter(component == "Original") %>%
+  subset(select = c(date, Port, y)) %>%
+  rename(RP = y) %>%
+  inner_join(Other_Port_FF5_Betas) %>%
+  select(-Alpha) %>%
+  select(-Type) %>%
+  ungroup()
+
+# Group the data and do the second pass regression
+Other_FF5_reg <- Other_FF5_data %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coefficients())
+
+# Obtain the se
+Other_FF5_reg_se <- Other_FF5_data %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "Std. Error"])
+
+# Obtain the t_stat
+Other_FF5_reg_t_stat <- Other_FF5_data %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "t value"])
+
+# Obtain the p_value
+Other_FF5_reg_p_value <- Other_FF5_data %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "Pr(>|t|)"])
+
+# perform F test p_value
+Other_FF5_reg_F_test <- Other_FF5_data %>%
+  group_by(date) %>%
+  do(f_p_value = lm(RP ~ . - date - Port, data = .) %>%
+       summary() %>%
+       .$fstatistic %>%
+       pf(q = .[1], df1 = .[2], df2 = .[3], lower.tail = FALSE) %>%
+       .["value"])
+
+# Unwrap the results
+Other_FF5_result <- do.call(rbind.data.frame, Other_FF5_reg$model) %>%
+  as_tibble()
+Other_FF5_se <- do.call(rbind.data.frame, Other_FF5_reg_se$model) %>%
+  as_tibble()
+Other_FF5_t_stat <- do.call(rbind.data.frame, Other_FF5_reg_t_stat$model) %>%
+  as_tibble()
+Other_FF5_p_value <- do.call(rbind.data.frame, Other_FF5_reg_p_value$model) %>%
+  as_tibble()
+Other_FF5_F_test <- do.call(rbind.data.frame, Other_FF5_reg_F_test$f_p_value) %>%
+  as_tibble()
+
+
+# Rename the variables
+names(Other_FF5_result) = names(FF5)[-length(FF5)]
+names(Other_FF5_result)[1] = "Pi0"
+names(Other_FF5_se) = names(FF5)[-length(FF5)]
+names(Other_FF5_se)[1] = "Pi0"
+names(Other_FF5_t_stat) = names(FF5)[-length(FF5)]
+names(Other_FF5_t_stat)[1] = "Pi0"
+names(Other_FF5_p_value) = names(FF5)[-length(FF5)]
+names(Other_FF5_p_value)[1] = "Pi0"
+names(Other_FF5_F_test) = "f_p_value"
+
+# Add in the dates
+Other_FF5_result <- cbind(Other_FF5_reg[, 1], Other_FF5_result) %>%
+  subset(select = -Pi0)
+Other_FF5_se <- cbind(Other_FF5_reg[, 1], Other_FF5_se) %>%
+  subset(select = -Pi0)
+Other_FF5_t_stat <- cbind(Other_FF5_reg[, 1], Other_FF5_t_stat) %>%
+  subset(select = -Pi0)
+Other_FF5_p_value <- cbind(Other_FF5_reg[, 1], Other_FF5_p_value) %>%
+  subset(select = -Pi0)
+Other_FF5_F_test <- cbind(Other_FF5_reg[, 1], Other_FF5_F_test)
+
+
+# Plot the Other_FF5_result
+Other_FF5_result %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Pi") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  group_by(Factors) %>%
+  ggplot(aes(date, Pi)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "FF5 Lambdas for second pass regression",
+       subtitle = "Based on Other Portfolios",
+       x = "date", y = "Pi") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust=0.5))
+
+
+# Plot the Other_FF5_t_stat
+Other_FF5_t_stat %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Pi_t_stat") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(x = Pi_t_stat)) +
+  geom_histogram(aes(y = ..density..)) +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "t Statistics for FF5 Lambdas for second pass regression",
+       subtitle = "Based on Other Portfolios",
+       x = "date", y = "Density") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust=0.5))
+
+"Proportion of siginificant F statistics"
+mean(Other_FF5_F_test$f_p_value < 0.05)
+
+"Proportion of siginificant t statistics"
+((Other_FF5_p_value %>%
+    select(-date))<0.05) %>%
+  colMeans()
+
+## Create the portfolio for Other_Aux_reg
+Other_Aux_data <- Other_Port_STL_s7_norobust %>%
+  filter(component == "Seasonal") %>%
+  subset(select = c(date, Port, y)) %>%
+  rename(RP = y) %>%
+  inner_join(Other_Port_FF5_Betas) %>%
+  select(-Alpha) %>%
+  select(-Type) %>%
+  ungroup()
+
+# Group the data and do the second pass regression
+Other_Aux_reg <- Other_Aux_data %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coefficients())
+
+# Obtain the se
+Other_Aux_reg_se <- Other_Aux_data %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "Std. Error"])
+
+# Obtain the t_stat
+Other_Aux_reg_t_stat <- Other_Aux_data %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "t value"])
+
+# Obtain the p_value
+Other_Aux_reg_p_value <- Other_Aux_data %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "Pr(>|t|)"])
+
+# perform F test p_value
+Other_Aux_reg_F_test <- Other_Aux_data %>%
+  group_by(date) %>%
+  do(f_p_value = lm(RP ~ . - date - Port, data = .) %>%
+       summary() %>%
+       .$fstatistic %>%
+       pf(q = .[1], df1 = .[2], df2 = .[3], lower.tail = FALSE) %>%
+       .["value"])
+
+# Unwrap the results
+Other_Aux_result <- do.call(rbind.data.frame, Other_Aux_reg$model) %>%
+  as_tibble()
+Other_Aux_se <- do.call(rbind.data.frame, Other_Aux_reg_se$model) %>%
+  as_tibble()
+Other_Aux_t_stat <- do.call(rbind.data.frame, Other_Aux_reg_t_stat$model) %>%
+  as_tibble()
+Other_Aux_p_value <- do.call(rbind.data.frame, Other_Aux_reg_p_value$model) %>%
+  as_tibble()
+Other_Aux_F_test <- do.call(rbind.data.frame, Other_Aux_reg_F_test$f_p_value) %>%
+  as_tibble()
+
+
+# Rename the variables
+names(Other_Aux_result) = names(FF5)[-length(FF5)]
+names(Other_Aux_result)[1] = "Pi0"
+names(Other_Aux_se) = names(FF5)[-length(FF5)]
+names(Other_Aux_se)[1] = "Pi0"
+names(Other_Aux_t_stat) = names(FF5)[-length(FF5)]
+names(Other_Aux_t_stat)[1] = "Pi0"
+names(Other_Aux_p_value) = names(FF5)[-length(FF5)]
+names(Other_Aux_p_value)[1] = "Pi0"
+names(Other_Aux_F_test) = "f_p_value"
+
+# Add in the dates
+Other_Aux_result <- cbind(Other_Aux_reg[, 1], Other_Aux_result) %>%
+  subset(select = -Pi0)
+Other_Aux_se <- cbind(Other_Aux_reg[, 1], Other_Aux_se) %>%
+  subset(select = -Pi0)
+Other_Aux_t_stat <- cbind(Other_Aux_reg[, 1], Other_Aux_t_stat) %>%
+  subset(select = -Pi0)
+Other_Aux_p_value <- cbind(Other_Aux_reg[, 1], Other_Aux_p_value) %>%
+  subset(select = -Pi0)
+Other_Aux_F_test <- cbind(Other_Aux_reg[, 1], Other_Aux_F_test)
+
+# Plot the Other_Aux_result
+Other_Aux_result %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Pi") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  group_by(Factors) %>%
+  ggplot(aes(date, Pi)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Coefficients from Auxiliary Regression for Periodic",
+       subtitle = "Based on Other Portfolios",
+       x = "date", y = "Pi") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust=0.5))
+
+
+# Plot the Other_Aux_t_stat
+Other_Aux_t_stat %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Pi_t_stat") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(x = Pi_t_stat)) +
+  geom_histogram(aes(y = ..density..)) +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "t Statistics from Auxiliary Regression for Periodic",
+       subtitle = "Based on Other Portfolios",
+       x = "date", y = "Density") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust=0.5))
+
+"Proportion of siginificant F statistics"
+mean(Other_Aux_F_test$f_p_value < 0.05)
+
+"Proportion of siginificant t statistics"
+((Other_Aux_p_value %>%
+    select(-date))<0.05) %>%
+  colMeans()
+
+
+## Create the portfolio for Other_Aux_reg_Noise
+Other_Aux_data_Noise <- Other_Port_STL_s7_norobust %>%
+  filter(component == "Noise") %>%
+  subset(select = c(date, Port, y)) %>%
+  rename(RP = y) %>%
+  inner_join(Other_Port_FF5_Betas) %>%
+  select(-Alpha) %>%
+  select(-Type) %>%
+  ungroup()
+
+# Group the data and do the second pass regression
+Other_Aux_reg_Noise <- Other_Aux_data_Noise %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coefficients())
+
+# Obtain the se
+Other_Aux_reg_se_Noise <- Other_Aux_data_Noise %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "Std. Error"])
+
+# Obtain the t_stat
+Other_Aux_reg_t_stat_Noise <- Other_Aux_data_Noise %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "t value"])
+
+# Obtain the p_value
+Other_Aux_reg_p_value_Noise <- Other_Aux_data_Noise %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "Pr(>|t|)"])
+
+# perform F test p_value
+Other_Aux_reg_F_test_Noise <- Other_Aux_data_Noise %>%
+  group_by(date) %>%
+  do(f_p_value = lm(RP ~ . - date - Port, data = .) %>%
+       summary() %>%
+       .$fstatistic %>%
+       pf(q = .[1], df1 = .[2], df2 = .[3], lower.tail = FALSE) %>%
+       .["value"])
+
+# Unwrap the results
+Other_Aux_result_Noise <- do.call(rbind.data.frame, Other_Aux_reg_Noise$model) %>%
+  as_tibble()
+Other_Aux_se_Noise <- do.call(rbind.data.frame, Other_Aux_reg_se_Noise$model) %>%
+  as_tibble()
+Other_Aux_t_stat_Noise <- do.call(rbind.data.frame, Other_Aux_reg_t_stat_Noise$model) %>%
+  as_tibble()
+Other_Aux_p_value_Noise <- do.call(rbind.data.frame, Other_Aux_reg_p_value_Noise$model) %>%
+  as_tibble()
+Other_Aux_F_test_Noise <- do.call(rbind.data.frame, Other_Aux_reg_F_test_Noise$f_p_value) %>%
+  as_tibble()
+
+
+# Rename the variables
+names(Other_Aux_result_Noise) = names(FF5)[-length(FF5)]
+names(Other_Aux_result_Noise)[1] = "Pi0"
+names(Other_Aux_se_Noise) = names(FF5)[-length(FF5)]
+names(Other_Aux_se_Noise)[1] = "Pi0"
+names(Other_Aux_t_stat_Noise) = names(FF5)[-length(FF5)]
+names(Other_Aux_t_stat_Noise)[1] = "Pi0"
+names(Other_Aux_p_value_Noise) = names(FF5)[-length(FF5)]
+names(Other_Aux_p_value_Noise)[1] = "Pi0"
+names(Other_Aux_F_test_Noise) = "f_p_value"
+
+# Add in the dates
+Other_Aux_result_Noise <- cbind(Other_Aux_reg_Noise[, 1], Other_Aux_result_Noise) %>%
+  subset(select = -Pi0)
+Other_Aux_se_Noise <- cbind(Other_Aux_reg_Noise[, 1], Other_Aux_se_Noise) %>%
+  subset(select = -Pi0)
+Other_Aux_t_stat_Noise <- cbind(Other_Aux_reg_Noise[, 1], Other_Aux_t_stat_Noise) %>%
+  subset(select = -Pi0)
+Other_Aux_p_value_Noise <- cbind(Other_Aux_reg_Noise[, 1], Other_Aux_p_value_Noise) %>%
+  subset(select = -Pi0)
+Other_Aux_F_test_Noise <- cbind(Other_Aux_reg_Noise[, 1], Other_Aux_F_test_Noise)
+
+# Plot the Other_Aux_result
+Other_Aux_result_Noise %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Pi") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  group_by(Factors) %>%
+  ggplot(aes(date, Pi)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Coefficients from Auxiliary Regression for Noise",
+       subtitle = "Based on Other Portfolios",
+       x = "date", y = "Pi") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust=0.5))
+
+
+# Plot the Other_Aux_t_stat
+Other_Aux_t_stat_Noise %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Pi_t_stat") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(x = Pi_t_stat)) +
+  geom_histogram(aes(y = ..density..)) +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "t Statistics from Auxiliary Regression for Noise",
+       subtitle = "Based on Other Portfolios",
+       x = "date", y = "Density") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust=0.5))
+
+"Proportion of siginificant F statistics"
+mean(Other_Aux_F_test_Noise$f_p_value < 0.05)
+
+"Proportion of siginificant t statistics"
+((Other_Aux_p_value_Noise %>%
+    select(-date))<0.05) %>%
+  colMeans()
+
+## Create the portfolio for Other_Aux_reg_Trend
+Other_Aux_data_Trend <- Other_Port_STL_s7_norobust %>%
+  filter(component == "Trend") %>%
+  subset(select = c(date, Port, y)) %>%
+  rename(RP = y) %>%
+  inner_join(Other_Port_FF5_Betas) %>%
+  select(-Alpha) %>%
+  select(-Type) %>%
+  ungroup()
+
+# Group the data and do the second pass regression
+Other_Aux_reg_Trend <- Other_Aux_data_Trend %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coefficients())
+
+# Obtain the se
+Other_Aux_reg_se_Trend <- Other_Aux_data_Trend %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "Std. Error"])
+
+# Obtain the t_stat
+Other_Aux_reg_t_stat_Trend <- Other_Aux_data_Trend %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "t value"])
+
+# Obtain the p_value
+Other_Aux_reg_p_value_Trend <- Other_Aux_data_Trend %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "Pr(>|t|)"])
+
+# perform F test p_value
+Other_Aux_reg_F_test_Trend <- Other_Aux_data_Trend %>%
+  group_by(date) %>%
+  do(f_p_value = lm(RP ~ . - date - Port, data = .) %>%
+       summary() %>%
+       .$fstatistic %>%
+       pf(q = .[1], df1 = .[2], df2 = .[3], lower.tail = FALSE) %>%
+       .["value"])
+
+# Unwrap the results
+Other_Aux_result_Trend <- do.call(rbind.data.frame, Other_Aux_reg_Trend$model) %>%
+  as_tibble()
+Other_Aux_se_Trend <- do.call(rbind.data.frame, Other_Aux_reg_se_Trend$model) %>%
+  as_tibble()
+Other_Aux_t_stat_Trend <- do.call(rbind.data.frame, Other_Aux_reg_t_stat_Trend$model) %>%
+  as_tibble()
+Other_Aux_p_value_Trend <- do.call(rbind.data.frame, Other_Aux_reg_p_value_Trend$model) %>%
+  as_tibble()
+Other_Aux_F_test_Trend <- do.call(rbind.data.frame, Other_Aux_reg_F_test_Trend$f_p_value) %>%
+  as_tibble()
+
+
+# Rename the variables
+names(Other_Aux_result_Trend) = names(FF5)[-length(FF5)]
+names(Other_Aux_result_Trend)[1] = "Pi0"
+names(Other_Aux_se_Trend) = names(FF5)[-length(FF5)]
+names(Other_Aux_se_Trend)[1] = "Pi0"
+names(Other_Aux_t_stat_Trend) = names(FF5)[-length(FF5)]
+names(Other_Aux_t_stat_Trend)[1] = "Pi0"
+names(Other_Aux_p_value_Trend) = names(FF5)[-length(FF5)]
+names(Other_Aux_p_value_Trend)[1] = "Pi0"
+names(Other_Aux_F_test_Trend) = "f_p_value"
+
+# Add in the dates
+Other_Aux_result_Trend <- cbind(Other_Aux_reg_Trend[, 1], Other_Aux_result_Trend) %>%
+  subset(select = -Pi0)
+Other_Aux_se_Trend <- cbind(Other_Aux_reg_Trend[, 1], Other_Aux_se_Trend) %>%
+  subset(select = -Pi0)
+Other_Aux_t_stat_Trend <- cbind(Other_Aux_reg_Trend[, 1], Other_Aux_t_stat_Trend) %>%
+  subset(select = -Pi0)
+Other_Aux_p_value_Trend <- cbind(Other_Aux_reg_Trend[, 1], Other_Aux_p_value_Trend) %>%
+  subset(select = -Pi0)
+Other_Aux_F_test_Trend <- cbind(Other_Aux_reg_Trend[, 1], Other_Aux_F_test_Trend)
+
+# Plot the Other_Aux_result
+Other_Aux_result_Trend %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Pi") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  group_by(Factors) %>%
+  ggplot(aes(date, Pi)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Coefficients from Auxiliary Regression for Trend (ACL)",
+       subtitle = "Based on Other Portfolios",
+       x = "date", y = "Pi") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust=0.5))
+
+
+# Plot the Other_Aux_t_stat
+Other_Aux_t_stat_Trend %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Pi_t_stat") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(x = Pi_t_stat)) +
+  geom_histogram(aes(y = ..density..)) +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "t Statistics from Auxiliary Regression for Trend (ACL)",
+       subtitle = "Based on Other Portfolios",
+       x = "date", y = "Density") +
+  theme(plot.title = element_text(hjust=0.5),
+        plot.subtitle = element_text(hjust=0.5))
+
+"Proportion of siginificant F statistics"
+mean(Other_Aux_F_test_Trend$f_p_value < 0.05)
+
+"Proportion of siginificant t statistics"
+((Other_Aux_p_value_Trend %>%
+    select(-date))<0.05) %>%
+  colMeans()
+
+
+#Summary Tables
+rbind(
+  rbind(Other_Aux_result_Trend %>%
+          mutate(stat = "Estimate"),
+        Other_Aux_t_stat_Trend %>%
+          mutate(stat = "T Stat"),
+        Other_Aux_p_value_Trend %>%
+          mutate(stat = "p value")) %>%
+    mutate(Y_type = "Trend"),
+  rbind(Other_Aux_result %>%
+          mutate(stat = "Estimate"),
+        Other_Aux_t_stat %>%
+          mutate(stat = "T Stat"),
+        Other_Aux_p_value %>%
+          mutate(stat = "p value")) %>%
+    mutate(Y_type = "Periodic"),
+  rbind(Other_Aux_result_Noise %>%
+          mutate(stat = "Estimate"),
+        Other_Aux_t_stat_Noise %>%
+          mutate(stat = "T Stat"),
+        Other_Aux_p_value_Noise %>%
+          mutate(stat = "p value")) %>%
+    mutate(Y_type = "Noise"),
+  rbind(Other_FF5_result %>%
+          mutate(stat = "Estimate"),
+        Other_FF5_t_stat %>%
+          mutate(stat = "T Stat"),
+        Other_FF5_p_value %>%
+          mutate(stat = "p value")) %>%
+    mutate(Y_type = "Original")
+) %>%
+  select(-date) %>%
+  pivot_longer(-c(stat, Y_type), names_to = "Factors", values_to = "Values") %>%
+  mutate(Y_type = factor(Y_type, levels = unique(.$Y_type)),
+         Factors = factor(Factors, levels = unique(.$Factors)),
+         stat = factor(stat, levels = unique(.$stat))) %>%
+  group_by(Factors, Y_type, stat) %>%
+  summarise(min = min(Values),
+            Q25 = quantile(Values, .25),
+            Q50 = quantile(Values, .5),
+            Q75 = quantile(Values, .75),
+            max = max(Values),
+            mean = mean(Values)) %>%
+  pivot_longer(-c(stat, Y_type, Factors), names_to = "Stat", values_to = "Values") %>%
+  pivot_wider(names_from = "stat", values_from = "Values") %>%
+  kable(align = "c", caption = "Auxilary Regression Results for Other Portfolios") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1:2, bold = T) %>%
+  collapse_rows(columns = 1:2)
+
+# Percent of significance
+rbind(
+  Other_Aux_p_value_Trend %>%
+    mutate(Y_type = "Trend"),
+  Other_Aux_p_value %>%
+    mutate(Y_type = "Periodic"),
+  Other_Aux_p_value_Noise %>%
+    mutate(Y_type = "Noise"),
+  Other_FF5_p_value %>%
+    mutate(Y_type = "Original")
+) %>%
+  select(-date) %>%
+  pivot_longer(-Y_type, names_to = "Factors", values_to = "Values") %>%
+  mutate(Y_type = factor(Y_type, levels = unique(.$Y_type)),
+         Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  group_by(Factors, Y_type) %>%
+  summarise(Sig_Percent = mean(Values < 0.05)) %>%
+  pivot_wider(values_from = Sig_Percent, names_from = Factors) %>%
+  kable(align = "c", caption = "Auxilary Regression Coefficient Significance Percentage for Other Portfolios") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  collapse_rows(columns = 1)
+
+```
+
+```{r Other_Panel_Check, cache = TRUE}
+## Create the second-path portfolio for estimation lambda
+Second_Path_component_Other <- Other_Port_STL_s7_norobust %>%
+  subset(select = c(date, Port, y, component)) %>%
+  rename(RP = y) %>%
+  inner_join(Other_Port_FF5_Betas) %>%
+  subset(select = -Type) %>%
+  subset(select = -Alpha) %>%
+  ungroup() %>%
+  # convert component into numbers
+  mutate(component_num = factor(component, levels = c("Original", "Trend", "Seasonal", "Noise"), labels = 1:4),
+         component_num = as.numeric(component_num))
+
+# do the regression using panel data
+Second_component_panel_Other <- Second_Path_component_Other %>%
+  select(-c(Port, component)) %>%
+  group_by(component_num) %>%
+  do(model = lm(RP ~ . - date - component_num, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")))
+
+"Auxilary Panel Regressoin for Other Portfolios"
+# Original Panel
+"Original"
+Second_component_panel_Other$model[[1]]
+
+# Trend Panel
+"Trend"
+Second_component_panel_Other$model[[2]]
+
+# Periodic (Seasonal) Panel
+"Periodic (Seasonal)"
+Second_component_panel_Other$model[[3]]
+
+# Noise Panel
+"Noise"
+Second_component_panel_Other$model[[4]]
+
+```
+
+We get similar results as before, only that at each t, all factors are significant in the auxilary regressions more. The Panel regression still suggests that the trend should be explained by the factors while we do not have enough evidence to support that the other components (Noise, Periodic) are explained by the factors. This still validates our Approach of ACL regression.
+
+
+### S4-7-4 Long-regression and Comparisons
+
+In this session, we present the longer version of second step regression, where
+
+$$T_i = \lambda_0 + \lambda_1^l \hat{\beta}_i + \lambda_2^l P_i + \lambda_3^l N_i + u_i$$
+
+We would use the result of this longer version regression to compare with the original Fama Macbeth second step regression to test whether periodic and noise terms would affect the regression result.
+
+```{r Other_Long_reg, cache = TRUE}
+## Create the portfolio for Other_Long_reg
+Other_Long_data <- Other_Port_STL_s7_norobust %>%
+  filter(component %in% c("Trend", "Seasonal", "Noise")) %>%
+  pivot_wider(names_from = "component", values_from = "y") %>%
+  subset(select = c(date, Port, Trend, Seasonal, Noise)) %>%
+  rename(RP = Trend) %>%
+  inner_join(Other_Port_FF5_Betas) %>%
+  select(-Alpha) %>%
+  select(-Type) %>%
+  ungroup()
+
+# Group the data and do the second pass regression
+Other_Long_reg <- Other_Long_data %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coefficients())
+
+# Obtain the se
+Other_Long_reg_se <- Other_Long_data %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "Std. Error"])
+
+# Obtain the t_stat
+Other_Long_reg_t_stat <- Other_Long_data %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "t value"])
+
+# Obtain the p_value
+Other_Long_reg_p_value <- Other_Long_data %>%
+  group_by(date) %>%
+  do(model = lm(RP ~ . - date - Port, data = .) %>%
+       coeftest(., vcov = vcovHC(., type = "HC0")) %>%
+       .[, "Pr(>|t|)"])
+
+# perform F test p_value
+Other_Long_reg_F_test <- Other_Long_data %>%
+  group_by(date) %>%
+  do(f_p_value = lm(RP ~ . - date - Port, data = .) %>%
+       summary() %>%
+       .$fstatistic %>%
+       pf(q = .[1], df1 = .[2], df2 = .[3], lower.tail = FALSE) %>%
+       .["value"])
+
+# Unwrap the results
+Other_Long_result <- do.call(rbind.data.frame, Other_Long_reg$model) %>%
+  as_tibble()
+Other_Long_se <- do.call(rbind.data.frame, Other_Long_reg_se$model) %>%
+  as_tibble()
+Other_Long_t_stat <- do.call(rbind.data.frame, Other_Long_reg_t_stat$model) %>%
+  as_tibble()
+Other_Long_p_value <- do.call(rbind.data.frame, Other_Long_reg_p_value$model) %>%
+  as_tibble()
+Other_Long_F_test <- do.call(rbind.data.frame, Other_Long_reg_F_test$f_p_value) %>%
+  as_tibble()
+
+
+# Rename the variables
+names(Other_Long_result) = c("Pi0", "Periodic", names(FF5)[-length(FF5)])
+names(Other_Long_result)[3] = "Noise"
+names(Other_Long_se) = c("Pi0", "Periodic", names(FF5)[-length(FF5)])
+names(Other_Long_se)[3] = "Noise"
+names(Other_Long_t_stat) = c("Pi0", "Periodic", names(FF5)[-length(FF5)])
+names(Other_Long_t_stat)[3] = "Noise"
+names(Other_Long_p_value) = c("Pi0", "Periodic", names(FF5)[-length(FF5)])
+names(Other_Long_p_value)[3] = "Noise"
+names(Other_Long_F_test) = "f_p_value"
+
+# Add in the dates
+Other_Long_result <- cbind(Other_Long_reg[, 1], Other_Long_result) %>%
+  subset(select = -Pi0)
+Other_Long_se <- cbind(Other_Long_reg[, 1], Other_Long_se) %>%
+  subset(select = -Pi0)
+Other_Long_t_stat <- cbind(Other_Long_reg[, 1], Other_Long_t_stat) %>%
+  subset(select = -Pi0)
+Other_Long_p_value <- cbind(Other_Long_reg[, 1], Other_Long_p_value) %>%
+  subset(select = -Pi0)
+Other_Long_F_test <- cbind(Other_Long_reg[, 1], Other_Long_F_test)
+
+# Plot the Other_Long_result
+Other_Long_result %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Pi") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  group_by(Factors) %>%
+  ggplot(aes(date, Pi)) +
+  geom_line() +
+  scale_x_date(minor_breaks = "1 year") +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "Coefficients from Other Portfolio Long Regression for Trend",
+       x = "date", y = "Pi") +
+  theme(plot.title = element_text(hjust=0.5))
+
+
+# Plot the Other_Long_t_stat
+Other_Long_t_stat %>%
+  pivot_longer(cols = -date, names_to = "Factors", values_to = "Pi_t_stat") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(x = Pi_t_stat)) +
+  geom_histogram(aes(y = ..density..)) +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(title= "t Statistics from Other Portfolio Long Regression for Trend",
+       x = "date", y = "Density") +
+  theme(plot.title = element_text(hjust=0.5))
+
+"Proportion of siginificant F statistics for Other Portfolio Long Regression"
+mean(Other_Long_F_test$f_p_value < 0.05)
+
+"Proportion of siginificant t statistics for Other Portfolio Long Regression"
+((Other_Long_p_value %>%
+    select(-date))<0.05) %>%
+  colMeans()
+```
+
+Similarly, the proportion of significant lambda numbers is closer to the ACL regression (or the trend auxiliary regression).
+
+Now, let's compare the long-regression lambdas with the original second-path result:
+
+```{r Other_Long_vs_SP, cache = TRUE}
+# This is a table for Other_Long regression coefficient result comparing with Original Second pass regression
+Other_Long_vs_SP <- inner_join(
+  inner_join(Other_Long_result %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "Long_Estimate"),
+             Other_Long_se %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "Long_Std. Error")) %>%
+    subset(!(Factors %in% c("Periodic", "Noise"))),
+  inner_join(Other_FF5_result %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "Original_Estimate"),
+             FM_FF5_Error %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "Original_Std. Error"))
+) %>%
+  mutate(Diff_Estimate = Long_Estimate - Original_Estimate,
+         `Diff_Std. Error` = `Long_Std. Error` - `Original_Std. Error`,
+         Diff_t_stat = Diff_Estimate/`Diff_Std. Error`,
+         Diff_P_value = pt(Diff_t_stat, df = 2*(nrow(Other_Long_result) - 1), lower.tail = FALSE))
+
+Other_Long_vs_SP %>%
+  pivot_longer(-c(date,Factors), names_to = "Type", values_to = "Values") %>%
+  mutate(Type = factor(Type, levels = unique(.$Type)),
+         Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  select(-date) %>%
+  group_by(Factors, Type) %>%
+  summarise(min = min(Values),
+            Q25 = quantile(Values, .25),
+            Q50 = quantile(Values, .5),
+            Q75 = quantile(Values, .75),
+            max = max(Values),
+            mean = mean(Values)) %>%
+  pivot_longer(-c(Factors, Type), names_to = "Stat", values_to = "Values") %>%
+  pivot_wider(names_from = "Type", values_from = "Values") %>%
+  kable(align = "c", caption = "Long vs. Original Regression Results for Other Portfolios") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1:2, bold = T) %>%
+  collapse_rows(columns = 1:2)
+
+# This is a table for Other_Long regression coefficient result comparing with Original Second pass regression percentage of significantly different coefficients
+Other_Long_vs_SP %>%
+  mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  select(c(Factors,Diff_P_value)) %>%
+  group_by(Factors) %>%
+  summarise(Sig_Percent = mean(Diff_P_value < 0.05)) %>%
+  kable(align = "c", caption = "Long vs. Original Difference Significance Percentage for Other Portfolios") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T)
+
+```
+
+It seems that 20\% of the time, the result from long regression would be different from the second-step regression. Similar to the result in s4-6-3, this result is consistent with previous short regressions, which showed Period and Noise are associated with $\hat{\beta}$ and would introduce a bias to the second-step regression. With more portfolios, it seems though the results are less frequently different.
+
+
+```{r Other_Long_vs_ACL, cache = TRUE}
+# This is a table for Other_Long regression coefficient result comparing with ACL regression
+Other_Long_vs_ACL <- inner_join(
+  inner_join(Other_Long_result %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "Long_Estimate"),
+             Other_Long_se %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "Long_Std. Error")) %>%
+    subset(!(Factors %in% c("Periodic", "Noise"))),
+  inner_join(Other_Aux_result_Trend %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "ACL_Estimate"),
+             Aux_se_Trend %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "ACL_Std. Error"))
+) %>%
+  mutate(Diff_Estimate = Long_Estimate - ACL_Estimate,
+         `Diff_Std. Error` = `Long_Std. Error` - `ACL_Std. Error`,
+         Diff_t_stat = Diff_Estimate/`Diff_Std. Error`,
+         Diff_P_value = pt(Diff_t_stat, df = 2*(nrow(Other_Long_result) - 1), lower.tail = FALSE))
+
+Other_Long_vs_ACL %>%
+  pivot_longer(-c(date,Factors), names_to = "Type", values_to = "Values") %>%
+  mutate(Type = factor(Type, levels = unique(.$Type)),
+         Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  select(-date) %>%
+  group_by(Factors, Type) %>%
+  summarise(min = min(Values),
+            Q25 = quantile(Values, .25),
+            Q50 = quantile(Values, .5),
+            Q75 = quantile(Values, .75),
+            max = max(Values),
+            mean = mean(Values)) %>%
+  pivot_longer(-c(Factors, Type), names_to = "Stat", values_to = "Values") %>%
+  pivot_wider(names_from = "Type", values_from = "Values") %>%
+  kable(align = "c", caption = "Long vs. ACL Regression Results for Other Portfolios") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1:2, bold = T) %>%
+  collapse_rows(columns = 1:2)
+
+# This is a table for Other_Long regression coefficient result comparing with Original Second pass regression percentage of significantly different coefficients
+Other_Long_vs_ACL %>%
+  mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  select(c(Factors,Diff_P_value)) %>%
+  group_by(Factors) %>%
+  summarise(Sig_Percent = mean(Diff_P_value < 0.05)) %>%
+  kable(align = "c", caption = "Long vs. ACL Difference Significance Percentage for Other Portfolios") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T)
+
+```
+
+It seems that less than 10\% of the time, the result from Long regression would be different from the ACL regression. This result is consistent with previous short regressions, which showed Period and Noise are associated with $\hat{\beta}$ and would introduce a bias to the second-step regression. This result further shows the validity of ACL approach.
+
+Finally, let's compare the ACL-regression lambdas with the original second-path result:
+
+```{r Other_Original_vs_ACL, cache = TRUE}
+# This is a table for Original FM regression coefficient result comparing with ACL regression
+Other_Original_vs_ACL <- inner_join(
+  inner_join(Other_FF5_result %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "Original_Estimate"),
+             Other_FF5_se %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "Original_Std. Error")),
+  inner_join(Other_Aux_result_Trend %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "ACL_Estimate"),
+             Other_Aux_se_Trend %>%
+               pivot_longer(-date, names_to = "Factors", values_to = "ACL_Std. Error"))
+) %>%
+  mutate(Diff_Estimate = Original_Estimate - ACL_Estimate,
+         `Diff_Std. Error` = `Original_Std. Error` - `ACL_Std. Error`,
+         Diff_t_stat = Diff_Estimate/`Diff_Std. Error`,
+         Diff_P_value = pt(Diff_t_stat, df = 2*(nrow(Other_Long_result) - 1), lower.tail = FALSE))
+
+Other_Original_vs_ACL %>%
+  pivot_longer(-c(date,Factors), names_to = "Type", values_to = "Values") %>%
+  mutate(Type = factor(Type, levels = unique(.$Type)),
+         Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  select(-date) %>%
+  group_by(Factors, Type) %>%
+  summarise(min = min(Values),
+            Q25 = quantile(Values, .25),
+            Q50 = quantile(Values, .5),
+            Q75 = quantile(Values, .75),
+            max = max(Values),
+            mean = mean(Values)) %>%
+  pivot_longer(-c(Factors, Type), names_to = "Stat", values_to = "Values") %>%
+  pivot_wider(names_from = "Type", values_from = "Values") %>%
+  kable(align = "c", caption = "Original FM vs. ACL Regression Results for Other Portfolios") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1:2, bold = T) %>%
+  collapse_rows(columns = 1:2)
+
+# This is a table for Original FM regression coefficient result comparing with Original Second pass regression percentage of significantly different coefficients
+Original_vs_ACL %>%
+  mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  select(c(Factors,Diff_P_value)) %>%
+  group_by(Factors) %>%
+  summarise(Sig_Percent = mean(Diff_P_value < 0.05)) %>%
+  kable(align = "c", caption = "Original FM vs. ACL Difference Significance Percentage for Other Portfolios") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T)
+
+```
+
+It seems that 30\% of the time, the result from original regression would be different from the ACL regression. This result is consistent with previous short regressions, which showed Period and Noise are associated with $\hat{\beta}$ and would introduce a bias to the second-step regression.
+
+Finally, I conduct a panel regression for the long regression:
+$$T_{i,t} = \alpha + \beta F_{i,t}, + \gamma P_{i,t} + \delta N_{i,t} + \epsilon$$
+
+```{r Other_Long_Panel_reg, cache = TRUE}
+# Group the data and do the second pass regression
+Other_Long_data %>%
+  lm(RP ~ . - date - Port, data = .) %>%
+  coeftest(., vcov = vcovHC(., type = "HC0"))
+```
+
+It seems that overall, the periodic(seasonal) component and Noise component are not orthogonal to the Trend. This is a result due to our local smoothing method.
+
+
+
 
 # S5 Equity Cost of Captial
 

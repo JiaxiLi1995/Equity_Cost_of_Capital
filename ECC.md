@@ -131,6 +131,10 @@ Mike Aguilar, Bob Connolly, and Jiaxi Li
         -   <a href="#s4-7-4-long-regression-and-comparisons"
             id="toc-s4-7-4-long-regression-and-comparisons">S4-7-4 Long-regression
             and Comparisons</a>
+        -   <a
+            href="#s4-7-5-second-pass-panel-regression-comparison-for-other-portfolios"
+            id="toc-s4-7-5-second-pass-panel-regression-comparison-for-other-portfolios">S4-7-5
+            Second Pass Panel Regression Comparison for Other Portfolios</a>
 -   <a href="#s5-equity-cost-of-captial"
     id="toc-s5-equity-cost-of-captial">S5 Equity Cost of Captial</a>
     -   <a href="#s5-1-estimated-equity-cost-of-captial"
@@ -30775,6 +30779,39 @@ It seems that overall, the periodic(seasonal) component and Noise
 component are not orthogonal to the Trend. This is a result due to our
 local smoothing method.
 
+### S4-7-5 Second Pass Panel Regression Comparison for Other Portfolios
+
+Similar to s-4-6-4, we would like to compare the original second pass
+regression vs. ACL second pass regression in a rolling panel setting:
+
+![r\_{p,ym} = \lambda\_{0,ym} + \boldsymbol{\lambda\_{ym}}\*\boldsymbol{\widehat{\beta\_{p,t}}} + \eta\_{pt} \\ \\ \\  for \\ t \in ym](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_%7Bp%2Cym%7D%20%3D%20%5Clambda_%7B0%2Cym%7D%20%2B%20%5Cboldsymbol%7B%5Clambda_%7Bym%7D%7D%2A%5Cboldsymbol%7B%5Cwidehat%7B%5Cbeta_%7Bp%2Ct%7D%7D%7D%20%2B%20%5Ceta_%7Bpt%7D%20%5C%20%5C%20%5C%20%20for%20%5C%20t%20%5Cin%20ym "r_{p,ym} = \lambda_{0,ym} + \boldsymbol{\lambda_{ym}}*\boldsymbol{\widehat{\beta_{p,t}}} + \eta_{pt} \ \ \  for \ t \in ym")
+
+where
+![ym](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;ym "ym")
+stands for year-month for the monthly return. For example, in 5-year
+rolling panel regression, we use estimated betas and returns(or trend)
+from January 1993 through December 1997 to estimate the lambda for
+December 1997. We then iterate forward, using February 1993 through
+January 1998 to estimate the lambda for January 1998, and so on. In the
+ACL regression, we simply replace
+![r\_{p,ym}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;r_%7Bp%2Cym%7D "r_{p,ym}")
+with the trend component,
+![T\_{p,ym}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;T_%7Bp%2Cym%7D "T_{p,ym}").
+
+We apply this rolling panel regression for the original FM and ACL with
+1-year, 3-year, and 5-year horizon. 0-year is the regular
+cross-sectional monthly regression.
+
+From the figures above, we get similar results. It seems that with
+longer panel:
+
+1.  the estimates of ACL and Fama Macbeth regression are converging
+
+2.  the standard error of ACL and Fama Macbeth regression are converging
+
+For any given length of Panel, ACL panel regression can produce lambda
+with relatively low risk, even for the new portfolios.
+
 # S5 Equity Cost of Captial
 
 ## S5-1 Estimated Equity Cost of Captial
@@ -34105,6 +34142,8 @@ particularly important.
 This section contains figures produced for ACL paper specially.
 
 ![](ECC_files/figure-gfm/For_ACL_Paper-1.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-2.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-3.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-4.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-5.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-6.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-7.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-8.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-9.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-10.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-11.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-12.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-13.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-14.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-15.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper-16.png)<!-- -->
+
+![](ECC_files/figure-gfm/For_ACL_Paper_New-1.png)<!-- -->![](ECC_files/figure-gfm/For_ACL_Paper_New-2.png)<!-- -->
 
 Figures for Appendix:
 

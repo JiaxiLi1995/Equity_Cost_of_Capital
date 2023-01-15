@@ -4,7 +4,6 @@
 .Ruserdata
 ECC_cache
 Equity_Cost_of_Capital.Rproj
-ECC_ahead_cache
 Norms_Percent.csv
 Lambda_SE_Percent.csv
 Original_vs_ACL_Diff.csv
@@ -24,3 +23,8 @@ ACL_p_value.csv
 Other_Port_Component_Strength.csv
 ECC_FM_FF5.csv
 Port_FF5_Betas.csv
+ECC_ahead_new_cache
+ECC_ahead.md
+ECC_ahead.Rmd
+ECC_ahead_cache
+ECC_ahead_files

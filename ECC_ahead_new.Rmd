@@ -8887,7 +8887,7 @@ Other_Port_Component_Strength %>%
   ungroup() %>%
   mutate(`Portfolio Group` = "Total")) %>%
   # fix the Portfolio Group order
-  mutate(`Portfolio Group` = factor(`Portfolio Group`, levels = unique(.$`Portfolio Group`))) %>%
+  mutate(`Portfolio Group` = factor(`Portfolio Group`, levels = c("Friction", "Intangible", "Investment", "Profitability", "Value vs. Growth", "Total"))) %>%
   pivot_longer(-c(Type, Port, `Portfolio Group`), names_to = "Strength of Group", values_to = "Value") %>%
   # fix the Strength of Group order
   mutate(`Strength of Group` = factor(`Strength of Group`, levels = unique(.$`Strength of Group`))) %>%

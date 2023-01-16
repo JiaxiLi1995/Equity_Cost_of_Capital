@@ -36656,25 +36656,25 @@ N
 Strength of Trend
 </td>
 <td style="text-align:center;">
-Investment
+Friction
+</td>
+<td style="text-align:center;">
+0.144
 </td>
 <td style="text-align:center;">
 0.143
 </td>
 <td style="text-align:center;">
-0.143
+0.015
 </td>
 <td style="text-align:center;">
-0.010
+0.137
 </td>
 <td style="text-align:center;">
-0.136
+0.153
 </td>
 <td style="text-align:center;">
-0.150
-</td>
-<td style="text-align:center;">
-81
+30
 </td>
 </tr>
 <tr>
@@ -36708,6 +36708,32 @@ Intangible
 Strength of Trend
 </td>
 <td style="text-align:center;">
+Investment
+</td>
+<td style="text-align:center;">
+0.143
+</td>
+<td style="text-align:center;">
+0.143
+</td>
+<td style="text-align:center;">
+0.010
+</td>
+<td style="text-align:center;">
+0.136
+</td>
+<td style="text-align:center;">
+0.150
+</td>
+<td style="text-align:center;">
+81
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Strength of Trend
+</td>
+<td style="text-align:center;">
 Profitability
 </td>
 <td style="text-align:center;">
@@ -36727,32 +36753,6 @@ Profitability
 </td>
 <td style="text-align:center;">
 66
-</td>
-</tr>
-<tr>
-<td style="text-align:center;font-weight: bold;">
-Strength of Trend
-</td>
-<td style="text-align:center;">
-Friction
-</td>
-<td style="text-align:center;">
-0.144
-</td>
-<td style="text-align:center;">
-0.143
-</td>
-<td style="text-align:center;">
-0.015
-</td>
-<td style="text-align:center;">
-0.137
-</td>
-<td style="text-align:center;">
-0.153
-</td>
-<td style="text-align:center;">
-30
 </td>
 </tr>
 <tr>
@@ -36812,25 +36812,25 @@ Total
 Strength of Periodic
 </td>
 <td style="text-align:center;">
-Investment
+Friction
 </td>
 <td style="text-align:center;">
-0.359
+0.364
 </td>
 <td style="text-align:center;">
 0.363
 </td>
 <td style="text-align:center;">
-0.017
+0.014
 </td>
 <td style="text-align:center;">
-0.348
+0.354
 </td>
 <td style="text-align:center;">
-0.370
+0.376
 </td>
 <td style="text-align:center;">
-81
+30
 </td>
 </tr>
 <tr>
@@ -36864,6 +36864,32 @@ Intangible
 Strength of Periodic
 </td>
 <td style="text-align:center;">
+Investment
+</td>
+<td style="text-align:center;">
+0.359
+</td>
+<td style="text-align:center;">
+0.363
+</td>
+<td style="text-align:center;">
+0.017
+</td>
+<td style="text-align:center;">
+0.348
+</td>
+<td style="text-align:center;">
+0.370
+</td>
+<td style="text-align:center;">
+81
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Strength of Periodic
+</td>
+<td style="text-align:center;">
 Profitability
 </td>
 <td style="text-align:center;">
@@ -36883,32 +36909,6 @@ Profitability
 </td>
 <td style="text-align:center;">
 66
-</td>
-</tr>
-<tr>
-<td style="text-align:center;font-weight: bold;">
-Strength of Periodic
-</td>
-<td style="text-align:center;">
-Friction
-</td>
-<td style="text-align:center;">
-0.364
-</td>
-<td style="text-align:center;">
-0.363
-</td>
-<td style="text-align:center;">
-0.014
-</td>
-<td style="text-align:center;">
-0.354
-</td>
-<td style="text-align:center;">
-0.376
-</td>
-<td style="text-align:center;">
-30
 </td>
 </tr>
 <tr>

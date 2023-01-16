@@ -8292,7 +8292,7 @@ What we show is that using asset-pricing models to estimate the equity cost of c
 
 This section contains figures produced for ACL paper specially.
 
-```{r For_ACL_Paper, cache=TRUE}
+```{r ACL_Paper_Figures, cache=TRUE}
 # Figure 1 ECC density and time-series for the Construction Industry
 All_FF5_ECC %>%
   filter(Industry == "Cnstr") %>%
@@ -8566,61 +8566,6 @@ FM_FF5_Error %>%
         legend.position = c(0.8, 0.2))
 
 
-# Figure 14 Create the stats for Estimated ECC mean and Std across Industries
-ECC_FM_FF5 %>%
-  # Remove the Other Industry
-  filter(Industry != "Other") %>%
-  rename(FM = ECC) %>%
-  select(c(date, FM)) %>%
-  inner_join(ECC_FM_STL_FF5 %>%
-               rename(FM_STL = ECC) %>%
-               select(c(date, FM_STL))) %>%
-  pivot_longer(cols = -date, names_to = "Method", values_to = "ECC") %>%
-  # Change Method from FM_STL to FM-Filtered
-  mutate(Method = replace(Method, Method == "FM_STL", "FM-Filtered")) %>%
-  group_by(date, Method) %>%
-  summarise(Mean = mean(ECC),
-            `Standard Deviation` = sd(ECC)) %>%
-  pivot_longer(cols = -c(date, Method), names_to = "Stats", values_to = "ECC") %>%
-  mutate(date = transDate(date)) %>%
-  ggplot(aes(date, ECC, linetype = Method)) +
-  geom_line() +
-  scale_linetype_manual(values=c("dotdash", "solid")) +
-  labs(x = "Date") +
-  facet_wrap(~ Stats,
-             scales = "free_y",
-             ncol = 1) +
-  theme(legend.position="bottom")
-
-
-# Figure 15 Create the stats for Estimated ECC mean and Std across time for each industry
-ECC_FM_FF5 %>%
-  # Remove the Other Industry
-  filter(Industry != "Other") %>%
-  rename(FM = ECC) %>%
-  select(c(Industry, FM)) %>%
-  inner_join(ECC_FM_STL_FF5 %>%
-               rename(FM_STL = ECC) %>%
-               select(c(Industry, FM_STL))) %>%
-  pivot_longer(cols = -Industry, names_to = "Method", values_to = "ECC") %>%
-  # Change Method from FM_STL to FM-Filtered
-  mutate(Method = replace(Method, Method == "FM_STL", "FM-Filtered")) %>%
-  group_by(Industry, Method) %>%
-  summarise(Mean = mean(ECC),
-            `Standard Deviation` = sd(ECC)) %>%
-  pivot_longer(cols = -c(Industry, Method), names_to = "Stats", values_to = "ECC") %>%
-  ggplot(aes(Industry, ECC, shape = Method)) +
-  geom_point() +
-  scale_shape_manual(values=c(1, 16))+
-  facet_wrap(~ Stats,
-             scales = "free_y",
-             ncol = 1) +
-  theme(axis.text.x = element_text(angle = 75, hjust = 1),
-        legend.position="bottom")
-```
-
-
-```{r For_ACL_Paper_New, cache=TRUE}
 # Figure 14 HML factor premium estimates from different horizon regression
 Panel_Long %>%
   mutate(date = transDate(date)) %>%
@@ -8650,69 +8595,120 @@ Panel_Long_Error %>%
   labs(x = "Date", y = "Lambda") +
   theme(legend.position="bottom")
 
+# Figure 16 Create the stats for Estimated ECC mean and Std across Industries
+ECC_FM_FF5 %>%
+  # Remove the Other Industry
+  filter(Industry != "Other") %>%
+  rename(FM = ECC) %>%
+  select(c(date, FM)) %>%
+  inner_join(ECC_FM_STL_FF5 %>%
+               rename(FM_STL = ECC) %>%
+               select(c(date, FM_STL))) %>%
+  pivot_longer(cols = -date, names_to = "Method", values_to = "ECC") %>%
+  # Change Method from FM_STL to FM-Filtered
+  mutate(Method = replace(Method, Method == "FM_STL", "FM-Filtered")) %>%
+  group_by(date, Method) %>%
+  summarise(Mean = mean(ECC),
+            `Standard Deviation` = sd(ECC)) %>%
+  pivot_longer(cols = -c(date, Method), names_to = "Stats", values_to = "ECC") %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, ECC, linetype = Method)) +
+  geom_line() +
+  scale_linetype_manual(values=c("dotdash", "solid")) +
+  labs(x = "Date") +
+  facet_wrap(~ Stats,
+             scales = "free_y",
+             ncol = 1) +
+  theme(legend.position="bottom")
+
+
+# Figure 17 Create the stats for Estimated ECC mean and Std across time for each industry
+ECC_FM_FF5 %>%
+  # Remove the Other Industry
+  filter(Industry != "Other") %>%
+  rename(FM = ECC) %>%
+  select(c(Industry, FM)) %>%
+  inner_join(ECC_FM_STL_FF5 %>%
+               rename(FM_STL = ECC) %>%
+               select(c(Industry, FM_STL))) %>%
+  pivot_longer(cols = -Industry, names_to = "Method", values_to = "ECC") %>%
+  # Change Method from FM_STL to FM-Filtered
+  mutate(Method = replace(Method, Method == "FM_STL", "FM-Filtered")) %>%
+  group_by(Industry, Method) %>%
+  summarise(Mean = mean(ECC),
+            `Standard Deviation` = sd(ECC)) %>%
+  pivot_longer(cols = -c(Industry, Method), names_to = "Stats", values_to = "ECC") %>%
+  ggplot(aes(Industry, ECC, shape = Method)) +
+  geom_point() +
+  scale_shape_manual(values=c(1, 16))+
+  facet_wrap(~ Stats,
+             scales = "free_y",
+             ncol = 1) +
+  theme(axis.text.x = element_text(angle = 75, hjust = 1),
+        legend.position="bottom")
 ```
 
 
 Figures for Appendix:
 
-```{r For_ACL_Paper_Appendix, cache=TRUE}
+```{r ACL_Paper_Appendix_Figures, cache=TRUE}
 ############################################################
 # Simulation Appendix
 # Figure 16 Simulation1 Result
-Filtered_lambda %>%
-  inner_join(Unfiltered_lambda) %>%
-  inner_join(Sim_lambda) %>%
-  rename(Actual = value,
-         Filtered = Filtered_Lambda1,
-         Unfiltered = Unfiltered_Lambda1) %>%
-  pivot_longer(cols = -date, names_to = "Method", values_to = "Lambda") %>%
-  # fix order
-  mutate(Method = factor(Method, levels = c("Unfiltered","Filtered","Actual"))) %>%
-  ggplot(aes(date, Lambda, linetype = Method)) +
-  geom_line() +
-  scale_linetype_manual(values=c("dotted", "longdash", "solid")) +
-  labs(x = "date index") +
-  theme(legend.position="bottom")
+# Filtered_lambda %>%
+#   inner_join(Unfiltered_lambda) %>%
+#   inner_join(Sim_lambda) %>%
+#   rename(Actual = value,
+#          Filtered = Filtered_Lambda1,
+#          Unfiltered = Unfiltered_Lambda1) %>%
+#   pivot_longer(cols = -date, names_to = "Method", values_to = "Lambda") %>%
+#   # fix order
+#   mutate(Method = factor(Method, levels = c("Unfiltered","Filtered","Actual"))) %>%
+#   ggplot(aes(date, Lambda, linetype = Method)) +
+#   geom_line() +
+#   scale_linetype_manual(values=c("dotted", "longdash", "solid")) +
+#   labs(x = "date index") +
+#   theme(legend.position="bottom")
 
 
 # Figure 17 Simulation2 Result
-Filtered_lambda2 %>%
-  inner_join(Unfiltered_lambda2) %>%
-  inner_join(Sim_lambda2) %>%
-  rename(Actual = value,
-         Filtered = Filtered_Lambda1,
-         Unfiltered = Unfiltered_Lambda1) %>%
-  pivot_longer(cols = -date, names_to = "Method", values_to = "Lambda") %>%
-  # fix order
-  mutate(Method = factor(Method, levels = c("Unfiltered","Filtered","Actual"))) %>%
-  ggplot(aes(date, Lambda, linetype = Method)) +
-  geom_line() +
-  scale_linetype_manual(values=c("dotted", "longdash", "solid")) +
-  labs(x = "date index") +
-  theme(legend.position="bottom")
+# Filtered_lambda2 %>%
+#   inner_join(Unfiltered_lambda2) %>%
+#   inner_join(Sim_lambda2) %>%
+#   rename(Actual = value,
+#          Filtered = Filtered_Lambda1,
+#          Unfiltered = Unfiltered_Lambda1) %>%
+#   pivot_longer(cols = -date, names_to = "Method", values_to = "Lambda") %>%
+#   # fix order
+#   mutate(Method = factor(Method, levels = c("Unfiltered","Filtered","Actual"))) %>%
+#   ggplot(aes(date, Lambda, linetype = Method)) +
+#   geom_line() +
+#   scale_linetype_manual(values=c("dotted", "longdash", "solid")) +
+#   labs(x = "date index") +
+#   theme(legend.position="bottom")
 
 
 # Figure 18 Simulation31 Result for factor
-Simulation_Lambda_SSEs %>%
-  pivot_wider(names_from = "Method", values_from = "SSE") %>%
-  mutate(Improvement = Unfiltered - Filtered) %>%
-  mutate(Factors = factor(Factors, levels = (names(FF5)[2:6]))) %>%
-  ggplot(aes(Factors, Improvement)) +
-  geom_boxplot() +
-  theme(legend.position="bottom")
+# Simulation_Lambda_SSEs %>%
+#   pivot_wider(names_from = "Method", values_from = "SSE") %>%
+#   mutate(Improvement = Unfiltered - Filtered) %>%
+#   mutate(Factors = factor(Factors, levels = (names(FF5)[2:6]))) %>%
+#   ggplot(aes(Factors, Improvement)) +
+#   geom_boxplot() +
+#   theme(legend.position="bottom")
 
 
 # Figure 19 Simulation32 Result for sector
-Simulation_ECC_Errors %>%
-  filter(Industry != "Other") %>%
-  ggplot(aes(Industry, Improvement)) +
-  geom_boxplot() +
-  theme(axis.text.x = element_text(angle = 75, hjust = 1),
-        legend.position="bottom")
+# Simulation_ECC_Errors %>%
+#   filter(Industry != "Other") %>%
+#   ggplot(aes(Industry, Improvement)) +
+#   geom_boxplot() +
+#   theme(axis.text.x = element_text(angle = 75, hjust = 1),
+#         legend.position="bottom")
 
 ############################################################
 # PRS Appendix
-# Figure 20 Plot the rolling betas box plot for Market
+# Figure A1 Plot the rolling betas box plot for Market
 Port_PRS_Betas %>%
   subset(select = c(date, Industry, `Mkt-RF`)) %>%
   # pivot longer to make factors a category
@@ -8728,7 +8724,7 @@ Port_PRS_Betas %>%
   theme(axis.text.x = element_text(angle = 75, hjust = 1))
 
 
-# Figure 21 Plot the rolling betas box plot for other 4 factors
+# Figure A2 Plot the rolling betas box plot for other 4 factors
 Port_PRS_Betas %>%
   subset(select = -c(Alpha,`Mkt-RF`)) %>%
   # pivot longer to make factors a category
@@ -8746,7 +8742,7 @@ Port_PRS_Betas %>%
   theme(axis.text.x = element_text(angle = 75, hjust = 1, size = 5))
 
 
-# Figure 22 density plot of FM_FF5 lambda
+# Figure A3 density plot of FM_PRS lambda
 FM_PRS %>%
   mutate(Method = "FM") %>%
   rbind(FM_STL_PRS %>%
@@ -8767,7 +8763,27 @@ FM_PRS %>%
         legend.position = c(0.8, 0.2))
 
 
-# Figure 23 Lambda SE Decomposition
+# Figure A4 time-series plot of the FM_PRS lambda
+FM_PRS %>%
+  mutate(Method = "FM") %>%
+  rbind(FM_STL_PRS %>%
+          mutate(Method = "FM-Filtered")) %>%
+  pivot_longer(cols = -c(date, Method), names_to = "Factors", values_to = "Lambda") %>%
+  # Fix the order of Factors
+  mutate(Factors = factor(Factors, level= unique(.$Factors))) %>%
+  mutate(date = transDate(date)) %>%
+  ggplot(aes(date, Lambda, linetype = Method)) +
+  geom_line() +
+  scale_linetype_manual(values=c("dotted", "solid")) +
+  facet_wrap(~ Factors,
+             scales = "free_y") +
+  labs(x = "Date") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        legend.position = c(0.8, 0.2))
+
+
+
+# Figure A5 Lambda SE Decomposition
 SE_Decomposition_PRS %>%
   mutate(date = transDate(date),
          Factor = factor(Factor, levels = unique(Factor))) %>%
@@ -8785,7 +8801,7 @@ SE_Decomposition_PRS %>%
         legend.position = c(0.8, 0.2))
 
 
-# Figure 24 Plot the standard error in second-step regression
+# Figure A6 Plot the standard error in second-step regression
 FM_PRS_Error %>%
   pivot_longer(cols = -date, names_to = "Factors", values_to = "Standard Error") %>%
   mutate(Method = "FM") %>%
@@ -8806,7 +8822,7 @@ FM_PRS_Error %>%
         legend.position = c(0.8, 0.2))
 
 
-# Figure 25 Create the stats for Estimated ECC mean and Std across Industries
+# Figure A7 Create the stats for Estimated ECC mean and Std across Industries
 ECC_FM_PRS %>%
   # Remove the Other Industry
   filter(Industry != "Other") %>%
@@ -8833,7 +8849,7 @@ ECC_FM_PRS %>%
   theme(legend.position="bottom")
 
 
-# Figure 26 Create the stats for Estimated ECC mean and Std across time for each industry
+# Figure A8 Create the stats for Estimated ECC mean and Std across time for each industry
 ECC_FM_PRS %>%
   # Remove the Other Industry
   filter(Industry != "Other") %>%
@@ -8862,8 +8878,34 @@ ECC_FM_PRS %>%
 
 Here are the tables:
 
-```{r For_ACL_Paper_Tables, cache=TRUE}
-# Table1 FF5 lambda Summary
+```{r ACL_Paper_Tables, cache=TRUE}
+# Table1 Summary of Trend and Periodic Component Tests for other portfolios
+Other_Port_Component_Strength %>%
+  ungroup() %>%
+  mutate(`Portfolio Group` = replace(Type, Type == "VVG", "Value vs. Growth")) %>%
+  rbind(Other_Port_Component_Strength %>%
+  ungroup() %>%
+  mutate(`Portfolio Group` = "Total")) %>%
+  # fix the Portfolio Group order
+  mutate(`Portfolio Group` = factor(`Portfolio Group`, levels = unique(.$`Portfolio Group`))) %>%
+  pivot_longer(-c(Type, Port, `Portfolio Group`), names_to = "Strength of Group", values_to = "Value") %>%
+  # fix the Strength of Group order
+  mutate(`Strength of Group` = factor(`Strength of Group`, levels = unique(.$`Strength of Group`))) %>%
+  select(-c(Port, Type)) %>%
+  group_by(`Strength of Group`, `Portfolio Group`) %>%
+  summarise(Mean = round(mean(Value), digits = 3),
+            Median = round(median(Value), digits = 3),
+            StdDev = round(sd(Value), digits = 3),
+            `25th Pct` = round(quantile(Value, .25), digits = 3),
+            `75th Pct` = round(quantile(Value, .75), digits = 3),
+            N = n()) %>%
+  kable(align = "c", caption = "Other Portfolio Strength") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  collapse_rows(columns = 1)
+
+
+# Table2 FF5 lambda Summary
 FM_FF5 %>%
   mutate(method = "FM") %>%
   rbind(FM_STL_FF5 %>%
@@ -8920,7 +8962,43 @@ FM_FF5 %>%
   collapse_rows(columns = 1)
 
 
-# Table3 PRS lambda Summary
+# Table3 Auxiliary Regression Results
+Second_component_panel$model[[2]][2:6, 1:2] %>%
+  cbind(Second_component_panel$model[[3]][2:6, 1:2]) %>%
+  cbind(Second_component_panel$model[[4]][2:6, 1:2]) %>%
+  kable(align = "c", caption = "Auxiliary Regression Results") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T)
+
+
+# Table4 ACL vs. ACL Aug. Risk Premium Estimates
+FM_STL_FF5 %>%
+  mutate(method = "ACL") %>%
+  rbind(Long_result %>%
+          select(-c(Periodic, Noise)) %>%
+          mutate(method = "ACL Aug.")) %>%
+  # fix the method order
+  mutate(method = factor(method, levels = unique(.$method))) %>%
+  select(-date) %>%
+  pivot_longer(-method, names_to = "Factors", values_to = "Value") %>%
+  # fix the Factors order
+  mutate(Factors = factor(Factors, levels = unique(.$Factors))) %>%
+  group_by(Factors, method) %>%
+  summarise(Mean = round(mean(Value), digits = 4),
+            Median = round(median(Value), digits = 4),
+            StdDev = round(sd(Value), digits = 4),
+            `Skew.` = round(skewness(Value), digits = 4),
+            `Kurt` = round(kurtosis(Value), digits = 4),
+            `25th Pct` = round(quantile(Value, .25), digits = 4),
+            `75th Pct` = round(quantile(Value, .75), digits = 4)) %>%
+  kable(align = "c", caption = "Comparison of Risk Premium Estimates") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  collapse_rows(columns = 1)
+```
+
+```{r ACL_Paper_Appendix_Tables, cache=TRUE}
+# Table A1 PRS lambda Summary
 FM_PRS %>%
   mutate(method = "FM") %>%
   rbind(FM_STL_PRS %>%

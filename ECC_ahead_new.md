@@ -37327,22 +37327,22 @@ Std. Error
 `Mkt-RF`
 </td>
 <td style="text-align:center;">
--0.0008009
+-0.00080
 </td>
 <td style="text-align:center;">
-0.0004990
+0.00050
 </td>
 <td style="text-align:center;">
--0.0001600
+-0.00016
 </td>
 <td style="text-align:center;">
-0.0008970
+0.00090
 </td>
 <td style="text-align:center;">
--0.0007037
+-0.00070
 </td>
 <td style="text-align:center;">
-0.0014345
+0.00143
 </td>
 </tr>
 <tr>
@@ -37350,22 +37350,22 @@ Std. Error
 SMB
 </td>
 <td style="text-align:center;">
-0.0017878
+0.00179
 </td>
 <td style="text-align:center;">
-0.0002890
+0.00029
 </td>
 <td style="text-align:center;">
-0.0001227
+0.00012
 </td>
 <td style="text-align:center;">
-0.0005792
+0.00058
 </td>
 <td style="text-align:center;">
-0.0006908
+0.00069
 </td>
 <td style="text-align:center;">
-0.0008382
+0.00084
 </td>
 </tr>
 <tr>
@@ -37373,22 +37373,22 @@ SMB
 HML
 </td>
 <td style="text-align:center;">
-0.0001465
+0.00015
 </td>
 <td style="text-align:center;">
-0.0002699
+0.00027
 </td>
 <td style="text-align:center;">
-0.0000705
+0.00007
 </td>
 <td style="text-align:center;">
-0.0005010
+0.00050
 </td>
 <td style="text-align:center;">
-0.0003246
+0.00032
 </td>
 <td style="text-align:center;">
-0.0008039
+0.00080
 </td>
 </tr>
 <tr>
@@ -37396,22 +37396,22 @@ HML
 RMW
 </td>
 <td style="text-align:center;">
-0.0006133
+0.00061
 </td>
 <td style="text-align:center;">
-0.0002167
+0.00022
 </td>
 <td style="text-align:center;">
-0.0000242
+0.00002
 </td>
 <td style="text-align:center;">
-0.0004448
+0.00044
 </td>
 <td style="text-align:center;">
--0.0000257
+-0.00003
 </td>
 <td style="text-align:center;">
-0.0006722
+0.00067
 </td>
 </tr>
 <tr>
@@ -37419,22 +37419,22 @@ RMW
 CMA
 </td>
 <td style="text-align:center;">
--0.0000655
+-0.00007
 </td>
 <td style="text-align:center;">
-0.0002247
+0.00022
 </td>
 <td style="text-align:center;">
--0.0001256
+-0.00013
 </td>
 <td style="text-align:center;">
-0.0004305
+0.00043
 </td>
 <td style="text-align:center;">
--0.0001577
+-0.00016
 </td>
 <td style="text-align:center;">
-0.0006833
+0.00068
 </td>
 </tr>
 </tbody>

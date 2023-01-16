@@ -8966,6 +8966,7 @@ FM_FF5 %>%
 Second_component_panel$model[[2]][2:6, 1:2] %>%
   cbind(Second_component_panel$model[[3]][2:6, 1:2]) %>%
   cbind(Second_component_panel$model[[4]][2:6, 1:2]) %>%
+  round(., digits = 5) %>%
   kable(align = "c", caption = "Auxiliary Regression Results") %>%
   kable_styling(font_size = 10, "striped", full_width = F) %>%
   column_spec(1, bold = T)

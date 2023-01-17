@@ -36620,6 +36620,67 @@ Here are the tables:
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
+Construction Industry ECC Summary
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Mean
+</th>
+<th style="text-align:center;">
+Mean_Annual
+</th>
+<th style="text-align:center;">
+StdDev
+</th>
+<th style="text-align:center;">
+StdDev_Annual
+</th>
+<th style="text-align:center;">
+25th Pct
+</th>
+<th style="text-align:center;">
+25th Pct Annual
+</th>
+<th style="text-align:center;">
+75th Pct
+</th>
+<th style="text-align:center;">
+75th Pct Annual
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+0.00207
+</td>
+<td style="text-align:center;">
+2.49
+</td>
+<td style="text-align:center;">
+0.07098
+</td>
+<td style="text-align:center;">
+24.6
+</td>
+<td style="text-align:center;">
+-0.038
+</td>
+<td style="text-align:center;">
+-46
+</td>
+<td style="text-align:center;">
+0.045
+</td>
+<td style="text-align:center;">
+54.1
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-striped" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
 Other Portfolio Strength
 </caption>
 <thead>

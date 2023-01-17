@@ -8879,6 +8879,25 @@ ECC_FM_PRS %>%
 Here are the tables:
 
 ```{r ACL_Paper_Tables, cache=TRUE}
+# Create the numbers for construction industry
+All_FF5_ECC %>%
+  filter(Industry == "Cnstr") %>%
+  subset(select = c(date, FM)) %>%
+  summarise(Mean = round(mean(FM), digits = 5),
+            Mean_Annual = round(mean(FM)*1200, digits = 2),
+            StdDev = round(sd(FM), digits = 5),
+            StdDev_Annual = round(sd(FM)*sqrt(12)*100, digits = 1),
+            `25th Pct` = round(quantile(FM, .25), digits = 3),
+            `25th Pct Annual` = round(quantile(FM, .25)*1200, digits = 1),
+            `75th Pct` = round(quantile(FM, .75), digits = 3),
+            `75th Pct Annual` = round(quantile(FM, .75)*1200, digits = 1)) %>%
+  kable(align = "c", caption = "Construction Industry ECC Summary") %>%
+  kable_styling(font_size = 10, "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  collapse_rows(columns = 1)
+
+
+
 # Table1 Summary of Trend and Periodic Component Tests for other portfolios
 Other_Port_Component_Strength %>%
   ungroup() %>%
